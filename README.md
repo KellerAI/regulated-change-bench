@@ -104,9 +104,6 @@ ids, so they score against their own new key, not the published ones.
 
 - The platform, the obligations and the changes are synthetic. Nothing here measures performance on a real
   bank's code or records.
-- One builder wrote the applications, the obligation catalog and the seen families. The held-out families are the
-  guard against that: they were written by a second model lineage with no access to the first builder's results,
-  and sealed before anything was scored. They are not an outside adjudicator.
 - Each reviewer ran once per change; there are no repeats and no variance estimates. The one-sided 95% bound on the
   false all-clear rate is the honest summary of a single pass.
 - The held-out split has 24 families of several changes each, so misses cluster by family; the per-family
