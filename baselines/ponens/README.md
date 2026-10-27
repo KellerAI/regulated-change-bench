@@ -1,5 +1,7 @@
 # Ponens arms
 
+Corrections to how these arms were described: see [`CORRECTIONS.md`](../../CORRECTIONS.md).
+
 Imandra's **ponens** (MIT) as a pull request in the bank would meet it: the GitHub Action
 (`imandra-ai/ponens/action`) on every PR, plus, for the second arm, a reasoning trace written by the PR's coding
 agent. Two arms: `ponens-no-trace` and `ponens-agent-trace`.

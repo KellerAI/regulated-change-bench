@@ -5,12 +5,13 @@ check the change against the bank's obligations, and does it tell an approver th
 
 It is a synthetic bank platform (a baseline mortgage-origination app in Java and a baseline payment service in
 Python), a catalog of 27 obligations the bank has written for itself (each one maps to NYDFS Part 500, SOX ITGC,
-the FFIEC IT Handbook or SOC 2), and 270 blind changes. Each change comes with everything an approver would have:
+the FFIEC IT Handbook or SOC 2), and 270 changes. Each change comes with everything an approver would have:
 the diff and the repository history, the change ticket, the approvals, the people directory, the exception
 register, the acceptance ledger of earlier changes, the imported evidence, and the change's own CI run. Some
 changes violate one obligation; their clean twins look the same from the outside and violate nothing. The answer
 keys were sealed, with their hashes committed, before any reviewer was scored. Authored by Keller AI. The long-form write-up is at
 [kellerai.io/resources/benchmarking-regulated-change-review](https://kellerai.io/resources/benchmarking-regulated-change-review).
+Corrections: `CORRECTIONS.md`.
 
 Seven reviewer configurations ran on the same changes with frozen prompts. None of them is ours, and this
 repository contains no product. The verdict files are published so every number below can be recounted.
@@ -56,26 +57,29 @@ more. The reviewers are listed in a fixed order by kind, not by score.
 | Grok 4.7 via Cursor agent, packet (ask mode) | 4/88 | 10.1% | 30/48 | 12 | 6 | plan quota | 181 |
 | Claude Code with tools (Opus 5.5) | 1/88 | 5.3% | 37/48 | 2 | 9 | $61.16 ($0.45/change, Bedrock list price) | 84 |
 | Ponens CI action, no trace (default) | 88/88 | 100.0% | 48/48 | 0 | 0 | $0 (no model call) | 0 |
-| Ponens CI action + agent-written trace | 14/88 | 23.7% | 30/48 | 5 | 13 | $0 API, local compute | 154 |
+| Ponens goal resolution, post-hoc trace (gpt-oss-120b) | 14/88 | 23.7% | 30/48 | 5 | 13 | $0 API, local compute | 154 |
 
 Every reviewer covers all 136 held-out changes and all 134 seen changes. On the seen split the full-split false
 all-clears are: Opus 1 of 76, gpt-oss 5, Qwen 3.8 4, Grok 2, Claude Code with tools 0, Ponens with an agent-written
 trace 8, and Ponens with no trace 76 of 76. Qwen 3.8 and Ponens with an agent-written trace were first run on a
-30-change common subset (19 defective) and filled in to the whole split afterwards, once the keys had been
+30-change common subsets (19 defective on seen, 22 on held-out) and filled in to the whole split afterwards, once the keys had been
 unsealed, so their rows are not blind in the sealing sense (`PROTOCOL.md`, section 7). The full tables, the seen
-split, the common-subset tables and the per-family breakdown are in `RESULTS.md`.
+split, the common-subset tables and the per-family breakdown are in `RESULTS.md`. Eight seen-split clean labels are
+disputed since v1.1; see `CORRECTIONS.md`. `RESULTS.md` reports the seen split both ways.
 
-## Run it yourself in five commands
+## Run it yourself
 
 ```sh
 sh scripts/setup_tools.sh                                  # pytest venv and the JUnit console jar under .tools/
 python3 scripts/unpack_variants.py                         # clone the 270 variant bundles into variants/*/*/repo/
-python3 -m baselines.ollama.run --model gpt-oss:120b --variants-dir variants/test-heldout --runs-dir runs/test-heldout
-python3 scripts/results.py                                 # recount RESULTS.md from runs/ and the keys
+python3 scripts/results.py                                 # recount RESULTS.md from the published runs/ and the keys
+# a fresh replication (needs Ollama and a pulled model; writes beside the published verdicts, never over them):
+python3 -m baselines.ollama.run --model gpt-oss:120b --variants-dir variants/test-heldout --runs-dir runs-mine/test-heldout
+python3 scripts/results.py --runs-dir runs-mine --extra-arm gpt-oss-120b "gpt-oss-120b (my rerun)"
 sh scripts/gate.sh                                         # before you publish anything: names, paths, secrets
 ```
 
-The third command is one example. Every runner takes `--variants-dir` and `--runs-dir`: `baselines/claude/run.py`
+The fourth command is one example. Every runner takes `--variants-dir` and `--runs-dir`: `baselines/claude/run.py`
 (`--mode packet` or `--mode agentic`, Bedrock), `baselines/ollama/run.py` (any pulled model), `baselines/grok/run.py`
 (Cursor's agent CLI), `baselines/ponens/run.py` (`--mode no-trace` or `--mode agent-trace`). `baselines/README.md`
 describes each arm, what it saw, and how the tool-using arms are isolated. Scoring needs nothing but Python 3.
@@ -93,7 +97,8 @@ ids, so they score against their own new key, not the published ones.
    every verdict's `meta.prompt_sha256`.
 3. Run the reviewer on both splits (or on the common subset in `runs/<split>/subset-paid.txt` if it is expensive),
    commit `runs/<split>/<name>/v-*.json`, run `python3 scripts/results.py`, and open a pull request. Say what the
-   reviewer is, what it could read, whether it could run CI, what it cost and how you priced it.
+   reviewer is, what it could read, whether it could run CI, what it cost and how you priced it. Register the arm
+   with `--extra-arm`, or add it to `ARMS` and `COST` in `scripts/results.py`, or it will not appear in the tables.
 
 ```json
 {"variant": "v-…", "arm": "…", "decision": "ACCEPT|REJECT|HOLD",

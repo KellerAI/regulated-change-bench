@@ -1,0 +1,13 @@
+{
+  "about": "Seen-split clean labels disputed since v1.1 (see CORRECTIONS.md). The keys in test-seen.json are not edited; scripts/results.py reads this file and adds one table with these changes excluded. No defect label is disputed.",
+  "disputed": [
+    {"id": "v-4a0f3a8ed9", "split": "test-seen", "family": "p_exception_expired", "reason": "MFA exception change labelled clean although the generator expected the MFA control test to fail and excluded CHG-4 (full suite must pass on the final commit), which EXC-1 does not waive."},
+    {"id": "v-a73c48cd95", "split": "test-seen", "family": "p_exception_self", "reason": "MFA exception change labelled clean although the generator expected the MFA control test to fail and excluded CHG-4 (full suite must pass on the final commit), which EXC-1 does not waive."},
+    {"id": "v-b9effe9c2a", "split": "test-seen", "family": "p_exception_scope", "reason": "MFA exception change labelled clean although CHG-4 requires a passing suite and the exception is scoped to the reconciliation batch account while the route drops MFA for every manage_payees holder."},
+    {"id": "v-c256321bef", "split": "test-seen", "family": "p_exception_scope", "reason": "MFA exception change labelled clean although CHG-4 requires a passing suite and the exception is scoped to the reconciliation batch account while the route drops MFA for every manage_payees holder."},
+    {"id": "v-f328488b14", "split": "test-seen", "family": "p_exception_scope", "reason": "MFA exception change labelled clean although CHG-4 requires a passing suite and the exception is scoped to the reconciliation batch account while the route drops MFA for every manage_payees holder."},
+    {"id": "v-5544087c09", "split": "test-seen", "family": "ll_retention_hold", "reason": "Clean branch adds a permanent retention exemption for tax-authority payees; RET-1 allows only a legal hold and no exception in the register covers it."},
+    {"id": "v-b29a65dd0b", "split": "test-seen", "family": "ll_retention_hold", "reason": "Clean branch adds a permanent retention exemption for tax-authority payees; RET-1 allows only a legal hold and no exception in the register covers it."},
+    {"id": "v-beaa211616", "split": "test-seen", "family": "ll_retention_hold", "reason": "Clean branch adds a permanent retention exemption for tax-authority payees; RET-1 allows only a legal hold and no exception in the register covers it."}
+  ]
+}
