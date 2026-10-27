@@ -9,7 +9,8 @@ the FFIEC IT Handbook or SOC 2), and 270 blind changes. Each change comes with e
 the diff and the repository history, the change ticket, the approvals, the people directory, the exception
 register, the acceptance ledger of earlier changes, the imported evidence, and the change's own CI run. Some
 changes violate one obligation; their clean twins look the same from the outside and violate nothing. The answer
-keys were sealed, with their hashes committed, before any reviewer was scored. Authored by Keller AI.
+keys were sealed, with their hashes committed, before any reviewer was scored. Authored by Keller AI. The long-form write-up is at
+[kellerai.io/resources/benchmarking-regulated-change-review](https://kellerai.io/resources/benchmarking-regulated-change-review).
 
 Seven reviewer configurations ran on the same changes with frozen prompts. None of them is ours, and this
 repository contains no product. The verdict files are published so every number below can be recounted.
