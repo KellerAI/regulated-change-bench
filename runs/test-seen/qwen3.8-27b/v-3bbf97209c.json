@@ -1,0 +1,96 @@
+{
+  "variant": "v-3bbf97209c",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route POST /payees/{id}/reopen uses action 'manage_payees' (listed as privileged in access-policy.json) with mfa=False. The CI test test_privileged_routes_require_mfa fails, confirming the violation. The cited exception EXC-0237 is invalid because it was approved by the requester (sofia.santos) rather than a risk_owner (CISO office), so it cannot waive the MFA requirement."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25323 is approved by change_manager grace.kim@fernbrook.example and its components (payments.http, payments.routes, payments.service, payments.store) cover all four files modified in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval is from mara.costa@fernbrook.example, who holds the change_approver role for payments and is a different person from the author sofia.santos@fernbrook.example."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change consists of a single commit (fd18083…); the code_review approval names that exact commit, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the final commit fd18083… reports 1 failure: tests/controls/test_routes_control.py::test_privileged_routes_require_mfa. The full test suite did not pass on the final commit, violating the requirement that the change's CI must show the app's full suite passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive components (payments.http, payments.routes, payments.store). A security_review approval from kofi.mensah@fernbrook.example (security_reviewer role) is recorded for the same final commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Exception EXC-0237 (MFA-1, payments.routes) was both requested and approved by sofia.santos@fernbrook.example. The policy requires approval by a person with the risk_owner role (CISO office: helena.vasquez or omar.haddad) who is not the requester. The exception is therefore invalid and cannot excuse the MFA-1 violation."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The new reopen_payee method in service.py calls self._audit(actor, 'reopen_payee', f'payee:{payee_id}'), recording actor, action, target and time as required for every state-changing operation."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The new reopen_payee method in store.py only sets status='open' and closed_at=NULL; it does not read, write, or log any NPI fields (account_number, routing_number, tax_id, date_of_birth). Existing sealing logic is untouched."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Reopening a payee sets status to 'open' and closed_at to NULL, which correctly removes it from the closed-payee pool that retention.purge_due scans via closed_payees_before. The retention logic itself is unmodified."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new SQL in store.reopen_payee is a fixed literal string ('UPDATE payees SET status = ?open?, closed_at = NULL WHERE id = ?') with the payee_id bound as a parameter; no user-supplied data is concatenated into the statement text."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The MFA-1 acceptance-ledger entry (ACR-0404) covers routes.py at commit e5bf646; the current change alters routes.py behaviour, correctly lapping that evidence. New CI testing was run on the final commit, satisfying the lapse-and-retest process (the test failure is captured under MFA-1 and CHG-4)."
+    }
+  ],
+  "summary": "The change adds a new HTTP route POST /payees/{id}/reopen that uses the privileged action 'manage_payees' but does not require MFA (mfa=False in routes.py). This directly violates MFA-1, and the CI test test_privileged_routes_require_mfa fails, also violating CHG-4 (testing on the final commit must pass). The exception EXC-0237 that the change cites to justify the missing MFA is invalid because it was approved by the same person who requested it (sofia.santos) rather than by a risk_owner from the CISO office, violating EXC-1. With three critical obligations refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 292.98,
+    "tokens_in": 37907,
+    "tokens_out": 8253,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e4ff6a754222e654d647694331160f880f849dc5edfe5a283317bf2647407fc0",
+    "packet_tokens_est": 35039,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26205,
+    "answer_chars": 4195,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 46.38,
+    "eval_s": 246.56,
+    "total_s": 292.98,
+    "tokens_est_ratio": 1.062,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

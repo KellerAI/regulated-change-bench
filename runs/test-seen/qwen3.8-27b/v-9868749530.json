@@ -1,0 +1,76 @@
+{
+  "variant": "v-9868749530",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The diff refactors required_approvals from an if/else to a ternary with identical logic (2 if amount >= DUAL_CONTROL_THRESHOLD else 1). The exhaustive control test test_dual_control_grid_matches_policy passes in CI on the final commit, confirming the threshold and dual-control behaviour are unchanged."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function (the symbol covered by the PAY-2 trace evidence) is untouched by this diff; only required_approvals was reformatted. The sample test test_sampled_release_is_idempotent passes in CI, and the ponens trace in the acceptance ledger (ACR-0403) remains valid because release was not altered."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve and is_fully_approved functions (MC-1 scope) are unchanged in this diff; only the syntactic form of required_approvals was altered with no behavioural change. The exhaustive test test_maker_cannot_check passes in CI on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26682 is type 'standard' and status 'approved' by Erik Brandt (change_manager, not the author). Its component 'payments.payments' matches the single changed file payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (payments-eng, change_approver for payments) submitted a code_review approval on the head commit. She is a different person from the author Sofia Santos, satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit faccf9a…, which is the only (and final) commit in the change; there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) is on the head commit faccf9a… with result 'success'; all 172 tests pass with 0 failures, 0 errors, 0 skipped. The three control tests whose scope includes payments.py (test_dual_control_grid_matches_policy, test_sampled_release_is_idempotent, test_maker_cannot_check) are present and passing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The PAY-1 proof (ACR-0401) covers required_approvals, which was syntactically changed; the proof lapses. However, the exhaustive CI control test test_dual_control_grid_matches_policy passing on the final commit supplies new evidence of equivalent strength, so the obligation is still met."
+    }
+  ],
+  "summary": "PR-1745 is a purely syntactic refactoring of the required_approvals function in payments/payments.py, converting a multi-line if/else to an equivalent ternary expression with no behavioural change. All three product obligations whose scope includes this file (PAY-1, PAY-2, MC-1) are satisfied: the relevant exhaustive and sample control tests pass in CI on the final commit, and the unchanged release and approve functions keep PAY-2 and MC-1 evidence intact. All applicable process obligations (CHG-1 through CHG-4, LAP-1) are met: the ticket is approved by a change manager, an independent code_review approval from a qualified change_approver exists, the approval covers the sole commit, CI is green on the head commit, and the lapsed PAY-1 proof is replaced by the passing exhaustive CI test. No security-sensitive or protected paths are touched, so CHG-5 and CHG-6 do not apply; the change is standard (not emergency) so CHG-7 does not apply; and no product-obligation deviation exists so EXC-1 is not triggered.",
+  "meta": {
+    "elapsed_s": 178.8,
+    "tokens_in": 28105,
+    "tokens_out": 5093,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9d153c4701e966153208ca65727c2d8738f481ea84d09275ad1e47d3f274d978",
+    "packet_tokens_est": 25056,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15930,
+    "answer_chars": 3487,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.97,
+    "eval_s": 145.8,
+    "total_s": 178.79,
+    "tokens_est_ratio": 1.094,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

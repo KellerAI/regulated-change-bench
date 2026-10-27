@@ -1,0 +1,81 @@
+{
+  "variant": "v-3eb47bf44f",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25173 is approved by change manager Grace Kim; its components (payments.payments, payments.tests) cover both files touched: memos.py (payments.payments) and test_memo_preview.py (payments.tests)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (sofia.santos@fernbrook.example) has the change_approver role for payments and is not the author (Mara Costa); her code_review approval is valid."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The code_review approval is on commit b6ebfd6, but the later commit c1a0175 adds a new constant PREVIEW_MIN_WIDTH = 8 to memos.py. This is a new code element, not a comment-only, whitespace, or formatting edit, so it voids the approval under CHG-3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit c1a0175 with 174 tests, 0 failures, 0 skipped. No product-obligation scope path includes memos.py, so no specific control-test requirement is triggered; the full suite passing satisfies the testing obligation."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components (payments.payments and payments.tests) are both marked security_sensitive: false in components.json, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed file falls under any path in protected-paths.json (controls/*, test/controls/*, ci/*), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated and no exception is invoked; the change does not deviate from any obligation's scope."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries cover payments.py, audit.py, routes.py, and mortgage files; none of these are modified by this change (only memos.py and a new test file are touched), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a simple preview function to memos.py and a new unit test, touching no product-obligation scope paths and no protected or security-sensitive components. All process obligations are satisfied except CHG-3: the sole code_review approval (Sofia Santos) is recorded against the first commit b6ebfd6, but the second commit c1a0175 introduces a new constant PREVIEW_MIN_WIDTH = 8, which is a code addition rather than a comment, whitespace, or formatting edit. Under CHG-3 this voids the prior approval, and no new approval covering the final commit is on record. The change is rejected pending a fresh approval on the head commit.",
+  "meta": {
+    "elapsed_s": 167.82,
+    "tokens_in": 27994,
+    "tokens_out": 4855,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "2f93ba6e4334bdb805b6d547e2e97e9c6042b48f4ddd927d2c440f6664e4f2fc",
+    "packet_tokens_est": 24563,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15670,
+    "answer_chars": 2784,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.78,
+    "eval_s": 135.01,
+    "total_s": 167.82,
+    "tokens_est_ratio": 1.111,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

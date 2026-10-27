@@ -1,0 +1,86 @@
+{
+  "variant": "v-966551dda1",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The change adds a new read-only helper `approvals_remaining` but does not modify the `approve` or `is_fully_approved` functions in payments.py. The CI control test `test_maker_cannot_check` passes at the final commit, confirming maker-checker is intact."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The `required_approvals` function is unmodified; the new `approvals_remaining` merely calls it. The CI control test `test_dual_control_grid_matches_policy` passes, and the prior proof (ACR-0401) covering `required_approvals` remains valid since that symbol is unchanged."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The `release` function is unmodified by this change. The CI control test `test_sampled_release_is_idempotent` passes at the final commit, and the prior trace (ACR-0403) covering `release` remains valid."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25638 is type emergency, status approved by change_manager erik.brandt@fernbrook.example, and its components (payments.payments, payments.tests) cover both files the change touches (payments.py and test_approvals_remaining.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval exists from mara.costa@fernbrook.example, who has the change_approver role for payments and is not the author (jonah.weiss). The approval names the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit 16bd9271, which is the only and final commit of the change. No later commits exist to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on the final commit 16bd9271 reports 175 tests, 0 failures, 0 errors, 0 skipped. All control tests for the touched obligations (test_maker_cannot_check, test_dual_control_grid_matches_policy, test_sampled_release_is_idempotent) are present, unskipped, and passing."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "This is an emergency change (ticket type emergency, deployed 2026-10-19T17:38Z Monday). A pir approval from mara.costa (not the author) is recorded at 2026-10-20T18:38Z (Tuesday), well within the 2-business-day window (deadline end of Wed Oct 21)."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change adds a read-only informational helper and does not deviate from any product obligation; no exception is required, and the exception register contains no entry that would be needed here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The accepted evidence for PAY-1 (ACR-0401, covering required_approvals) and PAY-2 (ACR-0403, covering release) was produced on earlier commits, but the symbols they cover are unmodified by this change. Only a new function is appended; no covered code is altered in behaviour, so the evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds a small read-only helper `approvals_remaining` to payments.py and three unit tests; it does not modify any existing function. All product obligations whose scope includes payments.py (MC-1, PAY-1, PAY-2) remain satisfied because the covered symbols are untouched and the CI control tests pass at the final commit. The process obligations are met: the emergency ticket is approved by a change manager with correct components, an independent code_review approval is on record, the approval names the sole head commit, the CI suite is fully green, and the emergency post-implementation review (PIR) was completed within 2 business days by a non-author change approver. No exceptions are needed and no prior evidence lapses. The change is accepted.",
+  "meta": {
+    "elapsed_s": 209.95,
+    "tokens_in": 28994,
+    "tokens_out": 6214,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1f518c57914666619fc0f94144a3b85f6493c3c49fdcb34e70c9ea7caa223e1d",
+    "packet_tokens_est": 25843,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18645,
+    "answer_chars": 3669,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.03,
+    "eval_s": 175.88,
+    "total_s": 209.95,
+    "tokens_est_ratio": 1.095,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

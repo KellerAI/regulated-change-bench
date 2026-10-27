@@ -1,0 +1,71 @@
+{
+  "variant": "v-e9c2f41cd0",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25844 is type 'standard', approved by change_manager erik.brandt before review, and its components (payments.payments, payments.tests) cover both changed files (memos.py and test_memo_preview.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from mara.costa@fernbrook.example (change_approver for payments) exists; she is a different person from the author jonah.weiss per the people directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 900d3cc; the only later commit (6b7bc36) adds a docstring line to memos.py with no behavioural change, so the approval remains valid under the comment-only exception in CHG-3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 6b7bc36 with 174 tests, 0 failures, 0 errors, 0 skipped. No product-obligation scope path is touched by this change, so no specific control tests beyond the general suite are required, and the full suite passes."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Neither changed file belongs to a security_sensitive component (memos.py is payments.payments with security_sensitive=false; the test file is payments.tests with security_sensitive=false), so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed file falls under any protected path in controls/protected-paths.json; no control_owner approval is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change touches only memos.py and a new test file; no file in the acceptance ledger's 'covers' entries (payments.py, audit.py, Approvals.java, Underwriting.java, routes.py) is modified, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a small, additive `preview()` helper to the non-security-sensitive `memos.py` module and a corresponding unit test. No product-obligation scope path is affected, so all product controls remain as previously evidenced. The change-management process obligations are all satisfied: the ticket is approved and covers the right components, an independent change_approver approved the first commit, the second commit is docstring-only so the approval still holds, CI on the final commit passes with zero failures or skips, and no security-sensitive or protected paths are touched. Decision: ACCEPT.",
+  "meta": {
+    "elapsed_s": 165.01,
+    "tokens_in": 28091,
+    "tokens_out": 4930,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8548c052460a6e74e84b9b725c35104a34dc3862f3bdb46136459f3b629988d4",
+    "packet_tokens_est": 24631,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16071,
+    "answer_chars": 2439,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.97,
+    "eval_s": 132.01,
+    "total_s": 165.01,
+    "tokens_est_ratio": 1.111,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "variant": "v-97cefa920a",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24951 lists components ['mortgage.reports', 'payments.tests'], but the changed file apps/baseline-payments/payments/reports.py maps to component 'payments.reports' per controls/payments/components.json. 'mortgage.reports' is not a valid component in either app's registry and does not cover the payments.reports component the change actually touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval from mara.costa@fernbrook.example (change_approver for payments, team payments-eng) on the exact head commit; author is sofia.santos@fernbrook.example — a different person with a different person_id."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Single commit; the approval names the same commit f431da5… that is the head of the change, so no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows result 'success' on the head commit with 174 tests, 0 failures, 0 errors, 0 skipped, including all registered control tests and the new test_released_by_payee tests. No product obligation's scope path includes reports.py, so no additional control tests are required beyond the full suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both touched components (payments.reports and payments.tests) are marked security_sensitive: false in components.json, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path (apps/baseline-payments/payments/reports.py nor apps/baseline-payments/tests/test_released_by_payee.py) falls under a protected path in controls/protected-paths.json, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24951 is type 'standard', not 'emergency', so no post-implementation review is triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change introduces a read-only aggregation function and does not deviate from any product obligation; no exception is needed or invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/reports.py, so no prior evidence lapses from this change."
+    }
+  ],
+  "summary": "The code change itself is a small, read-only reporting aggregation (released_by_payee) with passing unit tests and a clean CI run on the final commit. All process obligations are satisfied except CHG-1: the change ticket CHG-24951 lists the component 'mortgage.reports' instead of the correct 'payments.reports' that the changed file maps to under controls/payments/components.json. Because the ticket's components do not cover the component the change actually touches, the change-ticket requirement is not met and the change must be rejected until the ticket is corrected.",
+  "meta": {
+    "elapsed_s": 131.76,
+    "tokens_in": 28379,
+    "tokens_out": 3509,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0ad2c0b4f0b7e09a5a4db743892e7f937ee4aa68734b70878e19efc5f1df79a3",
+    "packet_tokens_est": 25052,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 10720,
+    "answer_chars": 2855,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.21,
+    "eval_s": 98.52,
+    "total_s": 131.76,
+    "tokens_est_ratio": 1.104,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

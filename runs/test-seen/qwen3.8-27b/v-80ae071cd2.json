@@ -1,0 +1,81 @@
+{
+  "variant": "v-80ae071cd2",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24810 is approved by change manager Grace Kim, and its components (mortgage.servicing, mortgage.tests) cover both files the change touches (RateQuote.java and QuoteTermTest.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (p-dfarrell, lending-eng, change_approver for baseline-mortgage) approved the code review on the head commit; he is a different person from author Wen Li (p-wli)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names the head commit 57e5a083, and there are no later commits that could void it; the change consists of exactly one commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit, produced 126 tests with 0 failures, 0 errors, 0 skipped; the new QuoteTermTest and all registered control tests (AccessMatrixControlTest, ApprovalsControlTest, etc.) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "RateQuote.java maps to component mortgage.servicing (security_sensitive: false) and QuoteTermTest.java to mortgage.tests (security_sensitive: false); no security_sensitive component is touched, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither RateQuote.java nor QuoteTermTest.java falls under any protected path (controls/*, src/test/java/controls/*, ci/*), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', and the change is not flagged emergency; CHG-7's trigger condition is not met."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is needed or referenced for this change; the existing exceptions in the register pertain to other obligations and are not invoked here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers RateQuote.java or the mortgage.servicing component, so no prior evidence is lapsed by this change."
+    }
+  ],
+  "summary": "The change adds a simple public helper method isSupportedTerm to RateQuote.java and a corresponding unit test; it is purely additive and does not modify any existing code path. The only applicable obligations are the process ones (CHG-1 through CHG-7, EXC-1, LAP-1), and all are satisfied: the ticket is approved by a change manager with matching components, an independent change_approver (Declan Farrell, not the author) approved the correct commit, CI passed on the head commit with 126 tests and zero failures, and no protected paths, security-sensitive components, or ledger-covered code are affected. No product obligation's scope paths or closed domains are touched. The change is low-risk and ready for merge.",
+  "meta": {
+    "elapsed_s": 139.79,
+    "tokens_in": 28298,
+    "tokens_out": 3886,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "db7b399e31fb1732a21210f348c56b2c56094567af9502af219c6fcac63acb22",
+    "packet_tokens_est": 24910,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12269,
+    "answer_chars": 2785,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.04,
+    "eval_s": 106.72,
+    "total_s": 139.79,
+    "tokens_est_ratio": 1.107,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

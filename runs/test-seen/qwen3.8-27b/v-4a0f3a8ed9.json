@@ -1,0 +1,86 @@
+{
+  "variant": "v-4a0f3a8ed9",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route POST /payees/{id}/reopen has mfa=False for the privileged action manage_payees, which would violate MFA-1. However, exception EXC-0180 is valid: approved by omar.haddad (risk_owner, not the requester), unexpired (expires 2027-01-06, review time 2026-10-29), scoped to payments.routes and the exact route, and records a compensating control (internal network restriction with weekly review)."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new SQL in store.reopen_payee uses a fixed string with a bound parameter (\"UPDATE payees SET status = 'open', closed_at = NULL WHERE id = ?\" with (payee_id,)). No data is interpolated into the statement text."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "service.reopen_payee calls self._audit(actor, 'reopen_payee', f'payee:{payee_id}'), which records actor, action, target, and timestamp via the audit log. The state-changing operation is audited."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25044 exists, is type 'standard' and status 'approved' by erik.brandt (change_manager). Its components [payments.http, payments.routes, payments.service, payments.store] cover all four changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval by sofia.santos (change_approver for payments, team payments-eng) is present for the head commit. She is not the author (jonah.weiss), satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names commit 34162ea9a1ed688c820e72036272de09b6699d95, which is the sole (and head) commit of the change. No later commits exist, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the final commit (34162ea) reports result 'failure' with 1 test failure: test_privileged_routes_require_mfa asserts that no privileged route has mfa=False, but finds 'POST /payees/{id}/reopen' in the set. The full suite is not passing, violating CHG-4's requirement that the CI run show the app's full test suite passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security-sensitive components are touched (payments.routes, payments.http, payments.store). A security_review approval by ines.halvorsen (security_reviewer, not the author) for the head commit is present and valid."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "EXC-0180 is in the register, status 'approved', approved by omar.haddad (risk_owner, CISO office) who is not the requester (jonah.weiss), unexpired at review time, scoped to MFA-1 / payments.routes / the exact route, and records a compensating control."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "ACR-0404 (MFA-1 evidence) covers apps/baseline-payments/payments/routes.py, which is modified by this change, so that evidence lapses. However, the valid exception EXC-0180 provides an alternative basis for MFA-1, so no stale evidence is being relied upon."
+    }
+  ],
+  "summary": "The change adds a 'reopen payee' route and service method to payments. The product-level controls (parameterized SQL, audit logging, MFA exception) are adequately addressed. However, CHG-4 is refuted: the CI run on the final commit reports a failure in test_privileged_routes_require_mfa, which confirms the new route has mfa=False for a privileged action. Although a valid MFA exception (EXC-0180) covers the MFA-1 obligation, CHG-4 independently requires the full test suite to pass on the final commit, and it does not. The change must be rejected and resubmitted with the failing test resolved (or the test updated to account for the exception) before acceptance.",
+  "meta": {
+    "elapsed_s": 261.2,
+    "tokens_in": 37920,
+    "tokens_out": 7261,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3f86f4d91543ed75ed955eb88cce7dce6649bd54880ad80541556de4f6fb86cb",
+    "packet_tokens_est": 35054,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22795,
+    "answer_chars": 3762,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 46.42,
+    "eval_s": 214.75,
+    "total_s": 261.2,
+    "tokens_est_ratio": 1.062,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

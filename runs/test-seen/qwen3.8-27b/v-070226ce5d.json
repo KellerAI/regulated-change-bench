@@ -1,0 +1,96 @@
+{
+  "variant": "v-070226ce5d",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The change refactors required_approvals from an if/else to a ternary with identical logic. A renewed Rocq proof (pay1-required-approvals-renewed.json) targets the head commit b8aae84 and exhaustively proves the dual-control property. The CI control test test_dual_control_grid_matches_policy passes on the final commit."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function is not modified by this change; only required_approvals is. The existing ponens trace (ACR-0403) covering payments.py#release from commit e5bf6465 remains valid under LAP-1 because the covered code is unchanged. The CI test test_sampled_release_is_idempotent passes."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve and is_fully_approved functions are not modified. Although is_fully_approved calls required_approvals, the renewed proof confirms behaviour is identical, so maker-checker logic is unchanged. The CI test test_maker_cannot_check passes."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26071 is approved by change manager erik.brandt@fernbrook.example, and its component list [payments.payments] covers the only file changed (payments.py maps to component payments.payments in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (sofia.santos@fernbrook.example) has the change_approver role for payments and is not the author (Aisha Bello). Her code_review approval on the head commit satisfies the independent-approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit b8aae844, which is the only commit in the change (both base and head). No later commits exist that could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit b8aae844 with 172 tests, 0 failures, 0 errors, 0 skipped. All control tests for touched obligations (test_dual_control_grid_matches_policy, test_maker_cannot_check, test_sampled_release_is_idempotent) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file payments.py belongs to component payments.payments, which is marked security_sensitive: false in components.json. No security-sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only file changed is apps/baseline-payments/payments/payments.py, which is not under any protected path listed in protected-paths.json (controls/*, tests/controls/*, ci/*). No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket CHG-26071 is of type 'standard', not 'emergency'. The emergency PIR requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change, so no exception is required. The three entries in the exception register are unrelated to the code paths touched here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The old PAY-1 evidence (ACR-0401, commit d30b2adb) lapses because required_approvals is modified. However, a renewed exhaustive Rocq proof (pay1-required-approvals-renewed.json) targets the head commit b8aae844 and re-establishes the same property. All other ledgered evidence covers files not touched by this change and remains valid."
+    }
+  ],
+  "summary": "This change is a pure syntactic refactoring of the required_approvals function in payments/payments.py, converting an if/else block into an equivalent ternary expression without altering behaviour. A renewed Rocq proof on the head commit confirms the dual-control property still holds exhaustively, and the full CI suite (172 tests, all passing) includes the relevant control tests. The change is properly ticketed, approved by an independent change_approver for the app, tested on the final commit, and touches no protected paths or security-sensitive components. All applicable product and process obligations are satisfied with adequate evidence; the change is accepted.",
+  "meta": {
+    "elapsed_s": 182.88,
+    "tokens_in": 28508,
+    "tokens_out": 5503,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6e895287c8a7061b04cd2b2f3fd0912c451cca0ed4ee6a33ded4d8efc5df3f98",
+    "packet_tokens_est": 25305,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16216,
+    "answer_chars": 4114,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.56,
+    "eval_s": 149.29,
+    "total_s": 182.88,
+    "tokens_est_ratio": 1.099,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

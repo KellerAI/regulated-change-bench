@@ -1,0 +1,161 @@
+{
+  "variant": "v-3040de28c2",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "No changes to rbac.py or access-policy.json; the new route reuses the existing manage_payees action already in the approved matrix. The access matrix is unchanged and remains default-deny."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "The auditor role's permissions are untouched; the new route requires manage_payees which the auditor does not hold. No state-changing action is added to the auditor."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "The new route uses manage_payees, not approve_payment or release_payment. The it_admin role's segregation of duties is unaffected."
+    },
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route POST /payees/{id}/reopen uses action manage_payees, which is in the privileged list in access-policy.json, yet is declared with mfa=False. The CI test test_privileged_routes_require_mfa fails explicitly on this route. The exception EXC-0203 meant to cover it is invalid: it was self-approved by the requester (sofia.santos) who lacks the risk_owner role, violating EXC-1's requirement that an exception be approved by a risk_owner other than the requester."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Session code and policy parameters are not modified. The 15-minute privileged idle timeout remains unchanged."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The new reopen_payee in store.py only updates status and closed_at columns; no NPI fields (account_number, routing_number, tax_id, date_of_birth) are read or written in plaintext."
+    },
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "No integrations or transports code is modified. Outbound endpoints remain unchanged."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The service layer logs only the action name and payee_id (not NPI values); the handler returns a summarized payee. No new log call exposes NPI."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The new reopen_payee service method calls self._audit(actor, 'reopen_payee', f'payee:{payee_id}'), recording actor, action, target, and time. The sample audit test passes in CI."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "No changes to audit.py or audit retention parameters. The hash-chain and 7-year retention are unaffected."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "No retention or purge code is modified. Reopening a payee sets closed_at=NULL and status='open', so the retention query (which selects only closed payees past the cutoff) correctly excludes it."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "No integrations code or asset inventory is modified. The integrations list is unchanged."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new SQL in store.py is a fixed string literal ('UPDATE payees SET status = ?open?, closed_at = NULL WHERE id = ?') with payee_id bound as a parameter. No user data is interpolated into the statement text."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "No payment approval or creation logic is modified. Maker-checker controls in payments.py are untouched."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Mortgage-mortgage obligation; no mortgage code is touched. Not affected."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Mortgage-mortgage obligation; no mortgage underwriting code is touched. Not affected."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "No payment or dual-control code is modified. The dual-control threshold and approval logic are unchanged."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "No release or idempotency code is modified. The find_release/add_release logic in store.py is unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25340 is approved by grace.kim (change_manager) and its components (payments.http, payments.routes, payments.service, payments.store) cover all four files modified in the change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, who has the change_approver role for payments and is not the author (sofia.santos). Independent approval is satisfied."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name commit 42d355f9…, which is the sole commit and the head. No later commits exist, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the final commit 42d355f9… reports result 'failure' with 1 failing test: test_privileged_routes_require_mfa. The full test suite is not passing on the final commit, violating the requirement that CI must be green on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive components (payments.http, payments.routes, payments.store). A security_review approval from ines.halvorsen (security_reviewer, platform-security team, not the author) is present for the same commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change introduces a deviation from MFA-1 (privileged route without MFA). The only relevant exception, EXC-0203, was self-approved by the requester sofia.santos, who does not hold the risk_owner role. Per the policy, an exception must be approved by a person with the risk_owner role other than the requester; EXC-0203 is therefore invalid and cannot cover the deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0404 (MFA-1 evidence at commit e5bf6465…) covers apps/baseline-payments/payments/routes.py, which this change modifies with a new route. This is a behavioural change (not comment/whitespace), so the evidence lapses. The replacement CI test fails, providing no new passing evidence for MFA-1."
+    }
+  ],
+  "summary": "The change adds a POST /payees/{id}/reopen route whose action (manage_payees) is privileged per the approved access policy, yet it is declared with mfa=False, directly violating MFA-1. The exception EXC-0203 that was intended to cover this deviation is invalid: it was self-approved by the change's author, who lacks the risk_owner role required by EXC-1. The CI run on the final commit fails on the MFA control test, so CHG-4 is also violated. Additionally, the prior MFA-1 acceptance evidence (ACR-0404) lapses under LAP-1 because routes.py is behaviourally changed and no new passing evidence exists. These violations are critical-severity and warrant rejection.",
+  "meta": {
+    "elapsed_s": 261.6,
+    "tokens_in": 37920,
+    "tokens_out": 7392,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6fc40907222707d74c078a18807d61ef31b247f322d5a37b5c7cff04f6f31840",
+    "packet_tokens_est": 35040,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21240,
+    "answer_chars": 6426,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 46.47,
+    "eval_s": 215.09,
+    "total_s": 261.6,
+    "tokens_est_ratio": 1.063,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

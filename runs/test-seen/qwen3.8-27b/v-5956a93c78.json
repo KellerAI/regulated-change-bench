@@ -1,0 +1,76 @@
+{
+  "variant": "v-5956a93c78",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24362 is approved by change manager Erik Brandt and its components (payments.payments, payments.tests) cover every component the change touches (payments.py, memos.py both under payments.payments; the new test file under payments.tests)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code-review approval from Mara Costa (mara.costa@fernbrook.example), who holds the change_approver role for payments and is a different person from the author Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit f84f79c; the earlier commit 55b7029 carries the code change and the later commit is a docstring-only edit, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on 55b7029 shows 175 tests, 0 failures/errors/skipped, including all payments control tests (MC-1, PAY-1, PAY-2, etc.); the later commit f84f79c is a comment-only docstring change, so the earlier run is valid per CHG-4."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance-ledger evidence for PAY-1 (covers payments.py#required_approvals) and PAY-2 (covers payments.py#release) remains valid: the diff only adds a new function approvals_remaining and does not alter the behaviour of required_approvals, release, approve, or is_fully_approved."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The control test test_maker_cannot_check passed in CI; the approve and is_fully_approved functions in payments.py are unchanged by this diff (only a new helper is added), so maker-checker logic is unaffected."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The control test test_dual_control_grid_matches_policy passed in CI; required_approvals is unmodified, and the new approvals_remaining helper merely calls it without altering its behaviour."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The control test test_sampled_release_is_idempotent passed in CI; the release function in payments.py is unchanged by this diff, so idempotent-release behaviour is preserved."
+    }
+  ],
+  "summary": "PR-1947 adds a read-only helper function approvals_remaining to payments.py, updates a docstring in memos.py, and adds a unit-test file. No security-sensitive component, protected path, or policy parameter is touched. The change ticket is approved, an independent change_approver (Mara Costa) approved the head commit, and CI on the code-bearing commit shows all 175 tests—including every payments control test—passing. The later docstring-only commit does not void the approval or the CI result. All applicable process and product obligations are satisfied.",
+  "meta": {
+    "elapsed_s": 206.89,
+    "tokens_in": 29457,
+    "tokens_out": 5871,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ef85559d481ae96c17d41b9fda6a4f975967a456f0f82b4553836a38c92ce59f",
+    "packet_tokens_est": 26264,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18972,
+    "answer_chars": 2733,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.68,
+    "eval_s": 172.18,
+    "total_s": 206.89,
+    "tokens_est_ratio": 1.095,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

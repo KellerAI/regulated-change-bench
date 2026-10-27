@@ -1,0 +1,66 @@
+{
+  "variant": "v-5486671ba6",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change adds `loanCase.applicantField(\"ssn\")` directly into a log.info() call in the decline method. SSN is a registered NPI field (controls/mortgage/policy-params.json lists it in mortgage.npi_fields), and the value is written unmasked—no call to Mask.npi() is applied, unlike the adjacent rejectDuplicate method which correctly uses Mask.npi(ssn). This is a direct violation of 'No application log entry contains an unmasked NPI value, on any path including error paths.'"
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The decline method still calls audit.record(actor, Action.DECLINE_CREDIT, caseId, \"declined\") before the log line; the change does not alter the audit recording. The control test controls.AuditControlTest#sampledOperationsAreAudited passed in CI (0 failures, 0 skipped)."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24512 is approved by grace.kim (change_manager role) and its components list includes 'mortgage.cases', which matches the component of CaseService.java per controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example (Wen Li, change_approver role for baseline-mortgage), who is not the author (nneka.okafor@fernbrook.example)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit b3a171e… which is the only and final commit of the change; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit b3a171e… with 124 tests, 0 failures, 0 errors, 0 skipped, result 'success'. The only product-obligation control test whose scope paths the change touches is AUD-1 (CaseService.java is in AUD-1 scope), and its test passed."
+    }
+  ],
+  "summary": "The change appends the raw SSN of the applicant to the decline log line via loanCase.applicantField(\"ssn\") without any masking, directly violating LOG-1 (NPI never reaches application logs). The SSN is a registered NPI field, and the codebase already has a Mask.npi() utility used elsewhere in the same file, but it is not applied here. All process obligations (ticket, independent approval, coverage, CI testing) are satisfied, but the substantive security violation is unambiguous and cannot be accepted. The change must be rejected and reworked to either remove the applicant identifier from the log or pass it through Mask.npi() before logging.",
+  "meta": {
+    "elapsed_s": 202.47,
+    "tokens_in": 31828,
+    "tokens_out": 5724,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8fc4e45967e52708dc010aa7043e4a650e74534c3e44fdfefcbf9eda5dd067ca",
+    "packet_tokens_est": 29059,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19532,
+    "answer_chars": 2437,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 37.99,
+    "eval_s": 164.44,
+    "total_s": 202.47,
+    "tokens_est_ratio": 1.072,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

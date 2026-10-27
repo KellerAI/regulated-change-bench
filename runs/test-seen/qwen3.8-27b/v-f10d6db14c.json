@@ -1,0 +1,81 @@
+{
+  "variant": "v-f10d6db14c",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24709 is approved by grace.kim@fernbrook.example (change_manager). Its components (payments.reports, payments.tests) cover both changed files per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos@fernbrook.example, who holds the change_approver role for payments and is not the author (jonah.weiss@fernbrook.example)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the sole commit 4582c033, which is the head; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows a success run on the final commit 4582c033 with 174 tests, 0 failures, 0 errors, 0 skipped, including all registered control tests. No product-obligation scope path is touched by this change, so the full suite passing on the final commit is sufficient."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Neither changed file (reports.py → payments.reports, test_released_by_payee.py → payments.tests) is in a security_sensitive component per components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/*, tests/controls/*, ci/*) are modified; a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Emergency ticket deployed 2026-09-29T11:25Z; PIR approval by mara.costa@fernbrook.example (not the author) recorded 2026-09-29T16:25Z, well within the 2-business-day window."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change introduces no deviation from any product obligation; no exception is needed or invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change adds a new function in reports.py and a new test file; it does not modify any code covered by existing acceptance-ledger entries (payments.py, audit.py, routes.py, Approvals.java, Underwriting.java), so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1757 is a minimal, read-only addition to the payments reporting module: a `released_by_payee` aggregation function and two unit tests. It touches no security-sensitive component, no product-obligation scope path, and no protected path. All process obligations are satisfied: the emergency ticket is approved by a change manager with components matching the changed files; an independent code_review from a non-author change_approver for payments covers the sole commit; CI on the final commit passes 174 tests with zero failures or skips; and the emergency PIR was completed the same day by a non-author. No exceptions are needed and no prior evidence lapses. The change is accepted.",
+  "meta": {
+    "elapsed_s": 148.82,
+    "tokens_in": 28537,
+    "tokens_out": 4224,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bd0f147bf3d003e12f2046c305c224ed34ac53357d1512c918fb279b6d506aae",
+    "packet_tokens_est": 25151,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12815,
+    "answer_chars": 2757,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.46,
+    "eval_s": 115.33,
+    "total_s": 148.81,
+    "tokens_est_ratio": 1.106,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

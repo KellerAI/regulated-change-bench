@@ -1,0 +1,81 @@
+{
+  "variant": "v-9af8c91369",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24221 is type 'emergency', approved by change_manager erik.brandt@fernbrook.example. Its components (mortgage.reporting, mortgage.tests) cover the two files changed: PipelineReport.java (mortgage.reporting) and PipelineTotalTest.java (mortgage.tests)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from wen.li@fernbrook.example (Wen Li, change_approver role, lending-eng) is present for the head commit. The author is declan.farrell@fernbrook.example (Declan Farrell), so the approver is independent."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole approval names commit cce8b32…, which is the head commit. There is only one commit in the change, so no later commits could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit cce8b32 with 125 tests passing, 0 failures, 0 errors, 0 skipped. No product-obligation scope path (e.g., AccessMatrix.java, Routes.java, NpiRegistry.java, etc.) is touched by PipelineReport.java or its test, so no additional control tests are specifically mandated by CHG-4."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed files are in components mortgage.reporting (security_sensitive: false) and mortgage.tests (security_sensitive: false). No security_sensitive component is touched, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither PipelineReport.java nor PipelineTotalTest.java falls under the protected paths (controls/*, ci/*, or test/controls/*). No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "This is an emergency ticket (CHG-24221) deployed at 2026-10-07T18:01:00Z. The PIR is due within 2 business days (by end of 2026-10-09). The review time is 2026-10-14, and no 'pir' approval appears in records/approvals.json. The post-implementation review is overdue and absent."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product-obligation scope path is touched by this change, so no deviation from a product obligation exists and no exception is needed. The obligation is trivially satisfied."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries cover code in Approvals.java, Underwriting.java, payments.py, audit.py, and routes.py. None of these are touched by this change (which only modifies PipelineReport.java and adds PipelineTotalTest.java), so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds a simple totalCases() helper to PipelineReport and a unit test; it touches no product-obligation scope paths and no security-sensitive or protected components, so most process obligations are easily met. However, CHG-7 is violated: the emergency change was deployed on 2026-10-07, and the two-business-day PIR deadline (2026-10-09) has long passed as of the 2026-10-14 review time, yet no post-implementation review approval exists in the records. Because a critical process obligation is refuted, the change must be rejected until a valid PIR is completed.",
+  "meta": {
+    "elapsed_s": 149.34,
+    "tokens_in": 28210,
+    "tokens_out": 4266,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0152fae8560bd7fa57b870aaa6d8fb76b24a4afd7d57c3992d04c0d2d1cf391e",
+    "packet_tokens_est": 24788,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12425,
+    "answer_chars": 3136,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.03,
+    "eval_s": 116.27,
+    "total_s": 149.33,
+    "tokens_est_ratio": 1.109,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

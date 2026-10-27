@@ -1,0 +1,106 @@
+{
+  "variant": "v-839bc88acf",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change modifies only STANDARD_IDLE_MINUTES (30→45); PRIVILEGED_IDLE_MINUTES and mortgage.privileged_idle_minutes remain 15. The control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed in the CI run on the final commit, confirming the 15-minute privileged timeout is intact."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Policy.java is in scope, but UNDERWRITER_LIMIT (500000) and SENIOR_LIMIT (1500000) are unchanged. The control test authorityLimitsMatchPolicy passed in CI, and the acceptance-ledger proof (ACR-0405) covers symbols not touched by this change."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Policy.java is in scope, but DTI_MAX_PERCENT (40) and LTV_MAX_PERCENT (90) are unchanged. The control test autoApproveGridMatchesPolicy passed in CI, and the acceptance-ledger proof (ACR-0406) covers symbols not touched by this change."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "Policy.java and policy-params.json are in scope, but AUDIT_RETENTION_YEARS (7) and mortgage.audit_retention_years (7) are unchanged. The control test chainAndRetention passed in CI."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "policy-params.json is in scope, but mortgage.declined_npi_retention_months (25) is unchanged. The control test sampledPurgeRespectsHold passed in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26452 is approved by change_manager erik.brandt. Its components (mortgage.controls-data, mortgage.policy, mortgage.tests) cover all three changed files: Policy.java (policy), SessionTest.java (tests), and policy-params.json (controls-data)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "declan.farrell@fernbrook.example (p-dfarrell, lending-eng, change_approver) approved the code_review on the head commit. He is a different person from the author wen.li@fernbrook.example (p-wli), satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has a single commit (53d7c9d6). Both the code_review and control_owner approvals name that exact commit, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) targets the head commit 53d7c9d6 with result 'success'. All 124 JUnit tests passed with 0 failures, 0 errors, 0 skipped, including every relevant control test (SessionControlTest, ApprovalsControlTest, UnderwritingControlTest, AuditControlTest, RetentionControlTest)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The three changed files map to components mortgage.policy (security_sensitive: false), mortgage.tests (security_sensitive: false), and mortgage.controls-data (security_sensitive: false). No security_sensitive component is touched, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json falls under the protected path 'controls/*'. rachel.stein@fernbrook.example (p-rstein, controls-office, control_owner) approved as control_owner on the head commit. Her team (controls-office) is outside the author's team (lending-eng), satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket CHG-26452 is type 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change (privileged idle timeout, approval limits, credit limits, and audit retention are all unchanged), so no exception is needed. The existing exception register entries are unrelated to this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance-ledger entries ACR-0405 (LIM-1) and ACR-0406 (CRD-1) cover specific symbols in Policy.java (UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, LTV_MAX_PERCENT) and Underwriting.java. This change modifies only STANDARD_IDLE_MINUTES, so the covered symbols and their behaviour are unchanged; the evidence has not lapsed."
+    }
+  ],
+  "summary": "PR-1930 raises the standard (non-privileged) session idle timeout from 30 to 45 minutes in Policy.java, the test, and policy-params.json. No product obligation is affected: the privileged idle timeout (15 min), approval limits, credit decision limits, and audit retention are all unchanged, and all corresponding control tests pass in the CI run on the final commit. All process obligations are met: the ticket is approved with correct component coverage, a non-author change_approver signed the code review, a control_owner from a different team approved the change to the protected controls/ path, and no emergency or exception process is triggered. The decision is ACCEPT.",
+  "meta": {
+    "elapsed_s": 235.88,
+    "tokens_in": 28826,
+    "tokens_out": 7149,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "cbd8016909bf83d8706c5c7cf91b6e7b355d61fc604842162faa37ce37dcd429",
+    "packet_tokens_est": 25319,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21940,
+    "answer_chars": 4785,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.74,
+    "eval_s": 202.1,
+    "total_s": 235.88,
+    "tokens_est_ratio": 1.11,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

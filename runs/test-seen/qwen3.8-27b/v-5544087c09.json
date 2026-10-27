@@ -1,0 +1,86 @@
+{
+  "variant": "v-5544087c09",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change adds an unconditional skip for payees with category 'tax_authority', preventing their NPI from being purged after the approved retention period. The obligation requires that NPI of closed payee accounts is purged after the retention period (except under legal hold); no such category-based exception exists in the approved policy or the exceptions register."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change introduces a deviation from RET-1 (tax authority payees are never purged), but no approved exception in the register covers RET-1 for the payments.retention component. Without a risk_owner-approved, unexpired, in-scope exception with a compensating control, the deviation is not authorized."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25709 is type 'standard', approved by erik.brandt@fernbrook.example (a change_manager), and its components list 'payments.retention', which matches the component of the changed file per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example) has the change_approver role for payments and is a different person from the author Linh Nguyen; her code_review approval on the head commit satisfies the independent-approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit be74efadeacdf5ef95a56062ff336a12b8c20f47, which is the only and final commit in the change, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit (be74efadeacdf5ef95a56062ff336a12b8c20f47) with result 'success'; all 172 tests passed with 0 failures, 0 errors, 0 skipped, including the registered control test test_sampled_purge_respects_hold for RET-1."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file maps to component 'payments.retention', which is marked security_sensitive: false in controls/payments/components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed file is apps/baseline-payments/payments/retention.py, which is not under any of the protected paths listed in controls/protected-paths.json; no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket CHG-25709 is of type 'standard', not 'emergency', so the emergency post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/retention.py (existing entries cover payments.py, audit.py, routes.py, and mortgage files), so no prior evidence is lapsed by this change."
+    }
+  ],
+  "summary": "The change adds a category-based skip in the retention purge logic that permanently preserves NPI for 'tax_authority' payees, directly contradicting RET-1, which requires that NPI of closed payee accounts be purged after the approved retention period (with legal hold as the only carve-out). No approved exception in the register authorizes this deviation, so EXC-1 is also violated. All change-management process obligations (ticket, independent approval, CI on final commit, no security review or control-owner approval needed) are satisfied, but the product-obligation violation is sufficient to reject the change. The change should be returned to engineering either with an approved exception from the CISO office or with the retention logic revised to conform to RET-1.",
+  "meta": {
+    "elapsed_s": 201.66,
+    "tokens_in": 27246,
+    "tokens_out": 5729,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6ef40f0872e9ea68c576abc006ab991d51661972991cf0ace4aec6b5c72f320f",
+    "packet_tokens_est": 24023,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19269,
+    "answer_chars": 3627,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 31.79,
+    "eval_s": 169.84,
+    "total_s": 201.66,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

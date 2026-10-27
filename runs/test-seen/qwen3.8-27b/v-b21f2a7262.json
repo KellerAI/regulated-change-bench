@@ -1,0 +1,146 @@
+{
+  "variant": "v-b21f2a7262",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "Change does not touch AccessMatrix.java, Role.java, Action.java, or access-policy.json. The exhaustive CI control test matrixEqualsApprovedPolicy passed on the head commit."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "Change does not touch auditor role or action definitions. The exhaustive CI control test auditorIsReadOnly passed on the head commit."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "Change does not touch admin role permissions or credit-decision actions. The exhaustive CI control test adminCannotApproveCredit passed on the head commit."
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "Change does not touch Routes.java, Route.java, HttpApp.java, Action.java, or Main.java. The exhaustive CI control test privilegedRoutesRequireMfa passed on the head commit."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Change does not touch Session.java, SessionStore.java, or the idle-timeout parameters. The exhaustive CI control test privilegedIdleTimeoutWithinPolicy passed on the head commit; privileged_idle_minutes remains 15."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "Change does not touch NpiRegistry.java, NpiVault.java, CaseStore.java, or ApplicantFields.java. The exhaustive CI control test everyNpiFieldIsSealedAtRest passed on the head commit."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "Change does not touch AppLog.java or Mask.java. The sampled CI control test sampledFlowsDoNotLogNpi passed on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "Change does not touch CaseService.java or AuditLog.java. The sampled CI control test sampledOperationsAreAudited passed on the head commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "Change does not touch AuditLog.java, AuditEvent.java, or audit_retention_years. The exhaustive CI control test chainAndRetention passed on the head commit; retention remains 7 years."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Change does not touch Retention.java or declined_npi_retention_months. The sampled CI control test sampledPurgeRespectsHold passed on the head commit."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Change does not touch Approvals.java. The exhaustive CI control test makerCannotCheck passed on the head commit."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Change does not alter UNDERWRITER_LIMIT or SENIOR_LIMIT in Policy.java. The exhaustive CI control test authorityLimitsMatchPolicy passed on the head commit; the prior proof record covers unchanged symbols."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "DTI_MAX_PERCENT raised from 40 to 43 in both Policy.java and policy-params.json; the two are consistent. The exhaustive CI control test autoApproveGridMatchesPolicy passed on the head commit, confirming code equals approved values. The renewed proof record (crd1-auto-approve-renewed.json) lists a stale premise (DTI=40) but the structural property is threshold-agnostic and the CI test provides adequate exhaustive evidence."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25598 is approved by change manager erik.brandt; its components (mortgage.controls-data, mortgage.policy, mortgage.tests) cover all three files the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from wen.li (change_approver role, lending-eng team) exists on the head commit; Wen Li is not the author (Declan Farrell), satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 841b4071, which is the only commit in the change, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 841b4071 shows 124 tests, 0 failures, 0 errors, 0 skipped. All registered mortgage control tests (including UnderwritingControlTest#autoApproveGridMatchesPolicy for CRD-1) are present, unskipped, and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches Policy.java (mortgage.policy, security_sensitive=false), UnderwritingTest.java (mortgage.tests, security_sensitive=false), and policy-params.json (mortgage.controls-data, security_sensitive=false). No security-sensitive component is touched, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json falls under the protected path controls/*. A control_owner approval from bao.tran (controls-office, outside the author's lending-eng team) is recorded on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false in change.json), so the post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No deviation from any product obligation is introduced; the change updates both code and approved parameter consistently to 43%, so no exception is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change alters DTI_MAX_PERCENT in Policy.java, lapsing the prior CRD-1 proof (crd1-auto-approve.json at commit d30b2adb). New evidence exists: a renewed proof record at the head commit and, more importantly, the exhaustive CI control test autoApproveGridMatchesPolicy passing on the final commit, which provides evidence of the same strength."
+    }
+  ],
+  "summary": "The change raises the auto-approve DTI ceiling from 40% to 43% in Policy.java and the corresponding approved parameter in policy-params.json, with a matching update to the UnderwritingTest boundary case. All 124 CI tests pass on the final commit, including the exhaustive control test for CRD-1 that verifies the code grid matches the approved parameters. Process requirements are met: the ticket is approved by a change manager with components covering every touched file, an independent code_review approval from a non-author change_approver exists, and a control_owner approval from the controls office covers the protected-path change. The one minor concern is that the renewed CRD-1 proof record lists a stale premise (DTI=40 instead of 43), but the structural property is threshold-agnostic and the exhaustive CI test provides adequate evidence. All applicable product and process obligations are shown; the change is accepted.",
+  "meta": {
+    "elapsed_s": 338.86,
+    "tokens_in": 29559,
+    "tokens_out": 10538,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "60995d020e19b929cd6db3fe2f4244dfd79cf429069369b05c2c1cf2fa928782",
+    "packet_tokens_est": 25767,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 31272,
+    "answer_chars": 6365,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.92,
+    "eval_s": 303.9,
+    "total_s": 338.85,
+    "tokens_est_ratio": 1.119,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

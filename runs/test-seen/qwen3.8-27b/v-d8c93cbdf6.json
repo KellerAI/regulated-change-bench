@@ -1,0 +1,96 @@
+{
+  "variant": "v-d8c93cbdf6",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The change adds a new read-only helper `approvals_remaining` to payments.py without modifying `approve` or `is_fully_approved`. CI shows test_maker_cannot_check passing on the head commit."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The new function calls `required_approvals` but does not modify it; `is_fully_approved` is also unchanged. CI shows test_dual_control_grid_matches_policy passing on the head commit."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The `release` function is untouched by this diff. CI shows test_sampled_release_is_idempotent passing on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25120 is type 'standard', status 'approved', approved by change_manager erik.brandt. Its components (payments.payments, payments.tests) cover both changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from sofia.santos (change_approver for payments, not the author mara.costa) is recorded for the head commit b314747."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit b314747 which is the sole and head commit; there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the head commit reports success with 175 tests, 0 failures, 0 skipped. All control tests for MC-1, PAY-1, PAY-2 (the obligations whose payments.py code is touched) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed files map to components payments.payments and payments.tests, neither of which is security_sensitive. No security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/*, tests/controls/*, ci/*) are touched by this change. No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'. This obligation does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change; no exception is needed or requested."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff only adds a new function; it does not alter `required_approvals` (ACR-0401) or `release` (ACR-0403). The covered code is unchanged in behaviour, so existing ledger evidence remains valid."
+    }
+  ],
+  "summary": "PR-1951 adds a small, purely read-only helper function `approvals_remaining` to payments' payments module and a corresponding unit-test file. It does not modify any existing function, policy parameter, access-control rule, or security-sensitive component. The CI run on the head commit shows all 175 tests (including the relevant control tests for MC-1, PAY-1, and PAY-2) passing with zero failures. All process obligations are satisfied: the ticket is approved by a change manager, an independent code_review from a qualified change_approver is recorded for the exact head commit, no security_sensitive or protected paths are touched, and the change is not an emergency. The decision is ACCEPT.",
+  "meta": {
+    "elapsed_s": 152.47,
+    "tokens_in": 28830,
+    "tokens_out": 4321,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e0e29c4ae99be60822c62e6f0e579c4a0f76d31fbf42cad2b6763fc93bef157b",
+    "packet_tokens_est": 25752,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12184,
+    "answer_chars": 3138,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.9,
+    "eval_s": 118.55,
+    "total_s": 152.47,
+    "tokens_est_ratio": 1.092,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

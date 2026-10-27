@@ -1,0 +1,61 @@
+{
+  "variant": "v-0d2f6aed16",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24309 is type 'standard', status 'approved', approved by erik.brandt (a change_manager) before the change was opened. Its components 'mortgage.reporting' and 'mortgage.tests' cover the two files the change touches (PipelineReport.java and PipelineTotalTest.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from wen.li@fernbrook.example, which is the author of the change (per change.json and the people directory p-wli). CHG-2 requires an independent approver who is not the author; self-approval does not count."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit 96a7f38e…, which is the head and only commit of the change, so it covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 96a7f38e… with result 'success': 125 tests, 0 failures, 0 errors, 0 skipped. The change touches only PipelineReport.java (mortgage.reporting) and a new test (mortgage.tests); no product-obligation scope path or closed domain is touched, so no additional control tests are mandated beyond the full suite passing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change touches only PipelineReport.java and a new test file; none of the paths covered by existing acceptance-ledger entries (Approvals.java, Underwriting.java, Policy.java, audit.py, payments.py, routes.py) are modified, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change is a small, low-risk addition of a totalCases() method to PipelineReport.java plus a unit test. It touches no security-sensitive component, no protected path, and no product-obligation scope, so the only applicable obligations are the process controls CHG-1 through CHG-4 and LAP-1. CHG-1, CHG-3, CHG-4 and LAP-1 are all satisfied. However, CHG-2 is violated: the sole code_review approval is from wen.li@fernbrook.example, the same person who authored the change, and the directory confirms this is the same individual (p-wli). Independent approval from a non-author change_approver is required, and none is present. The change must be rejected until an independent approver signs off.",
+  "meta": {
+    "elapsed_s": 136.21,
+    "tokens_in": 28148,
+    "tokens_out": 3742,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5edf665773da46a5b824d0604a5af3ebd25fea370e75621a77a06ea339794a98",
+    "packet_tokens_est": 24735,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12355,
+    "answer_chars": 2257,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.0,
+    "eval_s": 103.18,
+    "total_s": 136.21,
+    "tokens_est_ratio": 1.109,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

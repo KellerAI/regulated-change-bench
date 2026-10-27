@@ -1,0 +1,86 @@
+{
+  "variant": "v-39e3207d9d",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds 'tax_id' to ApplicantFields.ALL, making it a storable case field. Tax ID is explicitly named in the obligation as NPI ('government identifiers such as SSN or tax id'). However, NpiRegistry.java is not modified, and controls/mortgage/policy-params.json lists mortgage.npi_fields as [annual_income, bank_account_number, date_of_birth, ssn] without tax_id. There is no evidence the new field is registered for encryption at rest, so it can be persisted in plaintext, violating the obligation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24474 is type 'standard', status 'approved' by change_manager grace.kim, and its components list 'mortgage.cases' which matches the component of the changed file ApplicantFields.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval is from wen.li@fernbrook.example (Wen Li, role change_approver for baseline-mortgage), who is not the author (Declan Farrell). Independent approval satisfied."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 6de39510…, which is the sole and head commit of the change. No later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the pipeline executed on the head commit 6de39510… with result 'success', 124 tests, 0 failures, 0 errors, 0 skipped. The ENC-1 control test (everyNpiFieldIsSealedAtRest) ran and passed, though it only covers the existing NPI registry, not the newly added field."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file ApplicantFields.java maps to component mortgage.cases, which is security_sensitive: false in components.json. No security review is triggered."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-mortgage/…/ApplicantFields.java, which is not under any protected path listed in controls/protected-paths.json. No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type 'standard', not 'emergency'. The emergency post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed for this change and none is needed to be validated; the issue is a substantive violation of ENC-1, not an unexcused deviation under a registered exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers ApplicantFiles.java; the changed code does not invalidate any previously accepted evidence."
+    }
+  ],
+  "summary": "The change adds 'tax_id' to the applicant fields list, but does not register it in the NPI registry (NpiRegistry.java is untouched, and policy-params.json's npi_fields list does not include it). Because the obligation ENC-1 explicitly names tax id as a nonpublic personal identifier that must be sealed at rest, and there is no evidence the new field is covered by the encryption mechanism, the obligation is violated. All change-management process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) are satisfied: the ticket is approved, an independent change_approver reviewed it, CI passed on the head commit, and no protected or security-sensitive paths are touched. The REJECT decision is driven solely by the ENC-1 violation: a new NPI field is introduced without the corresponding encryption registration.",
+  "meta": {
+    "elapsed_s": 252.88,
+    "tokens_in": 27321,
+    "tokens_out": 7350,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "942f7b53f9ef7c1aef08029c6f1800d1af0986ca11de833732017ee059d40f6c",
+    "packet_tokens_est": 23895,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 25739,
+    "answer_chars": 3331,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 31.86,
+    "eval_s": 220.99,
+    "total_s": 252.88,
+    "tokens_est_ratio": 1.113,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

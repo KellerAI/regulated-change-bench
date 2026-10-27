@@ -47,6 +47,28 @@
         "clean_held_rate": 0.034482758620689655,
         "clean_cleared_rate": 0.46551724137931033
       },
+      "qwen3.8-27b": {
+        "n": 134,
+        "n_defect": 76,
+        "n_clean": 58,
+        "false_all_clear": 4,
+        "false_all_clear_rate": 0.05263157894736842,
+        "false_all_clear_upper95": 0.11640219642822254,
+        "critical_false_all_clear": 1,
+        "defect_rejected": 70,
+        "defect_held": 2,
+        "localized": 72,
+        "clean_cleared": 50,
+        "false_alarm": 8,
+        "clean_held": 0,
+        "errors": 0,
+        "missing": 0,
+        "usd_total": 0.0,
+        "elapsed_s_mean": 203.3,
+        "false_alarm_rate": 0.13793103448275862,
+        "clean_held_rate": 0.0,
+        "clean_cleared_rate": 0.8620689655172413
+      },
       "grok-cli": {
         "n": 134,
         "n_defect": 76,
@@ -112,6 +134,28 @@
         "false_alarm_rate": 0.0,
         "clean_held_rate": 0.0,
         "clean_cleared_rate": 1.0
+      },
+      "ponens-agent-trace": {
+        "n": 134,
+        "n_defect": 76,
+        "n_clean": 58,
+        "false_all_clear": 8,
+        "false_all_clear_rate": 0.10526315789473684,
+        "false_all_clear_upper95": 0.18192155366708368,
+        "critical_false_all_clear": 1,
+        "defect_rejected": 63,
+        "defect_held": 5,
+        "localized": 63,
+        "clean_cleared": 32,
+        "false_alarm": 16,
+        "clean_held": 10,
+        "errors": 0,
+        "missing": 0,
+        "usd_total": 0.0,
+        "elapsed_s_mean": 161.23,
+        "false_alarm_rate": 0.27586206896551724,
+        "clean_held_rate": 0.1724137931034483,
+        "clean_cleared_rate": 0.5517241379310345
       }
     },
     "common_subset": {
@@ -338,13 +382,16 @@
         }
       },
       "qwen3.8-27b": {
-        "scope": "common subset",
+        "scope": "full",
         "missed_defect_families": {
-          "p_proof_lapse": "1/1",
-          "p_stale_approval": "1/1"
+          "p_proof_lapse": "3/3",
+          "p_stale_approval": "1/3"
         },
         "rejected_clean_families": {
-          "p_exception_scope": "1/1"
+          "ll_retention_hold": "3/3",
+          "p_exception_expired": "1/1",
+          "p_exception_scope": "3/3",
+          "p_exception_self": "1/1"
         },
         "held_clean_families": {}
       },
@@ -440,19 +487,37 @@
         "held_clean_families": {}
       },
       "ponens-agent-trace": {
-        "scope": "common subset",
+        "scope": "full",
         "missed_defect_families": {
-          "p_proof_lapse": "1/1"
+          "hw_npi_field": "1/2",
+          "p_ci_stale": "1/2",
+          "p_ci_stale_hw": "1/3",
+          "p_proof_lapse": "3/3",
+          "p_ticket_scope": "1/2",
+          "p_ticket_scope_hw": "1/1"
         },
         "rejected_clean_families": {
           "hw_authority_tier": "1/1",
-          "ll_log_npi_key": "1/2",
-          "p_exception_scope": "1/1",
+          "ll_log_npi_key": "2/3",
+          "ll_retention_hold": "3/3",
+          "ll_sql_executescript": "2/2",
+          "p_ci_stale": "1/2",
+          "p_exception_expired": "1/1",
+          "p_exception_scope": "3/3",
+          "p_exception_self": "1/1",
+          "p_prompt_injection": "1/2",
           "p_stale_approval": "1/1"
         },
         "held_clean_families": {
+          "hw_dti_policy_change": "1/1",
+          "hw_npi_field": "1/1",
+          "hw_session_param": "1/1",
           "hw_unaudited_op": "1/1",
-          "p_ticket_scope_hw": "1/1"
+          "ll_fx_integration": "1/2",
+          "p_pir_overdue": "1/2",
+          "p_proof_lapse": "1/1",
+          "p_ticket_scope_hw": "2/2",
+          "p_ticket_unapproved": "1/4"
         }
       }
     }

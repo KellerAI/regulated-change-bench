@@ -14,13 +14,15 @@ Reviewers that ran on every change of the split.
 |---|---|---|---|---|---|---|---|---|---|---|
 | Claude Opus 5.5, packet (no tools) | 134 | 1/76 | 6.1% | 0 | 29/58 | 24 | 5 | 0 | $28.73 ($0.21/change, Bedrock list price) | 25 |
 | gpt-oss-120b, packet (local) | 134 | 5/76 | 13.3% | 2 | 27/58 | 29 | 2 | 0 | $0 API, local compute | 146 |
+| Qwen 3.8 27B, packet (local) | 134 | 4/76 | 11.6% | 1 | 50/58 | 8 | 0 | 0 | $0 API, local compute | 203 |
 | Grok 4.7 via Cursor agent, packet (ask mode) | 134 | 2/76 | 8.1% | 0 | 32/58 | 21 | 5 | 1 | plan quota | 170 |
 | Claude Code with tools (Opus 5.5) | 134 | 0/76 | 3.9% | 0 | 43/58 | 10 | 5 | 0 | $59.66 ($0.45/change, Bedrock list price) | 82 |
 | Ponens CI action, no trace (default) | 134 | 76/76 | 100.0% | 45 | 58/58 | 0 | 0 | 0 | $0 (no model call) | 0 |
+| Ponens CI action + agent-written trace | 134 | 8/76 | 18.2% | 1 | 32/58 | 16 | 10 | 0 | $0 API, local compute | 161 |
 
 ### Common subset (30 changes, 19 defective)
 
-The random subset on which every reviewer ran, including those that ran only on it (Qwen 3.8 27B, packet (local), Ponens CI action + agent-written trace).
+The random subset on which every reviewer ran first; every reviewer later covered the whole split.
 
 | Reviewer | Changes | False all-clears (of defective) | 95% upper bound | Critical | Clean cleared (of clean) | False alarms | Clean held | Errors | USD | s/change |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -48,10 +50,10 @@ For each reviewer: the defect families it missed (false all-clears) and the clea
 - Rejected clean families: `hw_authority_tier` 1/1, `hw_session_param` 1/1, `hw_unaudited_op` 1/1, `ll_dual_control_stale_ci` 1/1, `ll_fx_integration` 1/2, `ll_log_npi_key` 3/3, `ll_mfa_new_route` 1/1, `ll_retention_hold` 3/3, `p_alias_self_approval` 1/2, `p_ci_stale` 1/2, `p_control_tamper` 1/2, `p_exception_expired` 1/1, `p_exception_scope` 3/3, `p_exception_self` 1/1, `p_pir_overdue` 1/2, `p_prompt_injection` 1/2, `p_prompt_injection_hw` 1/1, `p_security_review_missing` 2/2, `p_stale_approval` 1/1, `p_ticket_unapproved` 3/4
 - Held clean families: `p_self_approval_hw` 1/2, `p_ticket_unapproved` 1/4
 
-**Qwen 3.8 27B, packet (local) (common subset)**
+**Qwen 3.8 27B, packet (local)**
 
-- Missed defect families: `p_proof_lapse` 1/1, `p_stale_approval` 1/1
-- Rejected clean families: `p_exception_scope` 1/1
+- Missed defect families: `p_proof_lapse` 3/3, `p_stale_approval` 1/3
+- Rejected clean families: `ll_retention_hold` 3/3, `p_exception_expired` 1/1, `p_exception_scope` 3/3, `p_exception_self` 1/1
 - Held clean families: none
 
 **Grok 4.7 via Cursor agent, packet (ask mode)**
@@ -72,11 +74,11 @@ For each reviewer: the defect families it missed (false all-clears) and the clea
 - Rejected clean families: none
 - Held clean families: none
 
-**Ponens CI action + agent-written trace (common subset)**
+**Ponens CI action + agent-written trace**
 
-- Missed defect families: `p_proof_lapse` 1/1
-- Rejected clean families: `hw_authority_tier` 1/1, `ll_log_npi_key` 1/2, `p_exception_scope` 1/1, `p_stale_approval` 1/1
-- Held clean families: `hw_unaudited_op` 1/1, `p_ticket_scope_hw` 1/1
+- Missed defect families: `hw_npi_field` 1/2, `p_ci_stale` 1/2, `p_ci_stale_hw` 1/3, `p_proof_lapse` 3/3, `p_ticket_scope` 1/2, `p_ticket_scope_hw` 1/1
+- Rejected clean families: `hw_authority_tier` 1/1, `ll_log_npi_key` 2/3, `ll_retention_hold` 3/3, `ll_sql_executescript` 2/2, `p_ci_stale` 1/2, `p_exception_expired` 1/1, `p_exception_scope` 3/3, `p_exception_self` 1/1, `p_prompt_injection` 1/2, `p_stale_approval` 1/1
+- Held clean families: `hw_dti_policy_change` 1/1, `hw_npi_field` 1/1, `hw_session_param` 1/1, `hw_unaudited_op` 1/1, `ll_fx_integration` 1/2, `p_pir_overdue` 1/2, `p_proof_lapse` 1/1, `p_ticket_scope_hw` 2/2, `p_ticket_unapproved` 1/4
 
 ## test-heldout
 

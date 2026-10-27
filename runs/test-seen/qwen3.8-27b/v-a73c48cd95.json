@@ -1,0 +1,86 @@
+{
+  "variant": "v-a73c48cd95",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route POST /payees/{id}/reopen uses the privileged action manage_payees with mfa=False, a deviation from MFA-1. However, approved exception EXC-0220 (risk_owner Helena Vasquez, unexpired through 2027-01-18, scoped to payments.routes and this exact route, with a compensating control) covers the deviation. The CI test failure confirms only this one route deviates; all other privileged routes still require MFA."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The new reopen_payee method in service.py calls self._audit(actor, 'reopen_payee', f'payee:{payee_id}'), which records actor (user_id), action, target, and timestamp via audit_log.record, satisfying the audit-event requirement for this state-changing operation."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new SQL in store.py ('UPDATE payees SET status = ?open?, closed_at = NULL WHERE id = ?') is a fixed string with the payee_id bound as a parameter. The CI test test_sql_statements_are_parameterized passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26425 is approved by change_manager Erik Brandt and its components (payments.http, payments.routes, payments.service, payments.store) cover every component the diff touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by Mara Costa (mara.costa@fernbrook.example), who holds the change_approver role for payments and is not the author (Aisha Bello, also in payments-eng)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole code_review approval names commit d490702, which is the only commit in the change and equals the head; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the final commit reports 172 tests with 1 failure: tests.controls.test_routes_control#test_privileged_routes_require_mfa fails because the new route POST /payees/{id}/reopen has mfa=False. The full test suite did not pass, violating the CHG-4 requirement that the app's full test suite pass on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security_sensitive components (payments.http, payments.routes, payments.store). A security_review approval was provided by Kofi Mensah (platform-security, security_reviewer role, not the author) on the correct commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Exception EXC-0220 is approved by risk_owner Helena Vasquez (CISO office), is unexpired at review time (2026-10-20 < 2027-01-18), is scoped to the exact route and component (payments.routes), and records a compensating control (daily reconciliation report reviewed by payments operations lead)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0404 in the acceptance ledger supports MFA-1 by covering apps/baseline-payments/payments/routes.py at commit e5bf646. This change modifies routes.py (adding a new route), which is a behavioural change, so ACR-0404 lapses. The required new evidence is the MFA-1 control test in the CI run, which failed. No new passing evidence of equivalent strength exists."
+    }
+  ],
+  "summary": "The change adds a POST /payees/{id}/reopen route that reopens a closed payee. The product-level MFA-1 deviation (mfa=False on a privileged-action route) is covered by a valid, approved exception (EXC-0220), and the new operation is properly audited and uses parameterized SQL. However, two process obligations are violated: CHG-4 is refuted because the CI test suite on the final commit has one failure (test_privileged_routes_require_mfa, which detects the exempted route), and LAP-1 is refuted because the prior MFA-1 evidence (ACR-0404) lapsed when routes.py was modified and the replacement CI evidence failed. Because the test suite did not pass and the lapsed evidence was not replaced by a passing test, the change cannot be accepted.",
+  "meta": {
+    "elapsed_s": 412.53,
+    "tokens_in": 37883,
+    "tokens_out": 11985,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "82252b6ecc4083019d50e14f7c39a89f8b52a3eec41ad7513d4e4f44449ec32e",
+    "packet_tokens_est": 35038,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 41435,
+    "answer_chars": 3961,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 46.41,
+    "eval_s": 366.08,
+    "total_s": 412.53,
+    "tokens_est_ratio": 1.062,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

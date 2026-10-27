@@ -1,0 +1,81 @@
+{
+  "variant": "v-33734f3ea2",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25809 is approved by change manager Erik Brandt and its components (payments.payees, payments.tests) cover both changed files: directory.py maps to payments.payees and test_charity_payees.py maps to payments.tests per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (p-ssantos, role change_approver, app payments) approved the change; she is not the author Linh Nguyen (p-lnguyen), and no email overlap exists between them."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names commit 5e1d26d, which is the sole and head commit of this change; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json confirms the full payments suite (173 tests, 0 failures/errors/skipped) passed on the head commit 5e1d26d. All registered control tests from the payments control-registry appear in the JUnit output and pass; the new test_charity_is_a_valid_category also passes."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches only directory.py (component payments.payees, security_sensitive: false) and a test file (payments.tests, security_sensitive: false); no security_sensitive component is modified, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed file falls under the protected paths in protected-paths.json (controls/*, control test dirs, ci/*); no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change adds a new payee category to validation and does not deviate from any product obligation's scope or behaviour; no exception is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers directory.py or the new test file; the entries cover payments.py, audit.py, routes.py, Approvals.java, Underwriting.java and Policy.java, none of which are modified. No evidence lapses."
+    }
+  ],
+  "summary": "The change is a minimal, additive modification: it inserts 'charity' into the PAYEE_CATEGORIES tuple in payments/directory.py and adds a single unit test. No file in any product obligation's scope (rbac, routes, sessions, NPI, integrations, payments, audit, store, service) is touched, so no product obligation is affected. All process obligations are satisfied: the ticket is approved and its components cover the changed files, an independent change_approver (Sofia Santos) approved the head commit, CI ran green on that same commit with all 173 tests passing (including every registered control test), and no protected paths, security-sensitive components, emergency conditions, or evidence-lapse triggers are involved. The change is accepted.",
+  "meta": {
+    "elapsed_s": 252.3,
+    "tokens_in": 28090,
+    "tokens_out": 7662,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f88e8d4f6a5f33ddae76d96f8bd986508209076bec7658128fe3449745489062",
+    "packet_tokens_est": 24782,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 25806,
+    "answer_chars": 2987,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.97,
+    "eval_s": 219.3,
+    "total_s": 252.29,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}
