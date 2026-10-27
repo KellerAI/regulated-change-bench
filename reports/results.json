@@ -133,7 +133,8 @@
         "elapsed_s_mean": 0.05,
         "false_alarm_rate": 0.0,
         "clean_held_rate": 0.0,
-        "clean_cleared_rate": 1.0
+        "clean_cleared_rate": 1.0,
+        "native_action_status": "`no-trace` (exit 0) 134/134"
       },
       "ponens-agent-trace": {
         "n": 134,
@@ -155,7 +156,8 @@
         "elapsed_s_mean": 161.23,
         "false_alarm_rate": 0.27586206896551724,
         "clean_held_rate": 0.1724137931034483,
-        "clean_cleared_rate": 0.5517241379310345
+        "clean_cleared_rate": 0.5517241379310345,
+        "native_action_status": "`passed` (exit 0) 134/134"
       }
     },
     "common_subset": {
@@ -289,7 +291,8 @@
         "elapsed_s_mean": 0.05,
         "false_alarm_rate": 0.0,
         "clean_held_rate": 0.0,
-        "clean_cleared_rate": 1.0
+        "clean_cleared_rate": 1.0,
+        "native_action_status": "`no-trace` (exit 0) 30/30"
       },
       "ponens-agent-trace": {
         "n": 30,
@@ -311,7 +314,8 @@
         "elapsed_s_mean": 154.93,
         "false_alarm_rate": 0.36363636363636365,
         "clean_held_rate": 0.18181818181818182,
-        "clean_cleared_rate": 0.45454545454545453
+        "clean_cleared_rate": 0.45454545454545453,
+        "native_action_status": "`passed` (exit 0) 30/30"
       }
     },
     "families": {
@@ -520,6 +524,178 @@
           "p_ticket_unapproved": "1/4"
         }
       }
+    },
+    "disputed_excluded": {
+      "n": 126,
+      "n_defect": 76,
+      "excluded": [
+        "v-4a0f3a8ed9",
+        "v-5544087c09",
+        "v-a73c48cd95",
+        "v-b29a65dd0b",
+        "v-b9effe9c2a",
+        "v-beaa211616",
+        "v-c256321bef",
+        "v-f328488b14"
+      ],
+      "full": {
+        "opus-packet": {
+          "n": 126,
+          "n_defect": 76,
+          "n_clean": 50,
+          "false_all_clear": 1,
+          "false_all_clear_rate": 0.013157894736842105,
+          "false_all_clear_upper95": 0.060902714228478434,
+          "critical_false_all_clear": 0,
+          "defect_rejected": 73,
+          "defect_held": 2,
+          "localized": 75,
+          "clean_cleared": 29,
+          "false_alarm": 16,
+          "clean_held": 5,
+          "errors": 0,
+          "missing": 0,
+          "usd_total": 26.7615,
+          "elapsed_s_mean": 25.24,
+          "false_alarm_rate": 0.32,
+          "clean_held_rate": 0.1,
+          "clean_cleared_rate": 0.58
+        },
+        "gpt-oss-120b": {
+          "n": 126,
+          "n_defect": 76,
+          "n_clean": 50,
+          "false_all_clear": 5,
+          "false_all_clear_rate": 0.06578947368421052,
+          "false_all_clear_upper95": 0.13335963590454666,
+          "critical_false_all_clear": 2,
+          "defect_rejected": 70,
+          "defect_held": 1,
+          "localized": 69,
+          "clean_cleared": 27,
+          "false_alarm": 21,
+          "clean_held": 2,
+          "errors": 0,
+          "missing": 0,
+          "usd_total": 0.0,
+          "elapsed_s_mean": 144.83,
+          "false_alarm_rate": 0.42,
+          "clean_held_rate": 0.04,
+          "clean_cleared_rate": 0.54
+        },
+        "qwen3.8-27b": {
+          "n": 126,
+          "n_defect": 76,
+          "n_clean": 50,
+          "false_all_clear": 4,
+          "false_all_clear_rate": 0.05263157894736842,
+          "false_all_clear_upper95": 0.11640219642822254,
+          "critical_false_all_clear": 1,
+          "defect_rejected": 70,
+          "defect_held": 2,
+          "localized": 72,
+          "clean_cleared": 50,
+          "false_alarm": 0,
+          "clean_held": 0,
+          "errors": 0,
+          "missing": 0,
+          "usd_total": 0.0,
+          "elapsed_s_mean": 198.13,
+          "false_alarm_rate": 0.0,
+          "clean_held_rate": 0.0,
+          "clean_cleared_rate": 1.0
+        },
+        "grok-cli": {
+          "n": 126,
+          "n_defect": 76,
+          "n_clean": 50,
+          "false_all_clear": 2,
+          "false_all_clear_rate": 0.02631578947368421,
+          "false_all_clear_upper95": 0.08052895143025202,
+          "critical_false_all_clear": 0,
+          "defect_rejected": 74,
+          "defect_held": 0,
+          "localized": 74,
+          "clean_cleared": 32,
+          "false_alarm": 13,
+          "clean_held": 5,
+          "errors": 1,
+          "missing": 0,
+          "usd_total": 0.0,
+          "elapsed_s_mean": 170.19,
+          "false_alarm_rate": 0.26,
+          "clean_held_rate": 0.1,
+          "clean_cleared_rate": 0.64
+        },
+        "claude-code": {
+          "n": 126,
+          "n_defect": 76,
+          "n_clean": 50,
+          "false_all_clear": 0,
+          "false_all_clear_rate": 0.0,
+          "false_all_clear_upper95": 0.03865076672572549,
+          "critical_false_all_clear": 0,
+          "defect_rejected": 74,
+          "defect_held": 2,
+          "localized": 76,
+          "clean_cleared": 43,
+          "false_alarm": 2,
+          "clean_held": 5,
+          "errors": 0,
+          "missing": 0,
+          "usd_total": 55.8526,
+          "elapsed_s_mean": 82.01,
+          "false_alarm_rate": 0.04,
+          "clean_held_rate": 0.1,
+          "clean_cleared_rate": 0.86
+        },
+        "ponens-no-trace": {
+          "n": 126,
+          "n_defect": 76,
+          "n_clean": 50,
+          "false_all_clear": 76,
+          "false_all_clear_rate": 1.0,
+          "false_all_clear_upper95": 1.0,
+          "critical_false_all_clear": 45,
+          "defect_rejected": 0,
+          "defect_held": 0,
+          "localized": 0,
+          "clean_cleared": 50,
+          "false_alarm": 0,
+          "clean_held": 0,
+          "errors": 0,
+          "missing": 0,
+          "usd_total": 0.0,
+          "elapsed_s_mean": 0.05,
+          "false_alarm_rate": 0.0,
+          "clean_held_rate": 0.0,
+          "clean_cleared_rate": 1.0,
+          "native_action_status": "`no-trace` (exit 0) 126/126"
+        },
+        "ponens-agent-trace": {
+          "n": 126,
+          "n_defect": 76,
+          "n_clean": 50,
+          "false_all_clear": 8,
+          "false_all_clear_rate": 0.10526315789473684,
+          "false_all_clear_upper95": 0.18192155366708368,
+          "critical_false_all_clear": 1,
+          "defect_rejected": 63,
+          "defect_held": 5,
+          "localized": 63,
+          "clean_cleared": 32,
+          "false_alarm": 8,
+          "clean_held": 10,
+          "errors": 0,
+          "missing": 0,
+          "usd_total": 0.0,
+          "elapsed_s_mean": 161.17,
+          "false_alarm_rate": 0.16,
+          "clean_held_rate": 0.2,
+          "clean_cleared_rate": 0.64,
+          "native_action_status": "`passed` (exit 0) 126/126"
+        }
+      }
     }
   },
   "test-heldout": {
@@ -656,7 +832,8 @@
         "elapsed_s_mean": 0.04,
         "false_alarm_rate": 0.0,
         "clean_held_rate": 0.0,
-        "clean_cleared_rate": 1.0
+        "clean_cleared_rate": 1.0,
+        "native_action_status": "`no-trace` (exit 0) 136/136"
       },
       "ponens-agent-trace": {
         "n": 136,
@@ -678,7 +855,8 @@
         "elapsed_s_mean": 154.13,
         "false_alarm_rate": 0.10416666666666667,
         "clean_held_rate": 0.2708333333333333,
-        "clean_cleared_rate": 0.625
+        "clean_cleared_rate": 0.625,
+        "native_action_status": "`passed` (exit 0) 136/136"
       }
     },
     "common_subset": {
@@ -812,7 +990,8 @@
         "elapsed_s_mean": 0.04,
         "false_alarm_rate": 0.0,
         "clean_held_rate": 0.0,
-        "clean_cleared_rate": 1.0
+        "clean_cleared_rate": 1.0,
+        "native_action_status": "`no-trace` (exit 0) 30/30"
       },
       "ponens-agent-trace": {
         "n": 30,
@@ -834,7 +1013,8 @@
         "elapsed_s_mean": 145.89,
         "false_alarm_rate": 0.125,
         "clean_held_rate": 0.25,
-        "clean_cleared_rate": 0.625
+        "clean_cleared_rate": 0.625,
+        "native_action_status": "`passed` (exit 0) 30/30"
       }
     },
     "families": {
