@@ -1,0 +1,82 @@
+{
+  "variant": "v-4fcae4cc69",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25815 (standard) was approved by change manager Grace Kim on 2026-10-26, before the change opened, and its component mortgage.logging covers the only touched path (AppLog.java -> mortgage.logging)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Wen Li (p-wli)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name head commit f491463, the only commit in the change, so no later commits exist that could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The recorded CI run (records/ci/run.json) is on head f491463 with result success: 124 Jupiter tests, 0 skipped, 0 failed, including the registered LOG-1 control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi (sample). I could not rerun it locally because the JUnit jar is missing, and the JUnit timestamps (2026-10-23) are earlier than the commit time."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java is in mortgage.logging, which is security_sensitive. The only security_review approval is from Declan Farrell, who holds engineer and change_approver roles but not security_reviewer, so the required security review is missing."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change alters AppLog buffer retention (MAX_LINES 10000 -> 12000), which is in LOG-1 scope. LOG-1 requires exhaustive evidence, but the only evidence is a sample-coverage control test over an open domain, and there is no ledger entry for it."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers AppLog.java or any other path this change touches, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "PR-1823 changes the in-memory log buffer size in AppLog.java, which belongs to the security-sensitive mortgage.logging component. CHG-5 therefore requires a security_review from someone with the security_reviewer role, but the security review was signed by Declan Farrell, an engineer and change approver who does not hold that role. The ticket, independent code review and CI on the final commit are in order, but the missing valid security review violates CHG-5, so the change is rejected. LOG-1 also lacks the exhaustive evidence it requires; the only evidence is a passing sample control test.",
+  "meta": {
+    "elapsed_s": 71.57,
+    "tokens_in": 366598,
+    "tokens_out": 6349,
+    "usd": 0.378362,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6349,
+      "cache_read_input_tokens": 329495,
+      "cache_creation_input_tokens": 37071
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.378362,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "variant": "v-8da58cfabb",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "amend_memo now logs only a static message and payment_id. Payment id is not an NPI field (account number, routing number, tax id, date of birth), the memo text is not passed to the logger, and the logging control test passed unskipped."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "amend_memo still persists a payment-memo change through payments.amend_memo, but the audit call that recorded actor, action, target, and time was replaced with an application log line. No audit event remains on that state-changing path, and the AUD-1 control test is only sample coverage."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24351, which Erik Brandt (change manager) approved on 2026-10-10 before review. Its component payments.service matches the only touched file, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa approved a code_review on the head commit. She has the payments change_approver role and is not the author, Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 83110565e4e1176043b23d337d9151f5f4a93a3b, which is the only and final commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success for ci/run-tests.sh baseline-payments on the head commit, and the JUnit report shows 172 tests, 0 failures, 0 errors, and 0 skipped, including the registered AUD-1 and LOG-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path is apps/baseline-payments/payments/service.py, component payments.service, which is not marked security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in controls/protected-paths.json, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24351 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Dropping the amend_memo audit event deviates from AUD-1, and no register entry excuses it. EXC-0141 expired on 2026-09-16, EXC-0167 is scoped to mortgage.logging, and EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py. The paths covered for PAY-1, PAY-2, AUD-2, and MFA-1 are unchanged, so those earlier results have not lapsed."
+    }
+  ],
+  "summary": "The change replaces the audit record on payments memo amendments with an application log that stores only the payment id. That is a state-changing operation with no audit event containing actor, action, target, and time, which violates AUD-1. No approved, unexpired exception covers that deviation. Independent approval, the ticket, and the passing CI run are in order, but they do not restore the missing audit event.",
+  "meta": {
+    "elapsed_s": 184.29,
+    "tokens_in": 44476,
+    "tokens_out": 11808,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a7897d4bc27bd76692375772e693da4e9717f5babd3cdf4656e08190096a04e6",
+    "packet_tokens_est": 26597,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 44476,
+      "outputTokens": 11808,
+      "cacheReadTokens": 241664,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 180766,
+    "duration_api_ms": 180766,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PR-1564",
+  "title": "Bearer token generation settings",
+  "description": "Bearer token generation settings.\n\nChanges:\n- Name the token size and increase entropy\n- Session security review recorded during implementation\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-881",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "be33b7e505aa17eb5aef1d13d3373c4a903a7c2c",
+  "commits": [
+    {
+      "sha": "614222d134686068ee2b00b559d8336975b977fe",
+      "message": "Operations: standardize session and diagnostic settings",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-26T21:14:00Z"
+    },
+    {
+      "sha": "be33b7e505aa17eb5aef1d13d3373c4a903a7c2c",
+      "message": "Sessions: increase bearer token entropy",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-26T23:02:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25759",
+  "opened_at": "2026-10-26T21:14:00Z"
+}

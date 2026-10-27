@@ -1,0 +1,21 @@
+{
+  "id": "PR-1314",
+  "title": "Restore the reporting format marker",
+  "description": "Restore the reporting format marker.\n\nChanges:\n- Restore format identification after the reporting incident\n- Emergency release followed by operations review\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "linh.nguyen@fernbrook.example",
+  "branch": "nguyen/change-409",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "dc3ff7840dc1075eb0ba7a9838175c7b5c034551",
+  "commits": [
+    {
+      "sha": "dc3ff7840dc1075eb0ba7a9838175c7b5c034551",
+      "message": "Reports: identify the export format",
+      "author": "linh.nguyen@fernbrook.example",
+      "at": "2026-10-08T13:15:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-24852",
+  "opened_at": "2026-10-08T13:15:00Z"
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26510",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Account-number URL compatibility",
+    "components": [
+      "payments.http"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-04T18:18:00Z",
+    "risk": "medium"
+  }
+]

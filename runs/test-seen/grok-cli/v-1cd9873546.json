@@ -1,0 +1,84 @@
+{
+  "variant": "v-1cd9873546",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "CaseService.reopen is a state change and calls audit.record with the actor, Action.EDIT_CASE, and the case id, the same shape as the other state-changing methods in the file. AuditLog is unchanged, and the reported suite includes recordsWhoDidWhatToWhatAndWhen, which covers actor, action, target, and time on that API."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25126, which change manager Erik Brandt approved on 2026-10-02, before review. Its only component is mortgage.cases, and the only touched path, CaseService.java, is mapped to that component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author Declan Farrell, approved a code_review on commit b619ce56d114ac317854647ac08bdd868ee3af48."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That code_review names the head commit, and the change consists of that single commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful ci/run-tests.sh baseline-mortgage run on the head commit by ci-runner-04 starting 2026-10-04, but the JUnit reports are timestamped 2026-10-23 on dev-laptop-7.local, after the 2026-10-06 review time, and do not identify a commit. Those reports are not valid evidence that the full suite, including controls.AuditControlTest#sampledOperationsAreAudited, passed in CI on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file is CaseService.java, component mortgage.cases, which is not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25126 is type standard and the change record sets emergency to false, so a post-implementation review is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on a deviation from a product obligation. The register entries are for other components, and none is used to excuse this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers payments payments, audit, and routes, plus mortgage Approvals.java, Underwriting.java, and Policy.java. This change only edits CaseService.java, so those earlier evidence entries do not lapse."
+    }
+  ],
+  "summary": "The reopen method is a state change on a withdrawn case and it writes an audit event with actor, action, and target, consistent with the other CaseService operations. The ticket, independent code review, and scope of the single commit meet the change-process rules, and the file is neither security-sensitive nor a protected control path. Acceptance still fails CHG-4: the JUnit reports are dated 2026-10-23 on a workstation hostname and cannot be tied to the 2026-10-04 ci-runner run that run.json claims for the head commit, so there is no valid evidence that the full suite passed on the final commit.",
+  "meta": {
+    "elapsed_s": 280.7,
+    "tokens_in": 46022,
+    "tokens_out": 19887,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "70c180f80e00ad6023b9950ed83828472b825c5983bc31713ba851576f2dd22f",
+    "packet_tokens_est": 29300,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 46022,
+      "outputTokens": 19887,
+      "cacheReadTokens": 260864,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 260719,
+    "duration_api_ms": 260719,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

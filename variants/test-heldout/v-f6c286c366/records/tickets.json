@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25795",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Diagnostic buffer sizing",
+    "components": [
+      "mortgage.logging"
+    ],
+    "requested_by": "nneka.okafor@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-09-28T20:56:00Z",
+    "risk": "medium"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "variant": "v-1ca64fd731",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25138 is approved by Erik Brandt (change_manager), and its component 'mortgage.reporting' matches the component of PipelineReport.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li (p-wli, role change_approver for baseline-mortgage) approved the first commit 0ab7408; she is not the author (Declan Farrell)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only code_review approval is on commit 0ab7408, but the head is 2ec2246 whose message 'align the format identifier with the portal release' indicates the FORMAT constant value was changed. This is a behavioral change (a different string is emitted), not a comment-only/whitespace/formatting edit, so the approval does not cover what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 2ec2246 shows 124 tests passing, 0 failures, 0 errors, 0 skipped. No product obligation's scope includes PipelineReport.java, so no specific control test is required beyond the full suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "PipelineReport.java maps to component 'mortgage.reporting' which is security_sensitive: false in components.json; no security_review approval is triggered."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only apps/baseline-mortgage/src/main/java/mortgage/PipelineReport.java, which is not under any protected path in controls/protected-paths.json."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by adding a static format-identifier constant; no exception is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries cover files (Approvals.java, Underwriting.java, payments.py, audit.py, routes.py, Policy.java) none of which are modified by this change; no evidence lapses."
+    }
+  ],
+  "summary": "The change adds a single static constant (FORMAT = \"pipeline/1.1\") to PipelineReport.java, a non-security-sensitive reporting component, and the full test suite passes on the final commit. However, CHG-3 is not satisfied: the sole code_review approval was given on the first commit (0ab7408), while the second commit (2ec2246, 'align the format identifier with the portal release') appears to alter the constant's value, which is a behavioral change beyond comment-only or formatting edits. Because that later commit changes behaviour, the earlier approval does not cover the merged state, and a fresh approval on the head commit is required before this change can be accepted.",
+  "meta": {
+    "elapsed_s": 235.93,
+    "tokens_in": 27900,
+    "tokens_out": 6646,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3a68775b7ff855aedaa91d30c3ad520ecfa1582de367dcabcd7c3f63d72ebf37",
+    "packet_tokens_est": 24441,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23334,
+    "answer_chars": 2789,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.3,
+    "eval_s": 201.6,
+    "total_s": 235.92,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24054",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Successful policy evaluation diagnostics",
+    "components": [
+      "mortgage.underwriting"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-07T22:09:00Z",
+    "risk": "low"
+  }
+]

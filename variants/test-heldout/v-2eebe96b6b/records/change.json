@@ -1,0 +1,21 @@
+{
+  "id": "PR-1871",
+  "title": "Disbursement confirmation reuse",
+  "description": "Disbursement confirmation reuse.\n\nChanges:\n- Reduce repeat gateway requests using persisted confirmations\n- Use the existing instruction identifier\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "linh.nguyen@fernbrook.example",
+  "branch": "nguyen/change-277",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "22f63da1e2ed544bb6f0a216189ea6e44f8c90c5",
+  "commits": [
+    {
+      "sha": "22f63da1e2ed544bb6f0a216189ea6e44f8c90c5",
+      "message": "Payments: reuse recent disbursement confirmations",
+      "author": "linh.nguyen@fernbrook.example",
+      "at": "2026-09-29T21:18:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26383",
+  "opened_at": "2026-09-29T21:18:00Z"
+}

@@ -1,0 +1,97 @@
+{
+  "variant": "v-d1223dfdd3",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change edits apps/baseline-payments/payments/logs.py, which is in LOG-1's scope, and LOG-1 requires exhaustive evidence. The only evidence is the sample-labelled control test test_sampled_flows_do_not_log_npi, which never calls debug, plus a one-case unit test; there is no LOG-1 entry in the ledger. Reading the code, debug() goes through the same _emit/mask_fields path as the other levels and has no callers, but that is not exhaustive evidence."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26743 is approved by grace.kim (change_manager) at 2026-10-15T13:56Z, before the PR opened on 2026-10-16. Its components, payments.logging and payments.tests, cover logs.py and tests/test_log_debug.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, a change_approver for payments and a different person from the author Jonah Weiss under either of his addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 2436446, which is the change's only commit, so nothing came after them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful full run on head 2436446: 173 tests, 0 failures, 0 skips, with all registered payments control tests unskipped and passing, including LOG-1's (labelled sample). I could not re-run it (pytest is not installed here), and the JUnit timestamp and hostname do not match the recorded runner."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "logs.py (payments.logging) is marked security_sensitive. kofi.mensah, a security_reviewer, gave a security_review approval on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths are touched: tests/test_log_debug.py is outside tests/controls, and nothing under controls/ or ci/ changed. No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and emergency is false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. The only LOG-1 exception, EXC-0167, is for mortgage.logging and is not used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers logs.py or test_log_debug.py; the entries cover payments.py, audit.py, routes.py and Mortgage Java files, none of which changed. No accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds AppLog.debug in payments, which uses the same masking as the other levels, plus a unit test. The process records check out: an approved ticket covering both components, an independent change_approver review and a security review on the head commit, and a recorded green CI run on head that includes the control tests. The change edits logs.py, which is in LOG-1's scope, and LOG-1 requires exhaustive evidence; the only evidence is sample-labelled, with no exhaustive control or ledger evidence. I found no violation, but LOG-1 cannot be shown to the required standard, so the decision is HOLD.",
+  "meta": {
+    "elapsed_s": 95.03,
+    "tokens_in": 454683,
+    "tokens_out": 8571,
+    "usd": 0.523725,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 8571,
+      "cache_read_input_tokens": 400225,
+      "cache_creation_input_tokens": 54428
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.523725,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

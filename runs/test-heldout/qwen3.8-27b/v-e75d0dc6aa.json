@@ -1,0 +1,61 @@
+{
+  "variant": "v-e75d0dc6aa",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26763 is type 'standard', status 'approved', approved by erik.brandt@fernbrook.example (change_manager). Its components list ['mortgage.reporting'] covers the only touched component (PipelineReport.java → mortgage.reporting in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The sole code_review approval (Declan Farrell, a change_approver not the author) is on commit afdc196. The later commit b76af48 changes the FORMAT string value, which is a behavioral change, so per CHG-3 the approval is voided and no valid independent approval covers the final commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The approval is on afdc196 (first commit). The second commit b76af48 ('align the format identifier with the portal release') modifies the value of the FORMAT constant, which is a code/behavior change, not comment-only, whitespace, or formatting. This voids the prior approval and requires a new one."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records a successful run on the head commit b76af48 with 124 tests, 0 failures, 0 errors, 0 skipped. All registered mortgage control tests are present and passing. No product-obligation scope path or closed domain is touched by this change, so no additional control tests are required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The only file changed is PipelineReport.java (component mortgage.reporting). No entry in the acceptance ledger covers that file or component, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change is a minimal addition of a FORMAT constant to PipelineReport.java and passes all 124 CI tests on the final commit. However, the only code_review approval (Declan Farrell) is tied to the first commit afdc196; the second commit b76af48 alters the constant's string value, which is a behavioral change rather than a comment/whitespace/formatting edit. Under CHG-3 this voids the approval, and under CHG-2 no independent approval covers the final merged state. The change must be resubmitted with a new code_review approval on the head commit before it can be accepted.",
+  "meta": {
+    "elapsed_s": 134.28,
+    "tokens_in": 27871,
+    "tokens_out": 3605,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bf294586f4108a45d0850a073afed1566504cd4470195d83b2f1356df8412a38",
+    "packet_tokens_est": 24405,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 11529,
+    "answer_chars": 2211,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.58,
+    "eval_s": 101.67,
+    "total_s": 134.28,
+    "tokens_est_ratio": 1.113,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

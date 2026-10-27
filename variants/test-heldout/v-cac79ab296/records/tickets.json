@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24472",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Memo update telemetry",
+    "components": [
+      "payments.service"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-21T15:32:00Z",
+    "risk": "low"
+  }
+]

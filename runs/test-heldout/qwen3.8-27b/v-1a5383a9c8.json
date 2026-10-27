@@ -1,0 +1,91 @@
+{
+  "variant": "v-1a5383a9c8",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "The diff adds a redundant branch for 'report:'-prefixed actions that performs the same GRANTS lookup as the existing line; no new grants are introduced and GRANTS is unchanged. The exhaustive control test test_matrix_equals_approved_policy passed on the head commit, confirming the matrix still equals the approved policy."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "No auditor grants are added; the exhaustive control test test_auditor_is_read_only passed on the head commit, confirming the auditor role holds no state-changing action."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "No it_admin grants for approve_payment or release_payment are added; the exhaustive control test test_it_admin_cannot_approve_or_release passed on the head commit."
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The PRIVILEGED set in rbac.py is untouched by the diff; the exhaustive control test test_privileged_routes_require_mfa passed on the head commit, confirming all privileged routes still require MFA."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24563 is approved by change_manager erik.brandt and its component 'payments.access' matches the only changed file apps/baseline-payments/payments/rbac.py (mapped to payments.access in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (change_approver for payments, not the author Jonah Weiss) provided a code_review approval on the head commit 7d0f520."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change contains a single commit (7d0f520) and both approvals reference that exact commit, so no later commits could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit (7d0f520), 172 tests passed with 0 failures/errors/skips; all required control tests for touched obligations (ACC-1, ACC-2, SOD-1, MFA-1) are present, unskipped, and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py belongs to component payments.access which is marked security_sensitive; Ines Halvorsen (security_reviewer, not the author) approved a security_review on the head commit 7d0f520."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed file (apps/baseline-payments/payments/rbac.py) is not under any protected path listed in controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/rbac.py; all ledger entries cover other files (payments.py, audit.py, routes.py, mortgage files), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds two lines to rbac.py that create a redundant branch for 'report:'-prefixed actions but perform the identical GRANTS lookup, so no new grants are introduced and the access matrix is functionally unchanged. All four product obligations whose scope includes rbac.py (ACC-1, ACC-2, SOD-1, MFA-1) are confirmed by their exhaustive control tests passing on the head commit. All process obligations are satisfied: the ticket is approved and covers the correct component, an independent change_approver and a security_reviewer both approved the exact head commit, CI on the head commit shows 172/172 tests passing, no protected paths are touched, and no prior acceptance-ledger evidence lapses. The change is accepted.",
+  "meta": {
+    "elapsed_s": 174.73,
+    "tokens_in": 27727,
+    "tokens_out": 5008,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e8baf8d6bf4d61846edca11e29ae9379d5ea2a361a023de585f3f2b049fe8835",
+    "packet_tokens_est": 24411,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16185,
+    "answer_chars": 3437,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.39,
+    "eval_s": 142.31,
+    "total_s": 174.73,
+    "tokens_est_ratio": 1.107,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

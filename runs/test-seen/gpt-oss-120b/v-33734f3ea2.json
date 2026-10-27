@@ -1,0 +1,61 @@
+{
+  "variant": "v-33734f3ea2",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The ticket CHG-25809 lists components \"payments.payees\" and \"payments.tests\", but the modified file apps/baseline-payments/payments/directory.py has no component entry in controls/payments/components.json, so the ticket does not cover all touched components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Sofia Santos (role change_approver for payments) is recorded, and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole approval references the exact head commit, and there are no later commits that change behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the head commit succeeded, reporting 173 test cases with zero failures, including all control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "open",
+      "note": "It is unclear whether the changed file belongs to a security‑sensitive component; no security_review approval is present, so the requirement cannot be confirmed nor denied."
+    }
+  ],
+  "summary": "The change violates CHG-1 because the change ticket does not cover the modified directory.py component, making the required component coverage incomplete. While other process obligations are satisfied, the unresolved security‑review question does not offset the refuted ticket requirement, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 160.16,
+    "tokens_in": 24872,
+    "tokens_out": 5735,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f88e8d4f6a5f33ddae76d96f8bd986508209076bec7658128fe3449745489062",
+    "packet_tokens_est": 24782,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22761,
+    "answer_chars": 1541,
+    "done_reason": "stop",
+    "load_s": 20.76,
+    "prompt_eval_s": 26.24,
+    "eval_s": 113.03,
+    "total_s": 160.16,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

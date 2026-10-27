@@ -1,0 +1,84 @@
+{
+  "variant": "v-108da1c3fa",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "release returns the stored confirmation only when the prior release is less than one day old. At or after one day it calls _send_disbursement again for the same instruction_id, so a second disbursement is sent."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26637, approved by change manager Erik Brandt on 2026-10-03 before review. Its only component, payments.payments, matches the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and a different person from author Sofia Santos, approved a code_review of commit a2985128 on 2026-10-04."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names a2985128, which is the sole commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on a2985128 with 172 tests, 0 failures, and 0 skipped, including the registered PAY-2 sample test test_sampled_release_is_idempotent."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py is component payments.payments with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/payments.py, which is outside the protected controls, control-test, and CI paths."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26637 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The one-day release window is a deviation from PAY-2. The register has no approved, unexpired exception scoped to PAY-2 and payments.payments with a compensating control."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0403 covers payments.py release, and this commit changes that function's behavior, so the prior trace lapses. The packet has no replacement evidence on a2985128 showing a later replay still does not send."
+    }
+  ],
+  "summary": "The change limits idempotent reuse of a disbursement confirmation to releases less than one day old. After that, release sends the same instruction again, which violates PAY-2. No approved exception covers that deviation, and the earlier PAY-2 acceptance evidence lapses because release itself changed. Ticket, independent approval, CI on the head commit, and the inapplicable security, control-owner, and emergency rules are in order, but the payment-release violation requires rejection.",
+  "meta": {
+    "elapsed_s": 128.12,
+    "tokens_in": 88616,
+    "tokens_out": 8912,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1f70b46f64bc072e0a18bd5ee7759dc760a26bc033bbc4d88d71c1fe5fcacc5a",
+    "packet_tokens_est": 25292,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 88616,
+      "outputTokens": 8912,
+      "cacheReadTokens": 204800,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 124142,
+    "duration_api_ms": 124142,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

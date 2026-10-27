@@ -1,0 +1,10 @@
+{
+  "apps/baseline-payments/payments/rbac.py": {"component": "payments.access", "security_sensitive": true},
+  "apps/baseline-payments/payments/routes.py": {"component": "payments.routes", "security_sensitive": true},
+  "apps/baseline-payments/payments/audit.py": {"component": "payments.audit", "security_sensitive": true},
+  "apps/baseline-payments/payments/service.py": {"component": "payments.service", "security_sensitive": false},
+  "apps/baseline-payments/tests/**": {"component": "payments.tests", "security_sensitive": false},
+  "docs/**": {"component": "docs", "security_sensitive": false},
+  "controls/**": {"component": "controls", "security_sensitive": true},
+  "ci/**": {"component": "ci", "security_sensitive": true}
+}

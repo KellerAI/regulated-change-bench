@@ -1,0 +1,76 @@
+{
+  "variant": "v-39dcec1781",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test `test_maker_cannot_check` (mapped in control-registry) ran in CI and passed, providing exhaustive evidence."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record `evidence/proofs/pay1-required-approvals.json` shows `required_approvals` matches the dual‑control policy and is accepted."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Ponens trace `evidence/traces/pay2-release.json` demonstrates idempotent release; CI includes `test_sampled_release_is_idempotent` which passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26887 exists, approved by a change manager, and lists components `payments.payments` and `payments.tests` covering all changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Mara Costa (has `change_approver` role for payments, not the author) is recorded in `records/approvals.json`."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is attached to the sole commit of the change; no subsequent commits alter behaviour, satisfying CHG‑3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded (all 175 tests passed), including the required control tests for all touched obligations."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "The change is marked as emergency, but no post‑implementation review (pir) record is present within the required 2‑business‑day window."
+    }
+  ],
+  "summary": "All product and standard process obligations are satisfied except CHG‑7, which requires a post‑implementation review for emergency changes. The required PIR evidence is missing, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 123.39,
+    "tokens_in": 25594,
+    "tokens_out": 4913,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "00e2d1c617587ab2fb8c10334a9875c89e9118139647f1a6d5cdeb5d44b6a7bc",
+    "packet_tokens_est": 25791,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17952,
+    "answer_chars": 1943,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.58,
+    "eval_s": 104.55,
+    "total_s": 123.38,
+    "tokens_est_ratio": 0.968,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

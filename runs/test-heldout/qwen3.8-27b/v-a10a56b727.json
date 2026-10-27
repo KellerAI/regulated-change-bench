@@ -1,0 +1,91 @@
+{
+  "variant": "v-a10a56b727",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The diff replaces the error log message in deliver_statement with an f-string that embeds self._store.get_payee(payee_id).account_number directly into the log message. Account number is an NPI field (listed in payments.npi_fields in policy-params.json). This places an unmasked NPI value into an application log on an error path, directly violating 'No application log entry contains an unmasked NPI value, on any path including error paths.' No exception in the register covers this (EXC-0167 is for mortgage.logging and concerns masked last-4 only)."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change modifies only the error-log message inside the except block of deliver_statement; the self._audit(actor, 'deliver_statement', …) call after the try/except is untouched, and no other state-changing operation or its audit recording is affected."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24472 is type 'standard', status 'approved', approved by erik.brandt@fernbrook.example (change_manager). Its components list 'payments.service', which is the component for the sole changed file apps/baseline-payments/payments/service.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "One code_review approval exists from sofia.santos@fernbrook.example (p-ssantos, change_approver for payments), who is not the author mara.costa@fernbrook.example (p-mcosta). The approval targets the head commit fdab983a."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is exactly one commit (fdab983a) and the single approval names that same commit; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the pr-checks pipeline ran on the head commit fdab983a with result 'success'; the JUnit report shows 172 tests, 0 failures, 0 errors, 0 skipped, including all registered payments control tests (access control, audit, encryption, integrations, logging, payments, retention, routes, session, SQL)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file, apps/baseline-payments/payments/service.py, is mapped to component 'payments.service' with security_sensitive: false in components.json, so the security-review trigger is not met and no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The changed file is apps/baseline-payments/payments/service.py, which is not under any path listed in controls/protected-paths.json (controls/*, test/controls/*, ci/*). No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24472 is type 'standard', not 'emergency', so the post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed or needed for this change; the exceptions register contains no entry scoped to payments.service or LOG-1 for payments."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries (ACR-0401 through ACR-0406) cover payments.py, audit.py, routes.py, and mortgage files; none covers apps/baseline-payments/payments/service.py, so no prior evidence lapses from this change."
+    }
+  ],
+  "summary": "The change modifies the error-log message in deliver_statement to embed the raw payee account number via an f-string. Because account_number is a registered NPI field (payments.npi_fields in policy-params.json), this places an unmasked NPI value into an application log on an error path, directly violating LOG-1. No exception in the register covers this deviation. All process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) and the one other applicable product obligation (AUD-1) are satisfied, but the LOG-1 violation is dispositive. The change must be rejected and the account number removed from the log message before resubmission.",
+  "meta": {
+    "elapsed_s": 238.38,
+    "tokens_in": 29562,
+    "tokens_out": 6988,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "fdc14a2c9e9f7fc1390f3798874916a6b464a4df69e2da157fc470b915c0b9a4",
+    "packet_tokens_est": 26658,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23397,
+    "answer_chars": 3944,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.83,
+    "eval_s": 203.51,
+    "total_s": 238.37,
+    "tokens_est_ratio": 1.083,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

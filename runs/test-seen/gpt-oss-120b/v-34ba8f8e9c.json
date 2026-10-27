@@ -1,0 +1,71 @@
+{
+  "variant": "v-34ba8f8e9c",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test `test_maker_cannot_check` (exhaustive) passed in the CI run, confirming the maker‑checker rule remains satisfied."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Acceptance ledger record ACR‑0401 proves `required_approvals` matches the policy; the function was unchanged, and the control test `test_dual_control_grid_matches_policy` passed."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Evidence ACR‑0403 and the passing control test `test_sampled_release_is_idempotent` confirm the release idempotence property is unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG‑26246 is approved by a change manager and lists components `payments.payments` and `payments.tests`, which cover the modified files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code‑review approval is from Sofia Santos, the change author (different alias but same person), violating the independent approver requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole approval is attached to the final commit and there are no later commits, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run `payments-tests.xml` reports all 175 tests passed, including all required control tests for the touched obligations."
+    }
+  ],
+  "summary": "The change passes product obligations (MC‑1, PAY‑1, PAY‑2) and most process checks, but it fails the independent approval requirement (CHG‑2) because the only reviewer is the author. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 128.28,
+    "tokens_in": 25584,
+    "tokens_out": 5476,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ad24df05c2ee3df0bc61d6f122034c5efeb479bfaca93bae82a4d03ca850585c",
+    "packet_tokens_est": 25755,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21099,
+    "answer_chars": 1810,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.51,
+    "eval_s": 109.54,
+    "total_s": 128.28,
+    "tokens_est_ratio": 0.969,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

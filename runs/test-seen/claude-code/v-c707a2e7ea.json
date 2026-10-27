@@ -1,0 +1,77 @@
+{
+  "variant": "v-c707a2e7ea",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-24788, an approved emergency ticket. Grace Kim (change_manager) approved it at 2026-10-20T10:36Z, before the code review at 22:43Z. Its components, mortgage.servicing and mortgage.tests, cover both touched paths (RateQuote.java and src/test/java/mortgage/QuoteTermTest.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example (Wen Li), who holds change_approver for baseline-mortgage. Wen Li is a different person from the author, Tomas Ortega, under any of his directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and PIR approvals both name 1023a9e9, which is the head and only commit in the change, so no later commits exist to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json is a successful ci/run-tests.sh baseline-mortgage run on head 1023a9e9. The JUnit reports show 126 tests, 0 skipped, 0 failures, including the new QuoteTermTest cases. That matches the 126 test annotations in the repo. No product obligation's scope or domain is touched, so no extra control tests are required. A local rerun wasn't possible because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The emergency ticket records deployment at 2026-10-20T18:36Z (a Tuesday). Declan Farrell, who is not the author, approved the PIR at 2026-10-21T17:36Z, inside the 2-business-day deadline of 2026-10-22T18:36Z."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change touches only RateQuote.java and a new test file. Neither appears in the covers of any acceptance-ledger entry (Approvals, Underwriting, Policy, payments payments/audit/routes), so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1494 adds a read-only helper, RateQuote.isSupportedTerm, plus a unit test in the non-security-sensitive mortgage.servicing component, outside every product obligation's scope and every protected path. The emergency ticket was approved by a change manager before review and covers the touched components. An independent change approver reviewed the exact head commit, and a non-author completed the PIR within 2 business days of deployment. CI on the head commit ran the full 126-test suite with no skips or failures, and no ledger evidence is affected, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 77.06,
+    "tokens_in": 480817,
+    "tokens_out": 6631,
+    "usd": 0.400417,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 6631,
+      "cache_read_input_tokens": 445052,
+      "cache_creation_input_tokens": 35727
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.40041740000000003,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

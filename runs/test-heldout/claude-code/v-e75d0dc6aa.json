@@ -1,0 +1,92 @@
+{
+  "variant": "v-e75d0dc6aa",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26763 is approved by change manager erik.brandt on 2026-10-04, before the change opened on 2026-10-05. Its components [mortgage.reporting] cover the only touched file, PipelineReport.java, which components.json maps to mortgage.reporting."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "declan.farrell has a code_review approval and is a change_approver for baseline-mortgage. He is a different person from the author Wen Li, whose addresses the directory lists."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names afdc196 (FORMAT = \"pipeline/1\"). The later commit b76af48 changes the public constant's value to \"pipeline/1.1\", which is a behaviour change rather than a comment or formatting edit, so the approval is void and no new approval exists for the head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of the full baseline-mortgage suite on the head commit b76af48: 124 tests, 0 failures, 0 skipped. The change touches no product-obligation scope or closed domain, so no control tests were required. A local re-run wasn't possible because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.reporting, is marked security_sensitive: false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency and the ticket type is standard, so no PIR is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception, and no product obligation deviation is involved."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers PipelineReport.java, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a public FORMAT constant to PipelineReport in two commits. The independent code review approves only the first commit (value \"pipeline/1\"). The follow-up commit changes the value to \"pipeline/1.1\", a behaviour change that voids that approval under CHG-3, and no approval covers the head commit. Ticket, approver independence and CI on the final commit are otherwise in order, and no product obligations are in scope. The change is rejected until it gets a fresh independent approval of b76af48.",
+  "meta": {
+    "elapsed_s": 70.21,
+    "tokens_in": 359311,
+    "tokens_out": 6118,
+    "usd": 0.369877,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6118,
+      "cache_read_input_tokens": 322710,
+      "cache_creation_input_tokens": 36571
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.36987699999999996,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

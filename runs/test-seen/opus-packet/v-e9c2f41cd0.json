@@ -1,0 +1,83 @@
+{
+  "variant": "v-e9c2f41cd0",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25844 is standard and approved by change manager Erik Brandt on 2026-10-01, before the change opened and before review. Its components (payments.payments, payments.tests) cover both touched paths: memos.py and tests/test_*.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a payments change_approver. She is a different person from the author, Jonah Weiss, under any of his addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 900d3cc. The only later commit, 6b7bc36, is labelled a docstring clarification. The base..head diff contains nothing beyond the reviewed preview function, its tests and the module docstring text, so the approval carries. The packet has no per-commit diff, so this relies on the combined diff."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records pipeline success on the head commit 6b7bc36 using ci/run-tests.sh baseline-payments. The JUnit report shows the full suite of 174 tests with 0 failures, errors or skips, including the new test_memo_preview tests. No product-obligation scope is touched, so no extra control tests are required; all registered control tests ran and passed anyway."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Not triggered. memos.py (payments.payments) and the test file (payments.tests) are both marked security_sensitive false, so no security_review is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Not triggered. Neither changed path matches controls/protected-paths.json: no controls data, no control tests, no CI."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Not triggered. The change is non-emergency and the ticket type is standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Not triggered. The change deviates from no product obligation and relies on no exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry's covered code is touched. The entries cover payments.py, audit.py, routes.py, Approvals.java, Underwriting.java and Policy.java, while the change edits only memos.py and adds a test, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1541 adds a pure formatting helper, memos.preview, plus unit tests. It touches only memos.py, which is not security-sensitive, and a non-control test file, and it falls within no product obligation's scope paths, patterns or closed domains. The ticket is approved and covers both components. An independent payments change_approver approved the first commit, and the only later commit is a docstring edit, so the approval carries. CI passed the full suite on the head commit. No security review, control-owner approval, exception or post-implementation review is triggered, and no ledger evidence lapses, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 33.7,
+    "tokens_in": 38365,
+    "tokens_out": 3290,
+    "usd": 0.21926,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8548c052460a6e74e84b9b725c35104a34dc3862f3bdb46136459f3b629988d4",
+    "packet_tokens_est": 24631,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38365,
+      "output_tokens": 3290,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

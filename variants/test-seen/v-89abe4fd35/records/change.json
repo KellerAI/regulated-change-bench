@@ -1,0 +1,21 @@
+{
+  "id": "PR-1949",
+  "title": "Identify the applicant in decline log lines",
+  "description": "Collections asked to match declines to applicants from the log stream.\n\nChanges:\n- Decline log line names the applicant\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-199",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "2bbdca2b509097316fc4da10e5b8dda4cc38542f",
+  "commits": [
+    {
+      "sha": "2bbdca2b509097316fc4da10e5b8dda4cc38542f",
+      "message": "Ops: include applicant reference in decline log",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-06T19:05:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25689",
+  "opened_at": "2026-10-06T19:05:00Z"
+}

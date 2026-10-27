@@ -1,0 +1,66 @@
+{
+  "variant": "v-b29a65dd0b",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change adds a condition to skip purging NPI for payees with category \"tax_authority\", violating the rule that NPI must be disposed on schedule unless on legal hold. No approved exception covers this new exception."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "A deviation from RET-1 occurs but there is no approved, unexpired exception for this obligation and component; the exception register only contains entries for other obligations."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25557 exists, is approved by a change manager, and its component \"payments.retention\" matches the changed path."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Sofia Santos (who has the change_approver role for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is attached to the final commit; there are no later commits that alter behavior, satisfying the coverage requirement."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 172 tests passing, including the registered control test for RET-1; the full test suite passed on the final commit."
+    }
+  ],
+  "summary": "The change breaches RET-1 by exempting tax‑authority payees from NPI purge without an approved exception, and EXC-1 is also unsatisfied because no exception records this deviation. Although process obligations CHG‑1 to CHG‑4 are met, the product‑level violation forces a rejection.",
+  "meta": {
+    "elapsed_s": 138.33,
+    "tokens_in": 24120,
+    "tokens_out": 6308,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8080c5193e003090f234c2c753bda3b57efa8244a0f5f66500f45bf8dda28318",
+    "packet_tokens_est": 24023,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24080,
+    "answer_chars": 1728,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.0,
+    "eval_s": 123.1,
+    "total_s": 138.33,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

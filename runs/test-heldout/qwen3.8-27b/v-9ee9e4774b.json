@@ -1,0 +1,71 @@
+{
+  "variant": "v-9ee9e4774b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "The change to url_for() in integrations.py explicitly replaces 'https://' with 'http://' for the statement-delivery integration when the path starts with '/archive/', causing archive delivery requests to be sent over unencrypted HTTP. This directly violates the obligation that every outbound integration endpoint uses https. The control test test_integrations_use_tls only validates the static INTEGRATIONS list (which still shows https URLs) and does not exercise the runtime url_for logic, so it passes despite the violation."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The change does not add, remove, or rename any integration in the INTEGRATIONS list; the statement-delivery entry remains unchanged in the asset inventory with its owner and data classification intact. The control test test_integrations_are_inventoried passed in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25625 is type 'standard', status 'approved', approved by change manager Erik Brandt, and its components list 'payments.integrations' which covers the only file changed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (change_approver for payments, on payments-eng but a different person from author Aisha Bello) provided a code_review approval on the head commit 85a9e8fe."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit on the change is 85a9e8fe, and both the code_review and security_review approvals reference that exact commit; no later commits exist to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (records/ci/run.json) executed on the final commit 85a9e8fe with result 'success'; 172 tests passed, 0 skipped, including the registered control tests for ENC-2 and INV-1 that are in scope for the changed file."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file integrations.py is marked security_sensitive in components.json; a security_review approval was provided by Kofi Mensah (security_reviewer role) on the same head commit 85a9e8fe."
+    }
+  ],
+  "summary": "The change introduces a code path in url_for() that downgrades the statement-delivery integration from HTTPS to HTTP for any /archive/ path, directly violating ENC-2 (every outbound integration endpoint must use TLS). This is a critical-severity violation with no applicable exception in the register. Although all process obligations (ticket, independent approval, security review, CI on final commit) are satisfied, the substantive security regression in the transport layer requires rejection. The control test test_integrations_use_tls only inspects the static INTEGRATIONS list and does not exercise the runtime URL construction, so it fails to catch the violation.",
+  "meta": {
+    "elapsed_s": 159.98,
+    "tokens_in": 27565,
+    "tokens_out": 4440,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "eabf51d07f27e050dcd3976b7113db207e953586d8337c598b0ce682044b4b08",
+    "packet_tokens_est": 24322,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14714,
+    "answer_chars": 2834,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.19,
+    "eval_s": 127.76,
+    "total_s": 159.98,
+    "tokens_est_ratio": 1.104,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

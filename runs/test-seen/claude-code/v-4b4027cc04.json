@@ -1,0 +1,102 @@
+{
+  "variant": "v-4b4027cc04",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new integration uses https://fx.fernbrook.example/v1. The registered control test test_integrations_use_tls, which enumerates every integration, passed unskipped in the CI run on head 95af046."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "fx-rates is in asset-inventory.json with a matching host, owner 'Treasury' and a valid classification, and the inventory test test_integrations_are_inventoried passed on head. Its 'purpose' text is copied from core-banking and it is classified npi although only a currency code is sent; neither is required by the obligation, but both should be fixed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25453 is a standard ticket approved by change manager erik.brandt on 2026-10-19, before the PR opened on 2026-10-21. Its components (controls-data, integrations, payments) cover every touched path."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "sofia.santos approved the code review. She is a payments change_approver and a different person from the author, Aisha Bello, under any of her addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is one commit, 95af046, and all three approvals name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-payments on the head commit: 172 tests, no failures or skips, including the ENC-2 and INV-1 control tests. I couldn't rerun it locally because pytest isn't installed. The report's host and timestamp don't match the recorded runner and start time."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security_sensitive. kofi.mensah, a security_reviewer, approved a security_review on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected path. bao.tran, a control_owner in controls-office, outside the author's payments-eng team, approved it on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and its ticket are standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and introduces no deviation from a product obligation that would need one."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger evidence touching payments.py covers required_approvals (ACR-0401) and release (ACR-0403). The diff only adds a new fx_rate function and leaves those symbols unchanged, and nothing else changed since the evidence commits except docs, so the evidence still holds."
+    }
+  ],
+  "summary": "PR-1651 adds an fx-rates integration over HTTPS, a new payments.fx_rate function that doesn't touch the approval or release logic, and a matching inventory entry. The ticket, independent code review, security review and control-owner approval are all valid and name the single head commit, and the recorded CI run on that commit passes the full suite including the ENC-2 and INV-1 control tests. Earlier evidence for payments.py still holds because the covered functions are unchanged. I couldn't rerun CI locally, and the new inventory entry has a copied 'purpose' and an over-cautious npi classification that should be corrected, but no applicable obligation is violated.",
+  "meta": {
+    "elapsed_s": 100.53,
+    "tokens_in": 477088,
+    "tokens_out": 8907,
+    "usd": 0.521431,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 8907,
+      "cache_read_input_tokens": 425441,
+      "cache_creation_input_tokens": 51615
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5214312,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

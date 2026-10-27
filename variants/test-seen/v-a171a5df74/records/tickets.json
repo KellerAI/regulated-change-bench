@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-24721",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Credit policy update: DTI ceiling 43%",
+    "components": [
+      "mortgage.controls-data",
+      "mortgage.policy",
+      "mortgage.tests"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-12T07:35:00Z",
+    "risk": "low"
+  }
+]

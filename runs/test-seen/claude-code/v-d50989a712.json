@@ -1,0 +1,102 @@
+{
+  "variant": "v-d50989a712",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new log field uses the key `account_number`, which is in npi.NPI_FIELDS. AppLog._emit masks every field by key, so the logged value is at most `****` plus the last four digits for any input; production wiring uses AppLog, and test_logs::test_app_log_writes_masked_lines (passing) checks this exact key on error(). The registered LOG-1 control test is sample-only and does not run the delivery-failure path, so 'shown' rests on this name-based masking argument rather than on that test."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "service.py is in scope, but the change adds only a read and a log field. The _audit call for deliver_statement on success is unchanged and no new state-changing operation is added; the AUD-1 control test passes on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24115 is approved by change manager Grace Kim on 2026-10-13, before the PR opened on 2026-10-15, and its component payments.service covers the only touched file (service.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver who is a different person from the author Aisha Bello (none of the author's addresses appears)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 5a442db, which is the head and only commit of the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run on head 5a442db; the JUnit report has 172 tests with 0 failures or skips, including the LOG-1 and AUD-1 control tests. I could not re-run it locally (pytest not installed), and the report's timestamp and hostname do not match run.json's runner."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.service, is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket are standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; EXC-0167 (LOG-1) is for mortgage.logging and is not used."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py, and the payments, audit and Mortgage code covered by ledger entries is unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1593 adds the payee account number to the statement-delivery failure log in payments' service.py. The logger masks fields by name and account_number is a registered NPI field, so only a masked last four digits can be logged and LOG-1 holds; a passing unit test checks this exact field. The ticket, independent approval of the head commit, and passing full CI run with control tests satisfy the process obligations, and no security-sensitive or protected paths are touched. The LOG-1 control test is only a sample and does not run the new failure path, so LOG-1 rests on the name-based masking argument rather than on that test.",
+  "meta": {
+    "elapsed_s": 123.43,
+    "tokens_in": 611108,
+    "tokens_out": 10961,
+    "usd": 0.60242,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 10961,
+      "cache_read_input_tokens": 556730,
+      "cache_creation_input_tokens": 54342
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6024200000000001,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

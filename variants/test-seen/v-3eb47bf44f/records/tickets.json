@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25173",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Memo preview for list views",
+    "components": [
+      "payments.payments",
+      "payments.tests"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-05T08:27:00Z",
+    "risk": "low"
+  }
+]

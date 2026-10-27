@@ -1,0 +1,97 @@
+{
+  "variant": "v-90b3c34e93",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "At head, privileged sessions idle between 15 and 16 minutes are accepted (PRIVILEGED_IDLE_MINUTES=16 > 15), so this breaches the obligation as written. The control test passes only because it checks against the edited policy-params.json. The breach is covered by exception EXC-0224 (see EXC-1)."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "EXC-0224 is approved by Helena Vasquez (risk_owner, CISO office), not by the requester Linh Nguyen. It expires 2026-11-25, after the 2026-10-26 review time. It is scoped to SES-1 / payments.session for 'all Payments privileged sessions using the sixteen-minute idle interval' and records a compensating control."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26135 was approved by change manager Grace Kim on 2026-10-20, before the PR opened on 2026-10-23. Its components (payments.policy, payments.controls-data) cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Mara Costa, a change_approver for payments and a different person from the author Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and control_owner approvals both name the head commit dcf5be9, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head dcf5be9 succeeded: 172 tests across all 28 payments test files, 0 failures, 0 skipped. That includes the SES-1 control test test_privileged_idle_timeout_within_policy, the only product obligation whose scope the change touches. I couldn't rerun the suite (pytest isn't installed). The report names a different host than the CI runner (dev-laptop-7.local vs ci-runner-09)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.policy and payments.controls-data are not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path controls/payments/policy-params.json changed (an approved policy value). Rachel Stein (control_owner, controls-office, not the author's payments-eng team) approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not an emergency, so no PIR is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers the changed code. The only behavioural change is PRIVILEGED_IDLE_MINUTES, and no ledger entry covers that symbol or session.py, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change raises Payments' privileged idle timeout from 15 to 16 minutes, which breaches SES-1 as written. A valid exception, EXC-0224, covers it: approved by a CISO-office risk owner who is not the requester, unexpired at review time, scoped to SES-1 and payments.session, and recording a compensating control. The process records are complete: the ticket was approved in advance and covers the touched components, the independent code review and outside-team control-owner approval both name the head commit, and the CI run on head is green and includes the SES-1 control test. No security review is needed and no ledger evidence lapses, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 112.3,
+    "tokens_in": 678554,
+    "tokens_out": 10029,
+    "usd": 0.555844,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 42,
+      "output_tokens": 10029,
+      "cache_read_input_tokens": 632805,
+      "cache_creation_input_tokens": 45707
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.555844,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

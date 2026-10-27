@@ -1,0 +1,59 @@
+{
+  "variant": "v-48c967af12",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1716 names ticket CHG-26136, approved by change manager Erik Brandt on 2026-10-15 before the 2026-10-19 review. Its components, payments.payments and payments.tests, cover payments.py, memos.py, and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not author Aisha Bello, approved a code_review of commit ec8a00a3. Her directory identity is distinct from the author's emails."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names ec8a00a3. The only later commit, 6af8d48c, is the memo module docstring; the combined diff's only other edits are the new helper and its tests, which that commit message and the change record attribute to the reviewed commit. A docstring does not change payment behaviour, so the approval still covers the merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on head 6af8d48c. The JUnit report has 175 tests, 0 failures, 0 errors, and 0 skipped, including the new approvals-remaining tests and every registered payments control test."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries for PAY-1 and PAY-2 cover required_approvals and release in payments.py. Those functions are unchanged; the change only adds approvals_remaining and a memo docstring, so the prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds a read-only approvals-remaining helper, unit tests, and a memo docstring. It does not alter access control, dual-control enforcement, release idempotency, or any other in-scope control symbol, and the touched components are not security-sensitive or protected. The ticket, independent approval, docstring-only follow-up, and passing full-suite CI on the head commit meet the applicable change-process obligations.",
+  "meta": {
+    "elapsed_s": 241.47,
+    "tokens_in": 68922,
+    "tokens_out": 14665,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bd9c0b6f56fa703fed4a0641261b7b2f1c5073b20b0b11ac60107c1f9838837f",
+    "packet_tokens_est": 26300,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 68922,
+      "outputTokens": 14665,
+      "cacheReadTokens": 182144,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 237814,
+    "duration_api_ms": 237814,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "variant": "v-803bd9a2c8",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26684 is approved by change manager grace.kim before review, but its components (mortgage.reports, mortgage.tests) do not include mortgage.servicing, which RateQuote.java maps to in the base controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by wen.li@fernbrook.example, a baseline-mortgage change_approver and a different person from the author Declan Farrell per the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 5d82ae8, which is the change's only commit, so no later commits need re-approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on head 5d82ae8 ran ci/run-tests.sh baseline-mortgage with success: 126 tests, 0 failures, 0 skipped, including the new QuoteTermTest. No product obligation scope or closed domain is touched, so no extra control tests are required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Touched components mortgage.servicing and mortgage.tests are both security_sensitive=false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path (RateQuote.java, src/test/java/mortgage/QuoteTermTest.java) matches controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and deviates from no product obligation; the register entries cover unrelated components."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers RateQuote.java or the new test, so no existing evidence lapses."
+    }
+  ],
+  "summary": "PR-1594 adds a read-only RateQuote.isSupportedTerm helper and a unit test. It touches no product obligation scope, it is independently reviewed on the head commit, and its CI run on the head commit passes. However, RateQuote.java belongs to component mortgage.servicing, which change ticket CHG-26684 does not list (it covers only mortgage.reports and mortgage.tests), so CHG-1 is violated. The change must be rejected until the ticket's components are amended and re-approved by a change manager.",
+  "meta": {
+    "elapsed_s": 58.46,
+    "tokens_in": 310473,
+    "tokens_out": 5088,
+    "usd": 0.340493,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 5088,
+      "cache_read_input_tokens": 273667,
+      "cache_creation_input_tokens": 36776
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3404934,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

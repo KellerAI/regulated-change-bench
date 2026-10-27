@@ -1,0 +1,66 @@
+{
+  "variant": "v-491fa2b450",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change raises PRIVILEGED_IDLE_MINUTES to 20 in Policy.java and policy-params.json, exceeding the max 15 minutes defined in SES-1; no valid exception is recorded."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24534 exists, approved by change manager Erik Brandt, meeting CHG-1."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Wen Li (change_approver) on the commit, and Wen Li is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review approval applies to the only commit; no later behavior‑changing commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with full test suite (124 tests) including the control test for SES‑1, satisfying testing requirement."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control owner approval from Rachel Stein (control_owner) for the protected change to policy-params.json, fulfilling CHG‑6."
+    }
+  ],
+  "summary": "The change violates the SES-1 obligation because the privileged session idle timeout is increased to 20 minutes, exceeding the allowed maximum of 15 minutes and lacking an approved exception. All process obligations (CHG-1, CHG-2, CHG-3, CHG-4, CHG-6) are satisfied, but the product obligation failure requires rejection.",
+  "meta": {
+    "elapsed_s": 107.85,
+    "tokens_in": 25405,
+    "tokens_out": 4165,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e041a7b9beee321b5e80c0ef7c7016f4e834d3eb58822203c24ab1cdf6ddd7c6",
+    "packet_tokens_est": 25347,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15543,
+    "answer_chars": 1513,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.39,
+    "eval_s": 89.22,
+    "total_s": 107.85,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

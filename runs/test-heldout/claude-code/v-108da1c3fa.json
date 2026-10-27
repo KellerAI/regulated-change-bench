@@ -1,0 +1,77 @@
+{
+  "variant": "v-108da1c3fa",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "payments.py#release now returns the persisted release only if it is less than one day old; after that a replayed instruction passes is_fully_approved (it only counts approvers) and is sent to core banking again, a second disbursement. No exception covers this, and the only test evidence (sample control test, same-instant unit test) never replays after a day."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26637 (standard) was approved by change manager erik.brandt on 2026-10-03, before the change was opened and reviewed on 2026-10-04; its component payments.payments covers the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa, a payments change_approver and a different person from the author sofia.santos per the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit a298512, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head commit a298512 succeeded: 172 tests, 0 failures, 0 skipped, including the registered PAY-2 control test test_sampled_release_is_idempotent (labelled sample) passing. That test does not exercise the new one-day window."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0403 (PAY-2 trace, sample) covers payments.py#release, which this change alters in behaviour, so it has lapsed and was not relied on. Same-strength (sample) replacement evidence exists in the head CI run; the PAY-2 verdict rests on the code."
+    }
+  ],
+  "summary": "The change makes a disbursement replay safe only within one day of the first release; after that the same instruction is sent to core banking again, violating PAY-2 (critical), and no exception covers it. Ticket, independent approval on the head commit and CI on the head commit are in order, but the passing tests replay only at the same instant and so cannot detect the defect. The earlier PAY-2 ledger evidence has lapsed because release() changed. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 114.63,
+    "tokens_in": 638828,
+    "tokens_out": 10539,
+    "usd": 0.616922,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 38,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 10539,
+      "cache_read_input_tokens": 580825,
+      "cache_creation_input_tokens": 57965
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.616922,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

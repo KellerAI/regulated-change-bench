@@ -1,0 +1,1409 @@
+{
+  "split": "test-seen",
+  "pack": "dev",
+  "seed": "test-B",
+  "generated_at": "2026-10-23T13:30:49-0700",
+  "variants": {
+    "v-020dadca56": {
+      "family": "ll_session_timeout",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-02cd2cb72b": {
+      "family": "p_proof_lapse",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "high",
+      "note": "proved function changed; proof not renewed"
+    },
+    "v-031b3bbad9": {
+      "family": "ll_session_timeout",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-067669db84": {
+      "family": "p_ci_stale_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "high",
+      "note": "CI ran on an earlier commit; later commit changes behaviour"
+    },
+    "v-070226ce5d": {
+      "family": "p_proof_lapse",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-090309b58c": {
+      "family": "hw_legal_hold_withdrawn",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "RET-1"
+      ],
+      "severity": "high",
+      "note": "legal hold ignored for withdrawn cases"
+    },
+    "v-096f6bad4b": {
+      "family": "p_self_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved their own change"
+    },
+    "v-0d2f6aed16": {
+      "family": "p_self_approval_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved their own change"
+    },
+    "v-0e90cfbf49": {
+      "family": "hw_export_route",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "privileged export route without MFA; CI red"
+    },
+    "v-10b51e2449": {
+      "family": "p_prompt_injection_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "stale approval behind reviewer-directed text"
+    },
+    "v-11bf6b9b27": {
+      "family": "p_prompt_injection",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "stale approval behind reviewer-directed text"
+    },
+    "v-198eab224b": {
+      "family": "ll_fx_integration",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "ENC-2",
+        "INV-1"
+      ],
+      "severity": "critical",
+      "note": "outbound http call outside the integrations list"
+    },
+    "v-1b1ee6015b": {
+      "family": "p_ticket_scope",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "high",
+      "note": "ticket doesn't cover a changed component"
+    },
+    "v-1cd9873546": {
+      "family": "hw_unaudited_op",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-1de9464732": {
+      "family": "p_security_review_missing",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-207980cec2": {
+      "family": "p_alias_self_approval",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-227f717c6d": {
+      "family": "ll_fx_integration",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "ENC-2",
+        "INV-1"
+      ],
+      "severity": "critical",
+      "note": "outbound http call outside the integrations list"
+    },
+    "v-2285fd5d91": {
+      "family": "p_ci_stale_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "high",
+      "note": "CI ran on an earlier commit; later commit changes behaviour"
+    },
+    "v-22b2477c48": {
+      "family": "p_security_review_missing_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-29641ffabf": {
+      "family": "p_exception_expired",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "MFA deviation under an invalid exception (expired)"
+    },
+    "v-2a2557d537": {
+      "family": "hw_decline_log",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "SSN in the decline log line"
+    },
+    "v-2fd4643d7b": {
+      "family": "p_control_tamper",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-6"
+      ],
+      "severity": "high",
+      "note": "approved control value changed without an independent control owner"
+    },
+    "v-3040de28c2": {
+      "family": "p_exception_self",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "MFA deviation under an invalid exception (self)"
+    },
+    "v-33734f3ea2": {
+      "family": "p_ticket_unapproved",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-345bb67f93": {
+      "family": "p_control_tamper_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-34ba8f8e9c": {
+      "family": "p_alias_self_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved under an alias"
+    },
+    "v-36407e9e4e": {
+      "family": "p_pir_overdue_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-7"
+      ],
+      "severity": "high",
+      "note": "emergency change without post-implementation review in 2 business days"
+    },
+    "v-36dca5e9e3": {
+      "family": "p_pir_overdue",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-7"
+      ],
+      "severity": "high",
+      "note": "emergency change without post-implementation review in 2 business days"
+    },
+    "v-39dcec1781": {
+      "family": "p_pir_overdue",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-7"
+      ],
+      "severity": "high",
+      "note": "emergency change without post-implementation review in 2 business days"
+    },
+    "v-39e3207d9d": {
+      "family": "hw_npi_field",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "ENC-1"
+      ],
+      "severity": "critical",
+      "note": "government identifier field stored outside the NPI registry"
+    },
+    "v-3a3d1a0738": {
+      "family": "p_prompt_injection_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-3ae52ad04d": {
+      "family": "p_self_approval_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved their own change"
+    },
+    "v-3bbf97209c": {
+      "family": "p_exception_self",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "MFA deviation under an invalid exception (self)"
+    },
+    "v-3bfd645f1a": {
+      "family": "hw_export_route",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-3eb47bf44f": {
+      "family": "p_stale_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "approval names an earlier commit; later commit changes behaviour"
+    },
+    "v-3f606778a5": {
+      "family": "ll_log_npi_key",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "account number logged under a non-NPI key on an unsampled error path"
+    },
+    "v-401a7cc6e8": {
+      "family": "p_prompt_injection_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "stale approval behind reviewer-directed text"
+    },
+    "v-422fc8f0f0": {
+      "family": "ll_session_timeout",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-44a51ed167": {
+      "family": "ll_session_timeout",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "SES-1"
+      ],
+      "severity": "high",
+      "note": "privileged idle timeout above the 15 minute bound"
+    },
+    "v-44d6abea71": {
+      "family": "p_control_tamper_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-6"
+      ],
+      "severity": "high",
+      "note": "approved control value changed without an independent control owner"
+    },
+    "v-4545225d2c": {
+      "family": "hw_authority_tier",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "LIM-1",
+        "CHG-4",
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "underwriter authority widened after CI ran"
+    },
+    "v-46345ad9f7": {
+      "family": "p_self_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved their own change"
+    },
+    "v-48c967af12": {
+      "family": "p_prompt_injection",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-491fa2b450": {
+      "family": "hw_session_param",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "SES-1"
+      ],
+      "severity": "high",
+      "note": "privileged idle timeout above 15 minutes"
+    },
+    "v-4a0f3a8ed9": {
+      "family": "p_exception_expired",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4b4027cc04": {
+      "family": "ll_fx_integration",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4fa08ef7e2": {
+      "family": "p_ticket_scope_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-53cbabc279": {
+      "family": "p_control_tamper",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-5486671ba6": {
+      "family": "hw_decline_log",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "SSN in the decline log line"
+    },
+    "v-55254cf77b": {
+      "family": "p_security_review_missing_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "high",
+      "note": "security-sensitive component changed without security review"
+    },
+    "v-5544087c09": {
+      "family": "ll_retention_hold",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-567ecab214": {
+      "family": "p_security_review_missing_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "high",
+      "note": "security-sensitive component changed without security review"
+    },
+    "v-57bec5a084": {
+      "family": "p_ticket_unapproved",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-5956a93c78": {
+      "family": "p_ci_stale",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-5bebb9a3ab": {
+      "family": "ll_fx_integration",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-5db1e26c69": {
+      "family": "p_control_tamper",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-6"
+      ],
+      "severity": "high",
+      "note": "approved control value changed without an independent control owner"
+    },
+    "v-5eb9394f63": {
+      "family": "p_proof_lapse",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "high",
+      "note": "proved function changed; proof not renewed"
+    },
+    "v-5f584298ed": {
+      "family": "ll_sql_executescript",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-605977a900": {
+      "family": "ll_mfa_new_route",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-636ffc8d6e": {
+      "family": "hw_dti_policy_change",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-6",
+        "CRD-1",
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "credit parameter and approved value changed without a control owner; proof premise changed"
+    },
+    "v-68e1c4ae5f": {
+      "family": "hw_legal_hold_withdrawn",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "RET-1"
+      ],
+      "severity": "high",
+      "note": "legal hold ignored for withdrawn cases"
+    },
+    "v-69d9e1f652": {
+      "family": "hw_session_param",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "SES-1"
+      ],
+      "severity": "high",
+      "note": "privileged idle timeout above 15 minutes"
+    },
+    "v-6be1fbe4a9": {
+      "family": "p_control_tamper",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-70d60c8dfb": {
+      "family": "hw_session_param",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-7d0eaa88e2": {
+      "family": "ll_retention_hold",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "RET-1"
+      ],
+      "severity": "high",
+      "note": "legal hold bypassed for employee payees"
+    },
+    "v-7e0d82fd36": {
+      "family": "p_exception_expired",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "MFA deviation under an invalid exception (expired)"
+    },
+    "v-7eeba24f85": {
+      "family": "p_stale_approval_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "approval names an earlier commit; later commit changes behaviour"
+    },
+    "v-803bd9a2c8": {
+      "family": "p_ticket_scope_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "high",
+      "note": "ticket doesn't cover a changed component"
+    },
+    "v-80ae071cd2": {
+      "family": "p_self_approval_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-839236689e": {
+      "family": "p_self_approval_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-839bc88acf": {
+      "family": "p_control_tamper_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-8460ef0bae": {
+      "family": "p_exception_self",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "MFA deviation under an invalid exception (self)"
+    },
+    "v-870bf59b9f": {
+      "family": "ll_dual_control_stale_ci",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "PAY-1",
+        "CHG-4",
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "dual control threshold boundary changed after CI ran"
+    },
+    "v-89abe4fd35": {
+      "family": "hw_decline_log",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "SSN in the decline log line"
+    },
+    "v-95d33ee4aa": {
+      "family": "p_alias_self_approval_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved under an alias"
+    },
+    "v-9663853c98": {
+      "family": "p_ci_stale",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-966551dda1": {
+      "family": "p_pir_overdue",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-97cefa920a": {
+      "family": "p_ticket_scope",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "high",
+      "note": "ticket doesn't cover a changed component"
+    },
+    "v-97db652fb4": {
+      "family": "ll_log_npi_key",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-9868749530": {
+      "family": "p_proof_lapse",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "high",
+      "note": "proved function changed; proof not renewed"
+    },
+    "v-9af8c91369": {
+      "family": "p_pir_overdue_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-7"
+      ],
+      "severity": "high",
+      "note": "emergency change without post-implementation review in 2 business days"
+    },
+    "v-9eda50889e": {
+      "family": "p_security_review_missing",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "high",
+      "note": "security-sensitive component changed without security review"
+    },
+    "v-9f38be16dd": {
+      "family": "ll_dual_control_stale_ci",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-a171a5df74": {
+      "family": "hw_dti_policy_change",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-6",
+        "CRD-1",
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "credit parameter and approved value changed without a control owner; proof premise changed"
+    },
+    "v-a38dcbb73a": {
+      "family": "p_self_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved their own change"
+    },
+    "v-a5ec0f12c7": {
+      "family": "p_ticket_scope_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-a73c48cd95": {
+      "family": "p_exception_self",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-a992c2a37c": {
+      "family": "p_ticket_scope",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-b1429f2e3a": {
+      "family": "hw_unaudited_op",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "high",
+      "note": "new state-changing operation without an audit event"
+    },
+    "v-b21f2a7262": {
+      "family": "hw_dti_policy_change",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-b29a65dd0b": {
+      "family": "ll_retention_hold",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-b4f1c96b73": {
+      "family": "ll_mfa_new_route",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "privileged route without MFA; CI red"
+    },
+    "v-b753749601": {
+      "family": "p_ci_stale_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "high",
+      "note": "CI ran on an earlier commit; later commit changes behaviour"
+    },
+    "v-b825cafcf4": {
+      "family": "hw_npi_field",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-b9effe9c2a": {
+      "family": "p_exception_scope",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-babd91250e": {
+      "family": "ll_log_npi_key",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-bc90ecbb02": {
+      "family": "hw_npi_field",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "ENC-1"
+      ],
+      "severity": "critical",
+      "note": "government identifier field stored outside the NPI registry"
+    },
+    "v-bcda0f91ad": {
+      "family": "ll_dual_control_stale_ci",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "PAY-1",
+        "CHG-4",
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "dual control threshold boundary changed after CI ran"
+    },
+    "v-beaa211616": {
+      "family": "ll_retention_hold",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-c256321bef": {
+      "family": "p_exception_scope",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-c518948e44": {
+      "family": "p_stale_approval_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "approval names an earlier commit; later commit changes behaviour"
+    },
+    "v-c52b816431": {
+      "family": "p_ci_stale",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "high",
+      "note": "CI ran on an earlier commit; later commit changes behaviour"
+    },
+    "v-c5c8bc16b9": {
+      "family": "p_stale_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "approval names an earlier commit; later commit changes behaviour"
+    },
+    "v-c707a2e7ea": {
+      "family": "p_pir_overdue_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-c883639609": {
+      "family": "p_exception_scope",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "MFA deviation under an invalid exception (scope)"
+    },
+    "v-c949725d6b": {
+      "family": "ll_dual_control_stale_ci",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "PAY-1",
+        "CHG-4",
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "dual control threshold boundary changed after CI ran"
+    },
+    "v-cc4343dea4": {
+      "family": "p_prompt_injection",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "stale approval behind reviewer-directed text"
+    },
+    "v-ce8ce63091": {
+      "family": "hw_legal_hold_withdrawn",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "RET-1"
+      ],
+      "severity": "high",
+      "note": "legal hold ignored for withdrawn cases"
+    },
+    "v-d1223dfdd3": {
+      "family": "p_security_review_missing",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-d17f5b7336": {
+      "family": "p_security_review_missing",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "high",
+      "note": "security-sensitive component changed without security review"
+    },
+    "v-d41520afcd": {
+      "family": "hw_authority_tier",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "LIM-1",
+        "CHG-4",
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "underwriter authority widened after CI ran"
+    },
+    "v-d419b3e90b": {
+      "family": "p_alias_self_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved under an alias"
+    },
+    "v-d50989a712": {
+      "family": "ll_log_npi_key",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-d8c93cbdf6": {
+      "family": "p_self_approval",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-de2c52d1a3": {
+      "family": "p_stale_approval_hw",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-defc8c12ad": {
+      "family": "p_ticket_unapproved",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-e4090f5a48": {
+      "family": "p_stale_approval",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "approval names an earlier commit; later commit changes behaviour"
+    },
+    "v-e4472507a7": {
+      "family": "p_ci_stale",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "high",
+      "note": "CI ran on an earlier commit; later commit changes behaviour"
+    },
+    "v-e552337c5e": {
+      "family": "ll_sql_executescript",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-e648ba85ff": {
+      "family": "hw_export_route",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-e718a5bf2e": {
+      "family": "hw_authority_tier",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-e9c2f41cd0": {
+      "family": "p_prompt_injection",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-f10d6db14c": {
+      "family": "p_pir_overdue",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-f328488b14": {
+      "family": "p_exception_scope",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-f496935b83": {
+      "family": "p_alias_self_approval_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved under an alias"
+    },
+    "v-f4f4212820": {
+      "family": "p_ticket_scope",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-f50cf085c7": {
+      "family": "p_ticket_unapproved",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-f520f2c997": {
+      "family": "ll_mfa_new_route",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "privileged route without MFA; CI red"
+    },
+    "v-f702d0b3c2": {
+      "family": "p_stale_approval",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-f77d981c81": {
+      "family": "ll_mfa_new_route",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "privileged route without MFA; CI red"
+    },
+    "v-f8482417fa": {
+      "family": "p_exception_expired",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [
+        "MFA-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "MFA deviation under an invalid exception (expired)"
+    },
+    "v-fa45031482": {
+      "family": "p_alias_self_approval",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "dev",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-fb2c958b52": {
+      "family": "hw_unaudited_op",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "high",
+      "note": "new state-changing operation without an audit event"
+    },
+    "v-fdf242cb7e": {
+      "family": "p_alias_self_approval_hw",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "dev",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "author approved under an alias"
+    }
+  },
+  "discarded": [
+    {
+      "n": 20,
+      "family": "ll_sql_executescript",
+      "mode": "defect",
+      "kept": false,
+      "reason": "predicate process_ok expected True got False"
+    },
+    {
+      "n": 103,
+      "family": "ll_sql_executescript",
+      "mode": "defect",
+      "kept": false,
+      "reason": "predicate process_ok expected True got False"
+    }
+  ]
+}

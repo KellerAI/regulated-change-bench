@@ -1,0 +1,81 @@
+{
+  "variant": "v-543619d02f",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change replaces the masked log entry `Mask.npi(value)` with the raw `value` in `checkIncome`, writing unmasked annual income (an NPI field per policy-params.json) into a `log.warn` call. This directly violates the obligation that no application log entry contains an unmasked NPI value on any path including error paths."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25973 is approved by change-manager Grace Kim and its components include `mortgage.cases`, which is the component of the changed file ApplicantValidator.java per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds the change_approver role for baseline-mortgage and is a different person from the author Priya Raman; his code_review approval on the head commit satisfies the independent-approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole commit in the change is 4f1da65, and the approval names that same commit, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 4f1da65 with 124 tests, 0 failures, 0 errors, 0 skipped; all registered control tests for baseline-mortgage (including LoggingControlTest#sampledFlowsDoNotLogNpi) ran and passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ApplicantValidator.java maps to component mortgage.cases, which is not marked security_sensitive in components.json; no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only apps/baseline-mortgage/src/main/java/mortgage/ApplicantValidator.java, which is not under any protected path in controls/protected-paths.json; no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket CHG-25973 is of type 'standard', not 'emergency'; the post-implementation-review requirement does not apply."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers ApplicantValidator.java, so no prior evidence lapses as a result of this change."
+    }
+  ],
+  "summary": "The change removes NPI masking from the income-validation log line in ApplicantValidator.java, writing the raw annual income value (a registered NPI field) directly into a log.warn call. This violates LOG-1, which prohibits any unmasked NPI in application logs on any path. All process obligations (CHG-1 through CHG-4) are satisfied: a proper ticket, independent approval by a change_approver other than the author, approval on the sole commit, and a clean CI run on the final commit. However, the substantive violation of LOG-1 is unambiguous—annual_income is an NPI field per policy-params.json, and the new log statement omits the Mask.npi() call that was present before. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 190.17,
+    "tokens_in": 28080,
+    "tokens_out": 5371,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3607a30127566cdd011fb802fbd5543d2380fdcbe4ae148eb8fe00a57d499f93",
+    "packet_tokens_est": 24772,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17838,
+    "answer_chars": 2820,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.92,
+    "eval_s": 157.22,
+    "total_s": 190.17,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

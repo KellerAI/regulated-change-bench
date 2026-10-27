@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25835",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Statement delivery error context",
+    "components": [
+      "payments.service"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-09-30T09:30:00Z",
+    "risk": "low"
+  }
+]

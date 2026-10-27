@@ -1,0 +1,21 @@
+{
+  "id": "PR-1475",
+  "title": "Pipeline format identifier",
+  "description": "Pipeline format identifier.\n\nChanges:\n- Identify the report format for portal consumers\n- Review coordinated with the payments engineering lead\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-710",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "733c5afb0877d3fb5c4bc5242905b1c02590a7c3",
+  "commits": [
+    {
+      "sha": "733c5afb0877d3fb5c4bc5242905b1c02590a7c3",
+      "message": "Reports: identify the export format",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-08T15:56:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25360",
+  "opened_at": "2026-10-08T15:56:00Z"
+}

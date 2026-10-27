@@ -1,0 +1,82 @@
+{
+  "variant": "v-e4472507a7",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26645 is a standard ticket. Change manager erik.brandt approved it at 2026-10-20T07:16Z, before review. Its components (payments.payees, payments.payments, payments.tests) cover directory.py, memos.py and tests/test_charity_payees.py according to the base components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa (p-mcosta), a payments change_approver. The author is jonah.weiss (p-jweiss), a different person."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 7d45312, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The only CI run (records/ci/run.json) is on 3763902. The later commit 7d45312 adds a new constant (PREVIEW_MIN_WIDTH = 8) to memos.py, which is not a comment, whitespace or formatting edit, so that run doesn't count. There is no CI result for the final commit. I couldn't re-run the suite locally because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components (payments.payees, payments.payments, payments.tests) are all marked security_sensitive: false, so no security review is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path is touched: nothing under controls/, ci/ or apps/baseline-payments/tests/controls/. The new test is a normal unit test, so no control_owner approval is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers directory.py or memos.py. The payments entries cover payments.py, audit.py and routes.py, none of which changed, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds 'charity' as a payee category, plus an unused constant in memos.py. It has a valid approved ticket and an independent code review on the head commit, and it touches no security-sensitive or protected paths or code covered by earlier evidence. But CI only ran on 3763902. The later commit 7d45312 adds a constant, which is a code change rather than a comment, whitespace or formatting edit, so under CHG-4 that run doesn't count and there is no passing run on the final commit. Because CHG-4 is refuted, the change is rejected until CI passes on 7d45312.",
+  "meta": {
+    "elapsed_s": 71.97,
+    "tokens_in": 358310,
+    "tokens_out": 6161,
+    "usd": 0.356471,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6161,
+      "cache_read_input_tokens": 324639,
+      "cache_creation_input_tokens": 33639
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.35647080000000003,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26365",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Document receipt diagnostics",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "nneka.okafor@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-07T19:47:00Z",
+    "risk": "low"
+  }
+]

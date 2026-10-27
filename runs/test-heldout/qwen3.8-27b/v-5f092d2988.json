@@ -1,0 +1,86 @@
+{
+  "variant": "v-5f092d2988",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change replaces `if (loanCase.isLegalHold())` with `if (loanCase.isLegalHold() && loanCase.status() != CaseStatus.WITHDRAWN)`, which means a WITHDRAWN case on legal hold will no longer be protected from purge. This directly violates the obligation's requirement that NPI is 'never [purged] while a legal hold applies.'"
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25519 is type 'standard', status 'approved' by change_manager erik.brandt, and its components list ['mortgage.retention'] covers the only touched file Retention.java (component mortgage.retention in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from declan.farrell@fernbrook.example (Declan Farrell, change_approver role, lending-eng team) for commit 36c9e2a8; author is tomas.ortega@fernbrook.example (Tomas Ortega, different person_id p-tortega). Independent approval satisfied."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Single-commit change; the approval names the exact head commit 36c9e2a8, so it covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 36c9e2a8 reports 124 tests, 0 failures, 0 errors, 0 skipped. The registered control test for RET-1 (controls.RetentionControlTest#sampledPurgeRespectsHold) is present and passing, along with all other control tests for baseline-mortgage."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java maps to component 'mortgage.retention' which is security_sensitive: false in components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The changed file apps/baseline-mortgage/src/main/java/mortgage/Retention.java is not under any protected path in controls/protected-paths.json (controls/*, test/controls/*, ci/*); no control_owner approval needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25519 is type 'standard', not 'emergency'; the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception in the register references RET-1; the change does not invoke an exception, so EXC-1 is not triggered."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers apps/baseline-mortgage/src/main/java/mortgage/Retention.java, so no prior evidence lapses on this change."
+    }
+  ],
+  "summary": "The change removes the legal-hold safeguard for withdrawn cases in Retention.isPurgeDue, directly contradicting RET-1's requirement that NPI must never be purged while a legal hold applies. Although all process obligations (ticket, independent approval, CI testing) are satisfied, the substantive code change refutes a critical product obligation, so the change must be rejected. The sample-coverage control test passed, but that does not validate the modified behavior for withdrawn cases on legal hold; the code logic is unambiguous. No exception in the register covers RET-1, and no compensating control is in place.",
+  "meta": {
+    "elapsed_s": 146.71,
+    "tokens_in": 27553,
+    "tokens_out": 3977,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f33d6e7df4323f6c794317e342393a67d68d10b7229830e52c5dfdda043010fb",
+    "packet_tokens_est": 24124,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12192,
+    "answer_chars": 3112,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.11,
+    "eval_s": 114.57,
+    "total_s": 146.71,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

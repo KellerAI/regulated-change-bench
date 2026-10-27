@@ -1,0 +1,21 @@
+{
+  "id": "PR-1491",
+  "title": "Allow charity payees",
+  "description": "Allow charity payees.\n\nChanges:\n- Add `charity` to payee categories\n- Unit test\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-754",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "9dd05608eb1d1c0583ea60bb5e6809fab77dc703",
+  "commits": [
+    {
+      "sha": "9dd05608eb1d1c0583ea60bb5e6809fab77dc703",
+      "message": "Payee directory: accept charity payees",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-10T13:54:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24851",
+  "opened_at": "2026-10-10T13:54:00Z"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1231",
+  "title": "Indicative FX rates for non-USD payments",
+  "description": "Treasury wants an indicative rate shown before non-USD payments are approved.\n\nChanges:\n- Add `payments.fx_rate`\n- Calls the treasury FX service\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "aisha.bello@fernbrook.example",
+  "branch": "bello/change-886",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "932e5b34b467e5843f6e198754249ea313dc1d64",
+  "commits": [
+    {
+      "sha": "932e5b34b467e5843f6e198754249ea313dc1d64",
+      "message": "Payments: indicative FX rate lookup",
+      "author": "aisha.bello@fernbrook.example",
+      "at": "2026-10-16T21:19:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24322",
+  "opened_at": "2026-10-16T21:19:00Z"
+}

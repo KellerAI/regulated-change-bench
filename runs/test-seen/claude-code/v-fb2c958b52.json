@@ -1,0 +1,72 @@
+{
+  "variant": "v-fb2c958b52",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The new CaseService.reopen moves a WITHDRAWN case to DRAFT and saves it but never calls audit.record, unlike every other state-changing method. The AUD-1 control test is sample-only and doesn't exercise reopen, and no exception covers AUD-1 for mortgage.cases."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-24001, a standard ticket approved by change manager Grace Kim on 2026-10-26T08:16Z, before the review. Its components list mortgage.cases, which components.json assigns to CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Declan Farrell, a change_approver for baseline-mortgage and a different person from the author Priya Raman under all of the author's directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit ecde064, the only commit in the change, so there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-mortgage on head ecde064: 124 tests, 0 skipped, 0 failed, including the AUD-1 control test sampledOperationsAreAudited. I could not re-run it locally because the JUnit jar is missing, and the report timestamps (2026-10-23, from a host other than the named runner) don't match the run record."
+    }
+  ],
+  "summary": "The change adds CaseService.reopen, a state-changing operation that writes no audit event, so it violates AUD-1. The sample-based AUD-1 control test passes only because it never calls reopen, and no test covers the new method even though the description says unit tests were updated. No exception in the register covers this. The ticket, independent approval, approval-to-commit match and CI run are in order, but one violated product obligation means the change must be rejected.",
+  "meta": {
+    "elapsed_s": 70.46,
+    "tokens_in": 417925,
+    "tokens_out": 6246,
+    "usd": 0.411342,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 18,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6246,
+      "cache_read_input_tokens": 375661,
+      "cache_creation_input_tokens": 42234
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4113422000000001,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

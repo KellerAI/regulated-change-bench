@@ -1,0 +1,77 @@
+{
+  "variant": "v-5da76ce910",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26039 (standard, approved). Erik Brandt, a change_manager, approved it on 2026-10-08, before the change was opened on 2026-10-10. Its component mortgage.logging covers the only touched file, AppLog.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li (change_approver for baseline-mortgage) approved the code review and is not the author, Tomas Ortega, under any of Tomas's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit f0f9a7a, which is the change's only commit, so it covers exactly what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for head commit f0f9a7a succeeded: 124 JUnit Jupiter tests, 0 skipped, 0 failed. The registered LOG-1 control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi (labelled sample) ran and passed. I could not rerun the suite locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java (component mortgage.logging) is marked security_sensitive. The only security_review approval is from Wen Li, who does not hold the security_reviewer role in the directory, so no valid security review exists."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change only raises the in-memory buffer limit MAX_LINES from 10,000 to 12,000 in AppLog.java, which is in scope. LOG-1 requires evidence covering every case, but the only control test checks a fixed sample of log flows, and the ledger holds no full-coverage evidence for mortgage logging."
+    }
+  ],
+  "summary": "PR-1942 changes one constant in AppLog.java, a security-sensitive logging component. The ticket, independent code review, approved commit and CI run on the final commit are all in order. However, the required security review came from Wen Li, who lacks the security_reviewer role, so CHG-5 is violated. LOG-1 also cannot be fully established because only sample-coverage evidence exists. The violated CHG-5 obligation requires rejection.",
+  "meta": {
+    "elapsed_s": 75.46,
+    "tokens_in": 535133,
+    "tokens_out": 6327,
+    "usd": 0.445634,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 6327,
+      "cache_read_input_tokens": 490944,
+      "cache_creation_input_tokens": 44149
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4456338,
+    "permission_denials": 10,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

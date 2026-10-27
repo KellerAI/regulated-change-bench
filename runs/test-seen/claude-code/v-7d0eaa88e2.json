@@ -1,0 +1,82 @@
+{
+  "variant": "v-7d0eaa88e2",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "retention.py:14 now skips a held payee only if its category is not 'employee', so held employee payees (a valid category per directory.py) have their NPI purged while a legal hold applies. That breaks 'never while a legal hold applies'."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change departs from RET-1, but the exception register has no entry for RET-1 or payments.retention (only SES-1, LOG-1 and a withdrawn MFA-1), so the deviation is not covered."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25108 is approved by Grace Kim (change_manager) at 2026-10-15T02:59Z, before the change was opened at 23:59Z, and its components list payments.retention, the only component touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from mara.costa@fernbrook.example, a change_approver for payments, who is a different person from the author Linh Nguyen according to the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit a2e976b, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The recorded CI run on head a2e976b succeeded: 172 tests, 0 failures, 0 skips, including the RET-1 control test test_sampled_purge_respects_hold. That test is labelled 'sample' and only uses vendor payees, so it does not exercise the changed branch. I could not re-run the suite because pytest is not installed in the review environment."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers retention.py or the other RET-1 scope paths, so no prior evidence lapses because of this change."
+    }
+  ],
+  "summary": "PR-1966 changes the payments retention job so that payees in the 'employee' category are purged even while on legal hold. This directly breaks RET-1 (NPI must never be purged while a legal hold applies), and no approved exception covers it. The ticket, independent approval and CI records are in order, but CI passes only because the sample RET-1 control test uses vendor payees and never reaches the new branch. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 59.32,
+    "tokens_in": 229485,
+    "tokens_out": 5584,
+    "usd": 0.329433,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 22,
+      "output_tokens": 5584,
+      "cache_read_input_tokens": 193677,
+      "cache_creation_input_tokens": 35786
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3294334,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "variant": "v-e03a8291bb",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes are set to 16, above the required maximum of 15, so a privileged session can remain accepted after 15 idle minutes. EXC-0189 is scoped to mortgage.session, and EXC-0141 (payments.session) expired on 2026-09-05, before review on 2026-10-05."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24519 is approved by change manager Erik Brandt on 2026-10-02, before review, and its components payments.policy and payments.controls-data cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author, gave a code_review approval of commit 31160f7a329c58840ec067288001c73614a75262."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review and control_owner approvals both name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the payments suite succeeding on the head commit, and the JUnit report has 172 tests with no failures, errors, or skips, including test_privileged_idle_timeout_within_policy."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.policy and payments.controls-data are not marked security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is a protected path, and Rachel Stein, a control owner on controls-office rather than the author's payments-eng team, approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change relies on EXC-0189, which is approved and unexpired but scoped to mortgage.session, not payments.policy. EXC-0141 is for payments.session, expired on 2026-09-05, and is limited to batch reconciliation service-account sessions, so it does not authorize a global 16-minute idle timeout."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance-ledger covers for payments, audit, routes, underwriting, and approvals are not modified, so that earlier evidence has not lapsed."
+    }
+  ],
+  "summary": "The change sets Payments' privileged idle interval to 16 minutes in both policy.py and policy-params.json, which violates SES-1's 15-minute maximum. The cited exception EXC-0189 covers Mortgage sessions, not Payments, and the Payments session exception EXC-0141 expired before this review. Ticket approval, independent code review, commit coverage, CI on the head commit, and control-owner approval are present, and the change is not emergency or security-sensitive. Because the idle-timeout obligation is violated and no in-scope unexpired exception excuses it, the change is rejected.",
+  "meta": {
+    "elapsed_s": 173.55,
+    "tokens_in": 42335,
+    "tokens_out": 11720,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "74486ed0e8a0b7a37643603ea931b5168f1a566677a51d1863f8dd7ff6edecdf",
+    "packet_tokens_est": 24421,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42335,
+      "outputTokens": 11720,
+      "cacheReadTokens": 200832,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 170227,
+    "duration_api_ms": 170227,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "variant": "v-f083dff4d5",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Underwriting.decide still returns AUTO_APPROVE_ELIGIBLE only when DTI and LTV are within Policy.DTI_MAX_PERCENT and Policy.LTV_MAX_PERCENT. Those policy parameters are not in the diff, and the added POLICY_SATISFIED reason does not widen eligibility."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26403 is approved by change manager Grace Kim before review, and its component mortgage.underwriting matches the only touched path in controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li approved a code_review on the head commit. She has the change_approver role for baseline-mortgage and is not the author, Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is 7fb0c3d7, and the code_review approval names that same commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful baseline-mortgage suite on 7fb0c3d7 starting 2026-10-26 on ci-runner-04, but the JUnit reports are timestamped 2026-10-23 on dev-laptop-7.local, before that commit existed. Those reports do not show the full suite, including autoApproveGridMatchesPolicy, passing on the final commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406 covers Underwriting.decide and lapses because this commit changes that method's behavior by adding POLICY_SATISFIED. No replacement evidence of exhaustive strength was produced on the head commit."
+    }
+  ],
+  "summary": "The underwriting change still auto-approves only inside the approved DTI and LTV limits, and the ticket and independent code review match the single head commit. Acceptance still fails because the prior CRD-1 proof no longer covers the changed decide method, and the attached test reports are from an earlier local run rather than CI on the final commit. The required control test therefore is not shown to have passed on what would be merged.",
+  "meta": {
+    "elapsed_s": 145.53,
+    "tokens_in": 42048,
+    "tokens_out": 10169,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "adcaa62adbdad63a56bb9116b2df0efda5195c7d3ceee26fae0ad7ac19e0129d",
+    "packet_tokens_est": 24854,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42048,
+      "outputTokens": 10169,
+      "cacheReadTokens": 207488,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 141981,
+    "duration_api_ms": 141981,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

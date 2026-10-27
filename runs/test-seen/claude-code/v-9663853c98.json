@@ -1,0 +1,92 @@
+{
+  "variant": "v-9663853c98",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26227 is approved by Erik Brandt (change_manager) at 2026-10-15T21:46Z, before the PR opened on 2026-10-16. Its components payments.payments and payments.tests cover the two touched paths: memos.py maps to payments.payments and tests/test_memo_preview.py matches tests/test_*.py, which maps to payments.tests."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver who is a different person from the author Mara Costa (p-mcosta) under all of Mara Costa's directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit d45534c, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows success for the full payments suite on 304da05: 174 tests, 0 failures, 0 skipped, including the new test_memo_preview tests. The only later commit (d45534c) edits the module docstring, and nothing reads __doc__, so it doesn't change behaviour. The change touches no product obligation's scope paths, patterns or closed domains, so no control tests are required. Two caveats: the JUnit file's timestamp and hostname (2026-10-23, dev-laptop-7.local) don't match run.json's ci-runner-07, and I couldn't re-run the suite here because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "No security review is required: memos.py (payments.payments) and the test file (payments.tests) are both marked security_sensitive: false in controls/payments/components.json."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No control_owner approval is required: the diff touches only apps/baseline-payments/payments/memos.py and apps/baseline-payments/tests/test_memo_preview.py, and neither is a protected path (controls/, tests/controls/, ci/)."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and deviates from no product obligation, so the register isn't needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry's covered code changes. The ledger covers payments.py, audit.py, routes.py and Java sources; this change alters only memos.py, which no entry covers."
+    }
+  ],
+  "summary": "The change adds a pure helper, memos.preview, with unit tests, plus a docstring-only follow-up commit. It touches no product obligation's scope, patterns or closed domain, and no security-sensitive or protected path. The ticket is approved and covers the touched components, the independent code review is on the head commit, and CI passed the full suite on the prior commit, which counts because the later commit only edits a docstring. The JUnit report's timestamp and host don't match the CI run record, and I couldn't re-run the suite myself, so that inconsistency is worth a look, but every applicable obligation is supported by the records.",
+  "meta": {
+    "elapsed_s": 86.73,
+    "tokens_in": 322237,
+    "tokens_out": 7854,
+    "usd": 0.431523,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7854,
+      "cache_read_input_tokens": 278482,
+      "cache_creation_input_tokens": 43727
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4315234,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "variant": "v-e4090f5a48",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25846 lists components payments.payments, payments.reports, payments.tests, but components.json does not contain entries for the changed paths apps/baseline-payments/payments/memos.py and apps/baseline-payments/payments/reports.py, so we cannot verify that the change’s components are fully covered by the ticket."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "Only one code_review approval (for commit 7ce44a5e) exists; the second commit adds a new function and constant, which changes behaviour, yet no independent approval from a change_approver other than the author is recorded for that commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The existing approval applies only to the first commit; because the later commit modifies behaviour, the merged code is not fully covered by an approval, violating the approval‑covers‑what‑is‑merged rule."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) reports success for the final commit and the JUnit report (payments-tests.xml) shows 174 tests passing, including the new test, satisfying the testing requirement."
+    },
+    {
+      "id": "CHG-5",
+      "status": "open",
+      "note": "No security_review approval record is present; the changed files are not listed in components.json, so we cannot determine whether they are marked security_sensitive and thus cannot establish applicability."
+    }
+  ],
+  "summary": "The change fails critical process obligations CHG-1, CHG-2, and CHG-3 due to missing component mappings and lack of independent approval for the final commit, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 182.53,
+    "tokens_in": 25718,
+    "tokens_out": 7986,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "67be66b5ef700050f71e8ff554a3bd161d50b093fe11c17c6ad5d20b9397cd54",
+    "packet_tokens_est": 25556,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 31840,
+    "answer_chars": 1803,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.68,
+    "eval_s": 163.52,
+    "total_s": 182.53,
+    "tokens_est_ratio": 0.982,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

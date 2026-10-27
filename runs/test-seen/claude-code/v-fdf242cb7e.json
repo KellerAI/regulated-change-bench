@@ -1,0 +1,82 @@
+{
+  "variant": "v-fdf242cb7e",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24523 is approved by Erik Brandt (change_manager) at 2026-10-20T06:17Z, before the change opened at 17:17Z. Its components (mortgage.servicing, mortgage.tests) cover RateQuote.java and src/test/java/mortgage/QuoteTermTest.java per controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from d.farrell@fernbrook.example, which the directory lists as an address of Declan Farrell (p-dfarrell), the author. Approving your own change doesn't count, and there is no other change_approver approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 70dd243, the only commit in the change, so no later commits exist. Its independence is a CHG-2 failure."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head 70dd243, and the JUnit reports show 126 tests with 0 failures, 0 errors and 0 skipped, including the new QuoteTermTest. The change touches no product obligation's scope or closed domain, so no registered control tests are required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both touched paths map to non-security-sensitive components (mortgage.servicing, mortgage.tests), so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path is touched: the change is limited to apps/baseline-mortgage/src/main/java/mortgage/RateQuote.java and src/test/java/mortgage/QuoteTermTest.java, outside controls/, src/test/java/controls/ and ci/."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger has no entry covering RateQuote.java or the servicing component, so no accepted evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change adds a small RateQuote.isSupportedTerm helper and a unit test, outside every product obligation's scope. It has an approved, covering ticket and a passing full CI run on the final commit. However, the only code_review approval comes from d.farrell@fernbrook.example, which the directory lists as an address of the author Declan Farrell, so there is no independent approval as CHG-2 requires. Because CHG-2 is violated, the change is rejected until a different baseline-mortgage change_approver approves the head commit.",
+  "meta": {
+    "elapsed_s": 60.37,
+    "tokens_in": 249622,
+    "tokens_out": 5598,
+    "usd": 0.301946,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 22,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 5598,
+      "cache_read_input_tokens": 220437,
+      "cache_creation_input_tokens": 29159
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.30194640000000006,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

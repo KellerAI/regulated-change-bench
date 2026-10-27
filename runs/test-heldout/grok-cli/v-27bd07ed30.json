@@ -1,0 +1,69 @@
+{
+  "variant": "v-27bd07ed30",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets payments.privileged_idle_minutes and PRIVILEGED_IDLE_MINUTES to 16, which is above the catalog bound of 15, so a privileged session can remain accepted after more than 15 idle minutes. EXC-0210 does not cure this: it is scoped to mortgage.session, and EXC-0141 (payments.session) expired on 2026-09-19, before the 2026-10-19 review."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24034 is approved by change manager Erik Brandt before review, and its components payments.policy and payments.controls-data cover policy.py and controls/payments/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author Jonah Weiss, approved a code_review of commit 63831d63ea62571ff2cb852fe5ce1f85739d28d9."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and control_owner approvals name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success for ci/run-tests.sh baseline-payments on the head commit, and the JUnit report shows the full suite, including unskipped test_privileged_idle_timeout_within_policy, with 0 failures and 0 skipped."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is a protected path. Rachel Stein, a control_owner on the controls-office team (outside payments-eng), approved that commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change relies on EXC-0210 for the SES-1 deviation, but that exception is for mortgage.session and Mortgage privileged sessions, not payments. The payments.session exception EXC-0141 is expired at review time, so no approved, in-scope, unexpired exception authorizes the 16-minute idle limit."
+    }
+  ],
+  "summary": "The change raises Payments’s privileged idle timeout from 15 to 16 minutes in both policy.py and the approved policy parameters. That violates SES-1, whose bound is at most 15 minutes. The cited exception EXC-0210 covers Mortgage sessions, not Payments, and the Payments session exception has expired. Process approvals, the ticket, and CI on the final commit are in order, but the idle-timeout deviation is not authorized, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 154.21,
+    "tokens_in": 98166,
+    "tokens_out": 8030,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e8b9d56552899fa2ba9bc5758f29b293aa7b299a8bee153b6994efa4b46ce99f",
+    "packet_tokens_est": 24419,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 98166,
+      "outputTokens": 8030,
+      "cacheReadTokens": 143104,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 150188,
+    "duration_api_ms": 150188,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

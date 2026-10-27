@@ -1,0 +1,67 @@
+{
+  "variant": "v-09e77b2b60",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26546 is approved by change manager grace.kim (2026-09-29, before review), but its components list only mortgage.reporting. The change also modifies DocumentChecklist.java, which components.json assigns to mortgage.servicing, and the ticket doesn't cover it."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example (Wen Li), who has the change_approver role for baseline-mortgage. Wen Li is a different person from the author, Priya Raman, under all of her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit f035b02, so it covers everything being merged and there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head f035b02 reports success, with 124 Jupiter tests and 0 failures, errors or skips. No product obligation's scope or domain is touched, so no extra control tests are required. I couldn't re-run the suite locally because the JUnit jar is missing."
+    }
+  ],
+  "summary": "PR-1655 adds two public FORMAT string constants: one to PipelineReport (mortgage.reporting) and one to DocumentChecklist (mortgage.servicing). Independent approval on the final commit and passing CI on the final commit are both in place. However, change ticket CHG-26546 covers only mortgage.reporting, not mortgage.servicing, so CHG-1 is violated. The change cannot be accepted until the ticket is amended to cover mortgage.servicing and re-approved, or the DocumentChecklist edit is removed from the change.",
+  "meta": {
+    "elapsed_s": 51.42,
+    "tokens_in": 256391,
+    "tokens_out": 4434,
+    "usd": 0.265966,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 18,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 4434,
+      "cache_read_input_tokens": 230134,
+      "cache_creation_input_tokens": 26231
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.2659658,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

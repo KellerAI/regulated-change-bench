@@ -1,0 +1,77 @@
+{
+  "variant": "v-1cd9873546",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1322 names CHG-25126, a standard ticket approved by change manager Erik Brandt on 2026-10-02, before the change opened and before review. Its component mortgage.cases covers the only touched path, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approved by wen.li@fernbrook.example (Wen Li, change_approver for baseline-mortgage). Wen Li is a different person from the author Declan Farrell under all of the author's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit b619ce5, which is the change's only commit, so no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json is a successful run of the full baseline-mortgage suite on head b619ce5: 124 tests, 0 failures, 0 skipped. The registered control tests for the touched obligations (AuditControlTest#sampledOperationsAreAudited, LoggingControlTest#sampledFlowsDoNotLogNpi) are present and pass, though both are labelled sample. I couldn't re-run the suite locally because the JUnit jar is missing."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "The change adds a new state-changing operation (reopen) in AUD-1's scope. The code calls audit.record(actor, EDIT_CASE, caseId, \"reopened\"), which captures actor, action, target and time. But AUD-1 requires exhaustive evidence, its only control test is a sample that never calls reopen, and no new test was added despite the PR claim."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change adds a log call site, log.info(\"Case \" + caseId + \" reopened by \" + actor.userId()), which by inspection carries no NPI. But LOG-1 requires exhaustive evidence, and its only control test is a sample whose flows don't include reopen, so nothing tests the new call site."
+    }
+  ],
+  "summary": "The change adds CaseService.reopen. Its process records are in order: an approved ticket covering mortgage.cases, an independent change_approver review on the final commit, and a green full-suite CI run on that commit. It touches AUD-1 (a new state-changing operation) and LOG-1 (a new log call site). Both require exhaustive evidence, but their only control tests are sample tests that don't exercise reopen, and the claimed unit-test update doesn't exist. The code looks compliant on inspection, but the evidence isn't adequate to establish either obligation, so the decision is HOLD pending tests that cover reopen. Separately, a reopened case whose NPI was already purged keeps its purge marker, so Retention would never purge NPI entered after a reopen-and-withdraw cycle. That RET-1 risk should be addressed even though RET-1's scoped files were not changed.",
+  "meta": {
+    "elapsed_s": 126.71,
+    "tokens_in": 737582,
+    "tokens_out": 11060,
+    "usd": 0.674955,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 11060,
+      "cache_read_input_tokens": 673774,
+      "cache_creation_input_tokens": 63768
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6749548,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

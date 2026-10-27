@@ -1,0 +1,21 @@
+{
+  "id": "PR-1954",
+  "title": "Statement delivery error context",
+  "description": "Statement delivery error context.\n\nChanges:\n- Give support staff account context when a statement gateway request fails\n- Use the existing application logger\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-647",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "fdab983a3df0c89f60616d94c0143feaae5b7f82",
+  "commits": [
+    {
+      "sha": "fdab983a3df0c89f60616d94c0143feaae5b7f82",
+      "message": "Statements: add account context to delivery errors",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-21T13:59:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24472",
+  "opened_at": "2026-10-21T13:59:00Z"
+}

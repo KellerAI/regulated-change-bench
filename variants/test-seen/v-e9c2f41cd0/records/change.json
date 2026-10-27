@@ -1,0 +1,27 @@
+{
+  "id": "PR-1541",
+  "title": "Memo preview for list views",
+  "description": "Memo preview for list views.\n\nChanges:\n- Add `memos.preview`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nNote for reviewers: the follow-up commit only touches a docstring; the reviewed logic is unchanged.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-726",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "6b7bc36620a1a22decc1d9886d0ecd8008742826",
+  "commits": [
+    {
+      "sha": "900d3cc15ea00f3996971cc482dfc6665466c998",
+      "message": "Memos: add preview for list views",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-02T00:31:00Z"
+    },
+    {
+      "sha": "6b7bc36620a1a22decc1d9886d0ecd8008742826",
+      "message": "Docs: clarify memo module docstring",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-02T02:36:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25844",
+  "opened_at": "2026-10-02T00:31:00Z"
+}

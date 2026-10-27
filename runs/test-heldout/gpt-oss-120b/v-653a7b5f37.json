@@ -1,0 +1,56 @@
+{
+  "variant": "v-653a7b5f37",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25876 lists component 'mortgage.reporting', but PipelineReport.java is not assigned a component in controls/mortgage/components.json, so coverage cannot be verified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Wen Li (change_approver) is recorded and Wen Li is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is attached to the only commit in the change; no later commits alter behavior, so the approval covers the merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 124 tests passing, including the full control test suite; the change does not affect any product obligations."
+    }
+  ],
+  "summary": "The change fails CHG-1 because the affected file lacks a component mapping, so the ticket does not demonstrably cover the component. All other process obligations are satisfied, but the missing evidence makes the change non‑compliant, leading to a REJECT decision.",
+  "meta": {
+    "elapsed_s": 89.89,
+    "tokens_in": 24327,
+    "tokens_out": 4496,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "14aadd58f79206e2265b97fd69292142a0b138c7737139f4599fdf0b6c4d0024",
+    "packet_tokens_est": 24283,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18699,
+    "answer_chars": 1166,
+    "done_reason": "stop",
+    "load_s": 0.01,
+    "prompt_eval_s": 17.45,
+    "eval_s": 72.2,
+    "total_s": 89.89,
+    "tokens_est_ratio": 0.976,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

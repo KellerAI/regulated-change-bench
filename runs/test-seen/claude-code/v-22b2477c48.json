@@ -1,0 +1,82 @@
+{
+  "variant": "v-22b2477c48",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change only adds a read-only accessor, last(), that returns lines already stored. It adds no log call site and leaves write() unchanged, so log contents are unaffected. I checked every mortgage log call site: NPI values go through Mask.npi, everything else is IDs, field names or codes. The registered LOG-1 control test (sample) passed, unskipped, on head c14e1b9."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26119 (standard) was approved by change manager erik.brandt on 2026-10-14, before the change opened on 2026-10-16. Its components [mortgage.logging] cover the only touched file, AppLog.java (component mortgage.logging)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell, a change_approver for baseline-mortgage and a different person from the author priya.raman (none of her directory addresses match)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit c14e1b9, the change's only commit, so no later commits exist to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head c14e1b9 ran ci/run-tests.sh baseline-mortgage with result success: 124 Jupiter tests, 0 failures, 0 skipped. That includes the registered LOG-1 control test sampledFlowsDoNotLogNpi. I couldn't re-run it locally because the JUnit jar is missing from the sandbox."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "AppLog.java is security_sensitive, and there is a security_review approval on head c14e1b9 from ines.halvorsen, who has the security_reviewer role."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers AppLog.java (entries cover payments.py, audit.py, routes.py, Approvals.java, Policy.java and Underwriting.java), so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds one read-only method, AppLog.last(), in mortgage.logging. It adds no log call sites and doesn't change how log lines are written, so LOG-1 (no NPI in logs) is unaffected, and a review of every call site found NPI masked. The ticket was approved by a change manager before review and covers the component. An independent change_approver and a security_reviewer both approved the final commit, and CI on that commit passed the full suite with the LOG-1 control test unskipped. No protected paths, emergency process, exceptions or ledger evidence are involved, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 101.28,
+    "tokens_in": 526506,
+    "tokens_out": 8948,
+    "usd": 0.50619,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 32,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 8948,
+      "cache_read_input_tokens": 480263,
+      "cache_creation_input_tokens": 46205
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5061895999999999,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

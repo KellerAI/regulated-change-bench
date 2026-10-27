@@ -1,0 +1,91 @@
+{
+  "variant": "v-9e25d9a2b7",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Exhaustive control test 'controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy' passed in CI; the privileged_idle_minutes value in policy-params unchanged."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "Exhaustive control test 'controls.AuditControlTest#chainAndRetention' passed in CI; audit_retention_years unchanged."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Sampled retention control test passed; declined_npi_retention_months unchanged."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Authority limits test 'controls.ApprovalsControlTest#authorityLimitsMatchPolicy' passed; underwriter_limit and senior_limit unchanged."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Auto‑approve grid test 'controls.UnderwritingControlTest#autoApproveGridMatchesPolicy' passed; DTI_MAX_PERCENT and LTV_MAX_PERCENT unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24241 exists, is approved, and its component 'mortgage.controls-data' matches the changed path."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Declan Farrell (has change_approver role) who is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval applies to the final commit; no later commits modify behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 124 tests passing, including all required control tests."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "Control‑owner approval was given by Declan Farrell, who is on the same team (lending‑eng) as the author, violating the requirement that the approver be outside the author’s team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Evidence (control tests and proofs) remains valid because the change only reformats JSON without altering any values or behaviour."
+    }
+  ],
+  "summary": "All product obligations affected by the policy‑params file are satisfied, and most process obligations are met. However, CHG-6 is violated because the required control‑owner approval came from a teammate of the author, breaching the ‘outside author’s team’ rule. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 108.65,
+    "tokens_in": 24379,
+    "tokens_out": 6023,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3da2fc9a8b10c904d80358d5d7e6b27c2f676b14c1f8c8db824e675c22218862",
+    "packet_tokens_est": 24110,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22024,
+    "answer_chars": 2494,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.16,
+    "eval_s": 93.27,
+    "total_s": 108.65,
+    "tokens_est_ratio": 0.985,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

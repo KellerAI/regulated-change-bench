@@ -1,0 +1,21 @@
+{
+  "id": "PR-1300",
+  "title": "Document receipt diagnostics",
+  "description": "Document receipt diagnostics.\n\nChanges:\n- Record document receipt in operational diagnostics\n- Keep the checklist workflow and response stable\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "wen.li@fernbrook.example",
+  "branch": "li/change-704",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "3bf58db47e70699aef10cd32dd649fc854fe99ae",
+  "commits": [
+    {
+      "sha": "3bf58db47e70699aef10cd32dd649fc854fe99ae",
+      "message": "Documents: consolidate receipt diagnostics",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-12T17:45:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24798",
+  "opened_at": "2026-10-12T17:45:00Z"
+}

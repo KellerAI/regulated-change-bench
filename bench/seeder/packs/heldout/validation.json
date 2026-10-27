@@ -1,0 +1,231 @@
+{
+  "pack": "heldout",
+  "validated_at": "2026-10-23T20:48:21.399649+00:00",
+  "family_count": 24,
+  "families_by_app": {
+    "baseline-mortgage": 10,
+    "baseline-payments": 14
+  },
+  "family_modes_verified": 48,
+  "family_mode_counts": {
+    "account_url_compatibility": {
+      "defect": 9,
+      "clean": 8
+    },
+    "acting_control_ownership": {
+      "defect": 8,
+      "clean": 6
+    },
+    "advice_gateway_inventory": {
+      "defect": 8,
+      "clean": 6
+    },
+    "coapplicant_identifier": {
+      "defect": 11,
+      "clean": 6
+    },
+    "confirmation_reuse_window": {
+      "defect": 11,
+      "clean": 3
+    },
+    "credit_response_evidence": {
+      "clean": 9,
+      "defect": 5
+    },
+    "cross_desk_review": {
+      "defect": 8,
+      "clean": 6
+    },
+    "diagnostics_security_signoff": {
+      "defect": 8,
+      "clean": 6
+    },
+    "document_receipt_journal": {
+      "defect": 9,
+      "clean": 8
+    },
+    "engineering_account_review": {
+      "defect": 10,
+      "clean": 4
+    },
+    "income_format_diagnostics": {
+      "defect": 11,
+      "clean": 6
+    },
+    "memo_update_telemetry": {
+      "clean": 4,
+      "defect": 13
+    },
+    "pipeline_content_binding": {
+      "clean": 5,
+      "defect": 9
+    },
+    "portal_metadata_followup": {
+      "clean": 5,
+      "defect": 9
+    },
+    "report_action_namespace": {
+      "clean": 6,
+      "defect": 8
+    },
+    "reporting_incident_pir": {
+      "clean": 5,
+      "defect": 9
+    },
+    "retained_chain_evidence": {
+      "clean": 5,
+      "defect": 9
+    },
+    "session_exception_portfolio": {
+      "defect": 9,
+      "clean": 5
+    },
+    "session_exception_renewal": {
+      "clean": 5,
+      "defect": 9
+    },
+    "statement_archive_transport": {
+      "defect": 12,
+      "clean": 5
+    },
+    "statement_error_context": {
+      "defect": 7,
+      "clean": 10
+    },
+    "ticket_component_handoff": {
+      "clean": 7,
+      "defect": 7
+    },
+    "token_entropy_followup": {
+      "defect": 9,
+      "clean": 5
+    },
+    "withdrawal_hold_lifecycle": {
+      "defect": 10,
+      "clean": 7
+    }
+  },
+  "obligations_covered": [
+    "ACC-1",
+    "AUD-1",
+    "CHG-1",
+    "CHG-2",
+    "CHG-3",
+    "CHG-4",
+    "CHG-5",
+    "CHG-6",
+    "CHG-7",
+    "ENC-1",
+    "ENC-2",
+    "EXC-1",
+    "INV-1",
+    "LAP-1",
+    "LOG-1",
+    "MFA-1",
+    "PAY-2",
+    "RET-1",
+    "SES-1"
+  ],
+  "runs": [
+    {
+      "seed": "hc-1",
+      "requested": 80,
+      "kept": 80,
+      "dropped": 0,
+      "by_mode": {
+        "defect": 50,
+        "clean": 30
+      },
+      "by_app": {
+        "baseline-payments": 46,
+        "baseline-mortgage": 34
+      },
+      "pr_ci": {
+        "failure": 3,
+        "success": 77
+      },
+      "oracles": "passed",
+      "leak_scan": "passed"
+    },
+    {
+      "seed": "hc-2",
+      "requested": 80,
+      "kept": 80,
+      "dropped": 0,
+      "by_mode": {
+        "defect": 50,
+        "clean": 30
+      },
+      "by_app": {
+        "baseline-payments": 46,
+        "baseline-mortgage": 34
+      },
+      "pr_ci": {
+        "success": 78,
+        "failure": 2
+      },
+      "oracles": "passed",
+      "leak_scan": "passed"
+    },
+    {
+      "seed": "hc-3",
+      "requested": 80,
+      "kept": 80,
+      "dropped": 0,
+      "by_mode": {
+        "defect": 46,
+        "clean": 34
+      },
+      "by_app": {
+        "baseline-payments": 46,
+        "baseline-mortgage": 34
+      },
+      "pr_ci": {
+        "success": 79,
+        "failure": 1
+      },
+      "oracles": "passed",
+      "leak_scan": "passed"
+    },
+    {
+      "seed": "hc-120",
+      "requested": 120,
+      "kept": 120,
+      "dropped": 0,
+      "by_mode": {
+        "defect": 72,
+        "clean": 48
+      },
+      "by_app": {
+        "baseline-payments": 70,
+        "baseline-mortgage": 50
+      },
+      "pr_ci": {
+        "success": 118,
+        "failure": 2
+      },
+      "oracles": "passed",
+      "leak_scan": "passed"
+    }
+  ],
+  "total_final_variants": 360,
+  "unexpected_pr_ci_failures": 0,
+  "expected_pr_ci_failures": {
+    "advice_gateway_inventory": 8
+  },
+  "python_source_sha256": {
+    "__init__.py": "a246aa9df00e43c7ce5592586e7d9c21f8c675d7278f4d48537dbf45514a40ff",
+    "evidence.py": "f9c7094ae23d8ccb9d427bd03b8037d278194c82b2da8b718bbd1d639a4e9895",
+    "helpers.py": "ce7b293e20fac240c4d5aab455022ba91d5eaf78a019c9a1a85f338405cc9781",
+    "process.py": "990c1a2ba0cb8a5ed7edaa0cf584e3697de326147a1b90f383930f27e555f659",
+    "product.py": "6ec3bd9e1dbc079f39f25f518946f06942771363124c6fdf9f7602b92f5e6c40"
+  },
+  "execution": {
+    "jobs": 6,
+    "KAB_NO_SANDBOX": "1",
+    "TMPDIR": "$PWD/tmp",
+    "external_network_used": false,
+    "local_loopback_required": "baseline Java HTTP socket test"
+  },
+  "scratch_artifacts_removed": true
+}

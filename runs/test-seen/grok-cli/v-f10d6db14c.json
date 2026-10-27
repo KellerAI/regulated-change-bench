@@ -1,0 +1,79 @@
+{
+  "variant": "v-f10d6db14c",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24709 is approved by change manager Grace Kim on 2026-09-28, before review, and its components payments.reports and payments.tests cover reports.py and tests/test_released_by_payee.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Jonah Weiss, approved a code_review of commit 4582c033."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review approval names that same head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records success of ci/run-tests.sh baseline-payments on 4582c033, and the JUnit report shows 174 tests with 0 failures, errors, or skips, including the new payee-total tests. No product-obligation scope or closed domain is touched, so no extra control test is required beyond the passing suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "reports.py is payments.reports and the new test is payments.tests; both are marked security_sensitive false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The emergency ticket records deployment at 2026-09-29T11:25:00Z, and Mara Costa (not the author) approved a pir of the deployed commit the same business day, within two business days."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and no exception is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Prior ledger evidence covers payments.py, audit.py, routes.py, and mortgage approval and underwriting code, none of which this change modifies."
+    }
+  ],
+  "summary": "The change adds a pure released-amount-by-payee helper and unit tests in payments reports. It does not touch access, payments, routes, NPI, audit, SQL, or other product-control code, so those obligations are not applicable. The emergency ticket, independent code review of the final commit, passing full-suite CI on that commit, and a same-day post-implementation review by someone other than the author all meet the change standard. No exception is needed and no prior acceptance evidence covers code this diff alters.",
+  "meta": {
+    "elapsed_s": 97.85,
+    "tokens_in": 41676,
+    "tokens_out": 6674,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bd0f147bf3d003e12f2046c305c224ed34ac53357d1512c918fb279b6d506aae",
+    "packet_tokens_est": 25151,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41676,
+      "outputTokens": 6674,
+      "cacheReadTokens": 44032,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 94006,
+    "duration_api_ms": 94006,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

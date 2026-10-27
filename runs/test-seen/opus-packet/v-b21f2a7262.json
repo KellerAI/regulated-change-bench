@@ -1,0 +1,78 @@
+{
+  "variant": "v-b21f2a7262",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "refuted",
+      "note": "The approved catalog at base sets the auto-approve DTI limit at 40% (params.dti_max_percent = 40), and the change does not amend it. Head code sets Policy.DTI_MAX_PERCENT to 43 and edits controls/mortgage/policy-params.json to 43, so the code no longer equals the approved value; the credit-committee minutes CP-2026-31 are cited but not in the packet."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406 (CRD-1) covers Policy.java DTI_MAX_PERCENT, which this change alters, so it has lapsed. The 'renewed' proof names the head commit but keeps the premise DTI_MAX_PERCENT = 40, which is false at head, so it is not valid replacement evidence."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from CRD-1's approved 40% DTI limit. The register has no exception for CRD-1 or mortgage.underwriting/policy."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25598 is standard and approved by change manager erik.brandt on 2026-10-05, before the PR opened. Its components (mortgage.controls-data, mortgage.policy, mortgage.tests) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from wen.li, a change_approver for baseline-mortgage and a different person from the author declan.farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name head commit 841b407, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows success on head 841b407 with 124 tests, 0 failed or skipped, including the registered exhaustive CRD-1 control test UnderwritingControlTest#autoApproveGridMatchesPolicy. That test passing against the edited params file does not cure the CRD-1 violation."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches protected path controls/mortgage/policy-params.json. It has a control_owner approval from bao.tran (controls-office, outside the author's lending-eng team) on the head commit."
+    }
+  ],
+  "summary": "The change raises the auto-approve DTI ceiling from 40% to 43% in both code and the params file. The bank's approved obligation catalog still states the approved limit is 40%, so CRD-1 is violated, and no exception covers the deviation. The prior CRD-1 evidence lapsed, and the replacement proof is invalid because its premise (DTI = 40) contradicts the head code. The process records (ticket, independent review, control-owner approval, CI on head) are in order, but the product obligation is refuted, so the change is rejected until the approved catalog value is formally changed.",
+  "meta": {
+    "elapsed_s": 28.85,
+    "tokens_in": 40876,
+    "tokens_out": 2942,
+    "usd": 0.222344,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "60995d020e19b929cd6db3fe2f4244dfd79cf429069369b05c2c1cf2fa928782",
+    "packet_tokens_est": 25767,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40876,
+      "output_tokens": 2942,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

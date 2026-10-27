@@ -1,0 +1,92 @@
+{
+  "variant": "v-1d26c16657",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24535 is 'approved' by erik.brandt@fernbrook.example (change_manager) at 2026-10-15T07:10Z, before the change was opened at 22:10Z. Its component 'payments.reports' covers the only touched file, apps/baseline-payments/payments/reports.py, per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa@fernbrook.example, who holds change_approver for payments (p-mcosta) and is a different person from the author linh.nguyen (p-lnguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 0a37b810fdfa6a0ec04d5900ebfa04ec14df984d. No commits come after it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json shows the only CI run was on d10e63c, not the final commit 0a37b81. The later commit changes REPORT_FORMAT from \"ledger-csv/1\" to \"ledger-csv/1.1\", a behavioural change rather than comment, whitespace or formatting, so the earlier run doesn't count and the final commit has no CI record."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.reports, is marked security_sensitive: false in controls/payments/components.json, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change only touches apps/baseline-payments/payments/reports.py, which matches no pattern in controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24535 is type 'standard' and the change has emergency: false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change doesn't deviate from any product obligation and doesn't rely on any exception in the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "None of the code covered by acceptance ledger entries (payments.py, audit.py, routes.py, Approvals.java, Policy.java, Underwriting.java) is changed, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "PR-1926 adds a REPORT_FORMAT constant to payments/reports.py, a non-security-sensitive file outside every product obligation's scope; ticket, independent approval and approval-on-head are all in order. The recorded CI run was on the first commit d10e63c, and the final commit 0a37b81 changes the constant's value, a behavioural change. Under CHG-4 an earlier run counts only if later commits are cosmetic, so the final commit has no valid CI record. The change is rejected until a CI run of the full payments suite on 0a37b81 is recorded.",
+  "meta": {
+    "elapsed_s": 65.05,
+    "tokens_in": 357316,
+    "tokens_out": 5628,
+    "usd": 0.36276,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 21,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 5628,
+      "cache_read_input_tokens": 320073,
+      "cache_creation_input_tokens": 37213
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3627596,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "variant": "v-7e0d82fd36",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route POST /payees/{id}/reopen maps to manage_payees, which is in rbac.PRIVILEGED, but is declared mfa=False in routes.py. The exhaustive control test test_privileged_routes_require_mfa fails on exactly this route in the CI run on head."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The cited exception EXC-0183 (MFA-1, payments.routes, approved by risk owner Omar Haddad) expired on 2026-09-13, before the review time of 2026-10-16. No other exception in the register covers this deviation."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on head 331108b has result 'failure' (1 failure in 172 tests), so the full suite does not pass on the final commit. The required MFA-1 control test is the one that fails. Despite the description, no tests were changed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0404 (MFA-1 evidence covering routes.py) lapses because routes.py changed in behaviour, and the replacement evidence of the same strength (the exhaustive route control test) fails."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The new state-changing operation reopen_payee calls _audit with actor, action 'reopen_payee' and target payee:{id}, as every state-changing method in service.py does. The sampled audit control test passes on head."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The new Store.reopen_payee only updates status and closed_at and writes no NPI fields. The exhaustive test test_every_npi_field_is_sealed_at_rest passes on head."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new execute call uses a fixed SQL string with payee_id bound as a parameter. The exhaustive test test_sql_statements_are_parameterized passes on head."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24857 was approved by change manager Grace Kim on 2026-10-11, before review, and its components (payments.http, routes, service, store) cover all four touched files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approved by Mara Costa, a payments change_approver who is a different person from the author Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 331108b, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive components (routes, http, store). Security review approved by Kofi Mensah, a security_reviewer, on the head commit."
+    }
+  ],
+  "summary": "The change adds POST /payees/{id}/reopen for the privileged manage_payees action without requiring MFA, which violates MFA-1. The only exception covering it, EXC-0183, expired on 2026-09-13, before the 2026-10-16 review, so it gives no cover under EXC-1. The change's own CI run on the final commit failed exactly on the MFA-1 control test, which contradicts the 'full suite green' claim and fails CHG-4, and the earlier MFA-1 ledger evidence has lapsed with no valid replacement. Ticketing, independent code review and security review are in order, but the violated obligations require rejection.",
+  "meta": {
+    "elapsed_s": 83.24,
+    "tokens_in": 365395,
+    "tokens_out": 7237,
+    "usd": 0.412974,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 20,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7237,
+      "cache_read_input_tokens": 324731,
+      "cache_creation_input_tokens": 40632
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4129742,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

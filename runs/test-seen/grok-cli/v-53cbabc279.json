@@ -1,0 +1,79 @@
+{
+  "variant": "v-53cbabc279",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24359 is approved by change manager Erik Brandt before the review time, and its components payments.policy and payments.controls-data cover policy.py and controls/payments/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author Mara Costa, gave a code_review approval on the head commit 32b73be4a0d894f0aa6d6501040e74ce4ed5ba34."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and control_owner approvals name that same head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 172 tests with no failures, errors, or skips. No product-obligation scope symbol was changed, so no additional control-test obligation is triggered beyond the passing suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.policy and payments.controls-data are not security_sensitive in components.json, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "policy-params.json is a protected controls path. Rachel Stein, a control_owner on the controls-office team, outside payments-eng, approved that role on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The edit only raises payments.standard_idle_minutes and STANDARD_IDLE_MINUTES from 30 to 45. Privileged idle stays 15, within the SES-1 bound, and the change does not rely on the expired SES-1 exception EXC-0141."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger covers for PAY-1, AUD-2, PAY-2, MFA-1, LIM-1, and CRD-1 are other files and symbols. This change does not alter that covered behavior."
+    }
+  ],
+  "summary": "The change raises only the payments standard-session idle timeout from 30 to 45 minutes in policy.py and the matching approved parameter. Privileged idle remains 15, and the other product-obligation symbols in those files are unchanged, so those obligations are outside this change. The ticket is approved and scoped to both components, an independent change approver and an out-of-team control owner approved the head commit, and CI shows the payments suite passing on that commit. No security-sensitive component, emergency deployment, product deviation, or lapse of prior evidence is present.",
+  "meta": {
+    "elapsed_s": 187.56,
+    "tokens_in": 97059,
+    "tokens_out": 12150,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3fda1a69cda70afd1eac4ffc4ed115c2dc93de8375a3557b1f6051bd63cd66b8",
+    "packet_tokens_est": 24279,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 97059,
+      "outputTokens": 12150,
+      "cacheReadTokens": 170624,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 184091,
+    "duration_api_ms": 184091,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

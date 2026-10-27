@@ -1,0 +1,21 @@
+{
+  "id": "PR-1427",
+  "title": "Pipeline report: total case count",
+  "description": "Pipeline report: total case count.\n\nChanges:\n- Add `PipelineReport.totalCases`\n- Unit test\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "wen.li@fernbrook.example",
+  "branch": "li/change-862",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "da22cf688af6732aec8f811da29d675de33443af",
+  "commits": [
+    {
+      "sha": "da22cf688af6732aec8f811da29d675de33443af",
+      "message": "Pipeline report: total case count",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-22T17:57:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24256",
+  "opened_at": "2026-10-22T17:57:00Z"
+}

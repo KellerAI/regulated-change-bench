@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-24501",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Treasury dashboard: released totals per payee",
+    "components": [
+      "payments.reports",
+      "payments.tests"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-19T18:32:00Z",
+    "risk": "low"
+  }
+]

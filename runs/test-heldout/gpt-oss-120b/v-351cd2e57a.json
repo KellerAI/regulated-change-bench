@@ -1,0 +1,71 @@
+{
+  "variant": "v-351cd2e57a",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "The change makes `OutboundClient.url_for` return an `http://` URL for the `statement-delivery` integration when the path starts with `/archive/`, violating the rule that every outbound integration endpoint must use HTTPS and no exception is recorded."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The integration remains listed in `controls/payments/asset-inventory.json` and the control test `test_integrations_are_inventoried` passed in the CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24482 is approved, lists component `payments.integrations`, which covers the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval from Sofia Santos (role `change_approver` for payments) is recorded, and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only one commit exists; the approval applies to the final commit and no later behaviour‑changing commits are present."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run succeeded, executing the full test suite including the control tests for ENC-2 (`test_integrations_use_tls`) and INV-1."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "A security‑review approval from Kofi Mensah (role `security_reviewer`) is present for the changed security‑sensitive component."
+    }
+  ],
+  "summary": "The change violates ENC-2 because it deliberately downgrades a statement‑delivery request to HTTP, breaching the requirement that all outbound integration endpoints use HTTPS. No approved exception exists, making the obligation refuted. All other applicable obligations are satisfied, but the violation forces a REJECT decision.",
+  "meta": {
+    "elapsed_s": 93.75,
+    "tokens_in": 24358,
+    "tokens_out": 4879,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "79e2c1c498226878da8a9ea972a4ac9ecc414e7d51e07d247603f4b33f44b7d6",
+    "packet_tokens_est": 24320,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19222,
+    "answer_chars": 1930,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.39,
+    "eval_s": 76.19,
+    "total_s": 93.75,
+    "tokens_est_ratio": 0.976,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

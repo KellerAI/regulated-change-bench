@@ -1,0 +1,88 @@
+{
+  "variant": "v-825ab6d0f2",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The only edit adds `&& isClosedOut(status)` to the legal-hold check, and the function has already returned false for every non-closed-out case, so the conjunct is always true there and behaviour is unchanged. Every DECLINED or WITHDRAWN case on hold still returns false before the cutoff test, and on head RetentionControlTest#sampledPurgeRespectsHold plus RetentionTest and CaseServiceTest#retentionPurgeSkipsCasesOnLegalHold pass."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26090 is standard and was approved on 2026-09-28 by grace.kim (change_manager), before review. Its components [mortgage.retention] cover Retention.java, the only touched path."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell, who holds change_approver for baseline-mortgage. He is a different person from the author, Nneka Okafor."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 3219e97f, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The run.json for head 3219e97f reports success: 124 tests, 0 failures, 0 skipped. The registered RET-1 control test (sample coverage) ran and passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.retention, is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is modified, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false; ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No deviation from a product obligation is introduced and none relies on an exception, so the register is not needed for this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Retention.java; the entries cover Approvals, Underwriting, Policy and payments code, all untouched. The covered code is also behaviourally unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1623 changes one condition in Retention.isPurgeDue. The added `isClosedOut` conjunct is redundant because non-closed-out cases already returned false, so legal-hold protection and the retention schedule behave exactly as before. The ticket, independent code review on the head commit, and a green CI run on head (including the RET-1 control test) are all in order. No security-sensitive or protected paths are touched and no ledger evidence lapses, so the change is accepted. The PR description's claim that it 'simplifies' hold handling is inaccurate, since it adds a redundant check, but this is harmless.",
+  "meta": {
+    "elapsed_s": 27.06,
+    "tokens_in": 38050,
+    "tokens_out": 2595,
+    "usd": 0.2041,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "548874bd429ce600bd7eb07d984efb731444199ea3374e0efb8b25f766a2ab7c",
+    "packet_tokens_est": 24115,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38050,
+      "output_tokens": 2595,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

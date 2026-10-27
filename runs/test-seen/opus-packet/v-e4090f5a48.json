@@ -1,0 +1,63 @@
+{
+  "variant": "v-e4090f5a48",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25846 is standard and was approved by change manager Erik Brandt on 2026-10-09, before the change opened. Its components (payments.payments, payments.reports, payments.tests) cover memos.py, reports.py and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos approved as code_review. She holds change_approver for payments and is a different person from the author, Mara Costa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names commit 7ce44a5e. Commit 80486e27 came after it and adds a new module constant, PREVIEW_MIN_WIDTH = 8, to memos.py. That is a code change, not a comment, whitespace or formatting edit, so it voids the approval and no new approval exists."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head 80486e27 from ci-runner-04 on 2026-10-10. But the attached JUnit report is stamped 2026-10-23 on host dev-laptop-7.local, which is after the review time and not the CI executor. I cannot confirm the report belongs to this CI run. No product-obligation control tests are required, because no scope path or domain was touched."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover payments.py (required_approvals, release), audit.py, routes.py and mortgage files. None of these is changed by this diff, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds a reporting helper and its tests, plus a constant in memos.py. It touches no product-obligation scope and no security-sensitive or protected paths. The only code_review approval names the first commit, and the second commit adds a new constant to memos.py. Under CHG-3 that is a non-cosmetic change, which voids the approval, and no re-approval exists. The CI evidence is also inconsistent: the JUnit report postdates the review time and came from a local machine, not the CI executor. The change is rejected for lack of an approval covering the head commit.",
+  "meta": {
+    "elapsed_s": 20.13,
+    "tokens_in": 39770,
+    "tokens_out": 1853,
+    "usd": 0.19614,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "67be66b5ef700050f71e8ff554a3bd161d50b093fe11c17c6ad5d20b9397cd54",
+    "packet_tokens_est": 25556,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39770,
+      "output_tokens": 1853,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "variant": "v-5da76ce910",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change only alters the in-memory buffer size constant (10 000 → 12 000) in AppLog.java; no logging logic, NPI handling, or mask usage is modified. The CI run includes and passes controls.LoggingControlTest#sampledFlowsDoNotLogNpi(), and no new log call sites are introduced."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26039 is type 'standard', status 'approved', approved by erik.brandt@fernbrook.example (a change_manager). Its component list ['mortgage.logging'] matches the component of AppLog.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval on the head commit is from wen.li@fernbrook.example (Wen Li, p-wli), who holds the change_approver role for baseline-mortgage and is a different person from the author Tomas Ortega (p-tortega)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name commit f0f9a7a9…, which is the sole commit and the head of the PR. No later commits exist that could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) targets the head commit f0f9a7a9… with result 'success'; 124 test cases passed with 0 failures, 0 errors, 0 skipped, including the registered control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi() for LOG-1 (the only product obligation whose scope includes the changed file)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java belongs to component mortgage.logging, which is marked security_sensitive in components.json. The required security_review approval was given by wen.li@fernbrook.example (Wen Li, p-wli), whose roles are 'engineer' and 'change_approver'—she does NOT hold the 'security_reviewer' role. The only security_reviewers in the directory are Ines Halvorsen and Kofi Mensah (platform-security). The approval is therefore invalid under CHG-5."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger (records/ledger.json) covers AppLog.java; all prior evidence (ACR-0401 through ACR-0406) covers files in payments or other mortgage files (Approvals.java, Underwriting.java, audit.py, payments.py, routes.py). No prior evidence lapses."
+    }
+  ],
+  "summary": "The change is a minimal, one-line buffer-size tweak to AppLog.java (MAX_LINES 10 000 → 12 000) with no behavioural impact on NPI handling or logging logic. Most process obligations (CHG-1 through CHG-4) and the product obligation LOG-1 are satisfied. However, CHG-5 is violated: AppLog.java sits in the security-sensitive component mortgage.logging, and the security_review approval was issued by Wen Li, who holds the 'change_approver' role but not the required 'security_reviewer' role. Because this mandatory security review is invalid, the change cannot be accepted.",
+  "meta": {
+    "elapsed_s": 135.18,
+    "tokens_in": 27548,
+    "tokens_out": 3714,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0df1f6d56e423cde5d6967768c77acf27b7ed36bdaae59bd6ba42b1015469df9",
+    "packet_tokens_est": 24115,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 10744,
+    "answer_chars": 2904,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.12,
+    "eval_s": 103.03,
+    "total_s": 135.18,
+    "tokens_est_ratio": 1.113,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

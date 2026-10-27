@@ -1,0 +1,93 @@
+{
+  "variant": "v-ea9ec18f10",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The diff removes `self._audit(actor, \"amend_memo\", f\"payment:{payment_id}\")` from `LedgerService.amend_memo` and puts an app-log line in its place. Amending a payment memo changes state, so it no longer records an audit event with actor, action, target and time. The passing AUD-1 control test is only a sample and does not cover this operation."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new `self._log.info(\"payment memo updated\", payment_id=payment_id)` call logs only the payment id, which is not an NPI field. The sampled LOG-1 control test is listed as passing."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from AUD-1 and the register has no exception for AUD-1 or for component payments.service. The only entries are for SES-1 (expired), LOG-1 (mortgage.logging) and MFA-1 (withdrawn), so the deviation is not covered."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24747 is a standard ticket, approved by change manager Erik Brandt at 2026-10-19T03:42Z, before the change was opened. Its component payments.service covers the only touched file, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa approved as code_review. She holds change_approver for payments and is a different person from the author, Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit ef0d3399, and the change has no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on the head commit from ci-runner-01, started 2026-10-19T14:42Z. The JUnit report it references is timestamped 2026-10-23 on hostname dev-laptop-7.local, which suggests a local run rather than this CI run. The test evidence therefore cannot be tied to the CI run on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.service, is not marked security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths are touched; the only changed file is apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py. The entries cover payments.py, audit.py, routes.py and Mortgage files, none of which changed, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1291 replaces the audit record for payment memo amendments with an application log line. A state-changing operation is therefore no longer audited, which violates AUD-1. No approved exception covers this deviation. The CI evidence is also questionable: the JUnit report appears to come from a developer workstation days after the recorded CI run. The change is rejected.",
+  "meta": {
+    "elapsed_s": 22.58,
+    "tokens_in": 40558,
+    "tokens_out": 2188,
+    "usd": 0.205992,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "aac8a71e122788d5260d8b06d316a06996e01f586bea1c45073145fc73cb41b3",
+    "packet_tokens_est": 26600,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40558,
+      "output_tokens": 2188,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

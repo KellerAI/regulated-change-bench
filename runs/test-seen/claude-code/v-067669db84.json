@@ -1,0 +1,92 @@
+{
+  "variant": "v-067669db84",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25679 is approved by Grace Kim (change_manager) on 2026-09-29, before the change opened on 2026-10-02. Its components (mortgage.reporting, mortgage.servicing, mortgage.tests) cover PipelineReport.java, RateQuote.java and the new test file under components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example (Wen Li), who has change_approver for baseline-mortgage and is a different person from the author, Declan Farrell, under any of his addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit d5e0ffa, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json is a run on 7798860, not the final commit d5e0ffa. The later commit adds a field declaration (RateQuote.DEFAULT_TERM_YEARS), which is not comment-only, whitespace or formatting, so the earlier run doesn't count and no CI run on the final commit is recorded."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched files map to mortgage.reporting, mortgage.servicing and mortgage.tests, none of which is security_sensitive, so no security review is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path is touched (controls/, control tests, ci/). The diff only changes two main source files and adds a test under src/test/java/mortgage, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is marked emergency=false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change doesn't deviate from any product obligation and doesn't rely on any exception in the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover Approvals.java, Underwriting.java, Policy.java and payments files, none of which the change alters, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1896 adds PipelineReport.totalCases with a unit test, plus an unused constant in RateQuote. The ticket, the independent code review on the head commit, and the security, control and exception checks are all satisfied, and no product obligation's code is touched. However, the only CI run on record is on the earlier commit 7798860, and the later commit is a code change, not a comment or formatting edit, so CHG-4 has no passing full-suite run on the final commit. The change is rejected until CI is run and recorded on d5e0ffa, or the RateQuote commit is removed.",
+  "meta": {
+    "elapsed_s": 67.33,
+    "tokens_in": 288155,
+    "tokens_out": 6162,
+    "usd": 0.366113,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 6162,
+      "cache_read_input_tokens": 249558,
+      "cache_creation_input_tokens": 38573
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.36611260000000007,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "variant": "v-2285fd5d91",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25850 is status approved, approved by erik.brandt (change_manager) on 2026-10-10, before the change opened and before review. Its components mortgage.servicing and mortgage.tests cover RateQuote.java and the new test under src/test/java/mortgage."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example (Wen Li, change_approver for baseline-mortgage). Wen Li is a different person from the author, Declan Farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 2774f198, so it covers everything that would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The only CI run (records/ci/run.json) is on the earlier commit f611f963. The later commit 2774f198 adds a code constant (DEFAULT_TERM_YEARS) to RateQuote.java, which is not a comment, whitespace or formatting edit, so there is no passing full-suite run on the final commit."
+    }
+  ],
+  "summary": "The ticket, independent code review and approval coverage are all in order, and the change touches no product-obligation scope, security-sensitive component or protected path. But the change's CI run was on f611f963, and the final commit 2774f198 adds a code constant to RateQuote.java, which is not a comment, whitespace or formatting edit. Under CHG-4 the earlier run therefore does not count, and there is no test evidence for the commit being merged. The change is rejected until CI is run on the final commit.",
+  "meta": {
+    "elapsed_s": 54.84,
+    "tokens_in": 250657,
+    "tokens_out": 4915,
+    "usd": 0.291203,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 15,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 4915,
+      "cache_read_input_tokens": 220908,
+      "cache_creation_input_tokens": 29725
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.29120260000000003,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

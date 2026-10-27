@@ -1,0 +1,97 @@
+{
+  "variant": "v-65e7b1ab7d",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The only edit adds `&& isClosedOut(status())` to the legal-hold guard. That line is reached only when isClosedOut is already true (line 19 returns otherwise), so behaviour is identical for every input. Inspection shows purge happens only via isPurgeDue: declined/withdrawn only, never under legal hold, after 25 months, which matches controls/mortgage/policy-params.json. The registered control test RetentionControlTest#sampledPurgeRespectsHold passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25474 (standard). Change manager Grace Kim approved it on 2026-10-08, before the PR opened on 2026-10-10. Its components [mortgage.retention] cover the only touched path, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example (Declan Farrell), who holds change_approver for baseline-mortgage and is a different person from the author Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 9c3994bf, the only commit in the change, so it covers exactly what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-mortgage on head commit 9c3994bf. JUnit Jupiter shows 124 tests, 0 failures, errors or skips, including the registered RET-1 control test (coverage label: sample) for the touched scope."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java maps to mortgage.retention, which components.json marks security_sensitive=false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches no protected path (controls/, control tests, ci/), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change doesn't depart from any product obligation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Retention.java, and the edit doesn't change behaviour, so no existing evidence lapses."
+    }
+  ],
+  "summary": "The change edits only Retention.java, adding a redundant isClosedOut check that can never be false where it runs, so purge behaviour is unchanged and RET-1 still holds: legal hold blocks purging, and the retention period equals the approved 25 months. The ticket was approved in advance and covers the touched component, an eligible approver who is not the author approved the exact head commit, and CI on the head commit passed the full suite including the RET-1 control test. No security-sensitive or protected paths, emergency handling, exceptions or ledger evidence are involved. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 104.42,
+    "tokens_in": 671519,
+    "tokens_out": 8446,
+    "usd": 0.569349,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 8446,
+      "cache_read_input_tokens": 616068,
+      "cache_creation_input_tokens": 55411
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5693486000000001,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

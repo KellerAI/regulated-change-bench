@@ -1,0 +1,66 @@
+{
+  "variant": "v-e38eb4c5b4",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26050 is approved and lists component payments.service, but components.json does not map apps/baseline-payments/payments/service.py to that component, so coverage cannot be verified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval from Sofia Santos (change_approver for payments) is present and she is not the author, satisfying independent approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval references the exact commit being merged and there are no later commits, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the head commit succeeded with the full test suite (172 tests) passing, meeting the testing requirement."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "Service.py is in AUD-1 scope, but only a sample test exists; no exhaustive evidence (proof or exhaustive control test) is provided, so the obligation is not satisfied."
+    },
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change adds an error log that includes an unmasked account number (NPI), directly violating the rule that no log may contain unmasked NPI and no evidence of compliance is supplied."
+    }
+  ],
+  "summary": "The change fails critical obligations: CHG-1 lacks verifiable component coverage, LOG-1 is violated by logging unmasked NPI, and AUD-1 lacks required exhaustive evidence. Although approvals and CI pass, the violations require rejection.",
+  "meta": {
+    "elapsed_s": 173.9,
+    "tokens_in": 26283,
+    "tokens_out": 9586,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "da768ca0fda4f097ff1cb535299fd3e5d5edba1eaf616b03bc7fcbe2f8be399b",
+    "packet_tokens_est": 26650,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 38055,
+    "answer_chars": 1687,
+    "done_reason": "stop",
+    "load_s": 3.09,
+    "prompt_eval_s": 16.78,
+    "eval_s": 153.89,
+    "total_s": 173.9,
+    "tokens_est_ratio": 0.963,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

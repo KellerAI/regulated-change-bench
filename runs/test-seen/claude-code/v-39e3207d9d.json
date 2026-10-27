@@ -1,0 +1,97 @@
+{
+  "variant": "v-39e3207d9d",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds `tax_id` (a tax id, which ENC-1 names as NPI) to ApplicantFields.ALL, so ApplicantValidator accepts it. NpiRegistry.FIELDS and mortgage.npi_fields don't include it, so CaseStore.protect stores it in plaintext. The passing ENC-1 control test only checks the registry and approved list, so it misses the new field."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No exception in the register covers ENC-1 for mortgage.cases or mortgage.npi. The only entries are for SES-1 (expired), LOG-1 (a different scope) and MFA-1 (withdrawn), so the ENC-1 gap has no approved exception."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24474 is approved by change manager grace.kim on 2026-10-24, before the 2026-10-25 review. Its component mortgage.cases covers the only touched path, ApplicantFields.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li, a change_approver for baseline-mortgage who is a different person from the author, Declan Farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 6de3951, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows success on head 6de3951: 124 Jupiter tests, 0 failures, 0 skipped, including the registered ENC-1 control test. That test's exhaustive label covers the registry only, which is why ENC-1 is still refuted."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file, ApplicantFields.java, maps to mortgage.cases with security_sensitive false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency and ticket type is standard, so no PIR is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantFields.java, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change adds a `tax_id` applicant field. Tax ids are NPI under ENC-1, but the field was never added to NpiRegistry or the approved NPI list, so CaseStore would store it in plaintext. The ENC-1 control test only enumerates the registry, so the green CI run doesn't show the new field is protected, and no exception covers the gap. The process records (ticket, independent review, approval on head, CI on head) are in order, but the ENC-1 violation means the change must be rejected.",
+  "meta": {
+    "elapsed_s": 80.97,
+    "tokens_in": 417838,
+    "tokens_out": 7322,
+    "usd": 0.439774,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7322,
+      "cache_read_input_tokens": 374130,
+      "cache_creation_input_tokens": 43676
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.439774,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

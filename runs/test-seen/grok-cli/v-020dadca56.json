@@ -1,0 +1,84 @@
+{
+  "variant": "v-020dadca56",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Payments' privileged idle limit is 10 in both policy.py and controls/payments/policy-params.json, and 10 is within the approved maximum of 15. The two artifacts match, and session enforcement code was not changed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24417 is approved by change manager Erik Brandt before review, and its components payments.policy and payments.controls-data cover policy.py and controls/payments/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author, gave a code_review approval on commit 1d8360e591d64feda330816cfcb2f5b25c3409ab."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and control_owner approvals name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful payments suite on the head commit, but the JUnit report is timestamped 2026-10-23T13:30:21-07:00 on dev-laptop-7.local, four days before that commit. That report does not show the suite, including the SES-1 control test, passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.policy and payments.controls-data are not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The approved idle-timeout parameter is a protected controls path, and Rachel Stein of the controls office, outside payments-eng, approved it as control_owner on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The new limit stays inside the SES-1 bound, so no exception is required. Expired exception EXC-0141 is not relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover other files and symbols, and this diff does not change their behaviour. SES-1 is judged from the updated parameter artifacts on this commit."
+    }
+  ],
+  "summary": "The idle-timeout change itself is within policy: both the code constant and the approved payments parameter are 10 minutes, which is at or under the 15-minute ceiling, and the ticket, independent code review, and control-owner approval match the single head commit. Testing evidence does not. The JUnit report attached to the CI run is dated 2026-10-23 on a workstation, before commit 1d8360e5 on 2026-10-27, so it does not show the payments suite passing on the final commit. CHG-4 is therefore not met and the change is rejected.",
+  "meta": {
+    "elapsed_s": 194.49,
+    "tokens_in": 63087,
+    "tokens_out": 13716,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b9a360d575bc22bea42ae4a22c6437d30c01a0a682453e4c94a0c77bcfee1068",
+    "packet_tokens_est": 24250,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 63087,
+      "outputTokens": 13716,
+      "cacheReadTokens": 2688,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 190287,
+    "duration_api_ms": 190287,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

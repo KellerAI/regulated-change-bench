@@ -1,0 +1,66 @@
+{
+  "variant": "v-3764edcd85",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Control test `controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy` passed in CI, confirming idle‑limit logic unchanged and policy parameters still satisfy ≤15 minutes."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24761 is approved by a change manager and lists component `payments.session`, which matches the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Mara Costa (change_approver for payments, not the author) is recorded for the final commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "Only the final commit has a code‑review approval; the earlier commit (1e0a30c…) introduces functional changes and lacks an approval, violating the rule that all non‑trivial commits must be covered."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded with all 172 tests passing, including the required control tests for touched obligations."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "Security‑review approval is only for the earlier commit; the later commit also modifies the security‑sensitive `payments.session` component without a new security review, breaching the policy."
+    }
+  ],
+  "summary": "The change fails process obligations CHG-3 and CHG-5 because not every non‑trivial commit received the required approvals. Although product obligations and other process checks are satisfied, the missing approvals cause a rejection.",
+  "meta": {
+    "elapsed_s": 97.53,
+    "tokens_in": 24583,
+    "tokens_out": 5114,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6fa1bfe279f471ddbc42e3a10cda397627ab230931666dd3b7ed2693e33bba4d",
+    "packet_tokens_est": 24497,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22273,
+    "answer_chars": 1692,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.57,
+    "eval_s": 79.73,
+    "total_s": 97.53,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

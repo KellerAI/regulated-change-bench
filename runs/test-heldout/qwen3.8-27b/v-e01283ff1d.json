@@ -1,0 +1,81 @@
+{
+  "variant": "v-e01283ff1d",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24206 is approved by Grace Kim (change_manager) and lists component mortgage.reporting, which matches the only file touched (PipelineReport.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds the change_approver role for baseline-mortgage and is not the author (Wen Li); his code_review approval is on record for commit 9ba4e2da."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The approval is on commit 9ba4e2da, but the head is 208f3ec9 whose message 'align the format identifier with the portal release' indicates a code change to the FORMAT constant value rather than a comment-only, whitespace, or formatting edit. Under CHG-3 this voids the earlier approval and requires a new one."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 208f3ec9 with result 'success'; 124 tests passed, 0 failures, 0 skipped. The touched component (mortgage.reporting) has no registered control test, so no control-test gap exists."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "PipelineReport.java is mapped to component mortgage.reporting with security_sensitive=false in components.json; no security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only file changed (apps/baseline-mortgage/src/main/java/mortgage/PipelineReport.java) is not under any protected path listed in controls/protected-paths.json; no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; CHG-7 is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by adding a metadata constant; no exception is needed or referenced."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "PipelineReport.java is not in the scope of any product obligation and is not covered by any acceptance-ledger entry; no prior evidence lapses."
+    }
+  ],
+  "summary": "The change is a two-line addition of a FORMAT string constant to PipelineReport.java (component mortgage.reporting, security_sensitive=false). All product-obligation scopes are untouched, and CI passes on the final commit with all 124 tests green. However, CHG-3 is violated: the code_review approval was given for commit 9ba4e2da, yet the second commit (208f3ec9) changes the format identifier value—a code change rather than a comment, whitespace, or formatting edit—thereby voiding the approval. A fresh approval covering the final commit is required before this change can be merged.",
+  "meta": {
+    "elapsed_s": 209.91,
+    "tokens_in": 27866,
+    "tokens_out": 6047,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5706a52a4516bf7954afe06e96b449a2afcc336ced1f44830d92cc6b35b90b12",
+    "packet_tokens_est": 24405,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21933,
+    "answer_chars": 2593,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.59,
+    "eval_s": 177.29,
+    "total_s": 209.91,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

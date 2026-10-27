@@ -1,0 +1,67 @@
+{
+  "variant": "v-d419b3e90b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26506 is approved by change manager grace.kim@fernbrook.example (2026-10-23, before review). Its components (payments.payments, payments.tests) cover memos.py and tests/test_memo_preview.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example, which the directory lists as an alias of Sofia Santos (p-ssantos), the change author. Self-approval under another address doesn't count, so there is no independent approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names head commit 6bf6ea7, the only commit in the change, so no later commits need assessing. It is still invalid under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeded on head 6bf6ea7 with the full payments suite (174 tests, 0 failures, 0 skipped), including the new memo preview tests. No product-obligation scope is touched, so no extra control tests are required (all 16 ran and passed anyway). The JUnit timestamp (2026-10-23) predates the commit, an inconsistency worth noting."
+    }
+  ],
+  "summary": "The change adds a pure memos.preview helper and unit tests in payments. It touches no product-obligation scope, no security-sensitive component, no protected path and no ledger-covered code. The ticket is approved and covers the touched components, and CI on the final commit is green. But the only code_review approval is from s.santos@fernbrook.example, an alias of the author Sofia Santos, so the independent approval CHG-2 requires is missing. The change is rejected until a change_approver other than the author approves the final commit.",
+  "meta": {
+    "elapsed_s": 61.7,
+    "tokens_in": 254164,
+    "tokens_out": 5646,
+    "usd": 0.363543,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 5646,
+      "cache_read_input_tokens": 212536,
+      "cache_creation_input_tokens": 41604
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.36354319999999996,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

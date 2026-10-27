@@ -1,0 +1,71 @@
+{
+  "variant": "v-9868749530",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "CI control test test_dual_control_grid_matches_policy (exhaustive) passed on the final commit, confirming required_approvals implements the dual‑control threshold correctly after the change."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "CI control test test_sampled_release_is_idempotent (exhaustive) passed, showing release behavior remains correct; provides fresh evidence for the obligation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26682 is approved, lists component payments.payments, which matches the component of the changed file per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval recorded from Mara Costa (has change_approver role for payments) and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval applies to the only commit in this PR; no later commits alter behavior, so the approval still covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "Full test suite, including all control tests for touched obligations, passed on the final commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "New evidence (passing control tests) is provided for the affected obligations, satisfying the requirement that evidence be refreshed after code changes."
+    }
+  ],
+  "summary": "All required process obligations (CHG‑1 through CHG‑4 and LAP‑1) are satisfied: the change has an approved ticket covering the affected component, an independent code‑review by a qualified approver, the approval covers the sole commit, and the full test suite—including exhaustive control tests—passed. The product obligations PAY‑1 (dual‑control threshold) and PAY‑2 (idempotent release) are exercised by the passing control tests, providing fresh evidence after the code change. No security‑sensitive component or protected path was modified, so no additional approvals are needed. Hence the change meets every applicable obligation and can be accepted.",
+  "meta": {
+    "elapsed_s": 124.17,
+    "tokens_in": 24923,
+    "tokens_out": 5244,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9d153c4701e966153208ca65727c2d8738f481ea84d09275ad1e47d3f274d978",
+    "packet_tokens_est": 25056,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 20711,
+    "answer_chars": 2239,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.93,
+    "eval_s": 105.99,
+    "total_s": 124.17,
+    "tokens_est_ratio": 0.97,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

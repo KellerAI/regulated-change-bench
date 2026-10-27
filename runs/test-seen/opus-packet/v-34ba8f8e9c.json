@@ -1,0 +1,73 @@
+{
+  "variant": "v-34ba8f8e9c",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26246 is standard and was approved by change manager Erik Brandt on 2026-10-03, before review. Its components (payments.payments, payments.tests) cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example. The directory lists that address for Sofia Santos, the author, so this is self-approval and no independent change_approver has approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval record names the head commit fd5d1067, and there are no later commits. That approval is still invalid under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on the head commit from ci-runner-08 starting 2026-10-05. The attached JUnit report, however, is timestamped 2026-10-23 (after the 2026-10-07 review time) and was produced on host dev-laptop-7.local, so it cannot be tied to this CI run."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger evidence for PAY-1 (required_approvals) and PAY-2 (release) covers symbols in payments.py that the diff leaves unchanged. Only a new function, approvals_remaining, was added, so neither entry lapses."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals and is_fully_approved are unchanged, and the threshold in policy.py is untouched. Proof record ACR-0401 (exhaustive) still covers the unchanged code."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "approve and is_fully_approved in payments.py are unchanged by the diff. The new helper only reads the payment's approvers and changes no state."
+    }
+  ],
+  "summary": "The change adds a read-only helper, approvals_remaining, and its unit tests; none of the in-scope control symbols are modified. However, the only code review approval comes from s.santos@fernbrook.example, which is an alias of the author Sofia Santos. That is self-approval, so CHG-2 is violated. The CI evidence is also inconsistent: the JUnit report postdates the review time and came from a personal host, which leaves CHG-4 open. Because CHG-2 is refuted, the change is rejected.",
+  "meta": {
+    "elapsed_s": 20.64,
+    "tokens_in": 39724,
+    "tokens_out": 2011,
+    "usd": 0.199116,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ad24df05c2ee3df0bc61d6f122034c5efeb479bfaca93bae82a4d03ca850585c",
+    "packet_tokens_est": 25755,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39724,
+      "output_tokens": 2011,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

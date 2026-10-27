@@ -1,0 +1,84 @@
+{
+  "variant": "v-02cd2cb72b",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals still returns 2 when the amount is at least policy.DUAL_CONTROL_THRESHOLD and 1 otherwise, matching the approved threshold 10000.00 and two approvers. The exhaustive control test test_dual_control_grid_matches_policy passed on the head commit, and is_fully_approved still counts distinct approvers."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26002 is approved by change manager Grace Kim before review, and its component payments.payments covers apps/baseline-payments/payments/payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Jonah Weiss, approved the head commit as a code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only code_review approval names commit 6c3e64637cd491ad15beef60582801b3c22661ff, which is the head commit being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 172 tests with 0 failures and 0 skipped, including the PAY-1 control test test_dual_control_grid_matches_policy."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py is component payments.payments with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is only payments.py, which is not under the protected controls, control-test, or CI paths, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26002 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The dual-control behavior still matches the approved policy, so no exception is required. None of the register entries claim a deviation for PAY-1."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ternary is the same comparison and the same return values as the previous if-statement, so the behavior covered by the PAY-1 proof is unchanged. The exhaustive dual-control control test also passed on the head commit."
+    }
+  ],
+  "summary": "The change rewrites required_approvals as a ternary with the same threshold comparison and the same return values, so dual control at 10000.00 with two distinct approvers is unchanged. The ticket, independent approval of the head commit, and the payments CI run on that commit are all in order, including the exhaustive PAY-1 control test. The file is not security-sensitive or protected, the change is not an emergency, and no exception is needed. Prior PAY-1 evidence still applies because the covered behavior is unchanged, and the new test run confirms it.",
+  "meta": {
+    "elapsed_s": 123.31,
+    "tokens_in": 60436,
+    "tokens_out": 10775,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1e218340e0cfeb8e42eefba932494c5e2003ea134be4d073caad77078af6602b",
+    "packet_tokens_est": 25046,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 60436,
+      "outputTokens": 10775,
+      "cacheReadTokens": 149376,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 119827,
+    "duration_api_ms": 119827,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

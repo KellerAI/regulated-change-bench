@@ -1,0 +1,56 @@
+{
+  "variant": "v-c518948e44",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The changed file apps/baseline-mortgage/src/main/java/mortgage/RateQuote.java has no entry in controls/mortgage/components.json, so the ticket’s component list cannot be shown to cover the change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Wen Li (who has the change_approver role) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The approval only covers the first commit; the second commit adds code (DEFAULT_TERM_YEARS) and is not approved, violating the coverage rule."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run succeeded with all 126 tests passing, including the new QuoteTermTest, satisfying the testing requirement."
+    }
+  ],
+  "summary": "The change fails the process obligations because the new file lacks a component assignment (CHG-1) and the second commit is not approved (CHG-3). Although independent approval (CHG-2) and testing (CHG-4) are satisfied, the missing evidence leads to a REJECT decision.",
+  "meta": {
+    "elapsed_s": 106.93,
+    "tokens_in": 25221,
+    "tokens_out": 3981,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6b1155a56e06ee367cf27269c97d0f31b7b2b8ddf180a7a9cdace7be3776e562",
+    "packet_tokens_est": 25128,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16026,
+    "answer_chars": 1203,
+    "done_reason": "stop",
+    "load_s": 3.07,
+    "prompt_eval_s": 18.23,
+    "eval_s": 85.47,
+    "total_s": 106.92,
+    "tokens_est_ratio": 0.979,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

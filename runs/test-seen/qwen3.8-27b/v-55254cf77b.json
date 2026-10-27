@@ -1,0 +1,86 @@
+{
+  "variant": "v-55254cf77b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new last() method is a pure read accessor that returns the last already-logged line; it does not write new log entries or alter the write path. The control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi passed in CI with zero failures/skips."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25377 is approved by change_manager grace.kim and its components list ['mortgage.logging'] covers the only component touched (AppLog.java → mortgage.logging per components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from declan.farrell@fernbrook.example (change_approver for baseline-mortgage, distinct person from author wen.li) is present and on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval is on commit ce9281b…, which is the head and only commit of the change; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the suite ran on the final commit ce9281b with result 'success', 124 tests, 0 failures/errors/skipped, including the LOG-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java belongs to component mortgage.logging, which is marked security_sensitive: true in components.json. CHG-5 requires a security_review approval from a security_reviewer, but the only approval recorded is a code_review; no security_review approval exists."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only apps/baseline-mortgage/src/main/java/mortgage/AppLog.java, which is not under any protected path in protected-paths.json; no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the emergency post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is being invoked by this change; the change introduces a simple read accessor and does not deviate from any product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No code covered by acceptance-ledger entries (Approvals.java, Policy.java, Underwriting.java, payments/payments.py, payments/audit.py, payments/routes.py) is modified by this change; only AppLog.java is touched, which has no prior ledger evidence that would lapse."
+    }
+  ],
+  "summary": "The change adds a small, read-only last() accessor to AppLog.java. The product obligation LOG-1 is satisfied because no new log entries are created and the relevant control test passes in CI. All process obligations are met except CHG-5: the touched component (mortgage.logging) is flagged security_sensitive in components.json, which mandates a security_review approval from a security_reviewer, but no such approval exists in the records. Because this required review is missing, the change cannot be accepted and must be rejected.",
+  "meta": {
+    "elapsed_s": 125.42,
+    "tokens_in": 27525,
+    "tokens_out": 3282,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "81a6a8da17faeca501915fff7e9b984226a531c7eac6cef34e214ed861142b55",
+    "packet_tokens_est": 24117,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 9711,
+    "answer_chars": 2987,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.07,
+    "eval_s": 93.31,
+    "total_s": 125.42,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

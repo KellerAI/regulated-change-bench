@@ -1,0 +1,21 @@
+{
+  "id": "PR-1233",
+  "title": "Memo update telemetry",
+  "description": "Memo update telemetry.\n\nChanges:\n- Use consistent payment-id diagnostics for memo edits\n- Preserve creator checks and persistence\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-817",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "c4ac2735c98145ea611e05b4309db56b02fccf86",
+  "commits": [
+    {
+      "sha": "c4ac2735c98145ea611e05b4309db56b02fccf86",
+      "message": "Payments: streamline memo update telemetry",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-19T17:19:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24556",
+  "opened_at": "2026-10-19T17:19:00Z"
+}

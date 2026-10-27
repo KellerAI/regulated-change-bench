@@ -1,0 +1,82 @@
+{
+  "variant": "v-636ffc8d6e",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "refuted",
+      "note": "The change sets Policy.DTI_MAX_PERCENT and mortgage.dti_max_percent to 43, but the approved catalog on base fixes the auto-approve DTI limit at 40% (params.dti_max_percent=40). No exception in the register covers CRD-1 or mortgage.policy/underwriting."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26006 is approved by change manager grace.kim on 2026-10-14, before the PR opened on 2026-10-16. Its components (mortgage.policy, mortgage.tests, mortgage.controls-data) cover Policy.java, the test file and controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by declan.farrell, a baseline-mortgage change_approver and a different person from the author priya.raman (none of her aliases)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 1e93cd9, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on head 1e93cd9 succeeded: 124 Jupiter tests, 0 failures or skips, including the registered CRD-1 control test UnderwritingControlTest#autoApproveGridMatchesPolicy (exhaustive). That test checks the code against the edited policy-params.json, so a pass does not show conformance to the approved 40%."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The change edits protected controls data (controls/mortgage/policy-params.json), changing an approved policy value, but there is no control_owner approval in approvals.json."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406 (CRD-1 proof) covers Policy.DTI_MAX_PERCENT, which the change alters, so it lapses. The only new evidence is a control test checked against the altered parameter file, not the approved value, so equivalent valid evidence is missing."
+    }
+  ],
+  "summary": "PR-1351 raises the auto-approve DTI ceiling from 40% to 43% in code and in the controls parameter file, but the approved obligation catalog on the base commit still sets CRD-1's DTI limit at 40%, and no exception covers the deviation. The CRD-1 control test passes only because it compares the code against the parameter file that this change edits. The protected controls-data edit also lacks the control_owner approval required by CHG-6, and the earlier CRD-1 proof has lapsed with no valid replacement. The ticket, independent code review and CI on the head commit are in order, but the violations require rejection.",
+  "meta": {
+    "elapsed_s": 78.19,
+    "tokens_in": 398455,
+    "tokens_out": 7080,
+    "usd": 0.432142,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7080,
+      "cache_read_input_tokens": 354521,
+      "cache_creation_input_tokens": 43902
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.43214220000000003,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

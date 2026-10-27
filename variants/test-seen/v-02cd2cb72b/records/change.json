@@ -1,0 +1,21 @@
+{
+  "id": "PR-1820",
+  "title": "Simplify required_approvals",
+  "description": "Simplify required_approvals.\n\nChanges:\n- Single-expression form, same behaviour\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-390",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "6c3e64637cd491ad15beef60582801b3c22661ff",
+  "commits": [
+    {
+      "sha": "6c3e64637cd491ad15beef60582801b3c22661ff",
+      "message": "Tidy required_approvals",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-17T13:51:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26002",
+  "opened_at": "2026-10-17T13:51:00Z"
+}

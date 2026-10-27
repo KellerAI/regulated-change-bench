@@ -1,0 +1,99 @@
+{
+  "variant": "v-4a0f3a8ed9",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "POST /payees/{id}/reopen is in the route table with action manage_payees, which the approved access policy lists as privileged, and mfa is false. The exhaustive control test on the head commit fails because that route is missing MFA. EXC-0180 does not cover it: its scope is only the reconciliation batch account, and the route is open to every manage_payees session."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "reopen_payee updates only status and closed_at. NPI columns stay on the existing seal path, and test_every_npi_field_is_sealed_at_rest passed."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "LedgerService.reopen_payee calls _audit with the actor, action reopen_payee, payee target, and the clock time after the status change."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new UPDATE is a fixed SQL string with the payee id bound as a parameter. test_sql_statements_are_parameterized passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25044 is approved by change manager Erik Brandt on 2026-10-22, before review, and its components are payments.http, payments.routes, payments.service, and payments.store, matching every file in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author, approved a code_review of commit 34162ea9a1ed688c820e72036272de09b6699d95."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code review and the security review name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json records result failure on the final commit. The payments suite has one failure: tests.controls.test_routes_control#test_privileged_routes_require_mfa, the registered exhaustive MFA-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The diff touches security-sensitive payments.routes, payments.http, and payments.store. Ines Halvorsen, a security reviewer, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change controls data, control tests, or CI, so no control-owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25044 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change relies on EXC-0180 for the MFA gap. That exception is approved by a risk owner and unexpired, but its scope is POST /payees/{id}/reopen for the reconciliation batch account only. The implemented route does not limit the caller to that account, so the exception is out of scope and does not authorize the deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Acceptance ACR-0404 covered apps/baseline-payments/payments/routes.py for MFA-1. This change adds a privileged route, so that evidence lapses, and the rerun of the exhaustive routes control test fails."
+    }
+  ],
+  "summary": "The change adds POST /payees/{id}/reopen for the privileged action manage_payees with MFA turned off, and the exhaustive MFA control test fails on the head commit. EXC-0180 does not cure that gap because it is limited to the reconciliation batch account and the route is not. CI on 34162ea9a1ed688c820e72036272de09b6699d95 is a failure, so the suite requirement is not met, and the prior routes.py acceptance for MFA-1 has lapsed. Ticket, independent code review, and security review are in order, and the new SQL, audit event, and NPI write path do not themselves break those controls.",
+  "meta": {
+    "elapsed_s": 236.99,
+    "tokens_in": 61619,
+    "tokens_out": 16319,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3f86f4d91543ed75ed955eb88cce7dce6649bd54880ad80541556de4f6fb86cb",
+    "packet_tokens_est": 35054,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 61619,
+      "outputTokens": 16319,
+      "cacheReadTokens": 270976,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 233631,
+    "duration_api_ms": 233631,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1222",
+  "title": "Keep tax authority payees for the filing archive",
+  "description": "Adjusts which closed payees the retention job purges.\n\nChanges:\n- Category rule in `purge_due`\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "aisha.bello@fernbrook.example",
+  "branch": "bello/change-185",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "12376ec4e4a751ecfff26d8da3af9841f71f8d20",
+  "commits": [
+    {
+      "sha": "12376ec4e4a751ecfff26d8da3af9841f71f8d20",
+      "message": "Retention: keep tax authority payees for the filing archive",
+      "author": "aisha.bello@fernbrook.example",
+      "at": "2026-10-06T13:53:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26374",
+  "opened_at": "2026-10-06T13:53:00Z"
+}

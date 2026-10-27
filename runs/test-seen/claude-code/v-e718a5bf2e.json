@@ -1,0 +1,102 @@
+{
+  "variant": "v-e718a5bf2e",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26430 was approved by change manager erik.brandt on 2026-10-22, before the code review on 2026-10-25. Its components (mortgage.approvals, mortgage.reporting, mortgage.tests) cover the touched paths Approvals.java, PipelineReport.java and the test under src/test/java/mortgage."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is by declan.farrell, a change_approver for baseline-mortgage and a different person from the author priya.raman under any of her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 3aa4624, and it was given after both commits, so it covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on 8d03deb passed the full suite (125 tests, 0 skipped or failed). The only later commit, 3aa4624, adds one comment line, so the run counts. The exhaustive control tests ApprovalsControlTest#makerCannotCheck (MC-1) and #authorityLimitsMatchPolicy (LIM-1) passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "No touched component is marked security_sensitive (mortgage.approvals, mortgage.reporting and mortgage.tests are all false), so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path was changed: no controls/, ci/ or control-test files are in the diff, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and its ticket are standard (emergency=false), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and no product obligation is deviated from, so the exception register does not bear on acceptance."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0405 (LIM-1) covers Approvals.requiredApprovals and two Policy limits. The only edit to that code since evidence commit d30b2ad is a comment line, so the evidence does not lapse."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Approvals.java changed only by a comment. The exhaustive control test controls.ApprovalsControlTest#makerCannotCheck passed in the CI run that counts for this change."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Policy limits 500000 and 1500000 equal the approved policy-params values. The Rocq proof record ACR-0405 (exhaustive) is still valid because the change is comment-only, and the exhaustive control test authorityLimitsMatchPolicy passed."
+    }
+  ],
+  "summary": "PR-1536 adds a totalCases() method to PipelineReport with a unit test, and a one-line comment in Approvals.java. The ticket was approved by a change manager in advance with matching components, and an independent change approver reviewed the head commit. The CI run on the earlier commit counts because the final commit is comment-only; it shows the full suite passing, including the exhaustive MC-1 and LIM-1 control tests. Existing LIM-1 proof evidence has not lapsed. No security-sensitive or protected paths are touched and the change is not an emergency, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 83.11,
+    "tokens_in": 399455,
+    "tokens_out": 7710,
+    "usd": 0.43688,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 21,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 7710,
+      "cache_read_input_tokens": 357201,
+      "cache_creation_input_tokens": 42224
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4368802,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "variant": "v-b753749601",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24409 is approved by change manager Erik Brandt before review, and its components (mortgage.servicing, mortgage.tests) cover RateQuote.java and QuoteTermTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change approver and not the author Wen Li, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code-review approval names head commit ee667bb533c21e60ee2293c66bf2e178edae30f3, so it covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run.json records success on earlier commit ed04e155, not the head. The later commit adds DEFAULT_TERM_YEARS, which is not a comment, whitespace, or formatting edit, so that run does not count."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components mortgage.servicing and mortgage.tests are not security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch protected controls, control tests, or CI paths, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. Register entries are for other components and are not used."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger covered path changes behavior in this diff, so prior evidence has not lapsed and is not needed for this change."
+    }
+  ],
+  "summary": "The change adds RateQuote.isSupportedTerm and DEFAULT_TERM_YEARS, plus QuoteTermTest, on a standard ticket. The ticket, independent approval of the head commit, and the unchanged control and security-sensitive surfaces meet the process rules that apply. CI is recorded against commit ed04e155, while head ee667bb adds a code constant and is not comment-only, whitespace, or formatting, so the suite was not shown passing on the final commit. CHG-4 is therefore violated and the change is rejected. No product-obligation scope is touched.",
+  "meta": {
+    "elapsed_s": 183.04,
+    "tokens_in": 39942,
+    "tokens_out": 12033,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0d37ec8e7996948d6c5ce9902fd6b4a9cfc6b9bd37eb262ab6b55084382e9bc6",
+    "packet_tokens_est": 25110,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 39942,
+      "outputTokens": 12033,
+      "cacheReadTokens": 181248,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 178666,
+    "duration_api_ms": 178666,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

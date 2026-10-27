@@ -1,0 +1,67 @@
+{
+  "variant": "v-0d2f6aed16",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24309 is standard and approved. It was approved by change manager erik.brandt at 2026-10-24T16:35Z, before the PR was opened and reviewed. Its components (mortgage.reporting, mortgage.tests) cover both changed paths: PipelineReport.java and src/test/java/mortgage/PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from wen.li@fernbrook.example, who is the change's author. A self-approval doesn't count, and no other change_approver for baseline-mortgage (e.g. declan.farrell) has approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The one approval does name the head commit 96a7f38. But it is a self-approval, so no valid approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-mortgage on the head commit 96a7f38. The JUnit report has 125 tests, 0 failures, 0 skipped, and includes the new PipelineTotalTest. No product obligation's scope or domain is touched, so no control tests are required. One oddity: the report timestamps (2026-10-23, host dev-laptop-7.local) are earlier than the commit time, and I couldn't re-run the suite because the JUnit jar is missing."
+    }
+  ],
+  "summary": "PR-1910 adds a read-only totalCases() method to PipelineReport (mortgage.reporting, not security-sensitive) and one unit test. It touches no product-obligation scope, protected path or ledger-covered code, and it is not an emergency change. The ticket is in order and CI on the head commit passes. However, the only code review approval was given by the author, wen.li, so independent approval (CHG-2) is not met and no valid approval covers the merged commit. The change must be rejected until a different baseline-mortgage change_approver reviews and approves the head commit.",
+  "meta": {
+    "elapsed_s": 69.65,
+    "tokens_in": 314167,
+    "tokens_out": 5722,
+    "usd": 0.323183,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 5722,
+      "cache_read_input_tokens": 283763,
+      "cache_creation_input_tokens": 30374
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3231826,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

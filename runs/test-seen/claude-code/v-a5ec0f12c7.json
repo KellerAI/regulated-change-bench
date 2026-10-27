@@ -1,0 +1,92 @@
+{
+  "variant": "v-a5ec0f12c7",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25414 (standard) was approved on 2026-10-17 by Erik Brandt, a change_manager, before the PR opened and before review. Its components mortgage.servicing and mortgage.tests cover RateQuote.java and the new test file under src/test/java/mortgage/."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell gave the code_review approval. He is a change_approver for baseline-mortgage and a different person from the author, Nneka Okafor, under every address in the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 682a6be, which is the change's only commit, so nothing was added after it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records a successful run of ci/run-tests.sh baseline-mortgage on head 682a6be. The JUnit report shows 126 tests with 0 failures, errors or skips, including the new QuoteTermTest, and every test class in the repo appears with matching method counts. The change touches no product obligation's scope paths or closed domain, so no specific control tests are required. I could not rerun the suite locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "RateQuote.java (mortgage.servicing) and the mortgage tests path are both marked security_sensitive: false in controls/mortgage/components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-mortgage/src/main/java/mortgage/RateQuote.java and src/test/java/mortgage/QuoteTermTest.java. Neither is a protected path, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change makes no deviation from any product obligation and relies on no entry in the exception register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers RateQuote.java or the test file. The covered code (payments.py, audit.py, routes.py, Approvals.java, Underwriting.java, etc.) is unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds a pure helper, RateQuote.isSupportedTerm, plus two unit tests. It touches no file in the scope or closed domain of any product obligation, no security-sensitive component and no protected path. The ticket was approved in time by a change manager and covers the touched components, and an independent change_approver approved the final commit. CI on that commit shows the full baseline-mortgage suite passing (126 tests, none skipped). No exceptions or ledger evidence are affected, so every applicable obligation is shown and the change is accepted.",
+  "meta": {
+    "elapsed_s": 70.68,
+    "tokens_in": 345292,
+    "tokens_out": 6305,
+    "usd": 0.374111,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6305,
+      "cache_read_input_tokens": 308004,
+      "cache_creation_input_tokens": 37258
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3741108,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

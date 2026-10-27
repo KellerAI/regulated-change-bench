@@ -1,0 +1,37 @@
+{
+  "format": "proof-record/v1",
+  "statement_id": "mortgage.auto_approve.v1",
+  "obligation": "CRD-1",
+  "property": "decide(a) is AUTO_APPROVE_ELIGIBLE only if dti(a) <= DTI_MAX_PERCENT and ltv(a) <= LTV_MAX_PERCENT",
+  "status": "proved",
+  "target": {
+    "commit": "0d78ba8e76ecc412a1cf2dd09552e40471c23f64",
+    "path": "apps/baseline-mortgage/src/main/java/mortgage/Underwriting.java",
+    "symbol": "decide"
+  },
+  "checker": {
+    "name": "proof-transfer",
+    "version": "1",
+    "method": "branch-preserving return-metadata extension"
+  },
+  "premises": [
+    "DTI_MAX_PERCENT = 40",
+    "LTV_MAX_PERCENT = 90",
+    "Decision is a Java record and reasons has no effect on outcome"
+  ],
+  "assumptions": [
+    "BigDecimal arithmetic"
+  ],
+  "checked_by": "bao.tran@fernbrook.example",
+  "checked_at": "2026-10-27T16:44:00Z",
+  "coverage": {
+    "kind": "exhaustive",
+    "domain": "DTI and LTV"
+  },
+  "derivation": [
+    "The preceding accepted theorem establishes eligibility only within both approved ratios.",
+    "The final commit changes only the reasons argument of the eligible Decision constructor.",
+    "Constructor is a record with no side effects; outcome, ratios, guard and other branches are unchanged.",
+    "Therefore the eligibility theorem transfers for every input of the original domain, not just the CI grid."
+  ]
+}

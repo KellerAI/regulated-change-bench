@@ -1,0 +1,21 @@
+{
+  "id": "PR-1275",
+  "title": "Account-number URL compatibility",
+  "description": "Account-number URL compatibility.\n\nChanges:\n- Keep the earlier mobile client URL working\n- Reuse account-number service authorization\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-499",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "91aab997c3f230b8ca142884802bd254564a4c71",
+  "commits": [
+    {
+      "sha": "91aab997c3f230b8ca142884802bd254564a4c71",
+      "message": "API: support the account-number compatibility URL",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-14T17:50:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26400",
+  "opened_at": "2026-10-14T17:50:00Z"
+}

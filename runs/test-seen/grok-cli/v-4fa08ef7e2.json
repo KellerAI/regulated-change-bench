@@ -1,0 +1,79 @@
+{
+  "variant": "v-4fa08ef7e2",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change PR-1708 names ticket CHG-25285, which Erik Brandt (change manager) approved on 2026-10-05 before review. Its components mortgage.reporting and mortgage.tests cover PipelineReport.java and PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author Nneka Okafor, approved a code review of commit 16d5e474e4ee9c2c7bd64d2140cb2b30e2b6f2fa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is the head commit, and the code-review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, and the JUnit report shows 125 tests, 0 failures, and 0 skipped, including PipelineTotalTest. The diff does not touch any product-obligation scope path, so no additional registered control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "components.json marks mortgage.reporting and mortgage.tests as not security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is only PipelineReport.java and a mortgage unit test, which are outside the protected controls, control-test, and CI paths."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and it does not rely on an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The changed files are not among the paths covered by the acceptance-ledger entries, so prior evidence for those other obligations does not lapse."
+    }
+  ],
+  "summary": "The change adds PipelineReport.totalCases and a unit test that the empty pipeline totals to zero. It does not touch access control, sessions, NPI, logging, audit, retention, underwriting, payments, or any other product-obligation scope, so those obligations are not applicable. The ticket, independent approval of the final commit, and a passing full mortgage suite on that commit meet the change-process rules, and security review, control-owner approval, emergency review, and an exception are not required. The change is accepted.",
+  "meta": {
+    "elapsed_s": 63.06,
+    "tokens_in": 39413,
+    "tokens_out": 5992,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f5d6f67fd439e767db3f7a77b4d0fcdabc1570764701495c1aac9d4a44cec6d7",
+    "packet_tokens_est": 24748,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 39413,
+      "outputTokens": 5992,
+      "cacheReadTokens": 221568,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 58964,
+    "duration_api_ms": 58964,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

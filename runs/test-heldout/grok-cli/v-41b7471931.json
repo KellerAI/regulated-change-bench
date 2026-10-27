@@ -1,0 +1,89 @@
+{
+  "variant": "v-41b7471931",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only new log line records the DocumentType and case id. The rest of CaseService logs ids, user ids, outcomes, or a masked SSN via Mask.npi, and LoggingControlTest#sampledFlowsDoNotLogNpi passed unskipped on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "markDocumentReceived still calls audit.record with the actor, EDIT_CASE, and case id after the new diagnostic line. Every other state-changing method in CaseService does the same, and the audit control test passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24209 is approved by change manager Erik Brandt before the review time, and its component mortgage.cases covers CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change approver and not the author Wen Li, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 35208cbda988192575c7d1b87050c8c0af840802, which is the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, with the LOG-1 and AUD-1 control tests present, unskipped, and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed path is CaseService.java, component mortgage.cases, which is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch controls data, control tests, or CI paths listed in protected-paths.json, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency: change.emergency is false and ticket CHG-24209 is type standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is deviated. The change does not rely on the expired SES-1 exception, the withdrawn MFA-1 exception, or the LOG-1 import-job exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger covers are unchanged. This change does not alter those paths and does not reuse lapsed evidence for CaseService."
+    }
+  ],
+  "summary": "The change adds one diagnostic log in markDocumentReceived for the document type and case id, and leaves the existing audit event in place. That log does not contain an unmasked NPI value, and the state change is still audited. The ticket, independent approval, and passing mortgage suite on the head commit meet the change-process rules, and no security review, control-owner approval, emergency review, or exception is required.",
+  "meta": {
+    "elapsed_s": 260.99,
+    "tokens_in": 53450,
+    "tokens_out": 16862,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f1ba61b5af053c881a9864b8cf79191b8f82beb00fdc4c01962a53da18c9f763",
+    "packet_tokens_est": 29029,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 53450,
+      "outputTokens": 16862,
+      "cacheReadTokens": 206720,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 257409,
+    "duration_api_ms": 257409,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

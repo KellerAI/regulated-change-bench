@@ -1,0 +1,71 @@
+{
+  "variant": "v-050f804567",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "Exhaustive evidence is required but only a sample control test is present; no proof or exhaustive test record is provided for audit of all state‑changing operations."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "ModelCheck result (payments-audit-chain.json) covers event_hash and verify, is marked \"shown\" in the acceptance ledger, and satisfies the exhaustive evidence requirement."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26502 is approved and lists component payments.audit, matching the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Mara Costa (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the exact commit being merged and there are no later behavior‑changing commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (all 172 tests passed) and includes the registered control tests for both AUD-1 and AUD-2."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval from Ines Halvorsen (security_reviewer) is recorded for the commit."
+    }
+  ],
+  "summary": "The change meets all process obligations and the AUD-2 audit‑chain requirement, but it fails the critical AUD-1 obligation because exhaustive evidence that every state‑changing operation is audited is missing. A sample test does not satisfy the exhaustive evidence requirement. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 122.14,
+    "tokens_in": 24942,
+    "tokens_out": 6583,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "770a887ffaa12fd43bb0846997df996f08e2223dd984013a8ac6b683e614457d",
+    "packet_tokens_est": 24869,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 25400,
+    "answer_chars": 1753,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.91,
+    "eval_s": 104.01,
+    "total_s": 122.14,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

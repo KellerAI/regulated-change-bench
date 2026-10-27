@@ -1,0 +1,104 @@
+{
+  "variant": "v-971a7533f9",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json only changes indentation; mortgage.privileged_idle_minutes remains 15, within the maximum of 15. controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed unskipped on commit ddb74db50badb1af8f9fa282969e5a3870694e44."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "mortgage.audit_retention_years remains 7, meeting the minimum of 7, and no audit-log code changed. controls.AuditControlTest#chainAndRetention passed unskipped on the final commit."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "mortgage.declined_npi_retention_months remains 25 and Retention.java is untouched, so the approved retention period and legal-hold behaviour are unchanged. controls.RetentionControlTest#sampledPurgeRespectsHold passed unskipped on the final commit."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "mortgage.underwriter_limit remains 500000 and mortgage.senior_limit remains 1500000, equal to the approved limits. controls.ApprovalsControlTest#authorityLimitsMatchPolicy passed unskipped on the final commit."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "mortgage.dti_max_percent remains 40 and mortgage.ltv_max_percent remains 90, equal to the approved auto-approval limits. controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passed unskipped on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26555, which Erik Brandt (change_manager) approved on 2026-10-15 before review. Its component mortgage.controls-data matches controls/mortgage/policy-params.json in the mortgage component map, and that is the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change_approver and not the author Tomas Ortega, approved a code_review of commit ddb74db50badb1af8f9fa282969e5a3870694e44."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the only commit on the change, which is the head commit, and that commit is indentation-only."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage full suite on the final commit, and the JUnit report shows 124 tests, 0 failures, and 0 skipped. The registered control tests for SES-1, AUD-2, RET-1, LIM-1, and CRD-1 are included and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed path maps to mortgage.controls-data, which is not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is a protected controls path. Rachel Stein, a control_owner on the controls-office team and outside lending-eng, approved kind control_owner on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26555 is type standard and the change record sets emergency to false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The reformatted parameters are unchanged and do not deviate from a product obligation, so no exception is relied on. The register's SES-1 exception is expired and scoped to payments, and the MFA exception is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff is JSON indentation only, which the policy treats as non-behavioural, so prior ledger evidence does not lapse. Ledger covers point at other files that this change does not modify."
+    }
+  ],
+  "summary": "PR-1426 reformats controls/mortgage/policy-params.json and does not change any policy value or other file. The touched parameters still match the approved SES-1, AUD-2, RET-1, LIM-1, and CRD-1 values, and the mortgage suite, including those control tests, passed on the final commit. Ticket CHG-26555 was approved by a change manager and covers mortgage.controls-data; independent code review and an out-of-team control-owner approval both name the head commit. The path is not security-sensitive, the change is not an emergency, and no exception or lapsed ledger entry is required.",
+  "meta": {
+    "elapsed_s": 251.29,
+    "tokens_in": 41540,
+    "tokens_out": 15704,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ef6c966fbbcbea904a4c481ee1a6cd3d452bf8b19673e263658b7824b3595a61",
+    "packet_tokens_est": 24101,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41540,
+      "outputTokens": 15704,
+      "cacheReadTokens": 141952,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 247984,
+    "duration_api_ms": 247984,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

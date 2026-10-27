@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25145",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Ledger representation metadata",
+    "components": [
+      "payments.reports"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-15T22:47:00Z",
+    "risk": "low"
+  }
+]

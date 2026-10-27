@@ -1,0 +1,63 @@
+{
+  "variant": "v-b753749601",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24409 is a standard ticket, approved on 2026-10-08 by change manager Erik Brandt, before the change opened. Its components (mortgage.servicing, mortgage.tests) cover RateQuote.java and the new test under src/test/java/mortgage."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example. He holds change_approver for baseline-mortgage and is a different person from the author, Wen Li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only approval names the head commit ee667bb533c2, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json records CI on the earlier commit ed04e155. The later commit ee667bb5 adds a new constant DEFAULT_TERM_YEARS, which is not a comment, whitespace or formatting edit, so that run does not count. The JUnit reports are also not credible as this run's output: they are timestamped 2026-10-23, after the 2026-10-13 review time, from host dev-laptop-7.local rather than ci-runner-04."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change touches only RateQuote.java and a new unit test. No acceptance-ledger entry covers either file, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "PR-1978 adds a supported-term helper and a default-term constant to RateQuote.java (mortgage.servicing, not security-sensitive), plus a unit test. No product obligation scope, closed domain or log pattern is touched, and no protected path is changed, so CHG-5, CHG-6 and the product obligations do not apply; CHG-7 does not apply because the ticket is not an emergency. The ticket, independent approval and approval-on-head requirements are met. The CI run is on an earlier commit, and the head commit makes a non-cosmetic code change after it. The attached JUnit reports also come from a different host and are dated after the review time. There is therefore no valid evidence of the full suite passing on the final commit, so CHG-4 is refuted and the change is rejected.",
+  "meta": {
+    "elapsed_s": 15.99,
+    "tokens_in": 39859,
+    "tokens_out": 1549,
+    "usd": 0.190416,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0d37ec8e7996948d6c5ce9902fd6b4a9cfc6b9bd37eb262ab6b55084382e9bc6",
+    "packet_tokens_est": 25110,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39859,
+      "output_tokens": 1549,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

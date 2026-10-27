@@ -1,0 +1,77 @@
+{
+  "variant": "v-44d6abea71",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1430 names CHG-25859, a standard ticket approved by change manager Grace Kim on 2026-10-03, before the change opened. Its components (mortgage.policy, mortgage.tests, mortgage.controls-data) cover every touched path per controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li holds change_approver for baseline-mortgage and is a different person from the author Declan Farrell (checked against all directory aliases). Wen Li gave an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit ae833f3, which is the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on head commit ae833f3 succeeded: 124 JUnit Jupiter tests, 0 failures, errors or skips, including the updated SessionTest cases. The change touches no product obligation's scope (the Policy.java and policy-params scopes are symbol-level and exclude the standard idle value), so no extra control tests were required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The change modifies controls/mortgage/policy-params.json, a protected path, by altering the approved mortgage.standard_idle_minutes value. No control_owner approval from outside the author's team exists; the only approval is a code_review from Wen Li, who is on the author's team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries on Policy.java cover only UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT and LTV_MAX_PERCENT, all unchanged. Only STANDARD_IDLE_MINUTES changed, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1430 raises the mortgage standard session idle timeout from 30 to 45 minutes in Policy.java, its unit test, and the approved policy parameter file controls/mortgage/policy-params.json. The ticket, independent code review, approval-commit match and final-commit CI are all in order, and no accepted evidence lapses. However, policy-params.json is under the protected controls/** paths, and changing an approved policy value requires a control_owner approval from outside the author's team under CHG-6. No such approval exists, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 70.74,
+    "tokens_in": 287217,
+    "tokens_out": 6573,
+    "usd": 0.361027,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6573,
+      "cache_read_input_tokens": 251352,
+      "cache_creation_input_tokens": 35837
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3610274,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

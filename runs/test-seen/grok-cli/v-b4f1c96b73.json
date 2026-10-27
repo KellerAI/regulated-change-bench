@@ -1,0 +1,99 @@
+{
+  "variant": "v-b4f1c96b73",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "POST /payees/{id}/reopen uses the privileged action manage_payees with mfa=False, so the route is served without multi-factor authentication. The exhaustive control test test_privileged_routes_require_mfa fails on that route at the head commit."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "reopen_payee updates only status and closed_at, and NPI columns remain sealed or null. The exhaustive test test_every_npi_field_is_sealed_at_rest passed on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "reopen_payee records an audit event through _audit with the actor, action reopen_payee, payee target, and clock time. The registered audit control test passed on the head commit."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new UPDATE is a fixed SQL string with the payee id bound as a parameter. The exhaustive test test_sql_statements_are_parameterized passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24738, which change manager Grace Kim approved before the review time. Its components cover payments.http, payments.routes, payments.service, and payments.store, matching every file in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa approved a code review of the head commit. She is a payments change approver and is not the author, Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, c8cfd684b5fbccccf40f27d57fc8edf591207474. The code-review and security-review approvals both name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the head commit reports result failure, with 172 tests and 1 failure. The registered MFA-1 control test is unskipped and failing, so the full suite did not pass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The diff touches security-sensitive components payments.http, payments.routes, and payments.store. Security reviewer Ines Halvorsen, who is not the author, approved a security review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is confined to four modules under apps/baseline-payments/payments/. Those paths sit outside the protected controls, control-test, and CI paths, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24738 is type standard and the change record sets emergency to false. No deployment time is recorded, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The privileged reopen route deviates from MFA-1, and the register has no approved, unexpired exception scoped to MFA-1 and a payments route or HTTP component with a compensating control. EXC-0141 is expired, EXC-0172 is withdrawn, and EXC-0167 is a different obligation and app."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Acceptance record ACR-0404 covers routes.py for MFA-1, and this change alters that route table. The replacement exhaustive control test on the head commit fails, so the lapsed evidence is not renewed."
+    }
+  ],
+  "summary": "The reopen route binds privileged action manage_payees to mfa=False, and the exhaustive MFA control test fails on the head commit. CI for that commit reports a failing suite, so the testing requirement is not met, and the prior MFA-1 acceptance evidence for routes.py lapses without a passing replacement. No approved exception covers the deviation. Encryption, audit, and parameterized SQL for the new operation are consistent with the packet, but those results do not cure the MFA failure or the change-process failures.",
+  "meta": {
+    "elapsed_s": 279.36,
+    "tokens_in": 53428,
+    "tokens_out": 22422,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bfd9c9f57174bb5184afcbd6ee37eb5f5db5689ba481365615d462e3bd46b03f",
+    "packet_tokens_est": 34881,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 53428,
+      "outputTokens": 22422,
+      "cacheReadTokens": 198272,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 275318,
+    "duration_api_ms": 275318,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

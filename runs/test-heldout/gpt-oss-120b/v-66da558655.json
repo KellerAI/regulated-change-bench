@@ -1,0 +1,61 @@
+{
+  "variant": "v-66da558655",
+  "arm": "gpt-oss-120b",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26365 is approved by change manager Grace Kim and lists component \"mortgage.cases\", which covers the modified CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval recorded for commit bde2… by Wen Li (has role change_approver) and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the exact head commit (bde2…) and no later behavior‑changing commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the head commit succeeded; 124 test cases (including control tests) passed with no failures."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "State‑changing operation still records an audit event, but only a sampled control test evidence is provided; exhaustive evidence required by the obligation is missing."
+    }
+  ],
+  "summary": "All process obligations (CHG‑1 to CHG‑4) are satisfied with adequate records, but the product obligation AUD‑1 lacks the required exhaustive evidence. Because one applicable obligation remains open, the change cannot be accepted yet and must be held pending further evidence.",
+  "meta": {
+    "elapsed_s": 143.45,
+    "tokens_in": 28096,
+    "tokens_out": 6232,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e3a9af54a885eed7f0d3647bc24b6e38e493f5a342488e3bf9c07774a9357586",
+    "packet_tokens_est": 29036,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26349,
+    "answer_chars": 1333,
+    "done_reason": "stop",
+    "load_s": 20.64,
+    "prompt_eval_s": 20.91,
+    "eval_s": 101.73,
+    "total_s": 143.45,
+    "tokens_est_ratio": 0.947,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

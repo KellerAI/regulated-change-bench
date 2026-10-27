@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-26624",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Co-applicant onboarding field",
+    "components": [
+      "mortgage.cases",
+      "mortgage.control-tests",
+      "mortgage.retention"
+    ],
+    "requested_by": "nneka.okafor@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-21T07:19:00Z",
+    "risk": "low"
+  }
+]

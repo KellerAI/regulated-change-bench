@@ -1,0 +1,79 @@
+{
+  "variant": "v-d419b3e90b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26506 is approved by change manager Grace Kim before review, and its components payments.payments and payments.tests cover memos.py and tests/test_memo_preview.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example, which the directory lists as the author Sofia Santos. A self-approval does not count, and no other change_approver for payments approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The recorded approval names head commit 6bf6ea75f39a5b0f428aa7143b87c8e90eded1ad, and the change has no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records success on the final commit, and the JUnit report shows 174 tests with no failures, errors, or skips, including the new memo preview tests. The change does not touch any product-obligation scope path, so no additional registered control tests are required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "memos.py and the new test file are both marked security_sensitive false, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/protected-paths.json, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other components, and none is used to excuse this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff only adds memos.preview and a new test. Ledger evidence covers payments.py, audit.py, routes.py, and mortgage files, none of which change behaviour here."
+    }
+  ],
+  "summary": "The memo preview change is limited to payments memos.py and a new unit test, on components the approved ticket already names, and CI passed the full payments suite on the head commit. No product-obligation scope, protected path, or security-sensitive component is touched, and prior acceptance evidence still covers unchanged code. The change cannot be accepted because the sole code review is Sofia Santos approving her own commit under s.santos@fernbrook.example, which CHG-2 does not allow.",
+  "meta": {
+    "elapsed_s": 92.27,
+    "tokens_in": 41088,
+    "tokens_out": 5846,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "256b886f22aea69aba020c4d2b84648e7dacba5d9154663aa575faab47f6dcb8",
+    "packet_tokens_est": 24406,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41088,
+      "outputTokens": 5846,
+      "cacheReadTokens": 206208,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 86104,
+    "duration_api_ms": 86104,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

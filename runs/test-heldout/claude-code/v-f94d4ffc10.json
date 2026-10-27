@@ -1,0 +1,92 @@
+{
+  "variant": "v-f94d4ffc10",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24773 is approved by change manager erik.brandt (2026-10-09, before review) but lists only mortgage.reporting; the change also modifies DocumentChecklist.java, which components.json assigns to mortgage.servicing, so the ticket does not cover every touched component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from declan.farrell@fernbrook.example, who holds change_approver for baseline-mortgage and is a different person from the author Priya Raman under every one of her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 2f5da01, the final commit of the change, so no later commits need assessing."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json is on head 2f5da01 with result success; the JUnit reports show 124 Jupiter tests with 0 failures, errors or skips. The change touches no product obligation's scope paths or closed domains, so no control tests were required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components, mortgage.reporting and mortgage.servicing, are both marked security_sensitive: false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only two files under apps/baseline-mortgage/src/main/java; no protected paths (controls, control tests, ci) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency and the ticket type is standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; none of the register entries concern the reporting or servicing components."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers PipelineReport.java or DocumentChecklist.java, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "PR-1515 adds two string constants to PipelineReport.java and DocumentChecklist.java and touches no product obligation's scope. Approval, CI on the final commit, and the other process obligations are satisfied. However, DocumentChecklist.java belongs to component mortgage.servicing, which approved ticket CHG-24773 (components: mortgage.reporting only) does not cover, so CHG-1 is violated. The ticket must be amended to include mortgage.servicing and re-approved before the change can be accepted. Separately, the description's claim that unit tests were updated is not borne out, since the diff contains no test changes.",
+  "meta": {
+    "elapsed_s": 53.08,
+    "tokens_in": 290814,
+    "tokens_out": 4604,
+    "usd": 0.287149,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 17,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 4604,
+      "cache_read_input_tokens": 262286,
+      "cache_creation_input_tokens": 28500
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.2871492,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

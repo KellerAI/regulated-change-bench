@@ -1,0 +1,76 @@
+{
+  "variant": "v-f41a09aa0e",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "CI run passed the control test `test_sampled_operations_are_audited`; the test suite includes the registered control test for AUD-1 and it succeeded, satisfying the obligation."
+    },
+    {
+      "id": "AUD-2",
+      "status": "refuted",
+      "note": "Prior exhaustive modelcheck evidence (ACR-0402) covers an earlier commit; the current change modifies `apps/baseline-payments/payments/audit.py`, so the evidence is lapsed and no new exhaustive evidence is provided, violating the obligation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-25222 exists, approved by change manager Grace Kim, and its components list includes `payments.audit` matching the changed component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Mara Costa (a `change_approver` for payments) is recorded and the reviewer is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approvals apply to the head commit; there are no later commits that alter behaviour, so the approval coverage requirement is met."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit reports all 172 tests passed, including all control tests, meeting the testing requirement."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval from Ines Halvorsen (a `security_reviewer`) is recorded, covering the changed security‑sensitive component."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Evidence for AUD-2 is now invalid due to the code change, and no new evidence of the same strength is supplied; the evidence‑lapse obligation is therefore violated."
+    }
+  ],
+  "summary": "The change fails to provide fresh exhaustive evidence for AUD-2 after modifying audit verification logic, causing a lapse of prior evidence and violating the evidence‑lapse obligation (LAP-1). Because a required product obligation is not satisfied, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 165.51,
+    "tokens_in": 24958,
+    "tokens_out": 9193,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bb7c9cd23a533992f3832385b375a59b9dfe964572b25745f52d3b5aabfa23bf",
+    "packet_tokens_est": 24866,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 36537,
+    "answer_chars": 2183,
+    "done_reason": "stop",
+    "load_s": 3.07,
+    "prompt_eval_s": 15.7,
+    "eval_s": 146.6,
+    "total_s": 165.51,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

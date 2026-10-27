@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25595",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Memo preview for list views",
+    "components": [
+      "payments.payments",
+      "payments.tests"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-15T18:23:00Z",
+    "risk": "low"
+  }
+]

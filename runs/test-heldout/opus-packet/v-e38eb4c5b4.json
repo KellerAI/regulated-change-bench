@@ -1,0 +1,93 @@
+{
+  "variant": "v-e38eb4c5b4",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The new error-path log call in deliver_statement puts the payee's unmasked account_number (an NPI field in payments.npi_fields) into the log message via an f-string. Field-level masking in AppLog cannot redact it there, so NPI reaches the application log on the error path."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The diff changes only the log line in the IntegrationError handler of deliver_statement. Every _audit call in service.py is unchanged, and the success path still records deliver_statement with actor, action, target and time."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The register has no exception for LOG-1 on payments.service or payments.logging. EXC-0167 covers mortgage.logging and masked last-4 only, so the LOG-1 deviation is not excepted."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26050 is standard and was approved by Erik Brandt (change_manager) on 2026-10-21, before review. Its components (payments.service) cover the only touched path, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos approved the code_review. She holds change_approver for payments and is a different person from the author, Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit fd8db494, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json claims ci-runner-04 ran the head commit at 2026-10-22T15:36Z, exactly the commit time. The JUnit report, however, has hostname dev-laptop-7.local and timestamp 2026-10-23T13:51-07:00, so the report's provenance from the change's own CI run cannot be established."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path, service.py, maps to payments.service, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls data, control tests, ci) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py. The entries cover payments.py, audit.py, routes.py and mortgage files, none of which changed, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1537 changes the statement-delivery failure log to interpolate the payee's raw account number into the log message. That sends unmasked NPI to application logs on the error path, violating LOG-1, and no approved exception covers it. The process records (ticket, independent approval, approval on head) are in order. The CI evidence is inconsistent: the JUnit report appears to come from a local machine, not ci-runner-04. The LOG-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 20.48,
+    "tokens_in": 40562,
+    "tokens_out": 2006,
+    "usd": 0.202368,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "da768ca0fda4f097ff1cb535299fd3e5d5edba1eaf616b03bc7fcbe2f8be399b",
+    "packet_tokens_est": 26650,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40562,
+      "output_tokens": 2006,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

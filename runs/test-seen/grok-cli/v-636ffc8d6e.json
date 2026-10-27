@@ -1,0 +1,84 @@
+{
+  "variant": "v-636ffc8d6e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "refuted",
+      "note": "CRD-1 still requires auto-approval only at a DTI ceiling of 40% (and LTV 90%), with code equal to those approved values. Policy.DTI_MAX_PERCENT and mortgage.dti_max_percent are both 43, and no exception covers CRD-1. The prior proof (ACR-0406) premises DTI_MAX_PERCENT = 40 and no longer matches the code."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26006 is standard, status approved by change manager Grace Kim on 2026-10-14, before review. Its components mortgage.policy, mortgage.tests, and mortgage.controls-data cover Policy.java, UnderwritingTest.java, and controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code_review on head 1e93cd90. He has the change_approver role for baseline-mortgage and is not the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review approval names that commit, 1e93cd903be98342149991637cbc393118b61d37."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-mortgage on the head commit. The Jupiter report lists 124 tests, 0 failures, and 0 skipped, including the unskipped CRD-1 control test UnderwritingControlTest#autoApproveGridMatchesPolicy."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components are mortgage.policy, mortgage.tests, and mortgage.controls-data, all marked security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "controls/mortgage/policy-params.json is a protected path, and the change alters the approved DTI policy value. The only approval is a code_review from Declan Farrell on lending-eng; there is no control_owner approval from someone outside the author's team."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket CHG-26006 are standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The DTI ceiling move from 40 to 43 is a deviation from CRD-1. The register has no approved, unexpired exception scoped to CRD-1 and this component with a compensating control; the other entries are expired, withdrawn, or for other obligations."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406 covers Policy.DTI_MAX_PERCENT, and this change alters that constant from 40 to 43. The proof was produced on another commit, is not rerunnable, and still assumes 40; nothing of that strength re-establishes the approved limit on the head commit."
+    }
+  ],
+  "summary": "The change raises Mortgage's auto-approve DTI ceiling from 40 to 43 in both Policy.java and controls/mortgage/policy-params.json. CRD-1 still fixes that ceiling at 40, there is no valid exception, and the earlier exhaustive proof that assumed 40 has lapsed. The policy-parameter edit is also a protected control change and has no control-owner approval from outside lending engineering. Independent code review, the ticket, and a green suite do not cure those gaps, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 203.3,
+    "tokens_in": 93622,
+    "tokens_out": 12622,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ac9698bff33080f230f7d4e50b9192f9177911e4e5379553e9b18898be43bb77",
+    "packet_tokens_est": 25384,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 93622,
+      "outputTokens": 12622,
+      "cacheReadTokens": 215296,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 199110,
+    "duration_api_ms": 199110,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

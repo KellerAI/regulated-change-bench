@@ -1,0 +1,84 @@
+{
+  "variant": "v-870bf59b9f",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "At head, required_approvals returns 2 only when amount > policy.DUAL_CONTROL_THRESHOLD. PAY-1 requires two distinct approvers for a payment at or above the approved threshold of 10000.00, so an amount equal to the threshold now needs only one approval."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25446 is approved by change manager Erik Brandt before review, and its components payments.payments and payments.tests cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Jonah Weiss, approved a code_review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 6cad16a4d04a700219498dfeda8c562cb296f656, so it covers the merged tree with no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI succeeded on a62c4dd, not on the final commit. The later commit changes the dual-control comparison from >= to >, which is a behavior change, so the earlier run does not count."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.payments and payments.tests are not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch protected controls data, control tests, or CI paths, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25446 is type standard and the change record is not an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The strict greater-than comparison is a deviation from PAY-1, and the register has no approved, unexpired exception scoped to PAY-1 and payments.payments. The listed exceptions are for other obligations, expired, or withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0401's exhaustive proof covers required_approvals at an older commit, and this change alters that comparison. That proof does not cover the head, and the dual-control control test ran only on the earlier commit, so there is no replacement exhaustive evidence on the final code."
+    }
+  ],
+  "summary": "The payments-queue change also flips dual control from at-or-above to strictly above the approved 10000.00 threshold, so a payment equal to the threshold can be released with one approver. That violates PAY-1, and no in-force exception covers it. The prior exhaustive proof of required_approvals no longer applies, and the green CI run is on the earlier commit, before that behavior change, so testing and evidence continuity fail as well.",
+  "meta": {
+    "elapsed_s": 232.48,
+    "tokens_in": 56781,
+    "tokens_out": 12989,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b7735b50febd405548e07349f88554a21e6c328a4a04e4c5a6b2f6f4b48c5a2c",
+    "packet_tokens_est": 25949,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 56781,
+      "outputTokens": 12989,
+      "cacheReadTokens": 266880,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 226482,
+    "duration_api_ms": 226482,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

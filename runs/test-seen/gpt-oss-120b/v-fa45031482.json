@@ -1,0 +1,71 @@
+{
+  "variant": "v-fa45031482",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test `test_maker_cannot_check` passed in CI and the control registry marks it as exhaustive, providing sufficient evidence."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record `pay1-required-approvals.json` (ledger entry ACR-0404) shows required_approvals matches the approved threshold; the function was not modified by this change."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Ponens trace `pay2-release.json` (ledger entry ACR-0405) confirms release is idempotent; the release logic was unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26149 is approved by change manager Grace Kim and lists components payments.payments and payments.tests, covering all touched components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Sofia Santos (change_approver) recorded in approvals.json; reviewer is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only one commit in the PR; the recorded approval applies to that commit and no later behavior‑changing commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded; full test suite (175 tests) passed including all control tests for MC-1, PAY-1, and PAY-2."
+    }
+  ],
+  "summary": "All applicable product obligations (MC-1, PAY-1, PAY-2) have valid evidence that remains unchanged, and all required process obligations (CHG-1 through CHG-4) are satisfied by the ticket, approvals, and successful CI run. No security‑sensitive components were modified, and no protected paths were touched. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 167.13,
+    "tokens_in": 25585,
+    "tokens_out": 7406,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "281b1a0a6eab33a4dc479818808f0c89eb2a1faac34315578c6647a957b649eb",
+    "packet_tokens_est": 25750,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 28941,
+    "answer_chars": 1850,
+    "done_reason": "stop",
+    "load_s": 3.35,
+    "prompt_eval_s": 22.13,
+    "eval_s": 141.5,
+    "total_s": 167.13,
+    "tokens_est_ratio": 0.969,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "variant": "v-90defb827d",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "Control test `test_matrix_equals_approved_policy` ran in CI and passed, providing exhaustive evidence that the access matrix matches the approved policy."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "Control test `test_auditor_is_read_only` ran and passed, confirming auditors have no state‑changing actions."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "Control test `test_it_admin_cannot_approve_or_release` passed, ensuring IT admin cannot approve credit or release payments."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24775 is approved and lists component `payments.access`, which matches the changed file's component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Mara Costa (has `change_approver` role for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is tied to the exact commit being merged and there are no later non‑trivial commits, satisfying coverage."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded with all 172 tests, including the required control tests for the touched obligations."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval from Kofi Mensah (has `security_reviewer` role) is recorded for the commit."
+    }
+  ],
+  "summary": "All product obligations affected by the change (ACC‑1, ACC‑2, SOD‑1) have exhaustive control‑test evidence passing in CI, and all process obligations (CHG‑1 through CHG‑5) are satisfied by the ticket, approvals, and CI results. No violations are detected, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 85.15,
+    "tokens_in": 24534,
+    "tokens_out": 4484,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ed342564c4444a56fef99c54ee45d46473864d22672680936b0d6f5a0cedeea8",
+    "packet_tokens_est": 24425,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16963,
+    "answer_chars": 1917,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.27,
+    "eval_s": 69.66,
+    "total_s": 85.15,
+    "tokens_est_ratio": 0.979,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

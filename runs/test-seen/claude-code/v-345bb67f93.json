@@ -1,0 +1,97 @@
+{
+  "variant": "v-345bb67f93",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Only STANDARD_IDLE_MINUTES (30→45) changed; PRIVILEGED_IDLE_MINUTES and mortgage.privileged_idle_minutes stay at 15 and privileged requests still use the 15-minute limit (HttpApp passes route.action().isPrivileged()). The exhaustive control test SessionControlTest#privilegedIdleTimeoutWithinPolicy passed on head 30ce7dd."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25092 is approved by change manager erik.brandt on 2026-10-09, before the reviews. Its components (mortgage.policy, mortgage.controls-data, mortgage.tests) cover all three touched paths: Policy.java, controls/mortgage/policy-params.json and src/test/java/mortgage/SessionTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li, a change_approver for baseline-mortgage and a different person from the author, declan.farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name head commit 30ce7dd, which is the change's only commit, so there are no later commits to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head 30ce7dd. The JUnit report has 124 tests, 0 failures, 0 skipped, and all registered control tests (including SES-1's exhaustive test) passed. I could not rerun it locally because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "None of the touched components (mortgage.policy, mortgage.controls-data, mortgage.tests) is marked security_sensitive in components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The approved value in protected path controls/mortgage/policy-params.json changed. bao.tran, a control_owner in controls-office (outside the author's lending-eng team), approved head 30ce7dd."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is marked emergency=false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from any product obligation and relies on no exception in the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries covering Policy.java (UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, LTV_MAX_PERCENT) refer to symbols the change leaves unchanged, and no other covered code is touched, so no evidence lapses."
+    }
+  ],
+  "summary": "The change raises the standard (non-privileged) idle timeout from 30 to 45 minutes in Policy.java and the approved policy parameters, and updates the unit test. The privileged 15-minute limit is unchanged and still enforced, and its exhaustive control test passed in CI on the head commit along with the full suite. The ticket, independent code review and control-owner approval are all in order and cover the head commit, no security-sensitive component is touched, and no ledger evidence lapses. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 115.38,
+    "tokens_in": 697941,
+    "tokens_out": 10774,
+    "usd": 0.697257,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 34,
+    "tokens_detail": {
+      "input_tokens": 42,
+      "output_tokens": 10774,
+      "cache_read_input_tokens": 626643,
+      "cache_creation_input_tokens": 71256
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6972566000000001,
+    "permission_denials": 10,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

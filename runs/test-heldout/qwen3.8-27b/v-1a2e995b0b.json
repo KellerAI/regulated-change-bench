@@ -1,0 +1,61 @@
+{
+  "variant": "v-1a2e995b0b",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change reorders the text in a log.warn call in ApplicantValidator.java but still wraps the NPI value with Mask.npi(value), so no unmasked NPI is written to the log. The CI includes controls.LoggingControlTest#sampledFlowsDoNotLogNpi and mortgage.ApplicantValidatorTest#rejectsMalformedNpiWithoutLoggingIt, both passing."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26787 is type 'standard', status 'approved' by erik.brandt (a change_manager), and its components list 'mortgage.cases' which is the component of ApplicantValidator.java per controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds the 'change_approver' role for baseline-mortgage, is a different person from the author Wen Li, and his code_review approval is recorded against the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole commit 10c29ec is the head commit and the one named in the approval record; there are no later commits that could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows result 'success' on the head commit 10c29ec with 124 tests, 0 failures, 0 errors, 0 skipped, including all registered mortgage control tests (AccessMatrix, Routes, Session, Encryption, Logging, Audit, Retention, Approvals, Underwriting) and the ApplicantValidatorTest."
+    }
+  ],
+  "summary": "The change is a one-line cosmetic reordering of a log.warn message in ApplicantValidator.java; the NPI value remains masked via Mask.npi(value), so LOG-1 is satisfied. The change does not touch any other product-obligation scope paths, so ACC, SOD, MFA, SES, ENC, AUD, RET, MC, LIM, CRD, and PAY obligations are not applicable. All process obligations are met: the change ticket is approved and covers the correct component, an independent change_approver (Declan Farrell) signed off on the exact head commit, and CI on the final commit shows the full suite green including all registered control tests. No security-sensitive or protected-path changes are involved, so CHG-5 and CHG-6 do not apply. The change is accepted.",
+  "meta": {
+    "elapsed_s": 175.4,
+    "tokens_in": 28067,
+    "tokens_out": 4761,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "eb90ac405a058e17249737b9e688663ca7032b712ed1108be5b48f8ee94d5225",
+    "packet_tokens_est": 24755,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15677,
+    "answer_chars": 2233,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 35.48,
+    "eval_s": 139.89,
+    "total_s": 175.4,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

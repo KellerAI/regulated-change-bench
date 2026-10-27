@@ -1,0 +1,71 @@
+{
+  "variant": "v-a10a56b727",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change logs an unmasked account_number (NPI) in an error message, violating the rule that no NPI appears in any application log; there is no exhaustive control‑test evidence and no exception covering this."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The audit control test for AUD-1 passed in the CI run and the change does not alter the existing audit calls, so state‑changing operations remain audited."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-24472 exists, is of type standard, and was approved by change manager Erik Brandt before review."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval was recorded from Sofia Santos, who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the exact commit being merged; there are no later non‑comment/whitespace changes, so the approval still covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded with all 172 tests passing, including the required control‑test suite."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No approved exception record exists for the LOG-1 violation; the exception register contains no entry authorising unmasked NPI logging for payments."
+    }
+  ],
+  "summary": "The change violates LOG-1 by logging unmasked NPI and lacks an approved exception (EXC-1), making those obligations refuted. All process obligations CHG-1 through CHG-4 and the audit requirement AUD-1 are satisfied, but the critical LOG-1 breach forces a rejection.",
+  "meta": {
+    "elapsed_s": 160.83,
+    "tokens_in": 26308,
+    "tokens_out": 8991,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "fdc14a2c9e9f7fc1390f3798874916a6b464a4df69e2da157fc470b915c0b9a4",
+    "packet_tokens_est": 26658,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 34097,
+    "answer_chars": 1882,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 16.78,
+    "eval_s": 143.87,
+    "total_s": 160.83,
+    "tokens_est_ratio": 0.964,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

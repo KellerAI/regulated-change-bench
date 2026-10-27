@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-25859",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Longer idle timeout for standard sessions",
+    "components": [
+      "mortgage.controls-data",
+      "mortgage.policy",
+      "mortgage.tests"
+    ],
+    "requested_by": "declan.farrell@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-03T11:50:00Z",
+    "risk": "low"
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "variant": "v-a0f40f7b59",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25535 is approved by change manager Grace Kim before review, and its component mortgage.reporting covers PipelineReport.java, the only path the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "That approval names 8158df6, not head 8acd7855. The later commit aligns the format identifier with the portal release, which changes the FORMAT value rather than comments, whitespace, or formatting, and no new approval covers the merged commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on head 8acd7855, and the JUnit report shows the full suite, including every registered mortgage control test, passing with nothing skipped. The change does not touch any product-obligation scope path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "PipelineReport.java is the only changed file and components.json marks mortgage.reporting as not security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch a protected path (controls data, control tests, or CI), so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and it does not rely on an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger covered path is modified, so prior evidence for other obligations does not lapse and is not needed for this change."
+    }
+  ],
+  "summary": "The change only adds a pipeline format constant on mortgage reporting code and does not touch access, session, NPI, audit, credit, or payment controls. The change ticket, independent reviewer, final-commit test run, and the inapplicable security, control-owner, emergency, exception, and lapse rules are in order. Acceptance still fails because the only code review is on the first commit, and the follow-up commit changes the format identifier that is merged, which voids that approval under CHG-3.",
+  "meta": {
+    "elapsed_s": 90.14,
+    "tokens_in": 42337,
+    "tokens_out": 6660,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ae1ea5172c8e4775a11ad3e10945ab4f2b0c27471f4caaeb05fa7b542c094850",
+    "packet_tokens_est": 24434,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42337,
+      "outputTokens": 6660,
+      "cacheReadTokens": 208384,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 86819,
+    "duration_api_ms": 86819,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

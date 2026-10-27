@@ -1,0 +1,9 @@
+[
+  {
+    "reviewer": "sofia.santos@fernbrook.example",
+    "kind": "code_review",
+    "decision": "approved",
+    "commit": "fd8db4949fb1054bce44455427d4221cad2af19d",
+    "at": "2026-10-23T00:54:00Z"
+  }
+]

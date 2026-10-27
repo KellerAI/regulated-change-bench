@@ -1,0 +1,21 @@
+{
+  "id": "PR-1942",
+  "title": "Diagnostic buffer sizing",
+  "description": "Diagnostic buffer sizing.\n\nChanges:\n- Allow a larger in-memory diagnostic window\n- Security impact reviewed with the engineering lead\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-356",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "f0f9a7a9fb06c7206f42cbda2ad92e0725bc7568",
+  "commits": [
+    {
+      "sha": "f0f9a7a9fb06c7206f42cbda2ad92e0725bc7568",
+      "message": "Operations: standardize session and diagnostic settings",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-10T22:02:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26039",
+  "opened_at": "2026-10-10T22:02:00Z"
+}

@@ -1,0 +1,97 @@
+{
+  "variant": "v-3855ac9d0f",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The change makes match() in apps/baseline-payments/payments/app.py (within MFA-1 scope) accept GET /compat/account-number/{id}. That path is not in the route table, and match() builds a Route for the privileged action view_account_number (listed in rbac.PRIVILEGED) with mfa=False, so _authenticate never checks MFA. The canonical /payees/{id}/account-number route requires MFA. This breaks both parts of MFA-1: a privileged action is served without MFA, and a route is served outside the route table."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No exception covers this deviation. The register has no MFA-1 exception for payments.http; EXC-0172 is withdrawn and covers mortgage.routes, and the others are for SES-1 (expired 2026-09-19) and LOG-1 on mortgage.logging."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26400 is approved by Erik Brandt (change_manager) at 2026-10-12, before the reviews of 2026-10-14/15. Its components include payments.http, the component of the only file touched (app.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (change_approver for payments, a different person from the author Sofia Santos) gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 91aab99, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head 91aab99 from ci-runner-09 started 2026-10-14, and the JUnit report shows 172 passing tests including the MFA-1 control test. But the report is dated 2026-10-23, after the 2026-10-19 review time, and from host dev-laptop-7.local, so its provenance doesn't match the run. I could not rerun it because pytest isn't installed. Also, that 'exhaustive' control test only checks ROUTES, so it cannot see the hardcoded bypass in match()."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "app.py is security_sensitive (payments.http). Kofi Mensah (security_reviewer) gave a security_review approval on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-payments/payments/app.py and no protected paths (controls data, control tests, CI), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false; ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The prior MFA-1 evidence (ACR-0404) covers routes.py, which is unchanged. The other ledger entries cover payments.py and audit.py, also unchanged, so no accepted evidence has lapsed. The new bypass is in app.py, which ACR-0404 never covered."
+    }
+  ],
+  "summary": "PR-1275 adds a compatibility path, /compat/account-number/{id}, inside match(). It bypasses the route table and serves the privileged view_account_number action with mfa=False, so an account number can be read without MFA. That directly breaks MFA-1, and no valid exception covers it. The process records are mostly in order: an approved ticket covers payments.http, and an independent code review and a security review both sit on the head commit. The CI pass doesn't help here because the MFA control test only checks the ROUTES list and cannot detect this bypass. Its report's timestamp and host also don't match the recorded run. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 73.71,
+    "tokens_in": 484705,
+    "tokens_out": 6178,
+    "usd": 0.408682,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 18,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6178,
+      "cache_read_input_tokens": 445494,
+      "cache_creation_input_tokens": 39179
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4086818,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

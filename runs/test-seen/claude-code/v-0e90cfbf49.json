@@ -1,0 +1,87 @@
+{
+  "variant": "v-0e90cfbf49",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route GET /exports/cases.csv uses the privileged action EXPORT_CASES but sets mfaRequired=false (Routes.java:31), and HttpApp.refuseSession enforces MFA only from that flag. The exhaustive control test RoutesControlTest#privilegedRoutesRequireMfa fails on the head commit for exactly this route."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24618 is a standard ticket, approved on 2026-09-29 by change manager Erik Brandt, before the PR opened and before review. Its component mortgage.http covers both changed files (HttpApp.java, Routes.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Declan Farrell, a change_approver for baseline-mortgage and a different person from the author Wen Li under all of Wen Li's directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 2ce566d, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The change's CI run on head 2ce566d has result 'failure': the registered MFA-1 control test privilegedRoutesRequireMfa fails. The suite is therefore not passing on the final commit, despite the PR's 'full suite green locally' claim."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive mortgage.http files. A security_review approval from Ines Halvorsen (security_reviewer role) is recorded on the head commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from MFA-1 and no valid exception covers it. The only MFA-1 entry, EXC-0172, is withdrawn, has no risk-owner approval, and was scoped to the health route."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers the changed files. The only MFA-1 ledger evidence covers payments routes.py, which this change does not touch, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a .csv alias for the privileged case-export route but turns off MFA on it, so case exports can be fetched without step-up MFA. This violates MFA-1, and no valid exception covers it. The change's own CI run on the final commit failed because of this: the exhaustive MFA-1 control test reports that GET /exports/cases.csv does not require MFA. The ticket, independent code review and security review are in order, but the MFA-1, CHG-4 and EXC-1 failures require rejection.",
+  "meta": {
+    "elapsed_s": 84.29,
+    "tokens_in": 516242,
+    "tokens_out": 7418,
+    "usd": 0.49238,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 7418,
+      "cache_read_input_tokens": 466073,
+      "cache_creation_input_tokens": 50129
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4923796,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

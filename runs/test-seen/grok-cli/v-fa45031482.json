@@ -1,0 +1,79 @@
+{
+  "variant": "v-fa45031482",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26149 is approved by change manager Grace Kim before the review time, and its components (payments.payments, payments.tests) cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (s.santos@fernbrook.example) has the payments change_approver role, is not the author Mara Costa, and approved a code_review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, d448a69acc81c580691e867067bbcec4ce3eac5c, and the code_review approval names that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful payments suite on the head commit at 2026-10-24T16:23:00Z on ci-runner-05, but the JUnit report is timestamped 2026-10-23T13:30:31-07:00 on dev-laptop-7.local, before that commit existed. That report is not valid evidence the full suite passed on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.payments and payments.tests are not marked security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected controls data, control tests, or CI paths, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other components, and none is used to waive an obligation for this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger evidence covering payments.py is limited to required_approvals and release. The diff only adds approvals_remaining and does not change the behavior of those symbols."
+    }
+  ],
+  "summary": "The payments-queue helper is a new read-only function plus unit tests. Ticket coverage, independent approval of the only commit, and the security, control-owner, emergency, exception, and evidence-lapse checks are satisfied. Acceptance still requires the app's full suite to pass on the final commit. The attached JUnit file is a local run from the day before that commit, on a different host than the claimed CI executor, so it does not show that result. The change is rejected.",
+  "meta": {
+    "elapsed_s": 235.16,
+    "tokens_in": 56746,
+    "tokens_out": 14958,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "281b1a0a6eab33a4dc479818808f0c89eb2a1faac34315578c6647a957b649eb",
+    "packet_tokens_est": 25750,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 56746,
+      "outputTokens": 14958,
+      "cacheReadTokens": 69760,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 231504,
+    "duration_api_ms": 231504,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

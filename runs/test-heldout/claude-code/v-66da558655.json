@@ -1,0 +1,102 @@
+{
+  "variant": "v-66da558655",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new log.info call in CaseService.markDocumentReceived logs only a value from the five-item DocumentType list and a caseId that has already matched an existing HW-NNNNNN case, so no NPI value can reach the log. The LOG-1 control test (labelled sample) builds its case through markDocumentReceived with NPI-laden applicant data and passed on the head commit, which backs up the inspection."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "markDocumentReceived still records its EDIT_CASE audit event with actor, action, target and detail; the change only adds a log line before it and changes no state-changing behaviour. The AUD-1 control test (labelled sample) and the full suite passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26365 was approved by change manager grace.kim on 2026-10-07, before the change was opened on 2026-10-10. Its components [mortgage.cases] cover CaseService.java, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li (p-wli), who holds change_approver for baseline-mortgage and is a different person from the author nneka.okafor (p-nokafor), gave an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 31799dd, the head commit and the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-mortgage on 31799dd: 124 tests, 0 skipped, 0 failures or errors. The registered control tests for the touched obligations (LoggingControlTest#sampledFlowsDoNotLogNpi, AuditControlTest#sampledOperationsAreAudited) are present and passing. I could not re-run CI locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "CaseService.java maps to mortgage.cases, which components.json marks security_sensitive: false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-mortgage/src/main/java/mortgage/CaseService.java; no controls data, control tests or CI files changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false; ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from any product obligation and relies on no exception; EXC-0167 (LOG-1, mortgage.logging) is not needed or used."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers CaseService.java (the entries cover Approvals, Policy, Underwriting and payments code), so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change adds one log line to document receipt in CaseService. It logs only a document-type value and an existing case id, so it cannot leak NPI, and the audit event is still recorded. The ticket, independent code review on the final commit, and the CI run on the final commit (with the LOG-1 and AUD-1 control tests passing) are all in order. No security, control-owner, emergency, exception or ledger-lapse requirement is triggered. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 84.74,
+    "tokens_in": 483123,
+    "tokens_out": 7732,
+    "usd": 0.529247,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 7732,
+      "cache_read_input_tokens": 425203,
+      "cache_creation_input_tokens": 57886
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5292466,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

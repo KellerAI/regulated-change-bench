@@ -1,0 +1,66 @@
+{
+  "variant": "v-d41520afcd",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24191 is approved by change manager Grace Kim and lists components mortgage.approvals, mortgage.reporting, mortgage.tests covering all changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Wen Li (change_approver) on the final commit; reviewer is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval record references the final commit 9c83683d... and there are no later commits, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run was only on earlier commit 08eb...; the final commit introduces behavioral changes and no CI evidence for the full test suite on that commit, violating the testing requirement."
+    },
+    {
+      "id": "MC-1",
+      "status": "open",
+      "note": "Maker‑checker control test exists and passed in CI for an earlier commit, but there is no CI evidence after the final change, so compliance cannot be confirmed."
+    },
+    {
+      "id": "LIM-1",
+      "status": "open",
+      "note": "Approval‑authority limits control test exists, yet no CI evidence for the final commit; we cannot establish that the new logic matches the approved limits."
+    }
+  ],
+  "summary": "The change lacks required CI evidence on the final commit, violating CHG-4, and we cannot verify that the maker‑checker (MC-1) and approval‑authority (LIM-1) obligations remain satisfied after the code change. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 166.05,
+    "tokens_in": 25653,
+    "tokens_out": 7487,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "568644d9344b97980a4a4dec6749c37873b9911aa8935a0d4ac920a604de584b",
+    "packet_tokens_est": 25680,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 30189,
+    "answer_chars": 1655,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 23.68,
+    "eval_s": 142.1,
+    "total_s": 166.05,
+    "tokens_est_ratio": 0.975,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

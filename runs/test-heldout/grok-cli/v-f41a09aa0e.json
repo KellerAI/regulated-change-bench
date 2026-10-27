@@ -1,0 +1,89 @@
+{
+  "variant": "v-f41a09aa0e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "The diff touches audit.py, which is in scope, but only adds a guard in verify(); record() still stores actor, action, target, and time. The registered AUD-1 test is sample coverage, service.py is not in the packet, and the CI report cannot be credited, so it is not established that every state-changing operation records an audit event."
+    },
+    {
+      "id": "AUD-2",
+      "status": "refuted",
+      "note": "verify() now rejects a non-positive first sequence, so the accepted ModelCheck result ACR-0402 (commit d30b2ad, covering verify and event_hash) no longer applies. No new exhaustive hash-chain analysis on head 67f7dc5 is in the packet, and the listed control test cannot be credited as that evidence."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-25222 is approved by change manager Grace Kim on 2026-10-08, before review, and its component payments.audit covers apps/baseline-payments/payments/audit.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author Aisha Bello, approved a code_review of commit 67f7dc5 on 2026-10-09."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code review and the security review name head 67f7dc5."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json records success on 67f7dc5 at 2026-10-09T13:18:00Z on ci-runner-04, but payments-tests.xml is timestamped 2026-10-23T13:50:26-07:00 on dev-laptop-7.local, after as_of 2026-10-12T16:38:00Z. Those records are not one CI run, so a full-suite pass on the final commit is not shown."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py is security_sensitive (payments.audit). Ines Halvorsen, a security_reviewer and not the author, approved a security_review of commit 67f7dc5."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/audit.py, which is outside the protected controls, control-test, and CI paths, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25222 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other components, and the only payments entry (EXC-0141, SES-1) expired on 2026-09-12, before as_of."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0402 covers verify(), and the new sequence check changes that function's behaviour, so the ledger entry lapses. Acceptance needs new evidence of that same exhaustive strength on the head commit, and the packet does not contain it."
+    }
+  ],
+  "summary": "The change adds a fail-closed sequence check in payments AuditLog.verify. That is a behaviour change to code covered by the accepted ModelCheck evidence for AUD-2, so that ledger entry lapses and no replacement exhaustive analysis on the head commit is present. The CI record is also invalid: run.json describes a 2026-10-09 run on ci-runner-04, while the JUnit report was produced on 2026-10-23 on a personal workstation, after the review time. Ticket, independent code review, and security review for this single commit are in order, but the lapsed audit-chain evidence and the CI mismatch bar acceptance.",
+  "meta": {
+    "elapsed_s": 385.2,
+    "tokens_in": 42933,
+    "tokens_out": 23430,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bb7c9cd23a533992f3832385b375a59b9dfe964572b25745f52d3b5aabfa23bf",
+    "packet_tokens_est": 24866,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42933,
+      "outputTokens": 23430,
+      "cacheReadTokens": 199040,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 379511,
+    "duration_api_ms": 379511,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

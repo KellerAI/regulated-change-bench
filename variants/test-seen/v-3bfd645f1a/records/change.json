@@ -1,0 +1,21 @@
+{
+  "id": "PR-1483",
+  "title": "CSV alias for case export",
+  "description": "The BI tool can only fetch URLs ending in .csv.\n\nChanges:\n- New route alias\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "wen.li@fernbrook.example",
+  "branch": "li/change-196",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "d6eb39484597aa7ef0bf6e40837002c77b66af18",
+  "commits": [
+    {
+      "sha": "d6eb39484597aa7ef0bf6e40837002c77b66af18",
+      "message": "Exports: CSV alias for the case export",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-04T16:39:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26182",
+  "opened_at": "2026-10-04T16:39:00Z"
+}

@@ -1,0 +1,67 @@
+{
+  "variant": "v-1ca64fd731",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25138 is a standard ticket, approved on 2026-10-07 by Erik Brandt (change_manager), before the change opened on 2026-10-09. Its components (mortgage.reporting) cover the only touched path, PipelineReport.java, per the base commit's controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a change_approver for baseline-mortgage who is not the author (Declan Farrell, p-dfarrell), gave a code_review approval. Whether that approval still applies is assessed under CHG-3."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names commit 0ab7408. The later commit 2ec2246 changes the public constant PipelineReport.FORMAT from \"pipeline/1\" to \"pipeline/1.1\", which is a value change, not a comment, whitespace or formatting edit. That voids the approval, and there is no new approval on the head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The recorded CI run (records/ci/run.json) is on the final commit 2ec2246 with result success. The JUnit reports show 124 tests, 0 skipped, 0 failed, which matches all 124 @Test methods in the app. The change touches no product-obligation scope or closed domain, so no specific control tests are required. A local re-run was not possible because the JUnit console jar is missing."
+    }
+  ],
+  "summary": "The change adds one constant, PipelineReport.FORMAT, in the non-security-sensitive mortgage.reporting component. It touches no product-obligation scope, protected path or ledger-covered code, and it is not an emergency, so CHG-5, CHG-6, CHG-7, EXC-1, LAP-1 and the product obligations do not apply. The ticket, the reviewer's independence and testing on the final commit are all in order. However, the only code_review approval is on the first commit, and the follow-up commit changes the published format identifier's value, which voids that approval under CHG-3. With no approval covering what would be merged, the change must be rejected until it is re-approved on the head commit.",
+  "meta": {
+    "elapsed_s": 71.22,
+    "tokens_in": 388388,
+    "tokens_out": 5719,
+    "usd": 0.396587,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 22,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 5719,
+      "cache_read_input_tokens": 345771,
+      "cache_creation_input_tokens": 42585
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3965872000000001,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

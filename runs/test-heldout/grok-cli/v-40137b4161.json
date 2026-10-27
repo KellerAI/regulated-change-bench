@@ -1,0 +1,79 @@
+{
+  "variant": "v-40137b4161",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26962 is approved by change manager Grace Kim before review and lists payments.reports, the component of the only touched file, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author Sofia Santos, approved a code_review of commit e2e6bd80219c6095409acb90b923b17218205e55."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review approval names that same head commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 172 tests with no failures, errors, or skips. The change does not touch any product-obligation scope, so no additional control-test obligation is triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.reports, is not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change a protected path under controls/, control tests, or ci/, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "Ticket CHG-26962 is emergency and records deployed_at 2026-10-24T03:06:00Z (Friday 2026-10-23 23:06 America/New_York). The pir approval is 2026-10-31T03:06:00Z, after the two-business-day deadline of Tuesday 2026-10-27."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and acceptance does not rely on any exception. The SES-1 exception is expired and the MFA-1 exception is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The edit adds a constant in reports.py and does not change any code covered by the acceptance ledger, so prior evidence for those obligations does not lapse."
+    }
+  ],
+  "summary": "The change only adds an unused REPORT_FORMAT constant in payments reports, outside every product-obligation scope, and the ticket, independent code review, and passing full suite on the head commit are in order. It is an emergency change deployed 2026-10-24T03:06:00Z, and the post-implementation review was not approved until 2026-10-31T03:06:00Z, past the two-business-day deadline. CHG-7 is therefore violated, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 153.23,
+    "tokens_in": 46516,
+    "tokens_out": 9371,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "cccc4e50598f184b4371ee66e976b1aa8f14ab11c0bac5974c9734372adba001",
+    "packet_tokens_est": 24452,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 46516,
+      "outputTokens": 9371,
+      "cacheReadTokens": 199168,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 149902,
+    "duration_api_ms": 149902,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

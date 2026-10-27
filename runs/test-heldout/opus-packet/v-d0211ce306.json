@@ -1,0 +1,78 @@
+{
+  "variant": "v-d0211ce306",
+  "arm": "opus-packet",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change only adds an early-return check in AuditLog.verify; record() and the service-layer audit calls are untouched. The registered sample control test test_sampled_operations_are_audited passed on the head commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "open",
+      "note": "verify() changed behaviour: it now rejects a trail whose first retained seq is below 1. The accepted ModelCheck bounded analysis (ACR-0402, commit d30b2ad) covers verify and so no longer applies, and no new analysis was produced. The passing test_chain_and_retention control test is not shown to be evidence of the same strength as the formal analysis, so tamper-evidence cannot be confirmed from the packet."
+    },
+    {
+      "id": "LAP-1",
+      "status": "open",
+      "note": "Ledger entry ACR-0402 covers audit.py#verify, which this change alters in behaviour (a new reject branch), so that evidence has lapsed. The PR description still relies on 'accepted bounded analysis is in the ledger', and no replacement evidence of equal strength, such as a re-run ModelCheck check on head, is in the packet."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26633 is a standard ticket, approved by change manager Erik Brandt on 2026-10-05, before review. Its components (payments.audit) cover the only touched file, audit.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (change_approver for payments, a different person from author Aisha Bello) gave a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit a1c5eaf5, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows pr-checks succeeded on head a1c5eaf5 with the full suite: 172 tests, 0 failures, 0 skipped, including the AUD-1 and AUD-2 control tests. Note: the JUnit report's timestamp (2026-10-23) and hostname (dev-laptop-7.local) do not match the CI executor or the review time, and should be confirmed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py belongs to security-sensitive component payments.audit. Security reviewer Ines Halvorsen approved the head commit."
+    }
+  ],
+  "summary": "The change adds a behavioural check to payments AuditLog.verify, which is covered by the accepted ModelCheck analysis for AUD-2 (ACR-0402). Under LAP-1 that evidence has lapsed. The change description relies on it anyway, and no new evidence of the same strength was supplied. The process records (ticket, independent code review, security review, CI on head) are in order. Nothing shows the change violates AUD-2, but its satisfaction cannot be established at the required strength, so the change is held pending re-run formal evidence on the head commit.",
+  "meta": {
+    "elapsed_s": 33.8,
+    "tokens_in": 38635,
+    "tokens_out": 3412,
+    "usd": 0.22278,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4a7335a6b0680df7ed1ad7bee4292a86b67cdb085d3eae683cefe53195ac2bfc",
+    "packet_tokens_est": 24867,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38635,
+      "output_tokens": 3412,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "variant": "v-0e90cfbf49",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "GET /exports/cases.csv is in the route table and the handler map, but it is bound to privileged action EXPORT_CASES with MFA left off. The approved access policy lists EXPORT_CASES as privileged, and the exhaustive control test privilegedRoutesRequireMfa failed on this route."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24618 is approved by change manager Erik Brandt and lists mortgage.http, the component of both HttpApp.java and Routes.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code_review. He holds change_approver for baseline-mortgage and is a different person from author Wen Li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review both name head commit 2ce566dbdefdd8914432e2afd0ac865e57359b8f, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json reports failure on the final commit. The registered exhaustive MFA-1 test controls.RoutesControlTest#privilegedRoutesRequireMfa ran and failed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both changed files belong to security-sensitive component mortgage.http. Security reviewer Ines Halvorsen approved security_review on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is only HttpApp.java and Routes.java. Those paths sit outside the protected-path list (controls data, control tests, and CI), so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json records emergency as false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The MFA gap is a product-obligation deviation with no qualifying exception. EXC-0172 is withdrawn, has no risk-owner approval, and is limited to the health route."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments routes, payments, and audit, plus mortgage approval limits and underwriting. None of those paths change in this diff, so that evidence remains in force."
+    }
+  ],
+  "summary": "The change adds GET /exports/cases.csv as an alias of case export and turns MFA off for privileged action EXPORT_CASES. That violates MFA-1, the exhaustive route control test fails on the final commit, and CI is red, so CHG-4 fails as well. No approved exception covers the deviation. Process records for the ticket, independent code review, commit coverage, and security review are in order, but the MFA break blocks acceptance.",
+  "meta": {
+    "elapsed_s": 117.21,
+    "tokens_in": 46820,
+    "tokens_out": 8875,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "03f51be263a9330daa92c90d6b18d279237ff2238f47021610232fc6f11ef083",
+    "packet_tokens_est": 29034,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 46820,
+      "outputTokens": 8875,
+      "cacheReadTokens": 188032,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 113483,
+    "duration_api_ms": 113483,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

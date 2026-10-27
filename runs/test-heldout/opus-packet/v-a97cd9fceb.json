@@ -1,0 +1,78 @@
+{
+  "variant": "v-a97cd9fceb",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets payments PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes to 16, which breaks the catalog bound payments.privileged_idle_minutes <= 15. No valid exception covers this deviation."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The cited EXC-0233 is scoped to component mortgage.session (Mortgage sessions), not payments.session, so it is out of scope. The only payments.session exception, EXC-0141, expired on 2026-09-09, before the review time of 2026-10-09."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25567 is a standard ticket, approved by change manager Erik Brandt on 2026-10-01 before review. Its components (payments.controls-data, payments.policy) cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos has the change_approver role for payments and is not the author (Linh Nguyen). She gave a code_review approval on head commit 4312f88."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the single head commit 4312f88f2c24, and there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful run on head by ci-runner-05. The only JUnit report, however, comes from hostname dev-laptop-7.local with timestamp 2026-10-23, after the review time, so it is not a valid report of this CI run. The registered SES-1 control test also 'passed' against a value of 16 that breaks the bound, which further undermines the evidence."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change edits protected path controls/payments/policy-params.json. It has a control_owner approval on head from Rachel Stein (controls-office), who is outside the author's payments-eng team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers the changed code. The entries cover payments.py, audit.py, routes.py and mortgage files, and policy.py#PRIVILEGED_IDLE_MINUTES is not among them, so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1977 raises the payments privileged idle timeout from 15 to 16 minutes, directly violating SES-1's 15-minute bound. The risk acceptance cited, EXC-0233, applies to mortgage.session, not payments, and the payments session exception EXC-0141 has expired, so EXC-1 is not met. The CI evidence is also unreliable: the JUnit report comes from a developer workstation and is dated after the review time. The change is rejected.",
+  "meta": {
+    "elapsed_s": 19.51,
+    "tokens_in": 38095,
+    "tokens_out": 1989,
+    "usd": 0.19216,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "19b7afbe9836364e44b72cc5c38ffcd4d0b751751cd9d47a2e326757172c8b78",
+    "packet_tokens_est": 24421,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38095,
+      "output_tokens": 1989,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

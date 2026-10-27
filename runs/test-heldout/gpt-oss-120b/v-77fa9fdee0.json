@@ -1,0 +1,71 @@
+{
+  "variant": "v-77fa9fdee0",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The markDocumentReceived method no longer calls audit.record, violating the requirement that every state‑changing operation records an audit event."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The new log statement does not appear to contain NPI, but no exhaustive evidence (e.g., a control test covering this log site) is provided to confirm compliance."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change record includes ticket CHG-24651 approved by a change manager and components cover the affected code."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "An independent code‑review approval by Wen Li (change_approver) who is not the author is recorded in approvals.json."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the exact head commit and there are no later non‑comment commits, so the approval still covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the head commit succeeded and the full test suite, including control tests, passed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No prior acceptance‑ledger evidence covers the modified component, so no evidence lapse occurs."
+    }
+  ],
+  "summary": "The change removes the required audit.record call in a state‑changing operation, violating AUD‑1, and provides no exhaustive evidence for LOG‑1. While change‑process obligations are satisfied, the product‑level breach requires rejection.",
+  "meta": {
+    "elapsed_s": 175.87,
+    "tokens_in": 28081,
+    "tokens_out": 8194,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f6f3d5981000943939e15edd8a1e8095a185bfb2ee6fc8bd0804c2888981c075",
+    "packet_tokens_est": 29017,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 34023,
+    "answer_chars": 1692,
+    "done_reason": "stop",
+    "load_s": 20.51,
+    "prompt_eval_s": 20.81,
+    "eval_s": 134.39,
+    "total_s": 175.87,
+    "tokens_est_ratio": 0.947,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "variant": "v-36407e9e4e",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26707. Grace Kim, a change_manager, approved it at 2026-10-23T13:08Z, before review. Its components (mortgage.servicing, mortgage.tests) cover RateQuote.java and the new test under src/test/java/mortgage."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li@fernbrook.example (Wen Li) gave a code_review approval. Wen Li holds change_approver for baseline-mortgage and is not the author, Declan Farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 60914bf, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows ci/run-tests.sh baseline-mortgage succeeded on head 60914bf: 126 tests, 0 failures, 0 skipped, including the new QuoteTermTest. No product obligation's scope or closed domain is touched, so no specific control tests were required, though all registered mortgage control tests ran and passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Not triggered. The only components touched are mortgage.servicing and mortgage.tests, and neither is security_sensitive."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Not triggered. Neither changed path (RateQuote.java, src/test/java/mortgage/QuoteTermTest.java) matches controls/protected-paths.json."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "The emergency ticket records deployment at 2026-10-23T18:08Z (Friday 14:08 New York time), so the PIR was due by Tuesday 2026-10-27. At review time, 2026-10-30, there is no pir approval in records/approvals.json; the PIR is missing and overdue."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and deviates from no product obligation, so no exception is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers RateQuote.java or the test file, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1254 adds a pure helper, RateQuote.isSupportedTerm, plus unit tests. It is outside the scope of every product obligation, and its ticket, independent code review and head-commit CI are all in order. However, it was deployed under the emergency procedure on Friday 2026-10-23. CHG-7 requires a post-implementation review by someone other than the author within 2 business days, and none exists as of 2026-10-30. The missing, overdue PIR violates CHG-7, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 28.44,
+    "tokens_in": 39584,
+    "tokens_out": 2902,
+    "usd": 0.216376,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a2ac780b905c7d8a069bf6d50d37a5b2bfd03206f904c6d4a7324b63a3713a02",
+    "packet_tokens_est": 24972,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39584,
+      "output_tokens": 2902,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

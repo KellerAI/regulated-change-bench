@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25674",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Disbursement confirmation reuse",
+    "components": [
+      "payments.payments"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-19T06:16:00Z",
+    "risk": "low"
+  }
+]

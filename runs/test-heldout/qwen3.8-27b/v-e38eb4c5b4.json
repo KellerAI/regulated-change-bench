@@ -1,0 +1,66 @@
+{
+  "variant": "v-e38eb4c5b4",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change writes `self._store.get_payee(payee_id).account_number` — an NPI field per `payments.npi_fields` — directly into an error-log f-string on the IntegrationError path. LOG-1 explicitly forbids unmasked NPI in any log entry 'on any path including error paths,' and this code places the raw account number in the log message text before it reaches AppLog, so no structured-field masking can redact it."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change only alters the log message inside the except block; the `self._audit(actor, 'deliver_statement', …)` call after the try-catch is untouched, so state-change auditing is preserved."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26050 is type 'standard', approved by change-manager Erik Brandt, and its component list includes 'payments.service', which matches the sole changed file `apps/baseline-payments/payments/service.py`."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (change_approver for payments, directory person p-ssantos) submitted a code_review approval for the head commit; she is not the author (Linh Nguyen, p-lnguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit fd8db494, which is the head and only commit in the change, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit fd8db494; all 172 tests (including every registered control test for payments) passed with 0 failures, 0 errors, 0 skipped."
+    }
+  ],
+  "summary": "The change adds the payee's raw `account_number` into an error-log f-string in `deliver_statement`. Because `account_number` is an NPI field (listed in `payments.npi_fields`) and the value is interpolated into the message text before it reaches AppLog, the resulting log entry contains an unmasked NPI value on an error path, directly violating LOG-1. All process obligations (CHG-1 through CHG-4) and the unaffected AUD-1 are satisfied, but the LOG-1 violation is disqualifying. The change must be rejected and reworked to either omit the account number from the log message or route it through the NPI masking layer before logging.",
+  "meta": {
+    "elapsed_s": 190.61,
+    "tokens_in": 29576,
+    "tokens_out": 5366,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "da768ca0fda4f097ff1cb535299fd3e5d5edba1eaf616b03bc7fcbe2f8be399b",
+    "packet_tokens_est": 26650,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18593,
+    "answer_chars": 2298,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.81,
+    "eval_s": 155.77,
+    "total_s": 190.61,
+    "tokens_est_ratio": 1.084,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

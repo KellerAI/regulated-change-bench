@@ -1,0 +1,56 @@
+{
+  "variant": "v-32c4de6a27",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24484 is approved by change manager Erik Brandt and its components list includes 'payments.reports', which is the exact component of the file changed. All requirements met."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The sole code_review approval is by 's.santos@fernbrook.example', which the people directory lists as a second email of Sofia Santos (p-ssantos) — the same person who authored the change. CHG-2 requires an approval from a change_approver who is not the author; no such independent approval exists."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is a single commit (35e5ad9e) and the approval names that exact commit, so the approval covers everything being merged. No later commits exist that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 35e5ad9e and reports 172 tests with 0 failures, 0 errors, 0 skipped, including all registered control tests. No product obligation has reports.py in its scope, so no additional control tests are triggered by this change."
+    }
+  ],
+  "summary": "The change is a trivial two-line addition (a REPORT_FORMAT constant) to apps/baseline-payments/payments/reports.py and touches no product-obligation scope path, so no security, access, encryption, or payment obligations are affected. However, CHG-2 (independent approval) is violated: the only code_review approval is signed by s.santos@fernbrook.example, which the directory confirms belongs to Sofia Santos, the change's own author. No other change_approver for payments (e.g., Mara Costa) has approved. Because a critical process obligation is refuted, the change must be rejected regardless of the clean CI run.",
+  "meta": {
+    "elapsed_s": 129.25,
+    "tokens_in": 27615,
+    "tokens_out": 3650,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b378c11c073b99abe13fc9878c9db9ec34da96b203edf56c950f13b14433a900",
+    "packet_tokens_est": 24375,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 11488,
+    "answer_chars": 1783,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.18,
+    "eval_s": 97.03,
+    "total_s": 129.24,
+    "tokens_est_ratio": 1.104,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

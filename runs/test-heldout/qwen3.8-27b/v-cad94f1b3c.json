@@ -1,0 +1,76 @@
+{
+  "variant": "v-cad94f1b3c",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The change modifies url_for in integrations.py but the added branch (base.replace('https://','https://',1)) is a literal no-op; all three INTEGRATIONS entries still use https. The exhaustive control test test_integrations_use_tls passed in CI on the final commit."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The INTEGRATIONS list is unchanged (3 entries: core-banking, sanctions-screening, statement-delivery) and still matches asset-inventory.json. The exhaustive test test_integrations_are_inventoried passed in CI on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25055 is type 'standard', status 'approved', approved by grace.kim (change_manager). Its components list 'payments.integrations', which matches the sole file changed (integrations.py → component payments.integrations per components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos@fernbrook.example (p-ssantos, change_approver for payments) who is not the author (mara.costa@fernbrook.example / p-mcosta). Approval is for the correct head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review and security_review approvals both name the only commit in the change (c74c71f…), so the approval covers exactly what is merged; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows 172 tests, 0 failures, 0 errors, 0 skipped on the final commit c74c71f. The required control tests for ENC-2 (test_integrations_use_tls) and INV-1 (test_integrations_are_inventoried) are both present and passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py maps to component payments.integrations which is security_sensitive. A security_review approval from kofi.mensah@fernbrook.example (platform-security, security_reviewer, apps *) is on record for the same head commit, and he is not the author."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/integrations.py (the only changed file), so no prior evidence lapses. Fresh CI evidence for ENC-2 and INV-1 was generated on the final commit."
+    }
+  ],
+  "summary": "The change adds a no-op branch to the url_for method in payments's integrations module; it does not alter any URL, integration list, or security-relevant behaviour. All product obligations whose scope includes integrations.py (ENC-2, INV-1) are satisfied by the unchanged https URLs and matching asset inventory, confirmed by passing exhaustive control tests in CI on the final commit. All process obligations (CHG-1 through CHG-5, LAP-1) are met: the ticket is approved with correct component coverage, an independent change_approver and a security_reviewer both approved the single commit, the full 172-test suite passed with no skips, and no prior ledger evidence lapses. The change is safe to merge.",
+  "meta": {
+    "elapsed_s": 182.56,
+    "tokens_in": 27549,
+    "tokens_out": 5465,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ae5eb3aaa73de3ca4cd793d92e1befc1f9e7a61313aa56be200dfc9426b1e92e",
+    "packet_tokens_est": 24320,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17127,
+    "answer_chars": 3011,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.09,
+    "eval_s": 150.44,
+    "total_s": 182.56,
+    "tokens_est_ratio": 1.104,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "variant": "v-1b1ee6015b",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26265 lists component \"payments.tests\" only; the changed file `apps/baseline-payments/payments/directory.py` has no component entry in `controls/payments/components.json`, so the ticket does not cover all touched components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval record shows a code_review by Sofia Santos (change_approver for payments, not the author) at 2026-10-19, satisfying independent approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval references the exact commit SHA of the change, and no later commits modify behavior, meeting the coverage requirement."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) succeeded; JUnit report shows 173 tests passed with no failures, including all registered control tests."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Existing evidence for prior obligations (e.g., PAY-1, AUD-2) remains valid because the change does not modify any of the covered code paths."
+    }
+  ],
+  "summary": "The change fails the CHG-1 process obligation because the change ticket does not list a component for the modified `directory.py` file, leaving the component uncovered. All other applicable process obligations (CHG-2, CHG-3, CHG-4, LAP-1) are satisfied, but the missing component coverage is a critical violation, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 433.46,
+    "tokens_in": 24863,
+    "tokens_out": 5539,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "64981e9fb0c1d8a805ac2cd845276400e57194179081fead888e06ae298e802e",
+    "packet_tokens_est": 24772,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21779,
+    "answer_chars": 1593,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.26,
+    "eval_s": 414.93,
+    "total_s": 433.46,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

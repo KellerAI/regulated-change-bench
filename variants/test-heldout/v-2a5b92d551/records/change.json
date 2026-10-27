@@ -1,0 +1,21 @@
+{
+  "id": "PR-1933",
+  "title": "Income formatting diagnostics",
+  "description": "Income formatting diagnostics.\n\nChanges:\n- Help operations identify rejected import values\n- Keep validation and API error messages unchanged\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-675",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "599a8a8ec423e9ba2d6334cb38b9aaedc4fe44f1",
+  "commits": [
+    {
+      "sha": "599a8a8ec423e9ba2d6334cb38b9aaedc4fe44f1",
+      "message": "Validation: improve income formatting diagnostics",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-04T20:20:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26593",
+  "opened_at": "2026-10-04T20:20:00Z"
+}

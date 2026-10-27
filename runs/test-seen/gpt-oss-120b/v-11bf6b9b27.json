@@ -1,0 +1,61 @@
+{
+  "variant": "v-11bf6b9b27",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket lists components payments.payees, payments.payments, payments.tests but the changed files (directory.py and memos.py) have no component entries in controls/payments/components.json, so not all touched components are covered."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "Only code_review approval is from Mara Costa (role change_manager), who does not have the change_approver role for payments; the required independent approval is missing."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "Approval applies to the first commit only; the second commit adds code (PREVIEW_MIN_WIDTH) and modifies directory validation, which changes behaviour, so the approval does not cover the final merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run reports all 173 tests passing, including the newly added charity‑payee test, satisfying the testing requirement."
+    },
+    {
+      "id": "CHG-5",
+      "status": "open",
+      "note": "Changed files are not mapped to any component with a security_sensitive flag, so it cannot be determined whether a security review is required."
+    }
+  ],
+  "summary": "The change fails critical process obligations: the ticket does not cover all touched components, there is no appropriate independent approval, and the existing approval does not apply to the final commit. While testing passes, the lack of required approvals forces a REJECT decision.",
+  "meta": {
+    "elapsed_s": 125.8,
+    "tokens_in": 25443,
+    "tokens_out": 6017,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "17af1ea554426d8125ee1a324a8482c4361cda671b32244dd2084fb37e513843",
+    "packet_tokens_est": 25342,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24160,
+    "answer_chars": 1605,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 19.05,
+    "eval_s": 106.47,
+    "total_s": 125.8,
+    "tokens_est_ratio": 0.979,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

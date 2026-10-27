@@ -1,0 +1,21 @@
+{
+  "id": "PR-1261",
+  "title": "Income formatting diagnostics",
+  "description": "Income formatting diagnostics.\n\nChanges:\n- Help operations identify rejected import values\n- Keep validation and API error messages unchanged\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-678",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "4f1da65b37527a31b5a9fef8d18a847dffb93552",
+  "commits": [
+    {
+      "sha": "4f1da65b37527a31b5a9fef8d18a847dffb93552",
+      "message": "Validation: improve income formatting diagnostics",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-12T23:29:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25973",
+  "opened_at": "2026-10-12T23:29:00Z"
+}

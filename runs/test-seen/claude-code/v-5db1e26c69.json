@@ -1,0 +1,82 @@
+{
+  "variant": "v-5db1e26c69",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26282 is approved by change_manager Grace Kim (2026-10-22T05:48Z, before the change was opened) and lists payments.policy and payments.controls-data, the only two components the diff touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver who is a different person from the author Mara Costa under all of Costa's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name 71106ae, the head and only commit of the change, so no later commits need assessing."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json is a successful run of ci/run-tests.sh baseline-payments on head 71106ae, and its JUnit report shows 172 tests with 0 failures, errors or skips. The changed symbol STANDARD_IDLE_MINUTES is outside every product obligation's scope, so no extra control tests are required. A local rerun was not possible because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components (payments.policy, payments.controls-data) are not marked security_sensitive in components.json, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The change alters an approved policy value in protected path controls/payments/policy-params.json. The only control_owner approval is from Sofia Santos, who lacks the control_owner role and is on the author's own team (payments-eng), so no valid control_owner approval exists."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers policy.py STANDARD_IDLE_MINUTES or the standard_idle_minutes parameter, so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1935 raises the payments standard-session idle timeout from 30 to 45 minutes in both policy.py and the protected controls/payments/policy-params.json. The ticket, independent code review, approval-commit match and CI on the final commit are all in order. However, CHG-6 requires a control_owner approval from outside the author's team for changes to protected controls data. The recorded control_owner approval comes from Sofia Santos, who doesn't hold that role and is on the author's team, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 66.31,
+    "tokens_in": 269718,
+    "tokens_out": 6187,
+    "usd": 0.364639,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 21,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 6187,
+      "cache_read_input_tokens": 230764,
+      "cache_creation_input_tokens": 38930
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.36463880000000004,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

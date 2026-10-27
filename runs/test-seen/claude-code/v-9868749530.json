@@ -1,0 +1,97 @@
+{
+  "variant": "v-9868749530",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "open",
+      "note": "The rewritten required_approvals looks equivalent and the code threshold equals the approved 10000.00, but the only current evidence is a control test over a fixed amount grid (edges plus multiples of 100 up to 30,000), not the full amount domain this exhaustive obligation needs. The earlier exhaustive proof has lapsed (see LAP-1)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0401 (rocq proof, exhaustive over amounts 0.01 to 5,000,000.00, commit d30b2ad) covers payments.py required_approvals, which this change rewrites. That is not a comment or formatting edit, so the evidence lapses, and no new evidence of the same strength was supplied."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26682 (standard). Change manager Erik Brandt approved it on 2026-10-20, before the change was opened, and its components (payments.payments) cover the only file touched, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a payments change_approver who is a different person from the author Sofia Santos under any of her addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit faccf9a, the change's only and final commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on faccf9a reports success: 172 tests, 0 failures or skips, including the registered PAY-1 and MC-1 control tests. I couldn't re-run it here (pytest isn't installed), and the report's host and timestamp differ from the run record's executor and start time."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py is in component payments.payments, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and its ticket are standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed or relied on. None in the register covers PAY-1 or payments.payments."
+    }
+  ],
+  "summary": "PR-1745 rewrites payments' required_approvals as a single conditional expression; the logic looks unchanged and the process records (ticket, independent code review on the final commit, passing CI) are in order. However, the PAY-1 dual-control evidence of record is an exhaustive formal proof that covers this exact function, and under LAP-1 any edit beyond comments or formatting lapses it until new evidence of the same strength is provided. The only fresh evidence is a control test over a fixed amount grid, which is weaker than the proof. Because evidence that LAP-1 requires is missing, the change is rejected; it can be resubmitted with the proof re-run against the new commit.",
+  "meta": {
+    "elapsed_s": 94.31,
+    "tokens_in": 508745,
+    "tokens_out": 8575,
+    "usd": 0.50794,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 8575,
+      "cache_read_input_tokens": 459844,
+      "cache_creation_input_tokens": 48867
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5079398,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

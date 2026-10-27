@@ -1,0 +1,67 @@
+{
+  "variant": "v-1aef9d9e5d",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26319 is approved by Erik Brandt (change_manager) on 2026-10-08, before the PR opened on 2026-10-09, and its components [payments.reports] cover the only touched file, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example, which the directory maps to Sofia Santos (p-ssantos), the change's author. A self-approval under an alternate address doesn't count, so there is no independent change_approver approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval record names the head commit ec61580, and the change has no commits after it. That approval is not independent, though (see CHG-2)."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head commit ec61580 ran ci/run-tests.sh baseline-payments with result success: 172 tests, 0 failures, 0 errors, 0 skipped. No product obligation's scope or closed domain covers reports.py, so no additional control tests are required."
+    }
+  ],
+  "summary": "The change adds a single REPORT_FORMAT constant to payments/reports.py, which no product obligation covers and which isn't security-sensitive or protected. The ticket is properly approved and covers the component, and CI passed the full suite on the final commit. However, the only code review was given by the author under a second email address (s.santos@fernbrook.example = Sofia Santos), so the independent approval CHG-2 requires is missing. The change is therefore rejected until a different payments change_approver approves the head commit.",
+  "meta": {
+    "elapsed_s": 60.21,
+    "tokens_in": 235532,
+    "tokens_out": 5256,
+    "usd": 0.324566,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 5256,
+      "cache_read_input_tokens": 199623,
+      "cache_creation_input_tokens": 35885
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3245656,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

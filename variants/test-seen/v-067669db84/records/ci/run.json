@@ -1,0 +1,13 @@
+{
+  "pipeline": "pr-checks",
+  "commit": "7798860e0d2a233f1fc35e9e40da21f1ce2446bb",
+  "executor": "ci-runner-07",
+  "started_at": "2026-10-02T20:52:00Z",
+  "result": "success",
+  "command": "ci/run-tests.sh baseline-mortgage",
+  "reports": [
+    "TEST-junit-jupiter.xml",
+    "TEST-junit-platform-suite.xml",
+    "TEST-junit-vintage.xml"
+  ]
+}

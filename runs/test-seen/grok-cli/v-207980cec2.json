@@ -1,0 +1,79 @@
+{
+  "variant": "v-207980cec2",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25093, which Grace Kim (change manager) approved on 2026-10-18 before the 2026-10-26 review. Its components, payments.payments and payments.tests, cover payments.py and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (m.costa@fernbrook.example) gave a code_review approval. She is a payments change_approver and is not the author, Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names ff24edaac8ab7dde6d9312734550ac782dfd279f, the only commit and the head. There are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on the head commit. The JUnit report has 175 tests, 0 failures, 0 errors, and 0 skipped, including every registered payments control test and the new approvals-remaining tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components, payments.payments and payments.tests, are not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/protected-paths.json. The new test is not a control test, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25093 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff does not deviate from a product obligation, and the change does not rely on an exception. The register entries are unused here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover required_approvals and release in payments.py. The diff only adds approvals_remaining and leaves those functions unchanged, so the prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds a display helper, approvals_remaining, and unit tests. It does not modify required_approvals, is_fully_approved, approve, or release, and it does not touch security-sensitive or protected paths. The ticket, independent code review on the head commit, and the full payments suite on that commit all meet the change-management rules. No product-obligation scope symbol is changed, and ledger evidence covering this file still applies.",
+  "meta": {
+    "elapsed_s": 167.23,
+    "tokens_in": 44940,
+    "tokens_out": 12899,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bc039484c69f72aa1b675272a4b5856bccaf7b2ca365b58282818bdb3df2567b",
+    "packet_tokens_est": 25764,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 44940,
+      "outputTokens": 12899,
+      "cacheReadTokens": 223232,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 163299,
+    "duration_api_ms": 163299,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

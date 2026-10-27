@@ -1,0 +1,89 @@
+{
+  "variant": "v-29641ffabf",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "POST /payees/{id}/reopen is bound to privileged action manage_payees with mfa=False, and LedgerApp requires MFA only when route.mfa is true. The exhaustive control test failed on that route, and EXC-0214 expired on 2026-10-19, before review on 2026-10-22."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "reopen_payee updates only status and closed_at. Existing NPI writes still go through _seal, and test_every_npi_field_is_sealed_at_rest passed on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "reopen_payee calls _audit with the actor, action reopen_payee, target payee id, and clock time, and the other state-changing methods in service.py still record audit events."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new UPDATE is a fixed SQL string with the payee id bound as a parameter. test_sql_statements_are_parameterized passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25655 is approved by change manager Grace Kim and lists payments.http, payments.routes, payments.service, and payments.store, which cover every file in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is e91e4ff46ae652ea0b0bbe11be537a123d1d2e31, and both the code review and the security review name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI on the head commit reports result failure: 172 tests, 1 failure, tests.controls.test_routes_control#test_privileged_routes_require_mfa. The full suite did not pass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "app.py, routes.py, and store.py are security-sensitive. Kofi Mensah, a security reviewer and not the author, approved a security review of the head commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change relies on EXC-0214 for the MFA gap. That exception is approved by risk owner Helena Vasquez, but it expires 2026-10-19 and is expired at the 2026-10-22 review time."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0404 covers routes.py for MFA-1 at an earlier commit. This change alters that route table, and the replacement exhaustive control test on the head commit failed."
+    }
+  ],
+  "summary": "The reopen route uses the privileged manage_payees action without requiring MFA, which the route-control test fails on the final commit. The cited MFA exception EXC-0214 expired three days before review, so it does not excuse the deviation. CI on the head commit is a failing full suite, so testing is not met and the prior MFA evidence on routes.py has lapsed. Ticket coverage, independent code review, and security review are in order, and the new SQL, audit, and NPI writes do not themselves break those controls.",
+  "meta": {
+    "elapsed_s": 181.52,
+    "tokens_in": 61195,
+    "tokens_out": 11121,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "57c6dc1ce2c63d0ef1bd7823db306737f61e2c9ae35ad357d13b8978a79e6519",
+    "packet_tokens_est": 35040,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 61195,
+      "outputTokens": 11121,
+      "cacheReadTokens": 338048,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 177670,
+    "duration_api_ms": 177670,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

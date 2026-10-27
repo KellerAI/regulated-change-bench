@@ -1,0 +1,89 @@
+{
+  "variant": "v-b6dffc57c4",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "deliver_statement now logs the payee account number in the IntegrationError path via an f-string on _log.error. account_number is NPI, and EXC-0167 covers only a masked last-4 on mortgage.logging, not this payments.service path. The passing LOG-1 control is sample coverage and does not authorize this error-path message."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The edit does not change audit recording. In service.py each successful state-changing operation still calls _audit with actor, action, target, and time, and tests/controls/test_audit_control.py::test_sampled_operations_are_audited passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25835 is approved by change manager Grace Kim on 2026-09-30, before review, and its component payments.service matches the only touched path, apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Aisha Bello, approved a code_review of commit 049526a74763c13f3431b2d2b3350dab2a520559."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review approval names that same head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 172 tests with 0 failures and 0 skipped, including the AUD-1 registered control test for the touched service path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file is mapped to payments.service, which is not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "CHG-25835 is a standard ticket and the change record is not an emergency deployment, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The new error log is a LOG-1 deviation, and no approved, unexpired exception is scoped to LOG-1 and payments.service with a compensating control. EXC-0167 is a different app and component and only allows a masked last-4."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments, audit, routes, and mortgage underwriting/approvals, none of which this commit changes, so those prior evidence records do not lapse."
+    }
+  ],
+  "summary": "The change adds the payee account number to the statement-delivery error log. That field is nonpublic personal information, and no in-scope exception allows it, so LOG-1 and EXC-1 fail. Change-ticket, independent approval, final-commit testing, and the unchanged audit calls are in order, but those records do not cure the log. The change is rejected.",
+  "meta": {
+    "elapsed_s": 172.23,
+    "tokens_in": 79387,
+    "tokens_out": 11254,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "31da8764237683e795d75521c85d450465577b991bd57ccd355e8d292195dff6",
+    "packet_tokens_est": 26649,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 79387,
+      "outputTokens": 11254,
+      "cacheReadTokens": 173312,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 168149,
+    "duration_api_ms": 168149,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

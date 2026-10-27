@@ -1,0 +1,56 @@
+{
+  "variant": "v-3eb47bf44f",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25173 is approved, but its components ['payments.payments','payments.tests'] do not cover apps/baseline-payments/payments/memos.py, which has no entry in controls/payments/components.json, so the change touches an unmapped component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Sofia Santos (change_approver for payments, not the author) is recorded, satisfying the independent approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "Only the first commit b6ebfd6... has a code_review approval; the second commit c1a0175... adds functional code (PREVIEW_MIN_WIDTH) and is not covered by the earlier approval, violating the coverage rule."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded with all 174 tests passing, including the new memo preview tests, meeting the testing requirement."
+    }
+  ],
+  "summary": "The change fails critical process obligations: CHG-1 because the modified memos.py file is not mapped to any ticket component, and CHG-3 because the final commit lacks a covering code review approval. Consequently, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 114.76,
+    "tokens_in": 24744,
+    "tokens_out": 4662,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "2f93ba6e4334bdb805b6d547e2e97e9c6042b48f4ddd927d2c440f6664e4f2fc",
+    "packet_tokens_est": 24563,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17577,
+    "answer_chars": 1356,
+    "done_reason": "stop",
+    "load_s": 3.07,
+    "prompt_eval_s": 25.81,
+    "eval_s": 85.73,
+    "total_s": 114.76,
+    "tokens_est_ratio": 0.982,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

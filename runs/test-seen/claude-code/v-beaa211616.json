@@ -1,0 +1,77 @@
+{
+  "variant": "v-beaa211616",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change adds `if payee.category == \"tax_authority\": continue` to `purge_due` in payments/retention.py, so closed tax-authority payees keep their NPI past the approved 84-month period with no legal hold. RET-1 allows legal hold as the only exemption, and no approved policy value or exception permits a category carve-out."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The register has no exception for RET-1 or component payments.retention; its only entries are for SES-1 (expired), LOG-1 (mortgage.logging) and MFA-1 (withdrawn). The deviation therefore has no valid exception behind it."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26374 (standard) was approved by Erik Brandt (change_manager) at 2026-10-05T02:53Z, before the PR opened on 2026-10-06. Its components ['payments.retention'] cover the only touched path, apps/baseline-payments/payments/retention.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a payments change_approver. She is a different person from the author, Aisha Bello, under all of Bello's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 12376ec, which is the change's only commit, so nothing was added after it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful payments run on head 12376ec. Its JUnit report has 172 tests with 0 failures and 0 skips, including the registered RET-1 control test test_sampled_purge_respects_hold. That test is labelled `sample` and uses only vendor payees, so it does not exercise the new tax_authority branch. I couldn't re-run the suite here because pytest isn't installed in the sandbox."
+    }
+  ],
+  "summary": "PR-1222 makes the payments retention job skip closed payees in the tax_authority category, so their NPI is no longer purged after the approved 84-month retention period. RET-1 requires purging on schedule, with legal hold as the only exemption. No approved policy or registered exception covers this deviation, so RET-1 and EXC-1 are refuted. The process records (ticket, independent code review on the head commit, passing CI on the head commit) are in order, but CI only passes because the RET-1 control test is a vendor-only sample that never hits the new branch. The change is rejected.",
+  "meta": {
+    "elapsed_s": 75.37,
+    "tokens_in": 277448,
+    "tokens_out": 7023,
+    "usd": 0.407892,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 7023,
+      "cache_read_input_tokens": 233288,
+      "cache_creation_input_tokens": 44134
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.40789159999999997,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

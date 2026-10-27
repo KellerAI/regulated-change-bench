@@ -1,0 +1,27 @@
+{
+  "id": "PR-1519",
+  "title": "Treasury dashboard: released totals per payee",
+  "description": "Treasury dashboard: released totals per payee.\n\nChanges:\n- Add `reports.released_by_payee`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-265",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "aef8181ab75724e77761a4d3e6db59fbef935404",
+  "commits": [
+    {
+      "sha": "53afc794a26d0b93cfe932431c8dd49fd19c0b85",
+      "message": "Reports: released totals per payee",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-20T22:53:00Z"
+    },
+    {
+      "sha": "aef8181ab75724e77761a4d3e6db59fbef935404",
+      "message": "Tidy memo module docstring",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-20T23:24:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26114",
+  "opened_at": "2026-10-20T22:53:00Z"
+}

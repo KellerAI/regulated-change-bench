@@ -1,0 +1,76 @@
+{
+  "variant": "v-dc24a1f420",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new 'payment-advice' integration uses https://advice.fernbrook.example/v1, satisfying the TLS requirement. The exhaustive control test test_integrations_use_tls passed in CI."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The new asset-inventory entry for 'payment-advice' has an empty owner field (\"owner\": \"\"). The obligation requires every integration to be listed with an owner and a data classification. The exhaustive control test test_integrations_are_inventoried failed with 'no owner', and test_inventory_entries_have_owner_and_classification also failed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25317 is approved by change manager Erik Brandt, and its components (payments.integrations, payments.controls-data) cover both files modified by this change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (change_approver, payments-eng, not the author Jonah Weiss) provided a code_review approval on the head commit, satisfying the independent-approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is only one commit in the change; the approval references that same commit 8414e2b, so it covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the final commit 8414e2b shows result 'failure' with 2 failing tests (test_integrations_are_inventoried and test_inventory_entries_have_owner_and_classification). The full suite is not passing, so the testing requirement is not met."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches integrations.py (component payments.integrations, security_sensitive=true). A security_review approval from Ines Halvorsen (security_reviewer, platform-security) on the correct commit is present."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change modifies controls/payments/asset-inventory.json (a protected path). A control_owner approval from Bao Tran (controls-office, not the author's payments-eng team) on the correct commit is present."
+    }
+  ],
+  "summary": "The change adds a new 'payment-advice' outbound integration to payments and registers it in the asset inventory, but the inventory entry has an empty owner field, violating INV-1 (every integration must have an owner and data classification). This is confirmed by two failing control tests in CI: test_integrations_are_inventoried and test_inventory_entries_have_owner_and_classification. Because the CI run on the final commit does not show the full suite passing, CHG-4 is also refuted. The change cannot be accepted until the owner is populated and the control tests pass.",
+  "meta": {
+    "elapsed_s": 105.32,
+    "tokens_in": 28192,
+    "tokens_out": 2629,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8ba655d53b621e4d1fd81055cc55bb572d57ac6b21b464a3e73d683886c5ae14",
+    "packet_tokens_est": 24870,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 7125,
+    "answer_chars": 2724,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.02,
+    "eval_s": 72.27,
+    "total_s": 105.32,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

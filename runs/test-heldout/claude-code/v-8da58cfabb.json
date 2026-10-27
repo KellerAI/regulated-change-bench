@@ -1,0 +1,102 @@
+{
+  "variant": "v-8da58cfabb",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The change replaces self._audit(actor, \"amend_memo\", ...) in LedgerService.amend_memo with an application log line, so a state-changing operation (store.set_payment_memo) no longer records an audit event with actor, action, target and time. The sampled AUD-1 control test (create/approve/release only) can't detect this, and no exception covers AUD-1 for payments.service."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only new log call site is self._log.info(\"payment memo updated\", payment_id=payment_id). payment_id isn't in npi.NPI_FIELDS, and AppLog masks NPI keys in any case. The LOG-1 control test passes in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24351 is approved by change manager erik.brandt on 2026-10-10, before the 2026-10-13 review. Its components [payments.service] cover the only touched path, apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa, a payments change_approver and a different person from the author aisha.bello (none of her addresses)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 8311056, and there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding on head 8311056. The JUnit report has 172 tests with 0 failures or skips, including the AUD-1 and LOG-1 control tests. The report's timestamp (2026-10-23, a developer laptop host) doesn't match the recorded run, and I couldn't re-run locally because pytest is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.service, is not marked security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. The register has no AUD-1 exception for payments.service, so nothing excuses the AUD-1 deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py (they cover payments.py, audit.py, routes.py and Java files), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change removes the audit event from LedgerService.amend_memo and replaces it with an application log line, so a state-changing operation is no longer audited. That violates AUD-1, and no approved exception covers it. CI passes only because the AUD-1 control test samples create, approve and release and never calls amend_memo. The ticket, independent review, approval coverage and recorded CI run all hold, but one refuted critical obligation means the change must be rejected.",
+  "meta": {
+    "elapsed_s": 74.84,
+    "tokens_in": 426159,
+    "tokens_out": 6497,
+    "usd": 0.472025,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 19,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6497,
+      "cache_read_input_tokens": 372642,
+      "cache_creation_input_tokens": 53489
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4720254,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

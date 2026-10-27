@@ -1,0 +1,89 @@
+{
+  "variant": "v-d41520afcd",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Approvals.approve still rejects the preparer before any authority check, and the diff does not change that maker-checker path."
+    },
+    {
+      "id": "LIM-1",
+      "status": "refuted",
+      "note": "requiredApprovals now returns one underwriter for amounts up to twice UNDERWRITER_LIMIT (1,000,000), while the approved rule allows a single underwriter only up to 500,000. No LIM-1 exception covers this."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24191 is approved by change manager Grace Kim, and its components (mortgage.approvals, mortgage.reporting, mortgage.tests) match the three paths in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author, gave a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head 9c83683d45a5d72ede3e98aea472036fe4e35048, and there is no later commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run.json records success on b5cc1851f815b27cd669e43c9c9b3cb4cdcdcf04. The later commit changes requiredApprovals behavior, so that run does not count as testing of the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Approvals.java, PipelineReport.java, and the new unit test are not marked security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24191 is type standard and the change record is not an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other obligations or components, and none is offered for LIM-1."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0405, the exhaustive proof of requiredApprovals, covers Approvals.java and lapses because this change alters that behavior. The packet has no replacement evidence of the same strength on the head commit."
+    }
+  ],
+  "summary": "The head commit widens underwriter authority from 500,000 to 1,000,000 by treating twice UNDERWRITER_LIMIT as the single-underwriter ceiling. That breaks LIM-1, and the prior exhaustive proof of requiredApprovals no longer applies. CI passed only on the earlier pipeline-report commit, so it is not evidence for the commit that changes approval authority. The maker-checker check and the change-ticket, review, and non-emergency process records are in order, but the authority-limit breach is enough to reject.",
+  "meta": {
+    "elapsed_s": 81.1,
+    "tokens_in": 43107,
+    "tokens_out": 9083,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "568644d9344b97980a4a4dec6749c37873b9911aa8935a0d4ac920a604de584b",
+    "packet_tokens_est": 25680,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43107,
+      "outputTokens": 9083,
+      "cacheReadTokens": 160384,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 77375,
+    "duration_api_ms": 77375,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

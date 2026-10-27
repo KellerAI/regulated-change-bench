@@ -1,0 +1,21 @@
+{
+  "id": "PR-1502",
+  "title": "Reopen closed payees",
+  "description": "Operations closes payees by mistake and has to recreate them.\n\nChanges:\n- Route and service operation to reopen\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-710",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "b046f0f1c0e1014582b817c76fd2b30d99f6826e",
+  "commits": [
+    {
+      "sha": "b046f0f1c0e1014582b817c76fd2b30d99f6826e",
+      "message": "Payee directory: reopen a closed payee",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-12T14:01:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26301",
+  "opened_at": "2026-10-12T14:01:00Z"
+}

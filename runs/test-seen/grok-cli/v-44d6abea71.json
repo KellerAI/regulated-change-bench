@@ -1,0 +1,79 @@
+{
+  "variant": "v-44d6abea71",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25859, which Grace Kim (change manager) approved on 2026-10-03 before the 2026-10-08 review. Its components mortgage.policy, mortgage.tests, and mortgage.controls-data cover Policy.java, SessionTest.java, and controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author Declan Farrell, approved a code review of the head commit ae833f3ababafdcaebbe6ce7c14d10095090c40f."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code-review approval names that same commit, so the approval covers everything that would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, and the JUnit digest shows 124 tests with no failures, errors, or skips, including the registered control tests. No product-obligation scope symbol was modified, so no further control test is required for this diff."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched paths map to mortgage.policy, mortgage.tests, and mortgage.controls-data, all marked security_sensitive false. A security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "controls/mortgage/policy-params.json is a protected path, and the change updates the approved value mortgage.standard_idle_minutes from 30 to 45. The record set has no control_owner approval from someone outside the author's lending-eng team."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25859 is type standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Privileged idle stays 15 minutes and no product obligation is departed from. The SES-1 exception EXC-0141 is for payments batch sessions and expired on 2026-09-08, and this change does not rely on it."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries that name Policy.java cover UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, and LTV_MAX_PERCENT. The diff changes only STANDARD_IDLE_MINUTES, so those covered symbols are unchanged and the earlier evidence does not lapse."
+    }
+  ],
+  "summary": "The idle change raises only the non-privileged standard timeout from 30 to 45 minutes in Policy.java, SessionTest, and mortgage.standard_idle_minutes. Privileged idle remains 15 minutes, and the ticket, independent code review, and passing CI on the head commit are in order. The edit is still inside protected controls data and changes an approved policy value, which requires a control-owner approval from outside lending-eng. That approval is absent, so the change cannot be accepted.",
+  "meta": {
+    "elapsed_s": 204.82,
+    "tokens_in": 68211,
+    "tokens_out": 12457,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "d78eef954613fd0dc92af83fba15af290eecb3beb5660dcdb9f1b526e17c6b12",
+    "packet_tokens_est": 25276,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 68211,
+      "outputTokens": 12457,
+      "cacheReadTokens": 234368,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 201287,
+    "duration_api_ms": 201287,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

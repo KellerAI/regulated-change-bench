@@ -1,0 +1,97 @@
+{
+  "variant": "v-2592d3f30d",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "The change touches Retention.java (in RET-1 scope); the added `&& isClosedOut(status)` is redundant after the early return, so behaviour looks unchanged. But RET-1 requires exhaustive evidence, and the only evidence is the sample control test RetentionControlTest#sampledPurgeRespectsHold (three fixed cases), with no ledger proof for RET-1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25264 is approved by change manager Grace Kim at 2026-10-07T04:32Z, before the PR opened at 20:32Z. Its components [mortgage.retention] cover the only file touched, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by declan.farrell@fernbrook.example, a baseline-mortgage change_approver and a different person from the author Wen Li (none of Wen Li's addresses)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit fb34220, which is the only and final commit of the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows success for the full baseline-mortgage suite on head fb34220; the JUnit reports show 124 tests, 0 failures, 0 skipped, including RET-1's registered control test (labelled sample). I could not rerun because the JUnit jar is missing, and the report metadata (local hostname, 2026-10-23 timestamp) does not match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java maps to mortgage.retention, which components.json marks security_sensitive=false, so no security_review is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches no protected path (controls/, control tests, ci/), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; none in the register covers RET-1 or mortgage.retention."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Retention.java or RET-1, so this change lapses no prior evidence."
+    }
+  ],
+  "summary": "PR-1240 adds one redundant condition to Retention.isPurgeDue that does not change behaviour. The change-process records are in order: approved ticket with matching component, independent code review on the head commit, CI success on the head commit, and no security, control-owner or emergency requirements. RET-1 requires exhaustive evidence, but the only evidence is a sample control test with three fixed cases, and the ledger has no exhaustive proof for RET-1. Because RET-1 can't be established either way, the decision is HOLD until exhaustive RET-1 evidence (for example a proof or an exhaustive control test over retention cases) is provided.",
+  "meta": {
+    "elapsed_s": 87.25,
+    "tokens_in": 338669,
+    "tokens_out": 7735,
+    "usd": 0.397901,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 7735,
+      "cache_read_input_tokens": 302107,
+      "cache_creation_input_tokens": 36532
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3979014,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

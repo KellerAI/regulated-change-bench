@@ -1,0 +1,89 @@
+{
+  "variant": "v-1610263ceb",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The head copy of integrations.py lists payment-advice at https://advice.fernbrook.example/v1, and the other three endpoints are also https. The registered exhaustive test tests/controls/test_integrations_control.py::test_integrations_use_tls ran and is not among the failures."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "payment-advice is in the inventory, but owner is an empty string, so it has no owner. The exhaustive control test test_integrations_are_inventoried fails with ('payment-advice', 'no owner'), and test_inventory_entries_have_owner_and_classification fails on that empty owner."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-26889, which Grace Kim (change manager) approved on 2026-10-16 before review. Its components are payments.integrations and payments.controls-data, which cover integrations.py and controls/payments/asset-inventory.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos approved a code_review on the head commit. She has the change_approver role for payments and is not the author, Mara Costa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 9e5d3b77a6f65180d78a29e0b7fa29b5f55f6559, and the code review, security review, and control-owner approvals all name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json records a failure of ci/run-tests.sh baseline-payments on the final commit. The JUnit report has 172 tests and 2 failures, including the registered INV-1 control test, which is unskipped but not passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is in the security-sensitive payments.integrations component. Kofi Mensah, a security_reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "asset-inventory.json is under the protected controls/ paths. Bao Tran, a control_owner on the controls-office team, not payments-eng, approved that same head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26889 is type standard and the change record sets emergency to false, so a post-implementation review is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. EXC-0141 is expired and scoped to SES-1, EXC-0167 is for mortgage logging, and EXC-0172 is withdrawn, so none excuses the missing payment-advice owner."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff changes only integrations.py and asset-inventory.json. Ledger evidence covers payments, audit, routes, and mortgage underwriting and approvals, none of which this change alters."
+    }
+  ],
+  "summary": "The change registers a payment-advice HTTPS endpoint and adds a matching inventory row, but that row has an empty owner. INV-1 requires every outbound integration to be inventoried with an owner and a data classification, and the exhaustive inventory control test fails on payment-advice for lack of an owner. The payments suite on the final commit also fails, so CHG-4 is not met. The ticket, independent code review, security review, and control-owner approval are in order, and the TLS obligation is met, but the missing owner and the failing suite require rejection.",
+  "meta": {
+    "elapsed_s": 216.69,
+    "tokens_in": 43578,
+    "tokens_out": 9875,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5e82763547c553666de76d9f63356fdce20f5f9dee1b94e8b5dfce73d3896b22",
+    "packet_tokens_est": 24867,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43578,
+      "outputTokens": 9875,
+      "cacheReadTokens": 198528,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 209767,
+    "duration_api_ms": 209767,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

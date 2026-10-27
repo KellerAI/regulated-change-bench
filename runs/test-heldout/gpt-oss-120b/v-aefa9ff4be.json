@@ -1,0 +1,71 @@
+{
+  "variant": "v-aefa9ff4be",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26287 exists, is of type standard, approved by change manager erik.brandt on 2026-10-18, covering the changed components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from wen.li@fernbrook.example (role change_approver) on the commit, and the reviewer is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the only commit in the PR; no later commits modify behaviour, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (run.json result: success) and the full JUnit suite (124 tests) passed, including all control tests for mortgage (e.g., EncryptionControlTest, RetentionControlTest)."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Change touches a protected path (apps/baseline-mortgage/src/test/java/controls/ControlFixtures.java) and a control_owner approval from bao.tran@fernbrook.example (role control_owner, different team) is recorded."
+    },
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The new NPI field coapplicant_tax_id is added to ApplicantFields but not added to the NPI encryption list (NpiRegistry.FIELDS / policy-params). No evidence (proof or exhaustive test) shows it is sealed at rest, violating the exhaustive evidence requirement."
+    },
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Retention code now removes coapplicant_tax_id, but only a sampled retention test exists (coverage: sample). The obligation requires exhaustive evidence that all NPI, including the new field, is purged after the retention period; such evidence is missing."
+    }
+  ],
+  "summary": "The change satisfies all process obligations (CHG-1, CHG-2, CHG-3, CHG-4, CHG-6) with proper tickets and approvals. However, it fails product obligations ENC-1 and RET-1: there is no exhaustive evidence that the newly added coapplicant_tax_id field is encrypted at rest or purged correctly. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 132.18,
+    "tokens_in": 25542,
+    "tokens_out": 7317,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8662525df3a3cd0989be95f4942d1e718e41588dde21bb4eb9036a5ffe442720",
+    "packet_tokens_est": 25740,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 28818,
+    "answer_chars": 2213,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 16.11,
+    "eval_s": 115.88,
+    "total_s": 132.18,
+    "tokens_est_ratio": 0.968,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

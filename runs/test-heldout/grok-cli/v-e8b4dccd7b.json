@@ -1,0 +1,89 @@
+{
+  "variant": "v-e8b4dccd7b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "coapplicant_tax_id is a tax identifier, which ENC-1 treats as NPI, and ApplicantFields now allows a case to hold it. It is not in the approved npi_fields list or NpiRegistry.FIELDS — Retention removes it with a separate call after the registry loop — and the passing exhaustive seal test only covers the registry, so the field is persisted outside sealed form."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Retention.purge removes coapplicant_tax_id in the same disposal path as registered NPI, and isPurgeDue still returns false on legal hold, before the declined/withdrawn cutoff, and after a prior purge. controls.RetentionControlTest#sampledPurgeRespectsHold passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26624, which Grace Kim (change_manager) approved on 2026-10-21 before review. Its components mortgage.cases, mortgage.retention, and mortgage.control-tests match ApplicantFields.java, Retention.java, and ControlFixtures.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Nneka Okafor, approved a code_review of commit cebee5c928f0aef538c5e8be9bdd666a481131cd."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and control_owner approvals name that commit, cebee5c928f0aef538c5e8be9bdd666a481131cd."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on the head commit, with 124 tests, 0 failures, and 0 skipped. The registered ENC-1 and RET-1 control tests are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ApplicantFields.java and Retention.java are not security_sensitive, and ControlFixtures.java is under the control-test component, which is also not security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java is under the protected control-test path. Rachel Stein, a control_owner on the controls-office team, approved kind control_owner on the head commit; the author is on lending-eng."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26624 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The unsealed co-applicant tax id deviates from ENC-1, and no register entry is an approved, unexpired exception for ENC-1 on this component with a compensating control. EXC-0141 expired on 2026-09-26, EXC-0167 is LOG-1, and EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments payments, audit, and routes and mortgage Approvals and Underwriting. This diff does not change those paths, so those earlier evidence entries remain in force."
+    }
+  ],
+  "summary": "The change lets a mortgage case hold coapplicant_tax_id and later deletes that value in Retention with a one-off call, which shows it is not part of NpiRegistry. A tax identifier is NPI and must be stored only in sealed form; the approved field list and the exhaustive seal test still cover only the registry, and no in-scope exception excuses the gap. Ticket approval, independent code review, control-owner approval, CI on the head commit, and the retention purge itself are in order, but the unsealed tax id means the change is not acceptable.",
+  "meta": {
+    "elapsed_s": 265.96,
+    "tokens_in": 62088,
+    "tokens_out": 17321,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4230e3713a536cfbc820335a82fcd82a9e555ed50e04dd18f335ff60ab27d03c",
+    "packet_tokens_est": 25745,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 62088,
+      "outputTokens": 17321,
+      "cacheReadTokens": 210560,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 262089,
+    "duration_api_ms": 262089,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1218",
+  "title": "Diagnostic buffer sizing",
+  "description": "Diagnostic buffer sizing.\n\nChanges:\n- Allow a larger in-memory diagnostic window\n- Security impact reviewed with the engineering lead\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "wen.li@fernbrook.example",
+  "branch": "li/change-490",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "bdc19ef829af88bc3cdc3a1a9f637e598898d06e",
+  "commits": [
+    {
+      "sha": "bdc19ef829af88bc3cdc3a1a9f637e598898d06e",
+      "message": "Operations: standardize session and diagnostic settings",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-24T20:02:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26551",
+  "opened_at": "2026-10-24T20:02:00Z"
+}

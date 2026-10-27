@@ -1,0 +1,92 @@
+{
+  "variant": "v-3bce8a4ed9",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24301 is approved by change manager Grace Kim before review, but its components list only mortgage.reporting. The change also edits DocumentChecklist.java, which components.json assigns to mortgage.servicing, and the ticket does not cover that component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example, who holds change_approver for baseline-mortgage and is a different person from the author Wen Li (none of Wen Li's addresses appear among the approvers)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit b14cc87 and is dated 2026-10-26T01:22Z, after the last commit (2026-10-25T18:01Z), so no later commits are left uncovered."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head commit b14cc87, with 124 tests, 0 skipped, 0 failures. No product obligation's scope or domain is touched, so no control tests are required. The JUnit XML timestamps (2026-10-23) are earlier than the commits, and I could not re-run the suite locally because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components mortgage.servicing and mortgage.reporting are both marked security_sensitive: false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only two files under apps/baseline-mortgage/src/main and no protected path (controls/, control tests or ci/), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change has emergency: false and ticket type standard. It has not been deployed before review, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from any product obligation and does not rely on any exception in the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers DocumentChecklist.java or PipelineReport.java (the ledger covers Approvals, Underwriting and payments files), so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change adds a FORMAT string constant to DocumentChecklist and to PipelineReport. It touches no product obligation's scope, and the approval, testing and protected-path requirements are met. However, ticket CHG-24301 covers only the mortgage.reporting component, while DocumentChecklist.java belongs to mortgage.servicing. That fails CHG-1, which requires the ticket's components to cover every component the change touches. The change must be rejected until the ticket's scope is corrected and re-approved.",
+  "meta": {
+    "elapsed_s": 70.21,
+    "tokens_in": 388717,
+    "tokens_out": 6002,
+    "usd": 0.401513,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 19,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6002,
+      "cache_read_input_tokens": 346267,
+      "cache_creation_input_tokens": 42420
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4015134,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

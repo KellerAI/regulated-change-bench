@@ -1,0 +1,27 @@
+{
+  "id": "PR-1341",
+  "title": "Pipeline representation metadata",
+  "description": "Pipeline representation metadata.\n\nChanges:\n- Publish the portal format identifier\n- Follow-up aligns the reporting metadata\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "declan.farrell@fernbrook.example",
+  "branch": "farrell/change-640",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "2ec224617c695b308752946ba57a02202a50afab",
+  "commits": [
+    {
+      "sha": "0ab7408a1dac8cf8e31469b2af9042fa1e2f3d34",
+      "message": "Reports: identify the export format",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-09T23:03:00Z"
+    },
+    {
+      "sha": "2ec224617c695b308752946ba57a02202a50afab",
+      "message": "Reports: align the format identifier with the portal release",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-10T03:08:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25138",
+  "opened_at": "2026-10-09T23:03:00Z"
+}

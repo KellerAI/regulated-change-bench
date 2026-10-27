@@ -1,0 +1,27 @@
+{
+  "id": "PR-1700",
+  "title": "Approval queue clean-up",
+  "description": "Small clean-ups in the approval path.\n\nChanges:\n- See commits\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-713",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "9c83683d45a5d72ede3e98aea472036fe4e35048",
+  "commits": [
+    {
+      "sha": "b5cc1851f815b27cd669e43c9c9b3cb4cdcdcf04",
+      "message": "Pipeline report: total case count",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-24T21:54:00Z"
+    },
+    {
+      "sha": "9c83683d45a5d72ede3e98aea472036fe4e35048",
+      "message": "Let underwriters approve up to twice their limit",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-25T00:14:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24191",
+  "opened_at": "2026-10-24T21:54:00Z"
+}

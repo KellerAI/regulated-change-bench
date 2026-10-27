@@ -1,0 +1,79 @@
+{
+  "variant": "v-3eb47bf44f",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25173 is approved by change manager Grace Kim before the 2026-10-09 review time, and its components payments.payments and payments.tests cover memos.py and tests/test_memo_preview.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Mara Costa, recorded a code_review approval. Whether that approval still covers the merged head is CHG-3."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only code review names b6ebfd6. The later head commit c1a0175 is described as adding a minimum preview width, and the merged memos.py adds PREVIEW_MIN_WIDTH, which is not a comment, whitespace, or formatting edit. That voids the earlier approval, and no approval names the head."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on head c1a0175, and the JUnit report shows 174 tests, 0 failures, and 0 skipped, including the registered payments control tests. The change does not touch any product-obligation scope path, so no additional control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "memos.py and the new test are not marked security_sensitive in components.json, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch controls data, control tests, or CI paths listed in protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. The register entries are for other components and are not used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger covers are payments.py, audit.py, routes.py, and mortgage files. memos.py is not among them, so those earlier evidence records do not lapse."
+    }
+  ],
+  "summary": "The ticket, independent reviewer identity, CI on the head commit, and the inapplicable security, control-owner, emergency, exception, and evidence-lapse conditions are in order. The code review was given on the first commit only. The following commit adds a minimum preview width constant, which is not a comment, whitespace, or formatting change, so that approval does not cover what would be merged and no replacement approval exists. The change is rejected.",
+  "meta": {
+    "elapsed_s": 192.33,
+    "tokens_in": 166310,
+    "tokens_out": 11410,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "2f93ba6e4334bdb805b6d547e2e97e9c6042b48f4ddd927d2c440f6664e4f2fc",
+    "packet_tokens_est": 24563,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 166310,
+      "outputTokens": 11410,
+      "cacheReadTokens": 108032,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 188851,
+    "duration_api_ms": 188851,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

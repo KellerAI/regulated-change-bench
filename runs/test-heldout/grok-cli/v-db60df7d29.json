@@ -1,0 +1,89 @@
+{
+  "variant": "v-db60df7d29",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new payment-advice endpoint is https://advice.fernbrook.example/v1, and the exhaustive control test tests.controls.test_integrations_control#test_integrations_use_tls passed on the head commit."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "payment-advice is in the asset inventory with classification npi, but owner is an empty string. The inventory control test fails with ('payment-advice', 'no owner'), so the entry has no owner."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-24697 is approved by change manager Erik Brandt on 2026-10-14, before review, and its components payments.integrations and payments.controls-data cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author Sofia Santos, approved a code_review of commit fa3a7a35f084fba9fa120f3fbd24a6200a319290."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review, security_review, and control_owner approvals all name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run.json records result failure on the head commit. The payments suite has 2 failures, including the registered INV-1 test test_integrations_are_inventoried, which is unskipped but not passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security_sensitive. Kofi Mensah, a security_reviewer and not the author, approved security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected path. Bao Tran, a control_owner on the controls-office team (outside payments-eng), approved control_owner of the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24697 is type standard and the change record sets emergency to false, so a post-implementation review is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. EXC-0141 is expired, EXC-0167 is a different app and obligation, and EXC-0172 is withdrawn; none waives INV-1."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments, audit, routes, and mortgage underwriting paths that this change does not modify, so that prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change registers a payment-advice gateway over HTTPS and adds it to the payments asset inventory, with a matching ticket and independent code, security, and control-owner approvals on the only commit. ENC-2 holds because the endpoint is https and the TLS control test passed. INV-1 does not: the inventory owner is blank, and CI on the head commit fails that control test plus the inventory owner check, so the suite is not green. The missing owner is not covered by any valid exception. The change is rejected.",
+  "meta": {
+    "elapsed_s": 130.34,
+    "tokens_in": 84246,
+    "tokens_out": 7887,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "13c5689975994994578f966b5839eb0c8abc591e0be3253af3e8d15ef9032699",
+    "packet_tokens_est": 24882,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 84246,
+      "outputTokens": 7887,
+      "cacheReadTokens": 169216,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 125742,
+    "duration_api_ms": 125742,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

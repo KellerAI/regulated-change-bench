@@ -1,0 +1,61 @@
+{
+  "variant": "v-09e77b2b60",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26546 lists component \"mortgage.reporting\" only, but the change also modifies DocumentChecklist (component \"mortgage.servicing\"), so the ticket does not cover all touched components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval record shows a code_review by Wen Li (has role change_approver for baseline-mortgage) on the final commit, and Wen Li is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The earlier commit (c13b3cb) adds behavior (FORMAT constant) not covered by the code_review approval, which only references the later commit; behavior‑changing earlier commit invalidates the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded with full test suite (124 tests) passing, including control tests for the modified classes."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "PipelineReport.java is marked security_sensitive, but there is no security_review approval in the records."
+    }
+  ],
+  "summary": "The change fails several process obligations: CHG-1 (ticket components incomplete), CHG-3 (approval does not cover all behavior changes), and CHG-5 (missing security review). While code review and testing obligations are satisfied, the violations mandate rejection.",
+  "meta": {
+    "elapsed_s": 81.43,
+    "tokens_in": 25026,
+    "tokens_out": 3972,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "efaab8d79fd4f19c36bc9cf5017559adb41ce590ee8aa0249f55ba94dd76c61a",
+    "packet_tokens_est": 25096,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15798,
+    "answer_chars": 1494,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.96,
+    "eval_s": 63.27,
+    "total_s": 81.43,
+    "tokens_est_ratio": 0.972,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

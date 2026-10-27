@@ -1,0 +1,21 @@
+{
+  "id": "PR-1720",
+  "title": "Retention clean-up",
+  "description": "Tidies the retention eligibility checks.\n\nChanges:\n- Legal-hold check\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-108",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "9d3bc0a70c33ec662ffd7179c0baa9538910a29e",
+  "commits": [
+    {
+      "sha": "9d3bc0a70c33ec662ffd7179c0baa9538910a29e",
+      "message": "Retention: legal holds apply to declined cases",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-26T16:49:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25770",
+  "opened_at": "2026-10-26T16:49:00Z"
+}

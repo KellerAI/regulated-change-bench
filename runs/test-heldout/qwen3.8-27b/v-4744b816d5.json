@@ -1,0 +1,66 @@
+{
+  "variant": "v-4744b816d5",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change removes the legal-hold guard for withdrawn cases: the condition `loanCase.isLegalHold()` is replaced with `loanCase.isLegalHold() && loanCase.status() != CaseStatus.WITHDRAWN`, meaning a withdrawn case on legal hold will proceed to purge. RET-1 states NPI is 'never [purged] while a legal hold applies,' so this is a direct violation. No exception in the register covers RET-1."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The code change creates a deviation from RET-1 (legal hold bypassed for withdrawn cases), but the exception register contains no approved exception for RET-1. Under EXC-1 a deviation is acceptable only under a registered, approved, in-scope exception with a compensating control; none exists here."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26821 is type 'standard', status 'approved' by change_manager grace.kim@fernbrook.example, and its components list ['mortgage.retention'] matches the component assigned to Retention.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "One code_review approval from declan.farrell@fernbrook.example, who holds the change_approver role for baseline-mortgage and is not the author (Priya Raman)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 289039e5, which is the sole and head commit of the change; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 289039e5 with 124 tests, 0 failures, 0 errors, 0 skipped. The registered control test for RET-1 (controls.RetentionControlTest#sampledPurgeRespectsHold, sample coverage) is present and passed, as are all other control tests for obligations whose scope paths the change could touch."
+    }
+  ],
+  "summary": "The single-line change to Retention.java bypasses the legal-hold check for cases with status WITHDRAWN, allowing NPI on withdrawn cases under legal hold to be purged. This directly contradicts RET-1's requirement that NPI is 'never [purged] while a legal hold applies,' and no exception in the register covers this deviation (EXC-1 also fails). All process obligations (CHG-1 through CHG-4) are met, and the CI suite passes on the final commit, but the substantive violation of a critical product obligation makes the change unacceptable. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 149.21,
+    "tokens_in": 27520,
+    "tokens_out": 4062,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "32f857e2fe57ec62ae6473b24086345d62d871573889feca6055542106096259",
+    "packet_tokens_est": 24119,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13457,
+    "answer_chars": 2430,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.18,
+    "eval_s": 117.0,
+    "total_s": 149.21,
+    "tokens_est_ratio": 1.111,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

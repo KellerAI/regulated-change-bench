@@ -1,0 +1,96 @@
+{
+  "variant": "v-a73c48cd95",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "Exception EXC-0220 approved by risk owner permits privileged route without MFA."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "Control test test_every_npi_field_is_sealed_at_rest passed in CI (exhaustive)."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "Control test test_sampled_operations_are_audited passed in CI."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "ModelCheck evidence payments-audit-chain.json shows tamper‑evident audit chain."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Control test test_sampled_purge_respects_hold passed in CI."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "Control test test_sql_statements_are_parameterized passed in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26425 approved by change manager (erik.brandt)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Mara Costa (change_approver) not author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval applies to the only commit; no later behavioral changes."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run failed: test_privileged_routes_require_mfa failed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval by Kofi Mensah (security_reviewer)."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Exception EXC-0220 approved for MFA-1, unexpired, and signed by risk owner."
+    }
+  ],
+  "summary": "The change fails the CHG-4 testing requirement because the CI suite reports a failure in the MFA control test. Even though an approved exception (EXC-0220) covers the privileged route without MFA, the policy mandates that all registered control tests pass on the final commit. Consequently, the change cannot be accepted.",
+  "meta": {
+    "elapsed_s": 171.37,
+    "tokens_in": 33931,
+    "tokens_out": 6416,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "82252b6ecc4083019d50e14f7c39a89f8b52a3eec41ad7513d4e4f44449ec32e",
+    "packet_tokens_est": 35038,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23946,
+    "answer_chars": 2098,
+    "done_reason": "stop",
+    "load_s": 3.23,
+    "prompt_eval_s": 23.71,
+    "eval_s": 144.26,
+    "total_s": 171.37,
+    "tokens_est_ratio": 0.951,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

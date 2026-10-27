@@ -1,0 +1,107 @@
+{
+  "variant": "v-6705a4d040",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "refuted",
+      "note": "The new `report:` branch in rbac.is_allowed allows pairs that are not in GRANTS, such as (treasury_manager, 'report:release_payment'), for action names outside the approved closed action set. Not every pair is decided explicitly, and unlisted actions are no longer denied. The ACC-1 control test only covers approved names plus 'unlisted_action', so its pass doesn't exercise the new branch, and no exception covers it."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "The prefix only aliases existing grants, and the auditor's grants hold no state-changing action, so the auditor gains no write ability. test_auditor_is_read_only passed in the head-commit CI run."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "it_admin has no approve_payment or release_payment grant, so the `report:` alias gives it neither. test_it_admin_cannot_approve_or_release passed in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24119 was approved by change manager erik.brandt on 2026-10-03, before the change opened on 2026-10-06. Its component payments.access covers rbac.py, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa, a payments change_approver and a different person from the author sofia.santos (p-ssantos)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit ce0d48f, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful pr-checks run on head commit ce0d48f: 172 tests, 0 failures, 0 skipped, including the ACC-1, ACC-2 and SOD-1 control tests. The JUnit hostname and timestamp don't match the recorded runner and date, and I couldn't re-run because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py is security_sensitive (payments.access). ines.halvorsen, a security_reviewer, gave a security_review approval on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-payments/payments/rbac.py and no protected path, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is non-emergency and ticket type is standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. None of the register's exceptions is for ACC-1 or payments.access, so the ACC-1 deviation has no exception to rely on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers rbac.py. The entries' covered code (payments.py, audit.py, routes.py, mortgage files) is unchanged by this diff."
+    }
+  ],
+  "summary": "PR-1872 makes rbac.is_allowed accept any action prefixed `report:` and map it onto an existing grant. That creates allowed actions outside the approved, closed action set and breaks ACC-1's default-deny requirement. These aliased actions also sit outside rbac.PRIVILEGED, which app.py uses to decide when MFA is required. The existing ACC-1 control test doesn't exercise the prefix, and no exception covers the deviation. The process records (ticket, independent code review, security review, CI on the head commit) are in order, but ACC-1 is refuted, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 91.27,
+    "tokens_in": 543851,
+    "tokens_out": 8240,
+    "usd": 0.499147,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 8240,
+      "cache_read_input_tokens": 496848,
+      "cache_creation_input_tokens": 46965
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4991466,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

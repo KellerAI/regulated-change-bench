@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25446",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Payments queue: show approvals remaining",
+    "components": [
+      "payments.payments",
+      "payments.tests"
+    ],
+    "requested_by": "jonah.weiss@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-20T23:51:00Z",
+    "risk": "low"
+  }
+]

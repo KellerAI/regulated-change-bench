@@ -1,0 +1,92 @@
+{
+  "variant": "v-57bec5a084",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change names ticket CHG-26772, status approved by Erik Brandt (change_manager) on 2026-10-20 before the change opened; its components payments.payments and payments.tests cover payments.py and tests/test_*.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa@fernbrook.example, a payments change_approver and a different person from the author Jonah Weiss (none of the author's addresses appear in approvals)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit cae765a, which is the only commit in the change, so it covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the full payments suite run on head cae765a with result success; the JUnit report has 175 tests, 0 failures/errors/skips, including the new tests and all registered payments control tests (e.g. test_dual_control_grid_matches_policy, test_maker_cannot_check). Local re-run wasn't possible because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched components (payments.payments, payments.tests) are marked security_sensitive: false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/**, apps/baseline-payments/tests/controls/*, ci/*) are modified; the new test is apps/baseline-payments/tests/test_approvals_remaining.py, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false, ticket type standard), so no post-implementation review applies."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change introduces no deviation from a product obligation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger-covered symbols (payments.py required_approvals and release, audit.py event_hash/verify, etc.) are unchanged between their evidence commits and head; the diff only adds a new function and a test file, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1884 adds a new read-only helper, approvals_remaining, to payments payments.py, plus unit tests. It does not change any symbol scoped by the product obligations or covered by the acceptance ledger, so none of those apply and no evidence lapses. The process records are in order: the ticket was approved in advance and covers both components, an independent change_approver approved the head commit, and CI on the head commit passed the full suite including all control tests. No security-sensitive or protected paths are touched and the change is not an emergency, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 71.86,
+    "tokens_in": 338833,
+    "tokens_out": 6533,
+    "usd": 0.404611,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6533,
+      "cache_read_input_tokens": 295872,
+      "cache_creation_input_tokens": 42933
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4046114,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

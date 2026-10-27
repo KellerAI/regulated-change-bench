@@ -1,0 +1,77 @@
+{
+  "variant": "v-5693e4087e",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new log.info call logs only a DocumentType enum name (five fixed constants) and a caseId that load() has already matched to a stored HW-nnnnnn case, so no NPI can reach the log on any input. The registered LOG-1 control test sampledFlowsDoNotLogNpi passed, unskipped, on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "markDocumentReceived still records the audit event (actor, EDIT_CASE, caseId, document_received), and the change adds no new state-changing operation. The registered AUD-1 control test sampledOperationsAreAudited passed, unskipped, on head."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26185 (standard) was approved by change manager Grace Kim on 2026-10-20, before the change was opened and reviewed. Its components (mortgage.cases) cover the only touched path, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example (Wen Li, change_approver for baseline-mortgage), a different person from the author Declan Farrell under any of Farrell's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 2e3d522, the only commit in the change, so there are no later commits for it to miss."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head 2e3d522 succeeded: 124 tests, 0 skipped, failed or errored, matching the 124 tests in the repository, including the LOG-1 and AUD-1 control tests (both labelled sample). I could not rerun it locally because the JUnit jar is missing from the sandbox."
+    }
+  ],
+  "summary": "The change adds a single diagnostic log line in CaseService.markDocumentReceived that logs only a document-type enum name and a validated case ID, so it introduces no NPI logging and leaves the audit event intact. The ticket was approved in advance by a change manager and covers the touched component, and an independent change approver approved the exact head commit. CI on the head commit ran the full suite green, including the LOG-1 and AUD-1 control tests. The component is not security-sensitive, no protected paths, exceptions or ledger evidence are involved, and the change is not an emergency, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 104.34,
+    "tokens_in": 605260,
+    "tokens_out": 8852,
+    "usd": 0.537488,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 42,
+      "output_tokens": 8852,
+      "cache_read_input_tokens": 555377,
+      "cache_creation_input_tokens": 49841
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5374884,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

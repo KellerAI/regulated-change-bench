@@ -1,0 +1,71 @@
+{
+  "variant": "v-207980cec2",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25093 is approved by change manager Grace Kim and lists components payments.payments and payments.tests, covering the changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Mara Costa (change_approver for payments) recorded in approvals.json; reviewer is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval applies to the only commit (ff24edaa…), and there are no later commits, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run reports success; full test suite (175 tests) passed, including the new approvals_remaining tests and all existing control tests."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Exhaustive control test test_maker_cannot_check passed; evidence is recorded in the control‑registry and verified by the CI run."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Exhaustive proof record pay1-required-approvals.json (ACR-0401) covers the required_approvals logic; the change does not modify that code."
+    },
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "Obligation requires exhaustive evidence, but only a sample Ponens trace and a sample control test exist; no exhaustive proof is provided, so evidence is insufficient."
+    }
+  ],
+  "summary": "All process obligations and product obligations MC-1 and PAY-1 are satisfied, but the required exhaustive evidence for PAY-2 is missing. Without adequate proof that the release operation remains idempotent, the change violates an applicable obligation, so it must be rejected.",
+  "meta": {
+    "elapsed_s": 182.77,
+    "tokens_in": 25600,
+    "tokens_out": 8130,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bc039484c69f72aa1b675272a4b5856bccaf7b2ca365b58282818bdb3df2567b",
+    "packet_tokens_est": 25764,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 34738,
+    "answer_chars": 1832,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 16.69,
+    "eval_s": 165.86,
+    "total_s": 182.77,
+    "tokens_est_ratio": 0.969,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

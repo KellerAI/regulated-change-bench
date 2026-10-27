@@ -1,0 +1,72 @@
+{
+  "variant": "v-36407e9e4e",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26707, an emergency ticket approved by change manager grace.kim at 2026-10-23T13:08Z, before the change was opened. Its components (mortgage.servicing, mortgage.tests) cover RateQuote.java and the new test under src/test/java/mortgage/."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval comes from wen.li@fernbrook.example (Wen Li, p-wli), who has the change_approver role for baseline-mortgage and is a different person from the author, Declan Farrell (p-dfarrell)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Wen Li's approval names commit 60914bf, which is the change's head and only commit, so no later commits are left unapproved."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run records/ci/run.json is on head 60914bf and shows success: 126 Jupiter tests with 0 failures, errors or skips, including the new QuoteTermTest. The change touches no product-obligation scope or domain, so no registered control tests are required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "The ticket is an emergency deployed Friday 2026-10-23T18:08Z, so a post-implementation review approval from someone other than the author was due by Tuesday 2026-10-27. At review time (2026-10-30) the approvals file has no such approval at all."
+    }
+  ],
+  "summary": "The change adds a small read-only helper, RateQuote.isSupportedTerm, plus unit tests in a non-security-sensitive servicing component. No product obligation covers it and no protected paths are touched. The ticket, independent code review, head-commit approval and passing CI on the final commit all meet policy. However, the change was deployed under the emergency procedure and the required post-implementation review never happened: the 2-business-day deadline passed on 2026-10-27, so CHG-7 is violated and the change is rejected.",
+  "meta": {
+    "elapsed_s": 63.51,
+    "tokens_in": 323341,
+    "tokens_out": 5656,
+    "usd": 0.353606,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 5656,
+      "cache_read_input_tokens": 286706,
+      "cache_creation_input_tokens": 36605
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3536062,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

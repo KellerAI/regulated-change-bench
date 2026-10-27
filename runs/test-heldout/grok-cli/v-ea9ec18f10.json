@@ -1,0 +1,89 @@
+{
+  "variant": "v-ea9ec18f10",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only new log call is amend_memo's _log.info('payment memo updated', payment_id=payment_id). It does not log the memo or any payments NPI field (account_number, date_of_birth, routing_number, tax_id). tests/controls/test_logging_control.py::test_sampled_flows_do_not_log_npi passed unskipped on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "amend_memo still persists a payment change through payments.amend_memo, but the head commit deletes self._audit(actor, 'amend_memo', f'payment:{payment_id}') and writes only an application log with payment_id. That is not an audit event with actor, action, target, and time. No AUD-1 exception covers it, and the registered control test is sample coverage, so a green run does not restore the missing event."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1291 names ticket CHG-24747, status approved by change manager erik.brandt@fernbrook.example at 2026-10-19T03:42:00Z, before review. Its components list payments.service, which is the component of the only touched path, apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example) has the change_approver role for payments and is not the author Sofia Santos. Her code_review approval is approved on commit ef0d3399fdecd38739e273de456d363526547b82."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review approval names that same head commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-payments on ef0d3399fdecd38739e273de456d363526547b82. The JUnit report has 172 tests, 0 failures, 0 errors, and 0 skipped, including the AUD-1 and LOG-1 control tests for the code this change touches."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file is payments.service, and controls/payments/components.json marks it security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is only apps/baseline-payments/payments/service.py, which is not under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24747 is type standard and the change record sets emergency false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Dropping the amend_memo audit event is a deviation from AUD-1, and the register has no approved, unexpired exception scoped to AUD-1 and payments.service. EXC-0141 is SES-1 and expired 2026-09-23, before review on 2026-10-23; the other entries are a mortgage LOG-1 exception and a withdrawn MFA-1 exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/service.py. The paths those entries do cover (payments.py, audit.py, routes.py, and mortgage files) are unchanged, so prior evidence for those obligations does not lapse."
+    }
+  ],
+  "summary": "The change replaces the audit record on LedgerService.amend_memo with an application log that carries only payment_id. Amending a memo still writes payment state, so AUD-1 requires an audit event with actor, action, target, and time, and that event is gone. No qualifying exception excuses the deviation. Ticket, independent approval, CI on the head commit, and the other process checks are in order, and the new log line does not contain NPI, but the missing audit event is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 95.69,
+    "tokens_in": 46730,
+    "tokens_out": 10770,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "aac8a71e122788d5260d8b06d316a06996e01f586bea1c45073145fc73cb41b3",
+    "packet_tokens_est": 26600,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 46730,
+      "outputTokens": 10770,
+      "cacheReadTokens": 206592,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 92271,
+    "duration_api_ms": 92271,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

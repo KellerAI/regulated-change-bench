@@ -1,0 +1,76 @@
+{
+  "variant": "v-e14565a5c5",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change adds a sequence-number sanity check to verify() but does not alter the record() method or any audit-recording logic. The registered sample control test test_sampled_operations_are_audited passed in CI on the final commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "The change modifies verify() (adds 'if expected_seq < 1: return False'), so the prior modelcheck evidence (ACR-0402 at commit d30b2ad…) lapses under LAP-1. However, the exhaustive control test test_chain_and_retention passed in the CI run on the final commit 69bd977, providing new evidence of equivalent (exhaustive) strength."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24899 is type 'standard', status 'approved', approved by grace.kim@fernbrook.example (change_manager). Its component 'payments.audit' matches the single file changed (apps/baseline-payments/payments/audit.py → component payments.audit in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (p-ssantos, role change_approver for payments) gave a code_review approval on the head commit 69bd977. She is not the author (Linh Nguyen) and is not reachable under any of the author's email aliases."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both the code_review and security_review approvals name commit 69bd977, which is the only (and final) commit in the change. No later commits exist, so the approvals cover everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the pipeline executed on the final commit 69bd977 with result 'success'. The JUnit report shows 172 tests, 0 failures, 0 errors, 0 skipped, including all registered control tests for payments (test_chain_and_retention, test_sampled_operations_are_audited, etc.)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "apps/baseline-payments/payments/audit.py maps to component payments.audit, which is security_sensitive in components.json. Kofi Mensah (p-kmensah, role security_reviewer, apps '*') approved a security_review on the head commit 69bd977."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change alters the verify() symbol covered by ACR-0402 (modelcheck evidence at commit d30b2ad…), so that evidence lapses. New evidence is supplied by the exhaustive control test test_chain_and_retention passing in CI on the final commit, satisfying the 'same strength' requirement."
+    }
+  ],
+  "summary": "PR-1333 adds a two-line guard to the payments audit verify() method (reject sequences below 1). The change touches only apps/baseline-payments/payments/audit.py, which is security-sensitive and in scope for AUD-1 and AUD-2. All process obligations (CHG-1 through CHG-5) are satisfied: the ticket is approved by a change manager, an independent code_review and a security_review both target the head commit, and CI ran on the final commit with all 172 tests (including the exhaustive AUD-2 control test) passing. The prior modelcheck evidence for AUD-2 lapses under LAP-1, but the CI control test provides new exhaustive evidence on the final commit. No protected paths are touched (CHG-6 N/A), the change is not an emergency (CHG-7 N/A), and no product-obligation deviation requires an exception (EXC-1 N/A). All applicable obligations are shown; the change is accepted.",
+  "meta": {
+    "elapsed_s": 218.16,
+    "tokens_in": 28101,
+    "tokens_out": 6498,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f4c30b8ac5a11b5c388d58cbd88377a0d464d047ba108085c8b933e6e0e7a0b7",
+    "packet_tokens_est": 24876,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21433,
+    "answer_chars": 3359,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.93,
+    "eval_s": 185.19,
+    "total_s": 218.16,
+    "tokens_est_ratio": 1.101,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

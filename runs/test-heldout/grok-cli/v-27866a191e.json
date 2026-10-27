@@ -1,0 +1,79 @@
+{
+  "variant": "v-27866a191e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change PR-1668 names ticket CHG-26625, which Grace Kim (change_manager) approved on 2026-10-15T17:26:00Z, before review. The ticket component payments.reports matches apps/baseline-payments/payments/reports.py, the only file in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example. The directory lists that address as Sofia Santos, the author (sofia.santos@fernbrook.example), and a self-approval does not count."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit c35162100a4b57ebf4aa9e45cc0e1bcbc27557ab, and the change contains no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeded on the head commit. The JUnit report has 172 tests, 0 failures, 0 errors, and 0 skipped, including every registered payments control test. The diff does not touch a product-obligation scope path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "reports.py is component payments.reports with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change a protected path under controls, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26625 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The added REPORT_FORMAT constant does not deviate from a product obligation, and the change does not rely on an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not alter any path covered by the acceptance ledger, so prior evidence for those obligations has not lapsed. This change does not depend on that ledger."
+    }
+  ],
+  "summary": "The change adds an unused REPORT_FORMAT constant in payments reports.py. That file is outside every product-obligation scope, is not security-sensitive, and is not a protected control path. The ticket, CI on the head commit, and the absence of an emergency or exception are in order. Independent approval fails: the only code_review is Sofia Santos approving her own change under s.santos@fernbrook.example, which CHG-2 does not allow.",
+  "meta": {
+    "elapsed_s": 68.25,
+    "tokens_in": 46595,
+    "tokens_out": 7385,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "41dcf3a31a43f33ccf53c0bd12577fb76bd43ebe3225a027d72fdaf0d7c3bbca",
+    "packet_tokens_est": 24384,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 46595,
+      "outputTokens": 7385,
+      "cacheReadTokens": 242688,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 64450,
+    "duration_api_ms": 64450,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "variant": "v-4dba9cd76a",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24402 (standard), approved by change manager erik.brandt on 2026-10-02, before the PR opened and before review. Its components [payments.reports] cover the only touched file, apps/baseline-payments/payments/reports.py (component payments.reports)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos (p-ssantos), who holds change_approver for payments and is a different person from the author mara.costa (p-mcosta) under all listed emails."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 92caeed, which is the head and only commit of the change, so no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments passing on head 92caeed, and its JUnit report has 172 cases with 0 failures, errors or skips, matching the repo's test functions and parametrizations. No product obligation's code is touched, so no specific control tests are required. pytest is missing in this sandbox, so I couldn't re-run the suite, and the report's timestamp and host don't match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path, reports.py, is security_sensitive: false in controls/payments/components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-payments/payments/reports.py. No controls data, control tests or CI paths changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false; ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and deviates from no product obligation. The register's entries (SES-1, LOG-1, MFA-1) are for other components and are not used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers reports.py; they cover payments.py, audit.py, routes.py and mortgage Java files. The change alters none of that covered code, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds one constant, REPORT_FORMAT = \"ledger-csv/1\", to payments reports.py, which is not security-sensitive. No product obligation's scope, domain or log pattern covers that file, so only the process obligations apply. The approved ticket covers the component, an independent payments change approver approved the exact head commit, and CI on the head commit passed the full 172-case suite with nothing skipped. No security, control-owner, emergency, exception or evidence-lapse condition is triggered, so every applicable obligation is shown. Caveats: the suite could not be re-run locally because pytest is missing, so this relies on the recorded CI run, whose JUnit timestamp and host don't match run.json.",
+  "meta": {
+    "elapsed_s": 93.02,
+    "tokens_in": 415410,
+    "tokens_out": 8657,
+    "usd": 0.464318,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 8657,
+      "cache_read_input_tokens": 372050,
+      "cache_creation_input_tokens": 43328
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.46431799999999995,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

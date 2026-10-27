@@ -1,0 +1,79 @@
+{
+  "variant": "v-34ba8f8e9c",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26246 is approved by change manager Erik Brandt (erik.brandt@fernbrook.example) on 2026-10-03, before review on 2026-10-07. Its components, payments.payments and payments.tests, cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example on the head commit. That address belongs to Sofia Santos, the author (also sofia.santos@fernbrook.example), so the approval is not independent."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, fd5d1067e9d657283bcab2ac20d0ff4a2569c3c5, and the code_review approval names that same commit. There are no later commits that could void coverage."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success for ci/run-tests.sh baseline-payments on the head commit. The JUnit summary shows 175 tests, 0 failures, 0 errors, and 0 skipped, including the payments control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches payments.payments and payments.tests only. Both are marked security_sensitive false in controls/payments/components.json, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/protected-paths.json (controls data, control tests, or CI). A control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record has emergency false and ticket CHG-26246 is type standard. A post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not depart from a product obligation or rely on the exception register. Approvals remaining is derived from the existing required_approvals and distinct-approver count; approve and release are unchanged."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries that cover payments.py name required_approvals and release. Those functions are unchanged in behaviour; the commit only adds approvals_remaining and a unit test, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The payments-queue helper is a read-only count on top of the existing dual-control functions, the ticket matches the touched components, and CI on the head commit reports the payments suite passing with no skips. The change still cannot be accepted because the only code review is Sofia Santos approving her own commit under s.santos@fernbrook.example. The directory treats that address as the same person as the author, so CHG-2 is not met.",
+  "meta": {
+    "elapsed_s": 201.27,
+    "tokens_in": 58617,
+    "tokens_out": 13455,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ad24df05c2ee3df0bc61d6f122034c5efeb479bfaca93bae82a4d03ca850585c",
+    "packet_tokens_est": 25755,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 58617,
+      "outputTokens": 13455,
+      "cacheReadTokens": 237824,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 197353,
+    "duration_api_ms": 197353,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

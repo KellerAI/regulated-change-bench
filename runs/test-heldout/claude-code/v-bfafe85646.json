@@ -1,0 +1,102 @@
+{
+  "variant": "v-bfafe85646",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new integration uses https://advice.fernbrook.example/v1 and transports.py is unchanged. The exhaustive control test test_integrations_use_tls ran unskipped and passed in the CI run on the head commit."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "payment-advice is in asset-inventory.json with a host matching its URL, owner payments-operations and classification npi (a valid value). The exhaustive control test test_integrations_are_inventoried passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26071 was approved by change manager grace.kim on 2026-10-17, before the change opened on 2026-10-18. Its components (payments.integrations, payments.controls-data) cover both changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "mara.costa, a payments change_approver who is not the author jonah.weiss, approved code_review on the head commit 7167104."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit 7167104, and all three approvals name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on 7167104 succeeded: 172 tests, 0 failures, 0 skipped, including the ENC-2 and INV-1 control tests. I could not rerun it locally (pytest unavailable), and the JUnit timestamp and hostname look like a side effect of how the records were produced."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is in payments.integrations, which is security_sensitive. ines.halvorsen (security_reviewer) gave a security_review approval on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected path. bao.tran (control_owner, controls-office, a different team from the author's payments-eng) approved on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "This is not an emergency change (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change departs from no product obligation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "None of the code covered by ledger entries (payments.py, audit.py, routes.py, mortgage Java files) is changed, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change registers a new HTTPS outbound integration and its inventory entry, so it touches ENC-2 and INV-1. Both are covered by exhaustive control tests that passed in the recorded CI run on the final commit. The process records are complete: an approved standard ticket covering both components, independent code review, security review for the security-sensitive integrations component, and a control-owner approval from outside the author's team, all on the head commit. No accepted evidence lapses and no exception is needed, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 110.1,
+    "tokens_in": 724164,
+    "tokens_out": 9770,
+    "usd": 0.616499,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 37,
+    "tokens_detail": {
+      "input_tokens": 46,
+      "output_tokens": 9770,
+      "cache_read_input_tokens": 666599,
+      "cache_creation_input_tokens": 57519
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6164988,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

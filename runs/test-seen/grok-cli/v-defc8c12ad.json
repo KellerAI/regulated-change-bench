@@ -1,0 +1,79 @@
+{
+  "variant": "v-defc8c12ad",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1993 names ticket CHG-25125, which Erik Brandt (change manager) approved on 2026-10-16 before the 2026-10-19 review. Its components, payments.payments and payments.tests, match memos.py and tests/test_memo_preview.py in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author Aisha Bello, gave a code_review approval on the head commit 47cad606."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is 47cad606, and the code_review approval names that same commit, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on 47cad606, and the JUnit report shows 174 tests with 0 failures, errors, or skips, including every registered payments control test. The diff does not touch any product-obligation scope path, so no extra control-test obligation is triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "components.json marks memos.py (payments.payments) and tests/test_*.py (payments.tests) as not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/protected-paths.json (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and no exception is relied on. The SES-1 exception EXC-0141 is expired and out of scope for this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff only adds memos.preview and its unit tests. It does not change the behavior of any path covered by the acceptance ledger, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds a memo preview helper and two unit tests under payments.payments and payments.tests. Those paths are outside every product-obligation scope and are not security-sensitive or protected. The ticket, independent code review of the final commit, and a green full payments suite on that commit satisfy the change process. No exception or prior acceptance record is disturbed, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 126.55,
+    "tokens_in": 73279,
+    "tokens_out": 7301,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1a4b1fd496e0f158804bca7a4e204c758d932f6315cd7621ce64922165a60fbe",
+    "packet_tokens_est": 24395,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 73279,
+      "outputTokens": 7301,
+      "cacheReadTokens": 130432,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 122787,
+    "duration_api_ms": 122787,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

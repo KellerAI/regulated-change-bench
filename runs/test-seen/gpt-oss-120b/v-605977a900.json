@@ -1,0 +1,71 @@
+{
+  "variant": "v-605977a900",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "Control test `tests.controls.test_routes_control:test_privileged_routes_require_mfa` exhaustively verifies that all privileged routes require MFA; CI passed."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "No exhaustive evidence provided; only a sample audit test exists, which does not meet the `exhaustive` requirement, so the obligation is not satisfied."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24452 approved by change manager, with components covering all changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Sofia Santos, who has `change_approver` role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval applies to the only commit in the PR; no subsequent behavior‑changing commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run `ci/run-tests.sh baseline-payments` succeeded with full test suite passing, including control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval from Kofi Mensah, a `security_reviewer`, covering the security‑sensitive components modified."
+    }
+  ],
+  "summary": "The change introduces a new `reopen_payee` operation. While MFA requirements are met and all process obligations are satisfied, the audit‑state‑change obligation (AUD‑1) lacks the required exhaustive evidence, violating the bank’s policy. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 166.32,
+    "tokens_in": 33698,
+    "tokens_out": 5161,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "33c6fcda00615d7bd823e55648dc0441b0f0bb99e40f0943f3c387be2cd424f6",
+    "packet_tokens_est": 34799,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19956,
+    "answer_chars": 1689,
+    "done_reason": "stop",
+    "load_s": 20.51,
+    "prompt_eval_s": 34.08,
+    "eval_s": 111.56,
+    "total_s": 166.31,
+    "tokens_est_ratio": 0.951,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

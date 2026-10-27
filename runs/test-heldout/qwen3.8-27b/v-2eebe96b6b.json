@@ -1,0 +1,81 @@
+{
+  "variant": "v-2eebe96b6b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "The modified release() function only returns the cached confirmation when now - previous.released_at < 1 day; after that window the code falls through and calls _send_disbursement, producing a second disbursement for the same instruction. This directly violates the obligation that 'releasing the same payment instruction again never sends a second disbursement.'"
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The required_approvals and is_fully_approved functions are unchanged; the proof record (ACR-0401) and the CI control test test_dual_control_grid_matches_policy both pass on the final commit."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve() and is_fully_approved() functions are untouched by this change; the CI control test test_maker_cannot_check passes on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26383 is type 'standard', status 'approved' by change_manager grace.kim, and its components list 'payments.payments' which covers the only file modified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by sofia.santos@fernbrook.example (change_approver for payments) who is not the author (linh.nguyen@fernbrook.example), on the exact head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole approval names commit 22f63da1… which is the head commit; there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 22f63da1…, all 172 tests passed with 0 failures, 0 errors, 0 skipped, including all registered control tests."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0403 (PAY-2 evidence) covers the release() symbol in payments.py at commit e5bf6465…; this change alters release()'s behaviour (adds a 1-day time window), so the evidence lapses. No new evidence of equivalent strength is provided."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change introduces a behavioural deviation from PAY-2 (idempotent release) but no approved exception in the register covers obligation PAY-2 for component payments.payments; the only PAY-2-related entry is absent, so no compensating control authorisation exists."
+    }
+  ],
+  "summary": "The change to release() in payments.py replaces the unconditional idempotency guard ('if previous is not None: return previous') with a time-windowed check that only short-circuits within 1 day. After 24 hours, a replay of the same instruction_id will fall through and invoke _send_disbursement, producing a second disbursement—directly violating PAY-2 ('releasing the same payment instruction again never sends a second disbursement'). The acceptance-ledger evidence for PAY-2 (ACR-0403) lapses under LAP-1 because the covered symbol's behaviour is altered, and no new evidence is supplied. No valid exception in the register covers this deviation. All process obligations (ticket, independent approval, approval-on-head, CI on final commit) are satisfied, and PAY-1 and MC-1 remain intact because their covered symbols are unchanged, but the PAY-2 violation is critical and cannot be accepted.",
+  "meta": {
+    "elapsed_s": 180.61,
+    "tokens_in": 28301,
+    "tokens_out": 5135,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "69d62fa029c9622d8e68c3a05b4ac4ba53b11798ff9bcffa7a75c72d5d647fc7",
+    "packet_tokens_est": 25300,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16399,
+    "answer_chars": 3222,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.42,
+    "eval_s": 147.16,
+    "total_s": 180.61,
+    "tokens_est_ratio": 1.091,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

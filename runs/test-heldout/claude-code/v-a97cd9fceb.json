@@ -1,0 +1,97 @@
+{
+  "variant": "v-a97cd9fceb",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes to 16, but the approved catalog caps this at 15. The control test passes only because it checks the code against the policy-params value, which this same change raised to 16."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The cited exception EXC-0233 is scoped to SES-1 / mortgage.session, not a payments component, so it does not cover this deviation. The only payments SES-1 exception, EXC-0141, expired on 2026-09-09."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25567 was approved by change manager erik.brandt on 2026-10-01, before the change was opened on 2026-10-03. Its components (payments.policy, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "sofia.santos, a payments change_approver and not the author linh.nguyen under any address, gave an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and control_owner approvals both name head commit 4312f88, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json on head 4312f88 reports success: 172 tests, 0 failures, 0 skipped, including the registered SES-1 control test test_privileged_idle_timeout_within_policy. I could not re-run it locally because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Neither touched component (payments.policy, payments.controls-data) is marked security_sensitive, so no security_review was required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change edits the protected path controls/payments/policy-params.json. rachel.stein, a control_owner in controls-office (outside the author's payments-eng team), approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is non-emergency and the ticket type is standard, so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers PRIVILEGED_IDLE_MINUTES or the privileged idle policy parameter, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change raises payments' privileged-session idle timeout from 15 to 16 minutes, breaking SES-1's approved 15-minute limit. The passing control test does not show compliance, because it compares the code against the policy-params value that this change also raised. The cited risk acceptance, EXC-0233, is scoped to the Mortgage mortgage session component, not payments, and the only payments exception has expired. The ticket, approvals and CI records are otherwise in order, but an unexcepted violation of a product obligation requires rejection.",
+  "meta": {
+    "elapsed_s": 67.42,
+    "tokens_in": 303193,
+    "tokens_out": 6231,
+    "usd": 0.371754,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6231,
+      "cache_read_input_tokens": 264334,
+      "cache_creation_input_tokens": 38831
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3717538,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

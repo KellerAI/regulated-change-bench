@@ -1,0 +1,76 @@
+{
+  "variant": "v-79b034d504",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25978 is approved by grace.kim@fernbrook.example (a change_manager) and its components list includes 'mortgage.reporting', which is the component for PipelineReport.java per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa@fernbrook.example, who holds change_approver for app 'payments' (team payments-eng) per the people directory. The change is for 'baseline-mortgage'; the baseline-mortgage change_approvers are Wen Li and Declan Farrell on lending-eng. The approver does not have the change_approver role for the baseline-mortgage app, so CHG-2 is not satisfied."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit 91a6f1b… which is the (only) commit and the head of the change; no later commits exist, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 91a6f1b… with result 'success'; all 124 tests passed, 0 skipped. The change only touches PipelineReport.java, which is not in any product obligation's scope paths, so no additional control tests are required beyond those already passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "PipelineReport.java maps to component 'mortgage.reporting' with security_sensitive: false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only file changed is PipelineReport.java, which is not under any path listed in protected-paths.json (controls/*, control tests, ci/*). No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so no post-implementation review is triggered."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change only adds a constant to PipelineReport.java; no path in the acceptance ledger's 'covers' entries includes PipelineReport.java, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change is a trivial addition of a format-identifier constant to PipelineReport.java and poses no risk to any product obligation. However, the sole code_review approval is from Mara Costa, who is a change_approver for the payments app, not for baseline-mortgage (the app of this change). Per CHG-2, the approver must hold the change_approver role for the specific app, so the independent-approval requirement is not met. The change must be rejected until a valid baseline-mortgage change_approver (Wen Li or Declan Farrell) provides a code_review approval on the head commit.",
+  "meta": {
+    "elapsed_s": 141.57,
+    "tokens_in": 27669,
+    "tokens_out": 3939,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "d1352eff23bf5a9e281231c0e68cbae71621be25535ca661ee427df47c92840d",
+    "packet_tokens_est": 24284,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12384,
+    "answer_chars": 2655,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.25,
+    "eval_s": 109.29,
+    "total_s": 141.56,
+    "tokens_est_ratio": 1.11,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "variant": "v-491fa2b450",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The approved catalog bounds mortgage.privileged_idle_minutes to <= 15, but the change sets Policy.PRIVILEGED_IDLE_MINUTES and controls/mortgage/policy-params.json to 20. The SES-1 control test passes only because it compares the code against the edited params file, not the catalog bound of 15."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The SES-1 deviation needs a valid exception and none exists. The only SES-1 exception, EXC-0141, is scoped to payments.session, not a mortgage component, and it expired on 2026-09-16, before the review time of 2026-10-16."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24534 was approved by change manager erik.brandt on 2026-10-08, before the PR opened. Its components (mortgage.policy, mortgage.tests, mortgage.controls-data) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li has the change_approver role for baseline-mortgage, is not the author priya.raman under any of her addresses, and gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 8eacf77, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 8eacf77 succeeded: 124 tests, 0 failures, 0 skipped. That includes the registered SES-1 control test, controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy (labelled exhaustive). The test still can't show compliance, because it reads the threshold from the file this change edited."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components are mortgage.policy, mortgage.tests and mortgage.controls-data, none marked security_sensitive. Session.java and SessionStore.java are not modified, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change edits protected path controls/mortgage/policy-params.json. rachel.stein (control_owner, controls-office, outside the author's lending-eng team) approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket type is standard and the change is not marked emergency, so no post-implementation review is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries that cover Policy.java (ACR-0405, ACR-0406) cover UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT and LTV_MAX_PERCENT, none of which changed. No ledger evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change raises the mortgage privileged idle timeout from 15 to 20 minutes and changes the policy-params value to match. The approved catalog bounds SES-1 at 15 minutes, so the change violates SES-1. The control test passes only because it reads its threshold from the file the change edited. No valid exception covers the deviation: EXC-0141 applies to payments and has expired. The process records (ticket, independent approval, control-owner approval, CI on head) are in order, but they can't cure a product-obligation violation, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 60.61,
+    "tokens_in": 269863,
+    "tokens_out": 5547,
+    "usd": 0.350783,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 5547,
+      "cache_read_input_tokens": 231135,
+      "cache_creation_input_tokens": 38704
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.35078299999999996,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

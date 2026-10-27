@@ -1,0 +1,97 @@
+{
+  "variant": "v-70d60c8dfb",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Policy.PRIVILEGED_IDLE_MINUTES and mortgage.privileged_idle_minutes go from 15 to 10, within the catalog bound of 15 or less; Session.idleLimit uses the constant. The exhaustive control test SessionControlTest#privilegedIdleTimeoutWithinPolicy passed, unskipped, in the CI run on head 51563ea."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26409 (standard) was approved by erik.brandt (change_manager) on 2026-10-19, before the PR opened on 2026-10-20. Its components mortgage.policy and mortgage.controls-data cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from declan.farrell, a change_approver for baseline-mortgage and a different person from the author tomas.ortega under every listed address."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "All approvals name the head commit 51563ea, the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head 51563ea. The JUnit reports list 124 tests, none failed or skipped, matching the 124 @Test methods in the source, and include the SES-1 exhaustive control test. Local re-run was not possible because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Neither touched component (mortgage.policy, mortgage.controls-data) is marked security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is protected and an approved policy value changed. bao.tran (control_owner, controls-office, outside the author's lending-eng team) approved head 51563ea."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (ticket type standard, emergency=false), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change doesn't deviate from any product obligation, so it needs no exception; none is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Policy.PRIVILEGED_IDLE_MINUTES or the SES-1 parameter; the LIM-1 and CRD-1 entries cover other Policy fields, which are unchanged. SES-1 is backed by a fresh exhaustive control test on head."
+    }
+  ],
+  "summary": "The change cuts the privileged idle timeout from 15 to 10 minutes in code and in the approved parameter file, which stays within the SES-1 bound of 15 or less. The exhaustive SES-1 control test and the full suite (124 tests) passed in the CI run on the head commit. The ticket was approved in advance and covers both components. The code review and the control_owner approval for the protected parameter file both come from qualified, independent people and name the head commit. No security-sensitive component, earlier evidence or exception is involved, so every applicable obligation is shown and the change is accepted.",
+  "meta": {
+    "elapsed_s": 75.68,
+    "tokens_in": 387497,
+    "tokens_out": 6813,
+    "usd": 0.392854,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6813,
+      "cache_read_input_tokens": 350179,
+      "cache_creation_input_tokens": 37286
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.39285380000000003,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

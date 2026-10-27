@@ -1,0 +1,21 @@
+{
+  "id": "PR-1213",
+  "title": "Emergency: pipeline report: total case count",
+  "description": "Emergency: pipeline report: total case count.\n\nChanges:\n- Add `PipelineReport.totalCases`\n- Unit test\n- Deployed under the emergency procedure\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "declan.farrell@fernbrook.example",
+  "branch": "farrell/change-231",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "cce8b32dd4a0e9e37e0b54c6b2a11c408ca63f83",
+  "commits": [
+    {
+      "sha": "cce8b32dd4a0e9e37e0b54c6b2a11c408ca63f83",
+      "message": "Pipeline report: total case count",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-07T17:01:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-24221",
+  "opened_at": "2026-10-07T17:01:00Z"
+}

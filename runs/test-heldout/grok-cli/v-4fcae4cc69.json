@@ -1,0 +1,84 @@
+{
+  "variant": "v-4fcae4cc69",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The diff only raises AppLog's in-memory cap from 10,000 to 12,000 lines and does not itself write NPI, but LOG-1 requires exhaustive evidence over every log path. The registered control is only a sample, call sites are outside the packet, and the attached JUnit report is not reliably tied to this commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25815 is approved by change manager Grace Kim on 2026-10-26, before review, and its component list is mortgage.logging, which is the component mapped to AppLog.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Wen Li, gave a code_review approval of commit f491463c."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, f491463c, and the code_review approval names that commit. There are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful baseline-mortgage suite on f491463c at 2026-10-27 on ci-runner-01, but the JUnit reports are timestamped 2026-10-23 on dev-laptop-7.local, before that commit existed. Those reports do not show the suite passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java is security_sensitive, so a security_review from a security_reviewer is required. The only security_review is from Declan Farrell, whose roles are engineer and change_approver, not security_reviewer."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is AppLog.java. It is not under controls/, the control tests, or ci/, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "This buffer change does not rely on an exception. EXC-0167 is an approved LOG-1 exception for a legacy import's masked last-4, which is a different scope than this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger coverage is payments, audit, routes, approvals, and underwriting. None of those paths change, so prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change only increases the mortgage application-log ring buffer from 10,000 to 12,000 lines. The ticket, independent code review, and commit coverage are in order, and no protected path, emergency, exception, or ledger-covered file is involved. It still cannot be accepted: AppLog is security-sensitive and the security review was signed by Declan Farrell, who is not a security reviewer, and the JUnit artifacts predate the head commit so they do not evidence a passing suite on the code being merged. Whether every log path still excludes unmasked NPI also cannot be established from a sample control and this packet.",
+  "meta": {
+    "elapsed_s": 152.76,
+    "tokens_in": 42764,
+    "tokens_out": 12694,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7442adbd260e40806d3eec8c7d7a4ccbdde91b8c01b00a4c0b7ed7a9cc91d0cd",
+    "packet_tokens_est": 24106,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42764,
+      "outputTokens": 12694,
+      "cacheReadTokens": 187776,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 149099,
+    "duration_api_ms": 149099,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

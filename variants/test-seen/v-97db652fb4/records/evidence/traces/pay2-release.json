@@ -1,0 +1,28 @@
+{
+  "format": "ponens-trace/v0",
+  "obligation": "PAY-2",
+  "commit": "e5bf6465b4525f67ba54ad6aa2f4705f23c00890",
+  "verdict": "pass",
+  "property": "second release of an instruction returns the first release",
+  "covers": [
+    {
+      "path": "apps/baseline-payments/payments/payments.py",
+      "symbol": "release"
+    }
+  ],
+  "trace": [
+    {
+      "step": "release",
+      "instruction": "INS-77",
+      "sent": 1
+    },
+    {
+      "step": "release",
+      "instruction": "INS-77",
+      "sent": 0
+    }
+  ],
+  "goals": [
+    "G(release(i) -> X G !send(i))"
+  ]
+}

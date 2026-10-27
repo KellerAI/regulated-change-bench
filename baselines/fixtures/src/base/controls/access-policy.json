@@ -1,0 +1,17 @@
+{
+  "payments": {
+    "grants": [
+      ["clerk", "create_payment"],
+      ["clerk", "view_account"],
+      ["payments_officer", "approve_payment"],
+      ["payments_officer", "view_account"],
+      ["payments_officer", "view_account_number"],
+      ["treasury_manager", "approve_payment"],
+      ["treasury_manager", "release_payment"],
+      ["treasury_manager", "view_account"],
+      ["auditor", "view_account"],
+      ["auditor", "view_audit"],
+      ["it_admin", "manage_users"]
+    ]
+  }
+}

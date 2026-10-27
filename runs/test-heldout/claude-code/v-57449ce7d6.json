@@ -1,0 +1,67 @@
+{
+  "variant": "v-57449ce7d6",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26551, a standard ticket that change manager Erik Brandt approved on 2026-09-30, before the change opened on 2026-10-03. Its components ([payments.reports]) cover the only file touched, apps/baseline-payments/payments/reports.py, which components.json maps to payments.reports."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (p-mcosta), a payments change_approver, approved the code_review. She is a different person from the author, Sofia Santos (p-ssantos), and none of Sofia's directory addresses appears on the approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 374f81e5, which is the change's head and only commit, so no later commits are left uncovered."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head commit 374f81e5 ran ci/run-tests.sh baseline-payments and succeeded: the JUnit report shows 172 tests with 0 failures, errors or skips. No product obligation's scope or closed domain includes reports.py, so no extra control tests are required. I could not re-run the suite locally (pytest is not installed), and the JUnit file's own timestamp and hostname don't match run.json, but the run record and the report agree on the result."
+    }
+  ],
+  "summary": "PR-1820 adds one constant, REPORT_FORMAT = \"ledger-csv/1\", to apps/baseline-payments/payments/reports.py. That file belongs to the payments.reports component, which is not security-sensitive, not on a protected path, and not in the scope or domain of any product obligation. CHG-5, CHG-6, CHG-7, EXC-1 and LAP-1 do not apply: the change is not an emergency, relies on no exception, and touches no code covered by ledger evidence. The applicable process obligations (CHG-1 to CHG-4) are met by an approved ticket covering the component, an independent code review by a payments change approver on the head commit, and a passing full CI run on the head commit. The change can be accepted.",
+  "meta": {
+    "elapsed_s": 56.23,
+    "tokens_in": 275507,
+    "tokens_out": 5053,
+    "usd": 0.330267,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 5053,
+      "cache_read_input_tokens": 239230,
+      "cache_creation_input_tokens": 36253
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.33026700000000003,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "variant": "v-070226ce5d",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26071 is approved and lists component payments.payments, which covers the modified payments.py file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Sofia Santos, who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only a single commit is present; the existing approval therefore applies to the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (run.json) succeeded; the JUnit report shows all 172 tests passing, including the registered control tests."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "New proof for PAY-1 (pay1-required-approvals-renewed.json) covers the head commit; existing evidence for PAY-2 remains valid because release code is unchanged."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record pay1-required-approvals-renewed.json (exhaustive) shows required_approvals matches the dual‑control policy for all amounts."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Ledger entry ACR-0403 with a ponens‑trace confirms release is idempotent; the release function was not modified."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test test_maker_cannot_check (registered in control‑registry.json) passed in the CI run, proving the maker‑checker rule holds."
+    }
+  ],
+  "summary": "All applicable process and product obligations are satisfied with adequate evidence: the change ticket and approvals are present, CI passed, and specific proofs/tests for PAY‑1, PAY‑2, and MC‑1 are available. No violations are found, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 142.56,
+    "tokens_in": 25230,
+    "tokens_out": 7199,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6e895287c8a7061b04cd2b2f3fd0912c451cca0ed4ee6a33ded4d8efc5df3f98",
+    "packet_tokens_est": 25305,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 27891,
+    "answer_chars": 1907,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.84,
+    "eval_s": 123.44,
+    "total_s": 142.56,
+    "tokens_est_ratio": 0.972,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

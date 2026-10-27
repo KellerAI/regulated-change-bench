@@ -1,0 +1,79 @@
+{
+  "variant": "v-f4f4212820",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1465 names ticket CHG-25595, which Erik Brandt (change manager) approved on 2026-10-15 before review. Its components payments.payments and payments.tests cover memos.py and tests/test_memo_preview.py as mapped in controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Aisha Bello, approved a code_review of commit adbcdcb977b6a533d1e51fb9ae5b7fd7f6b50d05. Their directory emails do not overlap."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review approval names that same head commit, so the approval covers everything that would merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on the head commit, and the JUnit digest shows 174 tests with 0 failures, errors, or skips, including every registered payments control test. The diff does not touch any product-obligation scope path or closed domain."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "memos.py and the new test file are mapped to payments.payments and payments.tests, both security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/, the control-test directories, or ci/, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-25595 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff does not deviate from a product obligation, so no exception is required. The register entries are unused by this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments.py, audit.py, routes.py, and mortgage underwriting/approvals code. This change only adds memos.preview and its unit tests, so that prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds a memo preview helper and two unit tests in payments. The ticket, independent code review, and CI run on the final commit meet the change-process rules, and the touched files are neither security-sensitive nor protected control paths. No product-obligation scope or previously accepted evidence is modified, and the change is not an emergency. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 105.56,
+    "tokens_in": 55062,
+    "tokens_out": 6983,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8e2298bf4e294fa6333f738762d3a7061538da859e9fc85b5c725adb6605039e",
+    "packet_tokens_est": 24396,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 55062,
+      "outputTokens": 6983,
+      "cacheReadTokens": 194816,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 101805,
+    "duration_api_ms": 101805,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

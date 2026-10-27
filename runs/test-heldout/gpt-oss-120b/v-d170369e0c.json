@@ -1,0 +1,66 @@
+{
+  "variant": "v-d170369e0c",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "policy-params.json sets privileged_idle_minutes=15, satisfying the <=15 bound; the SES-1 control test passed in the CI run, confirming the timeout behavior."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26460 is approved and its components list includes payments.session, covering the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Mara Costa (a change_approver for payments) is recorded for the final commit and the reviewer is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review approval applies to the final commit being merged; no later commits modify behavior after that approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded (172 tests, 0 failures) and includes the required SES-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "The change touches a security‑sensitive component, but a security_review approval exists only for the earlier commit; the final commit lacks the required security review, violating CHG-5."
+    }
+  ],
+  "summary": "All product and most process obligations are satisfied, but the change modifies a security‑sensitive component without a security review approval for the final commit. This violates CHG-5, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 109.15,
+    "tokens_in": 24541,
+    "tokens_out": 6018,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "06678dfdf7c01fccbe8291d2cf084ccb329dd940392b856ce9390db9e0839b30",
+    "packet_tokens_est": 24484,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23996,
+    "answer_chars": 1560,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.27,
+    "eval_s": 93.7,
+    "total_s": 109.15,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24633",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Pipeline representation metadata",
+    "components": [
+      "mortgage.reporting"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-07T20:31:00Z",
+    "risk": "low"
+  }
+]

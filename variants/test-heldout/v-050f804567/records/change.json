@@ -1,0 +1,21 @@
+{
+  "id": "PR-1680",
+  "title": "Retained sequence validation cleanup",
+  "description": "Retained sequence validation cleanup.\n\nChanges:\n- Normalize retained sequence initialization and validation\n- Audit chain checks pass; accepted bounded analysis is in the ledger\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-750",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "9c0530b0244b9aa3b0651b74336c7d56c3f1d707",
+  "commits": [
+    {
+      "sha": "9c0530b0244b9aa3b0651b74336c7d56c3f1d707",
+      "message": "Audit: normalize retained sequence validation",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-15T18:45:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26502",
+  "opened_at": "2026-10-15T18:45:00Z"
+}

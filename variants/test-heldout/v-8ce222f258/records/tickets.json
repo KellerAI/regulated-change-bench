@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25616",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Report and checklist representation identifiers",
+    "components": [
+      "mortgage.reporting"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-18T06:40:00Z",
+    "risk": "low"
+  }
+]

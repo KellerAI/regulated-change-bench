@@ -1,0 +1,27 @@
+{
+  "id": "PR-1205",
+  "title": "Pipeline report: total case count",
+  "description": "Pipeline report: total case count.\n\nChanges:\n- Add `PipelineReport.totalCases`\n- Unit test\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.\n\nNote for reviewers: the follow-up commit only touches a docstring; the reviewed logic is unchanged.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-206",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "4d99f130c2f1c5ab6c5beb8c73a05a7560989c2d",
+  "commits": [
+    {
+      "sha": "faa30607474b757fbf75d0709e76c145e8e2ee5b",
+      "message": "Pipeline report: total case count",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-26T19:36:00Z"
+    },
+    {
+      "sha": "4d99f130c2f1c5ab6c5beb8c73a05a7560989c2d",
+      "message": "Comment the rate sheet terms",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-26T20:24:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25382",
+  "opened_at": "2026-10-26T19:36:00Z"
+}

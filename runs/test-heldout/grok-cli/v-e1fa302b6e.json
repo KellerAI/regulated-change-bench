@@ -1,0 +1,84 @@
+{
+  "variant": "v-e1fa302b6e",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new GET /compat/account-number/{id} route uses privileged action view_account_number with mfa=True, is dispatched only through the route table, and matches a HANDLERS entry. Every other privileged route still sets mfa=True, and the exhaustive routes control test passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24303 is standard, status approved by change manager Grace Kim on 2026-10-14 before review, and its components payments.http and payments.routes cover app.py and routes.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author Linh Nguyen, approved a code_review of commit d590f3e92494bb9cc55d68d791d6f96c2298a706."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code review and the security review name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit digest shows 172 tests with 0 failures, errors, or skips, including unskipped tests/controls/test_routes_control.py::test_privileged_routes_require_mfa."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "app.py and routes.py are security_sensitive. Ines Halvorsen, a security reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected paths (controls data, control tests, or CI), so no control-owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. The register entries are expired, withdrawn, or scoped to other components."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0404 covered routes.py for MFA-1 and lapses because the route table changed. The exhaustive MFA-1 control test passed on the head commit, which is new evidence of the same strength."
+    }
+  ],
+  "summary": "The change adds one Payments compatibility URL that reuses the existing account-number reveal handler. The route is in the route table, its action is the privileged view_account_number action, and MFA is required, consistent with every other privileged route. The ticket, independent code review, security review, and full passing suite on the head commit satisfy the change-process obligations, and the new exhaustive route-control run replaces the lapsed MFA-1 ledger evidence. No protected-path edit, emergency deployment, or product-obligation exception is involved.",
+  "meta": {
+    "elapsed_s": 175.04,
+    "tokens_in": 64828,
+    "tokens_out": 12039,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "dbffde54d795ec233dc69f7f5497edbcd01a438b97605a75b1348f41dad75d47",
+    "packet_tokens_est": 27716,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 64828,
+      "outputTokens": 12039,
+      "cacheReadTokens": 208512,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 171324,
+    "duration_api_ms": 171324,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

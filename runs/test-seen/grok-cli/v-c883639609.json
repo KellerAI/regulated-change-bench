@@ -1,0 +1,104 @@
+{
+  "variant": "v-c883639609",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "POST /payees/{id}/reopen is bound to the privileged action manage_payees with mfa=False, and LedgerApp only demands MFA when route.mfa is set. The exhaustive control test test_privileged_routes_require_mfa failed on the head commit, and EXC-0258 does not cover this route."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "reopen_payee updates only status and closed_at. NPI columns stay on the existing seal path, and test_every_npi_field_is_sealed_at_rest passed on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "reopen_payee calls _audit, which records actor user id, action, target, and clock time. The sampled audit control test passed, and the new operation in service.py records the same four fields."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new UPDATE is a fixed SQL string with the payee id bound as a parameter. The exhaustive test_sql_statements_are_parameterized passed on the head commit."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Reopen sets status to open and clears closed_at, so the payee leaves the closed-account purge query, and it does not purge NPI or clear legal_hold. closed_payees_before and purge_payee_npi are unchanged, and the retention control test passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26710 is approved by change manager Erik Brandt before review time, and its components cover payments.http, payments.routes, payments.service, and payments.store."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author Sofia Santos, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code review and the security review name 30fdc3616ed6f1b0b024531a8710e8119821c73e."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json shows result failure for ci/run-tests.sh baseline-payments on the head commit. The suite has one failure, tests.controls.test_routes_control.test_privileged_routes_require_mfa, which is the registered exhaustive control test for the route change."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive app.py, routes.py, and store.py. Ines Halvorsen, a security reviewer and not the author, approved a security review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change protected controls data, control tests, or CI, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26710 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "EXC-0258 is approved by risk owner Omar Haddad, unexpired at 2026-10-29, and records a compensating control, but its component is payments.http while the bypass is declared in payments.routes, and its scope is only the reconciliation batch account while the route skips MFA for every caller."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0404 covers routes.py for MFA-1, and this change alters that route table, so the prior evidence lapses. The new exhaustive control test on the head commit failed, so there is no replacement evidence of the same strength."
+    }
+  ],
+  "summary": "The change adds POST /payees/{id}/reopen for the privileged action manage_payees with MFA turned off. EXC-0258 does not authorize that deviation: it names payments.http and only the reconciliation batch account, while the flag lives on the route table and applies to every caller. CI on the head commit failed the exhaustive privileged-route control test, so the suite did not pass and the prior route-table evidence has lapsed. Ticket, independent code review, and security review are in order, and the new reopen path is parameterized, audited, and does not write NPI, but the MFA break is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 196.36,
+    "tokens_in": 62207,
+    "tokens_out": 16367,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ab89b320c2901d752825617be52fcdea3ffcf669b7a6348e7ae86cf52e4f0ca7",
+    "packet_tokens_est": 35050,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 62207,
+      "outputTokens": 16367,
+      "cacheReadTokens": 260992,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 192653,
+    "duration_api_ms": 192653,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

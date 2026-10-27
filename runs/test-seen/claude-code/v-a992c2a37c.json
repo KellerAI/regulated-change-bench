@@ -1,0 +1,92 @@
+{
+  "variant": "v-a992c2a37c",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24501 is type standard, status approved by change_manager erik.brandt at 2026-10-19T18:32Z, before the PR opened and before review. Its components (payments.reports, payments.tests) cover reports.py and tests/test_released_by_payee.py per the base controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from sofia.santos@fernbrook.example (p-ssantos, change_approver for payments), who is a different person from the author aisha.bello (p-abello) under all directory aliases."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 4ec0db4, the only commit in the change, so no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pipeline pr-checks on head 4ec0db4 with result success. The JUnit report shows 174 tests with 0 failures, errors or skips, including the new test_released_by_payee tests and all control tests. The change touches no product-obligation scope or closed domain, so no specific control test is additionally required. I could not re-run the suite locally because Python 3.11+ was not usable in the sandbox."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.reports and payments.tests are marked security_sensitive: false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No touched path matches the base controls/protected-paths.json (the new test is under tests/, not tests/controls/), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket are standard, not emergency (emergency: false), so no PIR is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change neither relies on nor needs an exception, since it deviates from no product obligation, so the register imposes nothing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers reports.py or the new test file. The covered payments.py, audit.py, routes.py and mortgage files are unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1759 adds a pure reporting helper, released_by_payee, to payments reports.py with unit tests. It touches no code, configuration or domain within any product obligation's scope, and no security-sensitive or protected paths. The approved ticket covers both touched components, an independent payments change approver approved the exact head commit, and the CI run on that commit shows the full suite and all control tests passing with nothing skipped. No emergency, exception or ledger-lapse conditions apply, so every applicable obligation is shown and the change is accepted.",
+  "meta": {
+    "elapsed_s": 80.1,
+    "tokens_in": 491209,
+    "tokens_out": 7025,
+    "usd": 0.430639,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 7025,
+      "cache_read_input_tokens": 451223,
+      "cache_creation_input_tokens": 39950
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4306385999999999,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

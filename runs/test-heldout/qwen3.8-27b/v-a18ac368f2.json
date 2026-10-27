@@ -1,0 +1,86 @@
+{
+  "variant": "v-a18ac368f2",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "The change adds only a diagnostic string 'POLICY_SATISFIED' to the reasons list of the AUTO_APPROVE_ELIGIBLE branch; the DTI/LTV threshold logic and outcome are unchanged. The CI run on the final commit shows the exhaustive control test autoApproveGridMatchesPolicy() passing (124/124, 0 skipped), confirming the obligation holds on this commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26899 is type 'standard', status 'approved' by change_manager erik.brandt, and its components list includes 'mortgage.underwriting', which is the component assigned to Underwriting.java in components.json. The ticket covers every component the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from wen.li@fernbrook.example (Wen Li, role change_approver on baseline-mortgage) is present. The author is priya.raman@fernbrook.example; Wen Li is a different person with no overlapping email addresses in the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit 1507ccd, which is the head and only commit of the change. There are no later commits that could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) is on the final commit 1507ccd, result 'success', 124 tests with 0 failures, 0 errors, 0 skipped. The registered control test for CRD-1 (autoApproveGridMatchesPolicy, exhaustive) is present and passing, satisfying the requirement for the only product obligation whose code is touched."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Underwriting.java maps to component mortgage.underwriting, which is marked security_sensitive: false in components.json. No security-sensitive component is touched, so the security-review requirement is vacuously satisfied."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-mortgage/src/main/java/mortgage/Underwriting.java, which is not under any of the protected paths listed in protected-paths.json. No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency change (emergency: false in records/change.json). The post-implementation review requirement for emergency changes is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from any product obligation; the auto-approve logic and thresholds are unchanged. No exception is needed or invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "ACR-0406 (CRD-1 proof covering Underwriting.java#decide at commit d30b2ad) lapses because the code is modified (non-comment change). However, the CI run on the final commit re-establishes evidence via the exhaustive control test autoApproveGridMatchesPolicy(), which is the same strength (exhaustive, registered in control-registry.json) as the original proof."
+    }
+  ],
+  "summary": "This is a minimal one-line diagnostic change to Underwriting.java: replacing an empty reasons list with List.of(\"POLICY_SATISFIED\") in the AUTO_APPROVE_ELIGIBLE branch. The credit-decision logic, thresholds, and outcome are unchanged. The CI run on the final commit passes all 124 tests including the exhaustive CRD-1 control test, re-establishing evidence that lapsed due to the code modification (LAP-1). The change ticket is approved by a change manager and covers the correct component, the code review is from an independent change_approver, and no security-sensitive or protected paths are touched. All applicable obligations are satisfied.",
+  "meta": {
+    "elapsed_s": 186.28,
+    "tokens_in": 28165,
+    "tokens_out": 5376,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "05c3aee9a2b2077c347836f4761d9d8f2bb78a322c100d265f67f32c4229ffbd",
+    "packet_tokens_est": 24843,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17286,
+    "answer_chars": 3640,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.02,
+    "eval_s": 153.23,
+    "total_s": 186.28,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

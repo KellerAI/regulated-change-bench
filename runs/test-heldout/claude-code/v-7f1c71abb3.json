@@ -1,0 +1,97 @@
+{
+  "variant": "v-7f1c71abb3",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "payments.py#release now returns the stored release only if it is under 1 day old; after that it skips nothing (approvals persist, status is not checked, releases has no uniqueness constraint) and calls _send_disbursement again, so a replayed instruction sends a second disbursement."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0403 (PAY-2 trace on e5bf646) covers payments.py#release, whose behaviour this change alters, so it has lapsed; no valid replacement evidence exists, and the only fresh signal, the sample control test, never advances the clock past the new window."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25827 is a standard ticket approved by Erik Brandt (change_manager) on 2026-09-28, before the change was opened on 2026-09-30; its component payments.payments covers the only touched path, apps/baseline-payments/payments/payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos@fernbrook.example, a change_approver for payments and a different person from the author Jonah Weiss according to the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit d6f3a18, the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The recorded CI run on head d6f3a18 succeeded with 172 tests, 0 failures and 0 skips, including the registered PAY-2 control test test_sampled_release_is_idempotent (sample). A local rerun was not possible because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py maps to payments.payments, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls data, control tests, CI) are touched, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and emergency is false, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception, and the register has none for PAY-2 or payments.payments, so nothing excuses the PAY-2 deviation."
+    }
+  ],
+  "summary": "The change limits release idempotency to a one-day window, so replaying a payment instruction after 24 hours sends a second disbursement to core banking, which refutes PAY-2. The prior PAY-2 evidence (ACR-0403) lapsed with the change and was not replaced; the sample control test passes only because it never moves the clock. The process records (ticket, independent review, approval on head, CI on head) are in order, but a refuted critical product obligation requires rejection.",
+  "meta": {
+    "elapsed_s": 95.06,
+    "tokens_in": 488879,
+    "tokens_out": 9052,
+    "usd": 0.528674,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 9052,
+      "cache_read_input_tokens": 436819,
+      "cache_creation_input_tokens": 52030
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5286738000000001,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

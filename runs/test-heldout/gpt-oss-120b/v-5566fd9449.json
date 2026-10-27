@@ -1,0 +1,76 @@
+{
+  "variant": "v-5566fd9449",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "Only a sample‑level control test (test_sampled_operations_are_audited) passes; the obligation requires exhaustive evidence, which is missing."
+    },
+    {
+      "id": "AUD-2",
+      "status": "refuted",
+      "note": "The prior modelcheck proof covers an older commit; the verify() code was changed, so the evidence has lapsed and no new proof is provided."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25516 is approved, its component list includes \"payments.audit\" which covers the modified file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Mara Costa (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code‑review approval is attached to the only commit being merged; no later behavior‑changing commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (172 tests, 0 failures) and includes the control tests for AUD‑1 and AUD‑2, satisfying the testing requirement."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval by Kofi Mensah (security_reviewer) is recorded for the security‑sensitive component payments.audit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Evidence for AUD‑2 is stale after the code change and AUD‑1 lacks exhaustive evidence, violating the evidence‑lapse requirement."
+    }
+  ],
+  "summary": "The change modifies audit.py, impacting audit‑trail obligations. While process obligations CHG‑1 through CHG‑5 are satisfied, product obligations AUD‑1 and AUD‑2 lack adequate evidence: AUD‑1 only has a sample test despite needing exhaustive proof, and AUD‑2's previous proof is outdated after the code change, breaching LAP‑1. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 146.8,
+    "tokens_in": 24915,
+    "tokens_out": 8063,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6011d9d3259f34841c0caf27c6005d948ac451e5544ffea6cc190689f3d37bed",
+    "packet_tokens_est": 24866,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 31400,
+    "answer_chars": 2032,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.91,
+    "eval_s": 128.65,
+    "total_s": 146.8,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

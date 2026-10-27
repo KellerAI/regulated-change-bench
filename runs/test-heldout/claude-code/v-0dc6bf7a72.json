@@ -1,0 +1,102 @@
+{
+  "variant": "v-0dc6bf7a72",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new error-path log call passes key account_number to AppLog.error, and mask_fields masks every NPI_FIELDS key to ****last4, [redacted] or empty for any input, so no unmasked value can be written. test_app_log_writes_masked_lines covers this exact path and passes on head; the sampled LOG-1 control test also passes but doesn't exercise the statement-delivery failure."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "service.py is in scope, but the diff only adds a field to a log call on the failure path; the audit call for deliver_statement and all other audit calls are unchanged. The sampled AUD-1 control test passes on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24888 is a standard ticket, approved by change manager grace.kim on 2026-10-02 before the change was opened on 2026-10-04. Its component payments.service covers the only touched file, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos (p-ssantos), a change_approver for payments, who is a different person from the author linh.nguyen (p-lnguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit b7c14ec, which is the change's only commit; there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head b7c14ec succeeded: 172 tests, 0 failures, 0 skipped, including the LOG-1 and AUD-1 control tests (both labelled sample). I couldn't re-run locally because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file, service.py, maps to payments.service, which is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are touched, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "There is no deviation from a product obligation, so no exception is relied on; the LOG-1 exception EXC-0167 is for mortgage.logging and doesn't apply here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/service.py, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change adds account_number to the statement-delivery failure log in payments service.py. That field goes through AppLog, which always masks NPI keys (last four only), so LOG-1 holds; a unit test on the head commit confirms the masked output. The ticket, independent code review on the head commit, and a full CI pass with control tests on the head commit are all present, and no security, control-owner, emergency or exception rules are triggered. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 121.12,
+    "tokens_in": 869559,
+    "tokens_out": 10144,
+    "usd": 0.676469,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 44,
+      "output_tokens": 10144,
+      "cache_read_input_tokens": 807117,
+      "cache_creation_input_tokens": 62398
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6764694,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "variant": "v-362fd712f2",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "payments.py#release now returns the persisted release only if the first release is under 1 day old; a later replay of the same instruction is still fully approved and has an open payee, so it calls _send_disbursement again. Neither service.release_payment nor release checks status 'released', and the releases table has no unique constraint, so a second disbursement is sent."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0403 (PAY-2, sample trace on e5bf646) covers payments.py#release, whose behaviour this change alters, so it has lapsed. No valid new evidence replaces it: the only PAY-2 control test is a sample that replays immediately and cannot exercise the new 1-day window, and PAY-2 requires exhaustive evidence."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25674 is type standard, status approved, and was approved by change manager Grace Kim at 2026-10-19T06:16Z, before review. Its component payments.payments covers the only touched file, apps/baseline-payments/payments/payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example (Mara Costa, change_approver for payments), who is a different person from the author Aisha Bello under any of Bello's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit ef63254, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success on head ef63254, and the JUnit report shows 172 tests, 0 failures and 0 skipped, including the registered PAY-2 control test test_sampled_release_is_idempotent (labelled sample). I could not rerun it locally (pytest not installed), and the report's hostname and timestamp do not match the run record."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py maps to payments.payments, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is touched; the diff modifies only apps/baseline-payments/payments/payments.py."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception, and the register has none for PAY-2 or payments.payments, so the PAY-2 deviation is not excused."
+    }
+  ],
+  "summary": "The change makes release reuse the earlier confirmation only within one day, so replaying an instruction after that sends a second disbursement to core banking, which violates PAY-2. The PAY-2 control test passes only because it replays immediately, and the earlier PAY-2 ledger evidence lapsed because release changed, with no valid replacement. The process records (ticket, independent code review on the final commit, CI run) are in order and no exception covers the deviation. Because PAY-2 and LAP-1 are refuted, the change is rejected.",
+  "meta": {
+    "elapsed_s": 90.1,
+    "tokens_in": 466335,
+    "tokens_out": 8291,
+    "usd": 0.507759,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 8291,
+      "cache_read_input_tokens": 414522,
+      "cache_creation_input_tokens": 51783
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5077594,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

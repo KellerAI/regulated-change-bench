@@ -1,0 +1,84 @@
+{
+  "variant": "v-dae857b1ed",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The diff only raises AppLog.MAX_LINES from 10000 to 12000, and the head file still writes the caller-supplied message with no new NPI interpolation. LOG-1 requires exhaustive evidence over an open set of log call sites, and the registered control is only a sample; the attached JUnit output is also not tied to this commit, so the packet does not establish that every log path stays free of unmasked NPI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26551 is status approved by Grace Kim, a change manager, on 2026-10-23T20:02:00Z, before the review time of 2026-10-26T16:12:00Z. Its component mortgage.logging matches AppLog.java in controls/mortgage/components.json, and that is the only path the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code_review of commit bdc19ef829af88bc3cdc3a1a9f637e598898d06e. He holds change_approver for baseline-mortgage and is a different person from the author Wen Li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and the security_review name that head commit bdc19ef829af88bc3cdc3a1a9f637e598898d06e. There is no later commit that could void the approvals."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims ci/run-tests.sh baseline-mortgage succeeded on the head commit on ci-runner-04 at 2026-10-24T20:02:00Z, but the JUnit reports are timestamped 2026-10-23T13:51:03 on dev-laptop-7.local. Those reports do not show the suite passing on the final commit, and the commit changes behavior, so an earlier run does not count."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "AppLog.java is security_sensitive on component mortgage.logging. Kofi Mensah, a security_reviewer, approved a security_review of the head commit and is not the author."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-mortgage/src/main/java/mortgage/AppLog.java, which is outside the protected controls, control-test, and CI paths. A control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-26551 is type standard. No post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff does not rely on an exception. EXC-0167 is limited to a legacy import job, EXC-0141 is expired and scoped to payments.session, and EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers payments payments, audit, and routes, plus mortgage Approvals.java, Policy.java, and Underwriting.java. None of those paths change in this diff, so the earlier evidence does not lapse."
+    }
+  ],
+  "summary": "The change only increases the in-memory diagnostic buffer in mortgage AppLog from 10000 to 12000 lines. The ticket, independent code review, security review, and non-emergency classification meet the process rules, and no protected control path or prior ledger evidence is disturbed. Acceptance still fails CHG-4: the JUnit reports predate the head commit and were produced on a developer machine, so they are not a passing full-suite run of the final commit. Whether LOG-1 still holds on every log path cannot be established from this packet.",
+  "meta": {
+    "elapsed_s": 153.34,
+    "tokens_in": 39978,
+    "tokens_out": 9914,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f314335cfd32eacb3cf54f6aa4bf56ca67d85c2e741d50f84b2e064f8c516730",
+    "packet_tokens_est": 24105,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 39978,
+      "outputTokens": 9914,
+      "cacheReadTokens": 44032,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 149844,
+    "duration_api_ms": 149844,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

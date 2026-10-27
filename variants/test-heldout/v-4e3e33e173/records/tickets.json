@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25897",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Pipeline format identifier",
+    "components": [
+      "mortgage.reporting"
+    ],
+    "requested_by": "declan.farrell@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-27T02:48:00Z",
+    "risk": "low"
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "variant": "v-e4090f5a48",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25846 is approved by change manager Erik Brandt before review, and its components (payments.payments, payments.reports, payments.tests) cover memos.py, reports.py, and the new test."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Mara Costa, recorded an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "That approval names commit 7ce44a5e. Later commit 80486e2 adds PREVIEW_MIN_WIDTH in memos.py, which is not a comment, whitespace, or formatting edit, so the approval does not cover the head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success for ci/run-tests.sh baseline-payments on head 80486e2, and the JUnit report shows 174 tests with no failures, errors, or skips. The change does not touch any product-obligation scope path, so no additional registered control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "memos.py, reports.py, and tests/test_*.py are not security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "None of the changed paths are protected controls, control tests, or CI paths, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. The register entries are unused by this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger coverage is limited to payments.py, audit.py, routes.py, and mortgage underwriting and policy files. This change does not alter those paths, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The treasury report and unused memo constant do not touch product-control code, and the ticket, CI run on the head commit, and independence of Sofia Santos's review meet the other process rules. The code review approves only 7ce44a5e. The follow-up commit adds PREVIEW_MIN_WIDTH, which is outside the comment, whitespace, and formatting carve-out, so that approval does not cover what would be merged. The change is rejected until a new approval names the head commit.",
+  "meta": {
+    "elapsed_s": 96.41,
+    "tokens_in": 43720,
+    "tokens_out": 7168,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "67be66b5ef700050f71e8ff554a3bd161d50b093fe11c17c6ad5d20b9397cd54",
+    "packet_tokens_est": 25556,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43720,
+      "outputTokens": 7168,
+      "cacheReadTokens": 217344,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 92910,
+    "duration_api_ms": 92910,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

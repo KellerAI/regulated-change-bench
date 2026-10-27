@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24639",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Capture tax id for self-employed applicants",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "tomas.ortega@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-07T02:57:00Z",
+    "risk": "low"
+  }
+]

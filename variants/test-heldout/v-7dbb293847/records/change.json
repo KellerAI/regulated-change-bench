@@ -1,0 +1,21 @@
+{
+  "id": "PR-1366",
+  "title": "Income formatting diagnostics",
+  "description": "Income formatting diagnostics.\n\nChanges:\n- Help operations identify rejected import values\n- Keep validation and API error messages unchanged\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-388",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "0de643812e543825d3829bdfa496830c84f77ec0",
+  "commits": [
+    {
+      "sha": "0de643812e543825d3829bdfa496830c84f77ec0",
+      "message": "Validation: improve income formatting diagnostics",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-10T20:00:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26206",
+  "opened_at": "2026-10-10T20:00:00Z"
+}

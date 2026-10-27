@@ -1,0 +1,122 @@
+{
+  "variant": "v-3f5fa25110",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-25912. Grace Kim, a change manager, approved that standard ticket on 2026-10-17, before review began on 2026-10-19. Its component list, mortgage.controls-data, covers the only touched path, controls/mortgage/policy-params.json (mapped to controls/mortgage/* in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li approved the code review on the head commit 5e9b47d. Wen Li is a change_approver for baseline-mortgage and none of their addresses belong to the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is one commit, 5e9b47d. Both the code_review and control_owner approvals name that exact commit, so no later commits need to be judged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci ran ci/run-tests.sh baseline-mortgage on head commit 5e9b47d and succeeded: 124 tests, 0 failures, 0 errors, 0 skipped. All 13 registered mortgage control tests appear and pass, including the SES-1, AUD-2, LIM-1, CRD-1, ENC-1 and RET-1 tests for keys in this file. I could not rerun it locally because the JUnit console jar is missing and there is no network access."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.controls-data, is marked security_sensitive: false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is a protected path (controls/*). Rachel Stein approved as control_owner on head commit 5e9b47d; they hold that role and are in controls-office, outside the author's lending-eng team. No policy value, coverage label or control test changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and introduces no deviation from a product obligation, so the exception register is not needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No code covered by a ledger entry changed: the LIM-1 and CRD-1 proofs cover Policy.java, Approvals.java and Underwriting.java, which are untouched. The only edit is re-indenting a JSON file, which is formatting and does not lapse evidence."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "mortgage.privileged_idle_minutes is unchanged at 15, within the <= 15 bound. git diff -w is empty, the file has no non-ASCII bytes, and the test reader (PolicyFiles) skips whitespace. The exhaustive SessionControlTest passes on the head commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "mortgage.audit_retention_years is unchanged at 7, meeting the >= 7 bound. The diff is whitespace only, and the exhaustive AuditControlTest#chainAndRetention passes on the head commit."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The only RET-1 element in scope, mortgage.declined_npi_retention_months, is unchanged at 25. Only control tests read this file, and they ignore whitespace, so the change cannot affect RET-1. Its registered test is labelled sample but still passes; Retention.java is untouched."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "underwriter_limit (500000) and senior_limit (1500000) are unchanged and equal the approved values. The exhaustive ApprovalsControlTest#authorityLimitsMatchPolicy passes on the head commit, and ledger proof ACR-0405 still stands because its covered code is untouched."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "dti_max_percent (40) and ltv_max_percent (90) are unchanged and equal the approved values. The exhaustive UnderwritingControlTest#autoApproveGridMatchesPolicy passes on the head commit, and ledger proof ACR-0406 still stands because its covered code is untouched."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The approved NPI field list (mortgage.npi_fields), which EncryptionControlTest reads, is unchanged: the same four fields in the same order. The exhaustive everyNpiFieldIsSealedAtRest test passes on the head commit."
+    }
+  ],
+  "summary": "PR-1956 only re-indents controls/mortgage/policy-params.json from two to four spaces. Every key and value is identical (git diff -w is empty, no non-ASCII bytes), and the only consumer, the control-test JSON reader, ignores whitespace. The process records are complete: an approved standard ticket covering mortgage.controls-data, an independent change_approver review, and a control owner approval from outside the author's team, all on the single head commit. The head commit also has a green CI run with every registered control test passing. No security-sensitive component, emergency path, exception or lapsed ledger evidence is involved, so every applicable obligation is shown and the change can be accepted. I could not rerun the suite myself because the JUnit console jar is missing and there is no network access, so I relied on the recorded CI run.",
+  "meta": {
+    "elapsed_s": 152.64,
+    "tokens_in": 796099,
+    "tokens_out": 13081,
+    "usd": 0.686244,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 50,
+      "output_tokens": 13081,
+      "cache_read_input_tokens": 740796,
+      "cache_creation_input_tokens": 55253
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6862442,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

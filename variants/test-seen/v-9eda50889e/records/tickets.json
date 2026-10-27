@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25831",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Debug-level application logging",
+    "components": [
+      "payments.logging",
+      "payments.tests"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-19T09:51:00Z",
+    "risk": "medium"
+  }
+]

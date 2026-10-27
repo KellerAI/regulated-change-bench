@@ -1,0 +1,72 @@
+{
+  "variant": "v-825ab6d0f2",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "The change touches Retention.java (RET-1 scope) but leaves behaviour unchanged: the added isClosedOut conjunct is always true after the earlier guard, and status() just returns a field. RET-1 requires exhaustive evidence, but its only registered control test (RetentionControlTest#sampledPurgeRespectsHold) is labelled sample and the ledger has no RET-1 entry, so adequate evidence is missing."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26090 is a standard ticket, approved by change manager grace.kim on 2026-09-28, before the PR opened on 2026-10-01. Its components [mortgage.retention] cover the only touched file, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell (p-dfarrell), a change_approver for baseline-mortgage and a different person from the author nneka.okafor (p-nokafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 3219e97, which is the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records success on head commit 3219e97 for ci/run-tests.sh baseline-mortgage. The JUnit reports show 124 tests, 0 failures, 0 skipped, including RetentionControlTest#sampledPurgeRespectsHold. I couldn't re-run locally (JUnit jar missing), and the report timestamp and hostname don't match run.json."
+    }
+  ],
+  "summary": "PR-1623 changes one line in Retention.java and leaves behaviour unchanged; the ticket, independent approval of the head commit and CI on the head commit are all in order. RET-1 applies because Retention.java is in its scope, and it requires exhaustive evidence. The only evidence is a sample-labelled control test, with no exhaustive control test or proof record in the ledger, so RET-1 can't be shown and the change is held, not accepted. An exhaustive RET-1 control test or proof record would clear the hold.",
+  "meta": {
+    "elapsed_s": 99.58,
+    "tokens_in": 439711,
+    "tokens_out": 9010,
+    "usd": 0.477009,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 9010,
+      "cache_read_input_tokens": 396190,
+      "cache_creation_input_tokens": 43487
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.477009,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "variant": "v-3369109bba",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "Control test `test_matrix_equals_approved_policy` (exhaustive) passed in CI (172 tests, 0 failures), confirming the access matrix matches the approved policy."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "Control test `test_auditor_is_read_only` (exhaustive) passed, confirming the auditor role holds no state‑changing actions."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "Control test `test_it_admin_cannot_approve_or_release` (exhaustive) passed, confirming IT administrators cannot approve credit or release payments."
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "Control test `test_privileged_routes_require_mfa` (exhaustive) passed; the change does not affect routes, so privileged routes still require MFA."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25503 is approved by a change manager, lists component `payments.access`, and is linked to this change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Mara Costa (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is attached to commit 6256a35bc624924d2d626ed54b81c3424d2f20e0, and there are no later behavior‑changing commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded; full test suite including all control tests passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval by Ines Halvorsen (security_reviewer) is recorded for the same commit."
+    }
+  ],
+  "summary": "The change adds a reporting‑action alias in the RBAC module but does not alter the granted matrix, and all relevant product obligations (ACC-1, ACC-2, SOD-1, MFA-1) are verified by exhaustive control tests that passed in CI. Process obligations CHG-1 through CHG-5 are satisfied with an approved ticket, independent code‑review and security approvals, and a successful full test run. No protected paths were modified and no exceptions are required, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 124.97,
+    "tokens_in": 24537,
+    "tokens_out": 6866,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3eafafff6a43f43fdecd7b6e3528ecbd7249fade8a87db6fb6f536ddf849a2ca",
+    "packet_tokens_est": 24436,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26577,
+    "answer_chars": 2334,
+    "done_reason": "stop",
+    "load_s": 0.01,
+    "prompt_eval_s": 17.5,
+    "eval_s": 107.3,
+    "total_s": 124.97,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

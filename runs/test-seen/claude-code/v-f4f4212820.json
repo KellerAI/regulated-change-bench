@@ -1,0 +1,92 @@
+{
+  "variant": "v-f4f4212820",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR names CHG-25595, a standard ticket approved by erik.brandt (change_manager) at 2026-10-15T18:23Z, before the 2026-10-16 review. Its components (payments.payments, payments.tests) cover memos.py (payments.payments) and tests/test_memo_preview.py (payments.tests) per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from sofia.santos, who holds change_approver for payments and is a different person from the author aisha.bello (p-abello) under all her directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names adbcdcb, the head and only commit of the change, so no later commits are left unapproved."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding on head adbcdcb. The JUnit report shows 174 tests, 0 failures and 0 skipped, including all registered control tests and the new preview tests. No product obligation's scope is touched, so no extra control tests are required. I could not rerun locally because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched components are payments.payments (memos.py) and payments.tests, both marked security_sensitive: false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No touched path matches controls/protected-paths.json (controls/*, apps/baseline-payments/tests/controls/*, ci/*), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency: emergency is false and the ticket type is standard, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception, and nothing in the diff deviates from a product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers memos.py or the new test file. The covered payments.py, audit.py, routes.py and mortgage files are unchanged, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds a pure display helper, memos.preview, plus unit tests. It touches no code in any product obligation's scope, no security-sensitive component and no protected path. The ticket was approved by a change manager before review and covers the touched components. Independent code review by a payments change approver names the final commit, and CI on that commit shows the full suite, including all control tests, passing. Every applicable process obligation is satisfied, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 75.57,
+    "tokens_in": 336576,
+    "tokens_out": 6261,
+    "usd": 0.378114,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6261,
+      "cache_read_input_tokens": 297907,
+      "cache_creation_input_tokens": 38637
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3781144,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

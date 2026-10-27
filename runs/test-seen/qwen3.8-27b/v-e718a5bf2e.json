@@ -1,0 +1,91 @@
+{
+  "variant": "v-e718a5bf2e",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The only change to Approvals.java is a single comment line; the maker-checker logic in approve() is untouched. The exhaustive control test controls.ApprovalsControlTest#makerCannotCheck passed in CI (125/125, 0 skipped)."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Approvals.java received only a comment; Policy.java and policy-params.json are untouched. The exhaustive proof record ACR-0405 and the control test authorityLimitsMatchPolicy (passing in CI) confirm the authority tiers are unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26430 is type 'standard', approved by change_manager Erik Brandt on 2026-10-22. Its components (mortgage.approvals, mortgage.reporting, mortgage.tests) cover every file the change touches: Approvals.java, PipelineReport.java, and PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds the change_approver role for baseline-mortgage and is not the author (Priya Raman). His code_review approval is on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 3aa4624 which is the head commit; there are no later commits, so the approval covers the entire change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the first commit 8d03deb; the only later commit (3aa4624) is comment-only, which CHG-4 permits. The full suite (125 tests) passed with 0 failures, 0 errors, 0 skipped, including the exhaustive control tests for MC-1 and LIM-1 that cover the touched Approvals.java."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched files map to components mortgage.approvals (security_sensitive: false), mortgage.reporting (security_sensitive: false), and mortgage.tests (security_sensitive: false). No security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No file under controls/, the control-test directories, or ci/ is modified, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this comment-only and new-method change, so no exception is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The only edit to a ledger-covered file (Approvals.java, covered by ACR-0405) is a comment-only change. Under LAP-1, comment-only edits do not lapse evidence, so ACR-0405 remains valid."
+    }
+  ],
+  "summary": "PR-1536 makes two trivial changes: adding a totalCases() helper to PipelineReport.java with a unit test, and adding a single comment to Approvals.java. No behaviour changes, no security-sensitive or control-protected files are touched. The change ticket is approved with all touched components listed, an independent change_approver (Declan Farrell) approved the head commit, and the CI suite (125 tests, 0 failures, 0 skipped) passed on the first commit with the later commit being comment-only. All applicable process and product obligations are satisfied.",
+  "meta": {
+    "elapsed_s": 168.67,
+    "tokens_in": 29053,
+    "tokens_out": 4995,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b67026c9d1e9dc669cd5616bb61f9a29f418a26b16bf907889cab09d2cdac457",
+    "packet_tokens_est": 25621,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15522,
+    "answer_chars": 3281,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.08,
+    "eval_s": 134.56,
+    "total_s": 168.67,
+    "tokens_est_ratio": 1.106,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

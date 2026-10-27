@@ -1,0 +1,88 @@
+{
+  "variant": "v-f083dff4d5",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "open",
+      "note": "The diff only adds a POLICY_SATISFIED reason to the AUTO_APPROVE_ELIGIBLE branch, and the DTI/LTV comparisons and Policy constants look unchanged. However, the ledger proof (ACR-0406) was produced on commit d30b2ad and has lapsed, and the CI reports offered for the exhaustive control test autoApproveGridMatchesPolicy cannot be tied to the head commit, so there is no valid current evidence."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26403 is a standard ticket. It was approved by change manager grace.kim on 2026-10-24, before the commit and the review, and its components (mortgage.underwriting) cover Underwriting.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li gave a code_review approval. Wen Li holds change_approver for baseline-mortgage and is not the author, Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 7fb0c3d7, and there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a run on the head commit by ci-runner-04. But every JUnit report is timestamped 2026-10-23T13:51, three days before the commit was authored (2026-10-26T14:11), and comes from host dev-laptop-7.local. The test results therefore cannot be from the final commit and are not valid evidence that the suite and the CRD-1 control test pass on it. Also, the change description says unit tests were updated, but no test file is in the diff."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Underwriting.java belongs to mortgage.underwriting, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is relied on for this change, and none in the register is scoped to CRD-1 or mortgage.underwriting."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0406 covers Underwriting.decide at commit d30b2ad. This change alters decide's returned reasons, which is a behaviour change, so the evidence lapses. The change instead relies on the 'existing credit evidence linked in the acceptance ledger', and no valid replacement evidence of equal (exhaustive) strength on the head commit is provided."
+    }
+  ],
+  "summary": "The change is a one-line behaviour change to Underwriting.decide, within CRD-1's scope. Ticket and code-review approval are in order. The CI evidence is invalid: the JUnit reports predate the commit by three days and come from a developer workstation, not the CI runner named in run.json. As a result, testing on the final commit is not shown. The lapsed CRD-1 proof in the ledger cannot substitute under LAP-1, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 22.76,
+    "tokens_in": 39280,
+    "tokens_out": 2287,
+    "usd": 0.20286,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "adcaa62adbdad63a56bb9116b2df0efda5195c7d3ceee26fae0ad7ac19e0129d",
+    "packet_tokens_est": 24854,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39280,
+      "output_tokens": 2287,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

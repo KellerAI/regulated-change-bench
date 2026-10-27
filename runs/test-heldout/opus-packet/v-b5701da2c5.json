@@ -1,0 +1,63 @@
+{
+  "variant": "v-b5701da2c5",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24826, a standard ticket approved by change manager Grace Kim on 2026-09-29, before the change was opened. Its components (mortgage.reporting) cover the only touched path, PipelineReport.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa@fernbrook.example. She is a change_approver for payments only, not baseline-mortgage. No eligible change_approver for the app (for example Wen Li or Declan Farrell) has approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names the head commit d6910aea, and there are no later commits. The approval is still ineligible under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json reports success for `ci/run-tests.sh baseline-mortgage` on the head commit, with 124 tests passing and none skipped. The change touches no product-obligation scope or closed domain, so no specific control tests are required. Note that the JUnit report timestamps (2026-10-23) and hostname look inconsistent with the run record."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover Approvals.java, Policy.java, Underwriting.java and payments files. None of these is changed, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change only adds a constant to PipelineReport.java (component mortgage.reporting, not security-sensitive). That path is in no product obligation's scope and matches no log pattern, so only process obligations apply. The ticket is properly approved and CI passed on the head commit. However, the only code review comes from Mara Costa, whose change_approver role covers payments, not baseline-mortgage. The description's note that review was 'coordinated with the payments engineering lead' does not satisfy CHG-2, so the change is rejected until an eligible baseline-mortgage change_approver approves it.",
+  "meta": {
+    "elapsed_s": 17.52,
+    "tokens_in": 38238,
+    "tokens_out": 1663,
+    "usd": 0.186212,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "55c5bcc51a58bf6c7eceb268d67d31c95d127f4b918f4454308c49c9bca04908",
+    "packet_tokens_est": 24296,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38238,
+      "output_tokens": 1663,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

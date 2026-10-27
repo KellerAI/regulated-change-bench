@@ -1,0 +1,82 @@
+{
+  "variant": "v-bcda0f91ad",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "Commit 6d48175 changes required_approvals from `amount >= DUAL_CONTROL_THRESHOLD` to `amount > DUAL_CONTROL_THRESHOLD`, so a payment of exactly 10,000.00 now needs only one approver. PAY-1 requires two distinct approvers at or above the threshold, and the existing test_required_approvals_around_the_threshold asserts required_approvals(threshold) == 2."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25976 was approved by change manager erik.brandt on 2026-10-15, before the change opened on 2026-10-16. Its components (payments.payments, payments.tests) cover both touched paths per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa, a payments change_approver who is a different person from the author aisha.bello under all directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 6d48175, so it covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The only CI run (records/ci/run.json) is on e6eb993. The later commit 6d48175 changes the dual-control comparison, which is a behaviour change, so the run does not count for the final commit. The PAY-1 control and unit tests would fail on head."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0401 (exhaustive PAY-1 proof) covers payments.py required_approvals, which this change alters in behaviour. That evidence has lapsed, and no new evidence of equal strength exists for the final commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from PAY-1, but the exception register has no exception for PAY-1 or for payments.payments. The only entries are an expired SES-1 exception, a mortgage LOG-1 exception and a withdrawn MFA-1 exception."
+    }
+  ],
+  "summary": "Besides adding the approvals_remaining helper, the change quietly replaces the dual-control comparison `>=` with `>`, so payments of exactly 10,000.00 would be released with a single approval. That violates PAY-1, and no exception covers it. CI evidence exists only for the earlier commit, and the later behaviour-changing commit voids it (CHG-4). It also lapses the prior PAY-1 proof (LAP-1). The ticket and code review approvals are in order, but the product-control violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 65.43,
+    "tokens_in": 270589,
+    "tokens_out": 6116,
+    "usd": 0.37726,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 18,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 6116,
+      "cache_read_input_tokens": 228746,
+      "cache_creation_input_tokens": 41819
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.37726020000000005,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

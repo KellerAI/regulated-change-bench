@@ -1,0 +1,77 @@
+{
+  "variant": "v-207980cec2",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The change adds approvals_remaining next to the in-scope required_approvals/is_fully_approved but leaves those functions and policy.DUAL_CONTROL_THRESHOLD unchanged; the new helper only reads them. The exhaustive control test test_dual_control_grid_matches_policy passed unskipped on the head commit, and ledger proof ACR-0401 on required_approvals is still valid."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25093 is approved by change manager Grace Kim (2026-10-18), before the change was opened (2026-10-20), and its components (payments.payments, payments.tests) cover both touched files per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval comes from m.costa@fernbrook.example (Mara Costa, change_approver for payments), who is a different person from the author Sofia Santos under all her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit ff24eda, which is the head and only commit of the change, so no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful ci/run-tests.sh baseline-payments run on head ff24eda. The JUnit report lists 175 tests with 0 failures and 0 skips, including all registered payments control tests (among them the PAY-1 grid test) and the new tests. Local re-run wasn't possible (pytest not installed), and the report's timestamp/hostname differ from run.json."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "payments.py is covered by ledger entries ACR-0401 (required_approvals) and ACR-0403 (release), but the diff only adds a new function and leaves those symbols' behaviour unchanged, so the evidence has not lapsed."
+    }
+  ],
+  "summary": "PR-1511 adds a read-only approvals_remaining helper to payments payments.py plus unit tests, with no change to the dual-control, maker-checker or release logic, and touches no security-sensitive or protected paths. The ticket was approved in advance and covers the touched components, an independent payments change approver approved the exact head commit, and the CI run on head shows the full suite and every registered control test passing with no skips. Existing ledger evidence for payments.py symbols has not lapsed because those symbols are unchanged. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 68.65,
+    "tokens_in": 394230,
+    "tokens_out": 5900,
+    "usd": 0.422792,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 20,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 5900,
+      "cache_read_input_tokens": 347152,
+      "cache_creation_input_tokens": 47050
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4227924,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

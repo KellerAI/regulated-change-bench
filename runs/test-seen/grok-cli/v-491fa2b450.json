@@ -1,0 +1,84 @@
+{
+  "variant": "v-491fa2b450",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "Policy.PRIVILEGED_IDLE_MINUTES and mortgage.privileged_idle_minutes are both 20, so a privileged session idle for 16 to 20 minutes is still accepted. SES-1 requires idle time over 15 minutes to be rejected, and the catalog bound is mortgage.privileged_idle_minutes <= 15. The green SessionControlTest does not change that; the unit test was only moved from 20 to 25 minutes so it still passes."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24534 is approved by change manager Erik Brandt before the 2026-10-16 review. Its components mortgage.policy, mortgage.tests, and mortgage.controls-data cover Policy.java, SessionTest.java, and controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change_approver and not the author Priya Raman, gave a code_review approval of the head commit 8eacf77be227238d733eec0391cbe4e40df9d1cf."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review and control_owner approvals both name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful ci/run-tests.sh baseline-mortgage run on the head commit. The JUnit report shows 124 tests, 0 failures, and 0 skipped, including the unskipped SES-1 control test privilegedIdleTimeoutWithinPolicy."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components mortgage.policy, mortgage.tests, and mortgage.controls-data are not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is a protected path and this change edits an approved policy value. Rachel Stein, a control_owner on controls-office, outside the author's lending-eng team, approved control_owner on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24534 is type standard and the change record is not emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The SES-1 deviation has no exception that is approved by a risk_owner, unexpired at 2026-10-16, scoped to this obligation and the mortgage policy or session component, and backed by a compensating control. EXC-0141 expired on 2026-09-16 and covers only payments.session batch reconciliation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Prior ledger evidence on Policy.java covers UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, and LTV_MAX_PERCENT. Those symbols are unchanged; only PRIVILEGED_IDLE_MINUTES changed, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The change sets the mortgage privileged idle timeout to 20 minutes in Policy.java and in the approved parameter file, and updates SessionTest so a 25-minute idle still counts as expired. That violates SES-1, which requires a privileged session idle for more than 15 minutes to be rejected. No in-force exception covers this mortgage parameter. Ticket, independent review, control-owner approval, and a green suite are present, but the timeout breach requires rejection.",
+  "meta": {
+    "elapsed_s": 104.15,
+    "tokens_in": 41520,
+    "tokens_out": 11987,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e041a7b9beee321b5e80c0ef7c7016f4e834d3eb58822203c24ab1cdf6ddd7c6",
+    "packet_tokens_est": 25347,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41520,
+      "outputTokens": 11987,
+      "cacheReadTokens": 43904,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 100454,
+    "duration_api_ms": 100454,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

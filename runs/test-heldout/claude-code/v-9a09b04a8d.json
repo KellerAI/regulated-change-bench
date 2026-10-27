@@ -1,0 +1,82 @@
+{
+  "variant": "v-9a09b04a8d",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds coapplicant_tax_id (a tax identifier, which ENC-1 names as NPI) to ApplicantFields.ALL but not to NpiRegistry.FIELDS or the approved mortgage.npi_fields. CaseStore.protect only encrypts registry fields, so the value is saved in clear text. The 'exhaustive' ENC-1 control test passes only because it checks the registry's own list, and no exception in the register covers this."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "Retention.purge (in RET-1 scope) now explicitly removes coapplicant_tax_id, and RetentionControlTest#sampledPurgeRespectsHold passed in CI. That test is a fixed sample, while RET-1 requires exhaustive evidence, and none exists for the changed purge code."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-25867, a standard ticket approved by change manager erik.brandt on 2026-10-11, before review. Its components (mortgage.cases, mortgage.retention, mortgage.control-tests) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Priya Raman, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 56dda28, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows success on head 56dda28. The JUnit reports list 124 tests with none skipped or failed, including the registered ENC-1 and RET-1 control tests. I could not rerun locally because the JUnit jar is missing, and the report timestamps and hostname don't match run.json."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java is a protected control-test path. rachel.stein (control_owner, controls-office, outside the author's lending-eng team) approved the head commit."
+    }
+  ],
+  "summary": "The change adds a co-applicant tax identifier to the accepted applicant fields but does not register it as NPI, so CaseStore saves it unencrypted. That violates ENC-1, and no exception covers it. The ENC-1 control test still passes because its domain is the incomplete registry, so it says nothing about the new field. The process records (ticket, independent review, control-owner approval, CI on the head commit) are in order, and RET-1 is open because only sample evidence exists. Because ENC-1 is refuted, the change is rejected.",
+  "meta": {
+    "elapsed_s": 88.03,
+    "tokens_in": 501086,
+    "tokens_out": 8247,
+    "usd": 0.547888,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 8247,
+      "cache_read_input_tokens": 442178,
+      "cache_creation_input_tokens": 58880
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5478876,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25689",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Identify the applicant in decline log lines",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "tomas.ortega@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-05T06:05:00Z",
+    "risk": "low"
+  }
+]

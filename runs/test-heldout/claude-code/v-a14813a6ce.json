@@ -1,0 +1,97 @@
+{
+  "variant": "v-a14813a6ce",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "AppLog.java is in LOG-1's scope. The change only alters MAX_LINES and doesn't touch masking, but LOG-1 requires exhaustive evidence and the only registered control (LoggingControlTest#sampledFlowsDoNotLogNpi) is labelled sample. No ledger entry gives exhaustive evidence."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24880 was approved by change manager Erik Brandt on 2026-10-14, before the change opened, and its components (mortgage.logging) cover the only touched file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a change_approver for baseline-mortgage and not the author (Tomas Ortega), approved code_review on head commit b48054d."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit b48054d, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head commit b48054d succeeded: 124 tests, 0 skipped or failed, including the registered LOG-1 control test LoggingControlTest#sampledFlowsDoNotLogNpi (labelled sample)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java belongs to mortgage.logging, which is security_sensitive. The only security_review approval is from Declan Farrell, who has engineer and change_approver roles but not security_reviewer."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only touched path (apps/baseline-mortgage/src/main/java/mortgage/AppLog.java) isn't in controls/protected-paths.json, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change isn't flagged emergency and ticket CHG-24880 is type standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change claims no deviation and relies on no exception. EXC-0167 (LOG-1, mortgage.logging) exists but isn't invoked and wouldn't cover the missing security review."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers AppLog.java, so this change makes no earlier evidence lapse."
+    }
+  ],
+  "summary": "PR-1712 changes one line in AppLog.java, which belongs to the security-sensitive mortgage.logging component. CHG-5 needs a security_review from someone with the security_reviewer role; the only security review came from Declan Farrell, a change_approver without that role, so CHG-5 is refuted. LOG-1 is also open: its only control test is a sample, while LOG-1 requires exhaustive evidence. The ticket, independent code review, approval on the final commit and CI on the final commit are all in order, but the refuted CHG-5 means the change is rejected.",
+  "meta": {
+    "elapsed_s": 59.15,
+    "tokens_in": 314822,
+    "tokens_out": 5302,
+    "usd": 0.343543,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 5302,
+      "cache_read_input_tokens": 278454,
+      "cache_creation_input_tokens": 36340
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.34354280000000004,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

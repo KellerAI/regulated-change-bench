@@ -1,0 +1,21 @@
+{
+  "id": "PR-1769",
+  "title": "Simplify required_approvals",
+  "description": "Simplify required_approvals.\n\nChanges:\n- Single-expression form, same behaviour\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "aisha.bello@fernbrook.example",
+  "branch": "bello/change-851",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "b8aae844192120bc9df2512e4ea05fe00103af91",
+  "commits": [
+    {
+      "sha": "b8aae844192120bc9df2512e4ea05fe00103af91",
+      "message": "Payments: simplify required_approvals",
+      "author": "aisha.bello@fernbrook.example",
+      "at": "2026-10-14T17:27:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26071",
+  "opened_at": "2026-10-14T17:27:00Z"
+}

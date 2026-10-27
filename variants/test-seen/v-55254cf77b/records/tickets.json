@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25377",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Ops console: most recent log line",
+    "components": [
+      "mortgage.logging"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-14T23:28:00Z",
+    "risk": "medium"
+  }
+]

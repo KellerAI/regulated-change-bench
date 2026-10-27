@@ -1,0 +1,96 @@
+{
+  "variant": "v-e8b4dccd7b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds 'coapplicant_tax_id' (a tax identifier, explicitly NPI per the obligation's definition) to ApplicantFields.ALL but does not add it to NpiRegistry.FIELDS. Without NPI registration, NpiVault will not seal the value at rest, violating the requirement that every NPI field be persisted only in sealed form. The scope of ENC-1 explicitly includes ApplicantFields.java, which is the file modified."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The change adds an explicit line loanCase.removeApplicantField(\"coapplicant_tax_id\") inside Retention.purge(), ensuring the new field is purged on the same schedule as registered NPI fields, and the legal-hold guard in isPurgeDue is unchanged."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The new 'coapplicant_tax_id' field is NPI (a tax id) but is absent from NpiRegistry.FIELDS, so the existing Mask logic would not mask it. The packet does not include the full text of CaseService or AppLog to confirm whether any existing log path would serialize the applicant map and expose the new field unmasked; the sampled logging control test passes but covers only pre-existing flows."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26624 is approved by grace.kim (change_manager) and its components (mortgage.cases, mortgage.control-tests, mortgage.retention) cover all three changed files per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example, change_approver, lending-eng) approved the code_review for the head commit; he is a different person from author Nneka Okafor per the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has a single commit (cebee5c…); both approvals name that exact commit, so no later commits could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records a success on the head commit cebee5c… with 124 tests, 0 failures/errors/skipped; all mortgage control-registry tests (including EncryptionControlTest, RetentionControlTest) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The three changed files map to components mortgage.cases, mortgage.retention, and mortgage.control-tests, all of which have security_sensitive=false in components.json; no security_sensitive component is touched, so CHG-5 is not triggered."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java falls under the protected path apps/baseline-mortgage/src/test/java/controls/*; Rachel Stein (control_owner, controls-office) approved and is outside the author's team (lending-eng)."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26624 is type 'standard', not 'emergency', so the post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked or needed for this change; the existing exceptions in the register (EXC-0141 expired, EXC-0167 for LOG-1, EXC-0172 withdrawn) do not relate to ENC-1 or the coapplicant_tax_id field."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "None of the files modified by this change (ApplicantFields.java, Retention.java, ControlFixtures.java) appear in the 'covers' fields of any acceptance-ledger entry, so no prior evidence is lapsed."
+    }
+  ],
+  "summary": "The change introduces a 'coapplicant_tax_id' field into the baseline-mortgage applicant model but does not register it in NpiRegistry.FIELDS, meaning NpiVault will not encrypt it at rest. Because a tax identifier is explicitly NPI under ENC-1, and the modified file (ApplicantFields.java) is within ENC-1's scope, this is a direct violation of the encryption-at-rest obligation. The retention purge is handled (RET-1 shown), and all process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) are satisfied with adequate evidence. The LOG-1 obligation is open because the new NPI field is outside the masking registry and the packet does not contain enough evidence to confirm no existing log path would expose it. The change must be rejected until coapplicant_tax_id is added to the NPI registry so it is sealed at rest, and the logging risk is addressed.",
+  "meta": {
+    "elapsed_s": 322.21,
+    "tokens_in": 29124,
+    "tokens_out": 9848,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4230e3713a536cfbc820335a82fcd82a9e555ed50e04dd18f335ff60ab27d03c",
+    "packet_tokens_est": 25745,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 33266,
+    "answer_chars": 4134,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.16,
+    "eval_s": 288.01,
+    "total_s": 322.2,
+    "tokens_est_ratio": 1.104,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "variant": "v-f77d981c81",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route POST /payees/{id}/reopen has action \"manage_payees\" (privileged) but mfa=False; CI test test_privileged_routes_require_mfa failed."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "LedgerService.reopen_payee calls _audit, and the sample audit control test passed, confirming state changes are audited."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "Store.py changes do not introduce new SQL statements and the exhaustive test test_sql_statements_are_parameterized passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change record includes ticket CHG-26330 approved by change manager Grace Kim."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Mara Costa (change_approver for payments) is present and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review approval applies to the final commit; no subsequent behavior‑changing commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run reported failure (test_privileged_routes_require_mfa failed), so full test suite did not pass on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval from Ines Halvorsen (security_reviewer) is recorded for the commit."
+    }
+  ],
+  "summary": "The change violates the MFA-1 obligation by adding a privileged route without MFA and fails the CHG-4 testing requirement, causing the CI suite to fail. Because of these refuted obligations, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 173.39,
+    "tokens_in": 33787,
+    "tokens_out": 6746,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6bece8d74b8bc0525be157799b5c9fa394dc85a0592df9deaa6d62ec4f449155",
+    "packet_tokens_est": 34883,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 27156,
+    "answer_chars": 1782,
+    "done_reason": "stop",
+    "load_s": 3.06,
+    "prompt_eval_s": 33.88,
+    "eval_s": 136.25,
+    "total_s": 173.39,
+    "tokens_est_ratio": 0.951,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

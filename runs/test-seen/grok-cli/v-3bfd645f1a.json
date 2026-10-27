@@ -1,0 +1,84 @@
+{
+  "variant": "v-3bfd645f1a",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new GET /exports/cases.csv route is in Routes.ALL with action EXPORT_CASES and MFA required, and HttpApp binds the same key so it is not served outside the route table. EXPORT_CASES is privileged, and the exhaustive control test controls.RoutesControlTest#privilegedRoutesRequireMfa passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26182 is status approved by change manager Grace Kim on 2026-10-03, before review, and its component mortgage.http covers both HttpApp.java and Routes.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change approver and not the author Wen Li, gave a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, d6eb39484597aa7ef0bf6e40837002c77b66af18, and both the code review and the security review name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on the head commit, and the JUnit report shows 124 tests, 0 failures, and 0 skipped, including the unskipped exhaustive MFA-1 route control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both changed files are mortgage.http, marked security_sensitive. Ines Halvorsen, a security reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected paths (controls data, control tests, or CI), so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The new route meets MFA-1, and the change does not rely on an exception. The only MFA-1 register entry, EXC-0172, is withdrawn and is for the health route."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers HttpApp.java or Routes.java, and this change does not alter any path those earlier entries cover, so that evidence has not lapsed. MFA-1 is supported by the new passing exhaustive control test on the head commit."
+    }
+  ],
+  "summary": "The change adds a CSV alias of the existing case-export route. The alias uses the privileged EXPORT_CASES action, requires MFA, and is registered in both the route table and the handler map. The ticket, independent code review, security review, and a green full-suite CI run on the head commit, including the exhaustive privileged-route control test, satisfy the applicable product and process obligations. No protected-path edit, emergency deployment, exception, or lapsed ledger evidence is in play.",
+  "meta": {
+    "elapsed_s": 198.7,
+    "tokens_in": 84710,
+    "tokens_out": 11112,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4a78323d36195e96074f829a3f3c62fb17a3531a063b4292d2a917a9224421fd",
+    "packet_tokens_est": 28983,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 84710,
+      "outputTokens": 11112,
+      "cacheReadTokens": 242176,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 195195,
+    "duration_api_ms": 195195,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

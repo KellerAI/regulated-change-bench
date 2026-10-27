@@ -1,0 +1,84 @@
+{
+  "variant": "v-9f38be16dd",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Head still requires two approvals at or above policy.DUAL_CONTROL_THRESHOLD, and controls/payments/policy-params.json sets that threshold to 10000.00 with dual_control_approvers 2. approve() still rejects the creator, is_fully_approved() counts distinct approvers, and the new helper uses the same rule. The exhaustive control test test_dual_control_grid_matches_policy passed unskipped, and the ledger proof of required_approvals remains in force because the only edit to that function is a comment."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25614, approved on 2026-10-03 by change manager Grace Kim, before review. Its components payments.payments and payments.tests cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos has the payments change_approver role, is not the author Jonah Weiss, and recorded an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That code_review names head commit aa38c0cd0faf3d625ca423107cb192cbb6d7aef6, the commit being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeding on 4d892c9 with 175 tests, 0 failures, and 0 skipped, including test_dual_control_grid_matches_policy and the new approvals-remaining tests. The later commit only adds the dual-control comment, so that run covers the final behaviour."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "components.json marks payments.py and apps/baseline-payments/tests/test_*.py security_sensitive false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The changed paths are outside controls/protected-paths.json, so no control-owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25614 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The payments change does not depart from a product obligation, so no exception is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The accepted PAY-1 proof covers required_approvals, and the only edit to that symbol is a comment, which does not lapse the evidence. The passing exhaustive dual-control control test on this change is further evidence of the same strength."
+    }
+  ],
+  "summary": "The change adds a display helper and unit tests, plus a comment in required_approvals. Dual control at 10000.00, distinct approvers, and the creator block remain as approved, and the exhaustive payments control test passed. The ticket, independent approval of the head commit, and payments suite on the prior commit are valid because the follow-up commit is comment-only. No security-sensitive or protected path is touched, and the change is not an emergency and needs no exception.",
+  "meta": {
+    "elapsed_s": 251.17,
+    "tokens_in": 54606,
+    "tokens_out": 14857,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "74be065d75d8ec563a3227a3668d0c4d52691400134810fdbb0b042e1dfebfcd",
+    "packet_tokens_est": 25948,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 54606,
+      "outputTokens": 14857,
+      "cacheReadTokens": 299008,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 247772,
+    "duration_api_ms": 247772,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

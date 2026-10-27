@@ -1,0 +1,92 @@
+{
+  "variant": "v-a18ac368f2",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "open",
+      "note": "The change edits Underwriting.decide, which is in CRD-1 scope. The approve/refer/decline logic and the 40/90 thresholds look unchanged, and the exhaustive-labelled grid control test autoApproveGridMatchesPolicy passed. But the proof over all DTI/LTV values (ACR-0406) has lapsed, and the grid (DTI in 0.01 steps, LTV in whole numbers 50-110) does not establish the property over the full domain."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger evidence ACR-0406 (non-rerunnable Rocq proof on d30b2ad) covers Underwriting.decide. This change alters its return value (reasons go from [] to [\"POLICY_SATISFIED\"]), which is a behaviour change, so the evidence lapses. No new evidence of the same strength was supplied, yet the change request relies on the existing ledger entry."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26899 is a standard ticket, approved by Erik Brandt (change_manager) at 2026-10-10T00:50Z before review. Its component mortgage.underwriting covers the only touched path, Underwriting.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 1507ccd, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records success on head 1507ccd. The JUnit report shows 124 tests with 0 failures and 0 skipped, including controls.UnderwritingControlTest#autoApproveGridMatchesPolicy. I could not rerun locally because the JUnit jar is missing, and the report timestamps/hostname do not match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.underwriting, is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency and the ticket type is standard, so no PIR is due."
+    }
+  ],
+  "summary": "The change makes Underwriting.decide return a POLICY_SATISFIED reason for auto-approve-eligible decisions. That changes the behaviour of code covered by the non-rerunnable CRD-1 proof in the acceptance ledger (ACR-0406). Under LAP-1 that evidence lapses, and the change offers no replacement of the same strength; it relies on the lapsed ledger entry. Ticket, independent approval, approval coverage and CI on the final commit are all in order. The missing evidence still fails LAP-1 and leaves CRD-1 unestablished, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 109.3,
+    "tokens_in": 556477,
+    "tokens_out": 10158,
+    "usd": 0.526842,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 42,
+      "output_tokens": 10158,
+      "cache_read_input_tokens": 512221,
+      "cache_creation_input_tokens": 44214
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5268422,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

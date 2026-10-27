@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25088",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Retention clean-up",
+    "components": [
+      "mortgage.retention"
+    ],
+    "requested_by": "tomas.ortega@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-22T03:36:00Z",
+    "risk": "low"
+  }
+]

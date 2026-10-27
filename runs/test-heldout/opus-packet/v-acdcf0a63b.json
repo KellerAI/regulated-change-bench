@@ -1,0 +1,83 @@
+{
+  "variant": "v-acdcf0a63b",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24326 is a standard ticket, approved by change manager Grace Kim on 2026-10-23, before review. Its components (payments.reports) cover the only touched file, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos holds change_approver for payments and is a different person from the author Mara Costa. She gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Sofia Santos's approval names the head commit d766b7ced8c815a18b02d53f347e79182231a127, so no later commits exist outside it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims success on the head commit, but the only JUnit report is timestamped 2026-10-23T13:51:58-07:00 on host dev-laptop-7.local. That is a local machine, not ci-runner-09, and the time is before either commit existed (2026-10-25), so no valid test evidence exists for the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is payments.reports, which is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change claims no deviation from any product obligation, so it relies on no exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers reports.py, so no accepted evidence lapses through this change."
+    }
+  ],
+  "summary": "The change adds only a REPORT_FORMAT constant to reports.py, which falls in no product obligation's scope. The ticket and the independent approval on the head commit are in order. The CI evidence is invalid: the attached JUnit report comes from a local workstation and is dated two days before the change's commits, contradicting run.json's claim of a run on the head commit. The testing obligation (CHG-4) is therefore not met, and the change is rejected until a genuine CI run on the final commit is supplied.",
+  "meta": {
+    "elapsed_s": 18.5,
+    "tokens_in": 37973,
+    "tokens_out": 1793,
+    "usd": 0.187752,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e42085955c3534f553feda98005c80b128bbcd1908fa6709c00b3b7328a9c36c",
+    "packet_tokens_est": 24503,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 37973,
+      "output_tokens": 1793,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

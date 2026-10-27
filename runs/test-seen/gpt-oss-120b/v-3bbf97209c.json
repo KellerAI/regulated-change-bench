@@ -1,0 +1,81 @@
+{
+  "variant": "v-3bbf97209c",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25323 is approved (by Grace Kim) and its components list covers payments.http, payments.routes, payments.service and payments.store, which are the files changed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Mara Costa (change_approver for payments) is recorded in approvals.json and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit in the PR is the one approved; no later commits modify behaviour, so the approval still applies."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run (records/ci/run.json) reports failure: test_privileged_routes_require_mfa fails because the new POST /payees/{id}/reopen route lacks MFA."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval from Kofi Mensah (security_reviewer) is present in approvals.json."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Exception EXC-0237 for MFA‑1 is approved by Sofia Santos, who is not a risk_owner; the policy requires approval by a risk_owner (CISO office)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Evidence for MFA‑1 (record ACR‑0404) predates this change and is now stale; no new evidence or valid exception replaces it."
+    },
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new privileged route /payees/{id}/reopen is declared without MFA, violating the privileged‑route MFA rule; the cited exception is invalid."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The added state‑changing operation reopen_payee is audited in code but there is no exhaustive evidence (proof or control test) that all state‑changing operations are audited."
+    }
+  ],
+  "summary": "The change fails multiple critical obligations: the CI test suite does not pass (CHG‑4), the MFA exception is not properly authorized (EXC‑1), the privileged route lacks required MFA (MFA‑1), prior evidence for MFA‑1 has lapsed without replacement (LAP‑1), and there is no exhaustive audit evidence for the new reopen_payee operation (AUD‑1). Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 193.2,
+    "tokens_in": 33950,
+    "tokens_out": 6254,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e4ff6a754222e654d647694331160f880f849dc5edfe5a283317bf2647407fc0",
+    "packet_tokens_est": 35039,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23621,
+    "answer_chars": 2378,
+    "done_reason": "stop",
+    "load_s": 26.06,
+    "prompt_eval_s": 32.29,
+    "eval_s": 134.68,
+    "total_s": 193.2,
+    "tokens_est_ratio": 0.951,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

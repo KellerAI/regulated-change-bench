@@ -1,0 +1,81 @@
+{
+  "variant": "v-e0e7f9d64d",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26996 is approved by change manager Grace Kim and its components (payments.controls-data, payments.policy) cover the changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Sofia Santos (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the only commit; there are no later behavioural changes."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (payments-tests.xml) succeeded with all 172 tests passing, including the registered control tests for every touched obligation."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control‑owner approval by Rachel Stein (control_owner) is present and she is outside the author’s team."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from SES‑1 (privileged idle limit) but no approved exception for payments sessions exists; the only exception (EXC‑0184) applies to mortgage, not payments."
+    },
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "Privileged idle minutes were increased to 16, exceeding the max 15 required by SES‑1, and no exception covers this deviation."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record ACR‑0404 shows the dual‑control threshold (DUAL_CONTROL_THRESHOLD) remains at the approved value; the change does not affect that constant."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "No exhaustive evidence (e.g., proof record) for RET‑1 is present; only a sample retention test runs, so satisfaction cannot be confirmed."
+    }
+  ],
+  "summary": "The change raises the privileged idle timeout to 16 minutes, violating the SES‑1 bound of 15 minutes, and no approved exception exists, which also breaches EXC‑1. Because a critical product obligation is refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 218.11,
+    "tokens_in": 24598,
+    "tokens_out": 12577,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "dcac5f8a448bddf155b53859c267f176d55baa3e61070b150897a8dd8248eaa2",
+    "packet_tokens_est": 24430,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 52471,
+    "answer_chars": 2160,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.39,
+    "eval_s": 202.54,
+    "total_s": 218.11,
+    "tokens_est_ratio": 0.981,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

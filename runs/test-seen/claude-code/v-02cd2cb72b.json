@@ -1,0 +1,77 @@
+{
+  "variant": "v-02cd2cb72b",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "open",
+      "note": "The change rewrites payments.py#required_approvals, which PAY-1 covers. The rewrite reads as equivalent, but the only exhaustive evidence (Rocq proof ACR-0401 on d30b2ad, not re-runnable) targets the old code. The CI control test only covers a grid of boundary cents and multiples of 100 up to 30,000, not the required exhaustive domain [0.01, 5,000,000.00]."
+    },
+    {
+      "id": "LAP-1",
+      "status": "open",
+      "note": "Under LAP-1, the ternary rewrite is a code change, not a comment or formatting edit, so ledger evidence ACR-0401 for PAY-1 lapses. No new evidence of the same (exhaustive proof) strength was produced for head 6c3e646."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26002 is type standard, status approved, approved by change manager Grace Kim on 2026-10-16, before the 2026-10-17 review. Its components include payments.payments, the only component touched (payments.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a change_approver for payments. She is a different person from the author, Jonah Weiss (p-jweiss)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 6c3e646, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows pr-checks succeeding on head 6c3e646. The JUnit report has 172 tests with 0 failures and 0 skips, including the PAY-1 control test test_dual_control_grid_matches_policy. The report's hostname and timestamp don't match run.json, and I couldn't re-run the suite locally (pytest is unavailable)."
+    }
+  ],
+  "summary": "The change is a one-line refactor of required_approvals in payments payments.py, and the process records are in order: approved ticket covering the component, independent change_approver review on the head commit, and green CI on the head commit. However, the function is covered by the exhaustive Rocq proof (ACR-0401) that supports PAY-1, and under LAP-1 a non-formatting rewrite voids that evidence. The only fresh evidence is a CI control test over a narrow amount grid, which is weaker than the exhaustive domain PAY-1 requires. The rewrite looks behaviour-preserving, so PAY-1 isn't shown to be violated, but it can't be established at the required strength; the change should be held until the proof is re-checked on the head commit.",
+  "meta": {
+    "elapsed_s": 116.21,
+    "tokens_in": 552744,
+    "tokens_out": 10054,
+    "usd": 0.544429,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 10054,
+      "cache_read_input_tokens": 504236,
+      "cache_creation_input_tokens": 48470
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5444292,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

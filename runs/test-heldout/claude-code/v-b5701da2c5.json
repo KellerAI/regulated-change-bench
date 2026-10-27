@@ -1,0 +1,67 @@
+{
+  "variant": "v-b5701da2c5",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24826 is a standard ticket, approved by change manager grace.kim on 2026-09-29, before the change was opened and reviewed on 2026-10-01. Its components include mortgage.reporting, the only component touched (PipelineReport.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa, who holds change_approver for payments only, not baseline-mortgage. No baseline-mortgage change approver (e.g. wen.li, declan.farrell) approved the change."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit d6910ae, the change's only commit, so there are no later commits for it to miss. Its approver doesn't qualify, which is a CHG-2 failure."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run records/ci/run.json ran ci/run-tests.sh baseline-mortgage on head d6910ae with result success: 124 tests, 0 failures, errors or skips. The change touches no product obligation's scope or domain, so no registered control tests are required."
+    }
+  ],
+  "summary": "The change adds one constant (FORMAT) to PipelineReport.java, part of the non-security-sensitive mortgage.reporting component, and touches no product obligation scope, protected path or ledger-covered code. The ticket is approved and covers the component, and CI passes on the final commit. However, the only code review comes from Mara Costa, a change approver for payments rather than baseline-mortgage, so the independent approval requirement (CHG-2) is not met. The change is rejected until a baseline-mortgage change approver who is not the author approves it.",
+  "meta": {
+    "elapsed_s": 55.09,
+    "tokens_in": 285985,
+    "tokens_out": 4897,
+    "usd": 0.294722,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 20,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 4897,
+      "cache_read_input_tokens": 256899,
+      "cache_creation_input_tokens": 29058
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.2947218,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

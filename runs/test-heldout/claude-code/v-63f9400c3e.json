@@ -1,0 +1,102 @@
+{
+  "variant": "v-63f9400c3e",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds the government tax identifier coapplicant_tax_id to ApplicantFields.ALL but not to NpiRegistry.FIELDS or the approved mortgage.npi_fields. CaseStore.protect seals only registry fields, so it is stored in plain text; the 'exhaustive' control test only checks registry fields, so it passes anyway, and no exception covers this."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "Retention.purge now also removes coapplicant_tax_id, and the hold and schedule logic is unchanged. But the only evidence is the sample-coverage RetentionControlTest#sampledPurgeRespectsHold, while RET-1 needs exhaustive evidence and the ledger has no RET-1 entry."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25472 (standard) was approved by change manager grace.kim on 2026-10-01, before the change opened on 2026-10-02. Its components (mortgage.cases, mortgage.retention, mortgage.control-tests) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from declan.farrell, a change_approver for baseline-mortgage and a different person from the author tomas.ortega under any of the author's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and control_owner approvals both name head commit 0593a1c, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 0593a1c succeeded: 124 tests, 0 failures, 0 skipped, including the registered ENC-1 and RET-1 control tests for the touched scope. I could not re-run it locally because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "None of the touched components (mortgage.cases, mortgage.retention, mortgage.control-tests) is marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change edits protected path src/test/java/controls/ControlFixtures.java. rachel.stein (control_owner, controls-office, outside the author's lending-eng team) approved head commit 0593a1c."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not flagged as an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change claims no exception, so there is nothing to validate. The register has no exception for ENC-1, so the ENC-1 deviation is not excused."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers code this change alters (Approvals, Policy, Underwriting and payments files are untouched), so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds the co-applicant tax identifier, which is NPI, to the applicant fields without registering it in NpiRegistry or the approved NPI field list. CaseStore therefore stores it in plain text, which violates ENC-1, and no exception covers it. The 'exhaustive' ENC-1 control test passes only because it checks the registry, which omits the new field. The process records (ticket, independent review, control-owner approval, CI on the head commit) are in order, and RET-1 is open because it has only sample-level evidence, but the ENC-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 103.3,
+    "tokens_in": 470691,
+    "tokens_out": 9955,
+    "usd": 0.576394,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 36,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 9955,
+      "cache_read_input_tokens": 411694,
+      "cache_creation_input_tokens": 58967
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5763938000000001,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

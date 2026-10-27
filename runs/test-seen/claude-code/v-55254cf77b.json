@@ -1,0 +1,97 @@
+{
+  "variant": "v-55254cf77b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "The change modifies AppLog.java, which controls/mortgage/components.json marks security_sensitive (component mortgage.logging). records/approvals.json holds only a code_review from declan.farrell; there is no security_review from a security_reviewer (Ines Halvorsen or Kofi Mensah)."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "AppLog.java is in LOG-1 scope. The added last() only returns a line already held by lines(), but the only registered evidence (controls.LoggingControlTest#sampledFlowsDoNotLogNpi) is labelled sample, while LOG-1 requires exhaustive evidence over an open domain."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-25377 (standard, approved), approved by grace.kim (change_manager) on 2026-10-14, before the PR opened on 2026-10-15. Its component mortgage.logging covers AppLog.java, the only file that contains the new last() method."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "declan.farrell (change_approver for baseline-mortgage, a different person from author wen.li under all of Wen Li's directory emails) approved a code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names ce9281b, which is the head and only commit of the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows run-tests.sh baseline-mortgage succeeding on head ce9281b. The JUnit reports show 124 tests, 0 skipped and 0 failures, including the LOG-1 control test sampledFlowsDoNotLogNpi (labelled sample). The reports' host and timestamp (2026-10-23) don't match run.json (ci-runner-02, 2026-10-15)."
+    },
+    {
+      "id": "CHG-6",
+      "status": "open",
+      "note": "No control_owner approval exists. The described change touches only AppLog.java, but git access was unavailable during review, so I could not use the diff to rule out edits to protected paths."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on any exception. EXC-0167 (LOG-1, mortgage.logging) is approved by a risk_owner and unexpired, but it covers a different scope and is not needed here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries for baseline-mortgage cover Approvals.java, Policy.java and Underwriting.java, none of which this AppLog change alters, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds AppLog.last() in the security-sensitive mortgage.logging component, but it has only a code review and no security_review from a security_reviewer, so CHG-5 is violated and the change must be rejected. LOG-1 also lacks the exhaustive evidence it requires (the logging control test is sample-only). The ticket, the independent code review, and the CI run on the head commit are otherwise in order. Note: git and CI commands were not permitted during this review, so I judged the scope of the change from the head working tree and the records, not from the base-to-head diff.",
+  "meta": {
+    "elapsed_s": 113.25,
+    "tokens_in": 660618,
+    "tokens_out": 9752,
+    "usd": 0.688086,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 9752,
+      "cache_read_input_tokens": 585418,
+      "cache_creation_input_tokens": 75162
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6880856,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

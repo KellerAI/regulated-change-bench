@@ -1,0 +1,66 @@
+{
+  "variant": "v-a14813a6ce",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "Only a sample control test passed; the obligation requires exhaustive evidence, which is missing."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24880 is approved and lists component mortgage.logging, matching the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Declan Farrell (role change_approver) who is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approvals apply to the sole commit; no later commits alter behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 124 tests passing, including the registered LOG-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "Security review approval is from Declan Farrell, who lacks the required security_reviewer role."
+    }
+  ],
+  "summary": "The change fails to meet LOG-1's exhaustive evidence requirement and lacks a proper security reviewer approval required by CHG-5. Consequently, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 87.71,
+    "tokens_in": 24208,
+    "tokens_out": 4725,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "226c470312a6298bde1a24e508c6411efbdc7b4428fd7940e20758f358cad8d4",
+    "packet_tokens_est": 24119,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18339,
+    "answer_chars": 1224,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.07,
+    "eval_s": 72.4,
+    "total_s": 87.7,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "variant": "v-4744b816d5",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Retention.isPurgeDue now skips the legal-hold block when status is WITHDRAWN, so withdrawn NPI can be purged while a hold is in force. RET-1 requires that declined or withdrawn NPI is never purged during a legal hold, and no exception covers this."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1242 names ticket CHG-26821, approved by change manager Grace Kim on 2026-10-06 before review. Its component mortgage.retention matches the only changed file, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Priya Raman, approved a code_review of commit 289039e52fffee240f96e957101f91e28412432c."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review approval names that same head commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, and the JUnit report shows 124 tests, 0 failures, and 0 skipped, including unskipped controls.RetentionControlTest#sampledPurgeRespectsHold. That pass is only sample coverage and does not cure the RET-1 violation in the code."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path, Retention.java, is component mortgage.retention with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The withdrawn-case legal-hold carve-out is a deviation from RET-1, and the register has no approved, unexpired exception scoped to RET-1 and mortgage.retention. The listed exceptions are for other obligations, expired, or withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover other files and symbols, not Retention.java, and this change does not alter those covered paths, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change alters mortgage retention so a legal hold no longer blocks purge of withdrawn cases. That directly violates RET-1, and the exception register does not authorize the deviation. Ticketing, independent approval of the final commit, CI on that commit, and the inapplicable security, control-owner, and emergency gates are in order, but a passing sample retention test does not show that holds are always respected. The change is rejected.",
+  "meta": {
+    "elapsed_s": 111.8,
+    "tokens_in": 42559,
+    "tokens_out": 7853,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "32f857e2fe57ec62ae6473b24086345d62d871573889feca6055542106096259",
+    "packet_tokens_est": 24119,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42559,
+      "outputTokens": 7853,
+      "cacheReadTokens": 162048,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 108535,
+    "duration_api_ms": 108535,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

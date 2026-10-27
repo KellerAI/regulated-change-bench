@@ -1,0 +1,102 @@
+{
+  "variant": "v-d0211ce306",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change only adds a guard inside AuditLog.verify; record() and service.py are unchanged. The registered AUD-1 control test test_sampled_operations_are_audited passed unskipped in the CI run on head a1c5eaf."
+    },
+    {
+      "id": "AUD-2",
+      "status": "open",
+      "note": "The new seq<1 guard looks like it only makes verify stricter, but the exhaustive evidence AUD-2 requires is gone: the ModelCheck check ACR-0402 lapsed with this change. The passing control test checks one 30-event log against fixed edits, never edits seq and never reaches the new branch."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26633 is a standard ticket approved by change manager erik.brandt on 2026-10-05, before the PR opened on 2026-10-07. Its component payments.audit covers the only touched file, apps/baseline-payments/payments/audit.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "mara.costa (p-mcosta, change_approver for payments) approved the code_review. She is a different person from the author, aisha.bello (p-abello)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name the head commit a1c5eaf5, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeding on head a1c5eaf5; the JUnit report lists 172 tests with 0 failures and 0 skips, including the AUD-1 and AUD-2 control tests. I could not re-run it locally (pytest is not installed), and the JUnit timestamp (2026-10-23) and host differ from the run record."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py is marked security_sensitive (payments.audit). ines.halvorsen (security_reviewer) approved a security_review on head a1c5eaf5."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-payments/payments/audit.py and no protected path (controls/, tests/controls/, ci/), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket are standard, not emergency, so no deploy-before-review or PIR requirement applies."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. None in the register covers AUD-2 or payments.audit, and EXC-0141 expired on 2026-09-12."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0402 (AUD-2, ModelCheck, exhaustive at scope 6, not rerunnable) covers audit.py#verify at commit d30b2ad, and this change alters verify's behaviour, so the entry has lapsed. No new evidence of the same strength was produced, yet the PR description still cites the ledger entry."
+    }
+  ],
+  "summary": "PR-1353 adds a check to AuditLog.verify that rejects audit chains whose first sequence number is below 1. That is a real behaviour change to code covered by the accepted ModelCheck evidence for AUD-2 (ACR-0402). Under LAP-1 that evidence has lapsed, and no new evidence of the same strength was supplied: the PR still cites the stale ledger entry, and the AUD-2 control test is a fixed 30-event check that never reaches the new branch. The process records are in order: the ticket, independent code review, security review and green CI on the head commit. Because the evidence LAP-1 requires is missing, the change is rejected until fresh exhaustive AUD-2 evidence exists for the new verify.",
+  "meta": {
+    "elapsed_s": 95.93,
+    "tokens_in": 314885,
+    "tokens_out": 9179,
+    "usd": 0.479343,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 9179,
+      "cache_read_input_tokens": 266383,
+      "cache_creation_input_tokens": 48478
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.47934259999999995,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

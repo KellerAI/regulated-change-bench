@@ -1,0 +1,91 @@
+{
+  "variant": "v-8c8642af6d",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26700 is approved by change manager Grace Kim and lists component mortgage.controls-data, matching the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Declan Farrell (role change_approver) is present and the reviewer is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the sole commit in the PR; no later commits alter behavior, so coverage is satisfied."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 124 tests passing, including the registered control tests for the impacted obligations."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "Control owner approval is from Declan Farrell, who is on the same team (lending‑eng) as the author, violating the requirement for an approver outside the author’s team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change is a pure formatting edit, so existing evidence does not lapse per the LAP‑1 rule."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Exhaustive control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed, confirming privileged idle timeout ≤ 15 minutes."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "Exhaustive control test controls.AuditControlTest#chainAndRetention passed and an modelcheck proof for the append‑only chain is recorded."
+    },
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Only a sampled control test (controls.RetentionControlTest#sampledPurgeRespectsHold) exists, but the obligation requires exhaustive evidence, which is missing."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Exhaustive proof record lim1‑required‑approvals.json demonstrates that approval limits match policy; formatting change does not invalidate it."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Exhaustive proof record crd1‑auto‑approve.json shows auto‑approval respects DTI/LTV limits; still valid after formatting edit."
+    }
+  ],
+  "summary": "The change fails critical process and product obligations: CHG‑6 lacks a control‑owner approver from a different team, and RET‑1 lacks the required exhaustive evidence. Because at least one applicable obligation is refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 143.76,
+    "tokens_in": 24386,
+    "tokens_out": 8170,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "dcc41794a7b43aa24ef718ceccae355c0f4d39fcea56307dbe93919148929a28",
+    "packet_tokens_est": 24120,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 31740,
+    "answer_chars": 2579,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.18,
+    "eval_s": 128.36,
+    "total_s": 143.76,
+    "tokens_est_ratio": 0.985,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

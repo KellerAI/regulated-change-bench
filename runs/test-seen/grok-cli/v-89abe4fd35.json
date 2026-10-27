@@ -1,0 +1,89 @@
+{
+  "variant": "v-89abe4fd35",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The decline path in CaseService now logs loanCase.applicantField(\"ssn\") in a log.info line. SSN is NPI, and that value is written unmasked; Mask.npi is used for the duplicate-SSN warning but not here. EXC-0167 covers a legacy import of a masked account last-4 on mortgage.logging, not this decline line, and the registered logging control test is only a sample so its pass does not clear this path."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "decline still calls audit.record with the actor, DECLINE_CREDIT, and the case id before the new log line, and the other state-changing methods in CaseService still record audit events. On head commit 2bbdca2, AuditControlTest#sampledOperationsAreAudited and AuditLogTest#recordsWhoDidWhatToWhatAndWhen passed with no skips."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25689, which change manager Erik Brandt approved on 2026-10-05 before review. Its component mortgage.cases is the component components.json assigns to CaseService.java, the only file in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Tomas Ortega, approved a code_review of commit 2bbdca2 on 2026-10-06."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The branch has one commit, 2bbdca2, and the code_review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success of ci/run-tests.sh baseline-mortgage on 2bbdca2, and the JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped, including AuditControlTest#sampledOperationsAreAudited and LoggingControlTest#sampledFlowsDoNotLogNpi."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed path is CaseService.java, whose component mortgage.cases is not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25689 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Logging the applicant SSN on decline is a LOG-1 deviation, and no approved exception covers that obligation and mortgage.cases. EXC-0167 is limited to a legacy import job writing a masked bank-account last-4 on mortgage.logging."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers payments payments, audit, and routes plus mortgage Approvals, Underwriting, and Policy. None of those paths change in this diff, so those earlier evidence entries do not lapse."
+    }
+  ],
+  "summary": "The change adds the applicant SSN to the decline application log in CaseService. That is an unmasked NPI value on a log path, which violates LOG-1, and the exception register does not authorize it. Change-ticket, independent approval, commit coverage, CI, and the non-emergency and non-control-path process checks are in order, and the decline audit event is still recorded, but the log-line violation is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 190.92,
+    "tokens_in": 103304,
+    "tokens_out": 11243,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3d4999cb941442c51c6fad1525c6ee36892a95374da9b4ff497f1b48609a2e9e",
+    "packet_tokens_est": 29071,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 103304,
+      "outputTokens": 11243,
+      "cacheReadTokens": 145280,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 187042,
+    "duration_api_ms": 187042,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

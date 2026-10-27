@@ -1,0 +1,82 @@
+{
+  "variant": "v-a38dcbb73a",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26734 (standard, status approved). Change manager erik.brandt approved it on 2026-10-07, before the change opened on 2026-10-09. Its components payments.payees and payments.tests cover both touched files (directory.py and tests/test_charity_payees.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa@fernbrook.example, who wrote the change. Self-approval doesn't count, and no other payments change_approver (e.g. sofia.santos) has approved it."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has a single commit (55b93ed), and the recorded approval names that head commit, so no later commits are left uncovered. The approval is still invalid under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head commit 55b93ed succeeded: 173 tests, 0 failures, 0 skipped, including all 16 payments control tests and the new charity test. The change touches no product obligation's scope or closed domain, so no extra control tests are needed. I couldn't re-run the suite (local python3 is older than 3.11). The JUnit timestamp and host differ from run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched components are payments.payees (directory.py) and payments.tests. Neither is marked security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path changes (controls/, apps/baseline-payments/tests/controls/, ci/). Only directory.py and a regular test file change, so no control_owner approval is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover payments.py, audit.py, routes.py and baseline-mortgage files. None of these is changed by this commit, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1484 adds 'charity' to the payments payee categories in directory.py and adds a unit test. It touches no product obligation's scope, no security-sensitive component and no protected path. The ticket is approved and covers both touched components, CI passed on the head commit, and no ledger evidence lapses. However, the only code_review approval is from the author, Mara Costa, so the independent-approval requirement (CHG-2) is not met. The change is rejected until an approver other than the author signs off.",
+  "meta": {
+    "elapsed_s": 72.6,
+    "tokens_in": 397764,
+    "tokens_out": 6140,
+    "usd": 0.411833,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 21,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6140,
+      "cache_read_input_tokens": 354116,
+      "cache_creation_input_tokens": 43618
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4118332000000001,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

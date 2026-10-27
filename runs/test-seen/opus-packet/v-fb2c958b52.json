@@ -1,0 +1,83 @@
+{
+  "variant": "v-fb2c958b52",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The new CaseService.reopen moves a case from WITHDRAWN to DRAFT and saves it, which is a state change. It never calls audit.record, unlike withdraw, close and every other state-changing operation in the class."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The new log.info call logs only caseId and actor.userId(), so on inspection it carries no NPI. However, the registered control test is sample-only and there is no valid CI run on the head commit to back it."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24001 is a standard ticket, approved by change manager Grace Kim at 2026-10-26T08:16Z, before review. Its component mortgage.cases covers the only changed file, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved the code review. He holds change_approver for baseline-mortgage and is a different person from the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit ecde0640, and there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims commit ecde0640 started 2026-10-26T22:16Z on ci-runner-07. The attached JUnit reports are timestamped 2026-10-23T13:30, before the commit existed, on host dev-laptop-7.local. They are not evidence of the suite passing on the final commit, and no test exercises reopen despite the description saying tests were updated."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is mortgage.cases, which is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests or ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers CaseService.java. The covered code (Approvals, Policy, Underwriting, payments.py, audit.py, routes.py) is unchanged by this change."
+    }
+  ],
+  "summary": "The change adds CaseService.reopen, a state-changing operation that writes no audit event, which violates AUD-1. No exception in the register covers this. The CI evidence is also invalid: the JUnit reports predate the commit and come from a developer workstation, not the CI runner named in run.json, so CHG-4 is not met. Ticket, independent approval and approval-on-head requirements are satisfied, but the violations require rejection.",
+  "meta": {
+    "elapsed_s": 23.19,
+    "tokens_in": 45283,
+    "tokens_out": 2230,
+    "usd": 0.225732,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8e2c0acbc658cc84e90f4d955bffa7004f04292167a14ccbb10a550dce5dca0f",
+    "packet_tokens_est": 29260,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 45283,
+      "output_tokens": 2230,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

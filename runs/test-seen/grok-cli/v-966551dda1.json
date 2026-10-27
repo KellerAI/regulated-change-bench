@@ -1,0 +1,79 @@
+{
+  "variant": "v-966551dda1",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25638 is approved by change manager Erik Brandt (2026-10-16, before review on 2026-10-26) and its components, payments.payments and payments.tests, cover payments.py and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author Jonah Weiss, gave a code_review approval on commit 16bd9271aae231fdc4118cc29117d4900317ce0d."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review approval names that head commit, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 175 tests, 0 failures, and 0 skipped, including every registered payments control test. The diff does not alter any product-obligation symbol, so no extra control test is required beyond the passing full suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched paths map to payments.payments and payments.tests, both marked security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/, tests/controls/, or ci/, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The emergency ticket records deployment at 2026-10-19T17:38:00Z (Monday). Mara Costa, who is not the author, approved the post-implementation review at 2026-10-20T18:38:00Z, within two business days."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation. No exception is relied on; the register entries are for other components and are expired, withdrawn, or out of scope."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger evidence for PAY-1 and PAY-2 covers required_approvals and release. Those functions are unchanged, so the prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds a read-only approvals_remaining helper and unit tests in Payments. It does not modify approval, release, access, session, encryption, audit, or other control behavior. The emergency ticket, independent code review on the head commit, passing full-suite CI on that commit, and a timely post-implementation review by someone other than the author satisfy the process obligations. No product-obligation scope symbol changed, and no exception is required.",
+  "meta": {
+    "elapsed_s": 194.52,
+    "tokens_in": 47225,
+    "tokens_out": 12847,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1f518c57914666619fc0f94144a3b85f6493c3c49fdcb34e70c9ea7caa223e1d",
+    "packet_tokens_est": 25843,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 47225,
+      "outputTokens": 12847,
+      "cacheReadTokens": 212864,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 190767,
+    "duration_api_ms": 190767,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

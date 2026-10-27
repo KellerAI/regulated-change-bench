@@ -1,0 +1,79 @@
+{
+  "variant": "v-acdcf0a63b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1430 names ticket CHG-24326, which Grace Kim (change_manager) approved on 2026-10-23 before review. Its only component, payments.reports, matches the sole changed path apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Mara Costa, gave a code_review approval. Her approval names head commit d766b7ced8c815a18b02d53f347e79182231a127."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval is recorded against the head commit that would be merged, so no later unreviewed commit remains."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful payments suite on head d766b7ce starting 2026-10-25T21:26:00Z on ci-runner-09, but the attached JUnit report is timestamped 2026-10-23T13:51:58-07:00 on dev-laptop-7.local, before either commit on this change existed. That report is not a run of the final commit, and the added constant is not comment-only, so no earlier run can stand in."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file, reports.py, is component payments.reports with security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch controls data, control tests, or CI. A control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24326 is type standard and the change record is not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff only adds an unused REPORT_FORMAT constant in reports.py and does not deviate from a product obligation, so no exception is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Base-to-head changes only reports.py. No acceptance-ledger entry covers that path, so prior evidence for PAY-1, AUD-2, PAY-2, MFA-1, LIM-1, and CRD-1 does not lapse."
+    }
+  ],
+  "summary": "The change adds a single unused format constant in payments reports and does not touch access, payments, encryption, audit, or other product-control code. Ticket coverage and Sofia Santos's code review of the head commit meet the change-ticket and approval rules, and the change is neither security-sensitive, a control-path edit, nor an emergency. Acceptance still fails CHG-4: the JUnit file offered as the passing full-suite run is dated 2026-10-23 on a developer workstation, two days before the head commit that run.json claims to have tested, so there is no valid evidence the suite passed on the final commit.",
+  "meta": {
+    "elapsed_s": 132.41,
+    "tokens_in": 48442,
+    "tokens_out": 8792,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e42085955c3534f553feda98005c80b128bbcd1908fa6709c00b3b7328a9c36c",
+    "packet_tokens_est": 24503,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 48442,
+      "outputTokens": 8792,
+      "cacheReadTokens": 200192,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 128617,
+    "duration_api_ms": 128617,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

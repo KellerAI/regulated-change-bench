@@ -1,0 +1,88 @@
+{
+  "variant": "v-7f1c71abb3",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "release() now returns the earlier release only if it is under one day old (`now - previous.released_at < timedelta(days=1)`). A replay after that falls through and calls _send_disbursement again, because nothing checks the 'released' status, so a second disbursement is sent. The passing sample test test_sampled_release_is_idempotent cannot override this direct violation, and no exception covers it."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0403 (PAY-2 trace, covers payments.py#release at e5bf6465) has lapsed because release changed behaviour, and it is not relied on. Fresh same-strength (sample) evidence ran on head, but PAY-2 fails on code inspection regardless."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25827 is standard and approved by change manager Erik Brandt on 2026-09-28, before review. Its component payments.payments covers the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Sofia Santos, a change_approver for payments. She is a different person from the author, Jonah Weiss."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit d6f3a184, the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows success on head d6f3a184: 172 tests, 0 failures or skips, including the registered PAY-2 sample control test. The JUnit timestamp (2026-10-23) and local hostname do not match the CI runner, which is a weak point in the evidence."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py belongs to payments.payments, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are touched, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency and the ticket type is standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed or relied on. The register has no entry for PAY-2 or payments.payments, so the PAY-2 deviation is not excused."
+    }
+  ],
+  "summary": "The change limits release idempotency to a one-day window. A replayed payment instruction older than 24 hours will therefore send a second disbursement to core banking, which directly violates PAY-2. The passing sample idempotency test does not exercise the expired-window case, and no exception in the register covers this deviation. The process records (ticket, independent approval on head, CI on head) are otherwise in order. The PAY-2 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 23.87,
+    "tokens_in": 38963,
+    "tokens_out": 2316,
+    "usd": 0.202172,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "781705e989ab9df25695801c0d5b00b852de4c9aa6d4c1a4c1f0ae67164e4f16",
+    "packet_tokens_est": 25291,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38963,
+      "output_tokens": 2316,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "variant": "v-a9d63b1abc",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "refuted",
+      "note": "is_allowed now returns true for any action string starting with \"report:\" when the role holds the stripped name, so pairs such as (payments_officer, \"report:approve_payment\") are allowed even though they are not explicit grants and are not in the approved payments matrix. Default-deny and equality with controls/payments/access-policy.json therefore fail; the passing matrix test only covers the unchanged GRANTS set."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "The auditor grants remain view_account, view_audit, view_reports, and export_ledger, none of which are state-changing, and the prefix only succeeds when that stripped action is already granted. The head file is the full decision procedure, and test_auditor_is_read_only is registered as exhaustive."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "it_admin is still granted only manage_users, rotate_keys, purge_npi, and view_audit, so approve_payment and release_payment stay denied even under a report: prefix. That matches the approved segregation rule and the exhaustive it-admin control test."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1721 names ticket CHG-24788, approved by change manager grace.kim@fernbrook.example on 2026-10-23 before the reviews, with component payments.access, which is the component of the only changed file, rbac.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example) has the payments change_approver role, is not the author Jonah Weiss, and recorded a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 88734df10f79f2a43b17c88117fdee1e15d38033, and both the code_review and security_review approvals name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json names the head commit, but the JUnit report is timestamped 2026-10-23T13:50:26-07:00 on dev-laptop-7.local, before that commit (2026-10-24T22:24:00Z) and not on executor ci-runner-05. The attached suite is therefore not a valid full-suite result on the final commit, and the diff updates no tests for the new branch."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py is security_sensitive (payments.access). Kofi Mensah is a security_reviewer for all apps, is not the author, and approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/rbac.py, which is not under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The report: alias deviates from ACC-1, and the register has no approved, unexpired exception scoped to ACC-1 and payments.access. EXC-0141 expired on 2026-09-26 and covers SES-1; EXC-0167 is LOG-1 on mortgage; EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments.py, audit.py, routes.py, and mortgage underwriting and approval code. This change only edits rbac.py, so those earlier entries do not lapse."
+    }
+  ],
+  "summary": "The change cannot be accepted. payments is_allowed treats every report:-prefixed string as the underlying action, which grants role and action pairs that are not explicit and are not in the approved access policy, violating ACC-1. No qualifying exception covers that deviation. The CI packet also fails CHG-4: the JUnit report predates the head commit and does not show the full suite, including the access control tests, passing on the final commit. Auditor read-only and IT-admin segregation still hold on the existing grant list, and the ticket, independent approval, and security review are otherwise in order, but those do not cure the access-control break or the invalid test evidence.",
+  "meta": {
+    "elapsed_s": 266.99,
+    "tokens_in": 41882,
+    "tokens_out": 16256,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7d06378ea5bf2cce77b673ed81f749eb58d7189b81c1eeb7f92bbf2d5df3d6c8",
+    "packet_tokens_est": 24433,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41882,
+      "outputTokens": 16256,
+      "cacheReadTokens": 206592,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 263268,
+    "duration_api_ms": 263268,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26593",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Income formatting diagnostics",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "tomas.ortega@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-04T02:20:00Z",
+    "risk": "low"
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "variant": "v-d8c93cbdf6",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25120 is approved by change manager erik.brandt (2026-10-04, before the change opened on 2026-10-06). Its components (payments.payments, payments.tests) cover the two touched paths, payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, a change_approver for payments. She is a different person from the author, Mara Costa, and is not listed under any of the author's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit b314747, which is the change's only commit, so there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The recorded CI run on head b314747 succeeded: 175 tests, 0 failures and 0 skipped, including the new tests and all 16 registered control tests. No scoped symbol or closed domain of a product obligation is touched. I could not re-run it locally because pytest is not installed, and the JUnit timestamp is later than the review time."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components, payments.payments and payments.tests, are not marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths are touched (controls/*, the control tests, ci/*), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket are type standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on any exception and introduces no deviation from a product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger evidence covers payments.py#required_approvals (ACR-0401) and #release (ACR-0403). The diff only adds a new function and leaves those symbols byte-identical, so the evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds a read-only helper, payments.approvals_remaining, and its unit tests. It doesn't modify any symbol in the scope of PAY-1, MC-1 or PAY-2, or any protected or security-sensitive path. The ticket is approved and covers the touched components, the independent code review is on the final commit, and the recorded CI run on head passes the full suite including every registered control test. The CI result could not be re-run locally (pytest is missing), but the recorded run is consistent with head, so every applicable obligation is shown and the change is accepted.",
+  "meta": {
+    "elapsed_s": 73.68,
+    "tokens_in": 397212,
+    "tokens_out": 6690,
+    "usd": 0.422255,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6690,
+      "cache_read_input_tokens": 353661,
+      "cache_creation_input_tokens": 43519
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4222552,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

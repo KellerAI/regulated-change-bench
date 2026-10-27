@@ -1,0 +1,82 @@
+{
+  "variant": "v-e648ba85ff",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route GET /exports/cases.csv uses EXPORT_CASES (privileged) and is marked MFA-required, with a matching handler. HttpApp serves only routes in the table and checks bindings at startup. The exhaustive RoutesControlTest#privilegedRoutesRequireMfa passed in the CI run on the head commit 34c48cd."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25823 (standard) was approved by erik.brandt (change_manager) at 2026-10-14T21:22Z, before the 2026-10-15 reviews. Its components [mortgage.http] cover both changed files, HttpApp.java and Routes.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell, a change_approver for baseline-mortgage and a different person from the author wen.li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name 34c48cd, which is the head and the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful full-suite run on 34c48cd: 124 tests, 0 skipped, 0 failures or errors. All registered mortgage control tests ran, including the MFA-1 exhaustive control test for the route domain this change touches. A local rerun wasn't possible because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "mortgage.http is security_sensitive. kofi.mensah (security_reviewer) approved a security_review on head commit 34c48cd."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers HttpApp.java or Routes.java. The MFA-1 entry ACR-0404 covers only payments routes, and the other covered code is unchanged, so no earlier evidence has lapsed."
+    }
+  ],
+  "summary": "The change adds an MFA-protected alias route for the existing privileged case export, in both the route table and the handler map. MFA-1 is shown by the exhaustive route control test, which passed in the change's CI run on the final commit. The ticket, independent code review and security review are all valid and name the head commit. No protected paths, emergency process, exceptions or ledger-covered code are involved, so every applicable obligation is shown and the change is accepted.",
+  "meta": {
+    "elapsed_s": 85.4,
+    "tokens_in": 603609,
+    "tokens_out": 7526,
+    "usd": 0.523163,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 7526,
+      "cache_read_input_tokens": 551117,
+      "cache_creation_input_tokens": 52452
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5231634000000001,
+    "permission_denials": 10,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

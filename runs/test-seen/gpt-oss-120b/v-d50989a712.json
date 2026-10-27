@@ -1,0 +1,61 @@
+{
+  "variant": "v-d50989a712",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24115 is approved but its component list \"payments.service\" is not defined in controls/payments/components.json, so the change's touched path is not covered by a known component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Sofia Santos (change_approver for payments) is present and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval references the sole commit 5a442db… and there are no later behavior‑changing commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (run.json) succeeded; all 172 tests passed, including the registered control tests."
+    },
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "deliver_statement now logs the payee.account_number (an NPI field) on error, violating the rule that no log may contain unmasked NPI; no exception covers payments.logging."
+    }
+  ],
+  "summary": "The change fails to meet process obligation CHG-1 due to missing component mapping and violates the product obligation LOG-1 by logging unmasked NPI. Since at least one applicable obligation is refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 114.09,
+    "tokens_in": 26405,
+    "tokens_out": 4519,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6db4c3669ff3d484465e9dd66be1076d1363ff365e57f2b42f58e10bcf2feb23",
+    "packet_tokens_est": 26770,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18555,
+    "answer_chars": 1340,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 19.26,
+    "eval_s": 94.59,
+    "total_s": 114.09,
+    "tokens_est_ratio": 0.963,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

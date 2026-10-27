@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25093",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Payments queue: show approvals remaining",
+    "components": [
+      "payments.payments",
+      "payments.tests"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-18T03:20:00Z",
+    "risk": "low"
+  }
+]

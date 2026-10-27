@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24484",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Ledger format identifier",
+    "components": [
+      "payments.reports"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-03T18:30:00Z",
+    "risk": "low"
+  }
+]

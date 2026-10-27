@@ -1,0 +1,87 @@
+{
+  "variant": "v-4bc69ed25b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "app.py is in MFA-1's scope; the new branch in match() serves GET /compat/account-number/{id} outside the route table and returns a Route for the privileged action view_account_number with mfa=False, so the account number can be read without MFA (the table route requires mfa=True). The registered control test only iterates ROUTES, so its pass doesn't detect the bypass."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from MFA-1 in payments.http, and the register has no approved, unexpired MFA-1 exception for that component; the only MFA-1 exception, EXC-0172, is withdrawn and scoped to mortgage.routes."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change request names CHG-25143, type standard, approved by change manager grace.kim on 2026-09-29, before the PR opened on 2026-10-01; its components [payments.http] cover the only touched file, app.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approved by mara.costa, a payments change_approver and a different person from the author aisha.bello (p-abello)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 682c1da, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head 682c1da succeeded; the JUnit report shows 172 tests, 0 failures and 0 skipped, including the registered MFA-1 control test test_privileged_routes_require_mfa. The report's timestamp (2026-10-23) and hostname differ from run.json, which should be reconciled."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "app.py (payments.http) is security_sensitive; kofi.mensah, a security_reviewer, approved a security_review on head 682c1da."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers app.py; the MFA-1 entry ACR-0404 covers only routes.py, which is unchanged, so no accepted evidence lapses (it doesn't establish MFA-1 for the new code path either)."
+    }
+  ],
+  "summary": "The change adds a compatibility URL in app.py that is served outside the route table and grants the privileged view_account_number action with MFA disabled, so it directly violates MFA-1. No valid exception covers the deviation, so EXC-1 is also refuted. The ticket, the independent and security approvals and the CI run on the head commit are all in order, but the MFA-1 control test only enumerates ROUTES and cannot detect this bypass. Because MFA-1 is violated, the change is rejected.",
+  "meta": {
+    "elapsed_s": 82.66,
+    "tokens_in": 365227,
+    "tokens_out": 7108,
+    "usd": 0.430655,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7108,
+      "cache_read_input_tokens": 320335,
+      "cache_creation_input_tokens": 44860
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.430655,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

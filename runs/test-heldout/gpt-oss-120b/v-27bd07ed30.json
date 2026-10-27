@@ -1,0 +1,81 @@
+{
+  "variant": "v-27bd07ed30",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The privileged idle timeout was increased to 16 minutes (policy.py and policy-params.json) exceeding the maximum of 15 minutes required by the obligation, with no approved exception."
+    },
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change touches the policy file that is in RET-1’s scope, but the packet provides only a sample control test; exhaustive evidence required by the obligation is missing."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-24034 is approved by a change manager and lists the components payments.controls-data and payments.policy, which cover the files modified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval was given by Mara Costa, who has the change_approver role and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit in the PR is the one approved; no later commits alter behaviour, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit succeeded; all 172 tests, including the exhaustive control tests for the touched obligations, passed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control‑owner approval was provided by Rachel Stein (control_owner role) who is outside the author’s team, satisfying the protected‑path requirement."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No active exception is relied upon for this change; the only listed SES‑1 exceptions are either expired or apply to a different component."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Evidence (the passing control test for SES‑1) is fresh on the final commit, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change violates the privileged session idle timeout (SES-1) by setting the limit to 16 minutes, exceeding the allowed maximum, and lacks exhaustive evidence for the retention obligation (RET-1). Because at least one applicable obligation is refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 172.48,
+    "tokens_in": 24615,
+    "tokens_out": 9640,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e8b9d56552899fa2ba9bc5758f29b293aa7b299a8bee153b6994efa4b46ce99f",
+    "packet_tokens_est": 24419,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 39972,
+    "answer_chars": 2293,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.67,
+    "eval_s": 154.62,
+    "total_s": 172.48,
+    "tokens_est_ratio": 0.982,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

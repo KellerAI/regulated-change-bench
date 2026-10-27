@@ -1,0 +1,21 @@
+{
+  "id": "PR-1797",
+  "title": "Treasury dashboard: released totals per payee",
+  "description": "Treasury dashboard: released totals per payee.\n\nChanges:\n- Add `reports.released_by_payee`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-675",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "f431da5b6f3751d38893e0e595b9eca9e67c338d",
+  "commits": [
+    {
+      "sha": "f431da5b6f3751d38893e0e595b9eca9e67c338d",
+      "message": "Reports: released totals per payee",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-26T19:54:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24951",
+  "opened_at": "2026-10-26T19:54:00Z"
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "reviewer": "mara.costa@fernbrook.example",
+    "kind": "code_review",
+    "decision": "approved",
+    "commit": "a2985128ee3e9f35d6ec91d5babbb0d2c1df8277",
+    "at": "2026-10-04T12:19:00Z"
+  }
+]

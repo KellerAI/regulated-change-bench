@@ -1,0 +1,79 @@
+{
+  "variant": "v-e4472507a7",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26645 is approved by change manager Erik Brandt on 2026-10-20, before review. Its components (payments.payees, payments.payments, payments.tests) cover directory.py, memos.py, and tests/test_charity_payees.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver who is not the author, approved a code_review of head commit 7d453123bbd9333f8fa4e6386b38eb6a4ecf321c."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit, so it covers both commits that are merged, including the memos constant added in the second commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI succeeded on 37639021ea7180347b89a6ac3e300e5a19c5c0b4, not the head. The later commit adds PREVIEW_MIN_WIDTH, which is not a comment, whitespace, or formatting edit, so the earlier run does not count."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "directory.py, memos.py, and the new unit test map to payments.payees, payments.payments, and payments.tests, none of which are security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26645 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on a deviation from a product obligation, and no exception is cited or required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger coverage is payments.py, audit.py, routes.py, and mortgage underwriting and approval code. None of those paths change here, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The charity payee category, unused memo constant, and unit test do not touch product-obligation scope, protected paths, or security-sensitive components, and the ticket and independent code review of the head commit are in order. Acceptance still fails CHG-4: the only CI run is on the first commit, and the later commit adds a real constant rather than a comment, whitespace, or formatting edit. The full suite was therefore not shown passing on the commit that would be merged.",
+  "meta": {
+    "elapsed_s": 96.36,
+    "tokens_in": 41841,
+    "tokens_out": 6339,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ad4b2b91933da7738780b13a6721f2aa6cfc2e8224025614e5ffc81c5c1d9528",
+    "packet_tokens_est": 25297,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41841,
+      "outputTokens": 6339,
+      "cacheReadTokens": 44032,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 92842,
+    "duration_api_ms": 92842,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

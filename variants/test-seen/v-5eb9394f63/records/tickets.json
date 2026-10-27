@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24308",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Simplify required_approvals",
+    "components": [
+      "payments.payments"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-05T11:35:00Z",
+    "risk": "low"
+  }
+]

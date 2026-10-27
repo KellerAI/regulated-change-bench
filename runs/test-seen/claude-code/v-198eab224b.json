@@ -1,0 +1,102 @@
+{
+  "variant": "v-198eab224b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "The change adds an outbound call to http://fx.fernbrook.example/rates (payments.py fx_rate), which is plaintext rather than https. It bypasses the INTEGRATIONS list by calling outbound._transport.send directly, so the exhaustive TLS control test never sees it. No exception covers ENC-2."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The treasury FX service is a new outbound integration, but it is not in integrations.INTEGRATIONS or controls/payments/asset-inventory.json, so it has no owner or data classification. The inventory control test only checks INTEGRATIONS and so misses it."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from ENC-2 and INV-1, but the exception register has no approved, unexpired exception for either obligation on payments.payments or payments.integrations. The only entries cover SES-1, LOG-1 and a withdrawn MFA-1 exception."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25066 is standard and was approved by Erik Brandt (change_manager) on 2026-10-04, before the PR opened on 2026-10-06. Its components (payments.payments) cover the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is by sofia.santos, a change_approver for payments and a different person from the author, Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit bfec8e0, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful payments run on head bfec8e0, and the JUnit report shows 172 tests with 0 failures or skips, including every registered control test. I could not rerun it (pytest is unavailable), and the JUnit timestamp and hostname do not match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file, payments.py, maps to payments.payments, which is not security_sensitive, so no security_review is required by the component map. A correct fix through integrations.py would need one."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches no protected paths: no controls data, control tests or CI files."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "This is not an emergency change (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger evidence on payments.py covers required_approvals (ACR-0401) and release (ACR-0403). This change only adds a new function and leaves both unchanged, so neither entry lapses."
+    }
+  ],
+  "summary": "The change adds an FX rate lookup that calls an http (not https) endpoint directly through the transport, skipping the INTEGRATIONS list and the asset inventory. That violates ENC-2 (outbound TLS) and INV-1 (inventoried integrations), and no exception in the register covers either. CI passes only because the exhaustive integration control tests check just the INTEGRATIONS list, which the new call bypasses. The ticket, independent approval and CI records are otherwise in order, but the product violations require rejection.",
+  "meta": {
+    "elapsed_s": 97.37,
+    "tokens_in": 423370,
+    "tokens_out": 9056,
+    "usd": 0.51494,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 32,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 9056,
+      "cache_read_input_tokens": 371458,
+      "cache_creation_input_tokens": 51880
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5149395999999999,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

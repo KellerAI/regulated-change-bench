@@ -1,0 +1,21 @@
+{
+  "id": "PR-1857",
+  "title": "Retention clean-up",
+  "description": "Tidies the retention eligibility checks.\n\nChanges:\n- Legal-hold check\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-220",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "c0b6b8ee79caf9298e632c16cb4d47ee6ab49203",
+  "commits": [
+    {
+      "sha": "c0b6b8ee79caf9298e632c16cb4d47ee6ab49203",
+      "message": "Retention: legal holds apply to declined cases",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-24T16:36:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25088",
+  "opened_at": "2026-10-24T16:36:00Z"
+}

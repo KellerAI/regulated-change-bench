@@ -1,0 +1,112 @@
+{
+  "variant": "v-605977a900",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route POST /payees/{id}/reopen uses manage_payees (in rbac.PRIVILEGED) with mfa=True, and a matching handler is in app.HANDLERS. The exhaustive control test test_privileged_routes_require_mfa passed in the CI run on head 588c867."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "LedgerService.reopen_payee calls _audit(actor, 'reopen_payee', 'payee:<id>') with the clock time, which records actor, action, target and time. Reading all of service.py shows every state-changing operation, including the new one, is audited. The sampled AUD-1 control test passed on head."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The new Store.reopen_payee only updates status and closed_at and writes no NPI column. The exhaustive control test test_every_npi_field_is_sealed_at_rest passed on head."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new execute call uses a fixed string literal with one placeholder and one bound parameter. The exhaustive AST-based control test test_sql_statements_are_parameterized passed on head."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24452 is type standard and was approved by Erik Brandt (change_manager) on 2026-10-14, before the change opened. Its components (payments.http, routes, service, store) cover all four touched files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Sofia Santos, a payments change_approver who is a different person from the author Aisha Bello under any of Bello's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 588c867e, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 588c867e succeeded: 172 tests, 0 failures, 0 skipped. It includes the registered control tests for the touched obligations MFA-1, AUD-1, ENC-1 and SEC-1. The PR's claim that unit tests were updated is inaccurate, since no tests were added for reopen."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches the security-sensitive payments.routes, payments.http and payments.store. A security_review approval from Kofi Mensah (security_reviewer) names the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is modified. The diff touches only four files in apps/baseline-payments/payments/, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No deviation from a product obligation is claimed and no exception is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0404 (MFA-1) covers routes.py, which this change alters, so it lapsed. It is replaced by the same exhaustive control test passing on head. Other ledger entries cover payments.py and audit.py, which are unchanged."
+    }
+  ],
+  "summary": "PR-1553 adds a reopen-payee route, handler, service operation and store method to payments. The route is MFA-gated and permission-checked, the operation is audited and touches no NPI, and its SQL is parameterized. The approved ticket covers all touched components; the independent code review and security review are on the head commit; and CI on the head passed the full suite, including the relevant control tests. The lapsed MFA-1 ledger evidence is replaced by an exhaustive control test on the head. Every applicable obligation is shown, so the change is accepted; the PR's inaccurate claim about updated tests and the reopen path's missing state check are worth raising with the author but violate no obligation.",
+  "meta": {
+    "elapsed_s": 128.45,
+    "tokens_in": 719129,
+    "tokens_out": 12156,
+    "usd": 0.729078,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 12156,
+      "cache_read_input_tokens": 647844,
+      "cache_creation_input_tokens": 71249
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.7290777999999999,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

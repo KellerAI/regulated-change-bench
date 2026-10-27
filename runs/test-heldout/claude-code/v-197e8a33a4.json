@@ -1,0 +1,87 @@
+{
+  "variant": "v-197e8a33a4",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "The diff adds a 'report:' branch to is_allowed that returns the same (role, action) in GRANTS check, so no decision changes and default-deny holds. The exhaustive control test test_matrix_equals_approved_policy passes in the CI run for the head commit."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "GRANTS and STATE_CHANGING are unchanged and the auditor gains nothing. The exhaustive control test test_auditor_is_read_only passes in the head commit's CI run."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "it_admin grants are unchanged and the new branch only checks the same GRANTS set. The exhaustive control test test_it_admin_cannot_approve_or_release passes in the head commit's CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26660 was approved by grace.kim (change_manager) on 2026-10-23, before the reviews on 2026-10-25. Its component payments.access covers the only touched path, apps/baseline-payments/payments/rbac.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review was approved by mara.costa, a payments change_approver and a different person from the author sofia.santos according to the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit b7b1133, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful ci/run-tests.sh baseline-payments run on head b7b1133, and its JUnit report has 172 tests with 0 failures or skips, including the registered ACC-1, ACC-2 and SOD-1 exhaustive control tests. The report's hostname and timestamp look like artifacts of how the records were generated. I could not re-run it locally because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py is security_sensitive (payments.access). kofi.mensah, who holds the security_reviewer role, approved a security_review on the head commit."
+    }
+  ],
+  "summary": "The change adds a behaviour-preserving 'report:' branch to rbac.is_allowed that returns the same GRANTS lookup, so the access matrix, auditor read-only rule and segregation of duties are unchanged. These are confirmed by passing exhaustive control tests in the CI run for the final commit. The ticket was approved by a change manager before review and covers the touched component. Independent code review and security review both name the head commit. No protected paths, exceptions or previously accepted evidence are affected, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 82.57,
+    "tokens_in": 406583,
+    "tokens_out": 7278,
+    "usd": 0.416756,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 19,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7278,
+      "cache_read_input_tokens": 367019,
+      "cache_creation_input_tokens": 39536
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.41675579999999995,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

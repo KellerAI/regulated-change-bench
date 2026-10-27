@@ -1,0 +1,66 @@
+{
+  "variant": "v-97db652fb4",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25851 lists component 'payments.service', but controls/payments/components.json does not define a component for apps/baseline-payments/payments/service.py, so coverage cannot be verified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval by Sofia Santos (email sofia.santos@fernbrook.example) who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the sole commit being merged; no later commits alter behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the head commit succeeded with the full test suite (172 tests, 0 failures) including all registered control tests."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "Audit control test (sample) passes; deliver_statement does not perform state changes, so audit requirement remains satisfied."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "Log error now includes account_number, but AppLog masks NPI fields; test_npi_fields_are_masked confirms masking and the LOG-1 control test (sample) passes."
+    }
+  ],
+  "summary": "The change fails the process obligation CHG-1 because the ticket does not demonstrably cover the modified component. All other applicable obligations, including audit and logging, are satisfied. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 225.7,
+    "tokens_in": 26421,
+    "tokens_out": 9721,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "74d4d33395f4c93b932f60585855948ef854861183afc3435c8f145fc8cec8f1",
+    "packet_tokens_est": 26780,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 41118,
+    "answer_chars": 1581,
+    "done_reason": "stop",
+    "load_s": 0.01,
+    "prompt_eval_s": 19.61,
+    "eval_s": 205.81,
+    "total_s": 225.7,
+    "tokens_est_ratio": 0.963,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

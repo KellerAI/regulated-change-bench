@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-24256",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Pipeline report: total case count",
+    "components": [
+      "mortgage.reporting",
+      "mortgage.tests"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-22T12:57:00Z",
+    "risk": "low"
+  }
+]

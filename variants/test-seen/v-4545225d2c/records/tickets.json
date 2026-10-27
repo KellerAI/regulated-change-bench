@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-25211",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Approval queue clean-up",
+    "components": [
+      "mortgage.approvals",
+      "mortgage.reporting",
+      "mortgage.tests"
+    ],
+    "requested_by": "declan.farrell@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-25T20:12:00Z",
+    "risk": "low"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "variant": "v-e648ba85ff",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25823 is approved and lists component \"mortgage.http\", which matches the changed files per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from declan.farrell@fernbrook.example (change_approver) is recorded and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only a single commit is present; no later behavior‑changing commits, so the approval covers the merged change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) reports success; all 124 test cases passed, including the exhaustive control test for privileged routes."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval from kofi.mensah@fernbrook.example (security_reviewer) is present in approvals.json."
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route \"/exports/cases.csv\" is marked privileged and the exhaustive RoutesControlTest passed, confirming MFA is required."
+    }
+  ],
+  "summary": "The change only adds a CSV alias for the existing case export route, touching HttpApp and Routes files. All required process obligations (ticket, independent code review, coverage, testing, and security review) are satisfied with appropriate records. The product obligation MFA-1 is met because the new privileged route requires MFA and the control test passes. No other product obligations are impacted. Hence the change can be accepted.",
+  "meta": {
+    "elapsed_s": 128.05,
+    "tokens_in": 28066,
+    "tokens_out": 5245,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "c007fbdba0692c47ba49ede88184fc88d7dbe7d03d5b35109d30f20ec5aca0d3",
+    "packet_tokens_est": 28973,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21553,
+    "answer_chars": 1671,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 20.85,
+    "eval_s": 106.95,
+    "total_s": 128.05,
+    "tokens_est_ratio": 0.948,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

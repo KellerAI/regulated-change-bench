@@ -1,0 +1,87 @@
+{
+  "variant": "v-e14565a5c5",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24899 (standard) was approved by grace.kim (change_manager) at 2026-10-21T18:15Z, before the PR opened, and its component payments.audit covers the only touched file, audit.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from sofia.santos, a change_approver for payments and a different person from the author linh.nguyen under all listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 69bd977, which is the change's only commit, so no later commits need assessing."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The recorded CI run on head 69bd977 succeeded: 172 tests, 0 failures, 0 skipped, including the AUD-1 (sample) and AUD-2 (exhaustive) control tests. I could not rerun it (pytest unavailable), and the JUnit timestamp and hostname don't match run.json's runner and start time."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py is security_sensitive (payments.audit), and kofi.mensah (security_reviewer) approved the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The diff only touches the read-only verify(); record() and service.py are unchanged, so recording of state changes is unaffected, and the AUD-1 control test passes on head."
+    },
+    {
+      "id": "AUD-2",
+      "status": "open",
+      "note": "verify() changed behaviour and the exhaustive ModelCheck evidence (ACR-0402, produced on d30b2ad) no longer applies. The passing control test uses fixed generated logs that all start at seq 1 and never exercise the new seq<1 branch, so the chain property on the changed code is not established at the required strength."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0402 covers audit.py#verify, which this change alters in behaviour (new rejection of trails whose first seq is below 1), so the evidence has lapsed. No new evidence of the same strength exists in records/evidence (the ModelCheck result is still on d30b2ad and cannot be rerun), yet the PR description relies on the lapsed ledger analysis."
+    }
+  ],
+  "summary": "PR-1333 adds a behavioural check to AuditLog.verify in payments' audit.py. Its ticket, independent code review, security review and CI on the final commit are all in order. However, verify is covered by ledger entry ACR-0402, the ModelCheck check supporting AUD-2, produced on an earlier commit; under LAP-1 that evidence has lapsed and no new evidence of the same strength was supplied, even though the PR description relies on it and the claimed unit-test updates are not in the diff. Because evidence LAP-1 requires is missing, the change is rejected until fresh AUD-2 evidence is produced for commit 69bd977.",
+  "meta": {
+    "elapsed_s": 120.38,
+    "tokens_in": 481582,
+    "tokens_out": 11575,
+    "usd": 0.569542,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 34,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 11575,
+      "cache_read_input_tokens": 431215,
+      "cache_creation_input_tokens": 50331
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.569542,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "variant": "v-5bebb9a3ab",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new fx-rates integration uses https://fx.fernbrook.example/v1; the exhaustive control test test_integrations_use_tls passed in the CI run on head fe87b44."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "fx-rates is in the asset inventory with a matching host, owner 'Treasury' and a valid classification; the exhaustive test_integrations_are_inventoried passed on head. Its 'purpose' text was copied from core-banking and is wrong, but INV-1 does not require a purpose; fix it in a follow-up."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24327 was approved by change manager Grace Kim on 2026-10-06, before the PR opened on 2026-10-08. Its components (payments.integrations, payments.payments, payments.controls-data) cover all three touched files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Sofia Santos, a payments change_approver who is a different person from the author Mara Costa (no shared email addresses in the directory)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, fe87b44, and every approval names that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful pr-checks run on fe87b44; the JUnit report has 172 tests, 0 failures, 0 skipped, including all 16 registered control tests (ENC-2 and INV-1 among them). I could not re-run CI locally because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security_sensitive; Ines Halvorsen (security_reviewer) approved a security_review on head fe87b44."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path controls/payments/asset-inventory.json changed; Bao Tran (control_owner, controls-office, not the author's payments-eng team) approved on fe87b44."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "This is a standard change (ticket type 'standard', emergency=false), not deployed before review, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and no product obligation deviates, so no exception is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger evidence still in force is unaffected: the change only adds fx_rate to payments.py and leaves required_approvals and release unchanged, and audit.py and routes.py are untouched. No covered code changed behaviour."
+    }
+  ],
+  "summary": "The change adds an https FX-rate integration, an inventory entry for it and a new helper function in payments.py; no existing approval, release or access logic changes. The ticket, code review, security review and control-owner approval are all valid, independent and on the final commit, and CI on that commit passed the full suite including the exhaustive ENC-2 and INV-1 control tests. Earlier ledger evidence covers code this change doesn't alter, so none of it lapses. The inventory entry's copied 'purpose' text should be corrected in a follow-up, but it isn't something INV-1 requires.",
+  "meta": {
+    "elapsed_s": 97.58,
+    "tokens_in": 443853,
+    "tokens_out": 8713,
+    "usd": 0.458899,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 8713,
+      "cache_read_input_tokens": 403040,
+      "cache_creation_input_tokens": 40779
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.45889899999999995,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

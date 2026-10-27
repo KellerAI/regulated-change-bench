@@ -1,0 +1,76 @@
+{
+  "variant": "v-b825cafcf4",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "Exhaustive control test controls.EncryptionControlTest#everyNpiFieldIsSealedAtRest passed, confirming the newly added tax_id field is treated as NPI and sealed at rest."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Exhaustive control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed, confirming privileged_idle_minutes remains ≤15 after the change."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24990 is approved (by change manager) and its component list (mortgage.cases, mortgage.control-tests, mortgage.controls-data, mortgage.npi) covers all changed components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval recorded from Wen Li (has change_approver role for mortgage‑mortgage) and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is tied to the sole commit in the PR; no later behavior‑changing commits exist, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded; full test suite (124 tests) passed, including the registered control tests for the touched obligations."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval from Kofi Mensah (security_reviewer) is present, satisfying the security‑sensitive component requirement."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control‑owner approval from Bao Tran (control_owner) recorded for the modified protected file controls/mortgage/policy-params.json."
+    }
+  ],
+  "summary": "All product obligations directly affected by the change (encryption of NPI and session timeout) have exhaustive evidence from passing control tests, and all required process obligations are satisfied with approved tickets and appropriate reviewer records. No applicable obligations are violated, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 181.65,
+    "tokens_in": 25766,
+    "tokens_out": 8190,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "59267874bc84aa39af283bdb8b17cbb7be9fcbfadb17108195a621a2369f38b7",
+    "packet_tokens_est": 25834,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 34110,
+    "answer_chars": 2134,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 16.39,
+    "eval_s": 165.02,
+    "total_s": 181.64,
+    "tokens_est_ratio": 0.973,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

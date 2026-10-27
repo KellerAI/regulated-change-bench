@@ -1,0 +1,89 @@
+{
+  "variant": "v-26df20b8a1",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only new log call is self._log.info(\"payment memo updated\", payment_id=payment_id). It does not pass the memo or any payments NPI field (account_number, date_of_birth, routing_number, tax_id). The logging control test test_sampled_flows_do_not_log_npi passed unskipped on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "amend_memo still calls _audit(actor, \"amend_memo\", payment id) after the new log line, and _audit records actor, action, target, and clock time. Every other state-changing method in the full service.py file also audits, and test_sampled_operations_are_audited passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26236, which change manager Erik Brandt approved on 2026-10-15, before review. Its component payments.service matches the only touched file, apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Linh Nguyen, gave a code_review approval. Her directory emails are distinct from the author's."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole commit is dc366e8f0cd3400d9ceb78115ac9e2df312a66fb, and the code_review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on the head commit. The JUnit report has 172 tests, 0 failures, 0 errors, and 0 skipped, including the AUD-1 and LOG-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.service, is marked security_sensitive false in controls/payments/components.json, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff changes only apps/baseline-payments/payments/service.py, which is not under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26236 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. The register entries are for other components, and the SES-1 exception had already expired by the 2026-10-19 review time."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger cover is service.py. The change does not alter the covered payments, audit, routes, or mortgage code, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds one application log line in LedgerService.amend_memo that records only the payment id, and the existing audit call remains. The ticket, independent approval, and passing payments suite on the head commit meet the change-management rules. The touched component is not security-sensitive, no protected control path changed, and the change is not an emergency and does not use an exception. Every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 219.16,
+    "tokens_in": 93695,
+    "tokens_out": 14025,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "009c7e5ed95728ee571d9f6cbf60ad18dd8a090732d3fcfe214921276ff5448c",
+    "packet_tokens_est": 26592,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 93695,
+      "outputTokens": 14025,
+      "cacheReadTokens": 258176,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 215138,
+    "duration_api_ms": 215138,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "variant": "v-4a0f3a8ed9",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route POST /payees/{id}/reopen uses the privileged action manage_payees with mfa=False, and the registered exhaustive control test test_privileged_routes_require_mfa fails on exactly this route. EXC-0180 covers only 'the reconciliation batch account', but the route serves any session holding manage_payees (for example payments_officer) with no account or network restriction in code."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "EXC-0180 is approved by a risk_owner (Omar Haddad, not the requester), unexpired and scoped to MFA-1/payments.routes. However, the deviation as built is broader than its stated scope, and the recorded compensating control (internal network restriction) does not appear in the change. An out-of-scope exception doesn't count."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25044 is standard and was approved by change manager Erik Brandt on 2026-10-22, before review. Its components (payments.http, routes, service, store) cover app.py, routes.py, service.py and store.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a change_approver for payments and not the author (Jonah Weiss), gave a code_review approval on head 34162ea9."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has a single commit, and both approvals name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on head has result 'failure' with 1 failing test, the registered MFA-1 control test. The JUnit report is also timestamped 2026-10-23 on a personal host (dev-laptop-7.local), before the commit was authored, so it is not credible evidence for this commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive payments.routes, payments.http and payments.store. Ines Halvorsen (security_reviewer) gave a security_review approval on the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0404 (MFA-1 control test) covers routes.py, which this change alters in behaviour, so it has lapsed. No valid new evidence of the same strength exists; the rerun control test fails."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "The new reopen_payee records an audit event with actor, action, target and time via _audit. However, the only control test is sample-coverage, and the CI report's provenance is unreliable for the head commit."
+    },
+    {
+      "id": "SEC-1",
+      "status": "open",
+      "note": "The new store.reopen_payee execute call uses a fixed literal with a bound parameter, which looks compliant. However, the exhaustive SQL control test result comes from a CI report that cannot be tied to the head commit."
+    },
+    {
+      "id": "ENC-1",
+      "status": "open",
+      "note": "store.py changed but no NPI columns are written by the new statement. The control test pass cannot be relied on because the JUnit report predates the commit and comes from a local machine."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "app.py and service.py contain log call sites, though the new code adds none. The only evidence is a sample-coverage test in an untrustworthy CI report."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "Reopening sets status to open and clears closed_at on any payee, which resets the retention clock and can reopen payees whose NPI was already purged. No guard exists and no retention test covers the new path."
+    }
+  ],
+  "summary": "The change adds a privileged manage_payees route without MFA. The cited exception EXC-0180 is limited to the reconciliation batch account, while the code exposes the route to any manage_payees session and implements no compensating restriction. The change's own CI run failed on the MFA-1 control test, and its JUnit report predates the commit and comes from a personal machine, so CHG-4 is not met and the lapsed MFA-1 evidence has no replacement. Ticket, independent code review and security review are in order, but the MFA-1, EXC-1, CHG-4 and LAP-1 violations require rejection.",
+  "meta": {
+    "elapsed_s": 41.49,
+    "tokens_in": 53276,
+    "tokens_out": 4088,
+    "usd": 0.294864,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3f86f4d91543ed75ed955eb88cce7dce6649bd54880ad80541556de4f6fb86cb",
+    "packet_tokens_est": 35054,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 53276,
+      "output_tokens": 4088,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

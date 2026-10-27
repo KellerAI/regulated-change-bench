@@ -1,0 +1,79 @@
+{
+  "variant": "v-067669db84",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25679 is approved by change manager Grace Kim before review, and its components (mortgage.reporting, mortgage.servicing, mortgage.tests) cover PipelineReport.java, RateQuote.java, and PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author, gave an approved code_review on head commit d5e0ffa466168eec558a854fd4f819d6d0d81c6e."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit itself, so there is no later unapproved commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on 7798860e0d2a233f1fc35e9e40da21f1ce2446bb, not on head. The later commit adds RateQuote.DEFAULT_TERM_YEARS, which is not a comment, whitespace, or formatting edit, so that run does not count."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components mortgage.reporting, mortgage.servicing, and mortgage.tests are not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch protected paths (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25679 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff does not depart from a product obligation, and the change does not rely on an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger covered path is modified, so prior evidence has not lapsed; this change does not depend on that evidence."
+    }
+  ],
+  "summary": "The pipeline total and the unused rate-quote constant sit outside every product-obligation scope, and the ticket, independent approval, and approval commit all match the head. CI does not. The recorded run is on the first commit, and the later commit adds a Java constant, which is not comment-only, whitespace, or formatting, so the suite was not shown passing on the final commit. That violates CHG-4, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 214.87,
+    "tokens_in": 67643,
+    "tokens_out": 7648,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5ee3f3058f95137c8444d591245c6c634edec427d6564ac49aafd48e3f8d84e0",
+    "packet_tokens_est": 25855,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 67643,
+      "outputTokens": 7648,
+      "cacheReadTokens": 221312,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 211528,
+    "duration_api_ms": 211528,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

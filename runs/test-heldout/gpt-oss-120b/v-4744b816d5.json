@@ -1,0 +1,61 @@
+{
+  "variant": "v-4744b816d5",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change permits NPI purge for withdrawn cases even when a legal hold is active, violating the rule that NPI must never be purged while a legal hold applies."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26821 is approved, lists component \"mortgage.retention\", and covers the changed file according to components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Declan Farrell, who has the change_approver role for baseline-mortgage and is not the author, is recorded."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the exact commit being merged, and there are no later commits that change behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all tests passing, including the control test for RET-1 (controls.RetentionControlTest) covering the modified code."
+    }
+  ],
+  "summary": "The change violates RET-1 by allowing NPI purge during a legal hold for withdrawn cases, and no approved exception exists. All process obligations CHG-1 through CHG-4 are satisfied, but the product obligation failure forces a rejection.",
+  "meta": {
+    "elapsed_s": 138.18,
+    "tokens_in": 24201,
+    "tokens_out": 6393,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "32f857e2fe57ec62ae6473b24086345d62d871573889feca6055542106096259",
+    "packet_tokens_est": 24119,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 25046,
+    "answer_chars": 1348,
+    "done_reason": "stop",
+    "load_s": 20.88,
+    "prompt_eval_s": 17.3,
+    "eval_s": 99.87,
+    "total_s": 138.17,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

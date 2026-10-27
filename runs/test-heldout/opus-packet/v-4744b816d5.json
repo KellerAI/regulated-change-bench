@@ -1,0 +1,83 @@
+{
+  "variant": "v-4744b816d5",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The diff changes Retention.isPurgeDue so that the legal-hold check no longer applies to WITHDRAWN cases (`isLegalHold() && status() != WITHDRAWN`). Withdrawn cases on legal hold now become purge-due, which breaks the requirement that NPI is never purged while a legal hold applies. The passing sample control test sampledPurgeRespectsHold evidently does not cover the withdrawn-plus-hold case."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The register has no exception for RET-1 on component mortgage.retention. The deviation from RET-1 is therefore not covered by any approved, unexpired, in-scope exception."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26821 is standard and was approved by change manager grace.kim on 2026-10-06, before review. Its component mortgage.retention covers the only touched path, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example, a change_approver for baseline-mortgage. He is a different person from the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 289039e5, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on the head commit from ci-runner-01 at 2026-10-09. The attached JUnit reports, however, are stamped 2026-10-23 (after the 2026-10-12 review time) on host dev-laptop-7.local, so they cannot be tied to this CI run. The RET-1 control test is also only a sample."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.retention, is not marked security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Retention.java, so no prior evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change removes the legal-hold guard for withdrawn mortgage cases, so their NPI can be purged while under legal hold. This directly violates RET-1. No approved exception covers the deviation, and the change description ('simplify hold handling') obscures the control impact. The CI evidence is also inconsistent: the JUnit reports postdate the review time and come from a local workstation rather than the recorded CI runner. The change is rejected.",
+  "meta": {
+    "elapsed_s": 21.87,
+    "tokens_in": 38052,
+    "tokens_out": 2126,
+    "usd": 0.194728,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "32f857e2fe57ec62ae6473b24086345d62d871573889feca6055542106096259",
+    "packet_tokens_est": 24119,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38052,
+      "output_tokens": 2126,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

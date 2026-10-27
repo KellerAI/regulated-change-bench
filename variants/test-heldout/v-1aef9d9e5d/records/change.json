@@ -1,0 +1,21 @@
+{
+  "id": "PR-1220",
+  "title": "Ledger format identifier",
+  "description": "Ledger format identifier.\n\nChanges:\n- Expose a stable format identifier to the reporting client\n- Peer review completed using the engineering account\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-306",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "ec615800cb9dccc98522de719d52f59ea37e4b6d",
+  "commits": [
+    {
+      "sha": "ec615800cb9dccc98522de719d52f59ea37e4b6d",
+      "message": "Reports: identify the export format",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-09T20:12:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26319",
+  "opened_at": "2026-10-09T20:12:00Z"
+}

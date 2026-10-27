@@ -1,0 +1,86 @@
+{
+  "variant": "v-3f5fa25110",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Control test SessionControlTest#privilegedIdleTimeoutWithinPolicy (exhaustive) passed in CI and policy‑params value 15 ≤ 15, unchanged by formatting."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "Control test AuditControlTest#chainAndRetention (exhaustive) passed; modelcheck proof record confirms append‑only chain; audit_retention_years=7 meets ≥7 requirement."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "RetentionControlTest#sampledPurgeRespectsHold (sample) passed; formatting change does not affect logic and declined_npi_retention_months remains 25 months."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Proof record evidence/proofs/lim1-required-approvals.json (exhaustive) approved, covering limits; ApprovalsControlTest#authorityLimitsMatchPolicy passed."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Proof record evidence/proofs/crd1-auto-approve.json (exhaustive) approved, covering DTI/LTV limits; UnderwritingControlTest#autoApproveGridMatchesPolicy passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25912 approved by change manager, component list includes mortgage.controls-data which matches the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Wen Li (change_approver) recorded in approvals.json, not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval covers the sole commit merged; no later behavior‑changing commits, satisfying coverage rule."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) succeeded; full test suite (124 tests) passed, including all control tests for impacted obligations."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control owner approval by Rachel Stein (control_owner) recorded for the commit, satisfying protected‑path requirement."
+    }
+  ],
+  "summary": "All product obligations affected by the policy‑params formatting change (SES‑1, AUD‑2, RET‑1, LIM‑1, CRD‑1) have adequate evidence from passing control tests or formal proofs, and all relevant process obligations (CHG‑1, CHG‑2, CHG‑3, CHG‑4, CHG‑6) are satisfied. No violations are found, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 135.3,
+    "tokens_in": 24385,
+    "tokens_out": 7498,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "fcc118bc3158a2dacf257e844e022a1dc7821c9893f868983135f3e40d26acca",
+    "packet_tokens_est": 24098,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 30063,
+    "answer_chars": 2486,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.39,
+    "eval_s": 117.68,
+    "total_s": 135.3,
+    "tokens_est_ratio": 0.986,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

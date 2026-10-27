@@ -1,0 +1,79 @@
+{
+  "variant": "v-3a3d1a0738",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25382 is approved by change manager Grace Kim on 2026-10-25, before review, and its components (mortgage.reporting, mortgage.servicing, mortgage.tests) cover PipelineReport.java, RateQuote.java, and PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Nneka Okafor, approved a code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names faa30607. The only later commit adds a comment in RateQuote.java and does not change behaviour, so the approval still covers the merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on head 4d99f13, and the JUnit report shows 125 tests, 0 failures, 0 errors, and 0 skipped, including PipelineTotalTest. The change does not touch any product-obligation scope, so no additional control-test obligation is triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components mortgage.reporting, mortgage.servicing, and mortgage.tests are not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change protected paths (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and it does not rely on an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not alter any path covered by the acceptance ledger, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds PipelineReport.totalCases and a unit test, plus a comment-only edit to RateQuote. The ticket, independent approval, and CI run on the head commit meet the change process. The later commit is comment-only, so the earlier code review still covers what is merged. No product-obligation scope, security-sensitive component, protected path, or emergency path is involved.",
+  "meta": {
+    "elapsed_s": 104.55,
+    "tokens_in": 43964,
+    "tokens_out": 6467,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e492eadc01cc37fb1ef7038d109853fda962bffc544b4a54e85b9d815a0d95c2",
+    "packet_tokens_est": 25903,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43964,
+      "outputTokens": 6467,
+      "cacheReadTokens": 208256,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 98517,
+    "duration_api_ms": 98517,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "variant": "v-8da58cfabb",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The diff removes `self._audit(actor, \"amend_memo\", ...)` from LedgerService.amend_memo and puts an application log line in its place. Amending a payment memo is a persisted state change (payments.amend_memo writes through the store), so it no longer records an audit event with actor, action, target and time. The passing AUD-1 control test is only `sample` coverage and does not catch this."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new call site `self._log.info(\"payment memo updated\", payment_id=payment_id)` matches the LOG-1 pattern but logs only the payment id, which is not NPI. The registered sample control test test_sampled_flows_do_not_log_npi passed in the head-commit CI run."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from AUD-1, and the register has no exception for AUD-1 on component payments.service. The only exceptions cover SES-1, LOG-1 (mortgage) and a withdrawn MFA-1 entry."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24351 is type standard, status approved, approved by Erik Brandt (change_manager) on 2026-10-10, before the change opened. Its components list payments.service, which covers the only touched path, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a change_approver for payments. She is a different person from the author, Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 83110565, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful run of `ci/run-tests.sh baseline-payments` on head 83110565: 172 tests, 0 failures, 0 skipped, including the AUD-1 and LOG-1 control tests. Both of those are sample-labelled. Caveat: the JUnit report's timestamp (2026-10-23) and hostname (a local Mac) do not match the CI run record."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "service.py is component payments.service, which is not marked security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover payments.py, audit.py, routes.py and mortgage files. None of these is changed by this diff, so no recorded evidence lapses."
+    }
+  ],
+  "summary": "PR-1256 is labelled as a telemetry tweak, but it replaces the audit event for payment memo amendments with an ordinary application log line. That removes audit coverage for a state-changing operation, which violates AUD-1. No approved exception covers the deviation, so EXC-1 is not met. Ticket, approval and CI records are otherwise in order, but the AUD-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 21.2,
+    "tokens_in": 40553,
+    "tokens_out": 2097,
+    "usd": 0.204152,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a7897d4bc27bd76692375772e693da4e9717f5babd3cdf4656e08190096a04e6",
+    "packet_tokens_est": 26597,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40553,
+      "output_tokens": 2097,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

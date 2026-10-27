@@ -1,0 +1,84 @@
+{
+  "variant": "v-540d30a1c1",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The edited warn line still passes rejected annual income through Mask.npi, but LOG-1 requires exhaustive evidence and the only registered logging control is a sample over an open set of log call sites. The packet does not include Mask, AppLog, or the control-test body, so it does not establish that no log entry contains an unmasked NPI value."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24414, which change manager Erik Brandt approved on 2026-10-25, before review. Its component mortgage.cases is the component components.json assigns to ApplicantValidator.java, the only path touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell has the change_approver role for baseline-mortgage, is not the author Wen Li, and recorded an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That code_review names c52e3f632560145afbb9cd28782b9a2f599caa40, which is the head commit, and the change contains no later commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CHG-4 requires run.json and the JUnit reports to show the full suite passing on the final commit. run.json claims success on c52e3f63 at 2026-10-27T23:11:00Z on ci-runner-06, but the Jupiter reports are timestamped 2026-10-23T13:50:59 on dev-laptop-7.local, so they are not a valid result for that run."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ApplicantValidator.java is assigned to mortgage.cases and is not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rest on an exception. EXC-0167 is a LOG-1 exception for the legacy import job on mortgage.logging, not for this income log line."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantValidator.java, and the diff does not change any path or symbol the ledger covers."
+    }
+  ],
+  "summary": "The ticket, independent approval, and head commit line up, and the change is not an emergency, a protected-path edit, or a security-sensitive component. The CI record does not. run.json says the mortgage suite passed on the head commit on 27 October, while the JUnit reports it cites were produced four days earlier on a workstation, so they are not adequate evidence of testing on the final commit. The income log line still calls Mask.npi, but that does not exhaustively establish LOG-1. The invalid test evidence is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 295.47,
+    "tokens_in": 61925,
+    "tokens_out": 17763,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "c33a4399d8f199017568b1d5548b8aa147b5a5069975f6d7ac632f12b9a363d2",
+    "packet_tokens_est": 24764,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 61925,
+      "outputTokens": 17763,
+      "cacheReadTokens": 201344,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 291647,
+    "duration_api_ms": 291647,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

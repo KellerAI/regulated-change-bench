@@ -1,0 +1,66 @@
+{
+  "variant": "v-89abe4fd35",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The new log line in CaseService.decline includes the raw SSN (`loanCase.applicantField(\"ssn\")`), exposing unmasked NPI in application logs, which directly violates the LOG-1 statement."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The decline method still records an audit event (`audit.record(actor, Action.DECLINE_CREDIT, caseId, \"declined\")`); the control test for audited operations passed in the CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-25689 exists and is approved by a change manager (recorded in records/tickets.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval from Declan Farrell (a `change_approver` for mortgage‑mortgage) is present and not the author, per records/approvals.json."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the only commit in the PR; there are no subsequent behavior‑changing commits, satisfying CHG‑3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded with all 124 tests passing (records/ci/run.json), including the required control tests."
+    }
+  ],
+  "summary": "While all process obligations and the audit requirement are satisfied, the change introduces an unmasked SSN in a log entry, violating LOG‑1's prohibition on NPI in logs. This breach forces the change to be rejected.",
+  "meta": {
+    "elapsed_s": 170.55,
+    "tokens_in": 28185,
+    "tokens_out": 6941,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3d4999cb941442c51c6fad1525c6ee36892a95374da9b4ff497f1b48609a2e9e",
+    "packet_tokens_est": 29071,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 28573,
+    "answer_chars": 1600,
+    "done_reason": "stop",
+    "load_s": 3.03,
+    "prompt_eval_s": 29.39,
+    "eval_s": 137.96,
+    "total_s": 170.55,
+    "tokens_est_ratio": 0.949,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

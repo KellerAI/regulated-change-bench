@@ -1,0 +1,93 @@
+{
+  "variant": "v-c8a182dbad",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The new error-path call passes the raw `account_number` (an NPI field in payments.npi_fields) into `self._log.error`. The stated purpose is to show support staff the account, so it is meant to be readable. Masking inside AppLog is not shown in the packet, and the sample control test does not cover the statement-delivery failure path."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The diff changes only the log call in the except branch of `deliver_statement`. The `_audit` call on the success path and every other audited operation in service.py are unchanged, and the registered sample control test passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25120 was approved by change manager grace.kim on 2026-09-29T07:17Z, before review. Its components list payments.service, which is the component of the only changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "sofia.santos, a payments change_approver and a different person from the author mara.costa, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit d1b5ec89, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head commit d1b5ec89 on ci-runner-09, and the registered LOG-1 and AUD-1 control tests are listed as passing. However, the JUnit report's timestamp (2026-10-23) is after the review time and its hostname is a personal machine (dev-laptop-7.local), so it may not belong to this CI run."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path maps to payments.service, which is marked `security_sensitive: false`, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, CI) are changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is relied on. EXC-0167 is for LOG-1 but is scoped to mortgage.logging and masked last-4 values, so it cannot cover this payments deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/service.py, so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1581 adds the payee's unmasked account number, an NPI field, to an application error log on the statement-delivery failure path. This violates LOG-1, and no valid exception covers it. The process records (ticket, independent approval on the head commit, no security-sensitive or protected paths) are otherwise in order. The JUnit report's timestamp and host do not match the recorded CI run, which leaves the test evidence in doubt. The LOG-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 28.68,
+    "tokens_in": 40562,
+    "tokens_out": 2808,
+    "usd": 0.218408,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "96f12796c78e27119292d1a6889adcffc66274b6f9edfd648c2e118dabc6f2f5",
+    "packet_tokens_est": 26648,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40562,
+      "output_tokens": 2808,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

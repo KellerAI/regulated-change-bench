@@ -1,0 +1,76 @@
+{
+  "variant": "v-0e90cfbf49",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "Added privileged route /exports/cases.csv without MFA; CI test privilegedRoutesRequireMfa fails, showing the rule is violated"
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-24618 exists and is approved (records/tickets.json and records/change.json)"
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Declan Farrell (change_approver) who is not the author (records/approvals.json)"
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval references the exact commit being merged; no later commits alter behaviour (records/approvals.json)"
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run reports failure; full test suite did not pass on the final commit (records/ci/run.json, TEST‑junit‑jupiter.xml)"
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval from Ines Halvorsen (security_reviewer) present for the security‑sensitive components (records/approvals.json)"
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Deviation from MFA-1 has no active approved exception; the only MFA‑1 exception (EXC-0172) is withdrawn (records/exceptions.json)"
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Control‑test evidence for MFA‑1 (RoutesControlTest) now fails; prior evidence is lapsed and no new evidence is recorded"
+    }
+  ],
+  "summary": "The change violates the MFA-1 product obligation by exposing a privileged route without MFA, the CI suite fails (CHG-4), there is no valid exception (EXC-1), and the earlier evidence for MFA-1 is now lapsed without replacement (LAP-1). Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 172.35,
+    "tokens_in": 28118,
+    "tokens_out": 7411,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "03f51be263a9330daa92c90d6b18d279237ff2238f47021610232fc6f11ef083",
+    "packet_tokens_est": 29034,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 29756,
+    "answer_chars": 1891,
+    "done_reason": "stop",
+    "load_s": 21.26,
+    "prompt_eval_s": 21.48,
+    "eval_s": 129.42,
+    "total_s": 172.35,
+    "tokens_est_ratio": 0.947,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

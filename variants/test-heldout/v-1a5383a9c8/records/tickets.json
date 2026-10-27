@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24563",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Reporting action compatibility",
+    "components": [
+      "payments.access"
+    ],
+    "requested_by": "jonah.weiss@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-14T00:25:00Z",
+    "risk": "medium"
+  }
+]

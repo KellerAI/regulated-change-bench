@@ -1,0 +1,92 @@
+{
+  "variant": "v-d648101605",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change edits a log.warn call that logs a rejected annual_income value (NPI per NpiRegistry); the value is still passed through Mask.npi, so the diff itself leaks nothing new. But LOG-1 requires exhaustive evidence, and the only registered control test (LoggingControlTest#sampledFlowsDoNotLogNpi) is labelled 'sample' and doesn't exercise the income-rejection path; ApplicantValidatorTest doesn't check the income value either, so nothing establishes the obligation at the required strength."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24333 (standard) was approved by change manager grace.kim at 2026-09-30T00:49Z, before the PR opened at 13:49Z, and its components [mortgage.cases] cover the only touched file, ApplicantValidator.java (mortgage.cases)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by declan.farrell@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Nneka Okafor (none of her directory emails)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit b87ff96, the only commit in the change, so it covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows success on head b87ff96 running ci/run-tests.sh baseline-mortgage; the JUnit reports show 124 tests, 0 failures, errors or skips, including the registered LOG-1 control test passing. I couldn't rerun locally (JUnit console jar missing). The report timestamp and hostname don't match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.cases (ApplicantValidator.java), is not marked security_sensitive in controls/mortgage/components.json, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No path in controls/protected-paths.json is touched (only apps/baseline-mortgage/src/main/java/mortgage/ApplicantValidator.java changed), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket are type standard and not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantValidator.java; the ledger entries cover payments files and the Approvals, Policy and Underwriting Java files, none of which changed, so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1451 rewords one income-format warning in ApplicantValidator; the rejected income value is still passed through Mask.npi, and the change-process obligations (ticket, independent approval on the head commit, green CI on the head commit, no security-sensitive or protected paths) are all met. The change does, however, alter a log call site that logs an NPI field, which puts it inside LOG-1, and LOG-1 requires exhaustive evidence. The only registered LOG-1 control test is a sample test that doesn't exercise the income-rejection path, and no exhaustive evidence exists. LOG-1 therefore can't be established at the required strength, so the change is held, not accepted or rejected.",
+  "meta": {
+    "elapsed_s": 105.78,
+    "tokens_in": 488192,
+    "tokens_out": 9872,
+    "usd": 0.493405,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 38,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 9872,
+      "cache_read_input_tokens": 446866,
+      "cache_creation_input_tokens": 41288
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4934052,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

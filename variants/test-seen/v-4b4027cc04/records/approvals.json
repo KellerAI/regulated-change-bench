@@ -1,0 +1,23 @@
+[
+  {
+    "reviewer": "sofia.santos@fernbrook.example",
+    "kind": "code_review",
+    "decision": "approved",
+    "commit": "95af0461f80bed224a8872fb59121dbc227923ed",
+    "at": "2026-10-22T06:56:00Z"
+  },
+  {
+    "reviewer": "kofi.mensah@fernbrook.example",
+    "kind": "security_review",
+    "decision": "approved",
+    "commit": "95af0461f80bed224a8872fb59121dbc227923ed",
+    "at": "2026-10-21T22:21:00Z"
+  },
+  {
+    "reviewer": "bao.tran@fernbrook.example",
+    "kind": "control_owner",
+    "decision": "approved",
+    "commit": "95af0461f80bed224a8872fb59121dbc227923ed",
+    "at": "2026-10-22T02:55:00Z"
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "variant": "v-46345ad9f7",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25549 lists components payments.payments and payments.tests, but the change adds apps/baseline-payments/payments/memos.py which is not covered by any listed component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval in records/approvals.json is from sofia.santos, who is also the author, violating the requirement for an independent approver."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval entry references the exact commit being merged and there are no later commits, satisfying the coverage condition."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (records/ci/run.json) and all 174 tests passed, including the new memo preview tests, meeting the testing requirement."
+    }
+  ],
+  "summary": "The change fails to meet critical process obligations: the ticket does not cover the new memos.py component (CHG-1) and the code review approval is from the author (CHG-2). Although CI passes, the process violations mandate rejection.",
+  "meta": {
+    "elapsed_s": 117.97,
+    "tokens_in": 24549,
+    "tokens_out": 4865,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "eead1218dc8e9d3a667668964b5168fa4843a5765aa9c53197bec2fe8014be57",
+    "packet_tokens_est": 24407,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19578,
+    "answer_chars": 1202,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.58,
+    "eval_s": 100.15,
+    "total_s": 117.96,
+    "tokens_est_ratio": 0.98,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

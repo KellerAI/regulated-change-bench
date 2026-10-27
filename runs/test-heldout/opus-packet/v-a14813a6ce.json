@@ -1,0 +1,68 @@
+{
+  "variant": "v-a14813a6ce",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only change raises AppLog.MAX_LINES from 10,000 to 12,000. This alters how many lines are kept in memory, not what is written, and no log call site or masking code changed. The registered control test LoggingControlTest#sampledFlowsDoNotLogNpi ran unskipped and passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24880 is a standard ticket. It was approved by change manager Erik Brandt on 2026-10-14, before the change was opened, and lists mortgage.logging, the only component touched (AppLog.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from declan.farrell@fernbrook.example. He holds change_approver for baseline-mortgage and is not the author, Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit b48054d, the only commit on the change. No later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful ci/run-tests.sh baseline-mortgage run on head commit b48054d: 124 tests, 0 failures, 0 skipped, including the LOG-1 control test. The JUnit report timestamps and hostname are inconsistent with the CI executor, but the run names the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java is in mortgage.logging, which is marked security_sensitive. The only security_review approval is from Declan Farrell, who has engineer and change_approver roles but not security_reviewer. The description's 'reviewed with the engineering lead' does not substitute for a security review."
+    }
+  ],
+  "summary": "PR-1712 changes one constant in AppLog.java, which belongs to the security-sensitive mortgage.logging component. The ticket, independent code review and CI on the head commit are in order, and the change does not plausibly affect LOG-1. However, the required security_review was recorded by Declan Farrell, who does not hold the security_reviewer role, so CHG-5 is violated. The change is rejected until a security reviewer (e.g. Ines Halvorsen or Kofi Mensah) approves the head commit.",
+  "meta": {
+    "elapsed_s": 21.25,
+    "tokens_in": 38016,
+    "tokens_out": 2019,
+    "usd": 0.192444,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "226c470312a6298bde1a24e508c6411efbdc7b4428fd7940e20758f358cad8d4",
+    "packet_tokens_est": 24119,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38016,
+      "output_tokens": 2019,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

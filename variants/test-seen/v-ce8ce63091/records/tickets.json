@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26151",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Retention clean-up",
+    "components": [
+      "mortgage.retention"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-09-30T19:01:00Z",
+    "risk": "low"
+  }
+]

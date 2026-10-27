@@ -1,0 +1,11 @@
+{
+  "pipeline": "pr-checks",
+  "commit": "6af8d48cf354cec824404c5c461a2db32c7d05f3",
+  "executor": "ci-runner-09",
+  "started_at": "2026-10-16T18:38:00Z",
+  "result": "success",
+  "command": "ci/run-tests.sh baseline-payments",
+  "reports": [
+    "payments-tests.xml"
+  ]
+}

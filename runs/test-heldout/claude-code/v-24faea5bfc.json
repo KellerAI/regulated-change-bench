@@ -1,0 +1,77 @@
+{
+  "variant": "v-24faea5bfc",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "open",
+      "note": "The change alters Underwriting.decide, which is in CRD-1's scope. The thresholds and branches look unchanged and the registered exhaustive grid control test passes on bbc68f4, but the exhaustive proof over the rationals (ACR-0406) has lapsed, so the obligation is not adequately evidenced."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0406 covers Underwriting.decide at d30b2ad. This change alters its behaviour (the reasons list in the eligible branch), which is not a comment or formatting edit, so the proof lapses. No new evidence of the same strength (exhaustive over the rationals) is supplied; the PR relies on the lapsed ledger entry, and the grid control test covers a narrower finite domain."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24054 is standard and was approved by change manager grace.kim on 2026-10-07, before the PR opened on 2026-10-10. Its component mortgage.underwriting covers the only touched file, Underwriting.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by declan.farrell, a change_approver for baseline-mortgage and a different person from the author wen.li (p-wli)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit bbc68f4, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on bbc68f4 succeeded with 124 tests, 0 skipped or failed, matching the 124 @Test methods in the repo. It includes the registered exhaustive CRD-1 control test UnderwritingControlTest#autoApproveGridMatchesPolicy, passing. A local re-run was not possible because the JUnit jar is absent."
+    }
+  ],
+  "summary": "The change edits Underwriting.decide so that auto-approve-eligible decisions return the reason POLICY_SATISFIED. The process records are in order: ticket approved beforehand with the right component, independent code review on the head commit, full suite and the CRD-1 control test passing on the head commit. However, the change alters code covered by the acceptance ledger's exhaustive CRD-1 proof (ACR-0406), so under LAP-1 that evidence lapses and needs replacing with evidence of the same strength before acceptance. None was provided; the PR relies on the lapsed entry, and the grid control test covers only a finite grid, not the rationals. LAP-1 is refuted, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 86.12,
+    "tokens_in": 397650,
+    "tokens_out": 7908,
+    "usd": 0.458524,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7908,
+      "cache_read_input_tokens": 351637,
+      "cache_creation_input_tokens": 45985
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4585244,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

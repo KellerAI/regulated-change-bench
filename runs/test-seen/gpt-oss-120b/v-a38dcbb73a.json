@@ -1,0 +1,81 @@
+{
+  "variant": "v-a38dcbb73a",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26734 is approved by change manager Erik Brandt and lists components payments.payees and payments.tests, which cover the modified files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The sole code review approval is from the author, Mara Costa, who also has the change_approver role, so no independent approver is present."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the final commit 55b93edc, and there are no later commits that change behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for commit 55b93edc succeeded; payments-tests.xml reports 173 tests passed, including the new charity payee test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed components are not marked security_sensitive, so a security_review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No files under protected paths were changed, thus a control_owner approval is not needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not flagged as emergency, so no post‑implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception was used for any obligation; the exception register does not contain a relevant entry."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No evidence lapses apply because no existing evidence covers the modified code."
+    }
+  ],
+  "summary": "The change fails CHG-2 because the only code review approval comes from the author, violating the independent approval requirement. All other process obligations are satisfied or not applicable, and no product obligations are affected. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 140.0,
+    "tokens_in": 24858,
+    "tokens_out": 6268,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "436f84ce3cac1e0de84d24bdb0a3e7c5efdc9f46a969caa6fa1c8e675d8ed9f9",
+    "packet_tokens_est": 24779,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24224,
+    "answer_chars": 1988,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.86,
+    "eval_s": 121.83,
+    "total_s": 140.0,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

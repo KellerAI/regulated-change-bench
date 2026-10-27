@@ -1,0 +1,71 @@
+{
+  "variant": "v-5f584298ed",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The change adds only an archival method that moves rows from payments to a new archive table; no NPI fields are introduced or altered and existing encryption tests continue to pass."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "All new SQL statements use parameter placeholders (status = ?) and the exhaustive control test `test_sql_statements_are_parameterized` passed in the CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24565 is approved by change manager Grace Kim and lists component `payments.store`, covering the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Sofia Santos (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code‑review approval is attached to the sole commit of the PR; no later non‑comment changes were made."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for commit 183ae8f5 succeeded with all 172 tests passing, including the required control‑registry tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval from Ines Halvorsen (security_reviewer) is present, satisfying the requirement for the security‑sensitive component payments.store."
+    }
+  ],
+  "summary": "All product obligations affected by the change (NPI encryption and SQL parameterization) remain satisfied, and every process obligation (ticket, independent approval, coverage, testing, and security review) has appropriate, valid evidence. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 121.21,
+    "tokens_in": 27188,
+    "tokens_out": 4610,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3b030a0d2a21baa53acfbc8a8b9402667cddb5e0791eae4c9a06f523dd673a61",
+    "packet_tokens_est": 27579,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18427,
+    "answer_chars": 1820,
+    "done_reason": "stop",
+    "load_s": 3.24,
+    "prompt_eval_s": 20.79,
+    "eval_s": 97.03,
+    "total_s": 121.21,
+    "tokens_est_ratio": 0.963,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

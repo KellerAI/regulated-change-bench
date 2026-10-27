@@ -1,0 +1,72 @@
+{
+  "variant": "v-0492393c22",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24521. It is approved by change manager erik.brandt on 2026-10-20, before the code review on 2026-10-23, and its components [payments.reports] cover the only touched path, reports.py (payments.reports in controls/payments/components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, who has the change_approver role for payments. She is a different person from the author, jonah.weiss (person_id p-jweiss vs p-ssantos)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit ad88472, the change's only commit, so no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (records/ci/run.json) is on head commit ad88472 with result success. The JUnit report shows the full payments suite: 172 tests, 0 failures, errors or skips. No product obligation's scope or domain is touched, so no specific control tests are required, though all registered control tests ran and passed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The emergency ticket records deployment at 2026-10-23T20:07Z (Friday). The pir approval is from sofia.santos (not the author) at 2026-10-24T20:07Z, within 2 business days."
+    }
+  ],
+  "summary": "The change adds one constant (REPORT_FORMAT) to payments/reports.py, a non-security-sensitive component outside every product obligation's scope, protected paths and ledger-covered code. The emergency ticket was approved by a change manager before review and covers the touched component. The code review comes from an independent payments change_approver on the head commit, the CI run on the head commit shows the full suite passing with nothing skipped, and the PIR came from a non-author within 2 business days of deployment. Every applicable obligation is satisfied with adequate record evidence.",
+  "meta": {
+    "elapsed_s": 71.94,
+    "tokens_in": 407426,
+    "tokens_out": 6134,
+    "usd": 0.353618,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 19,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 6134,
+      "cache_read_input_tokens": 376283,
+      "cache_creation_input_tokens": 31109
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.35361760000000003,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

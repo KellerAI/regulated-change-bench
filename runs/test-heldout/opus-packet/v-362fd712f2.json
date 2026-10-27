@@ -1,0 +1,88 @@
+{
+  "variant": "v-362fd712f2",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "release() now returns the earlier release only if it is under one day old. A replay after 24 hours passes the approval and payee checks, which do not look at 'released' status, and calls _send_disbursement again, so a second disbursement is sent."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0403 (PAY-2 trace at e5bf6465) covers payments.py#release, whose behaviour this change alters, so it has lapsed. No valid replacement evidence exists; the only new test is a sample, and the code shows the property no longer holds."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The register has no exception for PAY-2 or for payments.payments, so nothing permits the deviation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25674 is standard and was approved by change manager Grace Kim on 2026-10-19T06:16Z, before the change was opened. Its components (payments.payments) cover the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa approved a code_review. She holds change_approver for payments and is a different person from the author, Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit ef632544, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on the head commit from ci-runner-09, started 2026-10-19T22:16Z. The attached JUnit report, however, is timestamped 2026-10-23 and came from host dev-laptop-7.local, so it cannot be established that the CI run produced it. The PAY-2 control test is also only a sample."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is payments.payments, which is not marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not flagged as an emergency, so no post-implementation review is due."
+    }
+  ],
+  "summary": "The change adds a one-day window to the idempotency check in release(). Replaying an instruction after 24 hours would send a second disbursement to core banking, which directly violates PAY-2. The prior PAY-2 evidence has lapsed because release() changed, and no exception covers the deviation. The CI evidence also has a provenance inconsistency: the JUnit report comes from a different host and a later date than the recorded run. The change is rejected.",
+  "meta": {
+    "elapsed_s": 23.18,
+    "tokens_in": 38947,
+    "tokens_out": 2183,
+    "usd": 0.199448,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7ad1e146fffaca7ca637435c7c451449cd82e767c1676e6e00e2449844524fd2",
+    "packet_tokens_est": 25290,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38947,
+      "output_tokens": 2183,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

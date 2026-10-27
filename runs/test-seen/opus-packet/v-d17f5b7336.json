@@ -1,0 +1,88 @@
+{
+  "variant": "v-d17f5b7336",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new AppLog.debug calls the same _emit path as the other levels, and _emit applies mask_fields before writing, so no unmasked path is added. The LOG-1 control test test_sampled_flows_do_not_log_npi (sample) and the new test_debug_entries_are_masked are reported passing."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26216 is standard and was approved by Erik Brandt (change_manager) on 2026-09-29, before the change was opened. Its components (payments.logging, payments.tests) cover logs.py and tests/test_log_debug.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a change_approver for payments and a different person from the author Jonah Weiss."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 8dfff15d, the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head 8dfff15d with 173 tests, 0 skipped, including the LOG-1 control test. However, the attached JUnit report is timestamped 2026-10-23, after the review time of 2026-10-06, and comes from host dev-laptop-7.local rather than ci-runner-02. So it is unclear whether the report belongs to this CI run."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "logs.py belongs to payments.logging, which is marked security_sensitive. The packet has no security_review approval from a security_reviewer (e.g. Halvorsen or Mensah); the only approval is a code_review."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path is touched: test_log_debug.py is under tests/, not tests/controls/, and no controls/ or ci/ files changed. No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. EXC-0167 is scoped to mortgage.logging and is not used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers logs.py or the test file, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a debug level to payments AppLog that reuses the existing masking path, so LOG-1 appears satisfied. However, logs.py is in the security-sensitive payments.logging component, and CHG-5 requires a security_review approval that is absent. In addition, the CI JUnit report's timestamp (after the review time) and its local hostname cast doubt on whether it came from this change's CI run. The missing security review means the change must be rejected.",
+  "meta": {
+    "elapsed_s": 24.03,
+    "tokens_in": 38409,
+    "tokens_out": 2331,
+    "usd": 0.200256,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "da7793fb23a3a9d68fa9e72a7192a2dfbd04d3d51a68f986c2e52f997c0e9487",
+    "packet_tokens_est": 24822,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38409,
+      "output_tokens": 2331,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

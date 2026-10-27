@@ -1,0 +1,76 @@
+{
+  "variant": "v-6be1fbe4a9",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change modifies STANDARD_IDLE_MINUTES (30→45) in policy.py and policy-params.json, leaving PRIVILEGED_IDLE_MINUTES at 15. The CI test test_privileged_idle_timeout_within_policy passed on the final commit, confirming privileged sessions still expire at 15 minutes."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "AUDIT_RETENTION_YEARS in policy.py and policy-params.json is unchanged at 7; the control test test_chain_and_retention passed on the final commit, confirming the hash-chain and retention remain intact."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24787 is approved by change_manager Erik Brandt and its components (payments.controls-data, payments.policy) cover both changed files (policy.py and policy-params.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Mara Costa (change_approver for payments, payments-eng team) is on the head commit; she is not the author (Linh Nguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals reference commit a15d2de0… which is the sole commit and the head; no later commits exist to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit a15d2de0… with 172 tests, 0 failures, 0 errors, 0 skipped; all registered control tests (including test_privileged_idle_timeout_within_policy and test_chain_and_retention) passed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches controls/payments/policy-params.json (a protected path under controls/*/*); a control_owner approval from Bao Tran (controls-office, outside the author's payments-eng team) is on the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/policy.py or controls/payments/policy-params.json, so no prior evidence lapses; the changed symbols (STANDARD_IDLE_MINUTES / standard_idle_minutes) are not the ones any ledger entry attests to."
+    }
+  ],
+  "summary": "The change raises the standard (non-privileged) session idle timeout from 30 to 45 minutes in payments' policy.py and the matching policy-params.json. No product obligation governs standard idle timeout; the privileged idle timeout (15 min, SES-1) and audit retention (7 years, AUD-2) are untouched, as confirmed by passing control tests. All process obligations are satisfied: the ticket is approved, an independent change_approver and a control_owner (outside the author's team) both approved the head commit, CI passed on the final commit with zero skipped tests, and no prior ledger evidence lapses. The change is low-risk and properly controlled; acceptance is recommended.",
+  "meta": {
+    "elapsed_s": 187.49,
+    "tokens_in": 27685,
+    "tokens_out": 5513,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "30e3c8ae0915fc397540bc6f419b36e8f8c1954deee025be3aeeb1b0f6ef7e29",
+    "packet_tokens_est": 24289,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18124,
+    "answer_chars": 2767,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.29,
+    "eval_s": 155.17,
+    "total_s": 187.49,
+    "tokens_est_ratio": 1.11,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

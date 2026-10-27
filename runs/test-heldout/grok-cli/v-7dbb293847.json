@@ -1,0 +1,84 @@
+{
+  "variant": "v-7dbb293847",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "checkIncome now calls log.warn with the raw annual_income value instead of Mask.npi(value). Income is NPI, and the statement forbids unmasked NPI on error paths. EXC-0167 does not cover this: it is scoped to mortgage.logging and a masked last-4 of a bank account on a legacy import. The passing LOG-1 test is only sample coverage and the diff does not update tests."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26206 is approved by change manager Grace Kim before review, and its component mortgage.cases matches ApplicantValidator.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author, approved a code_review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 0de643812e543825d3829bdfa496830c84f77ec0, and the code_review approval names that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful baseline-mortgage suite on the head commit, and the JUnit report shows 124 tests, 0 failures, and 0 skipped, including LoggingControlTest#sampledFlowsDoNotLogNpi. That sample pass does not cure the LOG-1 violation visible in the source."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path is ApplicantValidator.java, component mortgage.cases, which is not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26206 is type standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Logging raw annual income deviates from LOG-1, and no approved, unexpired exception covers that obligation and mortgage.cases. EXC-0167 is a different component and a different, already-masked behavior."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover other files and symbols. This change does not alter that covered code, so those earlier acceptance records do not lapse."
+    }
+  ],
+  "summary": "The change replaces masked income logging with the raw annual_income value on the validation error path. That is unmasked NPI in an application log, which LOG-1 forbids, and no in-scope exception authorizes it. Ticket, independent approval, CI on the head commit, and the other process checks are in order, but the logging defect blocks acceptance.",
+  "meta": {
+    "elapsed_s": 165.99,
+    "tokens_in": 40503,
+    "tokens_out": 11091,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9714a8c0adeb08b1931bd72b5f939140998a7286bea1144bc8191abfd5bf28e9",
+    "packet_tokens_est": 24762,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 40503,
+      "outputTokens": 11091,
+      "cacheReadTokens": 162432,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 161215,
+    "duration_api_ms": 161215,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

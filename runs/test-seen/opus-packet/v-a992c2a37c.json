@@ -1,0 +1,63 @@
+{
+  "variant": "v-a992c2a37c",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24501 is approved by Erik Brandt (change_manager) at 2026-10-19T18:32Z, before review. Its components (payments.reports, payments.tests) cover both touched paths: reports.py and tests/test_released_by_payee.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver. She is a different person from the author, Aisha Bello (p-abello)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 4ec0db474f61, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims ci-runner-08 started at 2026-10-20T01:32Z on the head commit. The attached JUnit report, however, was produced on hostname dev-laptop-7.local at 2026-10-23T13:30-07:00, three days later and on a personal machine, so it is not output of that CI run. No valid CI report shows the full suite passing on the final commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change adds a new function to reports.py and a new test file. No code covered by any acceptance-ledger entry is touched, so no existing evidence lapses."
+    }
+  ],
+  "summary": "The change adds a pure reporting helper in payments.reports, which is not security-sensitive, plus unit tests. It touches no product-obligation scope, no protected paths and no ledger-covered code. Ticket, independent approval and approval-on-head are all in order. However, the JUnit report offered as CI evidence comes from a developer's Mac three days after the recorded CI run, not from the CI executor. The required testing evidence for the final commit is therefore invalid, CHG-4 fails, and the change is rejected until a genuine CI run's reports are supplied.",
+  "meta": {
+    "elapsed_s": 20.46,
+    "tokens_in": 38817,
+    "tokens_out": 1944,
+    "usd": 0.194148,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5aa336b93084fe913faf76cd70afd335f460978cb6ed42dcd40acb0b259e28a1",
+    "packet_tokens_est": 25052,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38817,
+      "output_tokens": 1944,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

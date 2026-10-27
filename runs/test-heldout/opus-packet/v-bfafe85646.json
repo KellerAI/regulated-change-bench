@@ -1,0 +1,93 @@
+{
+  "variant": "v-bfafe85646",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "All four integrations at head, including the new payment-advice entry, use https base URLs. The registered exhaustive control test test_integrations_use_tls passed, unskipped, in the head-commit CI run."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The new payment-advice integration is in asset-inventory.json with owner payments-operations and data_classification npi, a listed classification; the other three integrations were already inventoried. The exhaustive test_integrations_are_inventoried passed on head; the missing purpose field is not something INV-1 requires."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26071 is standard and approved by change manager Grace Kim on 2026-10-17, before the change was opened. Its components (payments.integrations, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and a different person from author Jonah Weiss, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has a single commit, and every approval names that head commit 7167104."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows pr-checks succeeding on head 7167104 with the full payments suite: 172 tests, 0 failures, 0 skipped. All registered control tests are present and passing, including ENC-2 and INV-1. The JUnit report's timestamp and hostname metadata look odd but do not contradict the run record."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py belongs to payments.integrations, which is security_sensitive. Ines Halvorsen, a security_reviewer, approved security_review on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected path. Bao Tran, a control_owner from controls-office and outside the author's payments-eng team, approved on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "This is a standard change, not an emergency one, and was not deployed before review, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No deviation from a product obligation is claimed, and no exception is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers integrations.py or the asset inventory, so no prior evidence lapses. ENC-2 and INV-1 are supported by fresh head-commit control tests."
+    }
+  ],
+  "summary": "The change adds one https integration, payment-advice, to the payments registry and adds a matching inventory entry with an owner and a classification. Both applicable product obligations, ENC-2 and INV-1, are satisfied by inspection and by passing exhaustive control tests on the head commit. The approved ticket covers both components. Code review, security review and control-owner approval all come from independent, correctly-roled people and name the single head commit. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 29.62,
+    "tokens_in": 38355,
+    "tokens_out": 2999,
+    "usd": 0.2134,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7bdb2c025c7a6ff914cf4351c7d325d2a724ab4f5451515e9bd8f8adcfbdf442",
+    "packet_tokens_est": 24782,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38355,
+      "output_tokens": 2999,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "controls.AccessMatrixControlTest#matrixEqualsApprovedPolicy": {
+    "obligation": "ACC-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.roles_x_actions"
+  },
+  "controls.AccessMatrixControlTest#auditorIsReadOnly": {
+    "obligation": "ACC-2",
+    "coverage": "exhaustive",
+    "domain": "mortgage.actions"
+  },
+  "controls.AccessMatrixControlTest#adminCannotApproveCredit": {
+    "obligation": "SOD-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.actions"
+  },
+  "controls.RoutesControlTest#privilegedRoutesRequireMfa": {
+    "obligation": "MFA-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.routes"
+  },
+  "controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy": {
+    "obligation": "SES-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.privileged_idle_minutes"
+  },
+  "controls.EncryptionControlTest#everyNpiFieldIsSealedAtRest": {
+    "obligation": "ENC-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.npi_registry"
+  },
+  "controls.LoggingControlTest#sampledFlowsDoNotLogNpi": {
+    "obligation": "LOG-1",
+    "coverage": "sample",
+    "domain": "mortgage.sampled_log_flows"
+  },
+  "controls.AuditControlTest#sampledOperationsAreAudited": {
+    "obligation": "AUD-1",
+    "coverage": "sample",
+    "domain": "mortgage.sampled_operations"
+  },
+  "controls.AuditControlTest#chainAndRetention": {
+    "obligation": "AUD-2",
+    "coverage": "exhaustive",
+    "domain": "mortgage.audit_retention_and_chain"
+  },
+  "controls.RetentionControlTest#sampledPurgeRespectsHold": {
+    "obligation": "RET-1",
+    "coverage": "sample",
+    "domain": "mortgage.sampled_retention_cases"
+  },
+  "controls.ApprovalsControlTest#makerCannotCheck": {
+    "obligation": "MC-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.approver_roles_x_actor"
+  },
+  "controls.ApprovalsControlTest#authorityLimitsMatchPolicy": {
+    "obligation": "LIM-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.approval_amount_grid"
+  },
+  "controls.UnderwritingControlTest#autoApproveGridMatchesPolicy": {
+    "obligation": "CRD-1",
+    "coverage": "exhaustive",
+    "domain": "mortgage.dti_ltv_grid"
+  }
+}

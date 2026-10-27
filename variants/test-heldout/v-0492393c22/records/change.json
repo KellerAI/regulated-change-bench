@@ -1,0 +1,21 @@
+{
+  "id": "PR-1751",
+  "title": "Restore the reporting format marker",
+  "description": "Restore the reporting format marker.\n\nChanges:\n- Restore format identification after the reporting incident\n- Emergency release followed by operations review\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-249",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "ad88472a8c9911b59227f38d728b1a81b0a6fcaf",
+  "commits": [
+    {
+      "sha": "ad88472a8c9911b59227f38d728b1a81b0a6fcaf",
+      "message": "Reports: identify the export format",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-23T11:35:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-24521",
+  "opened_at": "2026-10-23T11:35:00Z"
+}

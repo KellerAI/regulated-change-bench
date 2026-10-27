@@ -1,0 +1,27 @@
+{
+  "id": "PR-1978",
+  "title": "Rate quote: supported terms helper",
+  "description": "Rate quote: supported terms helper.\n\nChanges:\n- Add `RateQuote.isSupportedTerm`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "wen.li@fernbrook.example",
+  "branch": "li/change-306",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "ee667bb533c21e60ee2293c66bf2e178edae30f3",
+  "commits": [
+    {
+      "sha": "ed04e15551b6294e512d9f084b053d6203e3044b",
+      "message": "Rate quote: expose supported terms",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-09T17:49:00Z"
+    },
+    {
+      "sha": "ee667bb533c21e60ee2293c66bf2e178edae30f3",
+      "message": "Add default quote term",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-09T20:58:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24409",
+  "opened_at": "2026-10-09T17:49:00Z"
+}

@@ -1,0 +1,76 @@
+{
+  "variant": "v-5e4277426a",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The change touches integrations.py but the replace('https://','https://') is a no-op; all three integrations retain their https base URLs. The CI control test test_integrations_use_tls passed on the final commit."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "No new integration is added; the INTEGRATIONS list is unchanged and still matches the three entries in asset-inventory.json. The CI control test test_integrations_are_inventoried passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25162 is of type 'standard', approved by grace.kim (change_manager) on 2026-10-22, and its components list includes 'payments.integrations', which is the only component touched by the change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from mara.costa@fernbrook.example (p-mcosta, change_approver for payments) is a different person from the author aisha.bello@fernbrook.example (p-abello), and the approval names the head commit ef417ae8."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is only one commit (ef417ae8) and the code_review approval names that exact commit, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit ef417ae8; all 172 tests passed with 0 failures, 0 errors, 0 skipped, including the registered control tests for ENC-2 (test_integrations_use_tls) and INV-1 (test_integrations_are_inventoried)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The component payments.integrations is marked security_sensitive in components.json. A security_review approval from kofi.mensah@fernbrook.example (p-kmensah, security_reviewer, apps '*') is present for the head commit, and he is not the author."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/integrations.py, so no previously accepted evidence lapses from this change."
+    }
+  ],
+  "summary": "The change adds a conditional branch in url_for() that, when the integration is 'statement-delivery' and the path starts with '/archive/', performs base.replace('https://','https://',1) — a complete no-op that leaves the URL unchanged. No new integrations are added, no URLs are altered, and all existing https endpoints are preserved. The ticket is approved by a change manager, the code_review and security_review approvals are from qualified, non-author individuals for the correct commit, and the full CI suite (172 tests) passed on the final commit including all registered control tests for ENC-2 and INV-1. No protected paths or prior accepted evidence are affected. All applicable obligations are satisfied; the change is accepted.",
+  "meta": {
+    "elapsed_s": 148.9,
+    "tokens_in": 27577,
+    "tokens_out": 4113,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "366a2e3919eba99d4ae55de3eb5d4dc3c46718c268288d2732d5ec7f81d03727",
+    "packet_tokens_est": 24322,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12688,
+    "answer_chars": 2780,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.19,
+    "eval_s": 116.68,
+    "total_s": 148.9,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

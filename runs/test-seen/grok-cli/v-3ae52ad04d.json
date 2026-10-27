@@ -1,0 +1,79 @@
+{
+  "variant": "v-3ae52ad04d",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24256 is approved by change manager Grace Kim before review, and its components mortgage.reporting and mortgage.tests cover PipelineReport.java and PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from wen.li@fernbrook.example, who is the author (person p-wli). A self-approval does not count, and no other change_approver approved the change."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The recorded approval names the sole commit da22cf688af6732aec8f811da29d675de33443af, which is the head commit, so there are no later commits that would void coverage."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success for ci/run-tests.sh baseline-mortgage on the final commit, and the JUnit report shows 125 tests, 0 failures, 0 errors, and 0 skipped, including PipelineTotalTest. The change does not touch any product-obligation scope, so no additional control-test obligation is triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed paths map to mortgage.reporting and mortgage.tests, both marked security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed file is under a protected path in controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change request sets emergency to false and ticket CHG-24256 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff does not deviate from a product obligation, and the change does not rely on an exception. The register entries are for other components and are not used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger coverage is limited to payments payments, audit, and routes and to mortgage Approvals, Underwriting, and Policy. This change does not alter any of those paths."
+    }
+  ],
+  "summary": "The change adds PipelineReport.totalCases and a unit test. It does not touch product-control code, protected paths, or security-sensitive components, and CI on the head commit is green. It cannot be accepted because the only code review is Wen Li approving their own commit. Independent approval under CHG-2 is missing.",
+  "meta": {
+    "elapsed_s": 86.39,
+    "tokens_in": 66090,
+    "tokens_out": 5492,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "26b5b9f74a65fc0813ed5b26930515fbff0ca33844d06dc6dada022506448ac7",
+    "packet_tokens_est": 24724,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 66090,
+      "outputTokens": 5492,
+      "cacheReadTokens": 180096,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 82521,
+    "duration_api_ms": 82521,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

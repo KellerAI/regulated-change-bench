@@ -1,0 +1,102 @@
+{
+  "variant": "v-aefa9ff4be",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds the tax identifier `coapplicant_tax_id` to `ApplicantFields.ALL` but not to `NpiRegistry.FIELDS` or the approved `mortgage.npi_fields`. `CaseStore.protect` only seals registry fields, so this government identifier is stored in plaintext. The exhaustive control test still passes because it only checks fields in the registry and the approved list."
+    },
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Fix this by adding the field to the NPI registry; the new purge line then becomes redundant. As submitted, `Retention.purge` removes the field by a hard-coded name that sits outside the NPI registry, so the purge set no longer equals the registered NPI. The only registered evidence is the sample test `sampledPurgeRespectsHold`, which can't meet this obligation's exhaustive evidence requirement."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26287 is a standard ticket approved by Erik Brandt (change_manager) on 2026-10-18, before the PR opened on 2026-10-21. Its components (mortgage.cases, mortgage.retention, mortgage.control-tests) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change_approver and a different person from the author Priya Raman, approved the code review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 387b4f1. Both the code_review and control_owner approvals name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "`records/ci/run.json` shows a successful run on head commit 387b4f1: 124 tests, none skipped, failed or errored. The registered control tests for the touched obligations (ENC-1 `everyNpiFieldIsSealedAtRest`, RET-1 `sampledPurgeRespectsHold`) ran and passed. I couldn't re-run the suite locally because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "None of the touched components (mortgage.cases, mortgage.retention, mortgage.control-tests) is marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change edits the protected path `src/test/java/controls/ControlFixtures.java`. Bao Tran (control_owner, controls-office, not the author's lending-eng team) approved head commit 387b4f1."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change isn't flagged emergency and the ticket is standard, so no post-implementation review applies."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change claims no exception. No register entry covers ENC-1 or RET-1 for mortgage.cases or mortgage.retention, so nothing excuses the ENC-1 deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers the touched files (`ApplicantFields.java`, `Retention.java`, `ControlFixtures.java`), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a co-applicant tax identifier to the applicant record without classifying it as NPI. Because sealing at rest is driven by the NPI registry, this government identifier is stored in plaintext, which violates ENC-1. The ENC-1 control test passes only because its domain is the registry the change left out, and no exception covers the deviation. The process records (ticket, independent review, control-owner approval, CI on the head commit) are in order, but the ENC-1 violation alone requires rejection. RET-1 also fails: the field is purged by a hard-coded name outside the NPI registry, and the only evidence is a sample test.",
+  "meta": {
+    "elapsed_s": 98.83,
+    "tokens_in": 605848,
+    "tokens_out": 8613,
+    "usd": 0.533892,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 42,
+      "output_tokens": 8613,
+      "cache_read_input_tokens": 555743,
+      "cache_creation_input_tokens": 50063
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5338916000000001,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

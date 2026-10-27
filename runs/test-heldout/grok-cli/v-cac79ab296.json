@@ -1,0 +1,89 @@
+{
+  "variant": "v-cac79ab296",
+  "arm": "grok-cli",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The diff adds self._log.info(\"payment memo updated\", payment_id=payment_id) in payments service.py, which matches the LOG-1 log-call pattern. That call passes a static message and a payment id, and the sample control test_sampled_flows_do_not_log_npi passed on the head commit, but the log-call domain is not closed, the registered test is sample coverage, and logs.py plus the other call sites are not in the packet, so the packet does not establish that every log entry is free of unmasked NPI."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "service.py is an AUD-1 scope path and the edit is behavioral, so prior coverage of that file would lapse. amend_memo still calls _audit with actor, action, target, and time, and test_sampled_operations_are_audited passed, but that test is sample-only, the state-changing-operation domain is not closed, and there is no exhaustive acceptance-ledger entry for AUD-1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24472 is approved by grace.kim@fernbrook.example, a change manager, on 2026-10-21, before the 2026-10-28 review time. Its component payments.service matches the only touched path, apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example) approved a code_review. She is a change_approver for payments and is not the author, Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 72393c365fa0ce88b6e13c7f7106caf9aa64f550, which is the head commit and the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on the head commit, and the JUnit report has 172 tests, 0 failures, 0 errors, and 0 skipped. The registered payments control tests for the touched product obligations, including test_sampled_operations_are_audited and test_sampled_flows_do_not_log_npi, are present and unskipped."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file maps to payments.service, which components.json marks security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch controls data, control tests, or CI paths listed in controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-24472 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register's LOG-1 exception is scoped to mortgage.logging, the SES-1 exception expired on 2026-09-28 before the review time, and the MFA-1 exception is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments.py, audit.py, routes.py, and mortgage underwriting and approval files. None of those paths change between base and head, so those records have not lapsed."
+    }
+  ],
+  "summary": "Process records for this one-line payments service change are in order: the ticket is approved and scoped to payments.service, an independent payments change approver approved the head commit, the full payments suite passed on that commit, and no security review, control-owner approval, emergency review, or exception is required. The edit still leaves two product obligations short of adequate evidence. It adds an application log call under LOG-1, whose domain is not closed and whose control test is only a sample, and it changes AUD-1's service.py without exhaustive evidence that every state-changing operation is audited. Those two obligations stay open, so the change is on hold.",
+  "meta": {
+    "elapsed_s": 237.0,
+    "tokens_in": 46251,
+    "tokens_out": 16128,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f37d3e6f6a6862c22ee6dc9e4a6efdd00e5ba470d9cdf5414db00291179bfa04",
+    "packet_tokens_est": 26600,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 46251,
+      "outputTokens": 16128,
+      "cacheReadTokens": 206208,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 231815,
+    "duration_api_ms": 231815,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26265",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Allow charity payees",
+    "components": [
+      "payments.tests"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-18T18:22:00Z",
+    "risk": "low"
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "variant": "v-69d9e1f652",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets Policy.PRIVILEGED_IDLE_MINUTES and controls/mortgage/policy-params.json mortgage.privileged_idle_minutes to 20, but the approved catalog on base bounds mortgage.privileged_idle_minutes <= 15. The passing SessionControlTest checks against the parameter file the change itself raised, so it doesn't show compliance with the approved bound."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No exception covers this deviation: the only SES-1 exception (EXC-0141) is scoped to payments.session batch service accounts and expired 2026-09-20, before the 2026-10-20 review."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24092 was approved by change manager Grace Kim on 2026-10-16, before the change was opened, and its components (mortgage.policy, mortgage.tests, mortgage.controls-data) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Wen Li, a baseline-mortgage change_approver who is a different person from the author Nneka Okafor."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit b4c1e93, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head b4c1e93 succeeded: 124 tests, 0 failures, 0 skipped, including the registered SES-1 control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy (exhaustive) passing."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change edits protected controls/mortgage/policy-params.json and has a control_owner approval on head from Rachel Stein (controls-office, outside the author's lending-eng team)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries covering Policy.java (LIM-1, CRD-1) cover UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT and LTV_MAX_PERCENT, which are unchanged; no ledger evidence covers PRIVILEGED_IDLE_MINUTES."
+    }
+  ],
+  "summary": "PR-1207 raises the Mortgage privileged session idle timeout from 15 to 20 minutes in both code and the approved policy parameter. The approved obligation catalog's SES-1 bounds this value at 15 minutes, and no valid exception covers the deviation (the only SES-1 exception is for payments and has expired). The process records (ticket, independent review, control-owner approval, CI on head) are in order, but the green control test only compares against the parameter file the change itself raised. Because SES-1 is violated, the change is rejected.",
+  "meta": {
+    "elapsed_s": 59.81,
+    "tokens_in": 306617,
+    "tokens_out": 5123,
+    "usd": 0.313021,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 17,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 5123,
+      "cache_read_input_tokens": 275520,
+      "cache_creation_input_tokens": 31069
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.31302099999999994,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "variant": "v-aa5ec5fd9a",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Proof crd1-response-metadata.json provides exhaustive evidence for the new commit, confirming the auto‑approval logic unchanged and thresholds still match policy."
+    },
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24937 lists component \"mortgage.underwriting\" but Underwriting.java maps to component \"mortgage.tests\" (security_sensitive false), so the ticket does not cover the affected component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Wen Li (has change_approver role for mortgage‑mortgage) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is tied to the exact commit being merged; no later commits alter behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run reports all 124 tests passed, including the control test for CRD-1, satisfying full test suite requirement."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "New proof for CRD-1 (crd1-response-metadata.json) supplies fresh evidence for the changed code, meeting the evidence‑lapse requirement."
+    }
+  ],
+  "summary": "The change adds a reason string to the auto‑approval decision and includes exhaustive proof that the policy logic remains unchanged, with all required testing and approvals in place. However, the change ticket's component list does not cover the actual component affected (mortgage.tests), violating CHG-1. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 113.13,
+    "tokens_in": 25210,
+    "tokens_out": 6217,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4f39802491fcf08c2277190178e3f837673aee0ed3d0c1f1ff929612ffcc8988",
+    "packet_tokens_est": 25239,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24681,
+    "answer_chars": 1689,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.86,
+    "eval_s": 97.09,
+    "total_s": 113.13,
+    "tokens_est_ratio": 0.974,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

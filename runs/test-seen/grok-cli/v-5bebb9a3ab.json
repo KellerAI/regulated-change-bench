@@ -1,0 +1,89 @@
+{
+  "variant": "v-5bebb9a3ab",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "integrations.py at head lists fx-rates at https://fx.fernbrook.example/v1, and the other three integrations are https as well. The exhaustive control test test_integrations_use_tls passed unskipped on commit fe87b444."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "fx-rates is in the asset inventory with host fx.fernbrook.example, owner Treasury, and classification npi, and the exhaustive test test_integrations_are_inventoried passed on the head commit. The purpose sentence repeats the core-banking disbursement wording; the obligation still has the required owner and classification."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24327, which change manager Grace Kim approved on 2026-10-06, before review. Its components cover payments.integrations, payments.payments, and payments.controls-data, matching the three paths in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos approved a code_review of commit fe87b444. She is a payments change_approver and is not the author, Mara Costa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, fe87b444, and the code_review, security_review, and control_owner approvals each name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful ci/run-tests.sh baseline-payments run on fe87b444, and the JUnit report has 172 tests with 0 failures and 0 skipped. The registered exhaustive tests for ENC-2 and INV-1 are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is marked security_sensitive. Ines Halvorsen, a security_reviewer, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff edits protected path controls/payments/asset-inventory.json. Bao Tran, a control_owner on controls-office, approved the head commit; the author is on payments-eng."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24327 is type standard and the change record sets emergency to false, so the post-implementation review required for an emergency deployment is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "ENC-2 and INV-1 hold on the head commit, so the change does not depend on an exception. The register entries are unused, including expired EXC-0141."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger covers required_approvals and release in payments.py, plus audit.py and routes.py. Those symbols and files are unchanged by this diff, so the earlier PAY-1, PAY-2, AUD-2, and MFA-1 evidence remains in force."
+    }
+  ],
+  "summary": "The change adds an HTTPS fx-rates integration, a lookup helper that posts only a currency code, and an inventory entry with an owner and a data classification. The ticket covers every touched component, and independent code, security, and control-owner approvals all name the only commit. Payments CI on that commit is green, including the exhaustive integration control tests. Payment approval, release, access, and audit code covered by earlier evidence is unchanged, and no exception is required, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 194.83,
+    "tokens_in": 43928,
+    "tokens_out": 20373,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "99da356ef4d593d8212786c659fb8b23fd3d0e4be3f3cedc60abafd7e544e7f8",
+    "packet_tokens_est": 26354,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43928,
+      "outputTokens": 20373,
+      "cacheReadTokens": 168832,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 191252,
+    "duration_api_ms": 191252,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "variant": "v-d41520afcd",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LIM-1",
+      "status": "refuted",
+      "note": "At head 9c83683, requiredApprovals gives a single underwriter (minimum role UNDERWRITER) authority up to min(SENIOR_LIMIT, 2×UNDERWRITER_LIMIT) = 1,000,000. The approved limit is 500,000 for one underwriter, with 500,000–1,500,000 needing a senior underwriter. Code no longer matches the approved authority table."
+    },
+    {
+      "id": "MC-1",
+      "status": "open",
+      "note": "Approvals.java is in scope and was changed. The preparer check in approve() is unchanged in the diff, but the exhaustive makerCannotCheck control test only ran on b5cc185, not on the final commit, so it isn't shown on what would be merged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24191 (standard) was approved by change manager grace.kim on 2026-10-23, before the change opened. Its components (mortgage.approvals, mortgage.reporting, mortgage.tests) cover Approvals.java, PipelineReport.java and the new test."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by wen.li (p-wli), who holds change_approver for baseline-mortgage and is a different person from the author nneka.okafor (p-nokafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 9c83683, so no later commits are unapproved."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json ran on b5cc185. The later commit 9c83683 changes approval behaviour, so that run doesn't count, and there is no run on the final commit. The registered exhaustive LIM-1 control test (authorityLimitsMatchPolicy) compares against the approved 500,000 limit and would not pass on the head."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components (mortgage.approvals, mortgage.reporting, mortgage.tests) are all security_sensitive=false in the base components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are modified by the change, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change isn't flagged emergency, so no PIR is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from LIM-1, but the exception register has no exception for LIM-1 or mortgage.approvals. Only SES-1 (expired), LOG-1 and a withdrawn MFA-1 exception exist."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0405 supports LIM-1 with a proof of requiredApprovals at commit d30b2ad. requiredApprovals is changed in behaviour, so that evidence has lapsed, and no new exhaustive evidence is provided."
+    }
+  ],
+  "summary": "Commit 9c83683 changes requiredApprovals so that a single underwriter can approve loans up to 1,000,000, against the approved 500,000 limit. That violates LIM-1, and no exception in the register covers it. The only CI run is on the earlier commit b5cc185, which doesn't count because the later commit changes behaviour, and the exhaustive LIM-1 proof in the ledger has lapsed. The ticket, the independent code review and its commit coverage are in order, but the LIM-1 violation and the missing final-commit testing require rejection.",
+  "meta": {
+    "elapsed_s": 67.23,
+    "tokens_in": 321753,
+    "tokens_out": 6310,
+    "usd": 0.370294,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 6310,
+      "cache_read_input_tokens": 284301,
+      "cache_creation_input_tokens": 37426
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3702942,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

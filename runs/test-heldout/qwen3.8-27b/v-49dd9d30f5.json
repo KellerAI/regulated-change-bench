@@ -1,0 +1,81 @@
+{
+  "variant": "v-49dd9d30f5",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function's idempotency logic (find_release → return previous if not None) is unchanged; the diff only adds a comment and an unused timedelta import. The ponens trace in ACR-0403 (commit e5bf646…) and the passing test_sampled_release_is_idempotent in CI confirm the property still holds."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals and is_fully_approved are untouched by the diff. The proof record in ACR-0401 and the passing test_dual_control_grid_matches_policy in CI (172/172, 0 failures) confirm dual-control logic is intact."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve function and its self-approval guard are unchanged. The passing test_maker_cannot_check in CI confirms maker-checker is preserved."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25592 is type 'standard', status 'approved' by change_manager grace.kim at 2026-10-17T10:46Z, and its component 'payments.payments' covers the single file changed (payments.py maps to that component in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (p-ssantos, change_approver for payments, team payments-eng) approved the code_review on the exact head commit; she is a different person from author Mara Costa (p-mcosta), so the approval is independent."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is only one commit (cde8040c…), which is both the head and the commit named in the approval; no later commits exist to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the full suite (172 tests, 0 failures/errors/skipped) passing on the final commit cde8040c. All control tests for the touched obligations (test_sampled_release_is_idempotent, test_dual_control_grid_matches_policy, test_maker_cannot_check) are present, unskipped, and passing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff adds only a comment and an unused timedelta import to payments.py; no behavioral change to the release, required_approvals, is_fully_approved, or approve symbols. Under LAP-1, comment-only/formatting edits do not lapse prior evidence, so ACR-0401, ACR-0403, and the CI test results remain valid."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is deviated from by this change, so no exception is required. The existing exceptions in the register (EXC-0141 expired, EXC-0167 unrelated, EXC-0172 withdrawn) do not apply to this change."
+    }
+  ],
+  "summary": "PR-1994 adds a single explanatory comment and an unused timedelta import to the release function in payments/payments.py; no executable logic is altered. All applicable product obligations (PAY-1, PAY-2, MC-1) remain satisfied: the idempotency, dual-control, and maker-checker logic is unchanged, and CI on the final commit passes 172/172 including the relevant control tests. Process obligations (CHG-1 through CHG-4, LAP-1, EXC-1) are all met: the ticket is approved by a change manager, an independent change_approver (Sofia Santos) approved the sole/head commit, testing ran on that commit with all control tests passing, and the non-behavioral edit does not lapse prior evidence. The change is accepted.",
+  "meta": {
+    "elapsed_s": 174.44,
+    "tokens_in": 28232,
+    "tokens_out": 4959,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "99d6575db149d2bc1839dae18741c4572bfbbf2649d388bff9ccc4ad8d521cc8",
+    "packet_tokens_est": 25231,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14739,
+    "answer_chars": 3301,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.08,
+    "eval_s": 141.34,
+    "total_s": 174.44,
+    "tokens_est_ratio": 1.091,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

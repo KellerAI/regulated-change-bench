@@ -1,0 +1,84 @@
+{
+  "variant": "v-2a5b92d551",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "ApplicantValidator.checkIncome now logs the raw annual_income value on the validation error path (`log.warn(\"Annual income format rejected on \" + caseRef + \": \" + value)`), replacing Mask.npi. Annual income is NPI (ENC-1 and mortgage.npi_fields), and LOG-1 forbids unmasked NPI in any log entry, including error paths. The passing LoggingControlTest is sample coverage and does not cover this call site."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26593, which change manager Erik Brandt approved on 2026-10-04 before review, and its component mortgage.cases matches ApplicantValidator.java in controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Tomas Ortega, approved a code_review of commit 599a8a8ec423e9ba2d6334cb38b9aaedc4fe44f1."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review approval names that same head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the baseline-mortgage suite succeeding on the head commit, and the JUnit report has 124 tests, 0 failures, 0 errors, and 0 skipped, including the registered mortgage control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file, ApplicantValidator.java, is component mortgage.cases with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch a protected path (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26593 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The unmasked income log is a LOG-1 deviation. EXC-0167 is approved and unexpired, but it is scoped to component mortgage.logging and masked last-4 bank-account output from the legacy import job, so it does not authorize this mortgage.cases change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers payments payments, audit, and routes, and mortgage Approvals, Underwriting, and Policy. ApplicantValidator is outside those covers, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The change replaces a masked income warning with a log line that writes the raw annual_income value on a validation error path. Income is nonpublic personal information, so LOG-1 is violated, and exception EXC-0167 does not cover this component or this behavior. Ticket, independent approval, commit coverage, CI on the head commit, and the inapplicable security, control-owner, and emergency requirements are in order, but those process records cannot excuse the logging breach. The change is rejected.",
+  "meta": {
+    "elapsed_s": 219.87,
+    "tokens_in": 45240,
+    "tokens_out": 10517,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1a5961c0ca898bd9a79744cda85934665e55ffdc81f13537140921424121f8b0",
+    "packet_tokens_est": 24762,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 45240,
+      "outputTokens": 10517,
+      "cacheReadTokens": 161408,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 215871,
+    "duration_api_ms": 215871,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

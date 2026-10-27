@@ -1,0 +1,84 @@
+{
+  "variant": "v-22b2477c48",
+  "arm": "grok-cli",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The commit only adds AppLog.last(), which returns an existing line and does not write a log entry. The registered control test sampledFlowsDoNotLogNpi passed, but it is labelled sample while LOG-1 requires exhaustive evidence and the log-call-site domain is not closed, so the packet does not establish that every path, including error paths, is free of unmasked NPI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26119, which change manager Erik Brandt approved on 2026-10-14 before review. Its component mortgage.logging matches AppLog.java in controls/mortgage/components.json, and that is the only path touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code_review of commit c14e1b9. He has the change_approver role for baseline-mortgage and is not the author, Priya Raman, under any directory email."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The branch has one commit, c14e1b9, and both the code_review and security_review approvals name that commit, so the approvals cover what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-mortgage on c14e1b9, and the JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped. The LOG-1 control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi is included and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "AppLog.java is security_sensitive. Ines Halvorsen, a security_reviewer for all apps and not the author, approved a security_review of commit c14e1b9."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is AppLog.java, which is outside controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26119 is type standard and the change record sets emergency to false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. EXC-0167 is an approved LOG-1 exception for a legacy import job, not for this ops-console reader, and no deviation is recorded for this commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments, audit, routes, approvals, and underwriting on other commits. This change does not alter those paths, and no ledger entry covers AppLog.java."
+    }
+  ],
+  "summary": "Process records for PR-1989 are in order: the ticket is approved and scoped to mortgage.logging, independent code and security approvals name the only commit, protected-path and emergency rules are not triggered, and the mortgage suite passed on that commit including the LOG-1 control test. The product obligation LOG-1 still applies because AppLog.java is in its scope. The new method does not itself write a log line, but the registered test is only a sample and the log-call-site domain is not closed, so the packet does not exhaustively show that no log entry contains unmasked NPI. The change is held until that evidence is adequate.",
+  "meta": {
+    "elapsed_s": 154.75,
+    "tokens_in": 76813,
+    "tokens_out": 10580,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f4742f65e48ce44e12a1774d7c8450ace9b1b324182d5f8e4a5a85958b542aad",
+    "packet_tokens_est": 24186,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 76813,
+      "outputTokens": 10580,
+      "cacheReadTokens": 126336,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 151035,
+    "duration_api_ms": 151035,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

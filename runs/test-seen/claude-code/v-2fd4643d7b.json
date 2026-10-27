@@ -1,0 +1,87 @@
+{
+  "variant": "v-2fd4643d7b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The change edits controls/payments/policy-params.json, a protected path (controls/*), changing an approved policy value. The only control_owner approval is from mara.costa, who does not hold the control_owner role and is on payments-eng, the author's own team."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24532 is a standard ticket, approved by erik.brandt (change_manager) on 2026-09-28, before review. Its components (payments.policy, payments.controls-data) cover the touched files policy.py and controls/payments/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa, a change_approver for payments who is not the author (linh.nguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 44574ba, the change's only commit, so no later commits need checking."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the pr-checks run on head 44574ba succeeded. The JUnit report has 172 tests, 0 failures and 0 skipped, including the registered SES-1 exhaustive control test test_privileged_idle_timeout_within_policy. The report's hostname and timestamp don't match the ci-runner-04 record, and I could not rerun the suite in this sandbox."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.policy and payments.controls-data are not security_sensitive, and session.py was not modified, so no security_review approval is required."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "At head, PRIVILEGED_IDLE_MINUTES is 15 and payments.privileged_idle_minutes is 15, within the 15-minute bound; only the standard (non-privileged) timeout was raised to 45. The exhaustive SES-1 control test passed on the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No code covered by acceptance-ledger evidence (payments.py, audit.py, routes.py, Mortgage Java files) was changed, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "PR-1735 raises the payments standard idle timeout to 45 minutes by editing policy.py and the protected controls data file controls/payments/policy-params.json. The ticket, independent code review, approval on the final commit and CI on head are in order, and the privileged timeout stays within the 15-minute SES-1 bound. However, CHG-6 requires a control_owner approval from someone outside the author's team for changes to protected paths. The only such approval is from Mara Costa, who lacks the control_owner role and is on the author's team, payments-eng. The change is therefore rejected until a qualifying control owner (e.g. from the controls office) approves it.",
+  "meta": {
+    "elapsed_s": 116.13,
+    "tokens_in": 543066,
+    "tokens_out": 11295,
+    "usd": 0.628633,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 11295,
+      "cache_read_input_tokens": 481784,
+      "cache_creation_input_tokens": 61248
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6286328,
+    "permission_denials": 11,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "variant": "v-3855ac9d0f",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new branch at the top of match() in app.py serves GET /compat/account-number/{n} outside ROUTES/ROUTE_TABLE. It builds an ad-hoc Route for the privileged action view_account_number with mfa=False, so _authenticate skips the MFA check and a non-MFA session can reveal account numbers."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No exception in the register covers MFA-1 for payments.http or payments.routes. EXC-0172 is a withdrawn mortgage MFA-1 exception, so the deviation has no approved exception."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26400 is standard and was approved by change_manager Erik Brandt on 2026-10-12, before review. Its components [payments.http] cover the only touched file, app.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author (Sofia Santos), gave a code_review approval on head 91aab99."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 91aab99, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head from ci-runner-09 on 2026-10-14. The attached JUnit report is timestamped 2026-10-23, after the review time of 2026-10-19, and comes from hostname dev-laptop-7.local, so it cannot be tied to this CI run. The exhaustive MFA control test enumerates only the route table, so even a genuine pass would not cover the hard-coded bypass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "app.py (payments.http) is security_sensitive. Kofi Mensah, a security_reviewer, gave a security_review approval on head 91aab99."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0404 (MFA-1) covers only routes.py, which is unchanged, so it has not lapsed. It provides no evidence about the app.py dispatch change, and the change is refuted on MFA-1 regardless."
+    }
+  ],
+  "summary": "PR-1275 adds a hard-coded compatibility branch in app.py's match() that serves account-number reveals outside the route table. It sets mfa=False on the privileged view_account_number action, which directly violates MFA-1 ('no route is served outside the route table'; privileged routes require MFA). No approved exception covers this deviation. The ticket, independent code review and security review are in order, but the JUnit report's timestamp and host do not match the CI run. The change is rejected on MFA-1.",
+  "meta": {
+    "elapsed_s": 25.73,
+    "tokens_in": 41499,
+    "tokens_out": 2411,
+    "usd": 0.214216,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0384e49eb758ceb2bc084a72aa617371dcbc4d3c71f07a89d606d0db68fb1afd",
+    "packet_tokens_est": 27170,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 41499,
+      "output_tokens": 2411,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

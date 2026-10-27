@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-24542",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Payment advice gateway registration",
+    "components": [
+      "payments.controls-data",
+      "payments.integrations"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-12T18:42:00Z",
+    "risk": "medium"
+  }
+]

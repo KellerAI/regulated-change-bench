@@ -1,0 +1,1419 @@
+{
+  "split": "test-heldout",
+  "pack": "heldout",
+  "seed": "test-C",
+  "generated_at": "2026-10-23T13:52:05-0700",
+  "variants": {
+    "v-0492393c22": {
+      "family": "reporting_incident_pir",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-050f804567": {
+      "family": "retained_chain_evidence",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-06a8990f8b": {
+      "family": "reporting_incident_pir",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-09e77b2b60": {
+      "family": "ticket_component_handoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "critical",
+      "note": "approved ticket omits the document-servicing component"
+    },
+    "v-0dc6bf7a72": {
+      "family": "statement_error_context",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-108da1c3fa": {
+      "family": "confirmation_reuse_window",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "PAY-2"
+      ],
+      "severity": "critical",
+      "note": "idempotency lookup expires after one day and a later retry sends again"
+    },
+    "v-1610263ceb": {
+      "family": "advice_gateway_inventory",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "INV-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "new integration has no accountable owner and its registered control fails"
+    },
+    "v-197e8a33a4": {
+      "family": "report_action_namespace",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-1a2e995b0b": {
+      "family": "income_format_diagnostics",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-1a5383a9c8": {
+      "family": "report_action_namespace",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-1aef9d9e5d": {
+      "family": "engineering_account_review",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "code approval uses an alias of the PR author"
+    },
+    "v-1ca64fd731": {
+      "family": "portal_metadata_followup",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "code review precedes a behavior-changing format identifier commit"
+    },
+    "v-1d26c16657": {
+      "family": "pipeline_content_binding",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "green CI tested the preceding content, not the final executable constant"
+    },
+    "v-1d418cb037": {
+      "family": "session_exception_renewal",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "SES-1",
+        "EXC-1"
+      ],
+      "severity": "critical",
+      "note": "sixteen-minute privileged timeout relies on an expired exception"
+    },
+    "v-24faea5bfc": {
+      "family": "credit_response_evidence",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "decide returns different content but the accepted proof remains bound to its earlier implementation"
+    },
+    "v-2592d3f30d": {
+      "family": "withdrawal_hold_lifecycle",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "high",
+      "note": ""
+    },
+    "v-26df20b8a1": {
+      "family": "memo_update_telemetry",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-27866a191e": {
+      "family": "engineering_account_review",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "code approval uses an alias of the PR author"
+    },
+    "v-27bd07ed30": {
+      "family": "session_exception_portfolio",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "SES-1",
+        "EXC-1"
+      ],
+      "severity": "critical",
+      "note": "sixteen-minute privileged timeout relies on an out-of-component exception"
+    },
+    "v-2a5b92d551": {
+      "family": "income_format_diagnostics",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "income validation error writes the raw supplied NPI to application logs"
+    },
+    "v-2e5c1ecf35": {
+      "family": "credit_response_evidence",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "decide returns different content but the accepted proof remains bound to its earlier implementation"
+    },
+    "v-2eebe96b6b": {
+      "family": "confirmation_reuse_window",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "PAY-2"
+      ],
+      "severity": "critical",
+      "note": "idempotency lookup expires after one day and a later retry sends again"
+    },
+    "v-32c4de6a27": {
+      "family": "engineering_account_review",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "code approval uses an alias of the PR author"
+    },
+    "v-3369109bba": {
+      "family": "report_action_namespace",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "ACC-1"
+      ],
+      "severity": "critical",
+      "note": "unapproved namespaced actions are granted by stripping a prefix"
+    },
+    "v-34c5a20485": {
+      "family": "token_entropy_followup",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-350cd3183e": {
+      "family": "cross_desk_review",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "independent reviewer is authorized only for the other app"
+    },
+    "v-351cd2e57a": {
+      "family": "statement_archive_transport",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "ENC-2"
+      ],
+      "severity": "critical",
+      "note": "archive delivery downgrades a registered outbound endpoint to HTTP"
+    },
+    "v-358e3a58de": {
+      "family": "account_url_compatibility",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "MFA-1"
+      ],
+      "severity": "critical",
+      "note": "compatibility route is served outside the route table and bypasses MFA"
+    },
+    "v-362fd712f2": {
+      "family": "confirmation_reuse_window",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "PAY-2"
+      ],
+      "severity": "critical",
+      "note": "idempotency lookup expires after one day and a later retry sends again"
+    },
+    "v-3764edcd85": {
+      "family": "token_entropy_followup",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "critical",
+      "note": "security review covers the old token size only"
+    },
+    "v-3855ac9d0f": {
+      "family": "account_url_compatibility",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "MFA-1"
+      ],
+      "severity": "critical",
+      "note": "compatibility route is served outside the route table and bypasses MFA"
+    },
+    "v-3bce8a4ed9": {
+      "family": "ticket_component_handoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "critical",
+      "note": "approved ticket omits the document-servicing component"
+    },
+    "v-3f5fa25110": {
+      "family": "acting_control_ownership",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-40137b4161": {
+      "family": "reporting_incident_pir",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-7"
+      ],
+      "severity": "critical",
+      "note": "emergency PIR exists but occurred after the two-business-day deadline"
+    },
+    "v-41b7471931": {
+      "family": "document_receipt_journal",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4744b816d5": {
+      "family": "withdrawal_hold_lifecycle",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "RET-1"
+      ],
+      "severity": "high",
+      "note": "expired withdrawn cases lose NPI despite an active legal hold"
+    },
+    "v-49dd9d30f5": {
+      "family": "confirmation_reuse_window",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4a73ca8c1a": {
+      "family": "coapplicant_identifier",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4ae1d557ba": {
+      "family": "acting_control_ownership",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4bc69ed25b": {
+      "family": "account_url_compatibility",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "MFA-1"
+      ],
+      "severity": "critical",
+      "note": "compatibility route is served outside the route table and bypasses MFA"
+    },
+    "v-4d0f115a59": {
+      "family": "account_url_compatibility",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4dba9cd76a": {
+      "family": "engineering_account_review",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4e3e33e173": {
+      "family": "cross_desk_review",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-4fcae4cc69": {
+      "family": "diagnostics_security_signoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "critical",
+      "note": "security approval comes from a code approver without the security reviewer role"
+    },
+    "v-540d30a1c1": {
+      "family": "income_format_diagnostics",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-543619d02f": {
+      "family": "income_format_diagnostics",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "income validation error writes the raw supplied NPI to application logs"
+    },
+    "v-5566fd9449": {
+      "family": "retained_chain_evidence",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "changed audit verifier behavior leaves the non-rerunnable accepted ModelCheck analysis stale"
+    },
+    "v-5693e4087e": {
+      "family": "document_receipt_journal",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-56d856ce9c": {
+      "family": "document_receipt_journal",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "critical",
+      "note": "document receipt changes persisted state without an audit event"
+    },
+    "v-57449ce7d6": {
+      "family": "engineering_account_review",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-5da76ce910": {
+      "family": "diagnostics_security_signoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "critical",
+      "note": "security approval comes from a code approver without the security reviewer role"
+    },
+    "v-5e4277426a": {
+      "family": "statement_archive_transport",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-5f092d2988": {
+      "family": "withdrawal_hold_lifecycle",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "RET-1"
+      ],
+      "severity": "high",
+      "note": "expired withdrawn cases lose NPI despite an active legal hold"
+    },
+    "v-63f9400c3e": {
+      "family": "coapplicant_identifier",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "ENC-1"
+      ],
+      "severity": "critical",
+      "note": "new government identifier persists in plaintext outside the NPI registry"
+    },
+    "v-653a7b5f37": {
+      "family": "cross_desk_review",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-65e7b1ab7d": {
+      "family": "withdrawal_hold_lifecycle",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "high",
+      "note": ""
+    },
+    "v-66da558655": {
+      "family": "document_receipt_journal",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-6705a4d040": {
+      "family": "report_action_namespace",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "ACC-1"
+      ],
+      "severity": "critical",
+      "note": "unapproved namespaced actions are granted by stripping a prefix"
+    },
+    "v-691c95ca6b": {
+      "family": "memo_update_telemetry",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "critical",
+      "note": "persisted memo changes produce diagnostics but no audit event"
+    },
+    "v-694b96a558": {
+      "family": "cross_desk_review",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "independent reviewer is authorized only for the other app"
+    },
+    "v-7556b8074f": {
+      "family": "statement_archive_transport",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "ENC-2"
+      ],
+      "severity": "critical",
+      "note": "archive delivery downgrades a registered outbound endpoint to HTTP"
+    },
+    "v-75b419d08d": {
+      "family": "ticket_component_handoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "critical",
+      "note": "approved ticket omits the document-servicing component"
+    },
+    "v-77fa9fdee0": {
+      "family": "document_receipt_journal",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "critical",
+      "note": "document receipt changes persisted state without an audit event"
+    },
+    "v-79b034d504": {
+      "family": "cross_desk_review",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "independent reviewer is authorized only for the other app"
+    },
+    "v-7d2337db5f": {
+      "family": "confirmation_reuse_window",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "PAY-2"
+      ],
+      "severity": "critical",
+      "note": "idempotency lookup expires after one day and a later retry sends again"
+    },
+    "v-7dbb293847": {
+      "family": "income_format_diagnostics",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "income validation error writes the raw supplied NPI to application logs"
+    },
+    "v-7f1c71abb3": {
+      "family": "confirmation_reuse_window",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "PAY-2"
+      ],
+      "severity": "critical",
+      "note": "idempotency lookup expires after one day and a later retry sends again"
+    },
+    "v-825ab6d0f2": {
+      "family": "withdrawal_hold_lifecycle",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "high",
+      "note": ""
+    },
+    "v-82935dbe48": {
+      "family": "ticket_component_handoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "critical",
+      "note": "approved ticket omits the document-servicing component"
+    },
+    "v-88688c67ea": {
+      "family": "session_exception_portfolio",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "SES-1",
+        "EXC-1"
+      ],
+      "severity": "critical",
+      "note": "sixteen-minute privileged timeout relies on an out-of-component exception"
+    },
+    "v-88761f2070": {
+      "family": "token_entropy_followup",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "critical",
+      "note": "security review covers the old token size only"
+    },
+    "v-8a0d1103dc": {
+      "family": "session_exception_renewal",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-8a43d3e846": {
+      "family": "account_url_compatibility",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "MFA-1"
+      ],
+      "severity": "critical",
+      "note": "compatibility route is served outside the route table and bypasses MFA"
+    },
+    "v-8b746e3f8b": {
+      "family": "pipeline_content_binding",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "green CI tested the preceding content, not the final executable constant"
+    },
+    "v-8c2d5d39d0": {
+      "family": "pipeline_content_binding",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "green CI tested the preceding content, not the final executable constant"
+    },
+    "v-8c8642af6d": {
+      "family": "acting_control_ownership",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-6"
+      ],
+      "severity": "critical",
+      "note": "acting control owner belongs to the author's engineering team"
+    },
+    "v-8ce222f258": {
+      "family": "ticket_component_handoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "critical",
+      "note": "approved ticket omits the document-servicing component"
+    },
+    "v-8da58cfabb": {
+      "family": "memo_update_telemetry",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "critical",
+      "note": "persisted memo changes produce diagnostics but no audit event"
+    },
+    "v-8db3bb4c2b": {
+      "family": "memo_update_telemetry",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "critical",
+      "note": "persisted memo changes produce diagnostics but no audit event"
+    },
+    "v-90b3c34e93": {
+      "family": "session_exception_renewal",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-90defb827d": {
+      "family": "report_action_namespace",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "ACC-1"
+      ],
+      "severity": "critical",
+      "note": "unapproved namespaced actions are granted by stripping a prefix"
+    },
+    "v-971a7533f9": {
+      "family": "acting_control_ownership",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-9789550295": {
+      "family": "coapplicant_identifier",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-983549bb5a": {
+      "family": "portal_metadata_followup",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-98d3dcc114": {
+      "family": "portal_metadata_followup",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "code review precedes a behavior-changing format identifier commit"
+    },
+    "v-9a09b04a8d": {
+      "family": "coapplicant_identifier",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "ENC-1"
+      ],
+      "severity": "critical",
+      "note": "new government identifier persists in plaintext outside the NPI registry"
+    },
+    "v-9e25d9a2b7": {
+      "family": "acting_control_ownership",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-6"
+      ],
+      "severity": "critical",
+      "note": "acting control owner belongs to the author's engineering team"
+    },
+    "v-9ee9e4774b": {
+      "family": "statement_archive_transport",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "ENC-2"
+      ],
+      "severity": "critical",
+      "note": "archive delivery downgrades a registered outbound endpoint to HTTP"
+    },
+    "v-a0f40f7b59": {
+      "family": "portal_metadata_followup",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "code review precedes a behavior-changing format identifier commit"
+    },
+    "v-a10a56b727": {
+      "family": "statement_error_context",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "statement delivery failure interpolates account NPI into the log message"
+    },
+    "v-a14813a6ce": {
+      "family": "diagnostics_security_signoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "critical",
+      "note": "security approval comes from a code approver without the security reviewer role"
+    },
+    "v-a18ac368f2": {
+      "family": "credit_response_evidence",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "decide returns different content but the accepted proof remains bound to its earlier implementation"
+    },
+    "v-a97cd9fceb": {
+      "family": "session_exception_portfolio",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "SES-1",
+        "EXC-1"
+      ],
+      "severity": "critical",
+      "note": "sixteen-minute privileged timeout relies on an out-of-component exception"
+    },
+    "v-a9d63b1abc": {
+      "family": "report_action_namespace",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "ACC-1"
+      ],
+      "severity": "critical",
+      "note": "unapproved namespaced actions are granted by stripping a prefix"
+    },
+    "v-aa5ec5fd9a": {
+      "family": "credit_response_evidence",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-acdcf0a63b": {
+      "family": "pipeline_content_binding",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-ae20abf1d0": {
+      "family": "statement_error_context",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "statement delivery failure interpolates account NPI into the log message"
+    },
+    "v-aefa9ff4be": {
+      "family": "coapplicant_identifier",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "ENC-1"
+      ],
+      "severity": "critical",
+      "note": "new government identifier persists in plaintext outside the NPI registry"
+    },
+    "v-b5701da2c5": {
+      "family": "cross_desk_review",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-2"
+      ],
+      "severity": "critical",
+      "note": "independent reviewer is authorized only for the other app"
+    },
+    "v-b6dffc57c4": {
+      "family": "statement_error_context",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "statement delivery failure interpolates account NPI into the log message"
+    },
+    "v-b8ffc36801": {
+      "family": "engineering_account_review",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-bfafe85646": {
+      "family": "advice_gateway_inventory",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-c1319ea6b4": {
+      "family": "reporting_incident_pir",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-c8a182dbad": {
+      "family": "statement_error_context",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-ca3dc90e42": {
+      "family": "advice_gateway_inventory",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-cac79ab296": {
+      "family": "memo_update_telemetry",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-cad94f1b3c": {
+      "family": "statement_archive_transport",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-d0211ce306": {
+      "family": "retained_chain_evidence",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "changed audit verifier behavior leaves the non-rerunnable accepted ModelCheck analysis stale"
+    },
+    "v-d170369e0c": {
+      "family": "token_entropy_followup",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "critical",
+      "note": "security review covers the old token size only"
+    },
+    "v-d32f422367": {
+      "family": "advice_gateway_inventory",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-d36a6039b1": {
+      "family": "pipeline_content_binding",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "green CI tested the preceding content, not the final executable constant"
+    },
+    "v-d60425e389": {
+      "family": "token_entropy_followup",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-5"
+      ],
+      "severity": "critical",
+      "note": "security review covers the old token size only"
+    },
+    "v-d60b3ef381": {
+      "family": "withdrawal_hold_lifecycle",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "RET-1"
+      ],
+      "severity": "high",
+      "note": "expired withdrawn cases lose NPI despite an active legal hold"
+    },
+    "v-d648101605": {
+      "family": "income_format_diagnostics",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-d9a85ed846": {
+      "family": "statement_archive_transport",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-dae857b1ed": {
+      "family": "diagnostics_security_signoff",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-db60df7d29": {
+      "family": "advice_gateway_inventory",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "INV-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "new integration has no accountable owner and its registered control fails"
+    },
+    "v-dc24a1f420": {
+      "family": "advice_gateway_inventory",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "INV-1",
+        "CHG-4"
+      ],
+      "severity": "critical",
+      "note": "new integration has no accountable owner and its registered control fails"
+    },
+    "v-df861e2843": {
+      "family": "session_exception_renewal",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-e01283ff1d": {
+      "family": "portal_metadata_followup",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "code review precedes a behavior-changing format identifier commit"
+    },
+    "v-e03a8291bb": {
+      "family": "session_exception_portfolio",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "SES-1",
+        "EXC-1"
+      ],
+      "severity": "critical",
+      "note": "sixteen-minute privileged timeout relies on an out-of-component exception"
+    },
+    "v-e0e7f9d64d": {
+      "family": "session_exception_portfolio",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "SES-1",
+        "EXC-1"
+      ],
+      "severity": "critical",
+      "note": "sixteen-minute privileged timeout relies on an out-of-component exception"
+    },
+    "v-e14565a5c5": {
+      "family": "retained_chain_evidence",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "changed audit verifier behavior leaves the non-rerunnable accepted ModelCheck analysis stale"
+    },
+    "v-e1fa302b6e": {
+      "family": "account_url_compatibility",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-e38eb4c5b4": {
+      "family": "statement_error_context",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LOG-1"
+      ],
+      "severity": "critical",
+      "note": "statement delivery failure interpolates account NPI into the log message"
+    },
+    "v-e75d0dc6aa": {
+      "family": "portal_metadata_followup",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-3"
+      ],
+      "severity": "critical",
+      "note": "code review precedes a behavior-changing format identifier commit"
+    },
+    "v-e8b4dccd7b": {
+      "family": "coapplicant_identifier",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "ENC-1"
+      ],
+      "severity": "critical",
+      "note": "new government identifier persists in plaintext outside the NPI registry"
+    },
+    "v-ea9ec18f10": {
+      "family": "memo_update_telemetry",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "critical",
+      "note": "persisted memo changes produce diagnostics but no audit event"
+    },
+    "v-f083dff4d5": {
+      "family": "credit_response_evidence",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "decide returns different content but the accepted proof remains bound to its earlier implementation"
+    },
+    "v-f187b58990": {
+      "family": "session_exception_renewal",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "SES-1",
+        "EXC-1"
+      ],
+      "severity": "critical",
+      "note": "sixteen-minute privileged timeout relies on an expired exception"
+    },
+    "v-f419de6d0c": {
+      "family": "document_receipt_journal",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "AUD-1"
+      ],
+      "severity": "critical",
+      "note": "document receipt changes persisted state without an audit event"
+    },
+    "v-f41a09aa0e": {
+      "family": "retained_chain_evidence",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "LAP-1"
+      ],
+      "severity": "critical",
+      "note": "changed audit verifier behavior leaves the non-rerunnable accepted ModelCheck analysis stale"
+    },
+    "v-f6c286c366": {
+      "family": "diagnostics_security_signoff",
+      "mode": "clean",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-f94d4ffc10": {
+      "family": "ticket_component_handoff",
+      "mode": "defect",
+      "app": "baseline-mortgage",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-1"
+      ],
+      "severity": "critical",
+      "note": "approved ticket omits the document-servicing component"
+    },
+    "v-fa58db1f09": {
+      "family": "pipeline_content_binding",
+      "mode": "clean",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [],
+      "severity": "critical",
+      "note": ""
+    },
+    "v-ff938d0f3f": {
+      "family": "reporting_incident_pir",
+      "mode": "defect",
+      "app": "baseline-payments",
+      "pack": "heldout",
+      "obligations": [
+        "CHG-7"
+      ],
+      "severity": "critical",
+      "note": "emergency PIR exists but occurred after the two-business-day deadline"
+    }
+  },
+  "discarded": []
+}

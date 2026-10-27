@@ -1,0 +1,79 @@
+{
+  "variant": "v-983549bb5a",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24633 is approved by change manager Grace Kim on 2026-10-07, before review (as_of 2026-10-12). Its only component, mortgage.reporting, matches PipelineReport.java, the only path the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds the change_approver role for baseline-mortgage and approved a code_review. He is not the author Wen Li under any directory address."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit b609a45fd3e129fe4b36a672854fe71921d9f9e0, which is the commit being merged, so the approval covers the merged tree."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on the head commit. The JUnit report has 124 tests, 0 failures, 0 errors, and 0 skipped, including every registered mortgage control test. The change does not touch any product-obligation scope path, so no extra control-test obligation is triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file is PipelineReport.java, mapped to mortgage.reporting with security_sensitive false. No security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is confined to apps/baseline-mortgage/src/main/java/mortgage/PipelineReport.java and does not touch controls data, control tests, or CI paths in controls/protected-paths.json. No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-24633 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change adds a public format constant and does not deviate from a product obligation. No exception is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments payments, audit, and routes plus mortgage Approvals, Policy, and Underwriting. None of those paths change in this diff, so prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds a pipeline format identifier to PipelineReport.java and does not touch access, session, NPI, audit, underwriting, payment, or other product-control code, so those obligations are not applicable. The ticket is approved, names mortgage.reporting, and a different change approver approved the head commit. CI on that commit reports the mortgage suite passing, including the registered control tests. The file is not security-sensitive or on a protected path, and the change is not an emergency and does not lapse earlier evidence.",
+  "meta": {
+    "elapsed_s": 98.77,
+    "tokens_in": 42016,
+    "tokens_out": 5873,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "652232d3d45cba7e0def3f7ccca7a115fb4a9f9b39284c957342f5d2194265a8",
+    "packet_tokens_est": 24405,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42016,
+      "outputTokens": 5873,
+      "cacheReadTokens": 207744,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 95288,
+    "duration_api_ms": 95288,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

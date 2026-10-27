@@ -1,0 +1,21 @@
+{
+  "id": "PR-1627",
+  "title": "Ops console: most recent log line",
+  "description": "Ops console: most recent log line.\n\nChanges:\n- Add `AppLog.last()`\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "wen.li@fernbrook.example",
+  "branch": "li/change-639",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "ce9281bbd0776fd50f95b48e41a189e5d67201f6",
+  "commits": [
+    {
+      "sha": "ce9281bbd0776fd50f95b48e41a189e5d67201f6",
+      "message": "AppLog: expose the most recent line for the ops console",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-15T23:28:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25377",
+  "opened_at": "2026-10-15T23:28:00Z"
+}

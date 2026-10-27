@@ -1,0 +1,56 @@
+{
+  "variant": "v-3a3d1a0738",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25382 is approved (records/tickets.json) and lists components mortgage.reporting and mortgage.tests, which cover the changed PipelineReport.java and the new PipelineTotalTest."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from Declan Farrell, who does not have the change_approver role in the people directory, so the independent approval requirement is not met."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "Approval is attached to commit faa30607..., but a subsequent commit 1ad74... adds a new constant (functional change) without a new approval, violating the coverage rule."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded with all 125 tests passing (records/ci/run.json), satisfying the full test suite requirement."
+    }
+  ],
+  "summary": "The change fails to meet critical process obligations: it lacks a qualifying independent approver (CHG-2) and the existing approval does not cover the later functional commit (CHG-3). Although the ticket and testing requirements are satisfied, the missing approvals mandate rejection.",
+  "meta": {
+    "elapsed_s": 136.03,
+    "tokens_in": 25868,
+    "tokens_out": 5814,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e492eadc01cc37fb1ef7038d109853fda962bffc544b4a54e85b9d815a0d95c2",
+    "packet_tokens_est": 25903,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24032,
+    "answer_chars": 1321,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.87,
+    "eval_s": 116.92,
+    "total_s": 136.03,
+    "tokens_est_ratio": 0.974,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

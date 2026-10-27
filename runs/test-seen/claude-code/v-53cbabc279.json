@@ -1,0 +1,77 @@
+{
+  "variant": "v-53cbabc279",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24359 (standard) is approved by Erik Brandt (change_manager) at 2026-09-30T05:04Z, before the commit and review. Its components payments.policy and payments.controls-data cover the two touched paths (policy.py and controls/payments/policy-params.json) per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos@fernbrook.example, a payments change_approver and a different person from the author Mara Costa (none of Costa's addresses appear among the approvers)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both the code_review and control_owner approvals name the head commit 32b73be, which is the change's only commit, so nothing was added after approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json is a successful run of ci/run-tests.sh baseline-payments on head 32b73be; the JUnit report shows 172 tests, 0 failures, 0 skipped, and matches the test files at head, including the SES-1 control test. No product obligation's scope or closed domain is touched. A local re-run wasn't possible because pytest isn't installed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change alters an approved policy value in the protected path controls/payments/policy-params.json. Rachel Stein (control_owner, controls-office, outside the author's payments-eng team) approved the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers the changed code (policy.py STANDARD_IDLE_MINUTES or the standard_idle_minutes parameter); covered symbols in payments.py, audit.py, routes.py and mortgage files are unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "The change raises the payments standard (non-privileged) session idle timeout from 30 to 45 minutes in code and in the approved parameter file; no product obligation governs the standard timeout, and the privileged 15-minute limit (SES-1) and its scoped code are unchanged. The ticket was approved in advance and covers the touched components; independent code review and an out-of-team control_owner approval both name the final commit; no security-sensitive component is touched, it is not an emergency, and no exception is relied on. The recorded CI run on the final commit passes the full 172-test suite with nothing skipped, and no ledger evidence lapses. The PR description's claim of updated unit tests is inaccurate (no tests changed), but the existing tests read the value from the code and still pass, so no obligation is violated.",
+  "meta": {
+    "elapsed_s": 97.5,
+    "tokens_in": 521422,
+    "tokens_out": 8289,
+    "usd": 0.488016,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 8289,
+      "cache_read_input_tokens": 476008,
+      "cache_creation_input_tokens": 45378
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4880156,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

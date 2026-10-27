@@ -1,0 +1,112 @@
+{
+  "variant": "v-29641ffabf",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "routes.py adds POST /payees/{id}/reopen with action manage_payees and mfa=False, and manage_payees is in rbac.PRIVILEGED. The exhaustive control test test_privileged_routes_require_mfa fails on head and names this route."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The only exception cited, EXC-0214 (MFA-1, payments.routes), expired on 2026-10-19, before the review time of 2026-10-22, so it can't excuse the deviation. It was also scoped to the batch account, but the route is open to every manage_payees holder."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on head e91e4ff reports result 'failure'. The JUnit report shows 1 failure in 172 tests: the registered MFA-1 control test. The PR says unit tests were updated, but no test files change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0404 (MFA-1 control test, commit e5bf646) covers routes.py, and this change alters routes.py's behaviour, so that evidence has lapsed. The replacement run of the same exhaustive test fails, so there is no new evidence of the same strength."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "Reading the code, the new service.reopen_payee calls _audit with actor, action, target and clock time. But the only registered AUD-1 control test is a sample that doesn't exercise reopen, no test covers the new operation, and the suite didn't pass, so the required exhaustive evidence is missing."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "store.reopen_payee updates only status and closed_at, not NPI columns. The exhaustive control test test_every_npi_field_is_sealed_at_rest passes on head."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new execute call in store.py uses a fixed string literal with one '?' placeholder bound to (payee_id,). The exhaustive AST-based control test test_sql_statements_are_parameterized passes on head."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25655 is a standard ticket, approved by change manager grace.kim on 2026-10-14, before the change opened on 2026-10-16. Its components (payments.http, routes, service, store) cover app.py, routes.py, service.py and store.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "mara.costa (p-mcosta, change_approver for payments, a different person from author p-ssantos) approved code_review on head commit e91e4ff."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit e91e4ff, which is the change's only commit, so no later commits void them."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive components (payments.routes, payments.http, payments.store). kofi.mensah, a security_reviewer, approved security_review on head commit e91e4ff."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Not triggered: the change modifies only application source under apps/baseline-payments/payments/ and touches no controls data, control tests or CI paths."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Not triggered: the change is non-emergency and ticket CHG-25655 has type 'standard', so no post-implementation review is due."
+    }
+  ],
+  "summary": "The change adds a reopen-payee route for the privileged action manage_payees without requiring MFA, which violates MFA-1. The exception it relies on, EXC-0214, expired three days before review, so EXC-1 can't excuse it. The change's own CI run on the final commit failed on the MFA-1 control test, the earlier MFA-1 evidence has lapsed with nothing valid to replace it, and the new state-changing operation has no audit test. Ticket, independent code review and security review are in order, but the violated obligations require rejection.",
+  "meta": {
+    "elapsed_s": 79.52,
+    "tokens_in": 367878,
+    "tokens_out": 7213,
+    "usd": 0.484702,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7213,
+      "cache_read_input_tokens": 312275,
+      "cache_creation_input_tokens": 55575
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.48470199999999997,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

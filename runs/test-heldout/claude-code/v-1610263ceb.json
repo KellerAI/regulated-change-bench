@@ -1,0 +1,87 @@
+{
+  "variant": "v-1610263ceb",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The change adds integration 'payment-advice' to integrations.py but its asset-inventory.json entry has an empty owner. The exhaustive INV-1 control test test_integrations_are_inventoried fails with ('payment-advice', 'no owner'), and no exception covers INV-1."
+    },
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new integration's base_url is https://advice.fernbrook.example/v1, and the exhaustive registered control test test_integrations_use_tls passed in the CI run on the head commit; transports.py is unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26889 is a standard ticket, approved by change manager grace.kim on 2026-10-16, before the change opened on 10-17. Its components (payments.integrations, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, a payments change_approver who is not the author (mara.costa) under any of the author's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has one commit, 9e5d3b7, and all three approvals name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The change's CI run on head 9e5d3b7 has result 'failure': 2 of 172 tests failed, including the registered INV-1 control test test_integrations_are_inventoried and test_inventory_entries_have_owner_and_classification."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is in the security-sensitive component payments.integrations; a security_review approval from kofi.mensah (security_reviewer) is recorded on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path controls/payments/asset-inventory.json changed; a control_owner approval from bao.tran (controls-office, outside the author's payments-eng team) is recorded on the head commit."
+    }
+  ],
+  "summary": "The change registers a new NPI-classified outbound integration, payment-advice, but its asset inventory entry has no owner, which violates INV-1. The change's own CI run on the head commit failed on this: the exhaustive INV-1 control test and a controls-data test both fail, so CHG-4 is not met. No exception in the register covers INV-1. The ticket, independent code review, security review and control-owner approval are all in order, and the new endpoint uses TLS, but the INV-1 violation and the failed CI run require rejection.",
+  "meta": {
+    "elapsed_s": 82.4,
+    "tokens_in": 473806,
+    "tokens_out": 7108,
+    "usd": 0.44293,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 7108,
+      "cache_read_input_tokens": 430880,
+      "cache_creation_input_tokens": 42890
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.44293000000000005,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

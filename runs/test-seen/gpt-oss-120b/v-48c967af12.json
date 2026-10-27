@@ -1,0 +1,71 @@
+{
+  "variant": "v-48c967af12",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26136 is approved (status \"approved\"), lists components payments.payments and payments.tests which cover the changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval recorded in approvals.json by Sofia Santos (security_reviewer → change_approver for payments) who is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The second commit only adds a docstring (comment‑only), so the earlier approval still applies to the final commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (records/ci/run.json) with payments‑tests.xml showing 175 tests, 0 failures, including the new test_approvals_remaining."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Maker‑checker control test (controls.ApprovalsControlTest#makerCannotCheck) runs in the full test suite and passes, confirming the maker‑checker rule is unchanged."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record evidence/proofs/pay1-required-approvals.json (ledger entry ACR-0404) proves required_approvals matches the policy for all amounts; the function was not modified."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Ponens‑trace evidence/evidence/traces/pay2-release.json (ledger entry ACR-0403) shows release() remains idempotent; the release code was unchanged."
+    }
+  ],
+  "summary": "All product obligations affected by the change (MC‑1, PAY‑1, PAY‑2) remain satisfied with existing evidence, and all process obligations (CHG‑1…CHG‑4) are fulfilled by the approved ticket, independent code‑review, unchanged behaviour after the docstring edit, and a green CI run. No security‑sensitive components were altered, so CHG‑5 does not apply. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 196.46,
+    "tokens_in": 26168,
+    "tokens_out": 8732,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bd9c0b6f56fa703fed4a0641261b7b2f1c5073b20b0b11ac60107c1f9838837f",
+    "packet_tokens_est": 26300,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 35823,
+    "answer_chars": 2002,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 19.14,
+    "eval_s": 177.08,
+    "total_s": 196.46,
+    "tokens_est_ratio": 0.971,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

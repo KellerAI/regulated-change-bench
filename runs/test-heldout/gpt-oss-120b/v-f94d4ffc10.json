@@ -1,0 +1,61 @@
+{
+  "variant": "v-f94d4ffc10",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24773 lists component mortgage.reporting only; the change also modifies DocumentChecklist.java, which lacks a component entry, so the ticket does not cover all touched components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Declan Farrell (who has the change_approver role for mortgage‑mortgage and is not the author) is recorded."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "Only the final commit bb... has an approval; the earlier commit e778c3d2 also changes behavior and has no approval, violating the coverage rule."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on the final commit succeeded, with all 124 tests passing, satisfying the testing requirement."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "PipelineReport.java is marked security_sensitive, but no security_review approval from a security_reviewer is present."
+    }
+  ],
+  "summary": "The change fails critical process obligations: missing component coverage for DocumentChecklist.java (CHG-1), lacking approval for an earlier commit (CHG-3), and no security review for a security‑sensitive component (CHG-5). Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 89.53,
+    "tokens_in": 25037,
+    "tokens_out": 4784,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "43b6949bde90e7eff13769bef9093c92ee5c1fdd08b09a0681f1a46b25737969",
+    "packet_tokens_est": 25099,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 20079,
+    "answer_chars": 1406,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.73,
+    "eval_s": 73.58,
+    "total_s": 89.53,
+    "tokens_est_ratio": 0.973,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

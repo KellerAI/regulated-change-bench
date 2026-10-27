@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-26241",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Reconciliation session handoff interval",
+    "components": [
+      "payments.controls-data",
+      "payments.policy"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-16T10:48:00Z",
+    "risk": "low"
+  }
+]

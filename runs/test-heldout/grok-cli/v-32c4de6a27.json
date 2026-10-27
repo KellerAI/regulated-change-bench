@@ -1,0 +1,79 @@
+{
+  "variant": "v-32c4de6a27",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change PR-1714 names ticket CHG-24484, which Erik Brandt (change manager) approved on 2026-10-03, before the 2026-10-07 review. Its component payments.reports covers the only touched path, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example on commit 35e5ad9e. That address is Sofia Santos, the author, so the self-approval does not count and no independent payments change_approver approved it."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The recorded code_review names the head commit 35e5ad9e, and the change has no later commits that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeded on the final commit 35e5ad9e, and the JUnit report has 172 tests with 0 failures, errors, or skips. The change does not touch any product-obligation scope, so no additional control-test obligation is triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "reports.py is component payments.reports with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is application code, not a protected controls, control-test, or CI path, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24484 is type standard and the change is not marked emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. Adding the unused constant REPORT_FORMAT = \"ledger-csv/1\" is not a deviation from a product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments, audit, routes, and mortgage underwriting and approvals code. reports.py is not among those covered paths, so prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds a module-level format identifier in payments reports and does not touch access, session, encryption, logging, audit, retention, integration, SQL, or payment control code. The ticket, CI on the head commit, and the non-sensitive, non-protected scope meet the other process rules. It cannot be accepted because the sole code review is Sofia Santos approving her own commit under s.santos@fernbrook.example, which CHG-2 does not allow.",
+  "meta": {
+    "elapsed_s": 93.53,
+    "tokens_in": 42606,
+    "tokens_out": 5254,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b378c11c073b99abe13fc9878c9db9ec34da96b203edf56c950f13b14433a900",
+    "packet_tokens_est": 24375,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42606,
+      "outputTokens": 5254,
+      "cacheReadTokens": 227968,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 89723,
+    "duration_api_ms": 89723,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

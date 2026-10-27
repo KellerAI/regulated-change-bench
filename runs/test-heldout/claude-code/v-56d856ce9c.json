@@ -1,0 +1,102 @@
+{
+  "variant": "v-56d856ce9c",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "markDocumentReceived still changes state (loanCase.markReceived + store.save), but the change replaced its audit.record(EDIT_CASE, caseId, \"document_received:...\") with a log.info line, so this state change is no longer audited. The sampled AUD-1 control test doesn't check document receipt, so its pass doesn't contradict this."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new log.info call logs only the DocumentType enum value (PHOTO_ID, PAY_STUBS, etc.) and the case id, neither of which is NPI; the LOG-1 control test sampledFlowsDoNotLogNpi passed on the head commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from AUD-1, but the exception register has no exception for AUD-1 or mortgage.cases (only SES-1 expired, LOG-1 mortgage.logging, MFA-1 withdrawn), so the deviation isn't covered."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24798 is approved by Grace Kim (change_manager) on 2026-10-10, before the change opened, and its component mortgage.cases covers the only touched file, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approved by declan.farrell@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Wen Li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 3bf58db, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head 3bf58db; JUnit shows 124 tests, 0 skipped/failed, including the AUD-1 (sample) and LOG-1 (sample) control tests. I couldn't rerun it locally, and the report timestamps postdate as_of."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file, CaseService.java, belongs to mortgage.cases, which is security_sensitive: false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls data, control tests, CI) are touched; the diff changes only CaseService.java."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers CaseService.java (entries cover Approvals, Underwriting, Policy and payments files), so no existing evidence lapses."
+    }
+  ],
+  "summary": "PR-1300 removes the audit event from CaseService.markDocumentReceived, a state-changing operation, and replaces it with an application log line. This violates AUD-1 (every state change records an audit event), and no approved, unexpired exception covers AUD-1 for mortgage.cases. The process records are otherwise in order: an approved ticket, independent review on the head commit, and a green CI run. But the AUD-1 control test only samples operations and doesn't check this path, so the passing suite doesn't excuse the gap. The change is rejected.",
+  "meta": {
+    "elapsed_s": 81.5,
+    "tokens_in": 551687,
+    "tokens_out": 7084,
+    "usd": 0.444707,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 7084,
+      "cache_read_input_tokens": 511535,
+      "cache_creation_input_tokens": 40112
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.44470699999999996,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

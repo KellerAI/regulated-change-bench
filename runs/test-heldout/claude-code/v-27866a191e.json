@@ -1,0 +1,72 @@
+{
+  "variant": "v-27866a191e",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26625 is type standard, status approved, approved by Grace Kim (change_manager) at 2026-10-15T17:26Z, before the PR opened at 22:26Z. Its components [payments.reports] cover the only touched file, reports.py, which components.json maps to payments.reports."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example. The directory lists that address for Sofia Santos (p-ssantos), the author, so this is a self-approval and no independent change_approver has approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit c351621, and there are no later commits. It still does not count as an independent approval (see CHG-2)."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci/run.json is on head c351621 and succeeded. payments-tests.xml shows 172 tests with 0 failures, errors or skips. The change touches no product obligation's scope paths or closed domain, so no control tests are specifically required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change only adds a constant to reports.py, and no acceptance-ledger entry covers reports.py, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "PR-1668 adds a REPORT_FORMAT constant to payments/reports.py. That file is not security-sensitive, not protected, and outside every product obligation's scope. The ticket is valid and approved in time, and CI passed in full on the head commit. However, the only code_review approval is from s.santos@fernbrook.example, which the directory lists for Sofia Santos, the author, so CHG-2's requirement for an approval from someone other than the author is violated. The change is rejected until a different payments change_approver approves the head commit.",
+  "meta": {
+    "elapsed_s": 50.58,
+    "tokens_in": 195591,
+    "tokens_out": 4294,
+    "usd": 0.275471,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 18,
+    "tokens_detail": {
+      "input_tokens": 22,
+      "output_tokens": 4294,
+      "cache_read_input_tokens": 164238,
+      "cache_creation_input_tokens": 31331
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.2754706,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

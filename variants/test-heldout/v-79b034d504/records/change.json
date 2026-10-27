@@ -1,0 +1,21 @@
+{
+  "id": "PR-1577",
+  "title": "Pipeline format identifier",
+  "description": "Pipeline format identifier.\n\nChanges:\n- Identify the report format for portal consumers\n- Review coordinated with the payments engineering lead\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-478",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "91a6f1bf329095e83c54a6c238055df7b4902ff8",
+  "commits": [
+    {
+      "sha": "91a6f1bf329095e83c54a6c238055df7b4902ff8",
+      "message": "Reports: identify the export format",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-08T23:17:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25978",
+  "opened_at": "2026-10-08T23:17:00Z"
+}

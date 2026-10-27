@@ -1,0 +1,86 @@
+{
+  "variant": "v-aefa9ff4be",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds 'coapplicant_tax_id' to ApplicantFields.ALL (a persisted field) but does not add it to NpiRegistry.FIELDS. A co-applicant tax ID is a government identifier (NPI by the obligation's own definition), yet because it is absent from the NPI registry, CaseStore will persist it in plaintext rather than sealed form. The control test everyNpiFieldIsSealedAtRest passes only because it enumerates NpiRegistry.FIELDS, which does not include the new field."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Retention.purge() explicitly removes 'coapplicant_tax_id' after the NpiRegistry loop, and the RetentionControlTest#sampledPurgeRespectsHold passed in CI. Disposal of the new field is handled."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26287 is approved by Erik Brandt (change_manager); its components (mortgage.cases, mortgage.control-tests, mortgage.retention) cover every file the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code_review approval from Wen Li (change_approver, lending-eng, baseline-mortgage) for commit 387b4f14; Wen Li is not the author (Priya Raman) under any listed email."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has a single commit (387b4f14); both approvals name that exact commit, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the test run on the final commit 387b4f14 with result 'success'; JUnit reports show 124 tests, 0 failures, 0 errors, 0 skipped, including the required control tests for ENC-1 and RET-1 scope paths."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The three files touched map to components mortgage.cases (security_sensitive: false), mortgage.retention (security_sensitive: false), and mortgage.control-tests (security_sensitive: false); no security_sensitive component is touched, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java sits under the protected path apps/baseline-mortgage/src/test/java/controls/*; Bao Tran (control_owner, controls-office team, distinct from the author's lending-eng team) provided a control_owner approval for the same commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The ENC-1 violation (coapplicant_tax_id persisted without NPI registration) constitutes a deviation from a product obligation, yet no exception in the register covers this obligation/component pair; the only mortgage-logging exception (EXC-0167) is for a different obligation and scope."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries (ACR-0401 through ACR-0406) cover paths in payments and mortgage Approvals/Underwriting/Policy that this change does not modify; no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a co-applicant tax identifier (coapplicant_tax_id) to the applicant fields and to the retention purge, but it is not registered in NpiRegistry.FIELDS. Because the NPI registry drives the encryption-at-rest control (ENC-1), the new tax-ID field will be persisted in plaintext, violating the requirement that every NPI field be sealed. No approved exception in the register covers this deviation (EXC-1). All process obligations (CHG-1 through CHG-6, LAP-1) are satisfied, and the retention purge correctly removes the field, but the critical encryption gap requires rejection.",
+  "meta": {
+    "elapsed_s": 240.45,
+    "tokens_in": 29056,
+    "tokens_out": 7021,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8662525df3a3cd0989be95f4942d1e718e41588dde21bb4eb9036a5ffe442720",
+    "packet_tokens_est": 25740,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24318,
+    "answer_chars": 3379,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.09,
+    "eval_s": 206.33,
+    "total_s": 240.45,
+    "tokens_est_ratio": 1.101,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

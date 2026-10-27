@@ -1,0 +1,21 @@
+{
+  "id": "PR-1327",
+  "title": "Statement archive path support",
+  "description": "Statement archive path support.\n\nChanges:\n- Allow archive delivery through the existing statement gateway\n- Retain the gateway host and integration name\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-600",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "7735af6d70bb2b05ddfaf12dca6a4bf5d63feb68",
+  "commits": [
+    {
+      "sha": "7735af6d70bb2b05ddfaf12dca6a4bf5d63feb68",
+      "message": "Statements: support archive delivery paths",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-19T18:10:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25077",
+  "opened_at": "2026-10-19T18:10:00Z"
+}

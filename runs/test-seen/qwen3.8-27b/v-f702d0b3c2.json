@@ -1,0 +1,81 @@
+{
+  "variant": "v-f702d0b3c2",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26114 is type 'standard', status 'approved' by grace.kim (change_manager), and its components (payments.payments, payments.reports, payments.tests) cover all three files the change touches (memos.py→payments, reports.py→reports, test file→tests)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from mara.costa@fernbrook.example (change_approver for payments) is recorded on the first commit. Mara is not the author (Jonah Weiss), satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval targets commit 53afc79. The only later commit (aef8181) adds a docstring line to memos.py, which is a comment-only change; per the policy this does not void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit aef8181 with result 'success': 174 tests, 0 failures, 0 errors, 0 skipped. The change touches no code within any product obligation's scope, so no additional control tests are required beyond the full passing suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches memos.py (payments.payments, security_sensitive: false), reports.py (payments.reports, security_sensitive: false), and a test file (payments.tests, security_sensitive: false). No security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/*, apps/*/tests/controls/*, ci/*) is modified; the change is confined to apps/baseline-payments/payments/ and apps/baseline-payments/tests/. No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type 'standard', not 'emergency', so the emergency post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change (no code in any obligation's scope is modified), so no exception is required or invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "None of the files changed (memos.py, reports.py, test_released_by_payee.py) overlap with any code covered by existing acceptance ledger entries (payments.py, audit.py, routes.py, mortgage files). No prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1519 adds a simple reporting function (released_by_payee) to the payments reports module, a docstring tidying in memos.py, and two unit tests. No product obligation's scope paths are touched, so all product obligations (ACC, SOD, MFA, SES, ENC, LOG, AUD, RET, INV, SEC, MC, LIM, CRD, PAY) are unaffected. All process obligations are satisfied: the change ticket is approved and covers every touched component; an independent code_review approval from a qualified change_approver (Mara Costa) exists on the first commit, and the only later commit is comment-only; CI on the head commit shows 174 tests passing with zero failures or skips; no security-sensitive or protected-path component is modified; and no prior evidence lapses. The change is safe to accept.",
+  "meta": {
+    "elapsed_s": 169.61,
+    "tokens_in": 29006,
+    "tokens_out": 4807,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "99d2d6078378c806d8ce34276da51d385b74e7a0e4a5a5be386276a57bc62293",
+    "packet_tokens_est": 25560,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14527,
+    "answer_chars": 3144,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.97,
+    "eval_s": 135.61,
+    "total_s": 169.6,
+    "tokens_est_ratio": 1.107,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "variant": "v-80ae071cd2",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24810 is type standard and status approved. Grace Kim (change_manager) approved it at 2026-10-26T10:59Z, before the change was opened. Its components, mortgage.servicing and mortgage.tests, cover both touched paths: RateQuote.java and the mortgage test directory."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval comes from declan.farrell@fernbrook.example. He holds change_approver for baseline-mortgage and is a different person from the author, Wen Li (p-wli)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 57e5a0831a4c, which is the head and only commit of the change. No later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful run of ci-runner-09 on head 57e5a083. The attached JUnit reports do not belong to that run: they were produced on hostname dev-laptop-7.local, timestamped 2026-10-23, four days before the head commit existed (2026-10-27T18:59Z). There is therefore no valid report of the full suite passing on the final commit. No registered control tests are required, because no product-obligation scope is touched."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Every ledger entry covers code the change does not alter (payments.py, audit.py, routes.py, Approvals.java, Policy.java, Underwriting.java), so no accepted evidence lapses. Only RateQuote.java and a new unit test changed."
+    }
+  ],
+  "summary": "PR-1384 adds a pure helper, RateQuote.isSupportedTerm, plus a unit test. RateQuote.java belongs to the non-security-sensitive component mortgage.servicing and lies outside every product obligation's scope, and no protected paths are touched. The ticket, the independent approval and approval coverage are all in order. The testing evidence is invalid: the JUnit reports come from a developer's Mac, timestamped four days before the head commit was created, so they cannot be the change's CI run on the final commit. The change is rejected until a genuine CI run on 57e5a083 with matching reports is supplied.",
+  "meta": {
+    "elapsed_s": 20.52,
+    "tokens_in": 39513,
+    "tokens_out": 1973,
+    "usd": 0.197512,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "db7b399e31fb1732a21210f348c56b2c56094567af9502af219c6fcac63acb22",
+    "packet_tokens_est": 24910,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39513,
+      "output_tokens": 1973,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

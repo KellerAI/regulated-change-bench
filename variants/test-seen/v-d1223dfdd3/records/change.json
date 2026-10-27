@@ -1,0 +1,21 @@
+{
+  "id": "PR-1452",
+  "title": "Debug-level application logging",
+  "description": "Debug-level application logging.\n\nChanges:\n- Add `AppLog.debug` (same masking as other levels)\n- Unit test\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-979",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "2436446fbd160a1763d19a8c1544c07060d8a5cd",
+  "commits": [
+    {
+      "sha": "2436446fbd160a1763d19a8c1544c07060d8a5cd",
+      "message": "Logging: add debug level to AppLog",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-16T12:56:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26743",
+  "opened_at": "2026-10-16T12:56:00Z"
+}

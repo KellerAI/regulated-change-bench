@@ -1,0 +1,21 @@
+{
+  "id": "PR-1994",
+  "title": "Ops console: most recent log line",
+  "description": "Ops console: most recent log line.\n\nChanges:\n- Add `AppLog.last()`\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-318",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "9323021760c0a27b7c136801a37388d8b1c2600c",
+  "commits": [
+    {
+      "sha": "9323021760c0a27b7c136801a37388d8b1c2600c",
+      "message": "AppLog: expose the most recent line for the ops console",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-23T14:29:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25914",
+  "opened_at": "2026-10-23T14:29:00Z"
+}

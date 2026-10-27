@@ -1,0 +1,67 @@
+{
+  "variant": "v-4fa08ef7e2",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25285, a standard ticket approved by Erik Brandt (change_manager) at 2026-10-05T10:14Z, before the code review at 2026-10-06T00:15Z. Its components (mortgage.reporting, mortgage.tests) cover both touched paths: PipelineReport.java maps to mortgage.reporting and src/test/java/mortgage/* maps to mortgage.tests."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example (Wen Li, change_approver for baseline-mortgage), a different person from the author Nneka Okafor under any of her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 16d5e47, which is the head and only commit of the change, so no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head commit 16d5e47 succeeded: JUnit Jupiter reports 125 tests, 0 failures, errors or skips, including the new PipelineTotalTest. That matches the 125 @Test methods in 30 classes in the test sources. The change touches no product-obligation scope or closed domain, so no registered control tests are required. I could not re-run the suite locally because the JUnit console jar is unavailable."
+    }
+  ],
+  "summary": "PR-1708 adds a read-only totalCases() method to PipelineReport (mortgage.reporting, not security-sensitive) and one unit test. It touches no product-obligation scope, protected path, ledger-covered code or exception, so CHG-5, CHG-6, CHG-7, EXC-1, LAP-1 and the product obligations do not apply. The ticket was approved by a change manager before review and covers both components, an independent change_approver approved the head commit, and the CI run on the head commit shows the full 125-test suite passing with no skips. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 77.98,
+    "tokens_in": 480381,
+    "tokens_out": 6754,
+    "usd": 0.433786,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 6754,
+      "cache_read_input_tokens": 438159,
+      "cache_creation_input_tokens": 42186
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4337858,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

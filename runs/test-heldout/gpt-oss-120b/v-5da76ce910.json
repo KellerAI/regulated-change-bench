@@ -1,0 +1,66 @@
+{
+  "variant": "v-5da76ce910",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "LOG-1 requires exhaustive evidence that no NPI appears in logs; only a sampled control test is present and no exhaustive proof or approved exception covering this change is provided."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change references ticket CHG-26039, which is recorded as approved in tickets.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Wen Li (who has the change_approver role) is recorded, and Wen Li is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval is attached to the exact commit being merged, and no later commits alter behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded, running the full test suite including the registered control test for LOG-1."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "A security_review approval exists but is from Wen Li, who lacks the required security_reviewer role; no qualified security reviewer approval is present."
+    }
+  ],
+  "summary": "The change fails to satisfy required obligations: LOG-1 lacks the mandated exhaustive evidence, and CHG-5 is missing a qualified security reviewer approval. Because of these refuted obligations, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 100.34,
+    "tokens_in": 24203,
+    "tokens_out": 5308,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0df1f6d56e423cde5d6967768c77acf27b7ed36bdaae59bd6ba42b1015469df9",
+    "packet_tokens_est": 24115,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21176,
+    "answer_chars": 1507,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.29,
+    "eval_s": 82.87,
+    "total_s": 100.34,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

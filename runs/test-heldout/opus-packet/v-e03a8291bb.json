@@ -1,0 +1,88 @@
+{
+  "variant": "v-e03a8291bb",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets payments PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes to 16, which breaks the catalog bound of <= 15. No valid exception covers this deviation."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The cited exception EXC-0189 is scoped to component mortgage.session (Mortgage privileged sessions), not payments.session. The only payments.session exception, EXC-0141, expired on 2026-09-05, before the 2026-10-05 review time. No in-scope, unexpired exception exists."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24519 was approved by change manager Erik Brandt on 2026-10-02, before the change opened. Its components (payments.policy, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Sofia Santos, a payments change_approver who is not the author Jonah Weiss under any of his listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 31160f7, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the full payments suite run on head 31160f7: 172 tests, 0 failures or skips. That includes the registered SES-1 control test. The JUnit timestamp and hostname look inconsistent with the CI run, but this does not change the outcome. A pass also does not cure the bound violation."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "No security_sensitive component is touched: payments.policy and payments.controls-data are both marked non-sensitive. No security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is a protected path. Rachel Stein (control_owner, controls-office, outside the author's payments-eng team) approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers the changed symbol (PRIVILEGED_IDLE_MINUTES) or the session code, so no ledger evidence lapses."
+    }
+  ],
+  "summary": "PR-1845 raises the payments privileged idle timeout from 15 to 16 minutes, directly violating SES-1's bound of at most 15 minutes. The change relies on exception EXC-0189, but that exception is scoped to mortgage.session, not payments.session. The payments exception EXC-0141 expired before review. Ticket, independent code review, control-owner approval and CI are otherwise in order, but process approvals cannot cure an unexcepted violation of a product obligation. The change is rejected.",
+  "meta": {
+    "elapsed_s": 22.99,
+    "tokens_in": 38100,
+    "tokens_out": 2333,
+    "usd": 0.19906,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "74486ed0e8a0b7a37643603ea931b5168f1a566677a51d1863f8dd7ff6edecdf",
+    "packet_tokens_est": 24421,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38100,
+      "output_tokens": 2333,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

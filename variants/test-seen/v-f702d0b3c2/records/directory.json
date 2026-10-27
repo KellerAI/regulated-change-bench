@@ -1,0 +1,297 @@
+{
+  "people": [
+    {
+      "person_id": "p-praman",
+      "name": "Priya Raman",
+      "team": "lending-eng",
+      "roles": [
+        "engineer"
+      ],
+      "apps": [
+        "baseline-mortgage"
+      ],
+      "emails": [
+        "priya.raman@fernbrook.example",
+        "p.raman@fernbrook.example",
+        "praman-hw@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-tortega",
+      "name": "Tomas Ortega",
+      "team": "lending-eng",
+      "roles": [
+        "engineer"
+      ],
+      "apps": [
+        "baseline-mortgage"
+      ],
+      "emails": [
+        "tomas.ortega@fernbrook.example",
+        "t.ortega@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-nokafor",
+      "name": "Nneka Okafor",
+      "team": "lending-eng",
+      "roles": [
+        "engineer"
+      ],
+      "apps": [
+        "baseline-mortgage"
+      ],
+      "emails": [
+        "nneka.okafor@fernbrook.example",
+        "n.okafor@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-wli",
+      "name": "Wen Li",
+      "team": "lending-eng",
+      "roles": [
+        "engineer",
+        "change_approver"
+      ],
+      "apps": [
+        "baseline-mortgage"
+      ],
+      "emails": [
+        "wen.li@fernbrook.example",
+        "w.li@fernbrook.example",
+        "wenli-hw@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-dfarrell",
+      "name": "Declan Farrell",
+      "team": "lending-eng",
+      "roles": [
+        "engineer",
+        "change_approver"
+      ],
+      "apps": [
+        "baseline-mortgage"
+      ],
+      "emails": [
+        "declan.farrell@fernbrook.example",
+        "d.farrell@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-abello",
+      "name": "Aisha Bello",
+      "team": "payments-eng",
+      "roles": [
+        "engineer"
+      ],
+      "apps": [
+        "baseline-payments"
+      ],
+      "emails": [
+        "aisha.bello@fernbrook.example",
+        "a.bello@fernbrook.example",
+        "abello-hw@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-jweiss",
+      "name": "Jonah Weiss",
+      "team": "payments-eng",
+      "roles": [
+        "engineer"
+      ],
+      "apps": [
+        "baseline-payments"
+      ],
+      "emails": [
+        "jonah.weiss@fernbrook.example",
+        "j.weiss@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-lnguyen",
+      "name": "Linh Nguyen",
+      "team": "payments-eng",
+      "roles": [
+        "engineer"
+      ],
+      "apps": [
+        "baseline-payments"
+      ],
+      "emails": [
+        "linh.nguyen@fernbrook.example",
+        "l.nguyen@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-mcosta",
+      "name": "Mara Costa",
+      "team": "payments-eng",
+      "roles": [
+        "engineer",
+        "change_approver"
+      ],
+      "apps": [
+        "baseline-payments"
+      ],
+      "emails": [
+        "mara.costa@fernbrook.example",
+        "m.costa@fernbrook.example",
+        "mcosta-hw@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-ssantos",
+      "name": "Sofia Santos",
+      "team": "payments-eng",
+      "roles": [
+        "engineer",
+        "change_approver"
+      ],
+      "apps": [
+        "baseline-payments"
+      ],
+      "emails": [
+        "sofia.santos@fernbrook.example",
+        "s.santos@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-ihalvorsen",
+      "name": "Ines Halvorsen",
+      "team": "platform-security",
+      "roles": [
+        "security_reviewer"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "ines.halvorsen@fernbrook.example",
+        "i.halvorsen@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-kmensah",
+      "name": "Kofi Mensah",
+      "team": "platform-security",
+      "roles": [
+        "security_reviewer"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "kofi.mensah@fernbrook.example",
+        "k.mensah@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-rstein",
+      "name": "Rachel Stein",
+      "team": "controls-office",
+      "roles": [
+        "control_owner"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "rachel.stein@fernbrook.example",
+        "r.stein@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-btran",
+      "name": "Bao Tran",
+      "team": "controls-office",
+      "roles": [
+        "control_owner"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "bao.tran@fernbrook.example",
+        "b.tran@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-hvasquez",
+      "name": "Helena Vasquez",
+      "team": "ciso-office",
+      "roles": [
+        "risk_owner"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "helena.vasquez@fernbrook.example",
+        "h.vasquez@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-ohaddad",
+      "name": "Omar Haddad",
+      "team": "ciso-office",
+      "roles": [
+        "risk_owner"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "omar.haddad@fernbrook.example",
+        "o.haddad@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-gkim",
+      "name": "Grace Kim",
+      "team": "change-mgmt",
+      "roles": [
+        "change_manager"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "grace.kim@fernbrook.example",
+        "g.kim@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-ebrandt",
+      "name": "Erik Brandt",
+      "team": "change-mgmt",
+      "roles": [
+        "change_manager"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "erik.brandt@fernbrook.example",
+        "e.brandt@fernbrook.example"
+      ]
+    },
+    {
+      "person_id": "p-bot",
+      "name": "Platform Bot",
+      "team": "platform",
+      "roles": [
+        "automation"
+      ],
+      "apps": [
+        "*"
+      ],
+      "emails": [
+        "platform.bot@fernbrook.example"
+      ]
+    }
+  ],
+  "notes": "Emails listed for a person are all the same individual."
+}

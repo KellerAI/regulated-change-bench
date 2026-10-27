@@ -1,0 +1,97 @@
+{
+  "variant": "v-540d30a1c1",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only changed line is a log.warn call site in scope; it still wraps the income value in Mask.npi exactly as on base, and the other value in it is caseRef ('new case' or a case id, not NPI). Inspecting the one-line change covers it completely, and the registered LOG-1 control test (sample) passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24414 is approved by Erik Brandt (change_manager) at 2026-10-25T08:11Z, before the 2026-10-28 review, and lists mortgage.cases, the component of ApplicantValidator.java, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from declan.farrell@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Wen Li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names c52e3f63, which is the head and only commit of the change; there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on the head commit c52e3f63 succeeded: 124 Jupiter tests, 0 skipped, failed or errored, including every registered mortgage control test and the LOG-1 control test sampledFlowsDoNotLogNpi (labelled sample). A local re-run wasn't possible because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ApplicantValidator.java maps to mortgage.cases, which is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches no protected path (no controls data, control tests or CI), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency and the ticket type is standard, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change introduces no deviation from a product obligation and relies on no exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantValidator.java; the covered Approvals, Policy, Underwriting and payments code is unchanged."
+    }
+  ],
+  "summary": "The change is a single-commit, one-line rewording of the income-rejection log message in ApplicantValidator; the income value is still passed through Mask.npi, so the NPI content of the log is unchanged. The ticket was approved by a change manager before review and covers the touched component, an independent change approver reviewed the exact head commit, and CI on that commit passed the full suite including all registered control tests. No security-sensitive component, protected path, emergency, exception or ledger evidence is involved. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 106.73,
+    "tokens_in": 574102,
+    "tokens_out": 8748,
+    "usd": 0.540954,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 8748,
+      "cache_read_input_tokens": 521767,
+      "cache_creation_input_tokens": 52301
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5409544,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

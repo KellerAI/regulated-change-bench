@@ -1,0 +1,67 @@
+{
+  "variant": "v-c5c8bc16b9",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26025 is a standard ticket, approved by Erik Brandt (change_manager) on 2026-10-10, before the change opened. Its components (payments.payments, payments.tests) cover memos.py and tests/test_memo_preview.py according to controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a change_approver for payments. She is a different person from the author, Sofia Santos (p-ssantos)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names 03d6918. The later commit dc92ac6 adds a new module constant (PREVIEW_MIN_WIDTH = 8) to memos.py, which is a code change, not a comment, whitespace or formatting edit, so the approval is void and the head commit has no approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci/run.json is on the head commit dc92ac6 and succeeded; the JUnit report shows 174 tests, 0 failures, 0 skipped, including the new preview tests. No product obligation's scope or domain is touched, so no control tests are required. I could not re-run the suite (pytest is not installed), and the JUnit file's timestamp (2026-10-23) and hostname (dev-laptop-7.local) don't match run.json."
+    }
+  ],
+  "summary": "The change adds an unused-so-far memos.preview helper and its unit tests to payments. It falls outside every product obligation's scope and touches no security-sensitive or protected paths. The ticket, independent approver and CI run on the final commit are in order. However, the only code_review approval names 03d6918, and the later commit dc92ac6 adds a new constant, which is not a comment, whitespace or formatting edit, so under CHG-3 the approval is void and the merged head is unapproved. The change is rejected until the head commit gets a fresh approval.",
+  "meta": {
+    "elapsed_s": 78.18,
+    "tokens_in": 295367,
+    "tokens_out": 7341,
+    "usd": 0.414576,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 7341,
+      "cache_read_input_tokens": 251886,
+      "cache_creation_input_tokens": 43455
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4145762,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

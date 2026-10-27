@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-24221",
+    "type": "emergency",
+    "status": "approved",
+    "summary": "Emergency: pipeline report: total case count",
+    "components": [
+      "mortgage.reporting",
+      "mortgage.tests"
+    ],
+    "requested_by": "declan.farrell@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-05T22:01:00Z",
+    "risk": "low",
+    "deployed_at": "2026-10-07T18:01:00Z"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "variant": "v-4d0f115a59",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "Control test `test_routes_control` (exhaustive) passed in CI, covering the new privileged route with MFA required."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24965 is approved and lists components `payments.http` and `payments.routes`, which match the changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Sofia Santos (a change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the sole commit of the change; no later behavior‑changing commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (172 tests, 0 failures) on the final commit, including all required control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval from Kofi Mensah (security_reviewer) is present for the security‑sensitive components."
+    }
+  ],
+  "summary": "All product and process obligations that the change touches are satisfied with adequate evidence: the new privileged route is covered by exhaustive MFA testing, the change ticket, approvals, CI results, and required security review are all present and valid. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 79.24,
+    "tokens_in": 27448,
+    "tokens_out": 3768,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8572f6e503e2adcafdde56724b701fa12b1e3b99acc0f2dcb9200b8268ce0a07",
+    "packet_tokens_est": 27714,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14533,
+    "answer_chars": 1473,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 20.23,
+    "eval_s": 58.82,
+    "total_s": 79.24,
+    "tokens_est_ratio": 0.968,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

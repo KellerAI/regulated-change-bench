@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26477",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Reopen withdrawn cases",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "declan.farrell@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-22T21:44:00Z",
+    "risk": "low"
+  }
+]

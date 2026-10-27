@@ -1,0 +1,76 @@
+{
+  "variant": "v-1610263ceb",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change record references ticket CHG-26889, which is approved and lists components payments.controls-data and payments.integrations that cover the modified files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Sofia Santos (change_approver for payments) is recorded in approvals.json and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only a single commit exists and the code_review approval applies to that commit; no later behavior‑changing commits are present."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run reports failure; JUnit results show two test failures (inventory tests) indicating the full test suite did not pass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval by Kofi Mensah (security_reviewer) is present for the changed security‑sensitive component."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control owner approval by Bao Tran (control_owner) is recorded for the change to a protected path (asset-inventory.json)."
+    },
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "New integration uses an HTTPS URL; the TLS control test passed (no failure reported for test_integrations_use_tls)."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "Inventory test `test_integrations_are_inventoried` fails because the new entry lacks an owner, violating the outbound integrations inventory requirement."
+    }
+  ],
+  "summary": "The change fails to meet critical obligations. CHG-4 requires the full test suite to pass, but CI reported failures, and INV-1 is violated because the new integration lacks an owner in the inventory. Since at least one product and one process obligation are refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 79.52,
+    "tokens_in": 24916,
+    "tokens_out": 3952,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5e82763547c553666de76d9f63356fdce20f5f9dee1b94e8b5dfce73d3896b22",
+    "packet_tokens_est": 24867,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14358,
+    "answer_chars": 2020,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.89,
+    "eval_s": 61.41,
+    "total_s": 79.52,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

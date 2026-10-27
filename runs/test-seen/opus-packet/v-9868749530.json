@@ -1,0 +1,88 @@
+{
+  "variant": "v-9868749530",
+  "arm": "opus-packet",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "open",
+      "note": "The ternary in required_approvals reads as equivalent to the old if/return, and DUAL_CONTROL_THRESHOLD is unchanged. But evidence required is exhaustive: the proof ACR-0401 was produced on the old form, and the only fresh exhaustive evidence (test_dual_control_grid_matches_policy) sits in a JUnit report of uncertain provenance (see CHG-4)."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26682 is standard and approved by change manager Erik Brandt on 2026-10-20, before the change opened on 2026-10-23. Its component payments.payments covers payments.py, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (change_approver for payments) gave a code_review approval. She is a different person from the author Sofia Santos and none of her addresses belong to Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head faccf9a0, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json claims ci-runner-01 ran the suite on head, starting 2026-10-23T00:13Z. The attached JUnit report instead names hostname dev-laptop-7.local (not in the directory) and is timestamped 2026-10-23T20:30Z, about 20 hours after the run started. It cannot be established that this report is the CI run's result on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py is in component payments.payments, which is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (ticket type standard, emergency=false), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No deviation from a product obligation is claimed and no exception is relied upon."
+    },
+    {
+      "id": "LAP-1",
+      "status": "open",
+      "note": "Ledger entry ACR-0401 (PAY-1 proof) covers required_approvals. That code was restructured, not merely reformatted, so the proof lapses and new exhaustive evidence is needed. The candidate replacement, the control test in CI, has unverified provenance."
+    }
+  ],
+  "summary": "The change is a small refactor of required_approvals in payments payments.py. Ticket, independent approval and approval-on-head are all in order. However, the JUnit report attached to the CI run comes from a developer machine (dev-laptop-7.local), not the recorded executor ci-runner-01, and its timestamp does not match the run. The testing evidence on the final commit therefore cannot be trusted. Because the PAY-1 proof lapses with the code restructure and its replacement evidence depends on that report, PAY-1, LAP-1 and CHG-4 remain open and the change is held.",
+  "meta": {
+    "elapsed_s": 24.45,
+    "tokens_in": 38699,
+    "tokens_out": 2456,
+    "usd": 0.203916,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9d153c4701e966153208ca65727c2d8738f481ea84d09275ad1e47d3f274d978",
+    "packet_tokens_est": 25056,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38699,
+      "output_tokens": 2456,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

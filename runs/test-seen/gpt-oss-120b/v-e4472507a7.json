@@ -1,0 +1,56 @@
+{
+  "variant": "v-e4472507a7",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The ticket's component list does not cover the components of the changed files; directory.py and memos.py have no component mapping in controls/payments/components.json, and the listed component payments.payees is not defined."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Mara Costa (change_approver for payments, not the author) is recorded in approvals.json."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The approval only references the second commit; the first commit adds new behaviour (charity category) and lacks an independent approval, violating CHG-3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with full test suite passing (records/ci/run.json and payments-tests.xml), satisfying the testing requirement."
+    }
+  ],
+  "summary": "The change fails critical process obligations: CHG-1 is not satisfied because the ticket does not correctly cover the touched components, and CHG-3 is violated as the first behaviour‑changing commit lacks an approval. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 136.98,
+    "tokens_in": 25442,
+    "tokens_out": 6060,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ad4b2b91933da7738780b13a6721f2aa6cfc2e8224025614e5ffc81c5c1d9528",
+    "packet_tokens_est": 25297,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24597,
+    "answer_chars": 1261,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.4,
+    "eval_s": 118.33,
+    "total_s": 136.98,
+    "tokens_est_ratio": 0.981,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

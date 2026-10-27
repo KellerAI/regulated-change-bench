@@ -1,0 +1,89 @@
+{
+  "variant": "v-227f717c6d",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "fx_rate sends to FX_RATES_URL http://fx.fernbrook.example/rates through outbound._transport.send. That outbound endpoint is not https, and the exception register has no approved ENC-2 exception."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The treasury FX host fx.fernbrook.example is an outbound integration and is absent from controls/payments/asset-inventory.json, which lists only core-banking, sanctions-screening, and statement-delivery. It is also outside integrations.py, so it has no owner or data classification."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24322 is approved by change manager Erik Brandt and its components list payments.payments, the component assigned to apps/baseline-payments/payments/payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos recorded a code_review approval on commit 932e5b34. She is a payments change_approver and is a different person from author Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 932e5b34b467e5843f6e198754249ea313dc1d64, the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success for ci/run-tests.sh baseline-payments on commit 932e5b34. The JUnit report has 172 tests, 0 failures, 0 errors, and 0 skipped, including the registered payments control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed path maps to payments.payments, which components.json marks security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is confined to apps/baseline-payments/payments/payments.py and does not change controls data, control tests, or CI."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "CHG-24322 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The plaintext FX call and missing inventory entry deviate from ENC-2 and INV-1. No register entry is an approved, unexpired exception for those obligations and payments.payments or payments.integrations."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger coverage of required_approvals, release, audit.py, and routes.py is unchanged in behavior by this diff, which only adds fx_rate and FX_RATES_URL."
+    }
+  ],
+  "summary": "The change adds an outbound treasury FX lookup in payments.py to http://fx.fernbrook.example/rates. That endpoint does not use https and is not in the approved asset inventory, and no valid exception covers either gap. Change-ticket, independent approval, commit coverage, CI on the head commit, and the emergency, protected-path, and security-sensitive-component rules are satisfied, but the TLS and inventory violations block acceptance.",
+  "meta": {
+    "elapsed_s": 156.12,
+    "tokens_in": 41178,
+    "tokens_out": 11096,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "13e4524324fe1bfae970a0e9232afd43fc07b5c6a51e88375f919d3951551712",
+    "packet_tokens_est": 25261,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41178,
+      "outputTokens": 11096,
+      "cacheReadTokens": 186240,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 148415,
+    "duration_api_ms": 148415,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "variant": "v-f50cf085c7",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change names CHG-24851, status approved by erik.brandt (change_manager) at 2026-10-08T14:54Z, before the PR opened on 2026-10-10; its components payments.payees and payments.tests cover directory.py and tests/test_charity_payees.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from sofia.santos (p-ssantos, change_approver for payments), a different person from the author mara.costa (p-mcosta) under all of her directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 9dd0560, which is the change's only commit, so no later commits need assessing."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a success on head 9dd0560 running ci/run-tests.sh baseline-payments; the JUnit report has 173 tests, 0 failures/errors/skips, including the new charity test and all payments control tests. directory.py is outside every product obligation's scope paths and closed domains and has no log or SQL call sites, so no specific control test is triggered. I could not re-run it locally because pytest is missing, and the report's timestamp and host don't match the recorded runner."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.payees and payments.tests are both marked security_sensitive: false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No changed path falls under controls/protected-paths.json (no controls data, control tests or CI changed), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change has emergency: false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; no product-obligation deviation is introduced, and none of the registered exceptions is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover payments.py, audit.py, routes.py and mortgage Approvals/Policy/Underwriting. None of these is modified by this change, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds 'charity' to the payments payee category whitelist and adds a unit test. It touches only payments.payees and payments.tests, neither of which is security-sensitive, protected, or in any product obligation's scope. The ticket was approved by a change manager before review, an independent payments change approver approved the exact head commit, and the recorded CI run on the head commit passed the full suite including all control tests. No ledger evidence lapses and no exception is needed, so every applicable obligation is shown and the change is accepted.",
+  "meta": {
+    "elapsed_s": 67.34,
+    "tokens_in": 289563,
+    "tokens_out": 6297,
+    "usd": 0.415985,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 6297,
+      "cache_read_input_tokens": 241197,
+      "cache_creation_input_tokens": 48342
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.41598540000000006,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

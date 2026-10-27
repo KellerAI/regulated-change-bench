@@ -1,0 +1,92 @@
+{
+  "variant": "v-80ae071cd2",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-24810, approved by change manager Grace Kim on 2026-10-26, before the Oct 28 review. Its components (mortgage.servicing, mortgage.tests) cover both touched paths per the base components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is by declan.farrell@fernbrook.example, who has the change_approver role for baseline-mortgage. He is a different person from the author, Wen Li, under every address in the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 57e5a08, and there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the baseline-mortgage suite passing on head 57e5a08: 126 tests, 0 failures, 0 errors, 0 skipped, including both new QuoteTermTest cases. No product obligation's scope or domain is touched, so no registered control tests were required. A local rerun wasn't possible because the JUnit jar is missing, so this rests on the recorded run."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components are mortgage.servicing (RateQuote.java) and mortgage.tests, and neither is marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths are changed: nothing under controls/, ci/ or the control-test directories, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change deviates from no product obligation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers RateQuote.java or the new test, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a one-line RateQuote.isSupportedTerm helper, which wraps the existing TERMS_YEARS check, plus a unit test. Neither file falls within the scope or closed domain of any product obligation. The approved ticket covers both components, an independent change approver reviewed the head commit, and the recorded CI run on the head commit shows the full suite passing with no skips. No security-sensitive or protected paths are touched, it is not an emergency change, and no ledger evidence or exceptions are involved, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 70.53,
+    "tokens_in": 375684,
+    "tokens_out": 6295,
+    "usd": 0.373591,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6295,
+      "cache_read_input_tokens": 339729,
+      "cache_creation_input_tokens": 35925
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3735908,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

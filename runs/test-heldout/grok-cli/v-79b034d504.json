@@ -1,0 +1,79 @@
+{
+  "variant": "v-79b034d504",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25978 is approved by change manager Grace Kim on 2026-10-06, before review, and its component mortgage.reporting is the component assigned to PipelineReport.java, the only file changed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from Mara Costa, a change_approver for payments only. baseline-mortgage approvers are Wen Li and Declan Farrell, and neither approved this change."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 91a6f1bf329095e83c54a6c238055df7b4902ff8, and the code_review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success for ci/run-tests.sh baseline-mortgage on the head commit, and the JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped. The change does not touch any product-obligation scope, so no additional control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "PipelineReport.java is component mortgage.reporting with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected paths (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change adds a report format constant and does not deviate from a product obligation, so no exception is required. The register entries are unused by this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger covers are payments, audit, routes, approvals, policy, and underwriting. None of that code changes in this diff, so prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds a public format constant to PipelineReport.java and does not touch access, credit, payment, encryption, logging, or other product-control code. The ticket, commit binding, tests, and conditional process rules are in order, and no ledger evidence lapses. It still cannot be accepted: the sole code review is from Mara Costa, who is a change approver for payments, not for baseline-mortgage. Independent approval for this app is missing.",
+  "meta": {
+    "elapsed_s": 95.56,
+    "tokens_in": 60548,
+    "tokens_out": 9548,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "d1352eff23bf5a9e281231c0e68cbae71621be25535ca661ee427df47c92840d",
+    "packet_tokens_est": 24284,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 60548,
+      "outputTokens": 9548,
+      "cacheReadTokens": 109440,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 91671,
+    "duration_api_ms": 91671,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

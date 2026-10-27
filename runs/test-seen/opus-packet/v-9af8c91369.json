@@ -1,0 +1,68 @@
+{
+  "variant": "v-9af8c91369",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24221 was approved by Erik Brandt, a change_manager, on 2026-10-05, before review. Its components (mortgage.reporting, mortgage.tests) cover both touched paths: PipelineReport.java and the mortgage test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li holds change_approver for baseline-mortgage, is not the author (Declan Farrell), and gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit cce8b32, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful ci/run-tests.sh baseline-mortgage run on head cce8b32: 125 JUnit tests, 0 failures and 0 skipped, including the new PipelineTotalTest. No product obligation's scope or domain is touched, so no specific control tests are required. The JUnit timestamps and host metadata do not match run.json, which is worth noting, but the run is attributed to the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "The emergency ticket records deployment at 2026-10-07T18:01Z (a Wednesday), so a pir approval by someone other than the author was due by 2026-10-09. At review time (2026-10-14) no pir approval exists in records/approvals.json, so the review is overdue."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers PipelineReport.java or the new test. The covered Approvals, Policy, Underwriting, payments and audit code is unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds a read-only totalCases() method to PipelineReport (mortgage.reporting, not security-sensitive) and a unit test. It touches no product obligation's scope, no protected path and no security-sensitive component. The ticket, independent code review, approval coverage and CI on the final commit are all in order. However, the change was deployed under the emergency procedure on 2026-10-07, and the required post-implementation review was due within 2 business days. No pir approval is recorded as of 2026-10-14, so CHG-7 is violated and the change is rejected.",
+  "meta": {
+    "elapsed_s": 15.98,
+    "tokens_in": 39020,
+    "tokens_out": 1612,
+    "usd": 0.18832,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0152fae8560bd7fa57b870aaa6d8fb76b24a4afd7d57c3992d04c0d2d1cf391e",
+    "packet_tokens_est": 24788,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39020,
+      "output_tokens": 1612,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

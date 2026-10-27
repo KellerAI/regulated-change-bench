@@ -1,0 +1,61 @@
+{
+  "variant": "v-65e7b1ab7d",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The change adds a redundant `isClosedOut(loanCase.status())` condition to the legal-hold check in Retention.java. Because the preceding guard already returns false for non-closed-out cases, the added conjunct is always true at that point, so the legal-hold protection is unchanged. The control test `controls.RetentionControlTest#sampledPurgeRespectsHold` passed in CI, confirming NPI is still not purged under legal hold."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25474 is approved by change_manager grace.kim and lists component 'mortgage.retention', which covers the sole file changed (Retention.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from declan.farrell@fernbrook.example (change_approver for baseline-mortgage) is present; Declan is a different person from author Tomas Ortega, so the approval is independent."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit 9c3994b, which is the only and head commit of the change; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit 9c3994b with 124 tests, 0 failures, 0 errors, 0 skipped. The RET-1 control test (sampledPurgeRespectsHold) is present and passing, satisfying the testing requirement for the touched obligation."
+    }
+  ],
+  "summary": "The change is a single-line edit to Retention.java that adds a redundant `isClosedOut` conjunct to the legal-hold guard; because the first guard already filters to closed-out cases, the behaviour is unchanged and RET-1 remains satisfied. All four process obligations (CHG-1 through CHG-4) are met: the ticket is approved and scoped correctly, an independent change_approver signed off on the sole commit, and CI on that commit shows the full suite green including the RET-1 control test. CHG-5, CHG-6, CHG-7, EXC-1, and LAP-1 are not triggered because the file is not security-sensitive, not in a protected path, the change is not emergency, no exception is relied upon, and no ledger evidence covers Retention.java. All applicable obligations are shown; the change is accepted.",
+  "meta": {
+    "elapsed_s": 154.61,
+    "tokens_in": 27504,
+    "tokens_out": 4358,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bbc937792a19ad555e37a37cac3c9743f2938ee9a58907f53a8b7e6761d310a2",
+    "packet_tokens_est": 24115,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13844,
+    "answer_chars": 2219,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.08,
+    "eval_s": 122.49,
+    "total_s": 154.6,
+    "tokens_est_ratio": 1.111,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

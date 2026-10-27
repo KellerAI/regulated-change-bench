@@ -1,0 +1,38 @@
+[
+  {
+    "id": "EXC-0141",
+    "obligation": "SES-1",
+    "component": "payments.session",
+    "scope": "Batch reconciliation service account sessions",
+    "status": "approved",
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "helena.vasquez@fernbrook.example",
+    "approved_at": "2026-03-25",
+    "expires": "2026-09-21",
+    "compensating_control": "Service account restricted to reconciliation endpoints; activity reviewed weekly"
+  },
+  {
+    "id": "EXC-0167",
+    "obligation": "LOG-1",
+    "component": "mortgage.logging",
+    "scope": "Legacy import job writes masked last-4 of bank account number",
+    "status": "approved",
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "omar.haddad@fernbrook.example",
+    "approved_at": "2026-07-18",
+    "expires": "2027-01-09",
+    "compensating_control": "Import logs retained 30 days in restricted bucket"
+  },
+  {
+    "id": "EXC-0172",
+    "obligation": "MFA-1",
+    "component": "mortgage.routes",
+    "scope": "Read-only health route used by the load balancer",
+    "status": "withdrawn",
+    "requested_by": "declan.farrell@fernbrook.example",
+    "approved_by": null,
+    "approved_at": null,
+    "expires": null,
+    "compensating_control": null
+  }
+]

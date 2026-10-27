@@ -1,0 +1,21 @@
+{
+  "id": "PR-1586",
+  "title": "Restore the reporting format marker",
+  "description": "Restore the reporting format marker.\n\nChanges:\n- Restore format identification after the reporting incident\n- Emergency release followed by operations review\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-914",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "e2e6bd80219c6095409acb90b923b17218205e55",
+  "commits": [
+    {
+      "sha": "e2e6bd80219c6095409acb90b923b17218205e55",
+      "message": "Reports: identify the export format",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-23T17:51:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-26962",
+  "opened_at": "2026-10-23T17:51:00Z"
+}

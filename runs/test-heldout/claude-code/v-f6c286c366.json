@@ -1,0 +1,77 @@
+{
+  "variant": "v-f6c286c366",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change edits AppLog.java (MAX_LINES 10,000 to 12,000), which is in LOG-1 scope. LOG-1 requires exhaustive evidence, but the only registered control test (LoggingControlTest#sampledFlowsDoNotLogNpi) is labelled 'sample', the log call-site domain is open, and no ledger entry covers LOG-1, so the evidence isn't strong enough to establish it."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25795 is standard, approved by change manager erik.brandt on 2026-09-28, before the PR opened on 2026-10-01. Its components [mortgage.logging] cover the only touched path, AppLog.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell (p-dfarrell), a change_approver for baseline-mortgage. He is not the author, nneka.okafor (p-nokafor), under any of his directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 56361d8, the change's only commit, so no later commits exist that could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 56361d8 succeeded with 124 tests, 0 failures, 0 skipped, including the registered LOG-1 control test sampledFlowsDoNotLogNpi. That test is labelled 'sample'. I couldn't re-run CI locally because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "AppLog.java (mortgage.logging) is security_sensitive. kofi.mensah, a security_reviewer, gave a security_review approval on head commit 56361d8."
+    }
+  ],
+  "summary": "The change is a one-line increase of AppLog's in-memory buffer (MAX_LINES 10,000 to 12,000), inside LOG-1's scope. The process obligations are met: approved ticket covering mortgage.logging, independent code review, security review on the head commit, and CI passing on the head commit with the LOG-1 control test included. LOG-1 requires exhaustive evidence, but the only control test is a sample test and no ledger record supplies stronger evidence, so LOG-1 can't be shown. A manual read of the log call sites found no unmasked NPI, but that doesn't meet the required strength. The decision is HOLD until exhaustive LOG-1 evidence or an applicable approved exception is provided.",
+  "meta": {
+    "elapsed_s": 81.2,
+    "tokens_in": 485047,
+    "tokens_out": 7360,
+    "usd": 0.455925,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 7360,
+      "cache_read_input_tokens": 440932,
+      "cache_creation_input_tokens": 44079
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4559254,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

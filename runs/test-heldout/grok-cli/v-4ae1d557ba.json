@@ -1,0 +1,104 @@
+{
+  "variant": "v-4ae1d557ba",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json still sets mortgage.privileged_idle_minutes to 15, which meets the maximum of 15. The edit is indentation only, and controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed unskipped on the head commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "mortgage.audit_retention_years remains 7, meeting the seven-year minimum. controls.AuditControlTest#chainAndRetention passed unskipped on the head commit, and the audit implementation files are unchanged."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "mortgage.declined_npi_retention_months remains 25, and the diff does not change parsed policy values. The registered retention control test and the retention unit tests, including legal-hold skip and purge after the retention window, passed unskipped on the head commit."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "mortgage.underwriter_limit remains 500000 and mortgage.senior_limit remains 1500000, matching the approved limits. controls.ApprovalsControlTest#authorityLimitsMatchPolicy passed unskipped on the head commit."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "mortgage.dti_max_percent remains 40 and mortgage.ltv_max_percent remains 90, matching the approved auto-approval limits. controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26095, which change manager Erik Brandt approved on 2026-10-03, before the 2026-10-09 review time. Its component mortgage.controls-data covers controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a change_approver for baseline-mortgage and not the author Tomas Ortega, approved a code_review of commit 82315299e1235d4355666e1342f2b1274750e2ba."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both the code_review and the control_owner approval name 82315299e1235d4355666e1342f2b1274750e2ba, which is the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on the head commit. The JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped, including the registered control tests for SES-1, AUD-2, RET-1, LIM-1, and CRD-1."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path maps to component mortgage.controls-data, which controls/mortgage/components.json marks security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is a protected controls path. Rachel Stein, a control_owner on the controls-office team, outside the author's lending-eng team, approved kind control_owner on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26095 is type standard and the change record sets emergency to false, so a post-implementation review is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Parsed policy values are identical to the approved base file and match the catalog bounds, so the change introduces no product-obligation deviation that would need an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff is JSON indentation only, which the policy treats as formatting that does not change behaviour. Acceptance-ledger coverage of Approvals.java, Policy.java, Underwriting.java, and payments files is therefore still in force."
+    }
+  ],
+  "summary": "The change only reindents controls/mortgage/policy-params.json; every policy value is identical to the approved base. Ticket CHG-26095 is approved and scoped to mortgage.controls-data, Wen Li independently code-reviewed the head commit, and Rachel Stein gave an out-of-team control-owner approval of that same commit. Mortgage CI on the head commit passed with no failures or skips, including the control tests for the policy parameters this file governs. The component is not security-sensitive, the change is not an emergency, and no product obligation is deviated from, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 181.04,
+    "tokens_in": 54806,
+    "tokens_out": 11558,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "d2daca81b01db707e990e8da1395df6ce0155be2d5da2ae73c13df2663f7e3c7",
+    "packet_tokens_est": 24101,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 54806,
+      "outputTokens": 11558,
+      "cacheReadTokens": 147584,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 177608,
+    "duration_api_ms": 177608,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

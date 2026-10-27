@@ -1,0 +1,71 @@
+{
+  "variant": "v-b21f2a7262",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25598 is approved by change manager Erik Brandt as shown in tickets.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Wen Li (change_approver) who is not the author, recorded in approvals.json."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval applies to the sole commit 841b4071… and there are no later behaviour‑changing commits, satisfying CHG‑3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) reports success; all 124 tests passed, including the control test for CRD‑1."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Protected file controls/mortgage/policy-params.json was changed and has a control_owner approval by Bao Tran (approvals.json)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "New CI evidence (passing control test) provides fresh exhaustive proof for CRD‑1 after the change, preventing evidence lapse."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Exhaustive control test controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passes; renewed proof crd1-auto-approve-renewed.json submitted."
+    }
+  ],
+  "summary": "All applicable product and process obligations are satisfied with adequate evidence: the change ticket is approved, independent code‑review and control‑owner approvals are present, CI testing passed including the required control test, and fresh evidence for the credit‑decision policy (CRD‑1) is provided. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 139.95,
+    "tokens_in": 25879,
+    "tokens_out": 6145,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "60995d020e19b929cd6db3fe2f4244dfd79cf429069369b05c2c1cf2fa928782",
+    "packet_tokens_est": 25767,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23814,
+    "answer_chars": 1744,
+    "done_reason": "stop",
+    "load_s": 3.04,
+    "prompt_eval_s": 16.49,
+    "eval_s": 120.26,
+    "total_s": 139.95,
+    "tokens_est_ratio": 0.98,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

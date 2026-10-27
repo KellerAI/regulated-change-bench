@@ -1,0 +1,68 @@
+{
+  "variant": "v-7d2337db5f",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "release() now returns the stored release only when it is less than one day old. A replay of the same instruction_id a day or more later skips the idempotency return and calls _send_disbursement again, so a second disbursement is sent. The function's own docstring still says a repeat release returns the first release."
+    },
+    {
+      "id": "LAP-1",
+      "status": "open",
+      "note": "Ledger entry ACR-0403 (PAY-2 trace, covering payments.py#release at e5bf646) has lapsed because release changed in behaviour. The only replacement is the sample test test_sampled_release_is_idempotent, and its JUnit report is not credibly from this change's CI run (see CHG-4)."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26088 is standard and approved by change manager Erik Brandt at 2026-10-16T06:20Z, before the change was opened. Its component payments.payments covers the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, who holds change_approver for payments and is a different person from the author Mara Costa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit cfa8da2, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head cfa8da2 on ci-runner-06, started 2026-10-16. The attached JUnit report, however, is timestamped 2026-10-23 (after the 2026-10-19 review time) and was produced on host dev-laptop-7.local, so it cannot be confirmed as this run's output."
+    }
+  ],
+  "summary": "The change makes release idempotency time-limited: an instruction replayed one day or more after its first release is sent to core banking again. That directly violates PAY-2, and no exception in the register covers it. The test evidence is also inconsistent: the JUnit report postdates the review time and comes from a workstation rather than the CI runner, so the lapsed PAY-2 evidence has not been credibly replaced. Ticket and approval records are otherwise in order, but the PAY-2 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 21.24,
+    "tokens_in": 38972,
+    "tokens_out": 2013,
+    "usd": 0.196148,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "2a9d7ff15b25568f59030171b6c0c2e1dbf1c2c7a4a94fb4eddd16f8cb5e3f1b",
+    "packet_tokens_est": 25289,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38972,
+      "output_tokens": 2013,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

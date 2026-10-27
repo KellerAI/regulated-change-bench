@@ -1,0 +1,92 @@
+{
+  "variant": "v-defc8c12ad",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25125 (standard) was approved by change manager Erik Brandt at 2026-10-16T20:13Z, before the PR opened on 2026-10-17. Its components (payments.payments, payments.tests) cover memos.py and tests/test_memo_preview.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (p-mcosta), a change_approver for payments, approved the code_review. She is a different person from the author Aisha Bello under every one of Aisha Bello's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 47cad60, which is the head and the change's only commit, so there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records result success on head 47cad60 with the full payments suite: 174 tests, 0 failures, 0 skipped, including the new preview tests. The change touches no product obligation's scope or closed domain, so no specific control tests are triggered, though all registered control tests ran and passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components (payments.payments for memos.py, payments.tests) are marked security_sensitive: false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed file (apps/baseline-payments/payments/memos.py, apps/baseline-payments/tests/test_memo_preview.py) is under a protected path, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false, ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change deviates from no product obligation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries for payments cover payments.py symbols (required_approvals, release) and other files the change doesn't touch. The only code change is a new function in memos.py, which no ledger entry covers, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1993 adds a pure string-formatting helper, memos.preview, and two unit tests. The code is not referenced by any product obligation's scope paths, symbols, patterns or closed domains, so only the process obligations apply. The ticket was approved in advance and covers the touched components, an independent payments change approver approved the exact head commit, and CI on the head commit shows the full suite (174 tests) passing with nothing skipped. No security-sensitive or protected paths are touched, the change is not an emergency, and no ledger evidence lapses, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 83.43,
+    "tokens_in": 412165,
+    "tokens_out": 7688,
+    "usd": 0.439948,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 32,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 7688,
+      "cache_read_input_tokens": 369709,
+      "cache_creation_input_tokens": 42422
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.43994779999999994,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

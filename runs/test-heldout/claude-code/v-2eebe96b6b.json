@@ -1,0 +1,82 @@
+{
+  "variant": "v-2eebe96b6b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "release() now reuses the stored release only if it is less than a day old (payments.py:95); a later replay of the same instruction_id reaches _send_disbursement again. Neither the service layer nor the releases table (no unique key on instruction_id) blocks a second disbursement."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0403 (PAY-2 trace on e5bf646) covers payments.py#release, which this change alters in behaviour, so it has lapsed. The only new evidence is a sample CI test that replays inside the 24h window, so nothing valid shows PAY-2 still holds."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from PAY-2, but the exception register has no approved, unexpired exception for PAY-2 / payments.payments (only SES-1, LOG-1 and a withdrawn MFA-1 entry), so the deviation is not acceptable."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26383 is approved by change manager grace.kim on 2026-09-28, before the change opened on 2026-09-29. Its component payments.payments covers the only touched file, apps/baseline-payments/payments/payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, a payments change_approver and a different person from the author linh.nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 22f63da, the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows the pr-checks run of ci/run-tests.sh baseline-payments on head 22f63da succeeded; the JUnit report has 172 tests, 0 failures, 0 skipped, including the registered PAY-2 control test test_sampled_release_is_idempotent (sample). I couldn't re-run it locally (pytest is not installed), and the JUnit timestamp and host differ from run.json."
+    }
+  ],
+  "summary": "The change makes payment release idempotent only within a 24-hour window, so replaying an instruction after a day sends a second disbursement to core banking. That directly violates PAY-2 (critical). The existing PAY-2 evidence has lapsed under LAP-1, no exception covers the deviation, and the passing sample control test doesn't exercise the case past 24 hours. The ticket, independent review and CI process records are otherwise in order, but the PAY-2 violation requires rejection.",
+  "meta": {
+    "elapsed_s": 83.24,
+    "tokens_in": 434150,
+    "tokens_out": 7532,
+    "usd": 0.448259,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7532,
+      "cache_read_input_tokens": 390229,
+      "cache_creation_input_tokens": 43889
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.44825880000000007,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

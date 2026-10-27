@@ -1,0 +1,92 @@
+{
+  "variant": "v-40137b4161",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names emergency ticket CHG-26962. Grace Kim (change_manager) approved it at 2026-10-22T11:51Z, before review, and its component payments.reports covers the only touched path, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "mara.costa@fernbrook.example gave the code_review approval. Mara Costa has the change_approver role for payments and is a different person from the author, Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit e2e6bd8, which is the change's only commit, so no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci/run.json is on head e2e6bd8 and succeeded: 172 tests, 0 failures, 0 skipped, all registered payments control tests included. No product obligation's scope or domain covers reports.py, so no specific control test was required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "No security review was needed: reports.py maps to payments.reports, which is marked security_sensitive: false."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No control-owner approval was needed: the diff touches no protected path (no controls/, control tests or ci/)."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "Deployed 2026-10-24T03:06Z (Fri 2026-10-23 23:06 New York), so the PIR was due within 2 business days, by Tue 2026-10-27. The PIR approval is dated 2026-10-31T03:06Z (Fri 2026-10-30 New York), three business days late."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change neither relies on nor needs an exception: it causes no deviation from any product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry lapses: none covers reports.py, and the change alters no code that any entry covers."
+    }
+  ],
+  "summary": "The change adds one constant, REPORT_FORMAT, to payments reports.py, a non-sensitive component outside every product obligation's scope. Ticket, independent review, approval coverage and CI on the final commit all meet policy. However, it shipped as an emergency change, and its post-implementation review was approved on 2026-10-30 (New York time), well after the 2-business-day deadline of 2026-10-27 that started from the 2026-10-23 23:06 deployment. CHG-7 is therefore violated and the change is rejected.",
+  "meta": {
+    "elapsed_s": 66.37,
+    "tokens_in": 366741,
+    "tokens_out": 5561,
+    "usd": 0.348682,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 21,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 5561,
+      "cache_read_input_tokens": 332544,
+      "cache_creation_input_tokens": 34165
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3486818,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}
