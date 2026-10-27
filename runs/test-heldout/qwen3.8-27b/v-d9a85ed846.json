@@ -44,7 +44,7 @@
       "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/integrations.py, so no prior evidence lapses. The changed file is not in the 'covers' field of any ledger record, so all previously accepted evidence remains valid."
     }
   ],
-  "summary": "PR-1950 makes a trivial, effectively no-op edit to payments's integrations.py (replacing 'https://' with 'https://' in a conditional branch), leaving all outbound URLs and the integration inventory unchanged. All applicable product obligations (ENC-2, INV-1) remain satisfied, confirmed by their exhaustive control tests passing in CI on the final commit. All applicable process obligations (CHG-1 through CHG-5, LAP-1) are met: the ticket is approved and scoped, an independent change_approver and a security_reviewer both approved the exact commit, CI is green on that commit, and no prior ledger evidence lapses. The change is accepted.",
+  "summary": "PR-1950 makes a trivial, effectively no-op edit to payments' integrations.py (replacing 'https://' with 'https://' in a conditional branch), leaving all outbound URLs and the integration inventory unchanged. All applicable product obligations (ENC-2, INV-1) remain satisfied, confirmed by their exhaustive control tests passing in CI on the final commit. All applicable process obligations (CHG-1 through CHG-5, LAP-1) are met: the ticket is approved and scoped, an independent change_approver and a security_reviewer both approved the exact commit, CI is green on that commit, and no prior ledger evidence lapses. The change is accepted.",
   "meta": {
     "elapsed_s": 147.59,
     "tokens_in": 27581,

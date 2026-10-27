@@ -49,7 +49,7 @@
       "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/reports.py; the ledger covers payments.py, audit.py, routes.py, and mortgage files. The change does not alter any covered code, so no evidence lapses."
     }
   ],
-  "summary": "PR-1820 adds a single string constant (REPORT_FORMAT = 'ledger-csv/1') to payments's reports module. The change touches no scope path of any product obligation, so no product obligation is affected. All process obligations are satisfied: the ticket is approved by a change manager, an independent code_review from a non-author change_approver exists on the correct commit, CI passed on the final commit with zero failures or skips, and no security-sensitive, protected, or emergency-change requirements are triggered. No evidence in the acceptance ledger is lapsed. The change is safe to accept.",
+  "summary": "PR-1820 adds a single string constant (REPORT_FORMAT = 'ledger-csv/1') to payments' reports module. The change touches no scope path of any product obligation, so no product obligation is affected. All process obligations are satisfied: the ticket is approved by a change manager, an independent code_review from a non-author change_approver exists on the correct commit, CI passed on the final commit with zero failures or skips, and no security-sensitive, protected, or emergency-change requirements are triggered. No evidence in the acceptance ledger is lapsed. The change is safe to accept.",
   "meta": {
     "elapsed_s": 128.3,
     "tokens_in": 27604,

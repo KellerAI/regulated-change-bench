@@ -59,7 +59,7 @@
       "note": "The amend_memo method retains its self._audit(actor, 'amend_memo', f'payment:{payment_id}') call after the new log line, recording actor, action, target and time. The control test test_sampled_operations_are_audited passed."
     }
   ],
-  "summary": "The change adds a single informational log line to the amend_memo method in payments's service.py, logging the integer payment_id of the memo being edited. This is not NPI and does not affect any closed domain (access matrix, routes, NPI registry, integrations, SQL call sites, or payment logic). The process obligations are all satisfied: an approved ticket covers the correct component, an independent change_approver (Mara Costa) approved the sole commit, CI ran on the final commit with all 172 tests passing including every registered control test, no protected or security-sensitive paths are touched, and no ledger evidence lapses. The change is safe to accept.",
+  "summary": "The change adds a single informational log line to the amend_memo method in payments' service.py, logging the integer payment_id of the memo being edited. This is not NPI and does not affect any closed domain (access matrix, routes, NPI registry, integrations, SQL call sites, or payment logic). The process obligations are all satisfied: an approved ticket covers the correct component, an independent change_approver (Mara Costa) approved the sole commit, CI ran on the final commit with all 172 tests passing including every registered control test, no protected or security-sensitive paths are touched, and no ledger evidence lapses. The change is safe to accept.",
   "meta": {
     "elapsed_s": 137.17,
     "tokens_in": 29556,

@@ -54,7 +54,7 @@
       "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/rbac.py; therefore no prior evidence lapses due to this change."
     }
   ],
-  "summary": "The change adds a two-line 'report:' prefix shim to the is_allowed function in payments's rbac.py so a reporting client can use prefixed action names; it does not modify the GRANTS set, the PRIVILEGED set, or any other security-relevant data structure. All four product obligations whose scope includes rbac.py (ACC-1, ACC-2, SOD-1, MFA-1) are confirmed by exhaustive or appropriate control tests passing in CI on the final commit. All process obligations are satisfied: the ticket is approved and covers the correct component, independent code and security reviews are present from qualified non-author reviewers, CI is green on the head commit with zero skips, and no protected paths or prior ledger evidence are affected. The change is accepted.",
+  "summary": "The change adds a two-line 'report:' prefix shim to the is_allowed function in payments' rbac.py so a reporting client can use prefixed action names; it does not modify the GRANTS set, the PRIVILEGED set, or any other security-relevant data structure. All four product obligations whose scope includes rbac.py (ACC-1, ACC-2, SOD-1, MFA-1) are confirmed by exhaustive or appropriate control tests passing in CI on the final commit. All process obligations are satisfied: the ticket is approved and covers the correct component, independent code and security reviews are present from qualified non-author reviewers, CI is green on the head commit with zero skips, and no protected paths or prior ledger evidence are affected. The change is accepted.",
   "meta": {
     "elapsed_s": 237.86,
     "tokens_in": 27757,

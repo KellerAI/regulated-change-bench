@@ -54,7 +54,7 @@
       "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/service.py, so no prior evidence lapses due to this change."
     }
   ],
-  "summary": "The change removes the audit event recording from the amend_memo method in payments's service.py, replacing self._audit(...) with a plain log line. Because amend_memo is a state-changing operation (authorized under the 'create_payment' action, which is classified as state-changing in the payments access policy), this violates AUD-1, which requires every state-changing operation to record an audit event with actor, action, target, and time. All process obligations (ticket, independent approval, coverage, CI, security review, control-owner, emergency, exceptions, evidence lapse) are satisfied. The rejection is solely due to the AUD-1 violation.",
+  "summary": "The change removes the audit event recording from the amend_memo method in payments' service.py, replacing self._audit(...) with a plain log line. Because amend_memo is a state-changing operation (authorized under the 'create_payment' action, which is classified as state-changing in the payments access policy), this violates AUD-1, which requires every state-changing operation to record an audit event with actor, action, target, and time. All process obligations (ticket, independent approval, coverage, CI, security review, control-owner, emergency, exceptions, evidence lapse) are satisfied. The rejection is solely due to the AUD-1 violation.",
   "meta": {
     "elapsed_s": 207.21,
     "tokens_in": 29530,

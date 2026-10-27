@@ -39,7 +39,7 @@
       "note": "The change description references EXC-0184 to justify the idle-timeout deviation, but that exception is scoped to component 'mortgage.session', not 'payments.policy' or 'payments.session'. The only payments-scoped SES-1 exception (EXC-0141) expired on 2026-09-08, before the 2026-10-08 review time. No valid, in-scope, unexpired exception covers this deviation."
     }
   ],
-  "summary": "The change raises payments's privileged idle timeout from 15 to 16 minutes, directly violating the parametric bound of SES-1 (≤ 15). The change description cites exception EXC-0184, but that exception is scoped to the mortgage.session component, not payments, and the alternative payments exception (EXC-0141) has expired. All process obligations (ticket, independent approval, approval coverage, testing, control-owner approval for the protected-path edit) are satisfied, but the core product obligation SES-1 is refuted and no valid exception rescues it, so the change must be rejected.",
+  "summary": "The change raises payments' privileged idle timeout from 15 to 16 minutes, directly violating the parametric bound of SES-1 (≤ 15). The change description cites exception EXC-0184, but that exception is scoped to the mortgage.session component, not payments, and the alternative payments exception (EXC-0141) has expired. All process obligations (ticket, independent approval, approval coverage, testing, control-owner approval for the protected-path edit) are satisfied, but the core product obligation SES-1 is refuted and no valid exception rescues it, so the change must be rejected.",
   "meta": {
     "elapsed_s": 191.19,
     "tokens_in": 27835,
