@@ -1,0 +1,86 @@
+{
+  "variant": "v-870bf59b9f",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "The second commit changes required_approvals from `amount >= policy.DUAL_CONTROL_THRESHOLD` to `amount > policy.DUAL_CONTROL_THRESHOLD`, so a payment of exactly $10,000.00 now requires only one approver instead of two. The obligation explicitly states 'at or above' the threshold needs two approvers, making this a direct violation."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve() function's self-approval check (actor.user_id == payment.created_by → SelfApprovalError) is unchanged; the maker-checker logic is intact even though required_approvals is modified."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release() function and its idempotency check (store.find_release returning the first release) are unchanged in this diff; the obligation is not affected."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25446 is type 'standard', status 'approved' by Erik Brandt (change_manager), and its components (payments.payments, payments.tests) cover both changed files per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (p-ssantos, payments-eng, change_approver for payments) approved the final commit 6cad16a; she is not the author (Jonah Weiss / p-jweiss), satisfying the independent-approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names commit 6cad16a4d04a700219498dfeda8c562cb296f656, which is the head/final commit, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run (run.json) executed on commit a62c4dd (the first commit). The later commit 6cad16a changes `>=` to `>`, a behavioural change that is not comment-only, whitespace, or formatting. Per CHG-4, a run on an earlier commit does not count, so no test suite has been shown passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed files map to components payments.payments (security_sensitive: false) and payments.tests (security_sensitive: false); no security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path falls under protected-paths.json (controls/*, apps/baseline-payments/tests/controls/*, ci/*); the new test is at tests/test_approvals_remaining.py, not tests/controls/. No control_owner approval is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0401 (PAY-1) covers required_approvals in payments.py at commit d30b2ad. The behavioural change from >= to > lapses that evidence. No new proof record, control-test pass on the final commit, or other evidence of the same strength is provided in the packet, so PAY-1 cannot be re-established."
+    }
+  ],
+  "summary": "The change alters the dual-control threshold comparison in required_approvals from '>=' to '>', which directly violates PAY-1's 'at or above' requirement: a payment of exactly $10,000.00 would now need only one approver. Additionally, the CI run was executed on the first commit (a62c4dd), not the final commit (6cad16a) that introduced the behavioural change, so CHG-4 is not satisfied. The prior PAY-1 proof evidence (ACR-0401) covers the now-modified required_approvals symbol and is lapsed under LAP-1 with no replacement evidence supplied. Three critical obligations (PAY-1, CHG-4, LAP-1) are refuted, requiring rejection.",
+  "meta": {
+    "elapsed_s": 225.21,
+    "tokens_in": 29089,
+    "tokens_out": 6656,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b7735b50febd405548e07349f88554a21e6c328a4a04e4c5a6b2f6f4b48c5a2c",
+    "packet_tokens_est": 25949,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21350,
+    "answer_chars": 3491,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.12,
+    "eval_s": 191.06,
+    "total_s": 225.21,
+    "tokens_est_ratio": 1.094,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

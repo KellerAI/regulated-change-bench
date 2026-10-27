@@ -1,0 +1,76 @@
+{
+  "variant": "v-5eb9394f63",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The change to required_approvals is a purely cosmetic refactoring (if/else → ternary) with identical behaviour. The CI run on the final commit includes the exhaustive control test test_dual_control_grid_matches_policy which passes, providing fresh evidence that the dual-control threshold logic is correct."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function is not modified by this change; only required_approvals is touched. The idempotency logic in release is unchanged, and the CI test test_sampled_release_is_idempotent passes on the final commit."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve and is_fully_approved functions are not modified; required_approvals returns the same values so maker-checker enforcement is unaffected. The CI control test test_maker_cannot_check passes on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24308 is type 'standard', status 'approved', approved by grace.kim (change_manager), and its component 'payments.payments' covers the only file changed (payments.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from mara.costa@fernbrook.example (change_approver for payments, on payments-eng team) is recorded on the exact head commit. The author is sofia.santos, a different person, so the approval is independent."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval is on commit 746ff05 which is the head commit, and there is only one commit in the change, so the approval covers everything that is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run.json records a success on the final commit 746ff05 with 172 tests, 0 failures, 0 errors, 0 skipped. All registered control tests for the obligations whose code is touched (PAY-1, PAY-2, MC-1) are present and passing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "ACR-0401 (PAY-1) covers required_approvals in payments.py. The change to required_approvals is a formatting/style refactoring (if/else to ternary) with no behavioural change, which per the policy does not lapse evidence. Additionally, the CI control test on the final commit provides fresh passing evidence."
+    }
+  ],
+  "summary": "PR-1615 is a trivial cosmetic refactoring of the required_approvals function in payments/payments.py, converting an if/else block to an equivalent ternary expression. The behaviour is identical: payments at or above the dual-control threshold still require two approvers, and smaller payments still require one. The change has a properly approved standard ticket, an independent code_review approval from a qualified change_approver on the exact head commit, and a clean CI run on the final commit with all 172 tests (including all relevant control tests) passing. No protected paths or security-sensitive components are touched, and no exception is needed. All applicable obligations are satisfied.",
+  "meta": {
+    "elapsed_s": 154.76,
+    "tokens_in": 28123,
+    "tokens_out": 4281,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "73f8297e6d49c0ddb826da279b96c29dda6ce9b3804318c94b7748456f9c0c3b",
+    "packet_tokens_est": 25055,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12939,
+    "answer_chars": 3023,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.96,
+    "eval_s": 121.77,
+    "total_s": 154.76,
+    "tokens_est_ratio": 1.094,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

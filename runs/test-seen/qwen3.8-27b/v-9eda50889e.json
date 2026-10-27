@@ -1,0 +1,66 @@
+{
+  "variant": "v-9eda50889e",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new debug() method routes through the same _emit → mask_fields pipeline as info/warning/error, so NPI is masked before logging. The new test test_debug_entries_are_masked confirms masking, and the existing control test test_sampled_flows_do_not_log_npi passes in CI (173/173, 0 failures)."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25831 is approved by change manager Grace Kim (2026-10-19), and its components (payments.logging, payments.tests) cover both changed paths (logs.py and test_log_debug.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example) holds the change_approver role for payments and is not the author (Sofia Santos); her code_review approval is on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit ae9cac1, which is the head commit; there are no later commits that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit ae9cac1, result success, 173 tests with 0 failures/errors/skipped. The LOG-1 control test (test_sampled_flows_do_not_log_npi) and the new test_log_debug::test_debug_entries_are_masked both pass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "apps/baseline-payments/payments/logs.py belongs to component payments.logging which is marked security_sensitive. CHG-5 requires a security_review approval from a security_reviewer, but the only approval on record is a code_review from Mara Costa. No security_review approval is present, so the obligation is unmet."
+    }
+  ],
+  "summary": "The change adds a debug-level log method to payments' AppLog that correctly routes through the existing masking pipeline, and the accompanying test verifies NPI is masked. All product and most process obligations are satisfied. However, CHG-5 is violated: the file logs.py sits in a security_sensitive component (payments.logging), so a security_review approval from a security_reviewer is mandatory, yet no such approval exists in the record set. The change cannot be accepted without a security review.",
+  "meta": {
+    "elapsed_s": 116.62,
+    "tokens_in": 28084,
+    "tokens_out": 3055,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "02bff66b2fc1825526f050bc1a2cdaaa7e779b1b0feff15bf6685817bb1b83bd",
+    "packet_tokens_est": 24824,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 8951,
+    "answer_chars": 2186,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.95,
+    "eval_s": 83.63,
+    "total_s": 116.61,
+    "tokens_est_ratio": 1.103,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

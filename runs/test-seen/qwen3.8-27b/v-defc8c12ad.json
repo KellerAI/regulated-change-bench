@@ -1,0 +1,61 @@
+{
+  "variant": "v-defc8c12ad",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25125 is type 'standard', status 'approved', approved by erik.brandt (change_manager). Its components (payments.payments, payments.tests) cover both files touched by the change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval exists from mara.costa@fernbrook.example, who holds the change_approver role for payments per the directory. She is not the author (aisha.bello)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 47cad60617e07a6692e5a84105dc308006437fc8, which is the sole and head commit of this change; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the pipeline ran on the final commit 47cad606 with result 'success'. The JUnit report shows 174 tests, 0 failures, 0 errors, 0 skipped, including all payments control tests (access, routes, session, encryption, integrations, logging, audit, retention, SQL, payments) and the new test_memo_preview tests."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change adds a new preview() function to memos.py. No entry in the acceptance ledger covers apps/baseline-payments/payments/memos.py, so no previously-accepted evidence is lapsed by this change."
+    }
+  ],
+  "summary": "PR-1993 adds a simple text-truncation utility (preview) and two unit tests to the payments memos module. The function is a pure presentation helper with no interaction with access control, NPI, audit logging, payments, sessions, routes, or integrations; no product-obligation scope path includes memos.py. All four applicable process obligations (ticket, independent approval, approval coverage, testing on final commit) and LAP-1 are satisfied with adequate evidence. CI is green on the head commit with all 174 tests passing including every registered control test. No security-sensitive component, protected path, or emergency condition is triggered, so CHG-5, CHG-6, CHG-7, and EXC-1 are not applicable. The change is accepted.",
+  "meta": {
+    "elapsed_s": 161.71,
+    "tokens_in": 27774,
+    "tokens_out": 4600,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1a4b1fd496e0f158804bca7a4e204c758d932f6315cd7621ce64922165a60fbe",
+    "packet_tokens_est": 24395,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15306,
+    "answer_chars": 2087,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.5,
+    "eval_s": 129.18,
+    "total_s": 161.7,
+    "tokens_est_ratio": 1.109,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

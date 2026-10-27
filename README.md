@@ -36,8 +36,8 @@ authority threshold changed with the approvals the policy requires.
 
 **3. The open-source CI gate for agent traces passes everything by default.** The Ponens CI action with no trace
 published reports a green check on 88 of 88 defective held-out changes and 76 of 76 seen ones. Given a trace
-written by the change's own coding agent, it still passed 14 of 88 defective held-out changes (1 of 19 on the
-seen common subset). An agent's own trace is self-attestation; the gate resolves it faithfully, and faithfully is not
+written by the change's own coding agent, it still passed 14 of 88 defective held-out changes and 8 of 76 seen
+ones. An agent's own trace is self-attestation; the gate resolves it faithfully, and faithfully is not
 the same as independently.
 
 Context for the table: Claude Code with tools (Opus 5.5, read-only tools, allowed to run the repository's CI)
@@ -57,9 +57,12 @@ more. The reviewers are listed in a fixed order by kind, not by score.
 | Ponens CI action, no trace (default) | 88/88 | 100.0% | 48/48 | 0 | 0 | $0 (no model call) | 0 |
 | Ponens CI action + agent-written trace | 14/88 | 23.7% | 30/48 | 5 | 13 | $0 API, local compute | 154 |
 
-On the seen split, Qwen 3.8 27B and Ponens with an agent-written trace are scored on the 30-change common subset
-(19 defective): 2 of 19 and 1 of 19 false all-clears. The full tables, the seen split and the per-family breakdown
-are in `RESULTS.md`.
+Every reviewer covers all 136 held-out changes and all 134 seen changes. On the seen split the full-split false
+all-clears are: Opus 1 of 76, gpt-oss 5, Qwen 3.8 4, Grok 2, Claude Code with tools 0, Ponens with an agent-written
+trace 8, and Ponens with no trace 76 of 76. Qwen 3.8 and Ponens with an agent-written trace were first run on a
+30-change common subset (19 defective) and filled in to the whole split afterwards, once the keys had been
+unsealed, so their rows are not blind in the sealing sense (`PROTOCOL.md`, section 7). The full tables, the seen
+split, the common-subset tables and the per-family breakdown are in `RESULTS.md`.
 
 ## Run it yourself in five commands
 

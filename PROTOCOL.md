@@ -137,10 +137,12 @@ Per arm and per split, from `bench/score/score.py`:
   There was one error across the published runs (Grok, seen split: a dropped connection).
 
 The 30-change common subset per split (`runs/<split>/subset-paid.txt`) is a random sample on which every arm ran
-first. Qwen 3.8 and Ponens with an agent trace were then run on the rest of the held-out split after the keys had
-been unsealed, with the frozen prompts, the same model digests and no change to any runner; those two arms'
-held-out rows are therefore not blind in the sealing sense, and the two arms are compared on the common subset
-where blindness matters. On the seen split they cover the common subset only.
+first. Qwen 3.8 and Ponens with an agent trace were then run on the rest of each split, the held-out split and
+the seen split, after the keys had been unsealed (the seen key on 2026-10-23, 22:30), with the frozen prompts, the
+same model digests and no change to any runner or to the Ponens engine. Those two arms' rows are therefore not
+blind in the sealing sense on either split, and the two arms are compared with the others on the common subset
+where blindness matters. Every arm now covers all 134 seen changes and all 136 held-out changes; the "Changes"
+column of each table in `RESULTS.md` gives each arm's n.
 
 ## 8. What the published files are, and what was changed for publication
 

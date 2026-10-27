@@ -1,0 +1,71 @@
+{
+  "variant": "v-0e90cfbf49",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route GET /exports/cases.csv is declared with mfaRequired=false while using the privileged action EXPORT_CASES (listed in privileged_actions in access-policy.json). The existing GET /exports/cases route correctly sets mfaRequired=true. The CI control test RoutesControlTest#privilegedRoutesRequireMfa fails, explicitly reporting 'GET /exports/cases.csv does not require MFA'. This bypasses MFA for a privileged export of case data."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24618 is approved by Erik Brandt (change_manager) and its components list 'mortgage.http', which covers both changed files (HttpApp.java and Routes.java, both mapped to component mortgage.http in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (change_approver for baseline-mortgage, different person from author Wen Li per the directory) provided a code_review approval on the head commit 2ce566db."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval (both code_review and security_review) names the head commit 2ce566db, and there are no later commits. The approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the final commit 2ce566db reports result 'failure' with 123/124 tests passing. The failing test is controls.RoutesControlTest#privilegedRoutesRequireMfa(), which is the registered control test for MFA-1 and is labelled 'exhaustive'. The full suite did not pass, violating the requirement that the suite pass on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both changed files belong to component mortgage.http, which is marked security_sensitive=true. A security_review approval was provided by Ines Halvorsen (security_reviewer, platform-security team, not the author) on the correct head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries (ACR-0401 through ACR-0406) cover paths in payments/audit.py, payments.py, Approvals.java, Underwriting.java, and payments/routes.py. None of these are the files changed here (HttpApp.java, Routes.java), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a CSV alias for the case-export route but sets its MFA flag to false, creating a bypass for the privileged action EXPORT_CASES that the original /exports/cases route correctly guards. The CI control test for MFA-1 (RoutesControlTest#privilegedRoutesRequireMfa) fails, confirming the violation, and the overall CI run is a failure, which independently fails CHG-4. All process obligations (ticket, independent approval, security review, approval scope) are satisfied, and no prior acceptance-ledger evidence lapses. The change must be rejected until the MFA flag on the new route is set to true and the control test passes.",
+  "meta": {
+    "elapsed_s": 224.26,
+    "tokens_in": 31814,
+    "tokens_out": 6404,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "03f51be263a9330daa92c90d6b18d279237ff2238f47021610232fc6f11ef083",
+    "packet_tokens_est": 29034,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21839,
+    "answer_chars": 2919,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 37.91,
+    "eval_s": 186.31,
+    "total_s": 224.25,
+    "tokens_est_ratio": 1.072,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

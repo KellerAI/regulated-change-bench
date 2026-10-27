@@ -1,0 +1,81 @@
+{
+  "variant": "v-5f584298ed",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "store.py is in ENC-1's scope, but the new archive_payments method only moves rows from the payments table (which holds no NPI fields: id, instruction_id, payee_id, amount, currency, memo, status, created_by, created_at). The CI control test test_every_npi_field_is_sealed_at_rest passes on the final commit."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "All three new execute calls in archive_payments use fixed SQL strings with the status parameter bound via '?' placeholders; no string interpolation of user data into SQL text. The exhaustive CI control test test_sql_statements_are_parameterized passes on the final commit."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The scope symbols Store.find_release and Store.add_release are unmodified by this change. The releases table is independent of the payments table, so deleting payments from the live table does not affect the idempotency check. The CI test test_sampled_release_is_idempotent passes on the final commit."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The scope symbols Store.purge_payee_npi and Store.closed_payees_before are unmodified. The new archive_payments method operates on the payments table, not the payees table where NPI resides. The CI test test_sampled_purge_respects_hold passes on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24565 is approved by change_manager grace.kim@fernbrook.example, and its components list includes payments.store, which is the component of the only touched file (apps/baseline-payments/payments/store.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval is from sofia.santos@fernbrook.example (Sofia Santos), who holds the change_approver role for payments and is not the author (linh.nguyen@fernbrook.example)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both the code_review and security_review approvals name commit 183ae8f50e471e751ae2b2cc40f04bd0801cba11, which is the sole and head commit of the change; no later commits exist to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows a successful run on the head commit with 172 tests, 0 failures, 0 errors, 0 skipped. All control tests for obligations whose scope includes store.py (ENC-1, SEC-1, PAY-2, RET-1) are present and passing, unskipped."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "store.py belongs to component payments.store which is security_sensitive. A security_review approval is from ines.halvorsen@fernbrook.example (Ines Halvorsen, security_reviewer, apps: *) on the head commit, and she is not the author."
+    }
+  ],
+  "summary": "The change adds a single method archive_payments to the payments store layer, moving terminal-status payments to an archive table. The payments table holds no NPI fields, so ENC-1 and RET-1 are unaffected. All SQL statements use parameterized queries, satisfying SEC-1. The releases table is separate from payments, so PAY-2 idempotency is preserved. Process obligations are met: the change ticket is approved with correct components, an independent code_review from a change_approver and a security_review from a security_reviewer both target the head commit, and the CI suite (172 tests) passes cleanly on the final commit including all relevant control tests. No protected paths or control data are touched, and no prior evidence lapses.",
+  "meta": {
+    "elapsed_s": 270.32,
+    "tokens_in": 30591,
+    "tokens_out": 8171,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3b030a0d2a21baa53acfbc8a8b9402667cddb5e0791eae4c9a06f523dd673a61",
+    "packet_tokens_est": 27579,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 28753,
+    "answer_chars": 3368,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 36.16,
+    "eval_s": 234.12,
+    "total_s": 270.32,
+    "tokens_est_ratio": 1.084,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

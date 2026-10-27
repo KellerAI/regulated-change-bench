@@ -1,0 +1,91 @@
+{
+  "variant": "v-bcda0f91ad",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "The change replaces `amount >= policy.DUAL_CONTROL_THRESHOLD` with `amount > policy.DUAL_CONTROL_THRESHOLD` in required_approvals. The obligation states a payment 'at or above' 10,000.00 needs two approvers, but with `>` a payment of exactly 10,000.00 now requires only one, directly violating the 'at or above' requirement."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve function still rejects self-approval (actor.user_id == payment.created_by raises SelfApprovalError), and is_fully_approved's structure is unchanged; only the threshold boundary in required_approvals shifted, which does not affect the maker-checker constraint itself."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25976 is approved by change manager Erik Brandt and its components (payments.payments, payments.tests) cover both changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example) holds the change_approver role for payments and is a different person from the author Aisha Bello; her code_review approval is valid and independent."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole approval names commit 6d48175a1230ee0eb8a8338961d2091d3a1abd7d, which is the head/final commit; there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run (run.json) was executed on commit e6eb993c (the first of two), not the final commit 6d48175. The second commit changes the comparison operator from >= to >, a behavioural change that is not comment-only, whitespace, or formatting; per policy the earlier run does not count, so no test evidence exists for the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched source file, payments.py, is listed in components.json with security_sensitive=false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches apps/baseline-payments/payments/payments.py and apps/baseline-payments/tests/test_approvals_remaining.py; neither falls under the protected paths in protected-paths.json (controls/*, control tests, CI), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is introduced or needed; the existing exceptions in the register (EXC-0141, EXC-0167, EXC-0172) are unrelated to this change and do not provide a deviation covering PAY-1 or any other obligation touched here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0401 in the acceptance ledger provides proof for PAY-1 covering required_approvals in payments.py. The change alters that function's behaviour (>= to >), so the evidence lapses. No new equivalent proof or exhaustive control-test result on the final commit is provided in the packet, so the obligation cannot be re-established."
+    }
+  ],
+  "summary": "The change introduces a new approvals_remaining helper and, in a second commit, alters the dual-control boundary from >= to >, causing payments of exactly 10,000.00 to require only one approver instead of two. This directly violates PAY-1's 'at or above' wording and causes the previously accepted proof (ACR-0401) to lapse under LAP-1 with no replacement evidence. Additionally, the CI run was executed on the first commit rather than the final commit, and the second commit is a behavioural change (not comment/whitespace/formatting), so CHG-4 is not satisfied. Because three obligations (PAY-1, CHG-4, LAP-1) are refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 215.8,
+    "tokens_in": 29109,
+    "tokens_out": 6306,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8314aa1d2442c61a5a89292fff0afb4a38d47413afea1dbef4b89800e8ad3961",
+    "packet_tokens_est": 25939,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19721,
+    "answer_chars": 3764,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.19,
+    "eval_s": 181.58,
+    "total_s": 215.8,
+    "tokens_est_ratio": 1.095,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

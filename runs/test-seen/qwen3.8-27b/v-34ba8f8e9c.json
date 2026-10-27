@@ -1,0 +1,81 @@
+{
+  "variant": "v-34ba8f8e9c",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26246 exists, is 'standard' type, approved by Erik Brandt (change_manager) on 2026-10-03, and its components (payments.payments, payments.tests) cover both changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example, which the directory shows is Sofia Santos (p-ssantos), the author of the change. Self-approval under any of the author's addresses does not count; no other independent change_approver approval exists."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "Because the sole approval is a self-approval (invalid per CHG-2), there is no valid approval covering the merged commit; the requirement cannot be satisfied."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit fd5d1067 reports 175 tests, 0 failures, 0 skipped. All payments control tests (including test_maker_cannot_check, test_dual_control_grid_matches_policy, test_sampled_release_is_idempotent) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed files belong to components payments.payments and payments.tests, both marked security_sensitive: false; no security-sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The new approvals_remaining function is additive; it does not alter the behaviour of required_approvals or release, the symbols covered by ACR-0401 (PAY-1) and ACR-0403 (PAY-2) respectively. No lapse is triggered."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve and is_fully_approved functions in payments.py are unchanged; the new approvals_remaining helper is a read-only display calculation that does not affect maker-checker logic. The control test test_maker_cannot_check passes."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals and is_fully_approved are unchanged; the new function only reads their output. The control test test_dual_control_grid_matches_policy passes and the proof record (ACR-0401) remains valid."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function is unchanged; the new approvals_remaining function does not interact with release logic. The control test test_sampled_release_is_idempotent passes and the trace evidence (ACR-0403) remains valid."
+    }
+  ],
+  "summary": "The change adds a simple read-only helper (approvals_remaining) and unit tests to the payments payments module. The code itself is low-risk: it does not modify any approval, release, or state-changing logic. However, the only code_review approval in the records is from s.santos@fernbrook.example, which the people directory identifies as Sofia Santos—the author of the change. Under CHG-2, self-approval under any of the author's addresses does not count, and no other independent change_approver approval is present. With no valid independent approval, CHG-2 and CHG-3 are refuted, and the change cannot be accepted.",
+  "meta": {
+    "elapsed_s": 214.38,
+    "tokens_in": 28821,
+    "tokens_out": 6298,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ad24df05c2ee3df0bc61d6f122034c5efeb479bfaca93bae82a4d03ca850585c",
+    "packet_tokens_est": 25755,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22130,
+    "answer_chars": 2976,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.83,
+    "eval_s": 180.52,
+    "total_s": 214.38,
+    "tokens_est_ratio": 1.092,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

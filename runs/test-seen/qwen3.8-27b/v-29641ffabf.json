@@ -1,0 +1,161 @@
+{
+  "variant": "v-29641ffabf",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "The change does not modify the access matrix or access policy; it reuses the existing manage_payees action. The CI test test_matrix_equals_approved_policy passed."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "The change does not alter the auditor role's grants; auditor still has only read-only actions. CI test test_auditor_is_read_only passed."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "The change does not modify the access matrix; it_admin still cannot approve or release payments. CI test test_it_admin_cannot_approve_or_release passed."
+    },
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route POST /payees/{id}/reopen uses the privileged action manage_payees but is declared with mfa=False. The CI test test_privileged_routes_require_mfa failed, confirming the violation. The exception EXC-0214 that was meant to cover this expired on 2026-10-19, three days before the review time (2026-10-22), so it does not excuse the deviation."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change does not touch session or policy code; the CI test test_privileged_idle_timeout_within_policy passed."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The new reopen_payee method only changes status and closed_at fields, not NPI columns. The CI test test_every_npi_field_is_sealed_at_rest passed."
+    },
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The change does not touch integrations or transports code. CI test test_integrations_use_tls passed."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new reopen_payee service method does not call self._log at all; no new log call sites are introduced. CI test test_sampled_flows_do_not_log_npi passed."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The reopen_payee method in service.py records an audit event via self._audit(actor, 'reopen_payee', 'payee:{id}'), capturing actor, action, target, and time. CI test test_sampled_operations_are_audited passed."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "The change does not modify audit.py or audit retention configuration. CI test test_chain_and_retention passed."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The change does not modify retention code or policy. Reopening a payee simply changes status back to 'open', which is outside the purge scope. CI test test_sampled_purge_respects_hold passed."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The change does not add or modify outbound integrations. CI test test_integrations_are_inventoried passed."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new SQL statement in store.py ('UPDATE payees SET status = 'open', closed_at = NULL WHERE id = ?') uses a parameterized placeholder. CI test test_sql_statements_are_parameterized passed."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The change does not touch payment approval logic. CI test test_maker_cannot_check passed."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The change does not modify payments.py or dual-control logic. CI test test_dual_control_grid_matches_policy passed."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The change does not touch release logic. CI test test_sampled_release_is_idempotent passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25655 is approved by change_manager grace.kim@fernbrook.example and its components (payments.http, payments.routes, payments.service, payments.store) cover every changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example), a change_approver for payments and not the author Sofia Santos, provided a code_review approval for the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name commit e91e4ff4…, the sole and head commit of this change; no later commits exist that could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on the final commit e91e4ff4… reports 1 failure: test_privileged_routes_require_mfa failed because the new reopen route is privileged but lacks MFA. The full test suite did not pass, violating the requirement that the app's full suite pass on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive components (payments.http, payments.routes, payments.store). Kofi Mensah (security_reviewer, platform-security) provided a security_review approval for the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No changed file falls under a protected path in controls/protected-paths.json; no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type 'standard', not 'emergency', so the emergency-change PIR requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Exception EXC-0214 (MFA-1, payments.routes, POST /payees/{id}/reopen) was approved by helena.vasquez@fernbrook.example (risk_owner) but expired on 2026-10-19. The review time is 2026-10-22, so the exception is not 'unexpired at review time' and cannot excuse the MFA-1 deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0404 (MFA-1) covers apps/baseline-payments/payments/routes.py, which this change modifies by adding a new route. This is a behavioural change, not comment/whitespace, so the evidence lapses. The replacement evidence (the CI control test for MFA-1 on the new code) fails, so no adequate new evidence exists."
+    }
+  ],
+  "summary": "The change adds a new POST /payees/{id}/reopen route that uses the privileged action manage_payees but is declared with mfa=False, violating MFA-1. The CI control test for privileged-route MFA enforcement failed on the final commit, which also violates CHG-4 (testing on the final commit). The MFA exception EXC-0214 that was intended to cover this route expired on 2026-10-19, three days before the review date of 2026-10-22, so it cannot excuse the deviation (EXC-1 refuted). Additionally, the acceptance-ledger evidence for MFA-1 (ACR-0404) covered routes.py, which was behaviourally modified, causing that evidence to lapse with no passing replacement (LAP-1 refuted). The change must be rejected; the route should either require MFA or a valid, unexpired exception with a compensating control must be in place before re-submission.",
+  "meta": {
+    "elapsed_s": 264.36,
+    "tokens_in": 37908,
+    "tokens_out": 7367,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "57c6dc1ce2c63d0ef1bd7823db306737f61e2c9ae35ad357d13b8978a79e6519",
+    "packet_tokens_est": 35040,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21548,
+    "answer_chars": 6130,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 46.4,
+    "eval_s": 217.92,
+    "total_s": 264.36,
+    "tokens_est_ratio": 1.062,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

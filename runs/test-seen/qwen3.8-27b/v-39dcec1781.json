@@ -1,0 +1,91 @@
+{
+  "variant": "v-39dcec1781",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The change adds a new read-only helper to payments.py but does not modify the approve or is_fully_approved functions in scope. The control test test_maker_cannot_check passes in CI on the final commit."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals and is_fully_approved in payments.py are unchanged by this diff; the new approvals_remaining function merely calls required_approvals. The control test test_dual_control_grid_matches_policy passes in CI."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function in payments.py is untouched by the diff; the new function is inserted between required_approvals and is_fully_approved. The control test test_sampled_release_is_idempotent passes in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26887 is of type emergency, status approved, approved by change_manager Erik Brandt. Its components (payments.payments, payments.tests) cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (change_approver for payments, payments-eng team) approved the code_review for the head commit; she is not the author Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is a single commit (7e1226b) and the approval names that exact commit, so no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json targets the head commit 7e1226b; 175 tests pass with 0 failures, 0 errors, 0 skipped, including all registered control tests for MC-1, PAY-1, and PAY-2 whose scope includes payments.py."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Neither changed file falls in a security_sensitive component (payments.py is payments.payments, test file is payments.tests; both security_sensitive: false), so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/*, ci/*, tests/controls/*) are touched by this change, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "This is an emergency change deployed 2026-10-08T20:42Z; the PIR deadline is 2 business days later (2026-10-12). The review time is 2026-10-15, and no pir approval appears in records/approvals.json, so the mandatory post-implementation review is both missing and past due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries ACR-0401 (covers payments.py#required_approvals) and ACR-0403 (covers payments.py#release) reference symbols that are unchanged in this diff; the new function is purely additive and does not alter covered behaviour."
+    }
+  ],
+  "summary": "The code change itself is a small, read-only helper addition to payments.py with passing unit and control tests, and all change-management process controls (CHG-1 through CHG-6, LAP-1) are satisfied. However, CHG-7 is violated: this is an emergency change deployed on 2026-10-08, and the mandatory post-implementation review (PIR) was due within 2 business days (by 2026-10-12), yet no pir approval exists in the records as of the 2026-10-15 review time. Because the PIR is both missing and overdue, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 226.4,
+    "tokens_in": 28861,
+    "tokens_out": 6939,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "00e2d1c617587ab2fb8c10334a9875c89e9118139647f1a6d5cdeb5d44b6a7bc",
+    "packet_tokens_est": 25791,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22186,
+    "answer_chars": 3266,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.84,
+    "eval_s": 192.52,
+    "total_s": 226.4,
+    "tokens_est_ratio": 1.092,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

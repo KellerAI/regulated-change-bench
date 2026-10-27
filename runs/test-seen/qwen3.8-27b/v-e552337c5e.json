@@ -1,0 +1,86 @@
+{
+  "variant": "v-e552337c5e",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new archive_payments method adds three SQL execute calls to store.py; all data-dependent values (the status parameter) are bound via '?' placeholders, and the CREATE TABLE statement is a fixed string. The exhaustive control test test_sql_statements_are_parameterized passes in CI on the head commit."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The payments table (and the derived payments_archive) contains no NPI columns (no account_number, routing_number, tax_id, or date_of_birth); NPI resides in the payees table, which this change does not touch. The exhaustive NPI-sealing control test passes."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The change adds a new method to store.py but does not modify Store.purge_payee_npi or Store.closed_payees_before; the new archive method deals only with the payments table, not payee NPI retention. The sample retention control test passes."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The new archive_payments method deletes rows from the payments table but does not modify Store.find_release or Store.add_release; release idempotency is enforced via the releases table, which is untouched. The sample idempotency control test passes in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26120 is of type 'standard', status 'approved', approved by change_manager grace.kim, and its components list 'payments.store' which matches the only changed file (store.py → component payments.store)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from sofia.santos (change_approver for payments, payments-eng team) is recorded for the head commit; she is not the author (mara.costa), satisfying independent approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit 49ff1a5… which is the head (and only) commit of the change; no later commits exist that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json reports success on the head commit 49ff1a5; 172 tests pass with 0 failures, 0 errors, 0 skipped, including all four relevant control tests (SEC-1, ENC-1, RET-1, PAY-2) unskipped and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "store.py is marked security_sensitive in components.json; a security_review approval from kofi.mensah (security_reviewer, platform-security) is recorded for the same head commit 49ff1a5."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers any symbol or path in store.py; all existing ledger evidence (ACR-0401…0406) covers payments.py, audit.py, routes.py, Approvals.java, and Underwriting.java, none of which this change modifies. No evidence lapses."
+    }
+  ],
+  "summary": "PR-1990 adds a single method archive_payments(status) to payments' Store class, moving terminal-status payment rows to a new payments_archive table. The change is confined to store.py and introduces only parameterized SQL, so SEC-1 is satisfied. The payments table carries no NPI fields, leaving ENC-1, RET-1, and PAY-2 unaffected; all corresponding control tests pass in CI. The process obligations are met: the ticket is approved by a change manager and covers the correct component, an independent code_review and a security_review (required because store.py is security_sensitive) are both on the head commit, and CI ran green on that commit with all 172 tests passing and none skipped. No ledger evidence is invalidated because no prior acceptance covers store.py. The change is accepted.",
+  "meta": {
+    "elapsed_s": 337.15,
+    "tokens_in": 30607,
+    "tokens_out": 10053,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bb8a495dbe783dea928bd2e7b8dc7331db81cf408526ffceb78478d062f166fb",
+    "packet_tokens_est": 27585,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 36120,
+    "answer_chars": 3625,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 36.19,
+    "eval_s": 300.92,
+    "total_s": 337.15,
+    "tokens_est_ratio": 1.084,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

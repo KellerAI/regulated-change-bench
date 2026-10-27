@@ -1,0 +1,86 @@
+{
+  "variant": "v-345bb67f93",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change modifies only STANDARD_IDLE_MINUTES (30→45); PRIVILEGED_IDLE_MINUTES remains 15 in Policy.java and policy-params.json. The control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy is present in CI and passes, confirming the 15-minute privileged bound is unchanged."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "Policy.java is in scope, but UNDERWRITER_LIMIT (500000) and SENIOR_LIMIT (1500000) are untouched by this diff. The prior proof (ACR-0405) covering those symbols remains valid under LAP-1 since the covered code is unaltered. The control test authorityLimitsMatchPolicy passes in CI."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "DTI_MAX_PERCENT (40) and LTV_MAX_PERCENT (90) in Policy.java are not modified by this change. The prior proof (ACR-0406) covering those symbols is unaffected. The control test autoApproveGridMatchesPolicy passes in CI."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "AUDIT_RETENTION_YEARS (7) in Policy.java is unchanged by this diff. The control test chainAndRetention passes in CI, and the prior ledger entry (ACR-0402) for payments is untouched since no payments code is modified."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25092 is approved by Erik Brandt (change_manager) and its components (mortgage.controls-data, mortgage.policy, mortgage.tests) cover all three changed paths: policy-params.json, Policy.java, and SessionTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li (wen.li@fernbrook.example) holds the change_approver role for baseline-mortgage, is on the lending-eng team but is a different person from author Declan Farrell, and approved the exact head commit 30ce7dd2."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is only one commit in the change and the code_review approval names that exact commit; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 30ce7dd2 with result success: 124 tests, 0 failures, 0 errors, 0 skipped. All registered control tests for the touched obligations (SessionControlTest, ApprovalsControlTest, UnderwritingControlTest, AuditControlTest) are present, unskipped, and passing."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change modifies controls/mortgage/policy-params.json (a protected path under controls/). Bao Tran (bao.tran@fernbrook.example, control_owner, controls-office team) approved the same commit; the author Declan Farrell is on lending-eng, a different team, satisfying the 'outside the author's team' requirement."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No covered code in the acceptance ledger is altered in behaviour: the prior proofs for LIM-1, CRD-1, and AUD-2 cover specific symbols (UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, LTV_MAX_PERCENT, AUDIT_RETENTION_YEARS) that this diff does not modify. No evidence lapses."
+    }
+  ],
+  "summary": "This single-commit change raises the standard (non-privileged) idle timeout from 30 to 45 minutes in Policy.java, updates the corresponding unit test, and syncs the value in policy-params.json. No product obligation is affected: the privileged idle timeout remains 15 minutes (SES-1), and all other policy constants are untouched, so prior proofs and control-test evidence remain valid. All process obligations are met: the ticket is approved with correct component coverage, an independent change_approver (Wen Li) approved the commit, a control_owner from a different team (Bao Tran) approved the change to a protected controls path, and CI on the final commit shows 124 tests passing with zero failures or skips. The change introduces no deviation from any obligation and requires no exception; it is accepted.",
+  "meta": {
+    "elapsed_s": 198.7,
+    "tokens_in": 28874,
+    "tokens_out": 5721,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b47fae4669321399b54155d5dff8ad052f0490abda0c382ba678964cfbf28a8b",
+    "packet_tokens_est": 25333,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18022,
+    "answer_chars": 3837,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.85,
+    "eval_s": 164.82,
+    "total_s": 198.69,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

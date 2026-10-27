@@ -1,0 +1,86 @@
+{
+  "variant": "v-b1429f2e3a",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The new reopen() method in CaseService.java changes a case from WITHDRAWN to DRAFT and persists it via store.save(), making it a state-changing operation, yet it never calls audit.record(). Every other state-changing method in CaseService (create, edit, submit, approve, override, decline, withdraw, close, addNote, markDocumentReceived, quote, setLegalHold, purgeExpiredNpi) records an audit event; reopen is the sole exception. This directly violates the obligation that every state-changing operation records an audit event with actor, action, target and time."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26477 is approved by change manager erik.brandt@fernbrook.example (2026-10-22), and its components list [mortgage.cases] covers the changed file CaseService.java, which maps to component mortgage.cases in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by wen.li@fernbrook.example, who holds the change_approver role for baseline-mortgage and is a different person from the author declan.farrell@fernbrook.example per the people directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 8c6c5359… which is the single (and head) commit of the change; there are no later commits that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 8c6c5359… shows 124 tests passing with 0 failures, 0 errors, 0 skipped. The control test for the touched obligation (controls.AuditControlTest#sampledOperationsAreAudited for AUD-1) is present and passed, as are all other mortgage control tests. (Note: the sample test passing does not itself prove the code satisfies AUD-1; the source-code inspection above shows the violation directly.)"
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "CaseService.java belongs to component mortgage.cases, which is security_sensitive: false in components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change modifies only apps/baseline-mortgage/src/main/java/mortgage/CaseService.java, which is not under any protected path listed in controls/protected-paths.json; no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; no post-implementation review is triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed for this change, and no exception in the register is needed or improperly invoked for the files touched."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers CaseService.java; the change to this file does not lapse any previously accepted evidence."
+    }
+  ],
+  "summary": "The change adds a reopen() method to CaseService.java that transitions a withdrawn case back to draft and persists it, but omits the mandatory audit.record() call that every other state-changing operation in the class performs. This is a direct violation of AUD-1, which requires every state-changing operation to record an audit event with actor, action, target, and time. All process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) are satisfied, and the CI suite passed on the final commit, but the sample-based AUD-1 control test does not exercise the new reopen path and cannot compensate for the missing audit call visible in the source. The change must be rejected and the author must add audit.record(actor, Action.EDIT_CASE, caseId, \"reopened\") before resubmission.",
+  "meta": {
+    "elapsed_s": 219.65,
+    "tokens_in": 32022,
+    "tokens_out": 6264,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7ef8f2a5c2e2e3792e1dd2eaebcd4beafbe2bc7d69ed3fd2b5de314f43608f51",
+    "packet_tokens_est": 29258,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21059,
+    "answer_chars": 3514,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 38.2,
+    "eval_s": 181.41,
+    "total_s": 219.65,
+    "tokens_est_ratio": 1.071,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

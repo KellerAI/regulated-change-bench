@@ -1,0 +1,86 @@
+{
+  "variant": "v-ce8ce63091",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change narrows the legal-hold guard to only DECLINED cases (`loanCase.isLegalHold() && loanCase.status() == CaseStatus.DECLINED`), so WITHDRAWN cases under a legal hold can now be purged. The obligation states NPI is purged 'and never while a legal hold applies' without qualification by case status, making this a direct violation. No exception in the register covers RET-1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26151 is approved by change_manager grace.kim and its components list 'mortgage.retention', which maps in components.json to the changed file Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from declan.farrell@fernbrook.example (a change_approver for baseline-mortgage, per the directory) was given on the head commit; Declan is not the author (priya.raman)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit 66b3559…, which is the head and the only commit in the change; there are no later commits that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 66b3559… with result 'success'; all 124 tests passed with 0 failures, 0 errors, 0 skipped, including controls.RetentionControlTest#sampledPurgeRespectsHold (the registered RET-1 control test)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java maps to component mortgage.retention, which is security_sensitive: false in components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only Retention.java, which is not under any protected path in protected-paths.json; no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked or needed; the exception register contains no entry for RET-1, and the change does not reference any exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers Retention.java or the mortgage.retention component, so no prior evidence lapses as a result of this change."
+    }
+  ],
+  "summary": "The change modifies Retention.java so that the legal-hold guard only applies to DECLINED cases, leaving WITHDRAWN cases under legal hold unprotected from NPI purging. This directly contradicts RET-1, which requires that NPI 'is never purged while a legal hold applies' regardless of case status. No exception in the register covers this deviation. All process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) are satisfied, but the product-obligation violation on RET-1 is unambiguous and unmitigated, requiring rejection.",
+  "meta": {
+    "elapsed_s": 159.95,
+    "tokens_in": 27508,
+    "tokens_out": 4374,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1da474b3cf5551b6eea3ffb7dd3b51e50ee6e53ff79e43b7e1929bed90dfc08f",
+    "packet_tokens_est": 24071,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13895,
+    "answer_chars": 2883,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.14,
+    "eval_s": 127.78,
+    "total_s": 159.95,
+    "tokens_est_ratio": 1.113,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

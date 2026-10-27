@@ -1,0 +1,91 @@
+{
+  "variant": "v-227f717c6d",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "The new FX_RATES_URL constant is 'http://fx.fernbrook.example/rates', an outbound integration endpoint using plaintext HTTP. ENC-2 requires every outbound integration endpoint to use HTTPS, and the new code in payments.py introduces a fresh integration that bypasses the integrations.py registry and violates this rule."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The new fx.fernbrook.example endpoint is not listed in controls/payments/asset-inventory.json (which contains only core-banking, sanctions-screening, and statement-delivery). INV-1 requires every outbound integration to be inventoried with an owner and data classification; this integration has neither."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change introduces a deviation from ENC-2 (HTTP instead of HTTPS) and INV-1 (un-inventoried integration), but no exception in the register covers these obligations for the payments.payments component, and no risk_owner-approved, unexpired exception is available."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The change adds new code to payments.py but does not modify the approve or is_fully_approved symbols covered by the MC-1 obligation. The CI run on the head commit shows tests/controls/test_payments_control.py::test_maker_cannot_check passing."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The required_approvals and is_fully_approved functions in payments.py are unchanged. The CI run on the head commit shows test_dual_control_grid_matches_policy passing, and the proof record in the acceptance ledger remains valid since the covered symbols are unaltered."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function in payments.py is unchanged by this diff. The CI run on the head commit shows test_sampled_release_is_idempotent passing, and the ponens-trace evidence in the ledger remains valid."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24322 is type 'standard', status 'approved' by change_manager erik.brandt@fernbrook.example, and its components list includes 'payments.payments', which is the component of the changed file per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example (Sofia Santos, p-ssantos), who holds the change_approver role for payments and is a different person from the author aisha.bello@fernbrook.example (Aisha Bello, p-abello). No alias overlap exists between their email lists."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 932e5b34…, which is the sole and head commit of the change. No later commits exist, so the approval fully covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci/run.json executed on the head commit 932e5b34… with result 'success'. The JUnit report shows 172 tests, 0 failures, 0 errors, 0 skipped, including all registered payments control tests (access control, payments, routes, session, encryption, integrations, logging, audit, retention, SQL)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance-ledger entries covering payments.py symbols (required_approvals, release) reference unchanged code: the diff only appends a new fx_rate function and constant without modifying any covered symbol. The CI re-ran on the final commit and all control tests pass, refreshing the evidence."
+    }
+  ],
+  "summary": "The change adds a new outbound call to http://fx.fernbrook.example/rates in payments.py, introducing an HTTP (non-TLS) integration endpoint that directly violates ENC-2's universal requirement that every outbound integration use HTTPS. The same endpoint is absent from the approved asset inventory, violating INV-1. No exception in the register covers these deviations, so EXC-1 is also unsatisfied. All change-management process obligations (ticket, independent approval, scope of approval, CI testing, evidence freshness) are met, and the existing payment-control obligations (MC-1, PAY-1, PAY-2) remain shown because the covered functions are untouched and the full CI suite passes on the final commit. However, the HTTP integration and missing inventory entry are critical violations that preclude acceptance.",
+  "meta": {
+    "elapsed_s": 256.94,
+    "tokens_in": 28360,
+    "tokens_out": 7757,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "13e4524324fe1bfae970a0e9232afd43fc07b5c6a51e88375f919d3951551712",
+    "packet_tokens_est": 25261,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26423,
+    "answer_chars": 4348,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.17,
+    "eval_s": 223.73,
+    "total_s": 256.94,
+    "tokens_est_ratio": 1.095,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

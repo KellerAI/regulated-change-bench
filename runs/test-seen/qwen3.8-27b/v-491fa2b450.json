@@ -1,0 +1,76 @@
+{
+  "variant": "v-491fa2b450",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets mortgage.privileged_idle_minutes to 20, exceeding the obligation's hard bound of ≤ 15. Policy.java and policy-params.json both show 20, directly violating the 15-minute maximum stated in the obligation catalog."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The deviation from SES-1 has no covering exception. The only SES-1 exception (EXC-0141) is scoped to payments.session, not mortgage, and is expired (2026-09-16 < review time 2026-10-16). No valid exception exists to make the deviation acceptable."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24534 is type 'standard', status 'approved' by change_manager erik.brandt, and its components (mortgage.controls-data, mortgage.policy, mortgage.tests) cover all three files the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from wen.li@fernbrook.example (Wen Li, change_approver role, baseline-mortgage app) is present; Wen Li is a different person from the author Priya Raman, so independence is satisfied."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name commit 8eacf77be227238d733eec0391cbe4e40df9d1cf, which is the sole and head commit of the change. No later commits exist, so the approval covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit (ea3491…) shows 124 tests, 0 failures, 0 errors, 0 skipped, including controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy. The full suite passed on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches controls/mortgage/policy-params.json (a protected path). A control_owner approval from rachel.stein@fernbrook.example (controls-office team, outside the author's lending-eng team) is on the head commit, satisfying CHG-6."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries ACR-0405 and ACR-0406 cover specific symbols (UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, LTV_MAX_PERCENT) in Policy.java. The change only modifies PRIVILEGED_IDLE_MINUTES; the covered symbols are unchanged in behaviour, so the prior evidence remains valid."
+    }
+  ],
+  "summary": "The change raises the privileged idle timeout from 15 to 20 minutes, directly violating obligation SES-1, which mandates a maximum of 15 minutes. No valid exception in the register covers this deviation: the only SES-1 exception (EXC-0141) is scoped to the payments app and has already expired. While the change-management process steps (ticket, independent code review, control-owner approval for the protected path, CI on the final commit, and evidence-lapse check) are all satisfied, the product obligation itself is breached. The change must be rejected until the privileged idle timeout is restored to ≤ 15 minutes or a valid, unexpired exception scoped to mortgage.session is obtained from the CISO office.",
+  "meta": {
+    "elapsed_s": 175.94,
+    "tokens_in": 28885,
+    "tokens_out": 4914,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e041a7b9beee321b5e80c0ef7c7016f4e834d3eb58822203c24ab1cdf6ddd7c6",
+    "packet_tokens_est": 25347,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15774,
+    "answer_chars": 2988,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.84,
+    "eval_s": 142.07,
+    "total_s": 175.94,
+    "tokens_est_ratio": 1.111,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

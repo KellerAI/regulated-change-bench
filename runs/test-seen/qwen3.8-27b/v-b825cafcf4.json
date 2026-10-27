@@ -1,0 +1,86 @@
+{
+  "variant": "v-b825cafcf4",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The change adds tax_id to NpiRegistry.FIELDS and ApplicantFields.ALL, both within ENC-1's scope. The exhaustive control test everyNpiFieldIsSealedAtRest passed in CI (124/124, 0 skipped), confirming the new field is sealed at rest alongside the existing four."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "Adding tax_id to the NPI registry means the masking layer must cover it. The sample test sampledFlowsDoNotLogNpi passed in CI with the updated ControlFixtures that now include tax_id, and no logging code (AppLog.java, Mask.java) was modified."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "tax_id is now an NPI field subject to scheduled purging. The sample test sampledPurgeRespectsHold passed, and no retention logic (Retention.java, Policy.java, declined_npi_retention_months) was altered."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24990 is approved by change_manager erik.brandt; its components (mortgage.cases, mortgage.npi, mortgage.control-tests, mortgage.controls-data) cover every file the diff touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by wen.li@fernbrook.example, who holds the change_approver role for baseline-mortgage and is not the author (priya.raman)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "All three approvals name the single head commit cbd638e; there are no later commits, so the approval fully covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit cbd638e with 124 tests, 0 failures, 0 errors, 0 skipped. The ENC-1 control test (everyNpiFieldIsSealedAtRest, exhaustive over mortgage.npi_registry) is present and passing, satisfying the requirement for the obligation whose closed domain (the NPI registry) the change touches."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "NpiRegistry.java belongs to component mortgage.npi (security_sensitive: true). A security_review approval was given by kofi.mensah@fernbrook.example, who holds the security_reviewer role, for the same head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change modifies controls/mortgage/policy-params.json (matches protected path controls/*/*) and apps/baseline-mortgage/src/test/java/controls/ControlFixtures.java (matches protected path apps/baseline-mortgage/src/test/java/controls/*). A control_owner approval was given by bao.tran@fernbrook.example (controls-office team), who is outside the author's team (lending-eng), for the same head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The six entries in the acceptance ledger cover payments payments/audit/routes and mortgage Approvals/Underwriting/Policy code. None of those covered paths are modified by this change, so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1388 adds a tax_id field for self-employed applicants by updating ApplicantFields, NpiRegistry, the test fixture, and the approved NPI-fields list in policy-params.json. The change is confined to the baseline-mortgage app and does not touch access-control, routing, session, audit, or payment code. All process obligations are satisfied: the change ticket is approved with correct component coverage, independent code review and security review (for the security-sensitive NPI component) are in place, and a control_owner approval from the controls-office team covers the protected-path edits. CI ran on the final commit with 124 tests passing (0 skipped), including the exhaustive ENC-1 control test over the NPI registry, and no prior acceptance-ledger evidence is invalidated. The change is accepted.",
+  "meta": {
+    "elapsed_s": 291.74,
+    "tokens_in": 29343,
+    "tokens_out": 8876,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "59267874bc84aa39af283bdb8b17cbb7be9fcbfadb17108195a621a2369f38b7",
+    "packet_tokens_est": 25834,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 30574,
+    "answer_chars": 3697,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.52,
+    "eval_s": 257.19,
+    "total_s": 291.74,
+    "tokens_est_ratio": 1.108,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

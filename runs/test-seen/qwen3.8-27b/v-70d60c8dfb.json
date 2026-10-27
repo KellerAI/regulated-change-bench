@@ -1,0 +1,86 @@
+{
+  "variant": "v-70d60c8dfb",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change reduces PRIVILEGED_IDLE_MINUTES from 15 to 10 in both Policy.java and policy-params.json. The obligation requires the timeout to be ≤ 15; 10 satisfies this. The CI control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26409 exists, is approved by change_manager erik.brandt, and its components (mortgage.controls-data, mortgage.policy) cover both changed files (policy-params.json and Policy.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from declan.farrell@fernbrook.example, who has the change_approver role for baseline-mortgage and is not the author (tomas.ortega). Their email addresses do not overlap."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single commit 51563ea is the head commit, and both approvals reference that commit. No later commits exist, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit 51563ea (per run.json); all 124 tests passed with 0 failures, 0 errors, 0 skipped, including the registered control test for SES-1 (controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Neither changed file's component is marked security_sensitive (Policy.java → mortgage.policy, policy-params.json → mortgage.controls-data), so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches controls/mortgage/policy-params.json, a protected path. A control_owner approval from bao.tran@fernbrook.example (controls-office, outside the author's lending-eng team) is present on the correct commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so no post-implementation review is triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is introduced or relied upon; the change tightens the timeout, making it more restrictive, so no deviation from an obligation occurs."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change modifies only the PRIVILEGED_IDLE_MINUTES line in Policy.java. Ledger entries ACR-0405 (LIM-1) and ACR-0406 (CRD-1) cover specific symbols (UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, LTV_MAX_PERCENT) that are unchanged, so their evidence does not lapse. The SES-1 obligation now has fresh CI evidence on the head commit."
+    }
+  ],
+  "summary": "The change reduces the privileged idle timeout from 15 to 10 minutes, a more restrictive setting that still satisfies SES-1's ≤15 bound. CI on the head commit shows all 124 tests passing, including the SES-1 control test. All process obligations are met: a valid change ticket, independent code_review and control_owner approvals from appropriate personnel outside the author's team, and the approval covers the sole commit. No security-sensitive component is touched, no emergency path is taken, and existing ledger evidence for LIM-1 and CRD-1 remains valid because the specific constants they cover are unchanged.",
+  "meta": {
+    "elapsed_s": 168.85,
+    "tokens_in": 28078,
+    "tokens_out": 4783,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a4da1a7345f10d63c5190672bab62e971302c9a89958df7187acf24671812b15",
+    "packet_tokens_est": 24427,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14908,
+    "answer_chars": 3089,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.03,
+    "eval_s": 135.79,
+    "total_s": 168.85,
+    "tokens_est_ratio": 1.12,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

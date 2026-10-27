@@ -1,0 +1,66 @@
+{
+  "variant": "v-5db1e26c69",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26282 is approved by grace.kim (change_manager) and its components (payments.controls-data, payments.policy) cover both changed files: policy.py and policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (sofia.santos@fernbrook.example) holds the change_approver role for payments and is not the author (Mara Costa). A code_review approval from her for the head commit is recorded."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 71106ae…, which is the sole and head commit of this change; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit (71106ae…) with 172 tests, 0 failures, 0 errors, 0 skipped. All registered control tests for the touched scope (SES-1, PAY-1, AUD-2, RET-1) passed, and the change does not alter any privileged, dual-control, audit-retention, or retention parameter."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The change modifies controls/payments/policy-params.json, a protected path, requiring a control_owner approval from someone outside the author's team. The recorded control_owner approval is from Sofia Santos, whose roles are [engineer, change_approver]—she does not hold the control_owner role (held only by Rachel Stein and Bao Tran on controls-office). Additionally, Sofia is on the same team (payments-eng) as the author Mara Costa, violating the 'outside the author's team' requirement."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers paths/symbols in payments.py, audit.py, routes.py, and mortgage files; none of these are modified by this change (which only alters STANDARD_IDLE_MINUTES in policy.py and policy-params.json). No evidence lapses."
+    }
+  ],
+  "summary": "The change raises the standard (non-privileged) idle timeout from 30 to 45 minutes in payments, touching only policy.py and policy-params.json. No product obligation is affected because privileged idle timeout (SES-1) remains at 15 minutes, and all other control parameters are unchanged. CI passed fully on the final commit with all control tests green. However, CHG-6 is violated: the change modifies a protected path (controls/payments/policy-params.json) and requires a control_owner approval from a person with that role outside the author's team. The recorded control_owner approval is from Sofia Santos, who lacks the control_owner role and is on the same team (payments-eng) as the author. The change must be rejected and resubmitted with a valid control_owner approval from Rachel Stein or Bao Tran (controls-office).",
+  "meta": {
+    "elapsed_s": 167.61,
+    "tokens_in": 27658,
+    "tokens_out": 4928,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "68c60dd31311670730d95d7af691ed358ecb8b5ba48b992751e04e2b6a66cd59",
+    "packet_tokens_est": 24278,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16199,
+    "answer_chars": 2711,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.28,
+    "eval_s": 135.3,
+    "total_s": 167.61,
+    "tokens_est_ratio": 1.11,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

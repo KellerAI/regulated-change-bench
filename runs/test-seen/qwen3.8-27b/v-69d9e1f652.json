@@ -1,0 +1,86 @@
+{
+  "variant": "v-69d9e1f652",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets mortgage.privileged_idle_minutes to 20, which exceeds the obligation's parametric bound of ≤ 15 (privileged_idle_minutes_max: 15). No valid exception in the register covers this: EXC-0141 is scoped to payments.session and expired 2026-09-20 (review is 2026-10-20)."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24092 is approved by change_manager grace.kim, and its components (mortgage.controls-data, mortgage.policy, mortgage.tests) cover all three changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from wen.li@fernbrook.example, who has the change_approver role for baseline-mortgage and is not the author (nneka.okafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the single (and final) commit b4c1e93; there are no later commits to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit reports 124 tests, 0 failures, 0 skipped; the registered control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy is present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "None of the touched components (mortgage.policy, mortgage.tests, mortgage.controls-data) are marked security_sensitive in components.json, so a security_review is not triggered."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change to controls/mortgage/policy-params.json falls under the protected path controls/*; control_owner rachel.stein@fernbrook.example (controls-office team, outside lending-eng) approved the final commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from SES-1 (20 > 15). The only SES-1 exception (EXC-0141) is scoped to payments.session, not mortgage, and has expired (2026-09-20 < review 2026-10-20). No valid exception authorizes the deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change modifies only PRIVILEGED_IDLE_MINUTES in Policy.java; the ledger entries ACR-0405 (LIM-1) and ACR-0406 (CRD-1) cover specific symbols (UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, LTV_MAX_PERCENT) whose values and behaviour are unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "The change raises the privileged idle timeout from 15 to 20 minutes, directly violating obligation SES-1, which mandates a maximum of 15 minutes (privileged_idle_minutes_max: 15). No valid exception in the register covers this deviation for the mortgage session component. Although the change-management process steps (ticket, independent approval, control-owner approval, CI passing) are all satisfied, the product obligation is breached, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 201.6,
+    "tokens_in": 28895,
+    "tokens_out": 5866,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "93fef414e3aee6a7103dc423bd904e3c8a489793cb7b360a2bcd7b5d06126d0d",
+    "packet_tokens_est": 25349,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19272,
+    "answer_chars": 2924,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.84,
+    "eval_s": 167.73,
+    "total_s": 201.6,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

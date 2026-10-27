@@ -1,0 +1,76 @@
+{
+  "variant": "v-636ffc8d6e",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Both Policy.DTI_MAX_PERCENT in code and mortgage.dti_max_percent in policy-params.json are updated to 43; the exhaustive control test autoApproveGridMatchesPolicy passes in CI on the final commit, confirming code matches the approved parameter."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26006 is approved by grace.kim (change_manager) and its components (mortgage.controls-data, mortgage.policy, mortgage.tests) cover every path the change touches (policy-params.json, Policy.java, UnderwritingTest.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds the change_approver role for baseline-mortgage and is not the author (Priya Raman); his code_review approval is on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit 1e93cd90, which is the only (and final) commit in the change, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit (1e93cd90) with 124 tests, 0 failures, 0 skipped; the registered control test controls.UnderwritingControlTest#autoApproveGridMatchesPolicy (CRD-1, exhaustive) is present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "None of the three touched files (Policy.java, UnderwritingTest.java, policy-params.json) map to a security_sensitive component per components.json, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The change modifies controls/mortgage/policy-params.json, which falls under the protected paths (controls/*, controls/**, controls/*/*). CHG-6 requires a control_owner approval from someone outside the author's team, but the only approval on record is a code_review from Declan Farrell; no control_owner approval (from rachel.stein or bao.tran) exists."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change alters Policy.DTI_MAX_PERCENT, which was covered by ACR-0406 (RoQ proof at commit d30b2ad). The CI run on the new commit includes the exhaustive control test autoApproveGridMatchesPolicy, providing new evidence of equivalent strength for the updated parameter."
+    }
+  ],
+  "summary": "The change raises the auto-approve DTI ceiling from 40% to 43% across Policy.java, the unit test, and the approved parameter in policy-params.json, and the CI run on the final commit confirms all 124 tests (including the exhaustive CRD-1 control test) pass. However, policy-params.json resides under a protected path (controls/mortgage/*), which triggers CHG-6 requiring a control_owner approval from someone outside the author's team. No such approval is present in the records—the sole approval is a code_review from a colleague on the same lending-eng team. Because CHG-6 is not satisfied, the change cannot be accepted and must be rejected.",
+  "meta": {
+    "elapsed_s": 214.45,
+    "tokens_in": 28987,
+    "tokens_out": 6217,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ac9698bff33080f230f7d4e50b9192f9177911e4e5379553e9b18898be43bb77",
+    "packet_tokens_est": 25384,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 20785,
+    "answer_chars": 2950,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.98,
+    "eval_s": 180.44,
+    "total_s": 214.45,
+    "tokens_est_ratio": 1.114,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

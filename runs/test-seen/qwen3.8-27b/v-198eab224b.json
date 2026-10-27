@@ -1,0 +1,106 @@
+{
+  "variant": "v-198eab224b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "The change introduces FX_RATES_URL = \"http://fx.fernbrook.example/rates\" and a new fx_rate() function that calls outbound._transport.send() against this HTTP endpoint. ENC-2 requires every outbound integration endpoint to use HTTPS; this is a clear HTTP (not HTTPS) outbound call, directly violating the obligation."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The new FX service endpoint (fx.fernbrook.example) is not listed in controls/payments/asset-inventory.json, which only enumerates core-banking, sanctions-screening, and statement-delivery. INV-1 requires every outbound integration to be inventoried with an owner and data classification; this integration has neither."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25066 is approved by change manager Erik Brandt and its components list includes payments.payments, which is the component for the changed file payments.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (change_approver for payments, payments-eng team) provided a code_review approval for the exact head commit bfec8e0; she is a different person from author Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit bfec8e0775b49522f779eff68f00dc2c1ee59300, which is the only (and final) commit in the change; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit bfec8e0 with 172 tests, 0 failures, 0 errors, 0 skipped. All registered control tests for obligations whose scope includes payments.py (PAY-1, PAY-2, MC-1) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file payments.py maps to component payments.payments, which is not marked security_sensitive in controls/payments/components.json, so CHG-5 is not triggered."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-payments/payments/payments.py; no protected paths under controls/, ci/, or the test-controls directories are modified."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the emergency post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked or needed for this change; the existing exceptions in the register are unrelated to the FX rate feature."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff is purely additive (new constant and function inserted between release and _send_disbursement); the covered symbols required_approvals and release in the acceptance ledger (ACR-0401, ACR-0403) are unmodified, so prior evidence is not lapsed."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals and is_fully_approved in payments.py are unchanged by the diff; the exhaustive proof record (ACR-0401) and the passing CI control test confirm dual-control thresholds still match policy."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function in payments.py is unchanged; the Ponens trace (ACR-0403) and the passing CI test confirm idempotent release behaviour is preserved."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The approve and is_fully_approved functions in payments.py are not modified by the diff; the exhaustive CI control test passes, confirming maker-checker separation is intact."
+    }
+  ],
+  "summary": "The change introduces a new outbound FX rate lookup function that calls an HTTP (not HTTPS) endpoint at fx.fernbrook.example, directly violating ENC-2's requirement that every outbound integration use TLS. The new integration is also absent from the approved asset inventory, violating INV-1. Both are critical-severity obligations and the violations are unambiguous from the diff. All process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) and the unmodified payment-control obligations (PAY-1, PAY-2, MC-1) are satisfied. The change must be rejected and reworked to use an HTTPS endpoint and register the integration in the asset inventory before resubmission.",
+  "meta": {
+    "elapsed_s": 212.41,
+    "tokens_in": 28329,
+    "tokens_out": 6282,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5163f0fcdc35c0bb164d851f8cf10654951672d238ac66d0e0cebd2346448323",
+    "packet_tokens_est": 25251,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19956,
+    "answer_chars": 4214,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.2,
+    "eval_s": 179.18,
+    "total_s": 212.41,
+    "tokens_est_ratio": 1.094,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

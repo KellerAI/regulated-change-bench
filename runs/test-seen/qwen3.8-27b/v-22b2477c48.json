@@ -1,0 +1,66 @@
+{
+  "variant": "v-22b2477c48",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change adds a read-only accessor (last()) to the in-memory log buffer; it introduces no new log call sites or alters how messages are written. The registered control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi passed in the CI run on the head commit, and the existing masking logic (Mask.java) is untouched."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26119 is type 'standard', status 'approved', approved by change manager Erik Brandt (p-ebrandt). Its components list ['mortgage.logging'] matches the component of the changed file AppLog.java per controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval exists from Declan Farrell (p-dfarrell), who holds the change_approver role for baseline-mortgage and is a different person from the author Priya Raman. The approval targets the head commit c14e1b9."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name the sole commit (c14e1b9), which is also the head. There are no later commits to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json reports result 'success' on commit c14e1b9 (the head) with 124 tests, 0 failures, 0 errors, 0 skipped. The LOG-1 control test (controls.LoggingControlTest#sampledFlowsDoNotLogNpi) is present among the passing tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "AppLog.java belongs to component mortgage.logging, which is marked security_sensitive in controls/mortgage/components.json. A security_review approval from Ines Halvorsen (security_reviewer, platform-security team, not the author's team) is recorded for the head commit."
+    }
+  ],
+  "summary": "The change is a minimal, additive modification: a five-line read-only accessor (last()) on the AppLog class that returns the most recent in-memory log line. It introduces no new log call sites, no NPI handling, and no changes to access control, encryption, or audit logic. All process obligations (ticket, independent code review, security review for a security-sensitive component, CI on the final commit) are satisfied with appropriate evidence, and the sole applicable product obligation LOG-1 is supported by a passing control test in the CI run on the head commit. No other product obligation has this file in its scope, and no acceptance-ledger evidence is lapsed by the change. The change is accepted.",
+  "meta": {
+    "elapsed_s": 196.51,
+    "tokens_in": 27688,
+    "tokens_out": 5704,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f4742f65e48ce44e12a1774d7c8450ace9b1b324182d5f8e4a5a85958b542aad",
+    "packet_tokens_est": 24186,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17955,
+    "answer_chars": 2524,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.25,
+    "eval_s": 164.24,
+    "total_s": 196.51,
+    "tokens_est_ratio": 1.115,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}
