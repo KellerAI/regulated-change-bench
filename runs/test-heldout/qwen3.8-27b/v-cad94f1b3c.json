@@ -44,7 +44,7 @@
       "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/integrations.py (the only changed file), so no prior evidence lapses. Fresh CI evidence for ENC-2 and INV-1 was generated on the final commit."
     }
   ],
-  "summary": "The change adds a no-op branch to the url_for method in payments's integrations module; it does not alter any URL, integration list, or security-relevant behaviour. All product obligations whose scope includes integrations.py (ENC-2, INV-1) are satisfied by the unchanged https URLs and matching asset inventory, confirmed by passing exhaustive control tests in CI on the final commit. All process obligations (CHG-1 through CHG-5, LAP-1) are met: the ticket is approved with correct component coverage, an independent change_approver and a security_reviewer both approved the single commit, the full 172-test suite passed with no skips, and no prior ledger evidence lapses. The change is safe to merge.",
+  "summary": "The change adds a no-op branch to the url_for method in payments' integrations module; it does not alter any URL, integration list, or security-relevant behaviour. All product obligations whose scope includes integrations.py (ENC-2, INV-1) are satisfied by the unchanged https URLs and matching asset inventory, confirmed by passing exhaustive control tests in CI on the final commit. All process obligations (CHG-1 through CHG-5, LAP-1) are met: the ticket is approved with correct component coverage, an independent change_approver and a security_reviewer both approved the single commit, the full 172-test suite passed with no skips, and no prior ledger evidence lapses. The change is safe to merge.",
   "meta": {
     "elapsed_s": 182.56,
     "tokens_in": 27549,

@@ -49,7 +49,7 @@
       "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/reports.py, so no prior evidence lapses from this change."
     }
   ],
-  "summary": "The change is a one-line constant addition (REPORT_FORMAT = 'ledger-csv/1') to payments's reports.py; it does not affect any product-obligation scope, and all standard process gates (ticket, independent approval, CI on final commit, no security-sensitive or protected-path involvement) are satisfied. However, the change is an emergency deployment, and CHG-7 requires a post-implementation review within 2 business days of the recorded deployment time (2026-10-24, a Saturday, so the deadline is end of Tuesday 2026-10-27). The PIR approval is dated 2026-10-31, which is 5 business days after deployment—3 days past the deadline. Because CHG-7 is violated, the change must be rejected.",
+  "summary": "The change is a one-line constant addition (REPORT_FORMAT = 'ledger-csv/1') to payments' reports.py; it does not affect any product-obligation scope, and all standard process gates (ticket, independent approval, CI on final commit, no security-sensitive or protected-path involvement) are satisfied. However, the change is an emergency deployment, and CHG-7 requires a post-implementation review within 2 business days of the recorded deployment time (2026-10-24, a Saturday, so the deadline is end of Tuesday 2026-10-27). The PIR approval is dated 2026-10-31, which is 5 business days after deployment—3 days past the deadline. Because CHG-7 is violated, the change must be rejected.",
   "meta": {
     "elapsed_s": 169.88,
     "tokens_in": 27735,

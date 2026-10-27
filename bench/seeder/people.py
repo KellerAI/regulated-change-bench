@@ -1,6 +1,6 @@
 """Synthetic people directory for the Fernbrook Bank platform.
 
-Names are invented. Nobody here maps to a real person, Keller staff included.
+Names are invented. Nobody here maps to a real person.
 """
 
 DOMAIN = "fernbrook.example"

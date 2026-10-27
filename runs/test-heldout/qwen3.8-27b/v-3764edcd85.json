@@ -34,7 +34,7 @@
       "note": "The changed file belongs to component payments.session which is security_sensitive, so a security_review is required. The only security_review (kofi.mensah@fernbrook.example) is on the first commit 1e0a30c; the second commit 7b03646 ('Sessions: increase bearer token entropy') is a behavioural change that voids that approval under CHG-3. No security_review exists on the head commit."
     }
   ],
-  "summary": "The change increases bearer-token entropy from 24 to 32 bytes in payments's session module and is otherwise clean: ticket, independent code review, CI, and the SES-1 control test all check out. However, the required security review for the security-sensitive payments.session component was recorded only against the first commit (1e0a30c). The second commit (7b03646, 'increase bearer token entropy') is a behavioural change that voids that approval under CHG-3, and no security review covers the head commit. Because CHG-5 is not satisfied, the change cannot be accepted.",
+  "summary": "The change increases bearer-token entropy from 24 to 32 bytes in payments' session module and is otherwise clean: ticket, independent code review, CI, and the SES-1 control test all check out. However, the required security review for the security-sensitive payments.session component was recorded only against the first commit (1e0a30c). The second commit (7b03646, 'increase bearer token entropy') is a behavioural change that voids that approval under CHG-3, and no security review covers the head commit. Because CHG-5 is not satisfied, the change cannot be accepted.",
   "meta": {
     "elapsed_s": 230.22,
     "tokens_in": 27795,

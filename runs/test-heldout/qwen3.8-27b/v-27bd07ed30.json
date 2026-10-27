@@ -54,7 +54,7 @@
       "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/policy.py or controls/payments/policy-params.json, so no prior evidence lapses from this change."
     }
   ],
-  "summary": "The change increases payments's privileged idle timeout from 15 to 16 minutes, directly violating the SES-1 parametric bound (≤ 15 minutes). The ticket references exception EXC-0210, but that exception is scoped to 'mortgage.session', not the payments session component modified here. The only payments-scoped SES-1 exception (EXC-0141) expired on 2026-09-19, well before the 2026-10-19 review time. All change-management process obligations (ticket, independent approval, control-owner approval for protected paths, CI) are satisfied, but the product obligation SES-1 is refuted and no valid exception excuses the deviation, so the change must be rejected.",
+  "summary": "The change increases payments' privileged idle timeout from 15 to 16 minutes, directly violating the SES-1 parametric bound (≤ 15 minutes). The ticket references exception EXC-0210, but that exception is scoped to 'mortgage.session', not the payments session component modified here. The only payments-scoped SES-1 exception (EXC-0141) expired on 2026-09-19, well before the 2026-10-19 review time. All change-management process obligations (ticket, independent approval, control-owner approval for protected paths, CI) are satisfied, but the product obligation SES-1 is refuted and no valid exception excuses the deviation, so the change must be rejected.",
   "meta": {
     "elapsed_s": 221.99,
     "tokens_in": 27818,
