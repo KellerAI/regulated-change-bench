@@ -1,0 +1,21 @@
+{
+  "id": "PR-1821",
+  "title": "Privileged idle timeout 20 minutes",
+  "description": "Treasury operators lose sessions mid-review.\n\nChanges:\n- `PRIVILEGED_IDLE_MINUTES` to 20\n- Approved parameter updated\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-247",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "60270cbd66826ac696d1b466c710676b54bc2a52",
+  "commits": [
+    {
+      "sha": "60270cbd66826ac696d1b466c710676b54bc2a52",
+      "message": "Set privileged idle timeout to 20 minutes",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-09-30T22:13:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26216",
+  "opened_at": "2026-09-30T22:13:00Z"
+}

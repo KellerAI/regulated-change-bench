@@ -1,0 +1,87 @@
+{
+  "variant": "v-dc24a1f420",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The new payment-advice inventory entry in controls/payments/asset-inventory.json has an empty owner, and the exhaustive INV-1 control test test_integrations_are_inventoried fails on head with ('payment-advice', 'no owner'). The exception register has no INV-1 exception."
+    },
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The added integration's base URL is https://advice.fernbrook.example/v1, and the exhaustive control test test_integrations_use_tls passed in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25317 was approved by change manager Erik Brandt on 2026-10-26, before the change opened on 2026-10-28. Its components (payments.integrations, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from Mara Costa, a payments change_approver who is not the author Jonah Weiss under any of the author's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "All approvals name the head commit 8414e2b, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run on head 8414e2b is recorded as failure, with 2 of 172 tests failing, including the registered INV-1 control test. The full suite is therefore not passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py belongs to the security-sensitive component payments.integrations. Security reviewer Ines Halvorsen approved the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path controls/payments/asset-inventory.json was changed. It was approved on head by control_owner Bao Tran (controls-office), who is outside the author's payments-eng team."
+    }
+  ],
+  "summary": "The change registers a new NPI-classified payment-advice integration, but its asset-inventory entry has no owner, which violates INV-1. The change's own CI run on the head commit failed: the exhaustive INV-1 control test and a controls-data test both fail, so CHG-4 is not met. No exception covers the deviation. The ticket, approvals, security review and control-owner sign-off are otherwise in order, but the INV-1 and CHG-4 violations require rejection.",
+  "meta": {
+    "elapsed_s": 69.66,
+    "tokens_in": 301127,
+    "tokens_out": 6624,
+    "usd": 0.369865,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6624,
+      "cache_read_input_tokens": 264213,
+      "cache_creation_input_tokens": 36886
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3698646,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

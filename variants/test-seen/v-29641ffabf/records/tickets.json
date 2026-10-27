@@ -1,0 +1,18 @@
+[
+  {
+    "id": "CHG-25655",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Reopen closed payees (internal batch route)",
+    "components": [
+      "payments.http",
+      "payments.routes",
+      "payments.service",
+      "payments.store"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-14T10:31:00Z",
+    "risk": "medium"
+  }
+]

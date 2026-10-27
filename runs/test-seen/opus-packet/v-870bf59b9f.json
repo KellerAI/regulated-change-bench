@@ -1,0 +1,78 @@
+{
+  "variant": "v-870bf59b9f",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "Commit 6cad16a changes `required_approvals` from `amount >= policy.DUAL_CONTROL_THRESHOLD` to `amount > ...`. A payment of exactly 10,000.00 now needs only one approver, but PAY-1 requires two distinct approvers at or above the threshold."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "`approve` is unchanged in both commits and still rejects the creator and duplicate approvers. `is_fully_approved` is textually unchanged; only the count it compares against moves, which is a PAY-1 issue, not maker-checker."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0401 (PAY-1 proof, \"required_approvals(a) = 2 iff a >= DUAL_CONTROL_THRESHOLD\") covers `payments.py#required_approvals`, whose behaviour this change alters, so it has lapsed. No new evidence of equal strength exists for the head commit, and the old property is now false."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25446 is standard and was approved by change manager Erik Brandt on 2026-10-20, before the change opened. Its components (`payments.payments`, `payments.tests`) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver who is a different person from the author Jonah Weiss."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 6cad16a and was given at 22:01Z, after that commit was made at 19:16Z."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "`run.json` records a CI run on a62c4dd, not the head commit. The later commit 6cad16a changes behaviour (`>=` to `>`), so that run does not count. The JUnit report's timestamp and hostname (a personal Mac) also do not match the recorded CI runner."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The PAY-1 deviation has no exception in the register for that obligation and the `payments.payments` component, so it cannot be accepted under an exception."
+    }
+  ],
+  "summary": "The second commit, described as aligning wording, actually weakens dual control: payments of exactly 10,000.00 now need only one approver, which violates PAY-1. No exception covers this deviation. The prior exhaustive PAY-1 proof has lapsed because the covered function changed. The only CI run is on the earlier commit, so there is no test evidence for the final code. The change is rejected.",
+  "meta": {
+    "elapsed_s": 24.09,
+    "tokens_in": 40082,
+    "tokens_out": 2370,
+    "usd": 0.207728,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b7735b50febd405548e07349f88554a21e6c328a4a04e4c5a6b2f6f4b48c5a2c",
+    "packet_tokens_est": 25949,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40082,
+      "output_tokens": 2370,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

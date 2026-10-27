@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25108",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Employee payees follow the hr disposal schedule",
+    "components": [
+      "payments.retention"
+    ],
+    "requested_by": "linh.nguyen@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-15T02:59:00Z",
+    "risk": "low"
+  }
+]

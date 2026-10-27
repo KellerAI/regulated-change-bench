@@ -1,0 +1,92 @@
+{
+  "variant": "v-f496935b83",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24991 is a standard ticket, approved by Grace Kim (change_manager) on 2026-10-05, before the PR opened on 2026-10-06. Its components (mortgage.servicing, mortgage.tests) cover RateQuote.java and src/test/java/mortgage/QuoteTermTest.java according to controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from d.farrell@fernbrook.example. The directory lists that address for Declan Farrell (p-dfarrell), who is the author (declan.farrell@fernbrook.example), so this is a self-approval and no independent change_approver has approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit efcc8e1 and there are no later commits, so it covers what would be merged. Whether the approval counts at all fails under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci is on head commit efcc8e1 and succeeded: JUnit Jupiter shows 126 tests with 0 failures, 0 errors and 0 skipped, including both QuoteTermTest cases. The change touches no product obligation's scope paths or closed domains, so no registered control tests are required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Not triggered: RateQuote.java (mortgage.servicing) and the mortgage test files are marked security_sensitive: false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Not triggered: the change touches no path in controls/protected-paths.json. src/test/java/mortgage/ is not under the protected src/test/java/controls/, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Not triggered: the ticket type is standard, emergency is false, and nothing was deployed before review, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Not triggered: no product obligation is deviated from and no exception is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Not triggered: no acceptance-ledger entry covers RateQuote.java or the new test file (the ledger covers Approvals, Underwriting and payments code), so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1744 adds a small read-only helper, RateQuote.isSupportedTerm, plus unit tests. It touches no product obligation's scope, no security-sensitive component and no protected path. The ticket is properly approved and CI passed on the head commit. However, the only code review approval comes from d.farrell@fernbrook.example, which the directory lists for the author Declan Farrell, so the change has no independent approval and CHG-2 is violated. The change must be rejected until a different baseline-mortgage change approver approves the head commit.",
+  "meta": {
+    "elapsed_s": 66.04,
+    "tokens_in": 286332,
+    "tokens_out": 6270,
+    "usd": 0.34028,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6270,
+      "cache_read_input_tokens": 253490,
+      "cache_creation_input_tokens": 32814
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.34027999999999997,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1615",
+  "title": "Simplify required_approvals",
+  "description": "Simplify required_approvals.\n\nChanges:\n- Single-expression form, same behaviour\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-837",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "746ff059cb4a65ae4316016f7e5a69d788bfea92",
+  "commits": [
+    {
+      "sha": "746ff059cb4a65ae4316016f7e5a69d788bfea92",
+      "message": "Payments: simplify required_approvals",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-07T18:35:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24308",
+  "opened_at": "2026-10-07T18:35:00Z"
+}

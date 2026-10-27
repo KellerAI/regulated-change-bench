@@ -1,0 +1,18 @@
+[
+  {
+    "id": "CHG-26330",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Reopen closed payees",
+    "components": [
+      "payments.http",
+      "payments.routes",
+      "payments.service",
+      "payments.store"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-09-30T05:53:00Z",
+    "risk": "medium"
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "variant": "v-b1429f2e3a",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The new `CaseService.reopen` method changes case state but does not call `audit.record`; violates the universal audit requirement for state‑changing operations."
+    },
+    {
+      "id": "CHG-1",
+      "status": "open",
+      "note": "Ticket CHG-26477 lists component \"mortgage.cases\", but `CaseService.java` has no entry in `controls/mortgage/components.json`; cannot confirm the ticket covers the changed component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval exists from Wen Li (change_approver) who is not the author, satisfying independent approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the exact commit being merged and no later commits alter behaviour, satisfying coverage of the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (124 tests, 0 failures) and includes the control test `controls.AuditControlTest#sampledOperationsAreAudited` for the touched obligation."
+    }
+  ],
+  "summary": "The change fails the universal audit obligation (AUD-1) because the new `reopen` operation does not emit an audit event, which is a critical violation. Additionally, component coverage for the change ticket cannot be verified (CHG-1). Despite meeting other process obligations, the breach of AUD-1 mandates rejection.",
+  "meta": {
+    "elapsed_s": 143.43,
+    "tokens_in": 28337,
+    "tokens_out": 5676,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7ef8f2a5c2e2e3792e1dd2eaebcd4beafbe2bc7d69ed3fd2b5de314f43608f51",
+    "packet_tokens_est": 29258,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23023,
+    "answer_chars": 1508,
+    "done_reason": "stop",
+    "load_s": 3.07,
+    "prompt_eval_s": 26.09,
+    "eval_s": 114.1,
+    "total_s": 143.43,
+    "tokens_est_ratio": 0.948,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

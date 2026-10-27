@@ -1,0 +1,81 @@
+{
+  "variant": "v-1d26c16657",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24535 is approved by Erik Brandt (change_manager) and lists component 'payments.reports', which matches the sole file changed (reports.py → payments.reports in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Mara Costa (mara.costa@fernbrook.example), a change_approver for payments and not the author (Linh Nguyen), is recorded against the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 0a37b81; there are no commits after it, so nothing voids the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the first commit (d10e63c) with 172 tests passing, 0 failures/errors/skips. The second commit (0a37b81) is a trivial 'synchronize' whose net effect, combined with the first, is only 2 inserted lines (a constant and a blank line), qualifying as formatting/whitespace. No product-obligation scope paths are touched, so no additional control tests are required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file reports.py maps to component payments.reports, which is not marked security_sensitive in components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed file is apps/baseline-payments/payments/reports.py, which is not under any protected path (controls/*, tests/controls/*, ci/*); no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change (no scope paths are touched), so no exception is needed or present."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries cover payments.py, audit.py, routes.py, Approvals.java, and Underwriting.java. None of those files are modified by this change, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1926 adds a single constant (REPORT_FORMAT = 'ledger-csv/1.1') to apps/baseline-payments/payments/reports.py, a file in the non-security-sensitive payments.reports component. No product obligation's scope paths are touched, so no product-obligation tests or evidence are affected. All process obligations are satisfied: the ticket is approved and covers the correct component, an independent code_review from a qualified change_approver covers the head commit, CI passed all 172 tests on the first commit (the second commit is a trivial formatting sync), and no protected paths, security-sensitive components, or emergency-change conditions apply. The change is low-risk and fully compliant with the bank's change-management policy.",
+  "meta": {
+    "elapsed_s": 161.76,
+    "tokens_in": 27792,
+    "tokens_out": 4451,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "24805a82f9fe024ab50ce9b4d8f2554548f6ebc33e6d489a6948ae71c34ffefb",
+    "packet_tokens_est": 24507,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13532,
+    "answer_chars": 2847,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.47,
+    "eval_s": 129.27,
+    "total_s": 161.76,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

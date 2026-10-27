@@ -1,0 +1,77 @@
+{
+  "variant": "v-34c5a20485",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "session.py is in SES-1 scope, but the change only alters token length; PRIVILEGED_IDLE_MINUTES stays 15, matching approved policy-params, and the exhaustive SES-1 control test (test_privileged_idle_timeout_within_policy) passed unskipped in the change's CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25759 is approved by change manager grace.kim on 2026-10-23, before review, and its components [payments.session] cover the only touched file, session.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa (p-mcosta, change_approver for payments), a different person from author sofia.santos (p-ssantos) under all her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit be33b7e; there are no later commits, so the behaviour change from 24 to 32 token bytes is covered."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pipeline success on head be33b7e running ci/run-tests.sh baseline-payments; the JUnit report has 172 tests, 0 failures, 0 skipped, including the SES-1 control test. pytest isn't available here to re-run, and the JUnit file's timestamp/host (2026-10-23, dev-laptop-7.local) doesn't match run.json; it appears to be a record-generation artifact."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "session.py is security_sensitive (payments.session); security_review approval by ines.halvorsen (security_reviewer) names head commit be33b7e."
+    }
+  ],
+  "summary": "The change only alters apps/baseline-payments/payments/session.py: it moves the token size into a constant (no behaviour change) and then raises it from 24 to 32 bytes. The approved ticket covers the component, and independent code and security reviews both name the final commit. CI on the head commit reports the full payments suite passing, including the SES-1 control test, though I couldn't re-run it here and the stored JUnit report's timestamp and host don't match the CI run record. No protected paths, emergency process, exceptions or ledger-covered code are involved, so CHG-6, CHG-7, EXC-1 and LAP-1 aren't triggered. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 100.63,
+    "tokens_in": 540541,
+    "tokens_out": 8857,
+    "usd": 0.504227,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 8857,
+      "cache_read_input_tokens": 494913,
+      "cache_creation_input_tokens": 45592
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5042266000000001,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

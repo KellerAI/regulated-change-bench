@@ -1,0 +1,56 @@
+{
+  "variant": "v-b5701da2c5",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24826 is approved by Grace Kim (change_manager) and its components list 'mortgage.reporting', which is the component of PipelineReport.java; the change is covered."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The sole code_review approval is from Mara Costa (mara.costa@fernbrook.example), whose directory entry lists apps=[\"payments\"] and team=payments-eng. She is a change_approver for payments only, not for baseline-mortgage. No approver with the change_approver role for baseline-mortgage (Wen Li or Declan Farrell, both on lending-eng) signed off."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit d6910aea, which is the only and final commit on the branch; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) is on the head commit d6910aea with result 'success'; all 124 JUnit tests pass with 0 failures, 0 errors, 0 skipped. The change does not touch any obligation scope path, so no specific control test is additionally required beyond the full suite."
+    }
+  ],
+  "summary": "The change is a trivial addition of a format-identifier constant to PipelineReport.java (component mortgage.reporting, not security_sensitive) and touches no obligation scope paths, so no product obligations are applicable. However, CHG-2 (independent approval) is violated: the only code_review approver, Mara Costa, holds the change_approver role for payments only, not for baseline-mortgage. No eligible approver for this app (Wen Li or Declan Farrell) has signed off. Because a critical process obligation is not met, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 139.29,
+    "tokens_in": 27648,
+    "tokens_out": 3823,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "55c5bcc51a58bf6c7eceb268d67d31c95d127f4b918f4454308c49c9bca04908",
+    "packet_tokens_est": 24296,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13521,
+    "answer_chars": 1735,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.27,
+    "eval_s": 106.99,
+    "total_s": 139.29,
+    "tokens_est_ratio": 1.109,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

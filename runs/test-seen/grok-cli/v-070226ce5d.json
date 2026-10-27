@@ -1,0 +1,24 @@
+{
+  "variant": "v-070226ce5d",
+  "arm": "grok-cli",
+  "decision": "HOLD",
+  "obligations": [],
+  "summary": "",
+  "meta": {
+    "elapsed_s": 71.57,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "usd": 0.0,
+    "error": "exit 1: Connection lost, reconnecting to https://agentn.global.api5.cursor.sh (attempt 1)...\nRetry attempt 1...\nConnection lost, reconnecting to https://agentn.global.api5.cursor.sh (attempt 2)...\nRetry attempt 2...\nConnection lost, reconnecting to https://agentn.global.api5.cursor.sh (attempt 3)...\nRetry attempt 3...\nRetriableError: [unavailable] Error\n",
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6e895287c8a7061b04cd2b2f3fd0912c451cca0ed4ee6a33ded4d8efc5df3f98",
+    "packet_tokens_est": 25305,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "parse": "empty",
+    "inconsistent": false
+  }
+}

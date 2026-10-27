@@ -1,0 +1,97 @@
+{
+  "variant": "v-9f38be16dd",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The only edit in scope is a comment in payments.py#required_approvals; policy.py and policy-params are untouched. Ledger ACR-0401's exhaustive proof (commit d30b2ad) still applies, and the exhaustive control test test_dual_control_grid_matches_policy passed in the change's CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25614 is approved by change manager grace.kim on 2026-10-03, before review. Its components (payments.payments, payments.tests) cover payments.py and tests/test_approvals_remaining.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from sofia.santos (p-ssantos), a payments change_approver who is a different person from author jonah.weiss (p-jweiss)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit aa38c0c, the final commit, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on 4d892c9 passed the full payments suite (175 tests, 0 failures, 0 skipped), including the new tests and the registered PAY-1 exhaustive control test; the only later commit (aa38c0c) is comment-only. I could not re-run it locally (pytest not installed), and the JUnit timestamp/hostname differ from run.json metadata, though the contents match the change."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "No security_sensitive component is touched (payments.payments and payments.tests are both marked false), so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, tests/controls/, ci/) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and emergency is false, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and no product obligation is deviated from."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger evidence covering payments.py#required_approvals (ACR-0401) has had only a comment-only edit since commit d30b2ad, so it does not lapse; release (ACR-0403) and the other covered symbols are unchanged."
+    }
+  ],
+  "summary": "The change adds a new approvals_remaining helper and its unit tests; the only edit to code in an obligation's scope is a comment in required_approvals. The ticket is approved and covers the touched components, and an independent payments change approver approved the final commit. The CI run on the earlier commit counts because the later commit is comment-only; it shows the full suite and the exhaustive PAY-1 control test passing. The prior PAY-1 proof does not lapse. No security, control-owner, emergency or exception requirements are triggered, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 78.77,
+    "tokens_in": 365144,
+    "tokens_out": 7259,
+    "usd": 0.430178,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7259,
+      "cache_read_input_tokens": 320978,
+      "cache_creation_input_tokens": 44138
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4301776,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

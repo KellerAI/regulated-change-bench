@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25973",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Income formatting diagnostics",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-10T04:29:00Z",
+    "risk": "low"
+  }
+]

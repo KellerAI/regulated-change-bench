@@ -1,0 +1,198 @@
+{
+  "apps/baseline-mortgage/src/main/java/mortgage/AccessMatrix.java": {
+    "component": "mortgage.access",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Action.java": {
+    "component": "mortgage.access",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Actor.java": {
+    "component": "mortgage.access",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/AppLog.java": {
+    "component": "mortgage.logging",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/ApplicantFields.java": {
+    "component": "mortgage.cases",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/ApplicantValidator.java": {
+    "component": "mortgage.cases",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Application.java": {
+    "component": "mortgage.underwriting",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Approvals.java": {
+    "component": "mortgage.approvals",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/AuditEvent.java": {
+    "component": "mortgage.audit",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/AuditLog.java": {
+    "component": "mortgage.audit",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/CaseNote.java": {
+    "component": "mortgage.servicing",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/CaseService.java": {
+    "component": "mortgage.cases",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/CaseStatus.java": {
+    "component": "mortgage.cases",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/CaseStore.java": {
+    "component": "mortgage.store",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/CaseViews.java": {
+    "component": "mortgage.http",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Decision.java": {
+    "component": "mortgage.underwriting",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/DocumentChecklist.java": {
+    "component": "mortgage.servicing",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/DocumentType.java": {
+    "component": "mortgage.servicing",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Export.java": {
+    "component": "mortgage.export",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/HttpApp.java": {
+    "component": "mortgage.http",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Json.java": {
+    "component": "mortgage.common",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/LoanCase.java": {
+    "component": "mortgage.cases",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/LoanRequest.java": {
+    "component": "mortgage.cases",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Main.java": {
+    "component": "mortgage.http",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Mask.java": {
+    "component": "mortgage.logging",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/NpiRegistry.java": {
+    "component": "mortgage.npi",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/NpiVault.java": {
+    "component": "mortgage.npi",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/PipelineReport.java": {
+    "component": "mortgage.reporting",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Policy.java": {
+    "component": "mortgage.policy",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/RateQuote.java": {
+    "component": "mortgage.servicing",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Retention.java": {
+    "component": "mortgage.retention",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Role.java": {
+    "component": "mortgage.access",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Route.java": {
+    "component": "mortgage.http",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Routes.java": {
+    "component": "mortgage.http",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/ServiceException.java": {
+    "component": "mortgage.common",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Session.java": {
+    "component": "mortgage.session",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/SessionStore.java": {
+    "component": "mortgage.session",
+    "security_sensitive": true
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/Underwriting.java": {
+    "component": "mortgage.underwriting",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/java/mortgage/UserDirectory.java": {
+    "component": "mortgage.users",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/test/java/mortgage/*": {
+    "component": "mortgage.tests",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/test/java/controls/*": {
+    "component": "mortgage.control-tests",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/ci/*": {
+    "component": "mortgage.ci",
+    "security_sensitive": false
+  },
+  "apps/baseline-mortgage/src/main/resources/*": {
+    "component": "mortgage.resources",
+    "security_sensitive": false
+  },
+  "controls/mortgage/*": {
+    "component": "mortgage.controls-data",
+    "security_sensitive": false
+  },
+  "controls/obligations.json": {
+    "component": "mortgage.platform-controls",
+    "security_sensitive": false
+  },
+  "controls/protected-paths.json": {
+    "component": "mortgage.platform-controls",
+    "security_sensitive": false
+  },
+  "controls/change-policy.md": {
+    "component": "mortgage.platform-controls",
+    "security_sensitive": false
+  },
+  "ci/run-tests.sh": {
+    "component": "mortgage.platform-controls",
+    "security_sensitive": false
+  },
+  "ci/run-controls.sh": {
+    "component": "mortgage.platform-controls",
+    "security_sensitive": false
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "variant": "v-9af8c91369",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24221 is approved by change manager Erik Brandt (2026-10-05, before the PR opened on 2026-10-07). Its components mortgage.reporting and mortgage.tests cover PipelineReport.java and the new test under src/test/java/mortgage/."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from Wen Li, who has the change_approver role for baseline-mortgage and is a different person from the author Declan Farrell (the directory lists no shared emails)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Wen Li's approval names the head commit cce8b32, which is the change's only commit, so no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head cce8b32 shows success: 125 Jupiter tests, 0 skipped, failures or errors, including the new PipelineTotalTest. The change touches no product obligation scope, so no registered control tests are required. I couldn't re-run locally because the JUnit jar is missing, and the JUnit reports' timestamp and hostname don't match run.json."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "Emergency ticket CHG-24221 was deployed 2026-10-07T18:01Z (a Wednesday), so a PIR was due by 2026-10-09T18:01Z. At review time (2026-10-14) no pir approval exists; the only approval is a code_review."
+    }
+  ],
+  "summary": "The code change is small and low risk: it adds PipelineReport.totalCases() and a unit test, outside every product obligation's scope and outside the security-sensitive and protected paths. The ticket, the independent code review on the final commit and the recorded CI run on head all satisfy CHG-1 through CHG-4. However, the change was deployed under the emergency procedure, and the post-implementation review CHG-7 requires within 2 business days of deployment is overdue and missing. Because that obligation is violated, the change is rejected.",
+  "meta": {
+    "elapsed_s": 63.32,
+    "tokens_in": 360418,
+    "tokens_out": 5699,
+    "usd": 0.351689,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 5699,
+      "cache_read_input_tokens": 325906,
+      "cache_creation_input_tokens": 34480
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3516892,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

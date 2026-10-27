@@ -1,0 +1,89 @@
+{
+  "variant": "v-9a09b04a8d",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "coapplicant_tax_id is a government tax identifier (fixture value 93-7291046) added to ApplicantFields, but it is outside NpiRegistry.FIELDS and the approved mortgage.npi_fields list. Retention deletes it in a separate call after the registry fields, and CaseStoreTest.sealsNpiAndKeepsOtherFieldsReadable shows non-registry applicant fields stay readable, so the value is not persisted only in sealed form. No ENC-1 exception covers it; EncryptionControlTest only enumerates the registry."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "purge() removes coapplicant_tax_id together with NpiRegistry fields, and isPurgeDue still returns false on legal hold, before the retention cutoff, and after a prior purge. RetentionControlTest.sampledPurgeRespectsHold and the mortgage retention tests passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-25867 is approved by change manager Erik Brandt on 2026-10-11, before review, and its components (mortgage.cases, mortgage.retention, mortgage.control-tests) match ApplicantFields.java, Retention.java, and ControlFixtures.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change_approver and not the author, approved a code_review of commit 56dda280ff10932cbbff149a3c1d747c22dd7f6e."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and both the code_review and control_owner approvals name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit with 124 tests, 0 failures, and 0 skipped, including EncryptionControlTest.everyNpiFieldIsSealedAtRest and RetentionControlTest.sampledPurgeRespectsHold."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ApplicantFields, Retention, and ControlFixtures are not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java is under the protected control-test path. Rachel Stein (controls-office, control_owner, outside lending-eng) approved control_owner on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other obligations or are withdrawn, and none authorizes an unsealed co-applicant tax id."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantFields.java or Retention.java, so this change does not lapse prior evidence."
+    }
+  ],
+  "summary": "The change adds a co-applicant tax identifier to applicant data and to scheduled disposal, but leaves it out of the NPI registry that defines sealed fields. ENC-1 requires tax identifiers to be persisted only in sealed form, and the retention special-case plus the passing store test that keeps non-NPI fields readable show this value stays readable. Change-ticket, independent approval, control-owner approval, and the head-commit test run are in order, and retention still honors legal hold, but that does not cure the unsealed tax id. The change is rejected.",
+  "meta": {
+    "elapsed_s": 198.33,
+    "tokens_in": 51310,
+    "tokens_out": 12444,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f89df5f3974d0e7c34dd9406df650475ce20ea1d571ef3664ed54908b874a647",
+    "packet_tokens_est": 25751,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 51310,
+      "outputTokens": 12444,
+      "cacheReadTokens": 220672,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 194468,
+    "duration_api_ms": 194468,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

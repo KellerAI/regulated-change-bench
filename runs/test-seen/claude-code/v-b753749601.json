@@ -1,0 +1,67 @@
+{
+  "variant": "v-b753749601",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24409 (standard) was approved by Erik Brandt (change_manager) on 2026-10-08, before the 2026-10-10 review. Its components mortgage.servicing (RateQuote.java) and mortgage.tests (src/test/java/mortgage/QuoteTermTest.java) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from declan.farrell@fernbrook.example, a change_approver for baseline-mortgage. In the directory he is a different person (p-dfarrell) from the author, Wen Li (p-wli)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit ee667bb533c2, so it covers everything being merged and no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The only CI run (records/ci/run.json) is on ed04e155, not the final commit ee667bb533c2. The later commit adds a new constant, `static final int DEFAULT_TERM_YEARS = 30;`, to RateQuote.java. That is not a comment, whitespace or formatting edit, so the earlier run does not count and there is no passing full-suite run on the final commit."
+    }
+  ],
+  "summary": "PR-1978 adds RateQuote.isSupportedTerm, a DEFAULT_TERM_YEARS constant and a new unit test. RateQuote.java is in no product obligation's scope, and the component is not security-sensitive. The change touches no protected paths, is not an emergency, relies on no exception, and touches no code covered by the acceptance ledger, so only the ticket, approval and testing obligations apply. The ticket, the independent approval and the approval on the head commit are all in order. Testing fails: the change's CI run was on the first commit, and the second commit adds a code constant rather than a comment or formatting edit, so there is no passing test run on the final commit. The change is rejected until CI is re-run on ee667bb533c2 and passes.",
+  "meta": {
+    "elapsed_s": 70.69,
+    "tokens_in": 366680,
+    "tokens_out": 6259,
+    "usd": 0.384844,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6259,
+      "cache_read_input_tokens": 327855,
+      "cache_creation_input_tokens": 38793
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3848440000000001,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

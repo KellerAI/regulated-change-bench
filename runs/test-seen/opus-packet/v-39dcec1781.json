@@ -1,0 +1,83 @@
+{
+  "variant": "v-39dcec1781",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26887 was approved by change manager Erik Brandt on 2026-10-06, before review. Its components (payments.payments, payments.tests) cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa approved a code_review. She is a payments change_approver and a different person from the author, Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 7e1226b, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows a successful ci/run-tests.sh baseline-payments run on head 7e1226b. The JUnit report has 175 tests, 0 failures and 0 skipped, including the MC-1, PAY-1 and PAY-2 control tests. The report's 2026-10-23 timestamp and local hostname do not match run.json and should be looked at."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "The emergency ticket records deployment at 2026-10-08T20:42Z (a Thursday), so the PIR was due by Monday 2026-10-12. At review time (2026-10-15) there is no pir approval in the records."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries for PAY-1 (required_approvals) and PAY-2 (release) cover symbols that are unchanged. The change only adds a new approvals_remaining function, so that evidence has not lapsed."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals, is_fully_approved and the threshold are unchanged, and the ACR-0401 proof still applies. The exhaustive test_dual_control_grid_matches_policy passed on head."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "approve and is_fully_approved are unchanged. The exhaustive test_maker_cannot_check passed on head."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "release is unchanged, and the ACR-0403 trace still applies. The sample test_sampled_release_is_idempotent passed on head."
+    }
+  ],
+  "summary": "PR-1329 adds a read-only approvals_remaining helper to the payments module and unit tests for it. It does not alter required_approvals, approve, is_fully_approved or release, and ticket, independent code review and CI on the final commit are in place. However, the change was deployed under the emergency procedure on 2026-10-08, and no post-implementation review is recorded. The 2-business-day deadline (2026-10-12) passed before the review time of 2026-10-15, so CHG-7 is violated and the change is rejected.",
+  "meta": {
+    "elapsed_s": 21.92,
+    "tokens_in": 39759,
+    "tokens_out": 2193,
+    "usd": 0.202896,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "00e2d1c617587ab2fb8c10334a9875c89e9118139647f1a6d5cdeb5d44b6a7bc",
+    "packet_tokens_est": 25791,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39759,
+      "output_tokens": 2193,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

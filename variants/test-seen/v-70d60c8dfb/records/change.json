@@ -1,0 +1,21 @@
+{
+  "id": "PR-1819",
+  "title": "Privileged idle timeout 10 minutes",
+  "description": "Adjusts the privileged session window.\n\nChanges:\n- `Policy.PRIVILEGED_IDLE_MINUTES` to 10\n- Approved parameter updated\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-429",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "51563ea17f9a7cfcc205e6897513ac58ce92348c",
+  "commits": [
+    {
+      "sha": "51563ea17f9a7cfcc205e6897513ac58ce92348c",
+      "message": "Privileged idle timeout 10 minutes",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-20T19:51:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26409",
+  "opened_at": "2026-10-20T19:51:00Z"
+}

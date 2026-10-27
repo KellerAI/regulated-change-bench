@@ -1,0 +1,81 @@
+{
+  "variant": "v-95d33ee4aa",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24770 is approved by erik.brandt@fernbrook.example (change_manager) and its components [mortgage.servicing, mortgage.tests] cover both changed files (RateQuote.java and QuoteTermTest.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The sole code_review approval is from d.farrell@fernbrook.example, which the people directory shows belongs to Declan Farrell (p-dfarrell) — the same person as the author (declan.farrell@fernbrook.example). No other independent change_approver approval exists, so CHG-2 is not met."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "A single commit (594c9841) is the head, and the one approval names that exact commit, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 594c9841 with result 'success'; 126 tests passed, 0 failures, 0 skipped. No product-obligation scope path is touched by this change, so no specific control test is required, and all registered control tests pass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed files map to components mortgage.servicing (security_sensitive: false) and mortgage.tests (security_sensitive: false); no security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed file falls under a protected path (controls/*, test/controls/*, ci/*), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed or needed for this change; the change does not deviate from any product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The changed file RateQuote.java is not covered by any entry in the acceptance ledger (which covers Approvals.java, Underwriting.java, payments.py, audit.py, routes.py), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change is a small, low-risk addition of a utility method and its unit test to RateQuote.java; it touches no security-sensitive component, no protected path, and no product-obligation scope. However, the only code_review approval in the record is from d.farrell@fernbrook.example, which the people directory identifies as the same person as the change author (Declan Farrell). Under CHG-2, approving one's own change under any of one's registered addresses does not count, and no other independent change_approver approval exists. Because CHG-2 is not satisfied, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 125.2,
+    "tokens_in": 28342,
+    "tokens_out": 3409,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "eb60241e0c1f3e3b612b7028b319f97e9875f9f62517ddaf67fd28cef09dbfb3",
+    "packet_tokens_est": 24928,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 10094,
+    "answer_chars": 2727,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.18,
+    "eval_s": 91.99,
+    "total_s": 125.2,
+    "tokens_est_ratio": 1.108,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

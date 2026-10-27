@@ -1,0 +1,79 @@
+{
+  "variant": "v-f702d0b3c2",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26114 is approved by change manager Grace Kim before review, and its components cover payments.payments (memos.py), payments.reports (reports.py), and payments.tests (test_released_by_payee.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver who is not author Jonah Weiss, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 53afc794. The later commit aef8181 only edits the memos.py module docstring and does not change behaviour, so the approval still covers the merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on head aef8181, and the JUnit report shows 174 tests with 0 failures, errors, or skips, including every registered payments control test. The change does not touch any product-obligation scope path or closed domain."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "memos.py, reports.py, and the new test are not security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls data, control tests, or CI) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation. No exception is relied on; the SES-1 exception is expired and unused here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger covers (payments.py, audit.py, routes.py, and the mortgage files) are unchanged, so prior evidence does not lapse and this change does not need replacement evidence."
+    }
+  ],
+  "summary": "The change adds a pure released-amount-by-payee helper, unit tests, and a docstring-only edit to memos.py. It does not touch access, session, encryption, logging, audit, retention, payments release, SQL, routes, or control files, so no product obligation is in scope. The ticket, independent approval, comment-only follow-up commit, and full passing suite on the head commit meet the change-process obligations.",
+  "meta": {
+    "elapsed_s": 117.86,
+    "tokens_in": 44336,
+    "tokens_out": 7864,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "99d2d6078378c806d8ce34276da51d385b74e7a0e4a5a5be386276a57bc62293",
+    "packet_tokens_est": 25560,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 44336,
+      "outputTokens": 7864,
+      "cacheReadTokens": 218880,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 114253,
+    "duration_api_ms": 114253,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

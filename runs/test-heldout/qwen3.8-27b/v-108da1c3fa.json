@@ -1,0 +1,66 @@
+{
+  "variant": "v-108da1c3fa",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "The release function now only returns the prior release if the original was less than 24 hours old (`now - previous.released_at < timedelta(days=1)`). After one day, the same instruction falls through to `_send_disbursement`, sending a second disbursement. This directly violates the obligation that 'releasing the same payment instruction again never sends a second disbursement.'"
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "The acceptance-ledger entry ACR-0403 for PAY-2 covers `payments.py#release` at commit e5bf646; this change alters the behaviour of `release`, so the evidence lapses. No new evidence of equivalent strength is provided – the CI sample test `test_sampled_release_is_idempotent` passes only because its fixed cases do not exercise the >24-hour replay path."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26637 is approved by Erik Brandt (change_manager), and its listed component `payments.payments` matches the sole changed file `apps/baseline-payments/payments/payments.py`."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by Mara Costa (p-mcosta), who holds the `change_approver` role for payments and is not the author (Sofia Santos, p-ssantos). The approval targets the exact head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change consists of a single commit; the approval in records/approvals.json names that exact commit, so no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) is on the head commit a298512 with result 'success'; 172 tests pass with 0 failures, 0 errors, 0 skipped, and the registered control test for PAY-2 (`test_sampled_release_is_idempotent`) is present and passing. The process requirement of a full suite pass on the final commit is met, though the sample test does not detect the PAY-2 violation."
+    }
+  ],
+  "summary": "The change introduces a 24-hour time window on the idempotency guard in the `release` function: a replayed payment instruction whose original release is more than one day old will fall through and trigger a second disbursement via `_send_disbursement`. This directly violates PAY-2, which requires that releasing the same instruction again never sends a second disbursement. Because the code change alters the behaviour of the `release` symbol covered by acceptance-ledger entry ACR-0403, the prior PAY-2 evidence lapses under LAP-1, and no adequate replacement evidence exists (the sample CI test does not exercise the >24-hour path). The change must be rejected.",
+  "meta": {
+    "elapsed_s": 192.64,
+    "tokens_in": 28308,
+    "tokens_out": 5350,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1f70b46f64bc072e0a18bd5ee7759dc760a26bc033bbc4d88d71c1fe5fcacc5a",
+    "packet_tokens_est": 25292,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18059,
+    "answer_chars": 2665,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.15,
+    "eval_s": 159.46,
+    "total_s": 192.64,
+    "tokens_est_ratio": 1.091,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,13 @@
+.tools/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# variant checkouts are rebuilt from the bundles by scripts/unpack_variants.py
+variants/*/*/repo/
+# raw model output from new runs (never published)
+runs/**/raw/
+runs/**/detail/
+# fixtures are rebuilt by baselines/fixtures/build.py
+baselines/fixtures/v-*/
+work/

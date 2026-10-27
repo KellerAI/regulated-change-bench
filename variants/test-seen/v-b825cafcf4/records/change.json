@@ -1,0 +1,21 @@
+{
+  "id": "PR-1388",
+  "title": "Capture tax id for self-employed applicants",
+  "description": "Self-employed applicants need a tax id on file for income verification.\n\nChanges:\n- New applicant field `tax_id`\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-815",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "cbd638e5a2450de9d25ca1118ce4062bbcd3fa2e",
+  "commits": [
+    {
+      "sha": "cbd638e5a2450de9d25ca1118ce4062bbcd3fa2e",
+      "message": "Add tax_id applicant field",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-23T22:01:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24990",
+  "opened_at": "2026-10-23T22:01:00Z"
+}

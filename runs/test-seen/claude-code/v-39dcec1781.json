@@ -1,0 +1,77 @@
+{
+  "variant": "v-39dcec1781",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26887. Change manager Erik Brandt approved it on 2026-10-06, before the change was opened and reviewed. Its components (payments.payments, payments.tests) cover both touched paths, payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (p-mcosta) gave the code_review approval. She is a change_approver for payments and a different person from the author, Sofia Santos (p-ssantos), under any of the directory's email addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names commit 7e1226b, which is the change's head and only commit, so there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (`ci/run-tests.sh baseline-payments`) ran on head 7e1226b and succeeded: 175 tests, 0 failures and 0 skips, including the new tests and all payments control tests. The change touches no symbol or domain in any product obligation's scope, so no extra control tests are required. I could not re-run it locally because pytest is not installed in the sandbox."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "CHG-26887 is an emergency ticket deployed at 2026-10-08T20:42Z (a Thursday), so a pir approval was due by 2026-10-12T20:42Z. At review time (2026-10-15T19:28Z) approvals.json holds only a code_review and no pir approval by anyone."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger evidence covering payments.py (ACR-0401 for required_approvals, ACR-0403 for release) still stands. The diff only adds a new approvals_remaining function and leaves every covered symbol unchanged."
+    }
+  ],
+  "summary": "The change adds a read-only helper, approvals_remaining, plus unit tests in payments payments.py. It modifies none of the symbols that MC-1, PAY-1 or PAY-2 scope, and touches no protected or security-sensitive path. The ticket, the independent code review on the head commit, and the CI run on head are all in order. However, the change went out under the emergency procedure on 2026-10-08, and no post-implementation review has been recorded, although it was due by 2026-10-12. That overdue review violates CHG-7, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 61.74,
+    "tokens_in": 287623,
+    "tokens_out": 5443,
+    "usd": 0.370346,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 5443,
+      "cache_read_input_tokens": 245126,
+      "cache_creation_input_tokens": 42473
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.37034620000000007,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "variant": "v-e9c2f41cd0",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25844 is a standard ticket approved by change manager erik.brandt on 2026-10-01, before the change opened on 2026-10-02. Its components (payments.payments, payments.tests) cover memos.py and tests/test_memo_preview.py, as components.json maps them."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from mara.costa (p-mcosta), a payments change_approver. She is a different person from the author jonah.weiss (p-jweiss) under any of his directory addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "open",
+      "note": "The only approval names 900d3cc, but head is 6b7bc36. The only claim that 6b7bc36 just edits a docstring is the author's own note. The base-to-head diff can't separate the two commits, and every attempt to view 6b7bc36 alone (git show, git diff 900d3cc..6b7bc36, decoding the objects) was blocked by the session's command-approval gate, so I can't tell whether the approval still applies."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding on the head commit 6b7bc36. The JUnit report has 174 tests, 0 failures and 0 skips, including the new memo-preview tests. The change touches no product obligation's scope or closed domain, so no specific control tests are required. Two caveats: the report's timestamp and hostname (2026-10-23, a local Mac) don't match the CI run's executor and time, and I couldn't rerun the suite because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Not triggered: memos.py (payments.payments) and the test file (payments.tests) are both marked security_sensitive: false, so no security review is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Not triggered: the changed files (apps/baseline-payments/payments/memos.py and apps/baseline-payments/tests/test_memo_preview.py) are outside protected-paths.json (controls/, tests/controls/, ci/)."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Not triggered: the change is not an emergency and the ticket type is standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Not triggered: the change relies on no exception and deviates from no product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers memos.py or the test file. The ledger evidence covers payments.py, audit.py, routes.py and baseline-mortgage files, none of which this change touches, so no evidence lapses."
+    }
+  ],
+  "summary": "HOLD. PR-1541 adds a memos.preview() helper and two unit tests to payments. memos.py falls in no product obligation's scope and has no log calls, so only the process obligations apply. The ticket, the independent code review, CI on the head commit, and the security-review, control-owner, exception and lapse checks are all satisfied or not triggered. The decision rests on CHG-3: the only approval is for 900d3cc, and I couldn't confirm that the later commit 6b7bc36 only edits a docstring. Every git and Python command needed to view that commit on its own was blocked by this session's command-approval gate, and the only claim it's a docstring edit is the author's own note. If an approved `git diff 900d3cc 6b7bc36` shows only the module docstring changed, CHG-3 is shown and the change can be accepted; if anything else changed, it needs a new review.",
+  "meta": {
+    "elapsed_s": 108.75,
+    "tokens_in": 650555,
+    "tokens_out": 9550,
+    "usd": 0.524789,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 44,
+      "output_tokens": 9550,
+      "cache_read_input_tokens": 608113,
+      "cache_creation_input_tokens": 42398
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5247886,
+    "permission_denials": 11,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

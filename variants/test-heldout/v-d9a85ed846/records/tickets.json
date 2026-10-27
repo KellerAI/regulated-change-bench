@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25412",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Statement archive path support",
+    "components": [
+      "payments.integrations"
+    ],
+    "requested_by": "linh.nguyen@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-07T16:24:00Z",
+    "risk": "medium"
+  }
+]

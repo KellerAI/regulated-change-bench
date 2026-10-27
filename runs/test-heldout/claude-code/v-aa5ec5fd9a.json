@@ -1,0 +1,97 @@
+{
+  "variant": "v-aa5ec5fd9a",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "The diff changes only the reasons argument of the AUTO_APPROVE_ELIGIBLE Decision; the guard, outcomes and Policy.DTI_MAX_PERCENT=40 / LTV_MAX_PERCENT=90 are unchanged and match policy-params.json. Evidence on head: the exhaustive control test UnderwritingControlTest#autoApproveGridMatchesPolicy passed in CI, and the proof-transfer record crd1-response-metadata.json targets 0d78ba8, with a derivation I checked against the diff and Decision.java."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24937 (standard) was approved by change manager grace.kim on 2026-10-20, before the 2026-10-22 review, and its component mortgage.underwriting covers the only touched path, Underwriting.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Priya Raman under any of her addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 0d78ba8, the change's only commit, so no later commits are involved."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json is for commit 0d78ba8 with result success; the JUnit Jupiter report shows 124 tests, 0 skipped, failures or errors, including the registered CRD-1 control test (exhaustive). I could not re-run locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Underwriting.java belongs to mortgage.underwriting, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No path matching controls/protected-paths.json (controls data, control tests, CI) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and emergency is false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; no deviation from a product obligation is involved."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0406 (CRD-1, commit d30b2ad) covers Underwriting.decide, which this change alters, so it has lapsed. New evidence of the same strength exists on head: the exhaustive proof-transfer record checked by control owner bao.tran before as_of, plus the passing exhaustive control test."
+    }
+  ],
+  "summary": "The change edits one line of Underwriting.decide, adding a POLICY_SATISFIED reason to auto-approve-eligible decisions without touching the eligibility guard or the approved DTI/LTV limits. The change request's claim that existing ledger evidence covers CRD-1 is wrong, because ACR-0406 lapsed under LAP-1 when decide changed. Fresh exhaustive evidence on the head commit (a proof-transfer record checked by a control owner, consistent with the diff, and the passing exhaustive CRD-1 control test) satisfies CRD-1. The ticket, independent code review and CI run are all valid for the head commit, and no security-sensitive, protected-path, emergency or exception conditions apply. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 112.07,
+    "tokens_in": 596317,
+    "tokens_out": 10385,
+    "usd": 0.595747,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 34,
+    "tokens_detail": {
+      "input_tokens": 36,
+      "output_tokens": 10385,
+      "cache_read_input_tokens": 540313,
+      "cache_creation_input_tokens": 55968
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5957466,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

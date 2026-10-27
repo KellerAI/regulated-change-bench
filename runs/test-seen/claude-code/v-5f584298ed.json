@@ -1,0 +1,102 @@
+{
+  "variant": "v-5f584298ed",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The three new execute calls use fixed string literals with the status value bound as a ? parameter; no statement text is built from data. The exhaustive control test test_sql_statements_are_parameterized, which scans every call site in store.py, passed unskipped in the CI run on the head commit."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "payments_archive is a column-for-column copy of the payments table, which holds no NPI columns, and payee NPI handling is unchanged. The exhaustive control test test_every_npi_field_is_sealed_at_rest passed in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-24565, a standard ticket approved by change manager grace.kim on 2026-10-12, before the 2026-10-14 reviews. Its components [payments.store] cover the only touched path, store.py, per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "sofia.santos approved code_review on the head commit; she holds change_approver for payments and is a different person from the author, linh.nguyen (p-lnguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 183ae8f, and both approvals name that exact commit, so no later commits need checking."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding for ci/run-tests.sh baseline-payments on head 183ae8f, and the JUnit report has 172 tests with 0 failures, errors or skips, including the registered SEC-1 and ENC-1 control tests. I could not re-run it locally because pytest is not installed; the report's timestamp and hostname do not match the CI runner record."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "store.py is marked security_sensitive (payments.store), and ines.halvorsen, who holds the security_reviewer role, approved security_review on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, ci/, apps/baseline-payments/tests/controls/) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception: no product obligation is deviated from, and no register entry is invoked for payments.store."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers store.py. The PAY-1, PAY-2 and AUD-2 entries cover payments.py and audit.py, which are unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds Store.archive_payments to payments' store.py and nothing else. The SQL is fixed and parameterized (SEC-1) and the archive table carries no NPI (ENC-1), each backed by a passing exhaustive control test in the head-commit CI run. Ticket, independent code review, security review and approval coverage all meet the change policy, and no ledger evidence or exception is affected. I could not re-run the suite locally (pytest missing), so testing relies on the recorded CI run. Not blocking but worth fixing before the method is called: new payment ids are MAX(id)+1 while approvals and releases of archived payments are kept, so a new payment could reuse an archived id and inherit its approvals; also, the description says unit tests were updated but no tests changed.",
+  "meta": {
+    "elapsed_s": 119.15,
+    "tokens_in": 637427,
+    "tokens_out": 11079,
+    "usd": 0.636748,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 44,
+      "output_tokens": 11079,
+      "cache_read_input_tokens": 577484,
+      "cache_creation_input_tokens": 59899
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6367478,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

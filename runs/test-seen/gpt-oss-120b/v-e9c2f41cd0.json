@@ -1,0 +1,61 @@
+{
+  "variant": "v-e9c2f41cd0",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The ticket (CHG-25844) lists components \"payments.payments\" and \"payments.tests\", but the changed file apps/baseline-payments/payments/memos.py is not mapped to any component in controls/payments/components.json, so the ticket does not demonstrably cover the changed component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Mara Costa (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The second commit only modifies a docstring (comment‑only), so the earlier code_review approval still applies to the final merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the head commit succeeded with the full test suite (174 tests, 0 failures) including the new memo preview tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "open",
+      "note": "It is unclear whether apps/baseline-payments/payments/memos.py is marked security_sensitive (it is not listed in components.json), and no security_review approval is present."
+    }
+  ],
+  "summary": "The change fails the mandatory CHG-1 requirement because the ticket does not explicitly cover the modified memos.py component. While other process obligations are satisfied or indeterminate, the violation of CHG-1 mandates a REJECT decision.",
+  "meta": {
+    "elapsed_s": 118.3,
+    "tokens_in": 24820,
+    "tokens_out": 4941,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8548c052460a6e74e84b9b725c35104a34dc3862f3bdb46136459f3b629988d4",
+    "packet_tokens_est": 24631,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19711,
+    "answer_chars": 1505,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.84,
+    "eval_s": 100.24,
+    "total_s": 118.3,
+    "tokens_est_ratio": 0.982,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

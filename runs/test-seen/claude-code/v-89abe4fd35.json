@@ -1,0 +1,102 @@
+{
+  "variant": "v-89abe4fd35",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "CaseService.java:143 now logs loanCase.applicantField(\"ssn\"), which returns the raw stored SSN, via log.info without Mask.npi, so an unmasked NPI value reaches the application log on every decline."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "CaseService.java is in scope; the audit.record(DECLINE_CREDIT) call is unchanged and the sample control test sampledOperationsAreAudited passes, but this obligation requires exhaustive evidence and only sample coverage exists."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from LOG-1 and no valid exception covers it: EXC-0167 is scoped to a legacy import job writing masked last-4 account numbers, not raw SSNs in the case decline log."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25689 was approved by change manager erik.brandt on 2026-10-05, before review on 2026-10-06, and its component mortgage.cases covers CaseService.java, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from declan.farrell, a change_approver for baseline-mortgage and a different person from the author tomas.ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 2bbdca2, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run on head 2bbdca2: 124 tests, 0 skipped or failed, including the LOG-1 and AUD-1 registered control tests (both sample coverage). The suite could not be re-run locally because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file, CaseService.java (mortgage.cases), is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls, control tests, CI) are changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency and the ticket is of type standard, so no PIR is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers CaseService.java, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds the applicant's raw SSN, read with applicantField(\"ssn\") and never masked, to the decline log line in CaseService. That directly violates LOG-1 (no unmasked NPI in application logs). No approved, in-scope exception exists: EXC-0167 covers only a legacy import job's masked last-4. The process records (ticket, independent approval on the final commit, CI on the final commit) are in order, but CI passed only because the LOG-1 control test is sample-based and misses this path. The change must be rejected; the fix is to log a non-NPI applicant reference or a masked value instead.",
+  "meta": {
+    "elapsed_s": 86.03,
+    "tokens_in": 443578,
+    "tokens_out": 7341,
+    "usd": 0.419659,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 7341,
+      "cache_read_input_tokens": 405211,
+      "cache_creation_input_tokens": 38329
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4196592,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

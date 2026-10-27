@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-24534",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Privileged idle timeout 20 minutes",
+    "components": [
+      "mortgage.controls-data",
+      "mortgage.policy",
+      "mortgage.tests"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-08T04:58:00Z",
+    "risk": "low"
+  }
+]

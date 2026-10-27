@@ -1,0 +1,79 @@
+{
+  "variant": "v-2285fd5d91",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25850 is approved by change manager Erik Brandt before review, and its components mortgage.servicing and mortgage.tests cover RateQuote.java and QuoteTermTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author, approved a code_review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That code_review approval names 2774f1981823fb0bded2cdd5f5b59390bce0d6bd, which is the commit being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json records a successful suite on f611f963, not the head commit. The later commit adds DEFAULT_TERM_YEARS, which is not a comment, whitespace, or formatting edit, so the earlier run does not count."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "RateQuote.java is mortgage.servicing and QuoteTermTest.java is mortgage.tests; neither component is security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, so no exception is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff changes only RateQuote.java and a new unit test, neither of which is code covered by the acceptance ledger, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds RateQuote.isSupportedTerm, an unused DEFAULT_TERM_YEARS constant, and a unit test. It does not touch access, credit, payment, NPI, logging, or other product-control code, and the ticket and independent approval name the head commit. CI passed only on the earlier commit f611f963. The follow-up commit adds a constant and is not comment-only, whitespace, or formatting, so the suite was not shown on the commit being merged. CHG-4 is not met, and the change is rejected.",
+  "meta": {
+    "elapsed_s": 105.12,
+    "tokens_in": 58752,
+    "tokens_out": 7974,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9c0b0a999cb067e25d58c0d99316923bc7fe40c9c0fcb872f8b52124134bac15",
+    "packet_tokens_est": 25145,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 58752,
+      "outputTokens": 7974,
+      "cacheReadTokens": 26496,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 101331,
+    "duration_api_ms": 101331,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

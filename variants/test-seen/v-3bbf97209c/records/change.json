@@ -1,0 +1,21 @@
+{
+  "id": "PR-1740",
+  "title": "Reopen closed payees (internal batch route)",
+  "description": "Reopen closed payees (internal batch route).\n\nChanges:\n- Route used by the nightly reconciliation batch\n- Covered by an approved MFA exception\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nException: EXC-0237.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-514",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "fd18083e7bcb2efeea072f5da63209ab871668cd",
+  "commits": [
+    {
+      "sha": "fd18083e7bcb2efeea072f5da63209ab871668cd",
+      "message": "Payee directory: reopen a closed payee",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-24T21:15:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25323",
+  "opened_at": "2026-10-24T21:15:00Z"
+}

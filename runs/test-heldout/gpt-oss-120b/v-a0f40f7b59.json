@@ -1,0 +1,56 @@
+{
+  "variant": "v-a0f40f7b59",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "A ticket is present and approved, but the changed file PipelineReport.java is not assigned to any component in controls/mortgage/components.json, so the ticket's component list cannot be shown to cover the change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "Only one code_review approval (by Wen Li) exists for the first commit; the second commit adds code and is not covered by that approval, leaving the final commit without an independent approver."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The existing approval applies only to commit 8158df61; the subsequent commit 8acd7855 adds a constant and changes behavior, so the approval does not cover what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded with the full test suite (124 tests) passing, satisfying the testing requirement."
+    }
+  ],
+  "summary": "The change fails critical process obligations: the ticket does not demonstrably cover the modified component, and the required independent approval does not apply to the final commit. Although CI tests passed, the unmet CHG-1, CHG-2, and CHG-3 obligations mandate rejection.",
+  "meta": {
+    "elapsed_s": 91.52,
+    "tokens_in": 24480,
+    "tokens_out": 4917,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ae1ea5172c8e4775a11ad3e10945ab4f2b0c27471f4caaeb05fa7b542c094850",
+    "packet_tokens_est": 24434,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19999,
+    "answer_chars": 1349,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.21,
+    "eval_s": 76.12,
+    "total_s": 91.52,
+    "tokens_est_ratio": 0.976,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "variant": "v-350cd3183e",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25360, a standard ticket. Grace Kim, a change_manager, approved it at 2026-10-07T21:56Z, before the review. Its components list `mortgage.reporting`, which covers the only touched file, PipelineReport.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa@fernbrook.example. Mara Costa holds change_approver for payments only, not baseline-mortgage. No eligible baseline-mortgage change_approver (e.g. Wen Li or Declan Farrell) has approved. The description's 'review coordinated with the payments engineering lead' does not confer that authority."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names the head commit 733c5afb, and there are no later commits. Coverage is complete, but the approval itself fails CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records pipeline pr-checks on the head commit 733c5afb with result success, running ci/run-tests.sh baseline-mortgage. The JUnit reports show 124 tests with 0 failures, 0 errors and 0 skipped. No product obligation's scope or closed domain is touched, so no specific control tests are required beyond the full suite. Report timestamps and hostname look odd, but they match the catalog's own dating."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The only change is a new constant in PipelineReport.java. No acceptance-ledger entry covers that file, so no existing evidence lapses."
+    }
+  ],
+  "summary": "PR-1475 adds a FORMAT constant to PipelineReport.java, a non-security-sensitive reporting component outside every product obligation's scope. Security review (CHG-5) and control-owner approval (CHG-6) are therefore not triggered. The ticket is approved and covers the component, and CI passed on the head commit. However, the only code review comes from Mara Costa, whose change_approver role is for payments, not baseline-mortgage. CHG-2 therefore has no qualifying independent approval, and the change is rejected.",
+  "meta": {
+    "elapsed_s": 19.07,
+    "tokens_in": 38251,
+    "tokens_out": 1823,
+    "usd": 0.189464,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "596c266d35cedcb2a63257e02294ef6c702bed568fdea07079a4d5720ff85775",
+    "packet_tokens_est": 24296,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38251,
+      "output_tokens": 1823,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

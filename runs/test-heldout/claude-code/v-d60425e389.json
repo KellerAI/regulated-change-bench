@@ -1,0 +1,77 @@
+{
+  "variant": "v-d60425e389",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "session.py is in scope, but the change only alters token length; idle-timeout logic and policy.PRIVILEGED_IDLE_MINUTES=15 are unchanged. The exhaustive control test test_privileged_idle_timeout_within_policy passed, unskipped, in the CI run on head 9d0c8fa. The expired exception EXC-0141 is not relied on."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25097 is approved by Erik Brandt (change_manager) at 2026-10-19T02:41Z, before the change opened. Its components [payments.session] cover the only touched path, apps/baseline-payments/payments/session.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from Sofia Santos, a change_approver for payments and a different person from the author Jonah Weiss (none of the author's addresses appear among the approvers)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 9d0c8fa, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the full payments suite (172 tests, 0 failures, 0 skipped) succeeding on head 9d0c8fa, including the SES-1 control test. I could not rerun it locally because pytest isn't installed, and the JUnit file's timestamp and hostname don't match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "payments.session is security_sensitive. The only security_review (Kofi Mensah) approves 63e6817, but the later commit 9d0c8fa changes TOKEN_BYTES from 24 to 32, a behaviour change. That voids the review, and no security review covers the final commit."
+    }
+  ],
+  "summary": "The change touches the security-sensitive payments.session component. The ticket, the independent code review on the head commit, CI on the head commit and the SES-1 control test all check out. But the only security review approves 63e6817, where the token size stays at 24 bytes, and the later commit raises it to 32 bytes. That changes behaviour, so under CHG-3 rules the security review no longer applies and CHG-5 is unmet. The change must be rejected until a security reviewer approves the final commit.",
+  "meta": {
+    "elapsed_s": 74.11,
+    "tokens_in": 452334,
+    "tokens_out": 6385,
+    "usd": 0.462397,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6385,
+      "cache_read_input_tokens": 401446,
+      "cache_creation_input_tokens": 50856
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.46239719999999995,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

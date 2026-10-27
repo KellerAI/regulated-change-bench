@@ -1,0 +1,87 @@
+{
+  "variant": "v-7d2337db5f",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "release() now returns the stored release only if it is less than 1 day old. Older replays reach _send_disbursement and post a second disbursement, since nothing checks status or instruction uniqueness (releases table has no unique key). The only control test (sample) replays at the same instant and cannot detect this."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0403 (PAY-2, ponens trace of payments.py#release at e5bf646) covers code this change alters, so it has lapsed, and no replacement evidence is supplied. ACR-0401 (PAY-1, required_approvals) covers unchanged code and still stands."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26088 is a standard ticket approved by change manager erik.brandt at 2026-10-16T06:20Z, before the code review. Its component payments.payments covers the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, a payments change_approver and a different person from the author mara.costa (p-mcosta)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit cfa8da2, the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json reports success on head cfa8da2: 172 tests, 0 failures, 0 skipped, including the PAY-2 control test (sample-labelled). Caveat: the JUnit timestamp (2026-10-23) and hostname don't match the recorded CI runner or run time, and a local re-run wasn't possible because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py (payments.payments) is not security_sensitive in components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-payments/payments/payments.py, which is not a protected path, so no control_owner approval is needed."
+    }
+  ],
+  "summary": "The change adds a 24-hour window to the replay check in payments.release, so a replayed instruction more than a day old sends a second disbursement to core banking. This violates PAY-2 (released at most once). No exception in the register covers it, and the earlier PAY-2 acceptance evidence has lapsed under LAP-1 with nothing to replace it. Ticket, independent approval and approval-on-head are in order, and the CI record shows a green suite on the head commit, though the only PAY-2 control test is a same-instant sample that cannot catch the defect. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 101.57,
+    "tokens_in": 670450,
+    "tokens_out": 8789,
+    "usd": 0.539054,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 8789,
+      "cache_read_input_tokens": 622695,
+      "cache_creation_input_tokens": 47715
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.539054,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

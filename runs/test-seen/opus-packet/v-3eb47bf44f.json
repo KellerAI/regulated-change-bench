@@ -1,0 +1,63 @@
+{
+  "variant": "v-3eb47bf44f",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25173 is a standard ticket, approved by change manager Grace Kim at 2026-10-05T08:27Z, before the change opened. Its components (payments.payments, payments.tests) cover memos.py and tests/test_memo_preview.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos is a payments change_approver and a different person from author Mara Costa. She gave a code_review approval on b6ebfd6."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names b6ebfd6. Head commit c1a0175 ('Add a minimum preview width') adds code: the module-level constant PREVIEW_MIN_WIDTH = 8. That is not a comment, whitespace or formatting edit, so the approval is void for the head and no new approval exists."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows pr-checks succeeded on head c1a0175. The JUnit report lists 174 cases with 0 failures and 0 skipped, including the new preview tests. memos.py is outside every product obligation's scope, so no extra control tests are required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers memos.py or the new test file. The covered code (payments.py, audit.py, routes.py, Approvals.java, Underwriting.java, Policy.java) is unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds a memo preview helper and unit tests in non-security-sensitive payments components, so no product obligation, security review or control-owner approval applies. The ticket, the independent reviewer and CI on the head commit are all in order. However, the only code_review approval is on the first commit. The later head commit adds a new constant, which is a code change, not a comment or formatting edit, so under CHG-3 the approval does not cover what would be merged. The change is rejected until it is re-approved on c1a0175.",
+  "meta": {
+    "elapsed_s": 20.56,
+    "tokens_in": 38272,
+    "tokens_out": 1911,
+    "usd": 0.191308,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "2f93ba6e4334bdb805b6d547e2e97e9c6042b48f4ddd927d2c440f6664e4f2fc",
+    "packet_tokens_est": 24563,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38272,
+      "output_tokens": 1911,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

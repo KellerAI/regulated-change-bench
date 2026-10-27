@@ -1,0 +1,56 @@
+{
+  "variant": "v-b5701da2c5",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24826 is approved (status \"approved\"), and its components list includes \"mortgage.reporting\", which matches the component of the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The sole code_review approval is from mara.costa@fernbrook.example, who is a change_approver for payments, not for the baseline-mortgage app; thus the independent approval requirement is not met."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references commit d6910aeae572b6f38e6e38a5abe7cdca4874b0a0, which is the only commit in the PR; no later behavior‑changing commits exist, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) reports success and the JUnit XML shows all 124 tests passed, satisfying the full test‑suite requirement."
+    }
+  ],
+  "summary": "All process obligations are satisfied except CHG-2, which requires an independent approval from a change_approver for the baseline-mortgage app. The existing approval is from a change_approver for a different app, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 66.24,
+    "tokens_in": 24316,
+    "tokens_out": 3351,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "55c5bcc51a58bf6c7eceb268d67d31c95d127f4b918f4454308c49c9bca04908",
+    "packet_tokens_est": 24296,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12017,
+    "answer_chars": 1293,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.11,
+    "eval_s": 50.9,
+    "total_s": 66.24,
+    "tokens_est_ratio": 0.975,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "variant": "v-2e5c1ecf35",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "open",
+      "note": "The thresholds and branch logic in Underwriting.decide are unchanged, and the registered control test UnderwritingControlTest#autoApproveGridMatchesPolicy passes on head 8036d9c. That test only checks a finite grid (DTI in 0.01 steps, LTV in whole points from 50 to 110), but decide computes ratios to 4 decimal places. The exhaustive proof over the rationals (ACR-0406) no longer applies, so CRD-1 does not have evidence of the required strength."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406 (the exhaustive Rocq proof crd1-auto-approve.json, made on d30b2ad and marked not rerunnable) covers Underwriting.java#decide. This change alters what decide returns: eligible decisions now carry the reason POLICY_SATISFIED, which is stored by CaseStore, shown by CaseViews and added to decline reasons by CaseService. So the evidence has lapsed, and no new evidence of the same strength (a proof over the rationals) was supplied. The PR's statement that 'existing credit evidence is linked in the acceptance ledger' leans on that lapsed entry."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25693 is standard and was approved by change manager Erik Brandt at 2026-10-13T21:10Z, before the PR opened. Its component mortgage.underwriting covers the only file touched, Underwriting.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "There is a code_review approval from declan.farrell@fernbrook.example, who holds change_approver for baseline-mortgage and is a different person from the author Wen Li (none of Wen Li's addresses appear in the approval)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 8036d9c, which is the head and only commit of the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci (pr-checks on 8036d9c) succeeded: 124 Jupiter tests, 0 skipped, 0 failures, 0 errors, including the registered CRD-1 control test autoApproveGridMatchesPolicy (labelled exhaustive over mortgage.dti_ltv_grid). I could not rerun the suite locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only file touched, Underwriting.java, is component mortgage.underwriting, which components.json marks security_sensitive false, so no security review is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-mortgage/src/main/java/mortgage/Underwriting.java. No protected paths (controls data, control tests, CI) changed, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change has emergency false and its ticket is type standard, so the emergency and post-implementation-review rules do not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. No register entry covers CRD-1 or mortgage.underwriting, so none can excuse a deviation here."
+    }
+  ],
+  "summary": "PR-1540 changes Underwriting.decide so that auto-approve-eligible decisions return the reason POLICY_SATISFIED instead of an empty list. The ticket, independent code review, approval on the final commit and CI on the final commit are all in order. However, decide is covered by the exhaustive CRD-1 proof in ledger entry ACR-0406, and this change to its behaviour makes that evidence lapse under LAP-1. No new evidence of the same strength was supplied: the passing control test checks only a finite grid, not the rationals the proof covered. Because LAP-1 is violated, and CRD-1 cannot be shown to the required strength, the change is rejected until the CRD-1 proof is redone against 8036d9c or equivalent evidence is accepted.",
+  "meta": {
+    "elapsed_s": 83.72,
+    "tokens_in": 466241,
+    "tokens_out": 7614,
+    "usd": 0.44635,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 7614,
+      "cache_read_input_tokens": 424396,
+      "cache_creation_input_tokens": 41811
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4463502000000001,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

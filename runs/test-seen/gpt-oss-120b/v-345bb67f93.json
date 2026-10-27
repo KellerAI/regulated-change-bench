@@ -1,0 +1,61 @@
+{
+  "variant": "v-345bb67f93",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25092 is approved by change manager Erik Brandt, lists components mortgage.controls-data, mortgage.policy, mortgage.tests which cover all modified files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Wen Li (change_approver) on the head commit; Wen Li is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval applies to commit 30ce7dd24da4908a1bbe65e03a13e285878ef4a4 and no further commits alter behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the head commit succeeded (124 tests, 0 failures) including all control tests required for product obligations touched by the change."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control‑owner approval from Bao Tran (control_owner) recorded for the change to controls/mortgage/policy-params.json, satisfying the protected‑path requirement."
+    }
+  ],
+  "summary": "The change only adjusts the standard session idle timeout and does not affect any product obligations. All required process obligations—ticket approval, independent code review, coverage of the merged commit, successful full test suite, and control‑owner approval for the protected policy file—are satisfied with adequate evidence. Consequently the change can be accepted.",
+  "meta": {
+    "elapsed_s": 115.63,
+    "tokens_in": 25387,
+    "tokens_out": 4672,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b47fae4669321399b54155d5dff8ad052f0490abda0c382ba678964cfbf28a8b",
+    "packet_tokens_est": 25333,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19369,
+    "answer_chars": 1505,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.37,
+    "eval_s": 97.09,
+    "total_s": 115.63,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

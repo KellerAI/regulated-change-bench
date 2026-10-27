@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25516",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Retained sequence validation cleanup",
+    "components": [
+      "payments.audit"
+    ],
+    "requested_by": "linh.nguyen@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-20T04:44:00Z",
+    "risk": "medium"
+  }
+]

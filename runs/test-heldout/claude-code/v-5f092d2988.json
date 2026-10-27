@@ -1,0 +1,82 @@
+{
+  "variant": "v-5f092d2988",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Retention.java:22 now skips the legal-hold check for WITHDRAWN cases, so a withdrawn case on legal hold is purge-due after the retention period, which violates 'never while a legal hold applies'. The sample control test only covers declined cases, so its pass does not cover this path."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from RET-1, and the exception register has no approved, unexpired exception for RET-1 or the mortgage.retention component (it holds only SES-1, LOG-1 and a withdrawn MFA-1 exception)."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25519 is approved by Erik Brandt (change_manager) on 2026-10-15, before the change opened on 2026-10-16. Its components [mortgage.retention] cover the only touched path, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author, Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 36c9e2a, which is the only and final commit of the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 36c9e2a succeeded: 124 Jupiter tests, 0 failures, 0 skipped, including the registered RET-1 control test controls.RetentionControlTest#sampledPurgeRespectsHold. That test is labelled sample and only exercises declined cases. I could not rerun it locally because the JUnit jar is missing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Retention.java, so no previously accepted evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change edits one line of Retention.java so that a legal hold no longer blocks purging NPI for withdrawn cases. This directly violates RET-1, and no approved exception covers the deviation (EXC-1). The ticket, independent approval and CI records are otherwise in order, but CI passed only because the RET-1 control test samples declined cases and never a withdrawn case under hold. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 63.46,
+    "tokens_in": 301163,
+    "tokens_out": 5830,
+    "usd": 0.334542,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 5830,
+      "cache_read_input_tokens": 268301,
+      "cache_creation_input_tokens": 32834
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3345422,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

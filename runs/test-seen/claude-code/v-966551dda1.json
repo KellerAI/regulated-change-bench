@@ -1,0 +1,92 @@
+{
+  "variant": "v-966551dda1",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25638 is approved by change manager erik.brandt (2026-10-16), before review. Its components (payments.payments, payments.tests) cover both touched paths: payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from mara.costa, who holds change_approver for payments and is a different person from the author jonah.weiss (p-jweiss) under every directory address."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approvals name head commit 16bd927, the only commit in the change, so no later commits exist to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 16bd927 succeeded: 175 tests, 0 failures, 0 skipped. All 16 registered payments control tests ran and passed, including PAY-1/MC-1/PAY-2. I could not rerun locally (pytest not installed), and the JUnit timestamp and host differ from run.json's runner and start time."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both touched components (payments.payments, payments.tests) are marked security_sensitive: false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths are touched (no controls/, apps/baseline-payments/tests/controls/ or ci/ files), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "This is an emergency ticket, deployed 2026-10-19T17:38Z (Monday). The PIR by mara.costa (not the author) is dated 2026-10-20T18:38Z, inside the 2-business-day window that ends 2026-10-21T17:38Z."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and no product obligation deviates. No register entry is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger evidence on payments.py covers required_approvals (ACR-0401) and release (ACR-0403). Diffing from their evidence commits to head shows both functions unchanged; only a new function was added, so neither lapses."
+    }
+  ],
+  "summary": "The change adds a read-only helper, approvals_remaining, and its unit tests to the payments payments component. It doesn't change any symbol in the scope of PAY-1, MC-1 or PAY-2, or any other product obligation, so the existing ledger evidence still stands. The emergency ticket was approved, an independent change approver reviewed the head commit, and the post-implementation review came in within two business days of deployment. CI on the head commit passed the full suite, including all registered control tests, though I couldn't rerun it locally. No security-sensitive or protected paths are touched, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 70.18,
+    "tokens_in": 393968,
+    "tokens_out": 6049,
+    "usd": 0.407756,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 22,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6049,
+      "cache_read_input_tokens": 350632,
+      "cache_creation_input_tokens": 43306
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4077564,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

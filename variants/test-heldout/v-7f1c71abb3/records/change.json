@@ -1,0 +1,21 @@
+{
+  "id": "PR-1962",
+  "title": "Disbursement confirmation reuse",
+  "description": "Disbursement confirmation reuse.\n\nChanges:\n- Reduce repeat gateway requests using persisted confirmations\n- Use the existing instruction identifier\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-536",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "d6f3a184e7c3661154029430f8a852c884ede735",
+  "commits": [
+    {
+      "sha": "d6f3a184e7c3661154029430f8a852c884ede735",
+      "message": "Payments: reuse recent disbursement confirmations",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-09-30T18:43:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25827",
+  "opened_at": "2026-09-30T18:43:00Z"
+}

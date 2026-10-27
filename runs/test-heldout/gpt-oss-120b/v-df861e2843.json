@@ -1,0 +1,76 @@
+{
+  "variant": "v-df861e2843",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25247 is approved by a change manager and lists components payments.policy and payments.controls-data, covering the modified files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Mara Costa (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code‑review approval is tied to the exact commit being merged; no later non‑comment changes exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (result: success) with all 172 tests passing, including the SES‑1 control test."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control‑owner approval from Bao Tran (control_owner) is present for the protected path controls/payments/policy-params.json."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Exception EXC-0225 is approved by a risk_owner, unexpired, and scoped to SES‑1 for payments.session, providing a compensating control."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Fresh CI evidence (passing SES‑1 control test) ensures prior evidence is not lapsed by the change."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Privileged idle minutes increased to 16, exceeding the 15‑minute bound, but the approved exception EXC-0225 makes the obligation satisfied."
+    }
+  ],
+  "summary": "All applicable product and process obligations are satisfied. The privileged idle interval change is covered by an approved exception, and required tickets, approvals, CI testing, and control‑owner sign‑off are present, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 115.65,
+    "tokens_in": 24618,
+    "tokens_out": 6427,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "be7b1476d37b0f6806af1c91675819f7b64f1b9d599d664be7c29ad03ae0d054",
+    "packet_tokens_est": 24423,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24900,
+    "answer_chars": 1875,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.41,
+    "eval_s": 100.06,
+    "total_s": 115.65,
+    "tokens_est_ratio": 0.982,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

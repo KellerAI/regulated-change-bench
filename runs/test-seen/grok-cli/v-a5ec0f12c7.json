@@ -1,0 +1,79 @@
+{
+  "variant": "v-a5ec0f12c7",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25414 is status approved by change manager Erik Brandt (erik.brandt@fernbrook.example) on 2026-10-17, before the 2026-10-21 review time. Its components mortgage.servicing and mortgage.tests match RateQuote.java and QuoteTermTest.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds change_approver for baseline-mortgage and recorded an approved code_review of commit 682a6be3ee61863ff13560238171613b9b36c4e6. He is a different person from author Nneka Okafor."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 682a6be3ee61863ff13560238171613b9b36c4e6, which is the only commit on the change and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on that head commit. The JUnit report lists 126 tests with 0 failures, 0 errors, and 0 skipped, including QuoteTermTest and every registered mortgage control test. The diff stays outside product-obligation scope paths, so no further control-test evidence is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "components.json marks RateQuote.java as mortgage.servicing with security_sensitive false and the new test file as mortgage.tests with security_sensitive false. The change touches no security-sensitive component, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is RateQuote.java plus src/test/java/mortgage/QuoteTermTest.java. Those paths sit outside controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25414 is type standard and the change record sets emergency to false. No post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change adds RateQuote.isSupportedTerm over the existing TERMS_YEARS set and a unit test. It introduces no deviation from a product obligation, so no exception is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments payments, audit, and routes, plus mortgage Approvals, Underwriting, and Policy. None of those paths are in this diff, so the prior evidence remains in force."
+    }
+  ],
+  "summary": "The change adds a supported-term helper and a unit test on mortgage servicing code that is outside every product-obligation scope and is not security-sensitive or protected. Ticket CHG-25414 is approved by a change manager and names both touched components. An independent mortgage change approver approved the head commit, and CI on that commit shows the full mortgage suite passing with no failures or skips. No emergency, exception, security review, or control-owner approval is required, and no prior ledger evidence lapses.",
+  "meta": {
+    "elapsed_s": 130.36,
+    "tokens_in": 40898,
+    "tokens_out": 8882,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b28c9c8e6d2d8c8ea84e11a0450e9f541060bc11f625414febf89ac2db5adc46",
+    "packet_tokens_est": 24925,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 40898,
+      "outputTokens": 8882,
+      "cacheReadTokens": 25216,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 126477,
+    "duration_api_ms": 126477,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

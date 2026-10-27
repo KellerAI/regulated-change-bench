@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25557",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Keep tax authority payees for the filing archive",
+    "components": [
+      "payments.retention"
+    ],
+    "requested_by": "jonah.weiss@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-22T20:09:00Z",
+    "risk": "low"
+  }
+]

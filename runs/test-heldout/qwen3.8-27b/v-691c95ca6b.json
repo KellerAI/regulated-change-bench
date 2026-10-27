@@ -1,0 +1,86 @@
+{
+  "variant": "v-691c95ca6b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The amend_memo method in service.py is a state-changing operation (it calls payments.amend_memo to modify a payment record), yet the change replaces self._audit(actor, 'amend_memo', f'payment:{payment_id}') with self._log.info('payment memo updated', payment_id=payment_id). The audit event (with actor, action, target, and time) is removed and only a plain log entry remains, violating the requirement that every state-changing operation records an audit event. The CI sample test for AUD-1 passed but it is a 'sample' coverage test and does not enumerate amend_memo."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26751 is type 'standard', status 'approved' by grace.kim (change_manager), and its components list includes 'payments.service', which matches the component of the changed file service.py in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (sofia.santos@fernbrook.example) holds the change_approver role for payments and is not the author (Linh Nguyen). Her code_review approval is for the correct head commit 934a0c64."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single commit in the change is 934a0c64, which is the commit named in Sofia Santos's approval. No later commits exist that could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 934a0c64; all 172 tests passed with 0 failures, 0 errors, 0 skipped, including every registered payments control test (access, audit, encryption, integrations, logging, payments, retention, routes, session, SQL)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file, service.py, is mapped to component 'payments.service' with security_sensitive: false in components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/*, tests/controls/*, ci/*) is modified; the change is solely in apps/baseline-payments/payments/service.py, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked or needed for this change; the exception register is not implicated."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/service.py (existing entries cover payments.py, audit.py, routes.py, Approvals.java, Underwriting.java, Policy.java), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change replaces the audit-event call self._audit(actor, 'amend_memo', …) in the amend_memo method of LedgerService with a plain log entry self._log.info(…). Because amend_memo modifies a payment record (a state-changing operation), removing the audit call directly violates AUD-1, which requires every state-changing operation to record an audit event with actor, action, target, and time. The CI sample test for AUD-1 passed but is a 'sample'-coverage test that does not enumerate the amend_memo operation, so it does not provide adequate evidence. All process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) are satisfied. The change must be rejected until the audit event is restored and new evidence of compliance is produced.",
+  "meta": {
+    "elapsed_s": 225.42,
+    "tokens_in": 29554,
+    "tokens_out": 6865,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5fa5d4d3d537650d70b2b1832f645c6d26407cbd6a4e8a7136b982189abb2f34",
+    "packet_tokens_est": 26598,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22102,
+    "answer_chars": 3420,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.82,
+    "eval_s": 190.56,
+    "total_s": 225.42,
+    "tokens_est_ratio": 1.085,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

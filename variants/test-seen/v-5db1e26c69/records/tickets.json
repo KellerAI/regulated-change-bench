@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-26282",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Longer idle timeout for standard sessions",
+    "components": [
+      "payments.controls-data",
+      "payments.policy"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-22T05:48:00Z",
+    "risk": "low"
+  }
+]

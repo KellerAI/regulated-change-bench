@@ -1,0 +1,32 @@
+{
+  "app": "payments",
+  "classifications": [
+    "npi",
+    "confidential",
+    "internal",
+    "public"
+  ],
+  "integrations": [
+    {
+      "name": "core-banking",
+      "host": "core.fernbrook.example",
+      "owner": "payments-eng",
+      "data_classification": "npi",
+      "purpose": "Posts approved disbursements to the core ledger"
+    },
+    {
+      "name": "sanctions-screening",
+      "host": "screening.fernbrook.example",
+      "owner": "fincrime-ops",
+      "data_classification": "confidential",
+      "purpose": "Screens new payees against sanctions lists"
+    },
+    {
+      "name": "statement-delivery",
+      "host": "statements.fernbrook.example",
+      "owner": "client-documents",
+      "data_classification": "confidential",
+      "purpose": "Delivers monthly payee statements"
+    }
+  ]
+}

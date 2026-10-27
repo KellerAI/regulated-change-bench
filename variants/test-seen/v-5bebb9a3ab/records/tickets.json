@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-24327",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Indicative FX rates for non-USD payments",
+    "components": [
+      "payments.controls-data",
+      "payments.integrations",
+      "payments.payments"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-06T10:12:00Z",
+    "risk": "medium"
+  }
+]

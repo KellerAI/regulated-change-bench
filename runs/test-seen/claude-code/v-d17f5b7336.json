@@ -1,0 +1,82 @@
+{
+  "variant": "v-d17f5b7336",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "logs.py is in LOG-1 scope. The new debug() goes through the same _emit/mask_fields path, and the CI record shows the sample control test test_sampled_flows_do_not_log_npi and the new one-case unit test passing. LOG-1 requires exhaustive evidence and only sample-level evidence exists."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26216 was approved by change manager Erik Brandt on 2026-09-29, before review. Its components (payments.logging, payments.tests) cover both touched files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (p-mcosta), a payments change_approver and a different person from the author Jonah Weiss, approved a code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 8dfff15, which is the only commit in the change, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json is a successful run on head 8dfff15. The JUnit report shows 173 tests, 0 failures and 0 skipped, including the LOG-1 control test test_sampled_flows_do_not_log_npi (sample). I could not re-run it locally because pytest is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "logs.py (payments.logging) is security_sensitive in components.json, but approvals.json has no security_review approval from a security_reviewer (Ines Halvorsen or Kofi Mensah)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance ledger entry covers logs.py or npi.py, so no earlier evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change adds AppLog.debug to the security-sensitive payments.logging component. CHG-5 requires a security_review approval for that component, and none is on record, so the change is rejected. The ticket, the independent code review on the final commit and the CI run on the head commit are all in order. LOG-1 stays open because only sample-level evidence covers it where exhaustive evidence is required.",
+  "meta": {
+    "elapsed_s": 60.59,
+    "tokens_in": 311394,
+    "tokens_out": 5438,
+    "usd": 0.35144,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 5438,
+      "cache_read_input_tokens": 273805,
+      "cache_creation_input_tokens": 37563
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.35144,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

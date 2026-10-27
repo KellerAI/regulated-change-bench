@@ -1,0 +1,15 @@
+{
+  "payments.dual_control_threshold": "10000.00",
+  "payments.dual_control_approvers": 2,
+  "payments.privileged_idle_minutes": 15,
+  "payments.standard_idle_minutes": 30,
+  "payments.audit_retention_years": 7,
+  "payments.audit_retention_years_rule_minimum": 5,
+  "payments.closed_account_npi_retention_months": 84,
+  "payments.npi_fields": [
+    "account_number",
+    "date_of_birth",
+    "routing_number",
+    "tax_id"
+  ]
+}

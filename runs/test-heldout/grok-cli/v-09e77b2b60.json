@@ -1,0 +1,79 @@
+{
+  "variant": "v-09e77b2b60",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26546 is approved by change manager Grace Kim, but its components list only mortgage.reporting. The diff also changes DocumentChecklist.java, which components.json assigns to mortgage.servicing, so the ticket does not cover every component touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li (change_approver for baseline-mortgage, person p-wli) approved a code_review of head f035b029. He is not the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit f035b029, which is the commit being merged, so there are no later commits outside the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on head f035b029, and the JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped. The change does not touch any product-obligation scope path, so no additional registered control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "DocumentChecklist.java and PipelineReport.java are both security_sensitive false in components.json, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is only the two application Java files. Neither path is under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-26546 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change adds unused format constants and does not deviate from a product obligation. No exception is required; the register entries are for other components and are not relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments payments, audit, and routes, and mortgage Approvals, Underwriting, and Policy. None of those paths change in this diff, so that evidence does not lapse."
+    }
+  ],
+  "summary": "The merged commit is independently code-reviewed on the final SHA, CI for baseline-mortgage passes on that commit, and the edit is two public format constants outside security-sensitive, protected, and product-obligation paths. Ticket CHG-26546 still lists only mortgage.reporting. DocumentChecklist.java is mortgage.servicing, so the approved ticket does not cover every component the change touches. CHG-1 fails, and the change is rejected.",
+  "meta": {
+    "elapsed_s": 110.01,
+    "tokens_in": 39784,
+    "tokens_out": 8898,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "efaab8d79fd4f19c36bc9cf5017559adb41ce590ee8aa0249f55ba94dd76c61a",
+    "packet_tokens_est": 25096,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 39784,
+      "outputTokens": 8898,
+      "cacheReadTokens": 167808,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 106491,
+    "duration_api_ms": 106491,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

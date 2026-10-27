@@ -1,0 +1,78 @@
+{
+  "variant": "v-90b3c34e93",
+  "arm": "opus-packet",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change raises payments PRIVILEGED_IDLE_MINUTES and the approved param from 15 to 16, which breaks the <= 15 bound. The deviation is covered by EXC-0224: obligation SES-1, component payments.session, approved by risk owner Helena Vasquez (not the requester), unexpired until 2026-11-25, with a compensating control recorded."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "EXC-0224 is approved by a risk_owner in the CISO office who is not the requester (linh.nguyen). It is unexpired at review time (2026-10-26), scoped to SES-1 for Payments privileged sessions at sixteen minutes, and records a compensating control."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26135 was approved by change manager Grace Kim on 2026-10-20, before review. Its components (payments.policy, payments.controls-data) cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit dcf5be9f, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json claims success on the head commit via executor ci-runner-09, started 16:23Z. The attached JUnit report has hostname dev-laptop-7.local (a personal machine, and nobody in the directory) and a timestamp of 20:51Z, so the report's provenance as this CI run cannot be established. It is also unexplained that the SES-1 control test passes with a value of 16 against a bound of 15."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path controls/payments/policy-params.json was changed. Rachel Stein, a control_owner in controls-office outside the author's payments-eng team, approved the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers code changed here: the entries cover payments.py, audit.py, routes.py, Approvals.java, Underwriting.java and Policy.java symbols, none of which changed. No evidence lapses."
+    }
+  ],
+  "summary": "The change raises the Payments privileged idle timeout to 16 minutes, outside SES-1's bound. The deviation is covered by a valid, unexpired risk-owner exception (EXC-0224). Ticket, independent code review and control-owner approval are all in order on the head commit. However, the JUnit report attached to the CI run was produced on a personal machine at a time inconsistent with the run record. That leaves CHG-4 unestablished, so the change is held until a verifiable CI run on the head commit is supplied.",
+  "meta": {
+    "elapsed_s": 33.39,
+    "tokens_in": 38106,
+    "tokens_out": 3369,
+    "usd": 0.219804,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a2f6009fc1f9638876dc771b66645cfc4cbe0a694f7b5851f593a1140fe5c472",
+    "packet_tokens_est": 24434,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38106,
+      "output_tokens": 3369,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

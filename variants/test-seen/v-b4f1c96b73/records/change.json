@@ -1,0 +1,21 @@
+{
+  "id": "PR-1684",
+  "title": "Reopen closed payees",
+  "description": "Operations closes payees by mistake and has to recreate them.\n\nChanges:\n- Route and service operation to reopen\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "linh.nguyen@fernbrook.example",
+  "branch": "nguyen/change-928",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "c8cfd684b5fbccccf40f27d57fc8edf591207474",
+  "commits": [
+    {
+      "sha": "c8cfd684b5fbccccf40f27d57fc8edf591207474",
+      "message": "Payee directory: reopen a closed payee",
+      "author": "linh.nguyen@fernbrook.example",
+      "at": "2026-10-03T17:27:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24738",
+  "opened_at": "2026-10-03T17:27:00Z"
+}

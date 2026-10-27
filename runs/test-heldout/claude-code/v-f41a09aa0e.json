@@ -1,0 +1,87 @@
+{
+  "variant": "v-f41a09aa0e",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25222 is approved by change manager grace.kim on 2026-10-08T22:18Z, before the change opened (2026-10-09T13:18Z). Its components [payments.audit] cover the only touched file, apps/baseline-payments/payments/audit.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa, a payments change_approver and a different person from the author aisha.bello (none of her addresses appear among the approvers)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name 67f7dc5, the head and only commit of the change, so there are no later commits to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding on head 67f7dc5. The JUnit report shows 172 tests with 0 failures and 0 skipped, including the registered AUD-1 (sample) and AUD-2 (exhaustive) control tests. I could not rerun locally because pytest is missing, and the JUnit timestamp and host don't match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py is in the security-sensitive component payments.audit. A security_review approval from ines.halvorsen (security_reviewer) names head 67f7dc5."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "audit.py is in scope, but the diff only adds a read-only check in verify(). record() and the service code that records events are unchanged, and the AUD-1 sampled control test passes on head."
+    },
+    {
+      "id": "AUD-2",
+      "status": "open",
+      "note": "The diff changes verify() so it rejects chains whose first retained seq is below 1. The exhaustive ModelCheck evidence for AUD-2 (ACR-0402, scope 6, on d30b2ad, not rerunnable) covers verify and has therefore lapsed. The passing control test checks one generated log and does not exercise the new branch, so tamper-evidence isn't re-established at the required strength."
+    },
+    {
+      "id": "LAP-1",
+      "status": "open",
+      "note": "ACR-0402 covers audit.py#verify, which this change alters in behaviour, so it no longer supports AUD-2. No new evidence of the same strength (a bounded model check on 67f7dc5) is in the records, although the PR description still relies on the old ledger analysis."
+    }
+  ],
+  "summary": "PR-1383 adds one behavioural check to AuditLog.verify() in payments. The ticket, independent code review, security review and CI on the head commit all satisfy CHG-1 to CHG-5. However, the accepted exhaustive ModelCheck evidence for AUD-2 (ACR-0402) covers verify and lapses under LAP-1, and no new evidence of equal strength has been produced. The passing control test is weaker and never exercises the new branch, and the PR's claim that unit tests were updated is not borne out by the diff. Nothing shows the change violates AUD-2, so the decision is HOLD until the bounded chain analysis is re-run on 67f7dc5 and accepted.",
+  "meta": {
+    "elapsed_s": 107.9,
+    "tokens_in": 274867,
+    "tokens_out": 10440,
+    "usd": 0.474671,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 10440,
+      "cache_read_input_tokens": 230925,
+      "cache_creation_input_tokens": 43918
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.474671,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

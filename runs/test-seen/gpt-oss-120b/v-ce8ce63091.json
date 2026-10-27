@@ -1,0 +1,61 @@
+{
+  "variant": "v-ce8ce63091",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The new Retention logic only blocks purge when a legal hold and status == DECLINED, allowing withdrawn cases with a legal hold to be purged, violating \"never while a legal hold applies\"; no exhaustive evidence for this obligation is provided."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26151 is approved by change manager Grace Kim and lists component \"mortgage.retention\", which matches the changed file Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Declan Farrell (a change_approver for baseline-mortgage) is recorded and he is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the only commit in the PR; no later behavior‑changing commits exist, so the approval still covers the merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded with the full test suite (124 tests, 0 failures), satisfying the testing requirement."
+    }
+  ],
+  "summary": "The change touches Retention.java and introduces logic that permits purging NPI for withdrawn cases under a legal hold, which directly violates the RET-1 obligation. No exhaustive evidence for RET-1 is provided, making the obligation unsatisfied. While all process obligations (CHG-1 through CHG-4) are satisfied, the product violation requires the change to be rejected.",
+  "meta": {
+    "elapsed_s": 128.21,
+    "tokens_in": 24186,
+    "tokens_out": 5645,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "1da474b3cf5551b6eea3ffb7dd3b51e50ee6e53ff79e43b7e1929bed90dfc08f",
+    "packet_tokens_est": 24071,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22351,
+    "answer_chars": 1583,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 25.72,
+    "eval_s": 102.26,
+    "total_s": 128.2,
+    "tokens_est_ratio": 0.979,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

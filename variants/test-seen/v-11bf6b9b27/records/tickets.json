@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-25106",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Allow charity payees",
+    "components": [
+      "payments.payees",
+      "payments.payments",
+      "payments.tests"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-18T12:15:00Z",
+    "risk": "low"
+  }
+]

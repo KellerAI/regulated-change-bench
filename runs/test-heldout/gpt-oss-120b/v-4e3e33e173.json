@@ -1,0 +1,66 @@
+{
+  "variant": "v-4e3e33e173",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25897 is approved, but its components list 'mortgage.reporting' does not match any component entry for the modified file PipelineReport.java, and no mapping exists in controls/mortgage/components.json, so coverage cannot be verified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval by Wen Li (wen.li@fernbrook.example) who has role change_approver for baseline-mortgage and is not the author satisfies the independent approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review approval references the exact commit SHA of the change and there are no later commits, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run reports all 124 tests passed, indicating the full test suite succeeded on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "open",
+      "note": "No component assignment exists for PipelineReport.java, so it cannot be determined whether the touched component is marked security_sensitive; the required security review evidence is missing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Prior acceptance ledger entries cover other code; the changed file does not intersect those covered paths, so no evidence lapse occurs."
+    }
+  ],
+  "summary": "The change fails the CHG-1 ticket component coverage requirement, leading to a refuted obligation. All other process obligations are satisfied or indeterminate, but a single refuted obligation mandates rejection.",
+  "meta": {
+    "elapsed_s": 103.68,
+    "tokens_in": 24314,
+    "tokens_out": 5508,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a29ab4ca0c458798266fa1cc459d2bf7745237ecba5e3c69b8fb809badf3b736",
+    "packet_tokens_est": 24289,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22400,
+    "answer_chars": 1711,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.35,
+    "eval_s": 86.15,
+    "total_s": 103.67,
+    "tokens_est_ratio": 0.975,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

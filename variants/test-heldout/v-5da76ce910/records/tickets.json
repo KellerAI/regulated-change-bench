@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26039",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Diagnostic buffer sizing",
+    "components": [
+      "mortgage.logging"
+    ],
+    "requested_by": "tomas.ortega@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-08T07:02:00Z",
+    "risk": "medium"
+  }
+]

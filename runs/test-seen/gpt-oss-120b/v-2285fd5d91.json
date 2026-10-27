@@ -1,0 +1,66 @@
+{
+  "variant": "v-2285fd5d91",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25850 is approved by change manager Erik Brandt and lists components mortgage.servicing and mortgage.tests, which cover RateQuote.java and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval on commit 2774f1981823fb0bded2cdd5f5b59390bce0d6bd was given by Wen Li, who has the change_approver role for mortgage‑mortgage and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is attached to the final commit (head) and no further commits were made after it, so the approval covers the entire merged change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) succeeded; JUnit reports show 126 tests (including the new QuoteTermTest) passing with no failures, covering all control tests."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The exception register (records/exceptions.json) is present, contains only approved or withdrawn exceptions unrelated to this change, satisfying the requirement for a recorded exception set."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance ledger entries (records/ledger.json) for prior obligations remain valid because the change does not modify any code covered by those evidences."
+    }
+  ],
+  "summary": "All applicable process obligations (CHG‑1 through CHG‑4, EXC‑1, LAP‑1) are satisfied with adequate evidence, and no product obligations are impacted by the change. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 192.76,
+    "tokens_in": 25228,
+    "tokens_out": 8780,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9c0b0a999cb067e25d58c0d99316923bc7fe40c9c0fcb872f8b52124134bac15",
+    "packet_tokens_est": 25145,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 35591,
+    "answer_chars": 1704,
+    "done_reason": "stop",
+    "load_s": 0.01,
+    "prompt_eval_s": 19.79,
+    "eval_s": 172.74,
+    "total_s": 192.76,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

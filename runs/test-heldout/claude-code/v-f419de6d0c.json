@@ -1,0 +1,82 @@
+{
+  "variant": "v-f419de6d0c",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "CaseService.markDocumentReceived still marks the document received and saves the case, but the change replaces its audit.record(...\"document_received:\"...) call with log.info, so this state-changing operation no longer records an audit event. No exception in the register covers AUD-1 for mortgage.cases, and the passing AUD-1 control test is only a sample that doesn't check this operation."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The one new log.info call concatenates only the DocumentType enum (PHOTO_ID, PAY_STUBS, etc.) and the case id, neither of which is NPI. LoggingControlTest#sampledFlowsDoNotLogNpi passes in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24237, approved by change manager grace.kim on 2026-10-04 before the change was opened and reviewed on 2026-10-07. Its components [mortgage.cases] cover the only touched file, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li, who holds change_approver for baseline-mortgage and is a different person from the author, declan.farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit f4d7e0b, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head commit f4d7e0b succeeded: 124 Jupiter tests, 0 failures, 0 skipped. That includes the registered control tests for the touched obligations, AuditControlTest#sampledOperationsAreAudited and LoggingControlTest#sampledFlowsDoNotLogNpi (both labelled sample)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers CaseService.java, so no previously accepted evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change replaces the audit event recorded when a loan-case document is received with a plain application log line, so a state-changing operation is no longer audited. This violates AUD-1 and no approved exception covers it. The process records (ticket, independent approval on the head commit, green CI on the head commit) are in order, and the new log line carries no NPI, but the AUD-1 sample control test doesn't exercise this operation, so the passing CI doesn't show the obligation is met. The change is rejected until the audit record is restored.",
+  "meta": {
+    "elapsed_s": 81.68,
+    "tokens_in": 457132,
+    "tokens_out": 6991,
+    "usd": 0.429698,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 6991,
+      "cache_read_input_tokens": 415780,
+      "cache_creation_input_tokens": 41314
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.429698,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

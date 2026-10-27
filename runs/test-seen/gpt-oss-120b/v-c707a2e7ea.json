@@ -1,0 +1,61 @@
+{
+  "variant": "v-c707a2e7ea",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24788 is approved, is of type emergency, and lists components mortgage.servicing and mortgage.tests which cover the modified RateQuote.java and the new QuoteTermTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by Wen Li (has role change_approver for mortgage‑mortgage) and is not the author of the change."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the only commit in the PR; there are no later commits that alter behaviour, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded, with the full test suite (126 tests) passing, including all control tests for the mortgage app."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "A post‑implementation review (pir) was recorded by Declan Farrell within a day of the emergency deployment, satisfying the 2‑business‑day requirement."
+    }
+  ],
+  "summary": "All applicable process obligations (CHG‑1, CHG‑2, CHG‑3, CHG‑4, CHG‑7) are satisfied with adequate evidence, and the change does not affect any product obligations. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 110.33,
+    "tokens_in": 25057,
+    "tokens_out": 4588,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bdc21a78d6a30da2aa2269195049799d406e6102e4303166c54464796071403b",
+    "packet_tokens_est": 25013,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17971,
+    "answer_chars": 1384,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 22.78,
+    "eval_s": 87.32,
+    "total_s": 110.32,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "variant": "v-5486671ba6",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change adds an unmasked SSN to the decline log line: log.info(... + \" for applicant \" + loanCase.applicantField(\"ssn\")) in CaseService.java:143; applicantField returns the raw value, not Mask.npi. The passing LOG-1 control test only samples flows, and EXC-0167 (mortgage.logging, masked last-4 of account numbers in a legacy import job) covers neither this component nor this deviation."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "decline() still records audit.record(actor, DECLINE_CREDIT, caseId, \"declined\"); only the log line changed. The registered control test AuditControlTest#sampledOperationsAreAudited (sample) passed in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24512 is a standard ticket, approved by change manager grace.kim on 2026-10-06T06:31Z, before review. Its components [mortgage.cases] cover the only touched file, CaseService.java (mortgage.cases)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li (p-wli, change_approver for baseline-mortgage) approved the code review. Wen Li is a different person from the author, nneka.okafor (p-nokafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit b3a171e, the change's only commit, so there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeded on head b3a171e. The JUnit report has 124 tests, 0 skipped, failed or errored, including the touched obligations' control tests (LoggingControlTest, AuditControlTest), both sample-coverage."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers CaseService.java, so no prior evidence lapses because of this change."
+    }
+  ],
+  "summary": "PR-1251 changes the decline log line in CaseService to append the applicant's raw SSN, which LOG-1 forbids in application logs. No valid exception covers it: EXC-0167 is for a different component and only allows masked last-4 values. The process records are in order: approved ticket covering mortgage.cases, independent approval on the head commit, a green CI run on head with the relevant control tests. But the LOG-1 control test only samples flows and missed this path. Because LOG-1 is violated, the change is rejected.",
+  "meta": {
+    "elapsed_s": 70.69,
+    "tokens_in": 360996,
+    "tokens_out": 6327,
+    "usd": 0.430585,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6327,
+      "cache_read_input_tokens": 312689,
+      "cache_creation_input_tokens": 48279
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4305848,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

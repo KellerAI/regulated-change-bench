@@ -1,0 +1,117 @@
+{
+  "variant": "v-971a7533f9",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Whitespace-only reformat; mortgage.privileged_idle_minutes stays 15, equal to Policy.PRIVILEGED_IDLE_MINUTES and within the <=15 bound. Exhaustive control test SessionControlTest#privilegedIdleTimeoutWithinPolicy passes on the head commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "mortgage.audit_retention_years stays 7 (bound >=7), equal to Policy.AUDIT_RETENTION_YEARS. Exhaustive control test AuditControlTest#chainAndRetention passes on the head commit."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "mortgage.declined_npi_retention_months stays 25, equal to Policy; git diff -w is empty, so retention behaviour cannot change. Registered control test RetentionControlTest#sampledPurgeRespectsHold (sample coverage) passes on the head commit."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "underwriter_limit 500000 and senior_limit 1500000 are unchanged and equal to the approved params and Policy.java. Exhaustive control test ApprovalsControlTest#authorityLimitsMatchPolicy passes, and ledger entry ACR-0405 still covers unchanged code."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "dti_max_percent 40 and ltv_max_percent 90 are unchanged and equal to the approved params and Policy.java. Exhaustive control test UnderwritingControlTest#autoApproveGridMatchesPolicy passes, and ledger entry ACR-0406 still covers unchanged code."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26555 is approved by Erik Brandt (change_manager) at 2026-10-15T01:51Z, before the PR opened and before review. Its components [mortgage.controls-data] cover the only touched path, controls/mortgage/*."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by wen.li@fernbrook.example (Wen Li, change_approver for baseline-mortgage), who is a different person from the author Tomas Ortega under all directory aliases."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit ddb74db, which is the change's only commit; there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci run on head ddb74db succeeded: 124 Jupiter tests, 0 skipped, 0 failed, 0 errors. That includes the registered control tests for SES-1, AUD-2, RET-1, LIM-1 and CRD-1; I could not re-run CI locally because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.controls-data, is not marked security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is a protected path. A control_owner approval on the head commit comes from Rachel Stein (controls-office), who is outside the author's team (lending-eng); no policy value, coverage label or control test changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Not an emergency change: the ticket type is standard and emergency is false, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change introduces no deviation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover Approvals.java, Underwriting.java, Policy.java and payments code, none of which this change touches; a formatting-only edit to the params file doesn't lapse any evidence."
+    }
+  ],
+  "summary": "The change only re-indents controls/mortgage/policy-params.json: git diff -w is empty and every value still matches Policy.java and the approved obligation parameters. Process records are complete: an approved ticket covering mortgage.controls-data, an independent change_approver code review and an out-of-team control_owner approval, both on the head commit, and a green CI run on the head commit with all relevant registered control tests passing unskipped. No security-sensitive component is touched, it is not an emergency, no exception is needed and no ledger evidence lapses. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 101.32,
+    "tokens_in": 452149,
+    "tokens_out": 9375,
+    "usd": 0.491059,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 9375,
+      "cache_read_input_tokens": 407740,
+      "cache_creation_input_tokens": 44375
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4910590000000001,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

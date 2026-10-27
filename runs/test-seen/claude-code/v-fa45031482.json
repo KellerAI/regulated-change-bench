@@ -1,0 +1,92 @@
+{
+  "variant": "v-fa45031482",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26149 (standard) was approved by change manager grace.kim at 2026-10-24T04:23Z, before the PR opened (16:23Z) and before review. Its components payments.payments and payments.tests cover the two touched files: payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from s.santos@fernbrook.example (Sofia Santos, change_approver for payments), a different person from the author Mara Costa under any of her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit d448a69, the only commit in base..head, so no later commits need assessment."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run in records/ci is on head commit d448a69 with result success; the JUnit report shows 175 tests, 0 failures, 0 skipped, including the new tests and all registered payments control tests. No product obligation's scope symbols or closed domain were touched, so no additional control test is required. I could not rerun locally because pytest is unavailable."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.payments and payments.tests are both security_sensitive: false in controls/payments/components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only apps/baseline-payments/payments/payments.py and apps/baseline-payments/tests/test_approvals_remaining.py, neither of which matches controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json has emergency: false, so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and introduces no deviation from a product obligation, so no register entry is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries covering payments.py (ACR-0401 required_approvals, ACR-0403 release) are byte-for-byte unchanged by the diff, which only adds a new function, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds a read-only helper, approvals_remaining, to payments payments.py, plus unit tests. It modifies no symbol in any product obligation's scope and no closed domain, so only the process obligations apply. The ticket was approved by a change manager in advance and covers both touched components. An independent payments change approver approved the exact head commit, and CI on that commit passed the full suite, including all control tests. No security-sensitive, protected or emergency triggers apply, and no ledger evidence lapses, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 80.45,
+    "tokens_in": 330739,
+    "tokens_out": 7663,
+    "usd": 0.448018,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7663,
+      "cache_read_input_tokens": 283106,
+      "cache_creation_input_tokens": 47605
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4480181999999999,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

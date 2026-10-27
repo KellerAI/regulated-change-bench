@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25264",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Withdrawn case retention alignment",
+    "components": [
+      "mortgage.retention"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-07T04:32:00Z",
+    "risk": "low"
+  }
+]

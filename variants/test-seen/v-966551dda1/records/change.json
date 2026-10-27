@@ -1,0 +1,21 @@
+{
+  "id": "PR-1997",
+  "title": "Emergency: payments queue: show approvals remaining",
+  "description": "Emergency: payments queue: show approvals remaining.\n\nChanges:\n- Add `payments.approvals_remaining`\n- Unit tests for single and dual control\n- Deployed under the emergency procedure\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-367",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "16bd9271aae231fdc4118cc29117d4900317ce0d",
+  "commits": [
+    {
+      "sha": "16bd9271aae231fdc4118cc29117d4900317ce0d",
+      "message": "Add approvals_remaining helper for the payments queue",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-19T16:38:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-25638",
+  "opened_at": "2026-10-19T16:38:00Z"
+}

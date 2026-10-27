@@ -1,0 +1,84 @@
+{
+  "variant": "v-5f092d2988",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Retention.isPurgeDue now skips the legal-hold block when status is WITHDRAWN, so NPI of a withdrawn application can be purged while a legal hold applies. RET-1 requires that declined or withdrawn NPI is never purged during a legal hold, and no approved exception covers this."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25519, which change manager Erik Brandt approved on 2026-10-15 before review. Its component mortgage.retention matches Retention.java in controls/mortgage/components.json, the only path in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code_review of head 36c9e2a8. He has the change_approver role for baseline-mortgage and is not the author, Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names commit 36c9e2a8f3582035abc74e51c43f4deebb6d0507, which is the head and the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, and the JUnit report includes unskipped passing controls.RetentionControlTest#sampledPurgeRespectsHold, the registered RET-1 control test. That sample pass does not undo the legal-hold defect in the source."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java is component mortgage.retention with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is application code under apps/baseline-mortgage, which is outside controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25519 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The withdrawn-case legal-hold carve-out is a deviation from RET-1. The register has no approved, unexpired exception scoped to RET-1 and mortgage.retention with a compensating control; the listed exceptions are SES-1, LOG-1, and a withdrawn MFA-1."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover other paths (payments, audit, routes, approvals, underwriting, policy). This change does not alter that covered code, and it does not rely on a ledger entry for Retention.java."
+    }
+  ],
+  "summary": "The change alters mortgage Retention.isPurgeDue so a legal hold blocks purge for declined cases but not for withdrawn cases. RET-1 requires NPI of declined or withdrawn applications to be purged only after the retention period and never while a legal hold applies. No approved exception covers that deviation. Process records for the ticket, independent approval of the head commit, and the passing CI run are in order, but the legal-hold bypass is a direct control failure, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 62.38,
+    "tokens_in": 42683,
+    "tokens_out": 6376,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f33d6e7df4323f6c794317e342393a67d68d10b7229830e52c5dfdda043010fb",
+    "packet_tokens_est": 24124,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42683,
+      "outputTokens": 6376,
+      "cacheReadTokens": 161280,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 58435,
+    "duration_api_ms": 58435,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

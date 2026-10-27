@@ -1,0 +1,89 @@
+{
+  "variant": "v-351cd2e57a",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "url_for rewrites the statement-delivery base URL from https to http whenever the path starts with /archive/, so those outbound calls are cleartext. No approved exception covers ENC-2, and the passing test_integrations_use_tls result does not match the code that builds the request URL."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "INTEGRATIONS is unchanged: core-banking, sanctions-screening, and statement-delivery each remain in asset-inventory.json with an owner and a data classification. The exhaustive inventory control test passed with no skips."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24482, which change manager Grace Kim approved on 2026-10-12, before review. Its component payments.integrations covers integrations.py, the only file in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Mara Costa, approved a code_review of commit aa4e9b6ebf8ae87d060188bef5c3381cc9fa1e73."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name the head commit, and that commit is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful payments suite on the head commit. The JUnit report has 172 tests, 0 failures, and 0 skipped, including the exhaustive ENC-2 and INV-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security_sensitive. Kofi Mensah, a security_reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch a protected path (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24482 is type standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Cleartext archive delivery deviates from ENC-2. The register has no approved, unexpired exception scoped to ENC-2 and payments.integrations; the existing entries are for other obligations, withdrawn, or expired before 2026-10-16."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change any path covered by the acceptance ledger, so those earlier entries have not lapsed. Acceptance of this change does not depend on them."
+    }
+  ],
+  "summary": "The change keeps the statement-delivery integration listed as HTTPS, then forces archive paths onto HTTP inside url_for. That violates ENC-2, and no valid exception excuses it, so the change is rejected. Inventory, ticket, independent approval, security review, and the recorded test run are in order, but a passing TLS control test does not outweigh the cleartext request URL in the head file.",
+  "meta": {
+    "elapsed_s": 148.66,
+    "tokens_in": 41872,
+    "tokens_out": 10031,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "79e2c1c498226878da8a9ea972a4ac9ecc414e7d51e07d247603f4b33f44b7d6",
+    "packet_tokens_est": 24320,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41872,
+      "outputTokens": 10031,
+      "cacheReadTokens": 206592,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 144710,
+    "duration_api_ms": 144710,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

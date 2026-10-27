@@ -1,0 +1,76 @@
+{
+  "variant": "v-207980cec2",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The change adds a new read-only helper `approvals_remaining` to payments.py but does not modify the `approve` or `is_fully_approved` functions that enforce maker-checker. The control test `test_maker_cannot_check` passes in CI on the final commit."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The new function calls `required_approvals` but does not alter it or the dual-control threshold logic. The control test `test_dual_control_grid_matches_policy` passes in CI on the final commit, and the acceptance-ledger proof for `required_approvals` (ACR-0401) is not lapsed because the covered symbol is unchanged."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The `release` function in payments.py is not modified by this change. The control test `test_sampled_release_is_idempotent` passes in CI on the final commit, and the ponens-trace evidence (ACR-0403) remains valid."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25093 is approved by change manager Grace Kim and lists components `payments.payments` and `payments.tests`, which cover the two files modified (payments.py and test_approvals_remaining.py respectively)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (m.costa@fernbrook.example) is a `change_approver` for payments and is not the author Sofia Santos. Her code_review approval is on the head commit ff24eda."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single commit ff24eda is the head and the commit named in the approval; there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit ff24eda shows 175 tests, 0 failures, 0 errors, 0 skipped. All payments control tests (including those for MC-1, PAY-1, PAY-2) are present, unskipped, and passing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The new function is additive and does not alter any covered symbol in the acceptance ledger (required_approvals, release, routes.py, audit.py, etc.), so no prior evidence is lapsed."
+    }
+  ],
+  "summary": "PR-1511 adds a small, read-only helper `approvals_remaining` and its unit tests to the payments payments module. No existing logic is modified; no security-sensitive component, protected path, or control data is touched. The change has an approved ticket covering both modified components, an independent code_review approval from a non-author change_approver on the head commit, and a CI run on the final commit with all 175 tests (including every payments control test) passing and unskipped. All applicable process and product obligations are satisfied; the change is accepted.",
+  "meta": {
+    "elapsed_s": 197.14,
+    "tokens_in": 28837,
+    "tokens_out": 5875,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bc039484c69f72aa1b675272a4b5856bccaf7b2ca365b58282818bdb3df2567b",
+    "packet_tokens_est": 25764,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19584,
+    "answer_chars": 2712,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.65,
+    "eval_s": 163.46,
+    "total_s": 197.14,
+    "tokens_est_ratio": 1.092,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "variant": "v-fdf242cb7e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24523 is approved by change manager Erik Brandt (erik.brandt@fernbrook.example) before the 2026-10-26 review time. Its components mortgage.servicing and mortgage.tests match RateQuote.java and QuoteTermTest.java in controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from d.farrell@fernbrook.example, which the directory lists as Declan Farrell, the author (declan.farrell@fernbrook.example). A self-approval does not count, and no other baseline-mortgage change_approver approved the change."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 70dd243cfd96acff14a2795b807520bab24e19ef, which is the head and the only commit, so nothing after the approval changes behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on the final commit, and the JUnit report shows 126 tests, 0 failures, 0 errors, and 0 skipped, including QuoteTermTest. The change does not touch any product-obligation scope path, so no additional registered control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "RateQuote.java is mortgage.servicing and QuoteTermTest.java is mortgage.tests; both are security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency: change.json has emergency false and ticket CHG-24523 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation. No exception is required, and none of the register entries is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger coverage is on payments payments, audit, and routes and on mortgage Approvals, Underwriting, and Policy. This change only adds RateQuote.isSupportedTerm and a unit test, so that evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds RateQuote.isSupportedTerm and a unit test under mortgage.servicing and mortgage.tests. It does not touch any product-obligation scope, a security-sensitive component, or a protected control path, and CI on the head commit reports the mortgage suite passing with no skips. It cannot be accepted because the only code review is Declan Farrell approving his own change under d.farrell@fernbrook.example, which CHG-2 does not allow.",
+  "meta": {
+    "elapsed_s": 88.59,
+    "tokens_in": 42571,
+    "tokens_out": 6674,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6043a0c48b0cebb2140e44214be325d362054545ac2bbe6b26acdfa02833c5ba",
+    "packet_tokens_est": 24938,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42571,
+      "outputTokens": 6674,
+      "cacheReadTokens": 218624,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 84883,
+    "duration_api_ms": 84883,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

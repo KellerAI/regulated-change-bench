@@ -1,0 +1,102 @@
+{
+  "variant": "v-b1429f2e3a",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The new CaseService.reopen (CaseService.java:160-170) moves a WITHDRAWN case to DRAFT and saves it but never calls audit.record, unlike every other state-changing method (e.g. withdraw records EDIT_CASE 'withdrawn'). The passing AUD-1 control test checks only a fixed list of operations and doesn't cover reopen, and no exception covers AUD-1 for mortgage.cases."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change adds one log call site, log.info(\"Case \" + caseId + \" reopened by \" + actor.userId()), which logs only the case id and user id, no NPI. The LOG-1 control test (sampledFlowsDoNotLogNpi, sample coverage) passed in CI on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26477 (standard). Change manager erik.brandt approved it on 2026-10-22T21:44Z, before the PR opened, and its component mortgage.cases covers CaseService.java, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li (p-wli) approved a code_review. Wen Li holds change_approver for baseline-mortgage and is a different person from the author declan.farrell (p-dfarrell)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 8c6c535, which is the change's only commit, so no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head commit 8c6c535 succeeded: 124 Jupiter tests, 0 skipped, 0 failures. The registered control tests for the obligations whose code is touched, AuditControlTest#sampledOperationsAreAudited (AUD-1, sample) and LoggingControlTest#sampledFlowsDoNotLogNpi (LOG-1, sample), are present and passing. Both are sample-coverage, so a pass doesn't cover the new reopen path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "CaseService.java maps to mortgage.cases, which components.json marks security_sensitive: false, so no security_review approval is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path changed (controls/, control tests, ci/). The diff touches only apps/baseline-mortgage/src/main/java/mortgage/CaseService.java."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change has emergency: false and ticket type standard, so it wasn't deployed ahead of review and no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. The register has none for AUD-1 or mortgage.cases (EXC-0141 SES-1/payments expired, EXC-0167 LOG-1/mortgage.logging, EXC-0172 withdrawn), so the AUD-1 deviation is not excused."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers CaseService.java, so no earlier evidence lapses because of this change."
+    }
+  ],
+  "summary": "PR-1202 adds CaseService.reopen, which changes a case from WITHDRAWN to DRAFT and saves it without recording an audit event. That violates AUD-1, and no exception covers it. The process records are in order: an approved ticket covering mortgage.cases, an independent change_approver review on the head commit, and a green CI run on the head commit with the relevant control tests passing. Those AUD-1 and LOG-1 tests only check fixed cases, though, and don't exercise reopen. The PR also says unit tests were updated, but no test files changed. The change should add an audit.record call in reopen with a test, then go through review again.",
+  "meta": {
+    "elapsed_s": 86.01,
+    "tokens_in": 429515,
+    "tokens_out": 7565,
+    "usd": 0.527597,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 7565,
+      "cache_read_input_tokens": 369010,
+      "cache_creation_input_tokens": 60475
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5275970000000001,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

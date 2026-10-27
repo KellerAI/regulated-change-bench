@@ -1,0 +1,97 @@
+{
+  "variant": "v-ce8ce63091",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Retention.isPurgeDue now honours a legal hold only when status == DECLINED. WITHDRAWN cases under legal hold become purge-eligible once past the retention cutoff, which contradicts 'never while a legal hold applies'. The sample control test passes only because it uses declined cases alone."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26151 is standard and approved by change manager grace.kim on 2026-09-30, before the 2026-10-02 review. Its components [mortgage.retention] cover the only touched file, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell, a change_approver for baseline-mortgage and a different person from the author priya.raman (none of whose addresses appear)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 66b3559, which is the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful full baseline-mortgage suite on head 66b3559: 124 tests, 0 skipped or failed. The registered RET-1 control test sampledPurgeRespectsHold ran and passed, but it is labelled 'sample', so the pass says little."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Not triggered: Retention.java maps to mortgage.retention, which components.json marks security_sensitive false."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Not triggered: the change touches no protected path (no controls data, control tests or CI), only application code."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Not triggered: the change is not an emergency and ticket CHG-26151 is type standard."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed, and the register has none for RET-1 or mortgage.retention, so nothing excuses the RET-1 deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Retention.java or RET-1, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change limits the legal-hold guard in Retention.isPurgeDue to DECLINED cases, so a WITHDRAWN application under legal hold can have its personal data purged. That violates RET-1. The registered RET-1 control test is sample-based and uses only declined cases, so CI stays green despite the regression, and no approved exception covers the deviation. The process records (ticket, independent approval, CI on the final commit) are in order, but the RET-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 62.68,
+    "tokens_in": 263437,
+    "tokens_out": 5591,
+    "usd": 0.339542,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 5591,
+      "cache_read_input_tokens": 226966,
+      "cache_creation_input_tokens": 36445
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3395422,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "variant": "v-543619d02f",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "ApplicantValidator now logs raw annual_income (an NPI field) without masking, violating LOG-1's rule that no log contains unmasked NPI; the only evidence is a sample control test and an unrelated exception, which does not cover this case."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25973 is approved by change manager Grace Kim and its components include mortgage.cases, matching the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Declan Farrell (change_approver) is present and he is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval applies to the head commit, which is the only commit merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all tests (124 test cases) including control tests on the final commit."
+    }
+  ],
+  "summary": "The change introduces an unmasked NPI value in log output, breaching the critical LOG-1 obligation. No valid exception or exhaustive evidence exists to justify this deviation, so the change must be rejected despite meeting all process obligations.",
+  "meta": {
+    "elapsed_s": 116.39,
+    "tokens_in": 24711,
+    "tokens_out": 6279,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3607a30127566cdd011fb802fbd5543d2380fdcbe4ae148eb8fe00a57d499f93",
+    "packet_tokens_est": 24772,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26018,
+    "answer_chars": 1314,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.74,
+    "eval_s": 98.4,
+    "total_s": 116.39,
+    "tokens_est_ratio": 0.972,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

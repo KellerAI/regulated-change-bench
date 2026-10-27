@@ -1,0 +1,81 @@
+{
+  "variant": "v-0492393c22",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24521 is approved by change manager Erik Brandt and lists component 'payments.reports', which matches the sole file touched (reports.py → component payments.reports per components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Sofia Santos (change_approver for payments, distinct from author Jonah Weiss) names the final commit ad88472a. Satisfies independent-approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only one commit exists on the branch; the approval names that exact commit, so no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit ad88472a reports 172 tests, 0 failures, 0 errors, 0 skipped. All payments control tests (access, audit, encryption, integrations, logging, payments, retention, routes, session, SQL) are present and passing. No product-obligation scope paths include reports.py, so no additional control tests are triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only file changed, reports.py, maps to component payments.reports which is security_sensitive: false in components.json. No security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch any path listed in controls/protected-paths.json (no controls/, ci/, or control-test paths). No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24521 is type 'emergency', deployed 2026-10-23 (Friday). A PIR approval from Sofia Santos (not the author) was recorded at 2026-10-24T20:07:00Z, well within the 2-business-day deadline (by 2026-10-27 Tuesday)."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change adds a single non-behavioral constant and does not deviate from any product obligation. No exception is needed or claimed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/reports.py (entries cover payments.py, audit.py, routes.py, and mortgage files). Adding a constant to reports.py does not alter any covered code, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1751 adds a single module-level constant (REPORT_FORMAT = \"ledger-csv/1\") to apps/baseline-payments/payments/reports.py. This file belongs to component payments.reports, which is not security_sensitive and is not in the scope of any product obligation, so no product-obligation evidence is triggered. All process obligations are satisfied: the emergency ticket is approved and covers the correct component; an independent code_review by a non-author change_approver names the final commit; CI on that commit shows all 172 tests passing including every registered control test; and the PIR was completed within the 2-business-day window. No protected paths, security-sensitive components, or ledger-covered files are affected. The change is acceptable.",
+  "meta": {
+    "elapsed_s": 176.52,
+    "tokens_in": 27730,
+    "tokens_out": 4301,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e9b99a50afe53743ae4a8870c7e49f4281f49461fcfb80dc36f463a5940e3e48",
+    "packet_tokens_est": 24451,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 11689,
+    "answer_chars": 3023,
+    "done_reason": "stop",
+    "load_s": 9.02,
+    "prompt_eval_s": 36.1,
+    "eval_s": 131.39,
+    "total_s": 176.52,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

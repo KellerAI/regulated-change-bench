@@ -1,0 +1,93 @@
+{
+  "variant": "v-4a73ca8c1a",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The new field coapplicant_tax_id is a tax identifier, so it is NPI, and the change adds it to NpiRegistry.FIELDS, the closed NPI domain that the existing persistence pipeline seals. The exhaustive control test controls.EncryptionControlTest#everyNpiFieldIsSealedAtRest passed on the head commit, and the control fixtures now populate the field."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Retention.purge already loops over every NpiRegistry field, which now includes coapplicant_tax_id; the added explicit removal is redundant, and the purge-due and legal-hold logic is unchanged. The registered RetentionControlTest#sampledPurgeRespectsHold and the RetentionTest cases passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25794 is a standard ticket approved by change manager Erik Brandt at 2026-10-17T09:36Z, before the change was opened. Its components (mortgage.cases, mortgage.npi, mortgage.retention, mortgage.control-tests) cover all four touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a change_approver for baseline-mortgage and a different person from the author Nneka Okafor, gave a code_review approval on the head commit 86cce082."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and every approval names that head commit 86cce082, so no later commits could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json reports success for ci/run-tests.sh baseline-mortgage on the head commit: 124 tests with 0 failures and 0 skips. Every registered mortgage control test is present and passing, including the ENC-1 (exhaustive) and RET-1 (sample) control tests for the touched code."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "NpiRegistry.java belongs to the security-sensitive component mortgage.npi. Ines Halvorsen, a security_reviewer, gave a security_review approval on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java is under the protected path apps/baseline-mortgage/src/test/java/controls/*. Bao Tran, a control_owner in controls-office (outside the author's lending-eng team), approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and its ticket are standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change introduces no deviation from a product obligation and relies on no exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "None of the code covered by acceptance-ledger entries changed. The covered code is Approvals.requiredApprovals, Underwriting.decide, the Policy constants and the payments files, so no ledger evidence lapses."
+    }
+  ],
+  "summary": "PR-1448 adds a co-applicant tax identifier field and correctly classifies it as NPI in NpiRegistry. That means it is sealed at rest, which the exhaustive ENC-1 control test confirms on the head commit, and it is covered by the existing retention purge. The ticket, independent code review, security review and control-owner approval are all in place and all name the single head commit. CI passed the full suite, including the relevant control tests, on that commit. No exceptions are needed and no ledger evidence lapses, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 57.25,
+    "tokens_in": 41072,
+    "tokens_out": 5955,
+    "usd": 0.283388,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "94c7e0803a476bfe090bc8c4e63f254417130c5ceac0d90e3755e467f9353532",
+    "packet_tokens_est": 26182,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 41072,
+      "output_tokens": 5955,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

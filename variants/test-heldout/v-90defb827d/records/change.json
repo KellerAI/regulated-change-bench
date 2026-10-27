@@ -1,0 +1,21 @@
+{
+  "id": "PR-1845",
+  "title": "Reporting action compatibility",
+  "description": "Reporting action compatibility.\n\nChanges:\n- Prepare the reporting client namespace\n- Delegate decisions to the existing explicit grants matrix\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-368",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "82712f6d358487704f88173155c41067652f194a",
+  "commits": [
+    {
+      "sha": "82712f6d358487704f88173155c41067652f194a",
+      "message": "Access: support reporting client action names",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-18T22:44:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24775",
+  "opened_at": "2026-10-18T22:44:00Z"
+}

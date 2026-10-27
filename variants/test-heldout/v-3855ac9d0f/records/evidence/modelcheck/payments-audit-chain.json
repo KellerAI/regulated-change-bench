@@ -1,0 +1,19 @@
+{
+  "format": "modelcheck-result/v1",
+  "model": "audit_chain.mcl",
+  "command": "check AppendOnlyChain for 6",
+  "scope": 6,
+  "result": "no_counterexample",
+  "obligation": "AUD-2",
+  "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+  "covers": [
+    {
+      "path": "apps/baseline-payments/payments/audit.py",
+      "symbol": "event_hash"
+    },
+    {
+      "path": "apps/baseline-payments/payments/audit.py",
+      "symbol": "verify"
+    }
+  ]
+}

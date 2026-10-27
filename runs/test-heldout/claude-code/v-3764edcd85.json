@@ -1,0 +1,77 @@
+{
+  "variant": "v-3764edcd85",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24761 is type standard, approved by change manager erik.brandt on 2026-10-14 before the PR opened, and lists component payments.session, the only component touched (session.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa (p-mcosta, change_approver for payments), a different person from author sofia.santos (p-ssantos)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 7b03646; no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeding on head 7b03646; the JUnit report has 172 tests, 0 failures/errors/skips, including the SES-1 control test test_privileged_idle_timeout_within_policy (exhaustive). Local rerun not possible because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "session.py is in security_sensitive component payments.session. The only security_review (kofi.mensah) names commit 1e0a30c; the later commit 7b03646 changes behaviour (TOKEN_BYTES 24 -> 32), which voids that approval under CHG-3 rules, and there is no security review of the final commit."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change only alters token length in session.py; idle_limit/is_active and policy PRIVILEGED_IDLE_MINUTES are unchanged, and the exhaustive SES-1 control test passed on the head commit in CI."
+    }
+  ],
+  "summary": "PR-1846 changes only payments session.py, raising bearer-token entropy from 24 to 32 bytes in its second commit. The ticket, independent code review on the head commit, and CI on the head commit (including the SES-1 control test) all check out. However, session.py is security-sensitive and the only security review was approved on the first commit, 1e0a30c. The later behaviour-changing commit voids that approval, so CHG-5 is not met and the change is rejected until a security review of 7b03646 is recorded.",
+  "meta": {
+    "elapsed_s": 61.95,
+    "tokens_in": 288384,
+    "tokens_out": 5637,
+    "usd": 0.409663,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 5637,
+      "cache_read_input_tokens": 238536,
+      "cache_creation_input_tokens": 49824
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4096632,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

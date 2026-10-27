@@ -1,0 +1,16 @@
+[
+  {
+    "reviewer": "mara.costa@fernbrook.example",
+    "kind": "code_review",
+    "decision": "approved",
+    "commit": "ef417ae86d6f29e8a7739471ad1de8904694e558",
+    "at": "2026-10-23T19:57:00Z"
+  },
+  {
+    "reviewer": "kofi.mensah@fernbrook.example",
+    "kind": "security_review",
+    "decision": "approved",
+    "commit": "ef417ae86d6f29e8a7739471ad1de8904694e558",
+    "at": "2026-10-23T14:08:00Z"
+  }
+]

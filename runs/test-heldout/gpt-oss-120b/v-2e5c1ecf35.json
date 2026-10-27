@@ -1,0 +1,66 @@
+{
+  "variant": "v-2e5c1ecf35",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Control test UnderwritingControlTest#autoApproveGridMatchesPolicy passed in the CI run, providing exhaustive evidence that the auto‑approval decision follows the approved DTI/LTV policy."
+    },
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25693 lists component \"mortgage.underwriting\", but this component is not defined in controls/mortgage/components.json, so the required coverage of the changed file cannot be verified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Declan Farrell (email declan.farrell@fernbrook.example) is recorded; he has the \"change_approver\" role for mortgage‑mortgage and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the exact head commit 8036d9c78103d9cdc4658a0c949220391497c222 and there are no later commits, so the approval still applies."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the head commit succeeded; all 124 JUnit tests passed, including the required control tests for the touched obligations."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Fresh CI evidence (passing control test) provides new exhaustive evidence for CRD-1, preventing any lapse of earlier proof records."
+    }
+  ],
+  "summary": "The change fails to satisfy the change‑ticket obligation (CHG-1) because the ticket's component does not map to a defined component, making coverage unproven. All other applicable obligations, including the product obligation CRD-1 and the process obligations CHG-2, CHG-3, CHG-4, and LAP-1, are adequately satisfied. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 126.54,
+    "tokens_in": 24783,
+    "tokens_out": 6906,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "97ddb1a09b7b558768c05625068cb9059847fde43d17915a9ee0e92ddeb1bf0f",
+    "packet_tokens_est": 24844,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 28209,
+    "answer_chars": 1850,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.82,
+    "eval_s": 108.55,
+    "total_s": 126.54,
+    "tokens_est_ratio": 0.972,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

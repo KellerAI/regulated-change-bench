@@ -1,0 +1,89 @@
+{
+  "variant": "v-3369109bba",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "refuted",
+      "note": "is_allowed now returns true for any report:<action> whenever (role, <action>) is in GRANTS, so pairs such as (treasury_manager, report:release_payment) and (payments_officer, report:approve_payment) are granted even though they are not explicit entries in controls/payments/access-policy.json. The passing matrix test only checks the declared GRANTS tuples and does not cover this alias, so the grants no longer equal the approved default-deny policy."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "The auditor's grants remain view_account, view_audit, view_reports, and export_ledger, none of which are in STATE_CHANGING, and the report: prefix only rechecks those same grants. The exhaustive test_auditor_is_read_only passed unskipped on the head commit."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "it_admin is still granted only manage_users, rotate_keys, purge_npi, and view_audit, so report:approve_payment and report:release_payment stay denied. The exhaustive test_it_admin_cannot_approve_or_release passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25503, which Erik Brandt (change_manager) approved on 2026-10-01 before review, and its component payments.access matches the only touched file, rbac.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author Sofia Santos, approved a code_review of commit 6256a35b."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and both the code_review and security_review name that head commit, so the approvals cover what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeded on 6256a35b, and the JUnit report has 172 tests with 0 failures, errors, or skips, including the registered ACC-1, ACC-2, and SOD-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py is security_sensitive (payments.access), and Ines Halvorsen, a security_reviewer who is not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/rbac.py, which is not under the protected controls, control-test, or CI paths, so a control_owner approval is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The report: alias is a deviation from ACC-1 on payments.access, and the register has no approved unexpired exception for that obligation and component. EXC-0141 expired on 2026-09-06, before the 2026-10-06 review time."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger cover (payments.py, audit.py, routes.py, or the mortgage files) is modified, so those earlier entries have not lapsed; they also do not evidence the new rbac behavior."
+    }
+  ],
+  "summary": "The change adds a report: prefix in payments is_allowed that treats report:<action> as the underlying grant. That admits role-action pairs that are not in the approved access policy, including report:approve_payment and report:release_payment, so ACC-1 is violated and no valid exception covers it. Ticket, independent approvals, security review, and a green full-suite run on the head commit are in order, and the auditor and IT-admin restrictions still hold for their real grants, but the access-matrix deviation blocks acceptance.",
+  "meta": {
+    "elapsed_s": 212.11,
+    "tokens_in": 81436,
+    "tokens_out": 12558,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3eafafff6a43f43fdecd7b6e3528ecbd7249fade8a87db6fb6f536ddf849a2ca",
+    "packet_tokens_est": 24436,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 81436,
+      "outputTokens": 12558,
+      "cacheReadTokens": 188288,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 206804,
+    "duration_api_ms": 206804,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1207",
+  "title": "Privileged idle timeout 20 minutes",
+  "description": "Adjusts the privileged session window.\n\nChanges:\n- `Policy.PRIVILEGED_IDLE_MINUTES` to 20\n- Approved parameter updated\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-179",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "b4c1e9383d037f2477b1fe46e2fb65f3314cd69a",
+  "commits": [
+    {
+      "sha": "b4c1e9383d037f2477b1fe46e2fb65f3314cd69a",
+      "message": "Privileged idle timeout 20 minutes",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-17T15:54:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24092",
+  "opened_at": "2026-10-17T15:54:00Z"
+}

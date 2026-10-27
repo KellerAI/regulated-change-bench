@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26236",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Memo update telemetry",
+    "components": [
+      "payments.service"
+    ],
+    "requested_by": "linh.nguyen@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-15T19:36:00Z",
+    "risk": "low"
+  }
+]

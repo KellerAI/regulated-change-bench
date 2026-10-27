@@ -1,0 +1,56 @@
+{
+  "variant": "v-fdf242cb7e",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24523 is approved and lists components mortgage.servicing and mortgage.tests, which cover the modified RateQuote.java and QuoteTermTest.java files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from d.farrell@fernbrook.example, who is also the author; no independent reviewer with a change_approver role approved the change."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval record references the head commit (70dd243c...), and there are no later commits, so the approval fully covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 126 test cases passing, including the full suite of control tests, on the final commit."
+    }
+  ],
+  "summary": "The change meets ticketing, approval coverage, and testing requirements, but fails the independent approval requirement (CHG‑2) because the only reviewer is the author. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 120.69,
+    "tokens_in": 24932,
+    "tokens_out": 5287,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6043a0c48b0cebb2140e44214be325d362054545ac2bbe6b26acdfa02833c5ba",
+    "packet_tokens_est": 24938,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21058,
+    "answer_chars": 1153,
+    "done_reason": "stop",
+    "load_s": 3.14,
+    "prompt_eval_s": 23.58,
+    "eval_s": 93.84,
+    "total_s": 120.69,
+    "tokens_est_ratio": 0.975,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

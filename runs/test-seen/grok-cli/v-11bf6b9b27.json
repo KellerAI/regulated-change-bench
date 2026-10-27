@@ -1,0 +1,79 @@
+{
+  "variant": "v-11bf6b9b27",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25106 is approved by change manager Erik Brandt before review, and its components (payments.payees, payments.payments, payments.tests) cover directory.py, memos.py, and the new test."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author, gave a code_review approval. She is a different person from Sofia Santos in the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "That approval names 48c2368 only. Head commit 8dcb5f4c adds PREVIEW_MIN_WIDTH = 8 in memos.py, which is not a comment, whitespace, or formatting edit, so the approval does not cover what would be merged and no later approval exists."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful full payments suite on head 8dcb5f4c, and the JUnit report shows 173 tests, 0 failures, and 0 skipped, including every registered payments control test. The change does not touch any product-obligation scope path or closed domain."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "directory.py, memos.py, and tests/test_*.py are not security_sensitive in controls/payments/components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "None of the changed paths are under controls/protected-paths.json, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff does not deviate from a product obligation and does not rely on an exception. The register entries are unused by this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments.py, audit.py, routes.py, and mortgage underwriting and approval code. None of those paths change in this diff, so prior acceptance evidence does not lapse."
+    }
+  ],
+  "summary": "The charity-payee change is a small payments edit plus a unit test, ticketed and independently reviewed on the first commit, with a green full suite on the head commit. The second commit adds a real constant, PREVIEW_MIN_WIDTH, after Mara Costa's approval. That is not comment-only, whitespace, or formatting, so the approval does not cover the commit that would be merged. The change is rejected on CHG-3.",
+  "meta": {
+    "elapsed_s": 92.28,
+    "tokens_in": 49926,
+    "tokens_out": 7051,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "17af1ea554426d8125ee1a324a8482c4361cda671b32244dd2084fb37e513843",
+    "packet_tokens_est": 25342,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 49926,
+      "outputTokens": 7051,
+      "cacheReadTokens": 154624,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 88575,
+    "duration_api_ms": 88575,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

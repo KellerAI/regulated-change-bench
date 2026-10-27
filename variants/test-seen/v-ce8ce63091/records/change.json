@@ -1,0 +1,21 @@
+{
+  "id": "PR-1351",
+  "title": "Retention clean-up",
+  "description": "Tidies the retention eligibility checks.\n\nChanges:\n- Legal-hold check\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-296",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "66b35591301995ecfc7aa1994faf78750d6a44c8",
+  "commits": [
+    {
+      "sha": "66b35591301995ecfc7aa1994faf78750d6a44c8",
+      "message": "Retention: legal holds apply to declined cases",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-02T18:01:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26151",
+  "opened_at": "2026-10-02T18:01:00Z"
+}

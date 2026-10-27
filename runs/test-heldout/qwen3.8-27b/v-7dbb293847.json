@@ -1,0 +1,61 @@
+{
+  "variant": "v-7dbb293847",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change replaces `Mask.npi(value)` with the raw `value` in a log.warn call for annual_income, which is an NPI field per policy-params.json. This writes an unmasked NPI value into the application log, directly violating the universal obligation that no log entry contains unmasked NPI on any path including error paths."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26206 is approved by change_manager grace.kim@fernbrook.example and its component 'mortgage.cases' matches the component of the changed file ApplicantValidator.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) holds the change_approver role for baseline-mortgage, is not the author (Nneka Okafor), and provided a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit 0de6438, which is the only and final commit of the change; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows a successful run on the head commit 0de6438 with 124 tests, 0 failures, 0 errors, 0 skipped, including the LOG-1 control test (controls.LoggingControlTest#sampledFlowsDoNotLogNpi) among the passing suite."
+    }
+  ],
+  "summary": "The change modifies a log.warn statement in ApplicantValidator.java, replacing the masked value `Mask.npi(value)` with the raw `value` for the annual_income field. Because annual_income is a registered NPI field (policy-params.json), this writes an unmasked NPI value into application logs, directly violating LOG-1. Although the process obligations (CHG-1 through CHG-4) are satisfied and the CI suite passes on the final commit, the LOG-1 control test has only 'sample' coverage and does not catch this specific log statement. The change must be rejected; the raw income value must be masked (e.g., via Mask.npi) before being written to the log.",
+  "meta": {
+    "elapsed_s": 180.15,
+    "tokens_in": 28077,
+    "tokens_out": 5187,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9714a8c0adeb08b1931bd72b5f939140998a7286bea1144bc8191abfd5bf28e9",
+    "packet_tokens_est": 24762,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17851,
+    "answer_chars": 2042,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.89,
+    "eval_s": 147.23,
+    "total_s": 180.15,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

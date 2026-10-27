@@ -1,0 +1,97 @@
+{
+  "variant": "v-f083dff4d5",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Only the reason list on the AUTO_APPROVE_ELIGIBLE branch of Underwriting.decide changed; the thresholds and branch conditions are unchanged. The registered exhaustive control test UnderwritingControlTest#autoApproveGridMatchesPolicy checks Policy limits against policy-params (40/90) and the full DTI/LTV grid, and it passed unskipped in the head-commit CI run."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0406 (proof on d30b2ad covering Underwriting.decide) lapses because decide's output changed, so the PR's reliance on existing credit evidence is not valid. Fresh exhaustive evidence exists: the CRD-1 control test passed on the head commit 7fb0c3d."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26403 is standard and was approved by change manager Grace Kim on 2026-10-24, before the commit and review on 2026-10-26. Its component mortgage.underwriting covers the only changed file, Underwriting.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example, who holds the change_approver role for baseline-mortgage and is a different person from the author Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 7fb0c3d, which is the head and only commit of the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-mortgage on head 7fb0c3d: 124 Jupiter tests, 0 failures, 0 skipped, including the CRD-1 registered control test. I could not rerun it locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Underwriting.java belongs to mortgage.underwriting, which is not marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls data, control tests, CI) are changed; the diff touches only Underwriting.java."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; no deviation from a product obligation is introduced."
+    }
+  ],
+  "summary": "PR-1411 is a one-line change adding a POLICY_SATISFIED reason to eligible underwriting decisions, with thresholds and branch logic unchanged. The ticket, independent approval on the head commit and head-commit CI run all meet change policy. The change does alter Underwriting.decide, so the earlier CRD-1 proof in the ledger lapses and the PR description's reliance on it is wrong. However, the registered exhaustive CRD-1 control test passed on the head commit and provides fresh evidence of the same strength. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 99.12,
+    "tokens_in": 490178,
+    "tokens_out": 9271,
+    "usd": 0.50044,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 9271,
+      "cache_read_input_tokens": 444965,
+      "cache_creation_input_tokens": 45175
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.50044,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

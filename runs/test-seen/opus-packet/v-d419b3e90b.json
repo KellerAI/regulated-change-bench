@@ -1,0 +1,63 @@
+{
+  "variant": "v-d419b3e90b",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26506 is a standard ticket. It was approved by change manager Grace Kim on 2026-10-23, before review, and lists payments.payments (memos.py) and payments.tests (tests/test_memo_preview.py), which covers both touched components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example. The directory lists that address as Sofia Santos, who is the author, so this is a self-approval and doesn't count. No independent payments change_approver (e.g. Mara Costa) has approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The single approval names head 6bf6ea7, but it is the author's own approval and is invalid. No qualifying approval covers the commit to be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims ci-runner-05 ran on head 6bf6ea7 starting 2026-10-25T20:11Z. The only JUnit report is timestamped 2026-10-23T20:29Z, two days before the commit existed, and was produced on host dev-laptop-7.local. The report is not CI evidence of the full suite passing on the final commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover payments.py (required_approvals, release), audit.py, routes.py, Approvals.java, Underwriting.java and Policy.java. None of these is changed by this diff, which touches only memos.py and a new unit test, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds memos.preview, which is outside every product obligation's scope. It touches no security-sensitive or protected paths and is not an emergency, so only the process obligations apply. The sole code_review approval comes from the author under an alias (s.santos = Sofia Santos), so independent approval is missing. The CI evidence is also invalid: the JUnit report predates the head commit by two days and came from a personal workstation, not the claimed CI runner. The change is rejected until an independent approver signs off on head and a genuine CI run on the final commit is supplied.",
+  "meta": {
+    "elapsed_s": 17.88,
+    "tokens_in": 37993,
+    "tokens_out": 1663,
+    "usd": 0.185232,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "256b886f22aea69aba020c4d2b84648e7dacba5d9154663aa575faab47f6dcb8",
+    "packet_tokens_est": 24406,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 37993,
+      "output_tokens": 1663,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

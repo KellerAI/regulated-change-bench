@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24001",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Reopen withdrawn cases",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-26T08:16:00Z",
+    "risk": "low"
+  }
+]

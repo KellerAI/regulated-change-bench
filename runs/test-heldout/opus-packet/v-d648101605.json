@@ -1,0 +1,68 @@
+{
+  "variant": "v-d648101605",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only changed line is a `log.warn` call site, which matches the LOG-1 scope pattern. Both before and after, it logs the income only through `Mask.npi(value)`; the reorder adds only `caseRef`, which is not NPI. The head CI run passes the sample control test `LoggingControlTest#sampledFlowsDoNotLogNpi` and the unit test `ApplicantValidatorTest#rejectsMalformedNpiWithoutLoggingIt`."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24333 is a standard ticket, `approved` by change manager Grace Kim at 2026-09-30T00:49Z, before review. Its component `mortgage.cases` covers the only touched file, ApplicantValidator.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell gave a `code_review` approval. He holds `change_approver` for baseline-mortgage and is a different person from the author, Nneka Okafor."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit b87ff96, which is the only commit on the change, so there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records `ci/run-tests.sh baseline-mortgage` on head b87ff96 with result `success`: 124 tests, 0 failures, 0 skipped. The registered LOG-1 control test (sample coverage) is included and passing. The JUnit report timestamps and hostname look like generation artifacts; they don't contradict the run record."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantValidator.java; the entries cover payments, audit, Approvals, Underwriting and Policy code. No recorded evidence lapses."
+    }
+  ],
+  "summary": "PR-1451 changes one log message in ApplicantValidator.checkIncome by reordering its text. The income value is still passed through Mask.npi, so no unmasked NPI reaches the logs. The process records are complete: an approved ticket covering mortgage.cases, an independent change_approver review on the head commit, and a green full-suite CI run on head that includes the LOG-1 control test. The component is not security-sensitive and no protected paths are touched, so CHG-5 and CHG-6 do not apply; there is no emergency and no exception is needed. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 27.11,
+    "tokens_in": 38940,
+    "tokens_out": 2633,
+    "usd": 0.20842,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9306bfcff2097bee841ab995690da5e0b415699e62929f44ddb740b588e44f38",
+    "packet_tokens_est": 24767,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38940,
+      "output_tokens": 2633,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

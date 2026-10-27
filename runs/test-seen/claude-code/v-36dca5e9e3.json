@@ -1,0 +1,77 @@
+{
+  "variant": "v-36dca5e9e3",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24248 is approved by Erik Brandt (change_manager) at 2026-10-11T01:47Z, before the review, and its components (payments.payments, payments.tests) cover both touched paths per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa@fernbrook.example (Mara Costa, change_approver for payments), a different person from the author Aisha Bello under any of her addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 5b61710, the only commit in the change, so it covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the payments suite run on head 5b61710 with result success; the JUnit report has 175 tests, 0 failures or skips, including the three new approvals_remaining tests. The diff touches no scoped symbol of any product obligation, so no extra control tests are required. I couldn't re-run locally because pytest isn't installed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "This is an emergency ticket deployed 2026-10-12T14:47Z (Monday), so a pir approval by someone other than the author was due by 2026-10-14. As of 2026-10-19 no pir approval exists in records/approvals.json."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change only adds a new function, approvals_remaining, to payments.py. The ledger-covered symbols required_approvals (ACR-0401) and release (ACR-0403) are unchanged, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "PR-1459 adds a read-only helper, approvals_remaining, to payments payments along with unit tests. The ticket, independent code review, coverage of the merged commit and CI on the final commit are all in order, and no ledger evidence lapses. However, it was deployed under the emergency procedure on 2026-10-12, and the post-implementation review required by CHG-7 within 2 business days (by 2026-10-14) is missing at review time 2026-10-19. Because CHG-7 is violated, the change is rejected.",
+  "meta": {
+    "elapsed_s": 74.66,
+    "tokens_in": 428027,
+    "tokens_out": 6519,
+    "usd": 0.391809,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 6519,
+      "cache_read_input_tokens": 391390,
+      "cache_creation_input_tokens": 36603
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.391809,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "variant": "v-1ca64fd731",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The ticket lists component \"mortgage.reporting\", but PipelineReport.java is not mapped to any component in controls/mortgage/components.json, so coverage cannot be confirmed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval from wen.li@fernbrook.example exists; directory shows Wen Li has the change_approver role for baseline-mortgage and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The code_review approval is for the first commit (f5dd7b...), while a later commit (2ec22461...) modifies the FORMAT constant, a behavior change, without a new approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit succeeded with full test suite (124 tests) passing; no product obligations are affected, satisfying test coverage requirements."
+    }
+  ],
+  "summary": "The change fails critical process obligations. CHG-1 lacks evidence that the ticket's component covers the modified file, and CHG-3 is invalid because the later commit changes behavior without a fresh approval. Consequently, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 87.56,
+    "tokens_in": 24504,
+    "tokens_out": 4373,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3a68775b7ff855aedaa91d30c3ad520ecfa1582de367dcabcd7c3f63d72ebf37",
+    "packet_tokens_est": 24441,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18052,
+    "answer_chars": 1268,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.48,
+    "eval_s": 69.86,
+    "total_s": 87.55,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

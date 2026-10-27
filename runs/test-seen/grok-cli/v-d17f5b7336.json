@@ -1,0 +1,84 @@
+{
+  "variant": "v-d17f5b7336",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "logs.py adds AppLog.debug only as a caller of _emit, which writes format_entry(message, mask_fields(fields)). On head commit 8dfff15 the suite passes with zero skips, including tests.test_log_debug.test_debug_entries_are_masked (account_number 123456789 absent, message present) and the registered LOG-1 test tests.controls.test_logging_control.test_sampled_flows_do_not_log_npi."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1549 names ticket CHG-26216, status approved by change manager erik.brandt@fernbrook.example on 2026-09-29, before review at 2026-10-06. Its components payments.logging and payments.tests cover logs.py and tests/test_log_debug.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (mara.costa@fernbrook.example) has the change_approver role for payments, is not author Jonah Weiss, and recorded a code_review approval on 2026-10-02."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is 8dfff15df3ab3e1ce2ee52261a6efdcf7741deca, and the code_review approval names that same commit. There is no later commit that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success of ci/run-tests.sh baseline-payments on commit 8dfff15, the head. The JUnit report has 173 tests, 0 failures, 0 errors, and 0 skipped, and includes the registered LOG-1 control test unskipped."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "apps/baseline-payments/payments/logs.py is component payments.logging and is marked security_sensitive. CHG-5 requires a security_review approval from a security_reviewer on the merged commit. approvals.json contains only Mara Costa's code_review; Ines Halvorsen and Kofi Mensah did not approve."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Protected paths are controls data, control tests, and CI. This diff only changes apps/baseline-payments/payments/logs.py and apps/baseline-payments/tests/test_log_debug.py, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26216 is type standard and the change record sets emergency to false. No deployment-before-review occurred, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. EXC-0167 is LOG-1 for mortgage.logging, not payments.logging; EXC-0141 is expired and for SES-1; EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries ACR-0401 through ACR-0406 cover payments.py, audit.py, routes.py, and mortgage underwriting and approval files. None of those paths change in this diff, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The logging change itself keeps NPI field masking: debug uses the existing masked emit path, and the payments suite on the head commit passes, including the new debug test and the registered LOG-1 control test. Ticket coverage, independent code review of the only commit, CI on that commit, and the inapplicable emergency, exception, protected-path, and ledger-lapse conditions are in order. The change still cannot be accepted because logs.py is security-sensitive and the record set has no security_review approval from a security reviewer.",
+  "meta": {
+    "elapsed_s": 106.93,
+    "tokens_in": 44406,
+    "tokens_out": 11258,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "da7793fb23a3a9d68fa9e72a7192a2dfbd04d3d51a68f986c2e52f997c0e9487",
+    "packet_tokens_est": 24822,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 44406,
+      "outputTokens": 11258,
+      "cacheReadTokens": 204032,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 102887,
+    "duration_api_ms": 102887,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

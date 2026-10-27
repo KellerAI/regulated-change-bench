@@ -1,0 +1,67 @@
+{
+  "variant": "v-46345ad9f7",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25549 is a standard ticket, approved on 2026-10-10 by grace.kim@fernbrook.example, who holds the change_manager role. That is before the review on 2026-10-13, and the ticket's components (payments.payments, payments.tests) cover both touched paths (memos.py and tests/test_memo_preview.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from sofia.santos@fernbrook.example, who is the author of the change (person p-ssantos). A self-approval doesn't count, and there is no approval from another payments change_approver such as Mara Costa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single recorded approval names the head commit 531342e, and there are no later commits. It still doesn't count as an independent approval under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-payments on head commit 531342e. The JUnit report has 174 tests with 0 failures, errors or skips, including the new test_memo_preview tests. The new preview() code matches no product obligation's scope paths, patterns or closed domains, so no extra control tests are required. I could not re-run the suite locally because pytest isn't installed."
+    }
+  ],
+  "summary": "PR-1609 adds a pure helper, memos.preview, plus unit tests in the non-security-sensitive component payments.payments. It touches no protected paths, no product obligation scope, and no code covered by the ledger, so CHG-5, CHG-6, CHG-7, EXC-1 and LAP-1 don't apply. The ticket is in order, and CI passed in full on the final commit. However, the only code_review approval was given by the author, Sofia Santos, which fails the independent-approval requirement in CHG-2. The change is rejected until a payments change_approver other than the author approves the head commit.",
+  "meta": {
+    "elapsed_s": 61.01,
+    "tokens_in": 295910,
+    "tokens_out": 4961,
+    "usd": 0.321252,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 17,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 4961,
+      "cache_read_input_tokens": 261977,
+      "cache_creation_input_tokens": 33905
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3212524,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

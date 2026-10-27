@@ -1,0 +1,66 @@
+{
+  "variant": "v-691c95ca6b",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The `amend_memo` operation no longer calls `_audit`, so the state‑changing operation does not record an audit event as required."
+    },
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "A new `_log.info` call was added but there is no exhaustive evidence that this log entry cannot contain unmasked NPI; the required exhaustive evidence for LOG‑1 is missing."
+    },
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The change ticket lists component \"payments.service\", yet `controls/payments/components.json` has no entry for the modified file, so the ticket does not cover the touched component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approved by Sofia Santos, who has the `change_approver` role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the only commit in the PR; no subsequent commits change behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with the full test suite (172 tests) including the control test for AUD‑1; the final commit passes all required tests."
+    }
+  ],
+  "summary": "The change violates critical obligations AUD‑1 (audit) and LOG‑1 (log NPI protection) and fails the process requirement CHG‑1 (ticket component coverage). Despite having independent approval and passing CI, the missing audit event and lack of exhaustive log‑NPI evidence force a rejection.",
+  "meta": {
+    "elapsed_s": 205.39,
+    "tokens_in": 26262,
+    "tokens_out": 11478,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5fa5d4d3d537650d70b2b1832f645c6d26407cbd6a4e8a7136b982189abb2f34",
+    "packet_tokens_est": 26598,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 45044,
+    "answer_chars": 1627,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 19.23,
+    "eval_s": 185.93,
+    "total_s": 205.39,
+    "tokens_est_ratio": 0.964,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

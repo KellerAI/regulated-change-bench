@@ -1,0 +1,89 @@
+{
+  "variant": "v-b1429f2e3a",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new reopen path logs only the case id and actor user id. That line does not include SSN, account or routing numbers, date of birth, or income, and controls.LoggingControlTest#sampledFlowsDoNotLogNpi passed unskipped on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "CaseService.reopen moves a withdrawn case to DRAFT and saves it, which is a state change under EDIT_CASE, but it never calls audit.record. Sibling operations such as withdraw and close record actor, action, target, and time; this one does not."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1202 names ticket CHG-26477, which change manager Erik Brandt approved on 2026-10-22 before review. Its component mortgage.cases matches the only changed file, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author Declan Farrell, approved a code review of commit 8c6c5359724539ec20851b46ba2ecbb366fe29b8."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code-review approval names that same head commit, so the approval covers everything that would merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, with 0 failures and 0 skipped. The registered AUD-1 test controls.AuditControlTest#sampledOperationsAreAudited ran and passed; its sample label does not itself prove the new operation is audited."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, mortgage.cases, is not security_sensitive in controls/mortgage/components.json, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change controls data, control tests, or CI, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26477 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Reopen is a deviation from AUD-1, and the exception register has no approved, unexpired exception scoped to AUD-1 and mortgage.cases with a compensating control."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers other files (payments, payments audit, routes, Approvals, Underwriting, and Policy). This diff only changes CaseService.java, so those earlier evidence entries do not lapse."
+    }
+  ],
+  "summary": "The change adds CaseService.reopen, which returns a withdrawn case to DRAFT and persists it without writing an audit event. That violates AUD-1, and no valid exception covers the deviation, so EXC-1 is also failed. Ticket, independent approval of the head commit, CI on that commit, and the non-triggering security, control-owner, and emergency rules are in order, and the new log line does not contain NPI. The missing audit is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 170.86,
+    "tokens_in": 43869,
+    "tokens_out": 10591,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7ef8f2a5c2e2e3792e1dd2eaebcd4beafbe2bc7d69ed3fd2b5de314f43608f51",
+    "packet_tokens_est": 29258,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43869,
+      "outputTokens": 10591,
+      "cacheReadTokens": 202624,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 167587,
+    "duration_api_ms": 167587,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

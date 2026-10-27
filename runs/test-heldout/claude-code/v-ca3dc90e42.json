@@ -1,0 +1,102 @@
+{
+  "variant": "v-ca3dc90e42",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "At head, every entry in integrations.py (including the new payment-advice at https://advice.fernbrook.example/v1) uses https with a hostname, and transports.py verifies certificates. The exhaustive control test test_integrations_use_tls passed, not skipped, in the head-commit CI run."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "asset-inventory.json lists payment-advice with a matching host, an owner (payments-operations) and a valid classification (npi). The exhaustive test_integrations_are_inventoried and test_inventory_entries_have_owner_and_classification both passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-24542: standard, approved by Grace Kim (change_manager) on 2026-10-12, before any review. Its components (payments.integrations, payments.controls-data) cover the two files the change touches: integrations.py and asset-inventory.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, a payments change_approver and a different person from the author, Mara Costa (none of Costa's directory addresses appear among the approvers)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "All three approvals name c68440d, which is both the head and the only commit in the change, so no later commits can void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding on c68440d. The JUnit report has 172 tests, 0 failures and 0 skipped, including every registered payments control test, among them ENC-2 and INV-1 (both labelled exhaustive)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is in the security-sensitive payments.integrations component. Ines Halvorsen (security_reviewer) approved the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected path. Rachel Stein (control_owner, controls-office, outside the author's payments-eng team) approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so it wasn't deployed before review and no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; there is no deviation from ENC-2 or INV-1, and no register entry is invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers payments.py, audit.py, routes.py and mortgage Java files, none of which the change touches, so no earlier evidence lapses. This rests on working-tree file times, because the git diff couldn't be run in this session."
+    }
+  ],
+  "summary": "PR-1878 adds one HTTPS outbound integration (payment-advice) and its asset-inventory entry. The new integration meets ENC-2 and INV-1, both shown by exhaustive control tests that passed in the head-commit CI run with nothing skipped. The process records are complete: an approved standard ticket covering both components, independent code review, security review and control-owner approval, all on the single head commit. No exceptions are needed and no ledgered evidence lapses. Git and CI re-runs were blocked in this session, so the touched-file set comes from working-tree timestamps cross-checked against the ticket and commit records, not from a direct diff.",
+  "meta": {
+    "elapsed_s": 156.6,
+    "tokens_in": 1005321,
+    "tokens_out": 14119,
+    "usd": 0.819553,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 43,
+    "tokens_detail": {
+      "input_tokens": 50,
+      "output_tokens": 14119,
+      "cache_read_input_tokens": 935288,
+      "cache_creation_input_tokens": 69983
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.8195526,
+    "permission_denials": 14,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

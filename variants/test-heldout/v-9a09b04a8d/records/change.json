@@ -1,0 +1,21 @@
+{
+  "id": "PR-1285",
+  "title": "Co-applicant onboarding field",
+  "description": "Co-applicant onboarding field.\n\nChanges:\n- Accept coapplicant_tax_id on create and edit\n- Reuse the existing applicant persistence pipeline\n- Include the onboarding field in scheduled disposal and sample applicants\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-312",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "56dda280ff10932cbbff149a3c1d747c22dd7f6e",
+  "commits": [
+    {
+      "sha": "56dda280ff10932cbbff149a3c1d747c22dd7f6e",
+      "message": "Applications: retain the co-applicant tax identifier",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-13T21:33:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25867",
+  "opened_at": "2026-10-13T21:33:00Z"
+}

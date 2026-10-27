@@ -1,0 +1,61 @@
+{
+  "variant": "v-c1319ea6b4",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The ticket lists component \"payments.reports\", but the components registry does not contain an entry mapping apps/baseline-payments/payments/reports.py to any component, so coverage cannot be verified."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval exists from Sofia Santos, who has the \"change_approver\" role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the sole commit in the PR; there are no later commits that could alter behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit succeeded (172 tests, 0 failures) and includes all control tests for product obligations."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "A post‑implementation review (pir) was recorded one day after deployment by Sofia Santos, satisfying the 2‑business‑day window and being from someone other than the author."
+    }
+  ],
+  "summary": "The change fails CHG-1 because the ticket's component list cannot be matched to a defined component, violating the requirement that ticket components cover all touched components. All other applicable process obligations are satisfied, but the single refuted obligation mandates a REJECT decision.",
+  "meta": {
+    "elapsed_s": 81.89,
+    "tokens_in": 24524,
+    "tokens_out": 4265,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9c5b32da0bfc64e39fbc338772805c0fb831da263cb851b969a6fe767fed5993",
+    "packet_tokens_est": 24459,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16973,
+    "answer_chars": 1461,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.26,
+    "eval_s": 66.46,
+    "total_s": 81.89,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

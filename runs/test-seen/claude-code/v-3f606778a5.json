@@ -1,0 +1,82 @@
+{
+  "variant": "v-3f606778a5",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "deliver_statement now logs account=payee.account_number on the IntegrationError path; get_payee returns the decrypted value and logs._masked only masks keys in npi.NPI_FIELDS ('account_number', etc.), so the key 'account' is written in plain text. The passing LOG-1 control test is sample-only and runs deliver_statement only on the success path, and EXC-0167 covers mortgage.logging, not payments."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The diff to service.py only adds a payee read and a log field; the _audit call for deliver_statement is unchanged and no state-changing operation is added or removed. The AUD-1 control test passes on the head commit in the CI report."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24822 (standard) was approved by change manager Erik Brandt on 2026-10-11, before review, and its components [payments.service] cover the only touched path, apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a payments change_approver who is a different person from the author, Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 8e1a917, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-payments on head 8e1a917; the JUnit report has 172 tests, with 0 failures, errors or skips, including the registered LOG-1 and AUD-1 control tests (both labelled sample). The report's timestamp and host don't match the run record."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance ledger entry covers apps/baseline-payments/payments/service.py, so no earlier evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change adds the payee's account number to the 'statement delivery failed' log entry under the key 'account'. The payments logger masks only the field names in npi.NPI_FIELDS, so the full decrypted account number would be written to the logs, which violates LOG-1, and no valid exception covers it. CI is green only because the sample-based LOG-1 control test never runs the delivery-failure path, and the PR's claims that the logger masks NPI and that tests were updated are both untrue. The process records (ticket, independent approval on the final commit, CI on the final commit) are in order, but the LOG-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 86.19,
+    "tokens_in": 362288,
+    "tokens_out": 7197,
+    "usd": 0.414188,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 20,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7197,
+      "cache_read_input_tokens": 321075,
+      "cache_creation_input_tokens": 41181
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.414188,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

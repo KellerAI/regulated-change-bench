@@ -1,0 +1,66 @@
+{
+  "variant": "v-9eda50889e",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25831 is approved by a change manager, status approved, and its components list payments.logging and payments.tests which cover the changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Mara Costa (change_approver for payments) is recorded in approvals.json and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review approval explicitly references the commit SHA of the change, satisfying the coverage requirement."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) succeeded with all 173 tests passing, including the existing LOG-1 control test and the new unit test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "The changed file logs.py is marked security_sensitive, but no security_review approval record is present."
+    },
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "LOG-1 requires exhaustive evidence; only a sampled control test exists and no exhaustive evidence is provided for the new debug logging path."
+    }
+  ],
+  "summary": "The change fails to meet critical process and product obligations. It lacks the required security review for a security‑sensitive component (CHG-5) and does not provide exhaustive evidence for the NPI‑no‑logging obligation (LOG-1). Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 86.33,
+    "tokens_in": 24842,
+    "tokens_out": 3638,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "02bff66b2fc1825526f050bc1a2cdaaa7e779b1b0feff15bf6685817bb1b83bd",
+    "packet_tokens_est": 24824,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13948,
+    "answer_chars": 1576,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.86,
+    "eval_s": 68.24,
+    "total_s": 86.33,
+    "tokens_est_ratio": 0.975,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

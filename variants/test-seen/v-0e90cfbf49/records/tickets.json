@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24618",
+    "type": "standard",
+    "status": "approved",
+    "summary": "CSV alias for case export",
+    "components": [
+      "mortgage.http"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-09-29T04:46:00Z",
+    "risk": "medium"
+  }
+]

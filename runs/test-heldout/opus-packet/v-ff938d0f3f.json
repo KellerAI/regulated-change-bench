@@ -1,0 +1,83 @@
+{
+  "variant": "v-ff938d0f3f",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24852. Grace Kim, a change_manager, approved it on 2026-10-06, and its components (payments.reports) cover the only touched file, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author (Linh Nguyen), approved a code_review on 2026-10-08."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit dc3ff784, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run is on the head commit dc3ff784 with result success: 172 tests, 0 failures and 0 skipped, including all registered payments control tests. No product obligation's scope or domain is touched by reports.py."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.reports, is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "This is an emergency ticket deployed 2026-10-08T15:51Z (a Thursday), so the PIR was due within 2 business days, by 2026-10-12T15:51Z. Mara Costa's PIR approval is dated 2026-10-15T15:51Z, which is late."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and introduces no deviation from a product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers reports.py, so no existing evidence lapses because of this change."
+    }
+  ],
+  "summary": "PR-1314 adds a single constant to the payments reports module, which is outside every product obligation's scope. The ticket, independent code review, and head-commit CI run are all in order. However, this was an emergency change deployed on 2026-10-08, and its post-implementation review came on 2026-10-15, past the 2-business-day deadline of 2026-10-12 required by CHG-7. The change is therefore rejected.",
+  "meta": {
+    "elapsed_s": 19.58,
+    "tokens_in": 37887,
+    "tokens_out": 1849,
+    "usd": 0.188528,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f4cafd7815932c21462e71ccb8f1817aece56bc4182ba823663ec03ef2d90c9d",
+    "packet_tokens_est": 24450,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 37887,
+      "output_tokens": 1849,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

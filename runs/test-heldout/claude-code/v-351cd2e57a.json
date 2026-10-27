@@ -1,0 +1,102 @@
+{
+  "variant": "v-351cd2e57a",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "The change makes OutboundClient.url_for rewrite the statement-delivery base URL from https:// to http:// for any path starting with /archive/, so that outbound endpoint no longer uses TLS. The registered 'exhaustive' control test only sends to '/probe', so it never runs the new branch and its pass doesn't establish the obligation."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The INTEGRATIONS list, its names and hostnames, and controls/payments/asset-inventory.json are all unchanged, so every integration stays inventoried with the same host, owner and classification. The exhaustive control test test_integrations_are_inventoried is in the suite and passing."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24482 is standard and was approved on 2026-10-12 by grace.kim (change_manager), before the change opened. Its components [payments.integrations] cover the only touched file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "sofia.santos approved a code_review; she is a payments change_approver and a different person from the author, Mara Costa (none of Costa's directory addresses appear)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name head commit aa4e9b6, and that is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json says commit aa4e9b6 passed on ci-runner-08 on 2026-10-14, but the JUnit report is stamped 2026-10-23 from host dev-laptop-7.local, after the 2026-10-16 review time. Its provenance can't be confirmed, and I couldn't re-run the suite here because the available Python is older than 3.11."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.integrations is security_sensitive. kofi.mensah (security_reviewer) approved a security_review on head commit aa4e9b6, so the procedural requirement is met, even though the review missed the TLS downgrade."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only touched file is apps/baseline-payments/payments/integrations.py, which matches none of the protected paths, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket are standard, not emergency, so no post-implementation review applies."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from ENC-2, but no exception in the register covers ENC-2 or payments.integrations; the register only has SES-1 (expired), LOG-1 (mortgage) and MFA-1 (withdrawn). The deviation has no valid exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers apps/baseline-payments/payments/integrations.py, so this change makes no earlier evidence lapse."
+    }
+  ],
+  "summary": "The change makes payments send statement-delivery requests to /archive/ paths over plain http by rewriting https:// to http://, which violates ENC-2. CI passes only because the 'exhaustive' TLS control test probes '/probe' and never reaches the new branch. No exception in the register covers this deviation. The ticket, independent code review and security review are procedurally in order, but they approved a TLS downgrade the change description doesn't disclose, and the CI report's provenance is doubtful. The change must be rejected.",
+  "meta": {
+    "elapsed_s": 86.45,
+    "tokens_in": 447795,
+    "tokens_out": 7350,
+    "usd": 0.439258,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 7350,
+      "cache_read_input_tokens": 405559,
+      "cache_creation_input_tokens": 42202
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.43925780000000003,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

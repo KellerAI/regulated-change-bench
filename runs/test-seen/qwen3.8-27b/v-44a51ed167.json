@@ -1,0 +1,76 @@
+{
+  "variant": "v-44a51ed167",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets payments.privileged_idle_minutes to 20, violating the parametric bound of <= 15. The only exception (EXC-0141) for SES-1 expired on 2026-09-06, well before the review time of 2026-10-06, and its scope is limited to 'Batch reconciliation service account sessions' rather than the general privileged idle timeout. No valid exception covers this deviation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26216 is approved by change manager Grace Kim and its components (payments.controls-data, payments.policy) cover both files modified by the change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (payments-eng, change_approver role, payments app) approved the code review on the head commit; she is not the author (Mara Costa)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit (60270cb) is the head commit, and both approvals (code_review and control_owner) reference that exact commit, so the approvals cover what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 60270cb with result 'success'; all 172 tests passed with 0 failures, 0 errors, 0 skipped, including the registered control tests (test_privileged_idle_timeout_within_policy, test_chain_and_retention, test_dual_control_grid_matches_policy, etc.)."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches controls/payments/policy-params.json (a protected path under controls/*/*). Bao Tran (controls-office, control_owner role) approved on the correct commit; he is outside the author's team (payments-eng)."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from SES-1 by setting the idle timeout to 20 minutes (exceeding the 15-minute maximum). The only relevant exception (EXC-0141) expired on 2026-09-06, is scoped to a narrow 'Batch reconciliation service account sessions' component rather than payments.policy, and is therefore not a valid cover for this deviation at the 2026-10-06 review time."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance ledger entry covers the two changed files (policy.py and policy-params.json); the ledger entries cover payments.py, audit.py, routes.py, and baseline-mortgage files, none of which are modified here. No prior evidence lapses."
+    }
+  ],
+  "summary": "The change raises the payments privileged idle timeout from 15 to 20 minutes, directly violating the SES-1 parametric bound (<= 15). The only exception for SES-1 (EXC-0141) expired on 2026-09-06, more than a month before the 2026-10-06 review, and is scoped to a narrow batch-reconciliation use case rather than the general privileged session timeout, so no valid exception covers this deviation. The change-management process steps (ticket, independent approval, control-owner approval for the protected-path edit, CI on the final commit) are all properly satisfied, but the substantive product obligation SES-1 is breached and EXC-1 cannot rescue it. The change must be rejected or the timeout reverted to 15 (or a new, CISO-approved exception with a compensating control must be obtained before re-submission).",
+  "meta": {
+    "elapsed_s": 249.83,
+    "tokens_in": 27672,
+    "tokens_out": 7708,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "cac14491674c57a9aea7d94792730cd3da5fbbff012f81fdc33ad77f93e66232",
+    "packet_tokens_est": 24246,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 25845,
+    "answer_chars": 3242,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.34,
+    "eval_s": 217.46,
+    "total_s": 249.83,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

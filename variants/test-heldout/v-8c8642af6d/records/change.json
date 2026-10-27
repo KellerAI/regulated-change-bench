@@ -1,0 +1,21 @@
+{
+  "id": "PR-1371",
+  "title": "Policy data formatting",
+  "description": "Policy data formatting.\n\nChanges:\n- Use the shared four-space JSON formatter\n- No policy values changed\n- Acting ownership handled through the directory roles\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-631",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "375fae784521fa740a210422247e7133b11baa26",
+  "commits": [
+    {
+      "sha": "375fae784521fa740a210422247e7133b11baa26",
+      "message": "Controls: apply the shared JSON formatter",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-18T19:54:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26700",
+  "opened_at": "2026-10-18T19:54:00Z"
+}

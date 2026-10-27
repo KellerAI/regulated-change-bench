@@ -1,0 +1,84 @@
+{
+  "variant": "v-b29a65dd0b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "purge_due now skips every closed payee with category tax_authority, so that NPI is never purged after the retention period. The skip is not a legal hold, and the exception register has no approved RET-1 exception for payments.retention."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25557 is approved by change manager Erik Brandt before review, and its component payments.retention matches the only touched path, apps/baseline-payments/payments/retention.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Jonah Weiss, recorded an approved code_review on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That approval names bfa403d0d1b69e6b7d609fac05918f17a06738fe, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The JUnit report is timestamped 2026-10-23T20:30:25Z on dev-laptop-7.local, before commit bfa403d (2026-10-24T14:09:00Z) and on a different host than the claimed executor ci-runner-05, so it does not show the suite passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.retention is not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed file is apps/baseline-payments/payments/retention.py, which is not a protected path, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The tax-authority purge skip is a deviation from RET-1, and the register has no approved, unexpired exception scoped to RET-1 and payments.retention. The listed exceptions are expired, withdrawn, or for other obligations."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change does not modify any path covered by the acceptance ledger, so prior evidence for those obligations does not lapse."
+    }
+  ],
+  "summary": "The change adds a permanent exemption in payments retention so closed tax-authority payees are never purged, which violates RET-1. No approved exception covers that deviation. The attached JUnit report also predates the head commit and was produced on a developer machine, so it is not evidence that the suite passed on the final commit. Process approvals for the ticket, independent code review, and the non-emergency, non-sensitive path are in order, but the retention violation and the invalid test evidence require rejection.",
+  "meta": {
+    "elapsed_s": 74.78,
+    "tokens_in": 41250,
+    "tokens_out": 8500,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8080c5193e003090f234c2c753bda3b57efa8244a0f5f66500f45bf8dda28318",
+    "packet_tokens_est": 24023,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41250,
+      "outputTokens": 8500,
+      "cacheReadTokens": 104576,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 71028,
+    "duration_api_ms": 71028,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "mortgage.dti_max_percent": 40,
+  "mortgage.ltv_max_percent": 90,
+  "mortgage.dti_decline_percent": 50,
+  "mortgage.ltv_decline_percent": 100,
+  "mortgage.underwriter_limit": 500000,
+  "mortgage.senior_limit": 1500000,
+  "mortgage.privileged_idle_minutes": 15,
+  "mortgage.standard_idle_minutes": 30,
+  "mortgage.audit_retention_years": 7,
+  "mortgage.declined_npi_retention_months": 25,
+  "mortgage.npi_fields": [
+    "annual_income",
+    "bank_account_number",
+    "date_of_birth",
+    "ssn"
+  ]
+}

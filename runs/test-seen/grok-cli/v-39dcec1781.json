@@ -1,0 +1,79 @@
+{
+  "variant": "v-39dcec1781",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26887 is named on the change, status approved by change manager Erik Brandt on 2026-10-06 before review, and its components payments.payments and payments.tests cover payments.py and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver who is not the author Sofia Santos, approved a code_review of commit 7e1226b2ca0de9b6a0a41f41a5f7aa92143213a4."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is the head commit named on Mara Costa's approval, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the final commit, and the JUnit report shows 175 tests with 0 failures and 0 skipped, including the registered payments control tests. The change does not modify a product-obligation scope path, so no additional control-test obligation is triggered beyond the full suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py is payments.payments and the new test matches payments.tests; both are security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is only payments.py and tests/test_approvals_remaining.py, which are outside the protected controls, control-test, and CI paths, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "CHG-26887 is an emergency ticket deployed at 2026-10-08T20:42:00Z, and review time is 2026-10-15, past two business days. The only approval is a code_review; there is no pir approval by someone other than the author."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on the exception register. The SES-1 exception is expired and unused, and the other entries are out of scope or withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger evidence covers required_approvals, release, audit hashing, and routes. Those symbols are unchanged in behavior; the new approvals_remaining helper is not covered code."
+    }
+  ],
+  "summary": "The helper matches existing dual-control counting and does not change approve, release, required_approvals, or is_fully_approved. Ticket, independent code review, final-commit tests, and the security, control-owner, exception, and evidence-lapse rules are satisfied. The change was deployed as an emergency on 2026-10-08 and, as of 2026-10-15, still has no post-implementation review approval, which CHG-7 requires within two business days. That missing review is a violation, so the change is rejected.",
+  "meta": {
+    "elapsed_s": 153.17,
+    "tokens_in": 100486,
+    "tokens_out": 8731,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "00e2d1c617587ab2fb8c10334a9875c89e9118139647f1a6d5cdeb5d44b6a7bc",
+    "packet_tokens_est": 25791,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 100486,
+      "outputTokens": 8731,
+      "cacheReadTokens": 163072,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 147794,
+    "duration_api_ms": 147794,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

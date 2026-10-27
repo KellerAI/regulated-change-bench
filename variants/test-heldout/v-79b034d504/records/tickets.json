@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25978",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Pipeline format identifier",
+    "components": [
+      "mortgage.reporting"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-06T21:17:00Z",
+    "risk": "low"
+  }
+]

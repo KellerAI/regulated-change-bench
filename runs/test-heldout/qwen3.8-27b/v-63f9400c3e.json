@@ -1,0 +1,96 @@
+{
+  "variant": "v-63f9400c3e",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds 'coapplicant_tax_id' to ApplicantFields.ALL, but this tax identifier is absent from both the NpiRegistry (file unchanged) and the approved npi_fields list in policy-params.json (which lists only annual_income, bank_account_number, date_of_birth, ssn). The Retention.purge() code handles coapplicant_tax_id in a separate line outside the NpiRegistry.FIELDS loop, confirming it is not registered as NPI. The ENC-1 control test is exhaustive over the npi_registry domain and would not cover this unregistered field, so the new tax identifier would be persisted in plaintext, violating the requirement that every NPI field (government identifiers such as tax id) be sealed at rest."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "No new log statements are introduced, but because 'coapplicant_tax_id' is not registered in the NpiRegistry, the Mask utility (whose scope includes Mask.java and is unchanged) may not know to mask this value if it appears in an error or diagnostic log. The packet does not include the full text of AppLog.java or Mask.java to confirm whether the new field would be unmasked in any code path."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The change explicitly adds loanCase.removeApplicantField('coapplicant_tax_id') in Retention.purge(), ensuring the new field is purged on schedule alongside NpiRegistry fields. The RetentionControlTest (sampledPurgeRespectsHold) passed in CI, and the logic correctly skips purge when a legal hold is in effect."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25472 is type 'standard', approved by grace.kim (change_manager) on 2026-10-01. Its components (mortgage.cases, mortgage.control-tests, mortgage.retention) map to all three changed files: ApplicantFields.java (mortgage.cases), ControlFixtures.java under src/test/java/controls/ (mortgage.control-tests), and Retention.java (mortgage.retention)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by declan.farrell@fernbrook.example, who holds the change_approver role for baseline-mortgage and is not the author (tomas.ortega@fernbrook.example). The approval is on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is a single commit (0593a1c) in the change, and both the code_review and control_owner approvals name that exact commit. No later commits could void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) executed on the head commit 0593a1c with result 'success'. The JUnit report shows 124 tests, 0 failures, 0 errors, 0 skipped. Every control test registered in controls/mortgage/control-registry.json for obligations whose scope the change touches (ENC-1, RET-1, plus all others) is present, unskipped, and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The three changed files map to components mortgage.cases (security_sensitive: false), mortgage.retention (security_sensitive: false), and mortgage.control-tests (security_sensitive: false). No security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java falls under the protected path 'apps/baseline-mortgage/src/test/java/controls/*'. A control_owner approval was given by rachel.stein@fernbrook.example (controls-office, role control_owner), who is outside the author's team (lending-eng), on the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket CHG-25472 is of type 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed or needed for this change; the exception register contains no entry scoped to ENC-1 for mortgage.cases. No deviation from a product obligation is being requested."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries cover Approvals.java, Policy.java, Underwriting.java (mortgage) and audit.py, payments.py, routes.py (payments). None of these files are modified by PR-1971, so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1971 introduces a new applicant field 'coapplicant_tax_id' (a government tax identifier, i.e. NPI under ENC-1) but does not register it in the NpiRegistry or in the approved npi_fields list in policy-params.json. The Retention.purge() code handles this field in a separate line outside the NpiRegistry.FIELDS loop, confirming it is not part of the encryption-at-rest domain. The ENC-1 control test is exhaustive only over the npi_registry and would not detect the unregistered field, so the new tax identifier would be persisted in plaintext. This is a direct violation of ENC-1. All process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) are satisfied, and RET-1 is shown because the field is explicitly included in the purge logic. However, the unencrypted storage of a tax identifier is a critical control failure, so the change must be rejected and reworked to register the field in the NPI registry before it can be accepted.",
+  "meta": {
+    "elapsed_s": 241.68,
+    "tokens_in": 29083,
+    "tokens_out": 7125,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "15bf58c99ea781ee23bc2988108619bb87665708feed66bbb04cae2ed4ac1033",
+    "packet_tokens_est": 25745,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23056,
+    "answer_chars": 5172,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.13,
+    "eval_s": 207.51,
+    "total_s": 241.67,
+    "tokens_est_ratio": 1.102,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

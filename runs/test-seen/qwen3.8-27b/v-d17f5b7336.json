@@ -1,0 +1,71 @@
+{
+  "variant": "v-d17f5b7336",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new debug method routes through _emit which calls mask_fields, ensuring NPI is masked. The new unit test test_debug_entries_are_masked confirms masking at DEBUG level, and the existing control test test_sampled_flows_do_not_log_npi passes in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26216 is approved by change manager Erik Brandt and lists components payments.logging and payments.tests, matching the two components the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approval is from Mara Costa (mara.costa@fernbrook.example), who holds the change_approver role for payments and is a different person from the author Jonah Weiss."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 8dfff15d…, which is the sole commit and the head of the change; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit with 173 tests, 0 failures, 0 errors, 0 skipped, including the LOG-1 control test test_sampled_flows_do_not_log_npi and the new test_debug_entries_are_masked."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "The change touches apps/baseline-payments/payments/logs.py, which maps to component payments.logging marked security_sensitive: true in components.json. CHG-5 requires a security_review approval from a security_reviewer, but the only approval on record is a code_review from Mara Costa; no security_review approval exists."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/logs.py, so no prior evidence lapses as a result of this change."
+    }
+  ],
+  "summary": "The change adds a debug-level log method to payments' AppLog class, correctly routing through the existing _emit/mask_fields path so NPI is masked, and includes a unit test verifying this. The ticket, independent code approval, and CI are all in order. However, the component payments.logging is marked security_sensitive in controls/payments/components.json, which under CHG-5 requires a security_review approval from a security_reviewer. No such approval appears in the records, so the change cannot be accepted. The rejection is solely due to the missing security review; the technical change itself appears sound.",
+  "meta": {
+    "elapsed_s": 161.72,
+    "tokens_in": 28078,
+    "tokens_out": 4550,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "da7793fb23a3a9d68fa9e72a7192a2dfbd04d3d51a68f986c2e52f997c0e9487",
+    "packet_tokens_est": 24822,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15015,
+    "answer_chars": 2392,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.92,
+    "eval_s": 128.78,
+    "total_s": 161.72,
+    "tokens_est_ratio": 1.103,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

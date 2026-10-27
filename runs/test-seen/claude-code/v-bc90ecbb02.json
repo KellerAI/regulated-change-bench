@@ -1,0 +1,72 @@
+{
+  "variant": "v-bc90ecbb02",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds `tax_id` (a government identifier, which ENC-1 names as NPI) to ApplicantFields.ALL but not to NpiRegistry.FIELDS or the approved mortgage.npi_fields list, so CaseStore.protect stores it unsealed. The 'exhaustive' ENC-1 control test only checks registry/approved fields, so its pass says nothing about tax_id, and no exception covers ENC-1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24639 is approved by change manager grace.kim on 2026-10-07, before the change was opened and reviewed, and its components (mortgage.cases) cover ApplicantFields.java, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval comes from wen.li, who holds change_approver for baseline-mortgage and is a different person from the author tomas.ortega according to the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 30a528d, the change's only commit, so it covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 30a528d reports success, and the JUnit reports show 124 tests, 0 skipped or failed, including the ENC-1 control test EncryptionControlTest#everyNpiFieldIsSealedAtRest. Caveat: the report timestamps (2026-10-23) postdate as_of, and I could not re-run CI because the JUnit jar is missing; also the test's domain excludes tax_id (see ENC-1)."
+    }
+  ],
+  "summary": "The change adds a `tax_id` applicant field but does not classify it as NPI in NpiRegistry or the approved npi_fields list, so tax ids would be persisted in cleartext, violating ENC-1 (they would also escape masking in views and exports and NPI retention purging). The ENC-1 control test passes only because its domain excludes the new field, so the green CI run is not adequate evidence for ENC-1. The ticket, the independent code review on the head commit and the CI run satisfy CHG-1 to CHG-4, but the ENC-1 violation alone requires rejection. To fix it, engineering should register tax_id as NPI in NpiRegistry and controls/mortgage/policy-params.json, which will also require security review and control-owner approval.",
+  "meta": {
+    "elapsed_s": 77.56,
+    "tokens_in": 432853,
+    "tokens_out": 7071,
+    "usd": 0.485046,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7071,
+      "cache_read_input_tokens": 379294,
+      "cache_creation_input_tokens": 53531
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4850458000000001,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

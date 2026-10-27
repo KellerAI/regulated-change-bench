@@ -1,0 +1,89 @@
+{
+  "variant": "v-d0211ce306",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The diff only adds a guard in AuditLog.verify and leaves record() unchanged, still storing actor, action, target, and time. The registered sample control test test_sampled_operations_are_audited is in the head-commit suite with no failures or skips."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "record() still appends a hash-chained event, verify() still checks sequence continuity, previous-hash linkage, and the content hash, and purge_expired still deletes only events older than policy.AUDIT_RETENTION_YEARS. The approved parameter payments.audit_retention_years is 7, and a starting sequence below 1 cannot be produced by record(); after a retention purge remaining sequence numbers stay at least 1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1353 names ticket CHG-26633, which Erik Brandt (change manager) approved on 2026-10-05 before review. Its component payments.audit matches apps/baseline-payments/payments/audit.py in the component map."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author Aisha Bello, gave a code_review approval on the head commit a1c5eaf5622e1c6fe9f954681b21ddaaa5d7382d."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review and security_review approvals both name that head commit, so nothing after the approval changes behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-payments on the head commit. The JUnit summary has 172 tests, 0 failures, 0 errors, and 0 skipped, including the AUD-1 and AUD-2 control tests test_sampled_operations_are_audited and test_chain_and_retention."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.audit is security_sensitive. Ines Halvorsen, a security reviewer, approved a security_review of the head commit, and she is not the author."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/audit.py, which is not under the protected controls, control-test, or CI paths, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26633 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on a deviation from a product obligation. The register's SES-1 exception is expired and out of scope, and no exception is needed for this audit-log edit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0402 accepts AUD-2 on an ModelCheck check of event_hash and verify (exhaustive, scope 6, no counterexample) at commit d30b2adb2ba9b2792f1392ebca73625bd93d8f87. This commit changes verify's behavior by rejecting a first sequence below 1, which is not a comment or formatting edit, so that entry lapses. The packet has no new ModelCheck or other same-strength result for verify on head a1c5eaf5622e1c6fe9f954681b21ddaaa5d7382d; the passing control test is a different kind of evidence and does not replace that check."
+    }
+  ],
+  "summary": "The edit is a two-line tightening of AuditLog.verify in payments, and the resulting module still appends a hash-chained audit trail and purges it on the approved seven-year retention parameter. Ticket coverage, independent code review, security review, and a green payments suite on the head commit are present, and the change is not an emergency or a protected-path edit. Acceptance still fails because ledger record ACR-0402 is an exhaustive ModelCheck analysis of verify on an older commit, this commit changes that function's behavior, and no evidence of that strength is tied to the head commit. The change description points at that lapsed ledger analysis, which LAP-1 says cannot be carried forward.",
+  "meta": {
+    "elapsed_s": 527.44,
+    "tokens_in": 41236,
+    "tokens_out": 30954,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4a7335a6b0680df7ed1ad7bee4292a86b67cdb085d3eae683cefe53195ac2bfc",
+    "packet_tokens_est": 24867,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41236,
+      "outputTokens": 30954,
+      "cacheReadTokens": 25216,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 522654,
+    "duration_api_ms": 522654,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

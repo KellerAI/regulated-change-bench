@@ -1,0 +1,79 @@
+{
+  "variant": "v-1b1ee6015b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26265 is approved by change manager Erik Brandt before review, but its components list only payments.tests. The change also edits apps/baseline-payments/payments/directory.py, which components.json assigns to payments.payees, so the ticket does not cover every component touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (sofia.santos@fernbrook.example) holds change_approver for payments, is a different person from author Mara Costa, and her code_review approval names head commit c48957a23099d556598a9c7aa3ed3f148db623ea."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review approval names that same commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 173 tests with 0 failures, 0 errors, and 0 skipped, including every registered payments control test. The diff does not touch any product-obligation scope path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "directory.py is component payments.payees and the new test matches payments.tests; both are marked security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The changed paths are directory.py and tests/test_charity_payees.py. Neither is under the protected paths in controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. Adding the charity payee category does not deviate from a product obligation in the files it touches."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger evidence covers payments.py, audit.py, routes.py, and mortgage underwriting and approval files. Those paths are unchanged, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds charity to the payee category list in payments/directory.py and adds a unit test. Independent approval, coverage of the single head commit, CI on that commit, and the security, control-owner, emergency, exception, and evidence-lapse rules are satisfied. Acceptance fails because ticket CHG-26265 lists only payments.tests and omits payments.payees, the component that owns directory.py.",
+  "meta": {
+    "elapsed_s": 59.65,
+    "tokens_in": 43100,
+    "tokens_out": 4986,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "64981e9fb0c1d8a805ac2cd845276400e57194179081fead888e06ae298e802e",
+    "packet_tokens_est": 24772,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43100,
+      "outputTokens": 4986,
+      "cacheReadTokens": 209152,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 54601,
+    "duration_api_ms": 54601,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "variant": "v-63f9400c3e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "coapplicant_tax_id is a tax identifier added to ApplicantFields and cleared in Retention beside the NpiRegistry.FIELDS loop, so it is not a registered NPI field. Approved mortgage.npi_fields omit it, CaseStore seals registry NPI and leaves other applicant fields readable, and no ENC-1 exception covers the field, so it is not persisted only in sealed form."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "purge() removes coapplicant_tax_id on the same disposal path as registry NPI, and isPurgeDue still requires a declined or withdrawn case, the retention cutoff, and no legal hold. RetentionControlTest.sampledPurgeRespectsHold and the retention unit tests passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25472 is approved by change manager Grace Kim before the review time, and its components mortgage.cases, mortgage.retention, and mortgage.control-tests match ApplicantFields.java, Retention.java, and ControlFixtures.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Tomas Ortega, approved a code_review of commit 0593a1c9cc72c8ea11be726adb52cca851dc303e."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and control_owner approvals name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful baseline-mortgage suite on the head commit. The JUnit digest shows 124 tests, 0 failures, and 0 skipped, including EncryptionControlTest.everyNpiFieldIsSealedAtRest and RetentionControlTest.sampledPurgeRespectsHold."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java is under the protected controls-test path. Rachel Stein, a control_owner on the controls-office team, approved that same head commit from outside the author's lending-eng team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantFields.java, Retention.java, or ControlFixtures.java, and this change does not alter the code covered by the existing ledger evidence."
+    }
+  ],
+  "summary": "The change adds a co-applicant tax identifier to the applicant field list and to scheduled disposal, with a matching ticket, independent approvals, and a green mortgage suite on the head commit. That identifier is nonpublic personal information and is handled outside the NPI registry, whose fields are what the store seals. The passing encryption control enumerates only the registry, and the exception register does not authorize this field. The change is rejected because the tax id is not shown to be stored only in sealed form.",
+  "meta": {
+    "elapsed_s": 258.77,
+    "tokens_in": 50181,
+    "tokens_out": 15750,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "15bf58c99ea781ee23bc2988108619bb87665708feed66bbb04cae2ed4ac1033",
+    "packet_tokens_est": 25745,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 50181,
+      "outputTokens": 15750,
+      "cacheReadTokens": 201088,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 254072,
+    "duration_api_ms": 254072,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

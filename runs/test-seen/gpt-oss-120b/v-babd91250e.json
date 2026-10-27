@@ -1,0 +1,61 @@
+{
+  "variant": "v-babd91250e",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26026 exists, is approved, and lists component payments.service as covered."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from Sofia Santos, who lacks the required change_approver role; no independent approver was recorded."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the single commit in this PR and there are no later non‑trivial commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (records/ci/run.json) succeeded with all 172 test cases passing, including the control‑registry tests."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "AUD-1 requires exhaustive evidence that every state‑changing operation is audited; only a sampled control test exists and no acceptance ledger entry provides exhaustive proof."
+    }
+  ],
+  "summary": "The change fails to meet independent approval (CHG-2) and lacks exhaustive audit evidence for state‑changing operations (AUD-1). Because at least one applicable obligation is refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 170.71,
+    "tokens_in": 26410,
+    "tokens_out": 7118,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "c138b9a13f105a917421b735ded1a73a441a1f88984170fadc8fcf2563df1641",
+    "packet_tokens_est": 26769,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 28754,
+    "answer_chars": 1264,
+    "done_reason": "stop",
+    "load_s": 3.07,
+    "prompt_eval_s": 19.32,
+    "eval_s": 148.16,
+    "total_s": 170.71,
+    "tokens_est_ratio": 0.963,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

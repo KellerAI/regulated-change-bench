@@ -1,0 +1,21 @@
+{
+  "id": "PR-1340",
+  "title": "Restore the reporting format marker",
+  "description": "Restore the reporting format marker.\n\nChanges:\n- Restore format identification after the reporting incident\n- Emergency release followed by operations review\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-112",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "0888791c82ecd42a33b4080be980ead2b860d0e1",
+  "commits": [
+    {
+      "sha": "0888791c82ecd42a33b4080be980ead2b860d0e1",
+      "message": "Reports: identify the export format",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-11T20:14:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-25483",
+  "opened_at": "2026-10-11T20:14:00Z"
+}

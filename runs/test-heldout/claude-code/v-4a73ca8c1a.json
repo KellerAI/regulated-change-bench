@@ -1,0 +1,102 @@
+{
+  "variant": "v-4a73ca8c1a",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "NpiRegistry now includes coapplicant_tax_id and CaseStore seals every registry field via NpiVault; the exhaustive control test EncryptionControlTest#everyNpiFieldIsSealedAtRest (approved list plus registry) passed unskipped on head 86cce08."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "Retention.java and the NPI registry that drives purge changed; RET-1 requires exhaustive evidence, but the only registered control test (RetentionControlTest#sampledPurgeRespectsHold) is labelled sample, and no exhaustive evidence or ledger entry exists for the changed code."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25794 is approved by change manager Erik Brandt (2026-10-17T09:36Z, before the PR opened) and lists mortgage.cases, mortgage.npi, mortgage.retention and mortgage.control-tests, which cover all four touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by Declan Farrell, a baseline-mortgage change_approver and a different person from author Nneka Okafor."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "All approvals name the head commit 86cce08, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run record on head 86cce08 shows 124 tests, 0 failures, 0 skipped, including the ENC-1 and RET-1 registered control tests; I could not re-run CI locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "NpiRegistry.java (mortgage.npi) is security_sensitive; security_review approval by security_reviewer Ines Halvorsen on head 86cce08."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java is under the protected path apps/baseline-mortgage/src/test/java/controls/*; control_owner approval by Bao Tran (controls-office, outside the author's lending-eng team) on head 86cce08."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket type is standard and the change is not an emergency, so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; no deviation from a product obligation was found that would need one."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantFields.java, NpiRegistry.java, Retention.java or the control fixtures, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change adds coapplicant_tax_id as an NPI field. It is sealed at rest, purged with other NPI, and the exhaustive ENC-1 control passed on the head commit. All process records are in order: approved ticket with full component coverage, independent code, security and control-owner approvals on the head commit, and a green CI run on the head commit. However, the change alters the NPI disposal path (Retention.java and the registry it iterates), and RET-1 requires exhaustive evidence while the only registered RET-1 control test is a sample. Since RET-1 cannot be established at the required strength and nothing is violated, the decision is HOLD.",
+  "meta": {
+    "elapsed_s": 106.98,
+    "tokens_in": 605508,
+    "tokens_out": 9872,
+    "usd": 0.651685,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 9872,
+      "cache_read_input_tokens": 536096,
+      "cache_creation_input_tokens": 69378
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6516852,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

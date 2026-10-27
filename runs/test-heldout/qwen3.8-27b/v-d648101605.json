@@ -1,0 +1,86 @@
+{
+  "variant": "v-d648101605",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change reorders the string in a log.warn call in ApplicantValidator.java but still wraps the NPI value with Mask.npi(value), so no unmasked NPI reaches the log. The masking behavior is unchanged; only the cosmetic ordering of the message is different."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24333 is type 'standard', status 'approved', approved by grace.kim (change_manager), and its components list 'mortgage.cases' which is the component of ApplicantValidator.java per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by declan.farrell@fernbrook.example, who holds the change_approver role for baseline-mortgage and is a different person (p-dfarrell) from the author nneka.okafor (p-nokafor), satisfying independence."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit b87ff96ff7bc3ed7e57948a88e6de85913d7bd24, which is the only commit and the head of the change; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (run.json) targets the final commit b87ff96f…, result 'success', 124 tests with 0 failures, 0 errors, 0 skipped. All registered control tests (AccessMatrix, Approvals, Audit, Encryption, Logging, Retention, Routes, Session, Underwriting) appear and pass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ApplicantValidator.java belongs to component 'mortgage.cases' which is marked security_sensitive: false in components.json, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only apps/baseline-mortgage/src/main/java/mortgage/ApplicantValidator.java, which is not under any protected path in protected-paths.json (controls/*, ci/*, test/controls/*), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24333 is type 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change, so no exception is needed; the existing exceptions in the register are unrelated (SES-1/payments, LOG-1/mortgage.logging legacy import, MFA-1 withdrawn)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers ApplicantValidator.java or the mortgage.cases component; all ledger entries cover other files (payments.py, audit.py, routes.py, Approvals.java, Underwriting.java, Policy.java), so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1451 is a single-commit, single-line cosmetic change that reorders the string concatenation in a log.warn message inside ApplicantValidator.checkIncome; it still wraps the NPI value with Mask.npi(), so LOG-1 is satisfied. The change does not touch any security-sensitive component, any protected path, or any file covered by prior acceptance-ledger evidence, so no additional security, control-owner, or re-evidence requirements are triggered. All process obligations (ticket, independent approval, approval scope, CI on the final commit, no emergency, no exception, no evidence lapse) are met with adequate records. Decision: ACCEPT.",
+  "meta": {
+    "elapsed_s": 171.56,
+    "tokens_in": 28084,
+    "tokens_out": 4857,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9306bfcff2097bee841ab995690da5e0b415699e62929f44ddb740b588e44f38",
+    "packet_tokens_est": 24767,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16198,
+    "answer_chars": 3307,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.92,
+    "eval_s": 138.6,
+    "total_s": 171.56,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

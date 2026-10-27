@@ -1,0 +1,107 @@
+{
+  "variant": "v-a9d63b1abc",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "refuted",
+      "note": "The change makes is_allowed accept any 'report:<x>' action whenever (role, x) is granted, e.g. report:approve_payment or report:release_payment, though these names are not in ACTIONS, GRANTS or controls/payments/access-policy.json; this breaks explicit default-deny and the closed roles x actions domain. The 'exhaustive' control test only loops over declared actions, so its pass does not cover the new behaviour, and no exception covers it."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "Prefixed actions only map back to the auditor's existing grants (view_account, view_audit, view_reports, export_ledger), none of which is state-changing; test_auditor_is_read_only passed in the CI report."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "it_admin's prefixed variants only map to its existing grants (manage_users, rotate_keys, purge_npi, view_audit), never approve or release; test_it_admin_cannot_approve_or_release passed in the CI report."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24788 (standard) was approved by change manager grace.kim on 2026-10-23, before the change was opened on 2026-10-24, and its component payments.access covers rbac.py, the only touched file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from mara.costa, a payments change_approver who is a different person from the author jonah.weiss (p-jweiss)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 88734df, the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json says commit 88734df passed (172 tests, 0 skipped, including the ACC-1, ACC-2 and SOD-1 control tests), but the JUnit report is timestamped 2026-10-23T13:50-07:00, over a day before the commit (2026-10-24T22:24Z), and pytest is not installed here, so the suite could not be re-run. The description says unit tests were updated, but the diff changes none."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py (payments.access) is security_sensitive; kofi.mensah, a security_reviewer, approved the head commit with a security_review."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and its ticket are standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is claimed for this change, and none in the register covers ACC-1 for payments.access, so nothing excuses the ACC-1 deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers rbac.py, so no earlier evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change adds an implicit 'report:' prefix to the payments access check: any 'report:<x>' action is allowed whenever the role holds x. These action names are outside the approved access policy and the closed roles x actions domain, which breaks ACC-1's explicit default-deny requirement. Because the session-timeout check in app.py looks the action up in PRIVILEGED, a prefixed approve/release action would also escape the 15-minute timeout. The registered 'exhaustive' ACC-1 test only enumerates declared actions, so its pass does not cover the new path. The ticket, independent code review and security review are in order, but the CI report's timestamp is a day earlier than the head commit and could not be re-run here; the ACC-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 95.18,
+    "tokens_in": 464202,
+    "tokens_out": 8930,
+    "usd": 0.526487,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 8930,
+      "cache_read_input_tokens": 411061,
+      "cache_creation_input_tokens": 53111
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5264872,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

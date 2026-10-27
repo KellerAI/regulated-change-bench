@@ -1,0 +1,21 @@
+{
+  "id": "PR-1593",
+  "title": "Statement delivery failures: identify the account",
+  "description": "Operations asked for the payee account on statement delivery failures so they can call the bank.\n\nChanges:\n- Look up the payee in `deliver_statement`\n- Add the account to the failure log entry (logger masks NPI)\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "aisha.bello@fernbrook.example",
+  "branch": "bello/change-699",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "5a442db08c3e45385fae92cd2cec0e1d820399e4",
+  "commits": [
+    {
+      "sha": "5a442db08c3e45385fae92cd2cec0e1d820399e4",
+      "message": "Include the payee account in statement delivery failures",
+      "author": "aisha.bello@fernbrook.example",
+      "at": "2026-10-15T17:15:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24115",
+  "opened_at": "2026-10-15T17:15:00Z"
+}

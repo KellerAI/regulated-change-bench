@@ -1,0 +1,76 @@
+{
+  "variant": "v-36dca5e9e3",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24248 is approved by a change manager and lists components payments.payments and payments.tests, covering all changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval recorded by Mara Costa (change_approver for payments) who is not the author Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only one commit in the PR; the approval applies to the final commit with no subsequent behavioural changes."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for commit 5b61710f succeeded; full test suite (175 tests) passed, including control tests for PAY‑1, PAY‑2 and MC‑1."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "Emergency change lacks a post‑implementation review (pir) approval within 2 business days; no such record is present."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record (evidence/proofs/pay1-required-approvals.json) shows required_approvals matches policy; function unchanged, so evidence remains valid."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Ponens trace (evidence/traces/pay2-release.json) confirms release behavior; release function unchanged, evidence still applies."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test test_maker_cannot_check passed in CI, confirming maker‑checker rule; no change to approve/is_fully_approved logic."
+    }
+  ],
+  "summary": "All product and process obligations except the required post‑implementation review for the emergency deployment (CHG‑7) are satisfied. The missing PIR approval makes the change non‑compliant, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 159.35,
+    "tokens_in": 25617,
+    "tokens_out": 6688,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8ff845d2e3a6f2dba3c033fe6f4fbb96acf4e402d44f9461dce173c4bdcf6def",
+    "packet_tokens_est": 25799,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26001,
+    "answer_chars": 1897,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 26.93,
+    "eval_s": 132.18,
+    "total_s": 159.35,
+    "tokens_est_ratio": 0.969,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1990",
+  "title": "Archive terminal payments",
+  "description": "Keeps the live payments table small for the daily reports.\n\nChanges:\n- Add `Store.archive_payments(status)`\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-217",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "49ff1a527015e62cc1c9d80b4c770d941a7f8505",
+  "commits": [
+    {
+      "sha": "49ff1a527015e62cc1c9d80b4c770d941a7f8505",
+      "message": "Store: archive payments by status",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-25T19:39:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26120",
+  "opened_at": "2026-10-25T19:39:00Z"
+}

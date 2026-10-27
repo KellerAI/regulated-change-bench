@@ -1,0 +1,79 @@
+{
+  "variant": "v-cc4343dea4",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1833 names ticket CHG-24908, approved by change manager Erik Brandt at 2026-10-10T12:17:00Z, before review. Its components (payments.payments, payments.reports, payments.tests) cover memos.py, reports.py, and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author, gave a code_review approval. Independence holds; whether that approval still covers the head commit is CHG-3."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names 3c872df. Later commit e4ac9ec8 adds PREVIEW_MIN_WIDTH to memos.py, which is not a comment, whitespace, or formatting edit, so the approval is void and no replacement approval exists."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on head e4ac9ec8, and the JUnit report shows 174 tests, 0 failures, 0 errors, and 0 skipped, including every registered control test. The change does not touch any product-obligation scope path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "memos.py, reports.py, and the new test are not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24908 is type standard and the change is not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. The expired SES-1 exception is unused here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger coverage is payments.py, audit.py, routes.py, and mortgage files. None of those paths change in this diff, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The treasury totals function and its tests do not touch product-obligation scope, and the ticket, independent reviewer, CI on the head commit, and non-triggering security, control-owner, emergency, exception, and lapse rules are in order. Acceptance still fails CHG-3: Sofia Santos approved only 3c872df, and the later commit adds a new constant in memos.py, which voids that approval. No approval names the head commit, so the change cannot be accepted.",
+  "meta": {
+    "elapsed_s": 116.5,
+    "tokens_in": 43607,
+    "tokens_out": 8483,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "00403df10b4ef7b3c4646a8a42e796e8ae70f77f5cc7c9bf1b7c2407a289dfb4",
+    "packet_tokens_est": 25628,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43607,
+      "outputTokens": 8483,
+      "cacheReadTokens": 202368,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 113158,
+    "duration_api_ms": 113158,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

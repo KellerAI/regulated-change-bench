@@ -1,0 +1,5 @@
+{
+  "tests/controls/test_access_control.py::test_matrix_equals_approved_policy": {"obligation": "ACC-1", "coverage": "exhaustive", "domain": "payments.roles_x_actions"},
+  "tests/controls/test_routes_control.py::test_privileged_routes_require_mfa": {"obligation": "MFA-1", "coverage": "exhaustive", "domain": "payments.routes"},
+  "tests/controls/test_audit_control.py::test_sampled_operations_are_audited": {"obligation": "AUD-1", "coverage": "sample", "domain": "payments.operations: create, approve"}
+}

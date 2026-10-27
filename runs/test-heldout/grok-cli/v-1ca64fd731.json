@@ -1,0 +1,79 @@
+{
+  "variant": "v-1ca64fd731",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25138 is approved by change manager Erik Brandt before review, and its component mortgage.reporting matches PipelineReport.java in controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change_approver and not the author Declan Farrell, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "That approval names 0ab7408a1dac8cf8e31469b2af9042fa1e2f3d34. The later head commit 2ec224617c695b308752946ba57a02202a50afab, made after the approval, aligns the format identifier (FORMAT = \"pipeline/1.1\"), which is not a comment, whitespace, or formatting edit, and there is no new approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-mortgage on the head commit, and the JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped, including every registered mortgage control test. The change does not touch any product-obligation scope path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "PipelineReport.java is mortgage.reporting and is not security_sensitive, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is not under controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and it does not rely on an exception. The register entries are unused here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger path is modified, so prior ledger evidence does not lapse, and this change does not use that evidence."
+    }
+  ],
+  "summary": "The change only adds a public format constant on PipelineReport and does not touch product-control code, protected paths, or a security-sensitive component. The ticket, independent reviewer, and CI run on the head commit are in order. Acceptance still fails CHG-3: Wen Li approved the first commit, and the later commit changes the format identifier without a new approval. The change is rejected.",
+  "meta": {
+    "elapsed_s": 115.06,
+    "tokens_in": 48735,
+    "tokens_out": 9610,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3a68775b7ff855aedaa91d30c3ad520ecfa1582de367dcabcd7c3f63d72ebf37",
+    "packet_tokens_est": 24441,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 48735,
+      "outputTokens": 9610,
+      "cacheReadTokens": 201216,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 111485,
+    "duration_api_ms": 111485,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

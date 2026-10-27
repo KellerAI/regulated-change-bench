@@ -1,0 +1,99 @@
+{
+  "variant": "v-f520f2c997",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "POST /payees/{id}/reopen is bound to manage_payees, which the approved access policy lists as privileged, with mfa=False. The exhaustive control test on the head commit fails and names that route, and no in-scope exception covers it."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "reopen_payee updates only status and closed_at and does not write NPI columns. test_every_npi_field_is_sealed_at_rest passed on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "reopen_payee records an audit event with actor, action, payee target, and clock time, and the other state-changing methods in service.py do the same. The registered audit control test passed and was not skipped."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new UPDATE is a fixed SQL string with the payee id bound as a parameter. test_sql_statements_are_parameterized passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26301 is approved by change manager Erik Brandt on 2026-10-11, before review. Its components match payments.http, payments.routes, payments.service, and payments.store, which cover all four changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos is a payments change_approver and is not the author. Her code_review approval names commit b046f0f1c0e1014582b817c76fd2b30d99f6826e."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change consists of that single commit, and the code_review and security_review approvals both name it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json reports failure for the head commit. The JUnit summary has one failure, tests.controls.test_routes_control#test_privileged_routes_require_mfa, so the full suite is not passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "app.py, routes.py, and store.py are security_sensitive. Kofi Mensah, a security_reviewer who is not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch any path listed in controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record sets emergency to false, so a post-implementation review is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change cites no exception. EXC-0172 is withdrawn and scoped to the mortgage health route, and EXC-0141 is an expired SES-1 exception, so the register does not waive MFA-1 for this route."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Acceptance record ACR-0404 covers routes.py for MFA-1 with exhaustive evidence. Adding the reopen route changes that file's behavior, and the replacement control test on the head commit fails."
+    }
+  ],
+  "summary": "The change adds POST /payees/{id}/reopen for the privileged action manage_payees with MFA turned off. That violates MFA-1, the exhaustive route control test fails on the head commit, and CHG-4 is therefore not met. Prior acceptance of MFA-1 covering routes.py has lapsed under LAP-1 because the new route is a behavior change and the new run does not replace that evidence. The ticket, independent code review, and security review are in place, and the new persistence, audit, and SQL lines meet ENC-1, AUD-1, and SEC-1, but those do not cure the MFA failure.",
+  "meta": {
+    "elapsed_s": 236.03,
+    "tokens_in": 55670,
+    "tokens_out": 15739,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a75ea83026e4b06cc8ff846b39d0bd40397bb13e63306a134217029019d0a666",
+    "packet_tokens_est": 34869,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 55670,
+      "outputTokens": 15739,
+      "cacheReadTokens": 270720,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 232240,
+    "duration_api_ms": 232240,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

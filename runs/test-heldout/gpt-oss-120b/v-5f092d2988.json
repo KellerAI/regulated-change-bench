@@ -1,0 +1,61 @@
+{
+  "variant": "v-5f092d2988",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change allows NPI purge for withdrawn cases even when a legal hold is present, violating the RET-1 statement that NPI must never be purged while a legal hold applies, and no exception record covers this."
+    },
+    {
+      "id": "CHG-1",
+      "status": "open",
+      "note": "Ticket CHG-25519 lists component \"mortgage.retention\", but the components.json does not map Retention.java to that component, so coverage cannot be confirmed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Approvals record shows a code_review approval from Declan Farrell, who has the change_approver role for baseline-mortgage and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval references the exact commit being merged; there are no later commits, satisfying CHG-3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 124 tests passing, including the control test for RET-1, meeting the testing requirement."
+    }
+  ],
+  "summary": "The change violates the NPI retention obligation (RET-1) by allowing purge during a legal hold for withdrawn cases, and there is no approved exception. Although process approvals and testing are in order, the product violation forces rejection.",
+  "meta": {
+    "elapsed_s": 97.24,
+    "tokens_in": 24214,
+    "tokens_out": 5082,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f33d6e7df4323f6c794317e342393a67d68d10b7229830e52c5dfdda043010fb",
+    "packet_tokens_est": 24124,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 20112,
+    "answer_chars": 1429,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.41,
+    "eval_s": 79.59,
+    "total_s": 97.23,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

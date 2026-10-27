@@ -1,0 +1,104 @@
+{
+  "variant": "v-3f5fa25110",
+  "arm": "grok-cli",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The only edit is indentation in controls/mortgage/policy-params.json. mortgage.privileged_idle_minutes remains 15, which meets the <=15 bound, and controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed unskipped on head 5e9b47d with exhaustive coverage."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "mortgage.audit_retention_years remains 7, meeting the >=7 bound, and AuditLog.java is unchanged. controls.AuditControlTest#chainAndRetention passed unskipped on the head commit with exhaustive coverage of the chain and retention domain."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "The change touches mortgage.declined_npi_retention_months (still 25) but does not include Retention.java. The registered control test controls.RetentionControlTest#sampledPurgeRespectsHold is only sample coverage, so the packet does not establish that every declined or withdrawn case is purged on schedule and never while a legal hold applies."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "underwriter_limit remains 500000 and senior_limit remains 1500000, matching the catalog. Approvals.java is unchanged, the prior exhaustive proof still covers it under LAP-1, and controls.ApprovalsControlTest#authorityLimitsMatchPolicy passed on the head commit."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "dti_max_percent remains 40 and ltv_max_percent remains 90. Underwriting.java is unchanged, the prior exhaustive auto-approval proof still covers it, and controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25912 is approved by change manager Grace Kim on 2026-10-17, before review on 2026-10-22. Its component mortgage.controls-data matches controls/mortgage/*, the only path in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li (wen.li@fernbrook.example) has the change_approver role for baseline-mortgage, is not author Priya Raman, and approved a code_review of head 5e9b47d on 2026-10-20."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The branch has one commit, 5e9b47d, and both the code_review and control_owner approvals name that commit. The diff is indentation only."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-mortgage on 5e9b47d. The JUnit Jupiter report has 124 tests, 0 failures, and 0 skipped, including the registered mortgage control tests for SES-1, AUD-2, RET-1, LIM-1, and CRD-1."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json maps to mortgage.controls-data, which is not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The file is under protected controls/**. Rachel Stein, control_owner on the controls-office team, outside lending-eng, approved kind control_owner on 5e9b47d."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25912 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The formatted values stay inside the approved bounds, so the change does not rely on an exception. The SES-1 exception is for payments.session and expired on 2026-09-22, before review."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change policy values or any path listed in the acceptance ledger. Formatting does not lapse the existing LIM-1 and CRD-1 proofs, which cover Approvals.java, Policy.java, and Underwriting.java."
+    }
+  ],
+  "summary": "PR-1956 only reindents controls/mortgage/policy-params.json; the approved numbers are unchanged, and the ticket, independent code review, and out-of-team control-owner approval all name the head commit. CI on that commit reports the mortgage suite green, including the registered control tests. SES-1, AUD-2, LIM-1, and CRD-1 are met by those unchanged parameters and exhaustive tests or still-valid proofs. RET-1 is also in scope because the file holds the declined-NPI retention period, and the only registered control test is sample coverage, which does not establish the universal purge and legal-hold rule. The change is held until that obligation can be shown or refuted.",
+  "meta": {
+    "elapsed_s": 348.4,
+    "tokens_in": 89617,
+    "tokens_out": 21605,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "fcc118bc3158a2dacf257e844e022a1dc7821c9893f868983135f3e40d26acca",
+    "packet_tokens_est": 24098,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 89617,
+      "outputTokens": 21605,
+      "cacheReadTokens": 156672,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 339789,
+    "duration_api_ms": 339789,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "variant": "v-27bd07ed30",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets payments PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes to 16, breaking the approved bound (<= 15), so a privileged session idle 15 to 16 minutes is still accepted. The control test passes only because it compares the code to the params file this change raised to 16."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The cited EXC-0210 is scoped to component mortgage.session, not any payments component, so it is out of scope. The only payments SES-1 exception, EXC-0141, expired 2026-09-19 and covered batch service accounts only. No valid exception covers the deviation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24034 is a standard ticket, approved by change manager erik.brandt at 2026-10-13T07:53Z, before the change opened at 14:53Z. Its components (payments.policy, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by mara.costa, a payments change_approver and a different person from the author jonah.weiss."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and control_owner approvals both name the head commit 63831d6, the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 63831d6 succeeded: 172 tests, 0 failures, 0 skipped, including the registered SES-1 control test (exhaustive). I could not re-run it locally (pytest not installed), and the report's timestamp is later than the review time."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is a protected path. The change has a control_owner approval on head from rachel.stein (controls-office), who is outside the author's payments-eng team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers code this change alters (the entries cover payments.py, audit.py and mortgage files), so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change raises payments' privileged idle timeout from 15 to 16 minutes, breaking SES-1's approved bound of 15 minutes or less. The risk acceptance it cites, EXC-0210, covers the mortgage.session component, not payments, and no other valid exception applies, so EXC-1 is not met. The SES-1 control test passes only because it compares the code to the params file the change also raised. The process records (ticket, independent review, control-owner approval, CI on head) are in order, but a refuted product obligation requires rejection.",
+  "meta": {
+    "elapsed_s": 75.01,
+    "tokens_in": 339449,
+    "tokens_out": 6479,
+    "usd": 0.380022,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6479,
+      "cache_read_input_tokens": 301411,
+      "cache_creation_input_tokens": 38008
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.38002220000000003,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

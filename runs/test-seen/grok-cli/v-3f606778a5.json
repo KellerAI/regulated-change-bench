@@ -1,0 +1,89 @@
+{
+  "variant": "v-3f606778a5",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "deliver_statement now logs payee.account_number on the statement-delivery error path under the key account. account_number is NPI, the change's purpose is to identify that account, no test file was updated, and the only LOG-1 control test is a sample that does not show this entry is masked. No exception covers it."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The edited function still records an audit event with actor, action deliver_statement, target payee id, and the clock time after a successful send. The sampled audit control test passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-24822 is approved by change manager Erik Brandt before review and its component payments.service matches the only file touched, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author Sofia Santos, approved the code review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 8e1a917808c61626c329218be5d941e4e1d4b0e6, which is the only and final commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 172 tests with no failures, errors, or skips, including the registered AUD-1 and LOG-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "service.py is component payments.service, which is not marked security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Logging the account number deviates from LOG-1, and the register has no approved, unexpired exception for LOG-1 on payments. EXC-0167 is mortgage.logging only; EXC-0141 is expired and for SES-1; EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance-ledger entries cover payments.py, audit.py, routes.py, and mortgage underwriting and approval code, none of which this commit changes."
+    }
+  ],
+  "summary": "The change adds the payee account number to the statement-delivery failure log in payments service.py. That is nonpublic personal information on an error path, which LOG-1 forbids, and no valid exception authorizes it. Change-ticket, independent approval, commit coverage, CI, and the other process checks are in order, and the successful delivery path is still audited. The NPI log entry is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 187.56,
+    "tokens_in": 50157,
+    "tokens_out": 12708,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "796c83c94b2782a7ddfdc1c977daa45ba1ebe73c74285231384ef4bf996e3af8",
+    "packet_tokens_est": 26768,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 50157,
+      "outputTokens": 12708,
+      "cacheReadTokens": 193536,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 184128,
+    "duration_api_ms": 184128,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

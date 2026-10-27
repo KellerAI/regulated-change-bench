@@ -1,0 +1,72 @@
+{
+  "variant": "v-32c4de6a27",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24484 is a standard ticket. Change manager erik.brandt approved it on 2026-10-03, before the PR opened on 2026-10-05, and its components [payments.reports] cover the only file touched, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example. The directory lists that address under p-ssantos (Sofia Santos), the author, so it is self-approval and there is no independent change_approver approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The one approval record names the head commit 35e5ad9e and there are no later commits, so it covers what would be merged. That approval is still invalid under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks on head 35e5ad9e with result success, and payments-tests.xml shows 172 tests with 0 failures, errors or skips. The change touches no product-obligation scope, so no extra control tests are required. I could not re-run it (pytest not installed)."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers reports.py and no product-obligation scope includes it, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds one constant (REPORT_FORMAT) to payments/reports.py, a component that is not security-sensitive and not in any product-obligation scope or protected path. The ticket and CI records are adequate. The only code review was approved by s.santos@fernbrook.example, an alias of the author Sofia Santos, so there is no independent approval as CHG-2 requires. The change is rejected until a payments change_approver other than the author approves the head commit.",
+  "meta": {
+    "elapsed_s": 63.48,
+    "tokens_in": 255014,
+    "tokens_out": 5688,
+    "usd": 0.307441,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 23,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 5688,
+      "cache_read_input_tokens": 225284,
+      "cache_creation_input_tokens": 29704
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3074408,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

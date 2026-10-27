@@ -1,0 +1,69 @@
+{
+  "variant": "v-d1223dfdd3",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change adds AppLog.debug on the shared mask_fields path, and both the new single-field unit test and the registered control test_sampled_flows_do_not_log_npi passed. LOG-1 requires exhaustive evidence that no log entry contains unmasked NPI on any path; the registered control is labelled sample, the log-call domain is not closed, and the acceptance ledger has no LOG-1 entry to carry forward."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26743 is named on the change, status approved by change manager grace.kim@fernbrook.example on 2026-10-15 before the 2026-10-22 review, and its components payments.logging and payments.tests cover logs.py and tests/test_log_debug.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (sofia.santos@fernbrook.example) has the payments change_approver role, is not the author Jonah Weiss, and approved a code_review of commit 2436446fbd160a1763d19a8c1544c07060d8a5cd."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and both the code_review and security_review approvals name that same head commit, so nothing after the approval changes behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on commit 2436446fbd160a1763d19a8c1544c07060d8a5cd, and the JUnit digest shows 173 tests, 0 failures, 0 errors, and 0 skipped, including the registered LOG-1 control test_sampled_flows_do_not_log_npi."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "logs.py is component payments.logging and security_sensitive. Kofi Mensah, a security_reviewer for all apps and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change any path covered by the acceptance ledger (payments, audit, routes, or mortgage underwriting and approvals), so those earlier entries have not lapsed. None of them covers LOG-1."
+    }
+  ],
+  "summary": "Process records for this one-commit logging change are in order: the ticket is approved and scoped, independent code and security reviews name the head commit, protected-path and emergency rules are not triggered, and CI shows the payments suite passing on that commit. The change is inside LOG-1 because it adds AppLog.debug. That obligation demands exhaustive evidence, and the packet only has a sample control test plus one new field check, with no ledger entry for LOG-1. The change is rejected because LOG-1 is not shown.",
+  "meta": {
+    "elapsed_s": 189.9,
+    "tokens_in": 41345,
+    "tokens_out": 12766,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0872ac2f4b21d6dc9e0d009d34c46f03f7d523ba0a76d46166eb1afb79638483",
+    "packet_tokens_est": 24879,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41345,
+      "outputTokens": 12766,
+      "cacheReadTokens": 44160,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 186043,
+    "duration_api_ms": 186043,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

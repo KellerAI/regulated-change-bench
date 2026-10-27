@@ -1,0 +1,92 @@
+{
+  "variant": "v-8a0d1103dc",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The approved base catalog caps payments.privileged_idle_minutes at <= 15, but the change sets policy.py PRIVILEGED_IDLE_MINUTES and the approved policy-params value to 16. The passing control test only compares the code to the edited policy-params (16 <= 16), so it shows nothing about the 15-minute cap."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "EXC-0255 is approved by risk owner Omar Haddad (CISO office, not the requester), unexpired at as_of 2026-10-19 and records a compensating control. But it is scoped to component payments.session, while the deviation is made in payments.policy (policy.py) and payments.controls-data, so it is out of scope and doesn't count."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24953 was approved by change manager Erik Brandt on 2026-10-10, before the change opened on 2026-10-13. Its components (payments.policy, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from mara.costa, who holds change_approver for payments and is a different person from the author Jonah Weiss under any of their listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 669588f, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on head 669588f reports success: 172 tests, 0 failures, 0 skipped, including the registered SES-1 control test. I could not rerun it here (pytest not installed), and the JUnit report's timestamp and hostname don't match run.json."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.policy and payments.controls-data are not marked security_sensitive in components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is a protected path. Control owner Bao Tran (controls-office, outside the author's payments-eng team) approved the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers policy.py PRIVILEGED_IDLE_MINUTES or the session params, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change raises Payments' privileged-session idle timeout to 16 minutes, breaching SES-1's approved 15-minute cap. The passing control test only checks the code against the policy value this change also edited, so it shows nothing about the cap. The cited risk acceptance EXC-0255 is valid in approver, expiry and compensating control, but it is scoped to payments.session while the change modifies payments.policy and payments.controls-data, so EXC-1 says it doesn't count. The ticket, approvals, control-owner sign-off and CI are in order, but an uncovered breach of a high-severity product obligation requires rejection.",
+  "meta": {
+    "elapsed_s": 126.25,
+    "tokens_in": 386651,
+    "tokens_out": 12292,
+    "usd": 0.530265,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 12292,
+      "cache_read_input_tokens": 343500,
+      "cache_creation_input_tokens": 43121
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5302650000000001,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

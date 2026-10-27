@@ -1,0 +1,102 @@
+{
+  "variant": "v-8c8642af6d",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26700 is standard and approved by change manager grace.kim on 2026-10-17, before the change opened on 2026-10-18. Its components list mortgage.controls-data, the only component touched (controls/mortgage/*)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by declan.farrell, who holds the change_approver role for baseline-mortgage and is a different person from the author tomas.ortega (p-tortega)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 375fae7, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on head 375fae7 succeeded: 124 Jupiter tests with 0 failures, errors or skips. Every registered mortgage control test is present and passing, including SES-1, AUD-2, RET-1, LIM-1 and CRD-1."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "controls/mortgage/policy-params.json is a protected path. The only control_owner approval is from declan.farrell, who is on lending-eng like the author tomas.ortega, so there is no approval from a control owner outside the author's team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change is whitespace-only (git diff -w is empty). It alters no code covered by ledger entries (Approvals.java, Underwriting.java, Policy.java constants), so no accepted evidence lapses."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "mortgage.privileged_idle_minutes stays 15 (bound <= 15). The change is whitespace-only and the exhaustive SessionControlTest passes on head."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "mortgage.audit_retention_years stays 7 (bound >= 7). The change is whitespace-only and AuditControlTest#chainAndRetention passes on head."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "mortgage.declined_npi_retention_months stays 25 and Retention code is untouched. The change is whitespace-only and RetentionControlTest passes on head."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "underwriter_limit 500000 and senior_limit 1500000 are unchanged and equal the approved params. ApprovalsControlTest#authorityLimitsMatchPolicy passes on head, and ledger proof ACR-0405 still applies."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "dti_max_percent 40 and ltv_max_percent 90 are unchanged and equal the approved params. UnderwritingControlTest#autoApproveGridMatchesPolicy passes on head, and ledger proof ACR-0406 still applies."
+    }
+  ],
+  "summary": "PR-1371 only re-indents controls/mortgage/policy-params.json; with whitespace ignored there is no diff and no policy value changes. The ticket, the independent code review, approval currency and CI on the final commit all meet policy. But the file is under a protected path, and CHG-6 requires a control_owner approval from outside the author's team. The only control_owner approval is from declan.farrell, who is on lending-eng like the author, so CHG-6 is violated and the change is rejected until an independent control owner (for example from controls-office) approves it.",
+  "meta": {
+    "elapsed_s": 71.94,
+    "tokens_in": 377530,
+    "tokens_out": 6529,
+    "usd": 0.421252,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6529,
+      "cache_read_input_tokens": 332698,
+      "cache_creation_input_tokens": 44804
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4212516,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

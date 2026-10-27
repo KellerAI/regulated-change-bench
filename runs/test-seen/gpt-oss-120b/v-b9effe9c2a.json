@@ -1,0 +1,86 @@
+{
+  "variant": "v-b9effe9c2a",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-24606 exists and is approved by the change manager (erik.brandt@fernbrook.example)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Sofia Santos (change_approver) on commit d4ba… is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the only commit in the PR, and no later commits modify behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run (records/ci/run.json) reports failure; test_privileged_routes_require_mfa fails, so the full test suite did not pass on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval by Ines Halvorsen (security_reviewer) for the commit is present."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Exception EXC-0249 for MFA‑1 is approved, unexpired (until 2027‑01‑19) and includes a compensating control."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No evidence used for this change has become stale; acceptance‑ledger entries remain valid."
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new privileged route lacks MFA, but the approved exception EXC-0249 covers this deviation."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The reopen_payee operation calls _audit; the control test test_sampled_operations_are_audited passes in the CI run."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "Store.reopen_payee uses a parameterized SQL UPDATE statement; test_sql_statements_are_parameterized passes."
+    }
+  ],
+  "summary": "The change satisfies all applicable process and product obligations, using an approved exception for the MFA requirement. However, the CI run fails because the privileged‑routes‑require‑MFA test does not pass, violating CHG-4 which requires the full test suite to succeed. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 223.47,
+    "tokens_in": 33953,
+    "tokens_out": 8903,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0424a74bf3dea96a392fe625eba2beec548ebd57f864bf0127939cafa2b2be9c",
+    "packet_tokens_est": 35045,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 35219,
+    "answer_chars": 2183,
+    "done_reason": "stop",
+    "load_s": 3.04,
+    "prompt_eval_s": 34.5,
+    "eval_s": 185.73,
+    "total_s": 223.47,
+    "tokens_est_ratio": 0.951,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

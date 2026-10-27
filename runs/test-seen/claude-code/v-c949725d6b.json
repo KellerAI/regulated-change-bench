@@ -1,0 +1,77 @@
+{
+  "variant": "v-c949725d6b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "Commit 411570a changes required_approvals from `amount >= DUAL_CONTROL_THRESHOLD` to `amount > DUAL_CONTROL_THRESHOLD`, so a payment of exactly 10,000.00 now needs one approver. PAY-1 requires two distinct approvers at or above the approved 10,000.00 threshold, and no exception in the register covers this deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0401 (exhaustive Rocq proof of `required_approvals = 2 iff a >= threshold`, made on d30b2ad) covers payments.py#required_approvals. This change alters that code's behaviour, so the evidence has lapsed, and no new evidence of the same strength was provided."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24576 is a standard ticket, approved by change manager erik.brandt on 2026-10-15, before review. Its components payments.payments and payments.tests cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "There is a code_review approval from mara.costa, a payments change_approver who is a different person from the author sofia.santos according to the directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 411570a56bdc, so it covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run in records/ci/run.json was on 4655e99, not on head 411570a. The later commit changes behaviour (the dual-control comparison), so that run doesn't count, and there is no passing run of the full suite or of the PAY-1 control test on the final commit."
+    }
+  ],
+  "summary": "PR-1442 is described as adding a display helper, but its second commit, 'Simplify threshold check', turns the dual-control comparison from >= into >. A payment of exactly 10,000.00 would then be released with a single approver, which violates PAY-1, and no exception covers it. The earlier exhaustive PAY-1 proof (ACR-0401) has lapsed because the covered code changed, and the only CI run was on the earlier commit, so CHG-4 is not met either. Ticket, independent review and approval-on-head are in order, but the change must be rejected.",
+  "meta": {
+    "elapsed_s": 70.26,
+    "tokens_in": 308478,
+    "tokens_out": 6419,
+    "usd": 0.441358,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 22,
+      "output_tokens": 6419,
+      "cache_read_input_tokens": 256123,
+      "cache_creation_input_tokens": 52333
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.44135759999999996,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

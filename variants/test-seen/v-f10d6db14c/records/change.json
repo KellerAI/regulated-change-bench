@@ -1,0 +1,21 @@
+{
+  "id": "PR-1757",
+  "title": "Emergency: treasury dashboard: released totals per payee",
+  "description": "Emergency: treasury dashboard: released totals per payee.\n\nChanges:\n- Add `reports.released_by_payee`\n- Unit tests\n- Deployed under the emergency procedure\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-393",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "4582c033ee8159d529c85297d049f0cb3f0a0f9d",
+  "commits": [
+    {
+      "sha": "4582c033ee8159d529c85297d049f0cb3f0a0f9d",
+      "message": "Reports: released totals per payee",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-09-29T10:25:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-24709",
+  "opened_at": "2026-09-29T10:25:00Z"
+}

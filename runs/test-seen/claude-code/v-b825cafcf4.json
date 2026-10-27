@@ -1,0 +1,97 @@
+{
+  "variant": "v-b825cafcf4",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "tax_id is added to NpiRegistry.FIELDS, ApplicantFields and the approved mortgage.npi_fields list; CaseStore seals every registry field. The exhaustive control test EncryptionControlTest#everyNpiFieldIsSealedAtRest (approved list plus registry) passed unskipped in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24990 (standard) was approved by change manager erik.brandt on 2026-10-22, before review. Its components (mortgage.cases, mortgage.npi, mortgage.controls-data, mortgage.control-tests) cover the four touched files: ApplicantFields, NpiRegistry, policy-params.json and ControlFixtures."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review was approved by wen.li, who has the change_approver role for baseline-mortgage and is a different person from the author priya.raman (no shared addresses in the directory)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "All three approvals name the head commit cbd638e, the change's only commit, so no later commits exist that could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head cbd638e. The JUnit report has 124 tests with 0 skipped, failed or errored, including every registered mortgage control test and the touched ENC-1 exhaustive test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "NpiRegistry.java (mortgage.npi) is security_sensitive. kofi.mensah, a security_reviewer, approved a security_review on head commit cbd638e."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected paths controls/mortgage/policy-params.json (approved NPI list) and the control-test fixture ControlFixtures.java changed. bao.tran (control_owner, controls-office, outside the author's lending-eng team) approved head commit cbd638e."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. No product-obligation deviation was found, and no withdrawn or expired exception is invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries ACR-0401 to ACR-0406 cover payments payments/audit and mortgage Approvals, Policy and Underwriting, none of which this change modifies, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1388 adds a tax_id applicant field and classifies it as NPI in the code registry and the approved NPI list, so it is sealed at rest, masked in views and included in retention purges. The ticket is approved and covers all touched components. Code, security and control-owner approvals come from properly roled, independent reviewers on the final commit. The head-commit CI run passes the full suite, including the exhaustive ENC-1 control test. I could not run git or re-run CI (both blocked by permissions), so the change's scope comes from the reflog and file timestamps, which show exactly four files written at checkout, matching the ticket components.",
+  "meta": {
+    "elapsed_s": 149.96,
+    "tokens_in": 970755,
+    "tokens_out": 13703,
+    "usd": 0.879035,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 39,
+    "tokens_detail": {
+      "input_tokens": 46,
+      "output_tokens": 13703,
+      "cache_read_input_tokens": 885157,
+      "cache_creation_input_tokens": 85552
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.8790354,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

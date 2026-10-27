@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-26430",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Approval queue clean-up",
+    "components": [
+      "mortgage.approvals",
+      "mortgage.reporting",
+      "mortgage.tests"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-22T14:23:00Z",
+    "risk": "low"
+  }
+]

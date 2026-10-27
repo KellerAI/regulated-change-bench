@@ -1,0 +1,11 @@
+{
+  "protected": [
+    "controls/*",
+    "controls/**",
+    "controls/*/*",
+    "apps/baseline-mortgage/src/test/java/controls/*",
+    "apps/baseline-payments/tests/controls/*",
+    "ci/*"
+  ],
+  "rule": "Changes under these paths need an approval of kind control_owner from someone outside the author's team (CHG-6)."
+}

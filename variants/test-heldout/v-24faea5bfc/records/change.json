@@ -1,0 +1,21 @@
+{
+  "id": "PR-1560",
+  "title": "Successful policy evaluation diagnostics",
+  "description": "Successful policy evaluation diagnostics.\n\nChanges:\n- Include POLICY_SATISFIED in eligible decision responses\n- Preserve policy thresholds and decision branches\n- Existing credit evidence is linked in the acceptance ledger\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "wen.li@fernbrook.example",
+  "branch": "li/change-864",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "bbc68f4288a45824c0a1ff6c976c66cf4955abe7",
+  "commits": [
+    {
+      "sha": "bbc68f4288a45824c0a1ff6c976c66cf4955abe7",
+      "message": "Underwriting: include the successful policy evaluation reason",
+      "author": "wen.li@fernbrook.example",
+      "at": "2026-10-10T14:09:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24054",
+  "opened_at": "2026-10-10T14:09:00Z"
+}

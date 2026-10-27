@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-24248",
+    "type": "emergency",
+    "status": "approved",
+    "summary": "Emergency: payments queue: show approvals remaining",
+    "components": [
+      "payments.payments",
+      "payments.tests"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-11T01:47:00Z",
+    "risk": "low",
+    "deployed_at": "2026-10-12T14:47:00Z"
+  }
+]

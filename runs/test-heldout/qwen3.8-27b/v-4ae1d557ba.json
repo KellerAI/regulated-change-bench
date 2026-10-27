@@ -1,0 +1,106 @@
+{
+  "variant": "v-4ae1d557ba",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26095 is type 'standard', approved by change_manager erik.brandt@fernbrook.example, and its component 'mortgage.controls-data' matches the path controls/mortgage/policy-params.json per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li (wen.li@fernbrook.example) holds the change_approver role for baseline-mortgage and is not the author (Tomas Ortega); her code_review approval targets the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single commit 8231529 is the head; both approvals name this exact commit, so no later commits could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit with 124 tests, 0 failures/errors/skipped. All five control tests whose obligations have policy-params.json in scope (SessionControlTest, AuditControlTest#chainAndRetention, RetentionControlTest, ApprovalsControlTest#authorityLimitsMatchPolicy, UnderwritingControlTest) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched component mortgage.controls-data is marked security_sensitive=false in components.json, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json falls under the protected path 'controls/*/*'; control_owner Rachel Stein (controls-office, outside the author's lending-eng team) approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; CHG-7 does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked by this change; the formatting-only edit does not deviate from any product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff is purely indentation (2-space to 4-space) with every value identical; per change-policy 'formatting edits don't lapse' existing evidence, so the acceptance-ledger entries remain valid."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The value mortgage.privileged_idle_minutes remains 15 (≤ 15 bound); the control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed in CI."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "The value mortgage.audit_retention_years remains 7 (≥ 7 bound); the control test controls.AuditControlTest#chainAndRetention passed in CI."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The value mortgage.declined_npi_retention_months remains 25; the control test controls.RetentionControlTest#sampledPurgeRespectsHold passed in CI."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "underwriter_limit=500000 and senior_limit=1500000 are unchanged; the control test controls.ApprovalsControlTest#authorityLimitsMatchPolicy passed in CI."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "dti_max_percent=40 and ltv_max_percent=90 are unchanged; the control test controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passed in CI."
+    }
+  ],
+  "summary": "PR-1308 is a pure whitespace/indentation reformatting of controls/mortgage/policy-params.json (2-space to 4-space) with no value or semantic change. All process obligations are satisfied: the ticket is approved and scoped correctly, an independent change_approver and a control_owner (outside the author's team) approved the sole head commit, CI passed all 124 tests including every control test for obligations whose scope includes the changed file, and no security-sensitive or emergency conditions apply. Because the edit is formatting-only, LAP-1 confirms existing ledger evidence is not lapsed. Every applicable product obligation (SES-1, AUD-2, RET-1, LIM-1, CRD-1) retains its approved values and its control test passed. Accept.",
+  "meta": {
+    "elapsed_s": 155.01,
+    "tokens_in": 27777,
+    "tokens_out": 4467,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "d2daca81b01db707e990e8da1395df6ce0155be2d5da2ae73c13df2663f7e3c7",
+    "packet_tokens_est": 24101,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12504,
+    "answer_chars": 3803,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.48,
+    "eval_s": 122.5,
+    "total_s": 155.0,
+    "tokens_est_ratio": 1.123,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "reviewer": "declan.farrell@fernbrook.example",
+    "kind": "code_review",
+    "decision": "approved",
+    "commit": "8036d9c78103d9cdc4658a0c949220391497c222",
+    "at": "2026-10-14T17:35:00Z"
+  }
+]

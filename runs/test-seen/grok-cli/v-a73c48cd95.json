@@ -1,0 +1,99 @@
+{
+  "variant": "v-a73c48cd95",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "POST /payees/{id}/reopen is registered for privileged action manage_payees with mfa=False, so the route is served without multi-factor authentication. EXC-0220 covers that path only for the reconciliation batch account, and neither the route nor the handler enforces that limit; the exhaustive control test fails on this route."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "reopen_payee records an audit event with the actor, action reopen_payee, payee target, and clock time, consistent with the other state-changing methods in service.py. The registered sample audit control test passed on the head commit."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "reopen_payee updates only status and closed_at and does not write NPI columns. Existing payee persistence still seals account number, routing number, tax id, and date of birth, and the exhaustive sealing control test passed."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The new UPDATE is a fixed SQL string with the payee id bound as a parameter. The exhaustive parameterization control test passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26425 is approved by change manager Erik Brandt on 2026-10-13, before review. Its components cover payments.http, payments.routes, payments.service, and payments.store, which are the four files in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa is a payments change approver and is not the author. Her code_review approval names the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, d49070258cc84ff75f6beb1cf39c8c6de2663bbd. The code review and the security review both name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json reports failure on the head commit. The suite did not pass: tests.controls.test_routes_control#test_privileged_routes_require_mfa failed because POST /payees/{id}/reopen is missing MFA."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches security-sensitive components payments.http, payments.routes, and payments.store. Kofi Mensah, a security reviewer who is not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not change protected paths (controls data, control tests, or CI), so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26425 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "EXC-0220 is approved by risk owner Helena Vasquez, unexpired at the 2026-10-20 review time, and names MFA-1 on payments.routes, but its scope is only the reconciliation batch account. The shipped route turns MFA off for every caller, so the exception is out of scope for the deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Acceptance record ACR-0404 covered routes.py for MFA-1, and this change alters that file, so the earlier evidence lapses. The new CI run does not provide a passing exhaustive control test of the same strength."
+    }
+  ],
+  "summary": "The new reopen route serves privileged action manage_payees without MFA for every caller. Exception EXC-0220 is limited to the reconciliation batch account, and the route does not enforce that limit. CI on the head commit failed the exhaustive privileged-route test, so the prior acceptance evidence for the route table has no passing replacement. The change is rejected.",
+  "meta": {
+    "elapsed_s": 259.8,
+    "tokens_in": 80162,
+    "tokens_out": 15766,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "82252b6ecc4083019d50e14f7c39a89f8b52a3eec41ad7513d4e4f44449ec32e",
+    "packet_tokens_est": 35038,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 80162,
+      "outputTokens": 15766,
+      "cacheReadTokens": 202240,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 256221,
+    "duration_api_ms": 256221,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

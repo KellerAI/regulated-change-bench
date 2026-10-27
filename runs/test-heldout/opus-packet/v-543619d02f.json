@@ -1,0 +1,88 @@
+{
+  "variant": "v-543619d02f",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "In ApplicantValidator.checkIncome the change replaces `Mask.npi(value)` with the raw `value` in a `log.warn` call. Annual income is NPI (ENC-1 statement; `mortgage.npi_fields` includes `annual_income`), so a rejected income value now reaches the application log unmasked."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No exception in the register covers this deviation. EXC-0167 (mortgage.logging) is scoped to a legacy import job writing a masked last-4 of the bank account number, which is a different component and a different behaviour. The LOG-1 deviation therefore has no approved exception."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25973 is standard and approved by grace.kim (change_manager) on 2026-10-10, before the change opened. Its component mortgage.cases covers ApplicantValidator.java, the only file changed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell, who holds change_approver for baseline-mortgage and is a different person from the author, priya.raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 4f1da65b, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head 4f1da65b, run by ci-runner-01 on 2026-10-12. The attached JUnit reports, however, are timestamped 2026-10-23, after the review time, and come from host dev-laptop-7.local. They therefore cannot be tied to this CI run. Their passing `rejectsMalformedNpiWithoutLoggingIt` and `sampledFlowsDoNotLogNpi` results also say nothing about the new raw-income log, since the LOG-1 control test is only a sample."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is mortgage.cases, which is not marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not flagged as an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover Approvals, Underwriting, Policy and payments code, none of which this change touches. No accepted evidence lapses."
+    }
+  ],
+  "summary": "The change removes NPI masking from the annual-income validation log message, so raw income values are written to application logs. This violates LOG-1, and no exception in the register covers it. The description's claim of 'diagnostics' does not excuse logging unmasked NPI. The CI evidence is also inconsistent: the reports are dated after the review time and come from a personal machine. The change is rejected.",
+  "meta": {
+    "elapsed_s": 18.69,
+    "tokens_in": 38966,
+    "tokens_out": 1846,
+    "usd": 0.192784,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3607a30127566cdd011fb802fbd5543d2380fdcbe4ae148eb8fe00a57d499f93",
+    "packet_tokens_est": 24772,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38966,
+      "output_tokens": 1846,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

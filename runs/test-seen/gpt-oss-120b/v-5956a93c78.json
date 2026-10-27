@@ -1,0 +1,76 @@
+{
+  "variant": "v-5956a93c78",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24362 is approved (by erik.brandt, a change manager) and lists components payments.payments and payments.tests, which cover the modified payments code and new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval from Mara Costa (change_approver for payments) is recorded in approvals.json and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval record references the head commit SHA f84f79cb8a31028d61013850b46816e35a7d4031, which is the final commit merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the earlier commit passed all 175 tests; the later commit only adds docstring comments, so the earlier successful run satisfies the testing requirement."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Evidence for PAY-1, PAY-2 and MC-1 (proof record, trace, and control test) remains valid because the change does not modify the covered symbols."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record evidence/pay1-required-approvals.json shows required_approvals matches the approved dual‑control threshold; the new code does not alter required_approvals."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Trace evidence/pay2-release.json demonstrates release idempotence; the change does not affect the release function."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test test_maker_cannot_check (registered in control‑registry.json) passed in the CI run, confirming maker‑checker enforcement remains intact."
+    }
+  ],
+  "summary": "All process obligations (CHG‑1 through CHG‑4 and LAP‑1) are satisfied by the ticket, approvals, CI run and unchanged evidence. Product obligations PAY‑1, PAY‑2 and MC‑1 remain shown by existing proof, trace and control‑test evidence. No applicable obligation is violated, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 191.57,
+    "tokens_in": 26139,
+    "tokens_out": 8549,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ef85559d481ae96c17d41b9fda6a4f975967a456f0f82b4553836a38c92ce59f",
+    "packet_tokens_est": 26264,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 35114,
+    "answer_chars": 2152,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 19.16,
+    "eval_s": 172.17,
+    "total_s": 191.57,
+    "tokens_est_ratio": 0.971,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

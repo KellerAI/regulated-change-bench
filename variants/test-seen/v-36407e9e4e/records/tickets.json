@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-26707",
+    "type": "emergency",
+    "status": "approved",
+    "summary": "Emergency: rate quote: supported terms helper",
+    "components": [
+      "mortgage.servicing",
+      "mortgage.tests"
+    ],
+    "requested_by": "declan.farrell@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-23T13:08:00Z",
+    "risk": "low",
+    "deployed_at": "2026-10-23T18:08:00Z"
+  }
+]

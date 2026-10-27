@@ -1,0 +1,66 @@
+{
+  "variant": "v-63f9400c3e",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds a new NPI field (coapplicant_tax_id) but no evidence shows it is encrypted at rest; the NPI field list in policy-params and NpiRegistry is unchanged, so the new field is not covered by the encryption control."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "RetentionControlTest passes in the CI run, confirming that the new field is removed during NPI purge as required."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "A change ticket (CHG-25472) exists and is approved (see tickets.json and change.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval by declan.farrell (who has the change_approver role and is not the author) is recorded in approvals.json."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only a single commit is present; the existing approval therefore covers the merged commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run succeeded with all tests passing, including the control tests for ENC‑1 and RET‑1, satisfying the testing requirement."
+    }
+  ],
+  "summary": "While the change satisfies all process obligations and passes retention testing, it introduces a new NPI field without demonstrated encryption at rest, violating ENC‑1. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 155.4,
+    "tokens_in": 25557,
+    "tokens_out": 8283,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "15bf58c99ea781ee23bc2988108619bb87665708feed66bbb04cae2ed4ac1033",
+    "packet_tokens_est": 25745,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 33569,
+    "answer_chars": 1501,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.59,
+    "eval_s": 136.58,
+    "total_s": 155.4,
+    "tokens_est_ratio": 0.968,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

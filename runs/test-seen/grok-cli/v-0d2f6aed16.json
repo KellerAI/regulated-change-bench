@@ -1,0 +1,79 @@
+{
+  "variant": "v-0d2f6aed16",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24309 is approved by change manager Erik Brandt (2026-10-24T16:35:00Z) before review. Its components, mortgage.reporting and mortgage.tests, cover PipelineReport.java and PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from wen.li@fernbrook.example, the author. CHG-2 requires a baseline-mortgage change_approver who is not the author, and a self-approval does not count."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That approval names head commit 96a7f38e636b1da9c1fab373e0fd77fce528a65c, the only commit on the change, so no later commit changes behavior after the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success for ci/run-tests.sh baseline-mortgage on the head commit. The JUnit report shows 125 tests, 0 failures, 0 errors, and 0 skipped, including PipelineTotalTest and the registered mortgage control tests. The diff does not touch any product-obligation scope path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed files map to mortgage.reporting and mortgage.tests, both marked security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected paths (controls data, control tests, or CI), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and no exception is relied on. The expired SES-1 exception and the withdrawn MFA-1 exception are unused."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change behavior of any path covered by the acceptance ledger, so prior ledger evidence does not lapse and is not needed for this change."
+    }
+  ],
+  "summary": "The change adds PipelineReport.totalCases and a unit test. It does not touch access, session, NPI, audit, payment, or control-protected code, and CI reports the mortgage suite passing on the head commit. It cannot be accepted because the only code review is Wen Li approving their own change. CHG-2 requires an independent change approver for baseline-mortgage.",
+  "meta": {
+    "elapsed_s": 130.98,
+    "tokens_in": 43495,
+    "tokens_out": 10156,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5edf665773da46a5b824d0604a5af3ebd25fea370e75621a77a06ea339794a98",
+    "packet_tokens_est": 24735,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43495,
+      "outputTokens": 10156,
+      "cacheReadTokens": 162304,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 127030,
+    "duration_api_ms": 127030,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "format": "proof-record/v1",
+  "statement_id": "mortgage.auto_approve.v1",
+  "obligation": "CRD-1",
+  "property": "decide(a) is AUTO_APPROVE_ELIGIBLE only if dti(a) <= DTI_MAX_PERCENT and ltv(a) <= LTV_MAX_PERCENT",
+  "status": "proved",
+  "target": {
+    "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+    "path": "apps/baseline-mortgage/src/main/java/mortgage/Underwriting.java",
+    "symbol": "decide"
+  },
+  "checker": {
+    "name": "rocq",
+    "version": "9.1.0",
+    "digest": "sha256:9c1f0a7e4b2d"
+  },
+  "premises": [
+    "DTI_MAX_PERCENT = 40",
+    "LTV_MAX_PERCENT = 90"
+  ],
+  "assumptions": [
+    "BigDecimal arithmetic"
+  ],
+  "checked_by": "bao.tran@fernbrook.example",
+  "checked_at": "2026-09-03T19:09:00Z",
+  "coverage": {
+    "kind": "exhaustive",
+    "domain": "DTI and LTV"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "variant": "v-8db3bb4c2b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "In service.py, LedgerService.amend_memo used to call self._audit(actor, \"amend_memo\", ...) and now only writes an app log line. The memo edit is still saved (payments.amend_memo calls store.set_payment_memo), so a state-changing operation now has no audit event. The sample-only AUD-1 control test checks create, approve and release only, so it can't catch this."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24556 is standard, approved by change manager Grace Kim on 2026-10-17, before the PR opened on 2026-10-19. Its components (payments.service) cover the only touched path, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a payments change_approver who is a different person from the author Sofia Santos (checked against all directory aliases)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit c4ac273, the only commit in the change, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the full payments suite passing on head c4ac273: 172 tests, 0 failures, 0 skipped. That includes the registered AUD-1 control test test_sampled_operations_are_audited, which is labelled sample and doesn't exercise amend_memo."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file is service.py (component payments.service, security_sensitive false), so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths are touched: no controls data, control tests or CI files are in the diff."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No exception in the register covers AUD-1 for payments.service. The deviation from AUD-1 is therefore not covered by any approved exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py, so no earlier evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change swaps the audit call in LedgerService.amend_memo for an application log line, so memo edits, which still change saved payment data, no longer record an audit event. That breaks AUD-1, and no exception covers it. CI is green only because the sample-based AUD-1 control test never edits a memo, and the change description doesn't mention dropping the audit. The ticket, independent review and approval of the final commit are all in order, but the AUD-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 81.52,
+    "tokens_in": 379545,
+    "tokens_out": 7564,
+    "usd": 0.415187,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7564,
+      "cache_read_input_tokens": 340372,
+      "cache_creation_input_tokens": 39141
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.41518740000000004,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-24810",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Rate quote: supported terms helper",
+    "components": [
+      "mortgage.servicing",
+      "mortgage.tests"
+    ],
+    "requested_by": "wen.li@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-26T10:59:00Z",
+    "risk": "low"
+  }
+]

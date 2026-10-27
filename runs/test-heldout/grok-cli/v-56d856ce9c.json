@@ -1,0 +1,89 @@
+{
+  "variant": "v-56d856ce9c",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new log.info line in markDocumentReceived records only the DocumentType and the case id. Those are not NPI fields (SSN, date of birth, income, or account numbers), and the other log calls in CaseService still mask SSN via Mask.npi. controls.LoggingControlTest#sampledFlowsDoNotLogNpi passed unskipped."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "markDocumentReceived authorizes EDIT_CASE, updates the case, and store.save persists that change, but the diff deletes audit.record(actor, Action.EDIT_CASE, caseId, ...). The replacement log line has no actor, action, or audit time. No AUD-1 exception covers mortgage.cases, and the passing AuditControlTest is only sample coverage."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1300 names ticket CHG-24798, approved by change manager Grace Kim on 2026-10-10 before review. Its component mortgage.cases matches CaseService.java in controls/mortgage/components.json, the only file in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code_review on commit 3bf58db4. He has the change_approver role for baseline-mortgage and is a different person from author Wen Li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 3bf58db47e70699aef10cd32dd649fc854fe99ae, and the code_review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success for ci/run-tests.sh baseline-mortgage on the head commit. The JUnit Jupiter report has 124 tests, 0 failures, 0 errors, and 0 skipped, including controls.AuditControlTest#sampledOperationsAreAudited and controls.LoggingControlTest#sampledFlowsDoNotLogNpi."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is mortgage.cases, and components.json marks CaseService.java security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is limited to application code in CaseService.java. It does not change controls data, control tests, policy values, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-24798 is type standard, so the post-implementation review deadline for emergency changes does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. EXC-0167 is limited to a legacy import job on mortgage.logging, EXC-0141 expired on 2026-09-15 before the 2026-10-15 review time, and EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments payments, audit, and routes, plus mortgage Approvals, Underwriting, and Policy. None of those paths change in this diff, so that evidence does not lapse."
+    }
+  ],
+  "summary": "The change replaces the audit event on document receipt with an operational log line. markDocumentReceived still authorizes EDIT_CASE and persists the update, so AUD-1 requires an audit event with actor, action, target, and time, and that event is gone. Ticket, independent approval, CI, and the other process records are in order, and the new log line does not contain NPI. The missing audit is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 221.64,
+    "tokens_in": 50664,
+    "tokens_out": 12424,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "d6c6c0934fab2745276c84c4c86be509322f71dce97706c8c1a73c943c0ea7c3",
+    "packet_tokens_est": 29009,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 50664,
+      "outputTokens": 12424,
+      "cacheReadTokens": 197120,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 218305,
+    "duration_api_ms": 218305,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "variant": "v-5da76ce910",
+  "arm": "ponens-no-trace",
+  "decision": "ACCEPT",
+  "obligations": [],
+  "summary": "Ponens CI action: status `no-trace`, exit 0 (green check). No reasoning trace was published for this change; the action's default (require-trace: false) passes it.",
+  "meta": {
+    "elapsed_s": 0.04,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "usd": 0.0,
+    "error": null,
+    "ponens_version": "ponens 1.22.0",
+    "ponens_commit": "2f91978",
+    "usd_basis": "local (Ponens CLI; Ollama PR agent, local model)",
+    "ci_status": "no-trace",
+    "ci_exit_code": 0,
+    "ci_decision": "ACCEPT",
+    "inconsistent": false
+  }
+}

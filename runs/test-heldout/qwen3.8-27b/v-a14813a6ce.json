@@ -1,0 +1,66 @@
+{
+  "variant": "v-a14813a6ce",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change only alters the MAX_LINES buffer constant in AppLog.java (10,000→12,000); no masking or log-writing logic is affected. The LOG-1 control test (sampledFlowsDoNotLogNpi) passed in CI on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24880 is type 'standard', status 'approved' by change manager Erik Brandt, and its components list includes 'mortgage.logging', which is the component AppLog.java belongs to per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by declan.farrell@fernbrook.example, who has the change_approver role for baseline-mortgage and is not the author (Tomas Ortega)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit b48054d… which is the sole (and head) commit of this change, so it covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit b48054d… with 124 tests, 0 failures, 0 errors, 0 skipped. The registered control test for LOG-1 (controls.LoggingControlTest#sampledFlowsDoNotLogNpi) is present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java belongs to component mortgage.logging which is marked security_sensitive in components.json, so a security_review from a person with the security_reviewer role is required. The only security_review approval is from Declan Farrell, whose directory entry lists roles [engineer, change_approver] — he does not hold the security_reviewer role. No approval from Ines Halvorsen or Kofi Mensah (the only security_reviewers) is present."
+    }
+  ],
+  "summary": "The change is a minor buffer-size tweak to AppLog.java (10,000→12,000 lines) and all product obligations (LOG-1) and most process obligations (CHG-1 through CHG-4) are satisfied. However, CHG-5 is violated: the file resides in a security_sensitive component, mandating a security_review from a qualified security_reviewer, yet the only such approval is from Declan Farrell who lacks that role. No approval from a legitimate security_reviewer (Halvorsen or Mensah) exists in the record set. Because a critical process obligation is refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 104.6,
+    "tokens_in": 27616,
+    "tokens_out": 2625,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "226c470312a6298bde1a24e508c6411efbdc7b4428fd7940e20758f358cad8d4",
+    "packet_tokens_est": 24119,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 7389,
+    "answer_chars": 2289,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.2,
+    "eval_s": 72.37,
+    "total_s": 104.6,
+    "tokens_est_ratio": 1.115,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

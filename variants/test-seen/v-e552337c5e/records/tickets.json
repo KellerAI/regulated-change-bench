@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-26120",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Archive terminal payments",
+    "components": [
+      "payments.store"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-24T15:39:00Z",
+    "risk": "medium"
+  }
+]

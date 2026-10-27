@@ -1,0 +1,61 @@
+{
+  "variant": "v-97cefa920a",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "The change ticket lists components \"mortgage.reports\" and \"payments.tests\" but the modified file apps/baseline-payments/payments/reports.py maps (via components.json) to a component \"payments.reports\" which is not covered by the ticket."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Mara Costa (change_approver for payments) is present and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only one commit is present; the approval therefore covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run reports success with the full test suite (174 tests, 0 failures) including all registered control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "open",
+      "note": "The security sensitivity of the payments.reports component is not documented; no security_review approval is provided, so we cannot determine if a review is required."
+    }
+  ],
+  "summary": "The change is rejected because CHG-1 is violated: the change ticket does not cover the payments.reports component introduced by the change. Other process obligations are satisfied or indeterminate, but the missing ticket coverage is a critical failure.",
+  "meta": {
+    "elapsed_s": 137.01,
+    "tokens_in": 25135,
+    "tokens_out": 5852,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0ad2c0b4f0b7e09a5a4db743892e7f937ee4aa68734b70878e19efc5f1df79a3",
+    "packet_tokens_est": 25052,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22344,
+    "answer_chars": 1404,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.94,
+    "eval_s": 117.75,
+    "total_s": 137.0,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

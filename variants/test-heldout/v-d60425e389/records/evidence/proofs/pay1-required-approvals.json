@@ -1,0 +1,29 @@
+{
+  "format": "proof-record/v1",
+  "statement_id": "payments.dual_control.v3",
+  "obligation": "PAY-1",
+  "property": "required_approvals(a) = 2 iff a >= DUAL_CONTROL_THRESHOLD, for every amount accepted by parse_amount",
+  "status": "proved",
+  "target": {
+    "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+    "path": "apps/baseline-payments/payments/payments.py",
+    "symbol": "required_approvals"
+  },
+  "checker": {
+    "name": "rocq",
+    "version": "9.1.0",
+    "digest": "sha256:9c1f0a7e4b2d"
+  },
+  "premises": [
+    "DUAL_CONTROL_THRESHOLD = 10000.00"
+  ],
+  "assumptions": [
+    "Decimal arithmetic is exact at 2 places"
+  ],
+  "checked_by": "bao.tran@fernbrook.example",
+  "checked_at": "2026-09-03T14:58:00Z",
+  "coverage": {
+    "kind": "exhaustive",
+    "domain": "amount in [0.01, 5000000.00]"
+  }
+}

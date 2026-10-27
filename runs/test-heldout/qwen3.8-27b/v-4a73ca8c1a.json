@@ -1,0 +1,81 @@
+{
+  "variant": "v-4a73ca8c1a",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "NpiRegistry.java and ApplicantFields.java (both in ENC-1 scope) add coapplicant_tax_id to the NPI set. The exhaustive control test everyNpiFieldIsSealedAtRest ran on the final commit with 0 failures, confirming the new field is sealed at rest by NpiVault."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Retention.java is in RET-1 scope and adds an explicit removeApplicantField call for coapplicant_tax_id (redundant with the NpiRegistry.FIELDS loop but harmless). The sample control test sampledPurgeRespectsHold passed on the final commit; the retention policy parameters and legal-hold logic are unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25794 is approved by change manager Erik Brandt and lists components mortgage.cases, mortgage.npi, mortgage.retention, and mortgage.control-tests, covering every component touched by the four changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code-review approval from Declan Farrell (change_approver for baseline-mortgage, team lending-eng) who is a different person from the author Nneka Okafor; the approval is on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single commit 86cce082 is the head commit and the only commit in the change; all three approvals reference this exact SHA, so no post-approval behavioural drift exists."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 86cce082 with result 'success', 124 tests, 0 failures, 0 errors, 0 skipped. The registered control tests for ENC-1 (everyNpiFieldIsSealedAtRest, exhaustive) and RET-1 (sampledPurgeRespectsHold, sample) are both present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "NpiRegistry.java is marked security_sensitive (component mortgage.npi). A security_review approval from Ines Halvorsen (security_reviewer, team platform-security, apps *) on the head commit satisfies the requirement."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java falls under the protected path apps/baseline-mortgage/src/test/java/controls/*. A control_owner approval from Bao Tran (controls-office, outside the author's lending-eng team) on the head commit is present and valid."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers any file modified in this PR (ledger entries cover payments payments/audit/routes and mortgage Approvals/Policy/Underwriting, none of which are touched). No prior evidence is lapsed."
+    }
+  ],
+  "summary": "The change adds a coapplicant_tax_id field to the baseline-mortgage applicant model and correctly registers it as NPI in NpiRegistry, ensuring encryption at rest (ENC-1) and inclusion in the scheduled purge (RET-1). All process obligations are satisfied: the change ticket covers every touched component, an independent code-approver and a security reviewer (required because NpiRegistry is security_sensitive) both approved the head commit, a control_owner approved the change to the protected test-fixture path, and CI on the final commit shows 124 tests passing with zero failures or skips including the relevant exhaustive and sample control tests. No acceptance-ledger evidence is lapsed. The decision is ACCEPT.",
+  "meta": {
+    "elapsed_s": 275.67,
+    "tokens_in": 29594,
+    "tokens_out": 8247,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "94c7e0803a476bfe090bc8c4e63f254417130c5ceac0d90e3755e467f9353532",
+    "packet_tokens_est": 26182,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 27987,
+    "answer_chars": 3320,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.91,
+    "eval_s": 240.73,
+    "total_s": 275.67,
+    "tokens_est_ratio": 1.103,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PR-1430",
+  "title": "Ledger representation metadata",
+  "description": "Ledger representation metadata.\n\nChanges:\n- Publish the downstream format identifier\n- Checks completed during portal integration\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-879",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "d766b7ced8c815a18b02d53f347e79182231a127",
+  "commits": [
+    {
+      "sha": "fad8522141b7b9472db231b43a21c12f3b47b550",
+      "message": "Reports: identify the export format",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-25T17:34:00Z"
+    },
+    {
+      "sha": "d766b7ced8c815a18b02d53f347e79182231a127",
+      "message": "Reports: synchronize the downstream format identifier",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-25T21:26:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24326",
+  "opened_at": "2026-10-25T17:34:00Z"
+}

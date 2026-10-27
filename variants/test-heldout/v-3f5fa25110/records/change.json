@@ -1,0 +1,21 @@
+{
+  "id": "PR-1956",
+  "title": "Policy data formatting",
+  "description": "Policy data formatting.\n\nChanges:\n- Use the shared four-space JSON formatter\n- No policy values changed\n- Acting ownership handled through the directory roles\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-134",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "5e9b47d21165b4c6b115f13d7533031eeee86dd8",
+  "commits": [
+    {
+      "sha": "5e9b47d21165b4c6b115f13d7533031eeee86dd8",
+      "message": "Controls: apply the shared JSON formatter",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-19T18:33:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25912",
+  "opened_at": "2026-10-19T18:33:00Z"
+}

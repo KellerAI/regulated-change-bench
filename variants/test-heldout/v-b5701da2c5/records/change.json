@@ -1,0 +1,21 @@
+{
+  "id": "PR-1282",
+  "title": "Pipeline format identifier",
+  "description": "Pipeline format identifier.\n\nChanges:\n- Identify the report format for portal consumers\n- Review coordinated with the payments engineering lead\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-959",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "d6910aeae572b6f38e6e38a5abe7cdca4874b0a0",
+  "commits": [
+    {
+      "sha": "d6910aeae572b6f38e6e38a5abe7cdca4874b0a0",
+      "message": "Reports: identify the export format",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-01T19:08:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24826",
+  "opened_at": "2026-10-01T19:08:00Z"
+}

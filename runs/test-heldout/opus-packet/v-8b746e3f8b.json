@@ -1,0 +1,83 @@
+{
+  "variant": "v-8b746e3f8b",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24009 (standard). Grace Kim, a change_manager, approved it on 2026-10-21, before review, and its components [payments.reports] cover the only touched file, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "There is a code_review approval from sofia.santos@fernbrook.example, a change_approver for payments. She is a different person from the author, Linh Nguyen (p-lnguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 25bd7d57a5cb, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json records a run on the earlier commit b5b0aff9. The later commit 25bd7d57 ('synchronize the downstream format identifier') edits the REPORT_FORMAT constant, a behaviour change, so the earlier run does not count. The JUnit report also does not appear to come from that CI run: it is timestamped 20:50Z, before the run's 20:58Z start, and its hostname is a personal machine (dev-laptop-7.local), not ci-runner-05."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is payments.reports, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path is touched (controls/, control tests, ci/), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change claims no deviation from any product obligation, and none is relied on, so no exception is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers reports.py, so no existing evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change adds a REPORT_FORMAT constant to payments reports.py, which is in no product obligation's scope. The ticket, independent code review and head-commit approval are all in order. However, the only CI run is on the first commit, and the second commit changes behaviour by touching the format identifier. The attached JUnit report also predates the CI run and came from a personal workstation. CHG-4 therefore lacks a valid passing run on the final commit, and the change is rejected.",
+  "meta": {
+    "elapsed_s": 19.12,
+    "tokens_in": 37984,
+    "tokens_out": 1896,
+    "usd": 0.189856,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "53ba83dc548113533eb6d841afa5c8d5fc6c569e8e0ba1e1bca08c084baf189d",
+    "packet_tokens_est": 24507,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 37984,
+      "output_tokens": 1896,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

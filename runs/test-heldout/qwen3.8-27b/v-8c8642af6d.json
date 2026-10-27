@@ -1,0 +1,101 @@
+{
+  "variant": "v-8c8642af6d",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The privileged_idle_minutes value (15) is unchanged by the formatting-only diff; the control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passes in CI on the final commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "The audit_retention_years value (7) is unchanged; the control test controls.AuditControlTest#chainAndRetention passes in CI on the final commit."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "The underwriter_limit (500000) and senior_limit (1500000) values are unchanged; the control test controls.ApprovalsControlTest#authorityLimitsMatchPolicy passes in CI."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "The dti_max_percent (40) and ltv_max_percent (90) values are unchanged; the control test controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passes in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26700 is approved by change manager Grace Kim; its components list 'mortgage.controls-data' which covers controls/mortgage/policy-params.json per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval is present from Declan Farrell (declan.farrell@fernbrook.example), who has the change_approver role and is a different person from the author Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name commit 375fae784…, which is the sole (and head) commit in this change; no later commits exist to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the pipeline ran on the final commit 375fae784… with 124 tests, 0 failures, 0 errors, 0 skipped; all required control tests for SES-1, AUD-2, LIM-1, and CRD-1 are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only file touched (controls/mortgage/policy-params.json) maps to component 'mortgage.controls-data' which is security_sensitive=false in components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The change touches a protected path (controls/), requiring a control_owner approval from someone outside the author's team. The sole control_owner approval is from Declan Farrell, who is on team 'lending-eng'—the same team as the author Tomas Ortega. No control_owner from controls-office (Rachel Stein or Bao Tran) approved this change."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; CHG-7's post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked; the change is a pure formatting edit that does not deviate from any product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff changes only indentation (2-space to 4-space) with no value or semantic changes; per the change-policy, comment-only or formatting edits do not lapse existing evidence in the acceptance ledger."
+    }
+  ],
+  "summary": "The change is a pure JSON reformatting of controls/mortgage/policy-params.json (2-space to 4-space indentation) with no change to any policy value. All product obligations whose scope includes this file (SES-1, AUD-2, LIM-1, CRD-1) remain satisfied, and CI on the final commit passes all 124 tests including the required control tests. However, CHG-6 is violated: the file is a protected path, and the only control_owner approval (Declan Farrell) comes from the same team (lending-eng) as the author (Tomas Ortega), violating the 'outside the author's team' requirement. No control_owner from the controls-office (Rachel Stein or Bao Tran) approved the change. The change must be rejected pending a control_owner approval from a qualifying reviewer.",
+  "meta": {
+    "elapsed_s": 142.02,
+    "tokens_in": 27804,
+    "tokens_out": 4026,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "dcc41794a7b43aa24ef718ceccae355c0f4d39fcea56307dbe93919148929a28",
+    "packet_tokens_est": 24120,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 11312,
+    "answer_chars": 3800,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.48,
+    "eval_s": 109.51,
+    "total_s": 142.02,
+    "tokens_est_ratio": 1.123,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

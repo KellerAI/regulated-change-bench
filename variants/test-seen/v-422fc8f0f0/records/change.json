@@ -1,0 +1,21 @@
+{
+  "id": "PR-1729",
+  "title": "Privileged idle timeout 10 minutes",
+  "description": "Security asked for a shorter privileged window.\n\nChanges:\n- `PRIVILEGED_IDLE_MINUTES` to 10\n- Approved parameter updated\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-966",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "6e2f6a6f90fa033403ad55a9d31dde880c36e3b8",
+  "commits": [
+    {
+      "sha": "6e2f6a6f90fa033403ad55a9d31dde880c36e3b8",
+      "message": "Set privileged idle timeout to 10 minutes",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-04T17:03:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25615",
+  "opened_at": "2026-10-04T17:03:00Z"
+}

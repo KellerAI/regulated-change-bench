@@ -1,0 +1,76 @@
+{
+  "variant": "v-bcda0f91ad",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test `test_maker_cannot_check` passed in the CI run, providing exhaustive evidence that the maker‑checker rule is enforced."
+    },
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "The code now uses `>` instead of `>=` for the dual‑control threshold, violating the obligation that payments at or above the threshold need two approvals; the prior proof record applies only to an earlier commit and does not cover this change."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Existing ponens‑trace evidence and the control test for release idempotence remain valid and passed, satisfying the release‑once requirement."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG‑25976 exists, is approved by a change manager, and lists the affected components, fulfilling the change‑ticket requirement."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval from Mara Costa (who has the `change_approver` role for payments) is recorded, meeting the independent‑approval rule."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is attached to the head commit and there are no later commits that alter behaviour, so the approval covers the merged change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "No CI run was recorded for the final commit; the only CI run targets an earlier commit, and the later commit changes behaviour, violating the testing‑on‑final‑commit requirement."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "The prior acceptance‑ledger proof for PAY‑1 is now stale due to the behaviour change, and no new evidence was submitted, breaching the evidence‑lapse obligation."
+    }
+  ],
+  "summary": "The change violates PAY‑1 by using an incorrect comparison operator, lacks CI evidence for the final commit (CHG‑4), and the previous proof for PAY‑1 has lapsed without replacement (LAP‑1). With multiple refuted obligations, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 204.33,
+    "tokens_in": 25789,
+    "tokens_out": 8816,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8314aa1d2442c61a5a89292fff0afb4a38d47413afea1dbef4b89800e8ad3961",
+    "packet_tokens_est": 25939,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 35889,
+    "answer_chars": 2200,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 26.83,
+    "eval_s": 177.28,
+    "total_s": 204.33,
+    "tokens_est_ratio": 0.97,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

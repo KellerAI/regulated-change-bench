@@ -1,0 +1,79 @@
+{
+  "variant": "v-a38dcbb73a",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26734 is approved by change manager Erik Brandt on 2026-10-07, before review, and its components payments.payees and payments.tests cover directory.py and the new test."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from Mara Costa, the author. Self-approval does not count, and no other payments change_approver approved the commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 55b93edcbc24e783b2c3c391032e999541833057, and the recorded approval names that commit, so there is no later commit that voids coverage."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 173 tests, 0 failures, 0 errors, and 0 skipped, including every registered payments control test. The change does not touch a product-obligation scope path or closed domain."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "directory.py is payments.payees and the test is payments.tests; both are marked not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected paths (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, so no exception is required. Existing register entries are unused by this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger covers (payments.py, audit.py, routes.py, and mortgage underwriting/approvals) are unchanged by this diff, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change only adds charity to the payee category list and a unit test. The ticket, CI on the head commit, and the conditional security, control-owner, emergency, exception, and evidence-lapse rules are in order. It cannot be accepted because the sole code review is Mara Costa approving her own change, which CHG-2 does not allow.",
+  "meta": {
+    "elapsed_s": 96.39,
+    "tokens_in": 55901,
+    "tokens_out": 6399,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "436f84ce3cac1e0de84d24bdb0a3e7c5efdc9f46a969caa6fa1c8e675d8ed9f9",
+    "packet_tokens_est": 24779,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 55901,
+      "outputTokens": 6399,
+      "cacheReadTokens": 177664,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 92984,
+    "duration_api_ms": 92984,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

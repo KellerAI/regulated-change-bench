@@ -1,0 +1,76 @@
+{
+  "variant": "v-ca3dc90e42",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "Control test test_integrations_use_tls passed in the CI run, confirming the new integration URL uses HTTPS as required."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "Control test test_integrations_are_inventoried passed, verifying the new integration appears in the asset‑inventory JSON."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24542 is approved, lists components payments.integrations and payments.controls-data, and is approved by a change manager."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Sofia Santos, who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the only commit in the PR; no later commits modify behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with full test suite (172 tests) passing, including all control tests for touched obligations."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval by Ines Halvorsen, a security_reviewer, covering the security‑sensitive component payments.integrations."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control owner approval by Rachel Stein for the change to controls/payments/asset‑inventory.json, satisfying protected‑path rule."
+    }
+  ],
+  "summary": "All product obligations affected by the change (ENC-2, INV-1) are satisfied by passing exhaustive control tests, and every process obligation (CHG‑1 through CHG‑6) has the required approved records and evidence. No violations are found, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 68.72,
+    "tokens_in": 24831,
+    "tokens_out": 3473,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "19cbc12970ca562f5e72267a8a37c2be69e1e1b7cd74a263fab88e3ebf511d47",
+    "packet_tokens_est": 24772,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 12837,
+    "answer_chars": 1883,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.57,
+    "eval_s": 52.96,
+    "total_s": 68.72,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "variant": "v-beaa211616",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The new rule in retention.py#purge_due skips every closed payee with category 'tax_authority', so their NPI is never purged after the 84-month retention period. RET-1 allows only legal hold to stop a due purge, and the change adds no policy value or legal-hold basis for this category."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from RET-1, but the exception register has no entry for RET-1 or payments.retention. The only entries are EXC-0141 (SES-1, expired), EXC-0167 (LOG-1, mortgage) and EXC-0172 (withdrawn), so nothing makes the deviation acceptable."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26374 is standard and was approved by change manager Erik Brandt at 2026-10-05T02:53Z, before the PR opened. Its component payments.retention covers the only touched file, retention.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa approved the code_review. She is a payments change_approver and a different person from the author, Aisha Bello (none of Bello's addresses match)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 12376ec4, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head 12376ec4 from ci-runner-06 on 2026-10-06. The attached JUnit report, however, is timestamped 2026-10-23, after the review time of 2026-10-08, and comes from host dev-laptop-7.local, so it cannot be tied to that run. Also, no test exercises the new tax_authority branch, although the PR description says unit tests were updated."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path, retention.py, maps to payments.retention, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers retention.py, so this change lapses no prior evidence."
+    }
+  ],
+  "summary": "PR-1222 makes the payments retention job skip purging NPI for closed tax-authority payees indefinitely. RET-1 requires closed payee NPI to be purged after the approved retention period, with legal hold as the only exemption, so the change violates it. No approved exception covers RET-1 for payments.retention. Ticket and approvals are in order, but the CI JUnit evidence is itself questionable: it postdates the review time and comes from a personal machine. The change is rejected.",
+  "meta": {
+    "elapsed_s": 18.61,
+    "tokens_in": 37199,
+    "tokens_out": 1861,
+    "usd": 0.186016,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b702d7bf7bd58d242b84113bf88e4c2098eca4e3a022fa1080c9affea0e2b6d6",
+    "packet_tokens_est": 24022,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 37199,
+      "output_tokens": 1861,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

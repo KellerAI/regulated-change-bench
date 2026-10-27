@@ -1,0 +1,56 @@
+{
+  "variant": "v-3bce8a4ed9",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24301 lists only component \"mortgage.reporting\" but the change also modifies DocumentChecklist.java, which belongs to component \"mortgage.servicing\"; the ticket does not cover all touched components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Declan Farrell (role change_approver) is recorded and Declan is not the author, satisfying the independent approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the final commit (b14cc87b...), so it covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with the full test suite passing; no product obligations are affected, so required control tests are satisfied."
+    }
+  ],
+  "summary": "The change fails CHG-1 because the change ticket does not list the mortgage.servicing component affected by DocumentChecklist.java. All other process obligations are met, but the missing component coverage is a critical violation, leading to rejection.",
+  "meta": {
+    "elapsed_s": 99.59,
+    "tokens_in": 25007,
+    "tokens_out": 5044,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "18ab1b706f4ec85f5a781954e33b45cac9914547b7b9e4b9ce71afa5b08406f3",
+    "packet_tokens_est": 25083,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 20283,
+    "answer_chars": 1207,
+    "done_reason": "stop",
+    "load_s": 3.06,
+    "prompt_eval_s": 17.93,
+    "eval_s": 78.43,
+    "total_s": 99.58,
+    "tokens_est_ratio": 0.972,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

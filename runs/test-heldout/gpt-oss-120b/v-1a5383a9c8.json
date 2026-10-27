@@ -1,0 +1,76 @@
+{
+  "variant": "v-1a5383a9c8",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "Control test `test_matrix_equals_approved_policy` ran in CI and passed, confirming the role‑action matrix in code matches the approved access‑policy JSON."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "Control test `test_auditor_is_read_only` ran in CI and passed, showing the auditor role has no state‑changing actions."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "Control test `test_it_admin_cannot_approve_or_release` ran in CI and passed, verifying the IT admin role cannot approve credit or release payments."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-24563 exists, is approved by a change manager, and is referenced in the change record."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Sofia Santos (has `change_approver` role for payments and is not the author) is recorded."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code‑review approval is tied to the head commit SHA and there are no later commits, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (172 tests, 0 failures) and includes all required control tests for the affected obligations."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approval from Ines Halvorsen (a `security_reviewer`) is recorded for the security‑sensitive component."
+    }
+  ],
+  "summary": "All applicable product and process obligations are satisfied: the access matrix and role restrictions remain correct and are verified by passing control tests; the change ticket, independent code review, security review, and full test suite are present and approved. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 113.53,
+    "tokens_in": 24543,
+    "tokens_out": 6084,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e8baf8d6bf4d61846edca11e29ae9379d5ea2a361a023de585f3f2b049fe8835",
+    "packet_tokens_est": 24411,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24314,
+    "answer_chars": 1973,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.52,
+    "eval_s": 95.85,
+    "total_s": 113.53,
+    "tokens_est_ratio": 0.98,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

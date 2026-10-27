@@ -1,0 +1,88 @@
+{
+  "variant": "v-aefa9ff4be",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds `coapplicant_tax_id` to ApplicantFields.ALL, and a tax identifier is NPI under ENC-1. It is not added to NpiRegistry or to `mortgage.npi_fields` in policy-params, so it goes through the ordinary applicant persistence path and is stored unsealed."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "Retention.purge now also removes `coapplicant_tax_id`, and the legal-hold logic is unchanged. The only evidence is the sample control test sampledPurgeRespectsHold, and the CI reports it appears in have doubtful provenance (see CHG-4)."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The touched ControlFixtures uses AppLog, and the new tax identifier sits outside the NPI registry. Masking and validator logging may not treat it as NPI. The only evidence is a sample logging test with doubtful CI provenance."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26287 is standard and was approved by change manager Erik Brandt on 2026-10-18, before the change opened. Its components (mortgage.cases, mortgage.retention, mortgage.control-tests) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Wen Li, a change_approver for baseline-mortgage who is not the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 387b4f14, which is the only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json claims success on head on ci-runner-05, started 2026-10-21T00:01Z. The attached JUnit reports are timestamped 2026-10-23 on hostname dev-laptop-7.local, so they do not appear to come from that CI run. Passing tests on the final commit cannot be established."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "A protected control-test path (ControlFixtures.java) changed. Bao Tran (control_owner, controls-office, outside lending-eng) approved the head commit."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The register has no approved, unexpired exception for ENC-1 on mortgage.cases or mortgage.npi, so the unsealed tax-identifier field has no valid exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover Underwriting, Approvals, Policy and payments code. None of these is changed by this diff, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds a co-applicant tax identifier, which is NPI under ENC-1, without registering it in NpiRegistry, so it would be persisted unsealed. The bank's approved NPI field list is also not updated, and no exception covers the deviation. Separately, the CI test reports appear to come from a developer workstation two days after the recorded CI run, so testing on the final commit is not established. Because ENC-1 is violated, the change is rejected.",
+  "meta": {
+    "elapsed_s": 28.57,
+    "tokens_in": 40347,
+    "tokens_out": 2848,
+    "usd": 0.218348,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8662525df3a3cd0989be95f4942d1e718e41588dde21bb4eb9036a5ffe442720",
+    "packet_tokens_est": 25740,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40347,
+      "output_tokens": 2848,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

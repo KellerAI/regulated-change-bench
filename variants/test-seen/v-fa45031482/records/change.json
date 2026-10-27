@@ -1,0 +1,21 @@
+{
+  "id": "PR-1831",
+  "title": "Payments queue: show approvals remaining",
+  "description": "Payments queue: show approvals remaining.\n\nChanges:\n- Add `payments.approvals_remaining`\n- Unit tests for single and dual control\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-980",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "d448a69acc81c580691e867067bbcec4ce3eac5c",
+  "commits": [
+    {
+      "sha": "d448a69acc81c580691e867067bbcec4ce3eac5c",
+      "message": "Add approvals_remaining helper for the payments queue",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-24T16:23:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26149",
+  "opened_at": "2026-10-24T16:23:00Z"
+}

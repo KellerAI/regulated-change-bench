@@ -1,0 +1,27 @@
+{
+  "id": "PR-1638",
+  "title": "Memo preview for list views",
+  "description": "Memo preview for list views.\n\nChanges:\n- Add `memos.preview`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-299",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "c1a0175985cb3b8ae25b73d6c15c4c04382c4357",
+  "commits": [
+    {
+      "sha": "b6ebfd6611927ce5a0c2444059eb191fa16f73ba",
+      "message": "Memos: add preview for list views",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-05T19:27:00Z"
+    },
+    {
+      "sha": "c1a0175985cb3b8ae25b73d6c15c4c04382c4357",
+      "message": "Add a minimum preview width",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-05T23:55:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25173",
+  "opened_at": "2026-10-05T19:27:00Z"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1298",
+  "title": "Ledger format identifier",
+  "description": "Ledger format identifier.\n\nChanges:\n- Expose a stable format identifier to the reporting client\n- Peer review completed using the engineering account\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "mara.costa@fernbrook.example",
+  "branch": "costa/change-460",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "92caeedfeb8b636c1a3049a865ce2e691f7950a1",
+  "commits": [
+    {
+      "sha": "92caeedfeb8b636c1a3049a865ce2e691f7950a1",
+      "message": "Reports: identify the export format",
+      "author": "mara.costa@fernbrook.example",
+      "at": "2026-10-04T14:14:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24402",
+  "opened_at": "2026-10-04T14:14:00Z"
+}

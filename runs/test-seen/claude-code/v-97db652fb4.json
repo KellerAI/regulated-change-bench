@@ -1,0 +1,102 @@
+{
+  "variant": "v-97db652fb4",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new log field is keyed `account_number`, which is in npi.NPI_FIELDS. AppLog._emit runs every field through mask_fields, so it is written as ****last4 (empty if the account is null), the bank's standard masked form; no other log call site changed. The registered control test is only a sample and does not cover this failure path, so this rests on code inspection of the masking chokepoint."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "deliver_statement still records its audit event (actor, action, target, clock time) on success. The added get_payee call is a read, so no state-changing operation's auditing changed; the AUD-1 control test passed in the head-commit CI run."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25851 is a standard ticket approved by change manager grace.kim on 2026-10-08, before the change was opened on 2026-10-10. Its components (payments.service) cover the only file touched, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos, a payments change_approver who is a different person from the author aisha.bello under all of the author's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit c7788f1, the change's only commit, so it covers exactly what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful full payments suite on head c7788f1: 172 tests, 0 failures, 0 skipped, including the LOG-1 and AUD-1 control tests. The JUnit timestamp (2026-10-23, local hostname) looks like a report artifact. I could not rerun the suite because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only component touched, payments.service, is not marked security_sensitive in components.json, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No path matching protected-paths.json (controls, control tests, CI) is changed, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not depart from any product obligation and relies on no exception. EXC-0167 is scoped to mortgage.logging and is not used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py; the entries cover payments.py, audit.py, routes.py and mortgage files, all unchanged, so no ledger evidence lapses."
+    }
+  ],
+  "summary": "The change adds the payee account number to the statement-delivery failure log. The log masks it by field name to the last four digits, which is how the bank displays account numbers, so LOG-1 is met; this rests on code inspection because the sample control test does not cover this path and the PR adds no tests despite saying so. The ticket, independent approval on the head commit and passing head-commit CI are all in order. No security, control-owner, emergency or exception requirements are triggered, and no ledger evidence lapses. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 123.98,
+    "tokens_in": 777403,
+    "tokens_out": 11053,
+    "usd": 0.669521,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 31,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 11053,
+      "cache_read_input_tokens": 716357,
+      "cache_creation_input_tokens": 61006
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6695213999999999,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

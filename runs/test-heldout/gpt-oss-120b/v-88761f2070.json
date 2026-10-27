@@ -1,0 +1,66 @@
+{
+  "variant": "v-88761f2070",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "Exhaustive control test controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passed in CI; idle limits still respect the 15‑minute privileged timeout."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25267 is approved by change manager Grace Kim and lists component payments.session, matching the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Sofia Santos (change_approver for payments, not the author) on the final commit is recorded."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "No code‑review approval exists for the earlier commit (4266e5…), and there is no evidence that its changes are only comments/whitespace; thus the required approval does not cover the full change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded; all 172 tests (including control tests) passed, satisfying the testing requirement."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "The component payments.session is marked security_sensitive, but only the earlier commit has a security_review; the final commit that changes token generation lacks a security_review."
+    }
+  ],
+  "summary": "The change passes most product and process obligations, but it lacks required approvals for the earlier commit (CHG-3) and a security review for the final token‑entropy change (CHG-5). Because these critical process obligations are refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 112.59,
+    "tokens_in": 24559,
+    "tokens_out": 6065,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7e73beab2f44a3f6df4d5b5b10b6f1c2ed2352422585543ceb844b72a16dad3c",
+    "packet_tokens_est": 24490,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26347,
+    "answer_chars": 1699,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.56,
+    "eval_s": 94.79,
+    "total_s": 112.58,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

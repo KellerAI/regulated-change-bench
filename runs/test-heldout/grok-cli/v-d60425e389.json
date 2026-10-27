@@ -1,0 +1,84 @@
+{
+  "variant": "v-d60425e389",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The head of session.py still treats a privileged session as inactive once idle time reaches policy.PRIVILEGED_IDLE_MINUTES, and controls/payments/policy-params.json still sets that bound to 15. The registered exhaustive control test tests.controls.test_session_control::test_privileged_idle_timeout_within_policy passed with no skips on the head commit; raising token entropy does not relax the idle limit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25097, which Erik Brandt (change manager) approved on 2026-10-19 before review. Its only component, payments.session, matches the only touched path, apps/baseline-payments/payments/session.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Jonah Weiss, gave a code_review approval on the head commit 9d0c8fa93f751a7adc8da304ad0639ec412e44e3."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit, so it covers the merged tree. The later commit is itself the approved commit, not a follow-up after that code review."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on head 9d0c8fa93f751a7adc8da304ad0639ec412e44e3. The JUnit report has 172 tests, 0 failures, and 0 skipped, including the unskipped exhaustive SES-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "session.py is security_sensitive (payments.session), so a security_review from a security_reviewer is required and must follow the CHG-3 commit rule. Kofi Mensah's security_review is on 63e6817956f36f0fba07d5b059368b19a173bb69; the later commit changes bearer-token behavior (token_urlsafe(24) to token_urlsafe(32)), which voids that approval, and no security_review names the head."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected paths (controls data, control tests, or CI), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25097 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from SES-1. EXC-0141 (SES-1, payments.session) expired on 2026-09-21, before review on 2026-10-21, and is not used."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments, audit, routes, and mortgage underwriting paths, none of which this change modifies, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The idle-timeout control is unchanged and still bounded at 15 minutes, with the exhaustive session control test passing on the head commit. The ticket, independent code review on the head, and payments CI run meet the change-process rules that apply to this non-emergency, non-protected-path edit. The change cannot be accepted because session.py is security-sensitive and the only security review is bound to the earlier commit, which the later entropy change voids.",
+  "meta": {
+    "elapsed_s": 124.35,
+    "tokens_in": 45597,
+    "tokens_out": 9586,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "9f2cca16284eaeb9da1567bccf854f248004d2c6f283ff5e068fa43d512e9f70",
+    "packet_tokens_est": 24494,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 45597,
+      "outputTokens": 9586,
+      "cacheReadTokens": 207232,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 117590,
+    "duration_api_ms": 117590,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

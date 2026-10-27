@@ -1,0 +1,21 @@
+{
+  "id": "PR-1623",
+  "title": "Withdrawn case retention alignment",
+  "description": "Withdrawn case retention alignment.\n\nChanges:\n- Simplify hold handling after a case leaves the active pipeline\n- Keep the established retention interval\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-908",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "3219e97f6964d5ee0874d18dbc9c524f4f1e8a56",
+  "commits": [
+    {
+      "sha": "3219e97f6964d5ee0874d18dbc9c524f4f1e8a56",
+      "message": "Retention: align withdrawn case handling with closure processing",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-01T18:05:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26090",
+  "opened_at": "2026-10-01T18:05:00Z"
+}

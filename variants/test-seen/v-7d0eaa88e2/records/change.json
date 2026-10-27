@@ -1,0 +1,21 @@
+{
+  "id": "PR-1966",
+  "title": "Employee payees follow the hr disposal schedule",
+  "description": "Adjusts which closed payees the retention job purges.\n\nChanges:\n- Category rule in `purge_due`\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "linh.nguyen@fernbrook.example",
+  "branch": "nguyen/change-694",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "a2e976b95dc05e5c3735b3498d201f1e7901f528",
+  "commits": [
+    {
+      "sha": "a2e976b95dc05e5c3735b3498d201f1e7901f528",
+      "message": "Retention: employee payees follow the HR disposal schedule",
+      "author": "linh.nguyen@fernbrook.example",
+      "at": "2026-10-15T23:59:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25108",
+  "opened_at": "2026-10-15T23:59:00Z"
+}

@@ -1,0 +1,82 @@
+{
+  "variant": "v-1d418cb037",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes to 16, so sessions idle between 15 and 16 minutes are still accepted. The catalog statement forbids accepting a privileged session idle for more than 15 minutes, and no valid exception covers the deviation."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "EXC-0230 matches the obligation (SES-1) and component (payments.session), was approved by risk owner Helena Vasquez and records a compensating control, but it expired on 2026-10-11, before the review time of 2026-10-12T15:34Z. EXC-0141 also expired (2026-09-12) and only covered batch service accounts."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25115 was approved by change manager Grace Kim on 2026-10-07, before the change was opened. Its components (payments.policy, payments.controls-data) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Sofia Santos, a change_approver for payments who is a different person from the author Linh Nguyen under any of her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals (code_review and control_owner) name the head commit df075b3, the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeding on head df075b3. The JUnit report shows 172 tests, 0 failures and 0 skips, including the exhaustive SES-1 control test test_privileged_idle_timeout_within_policy (I could not re-run it because pytest is unavailable). That test passes only because it compares against the modified policy-params value."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path controls/payments/policy-params.json changed an approved policy value. Bao Tran (control_owner, controls-office, outside the author's payments-eng team) approved the head commit."
+    }
+  ],
+  "summary": "The change raises the Payments privileged idle timeout from 15 to 16 minutes in both the code and the approved policy parameters. That deviates from SES-1, which forbids accepting privileged sessions idle for more than 15 minutes. The cited risk acceptance EXC-0230 expired on 2026-10-11, before the 2026-10-12 review, so no valid exception covers the deviation. The ticket, approvals and CI records are otherwise in order, but the passing control test only checks the code against the changed parameter, not against the obligation. The change is rejected.",
+  "meta": {
+    "elapsed_s": 66.15,
+    "tokens_in": 274426,
+    "tokens_out": 6091,
+    "usd": 0.355398,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 22,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 6091,
+      "cache_read_input_tokens": 237193,
+      "cache_creation_input_tokens": 37207
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.35539760000000004,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

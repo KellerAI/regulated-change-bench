@@ -1,0 +1,66 @@
+{
+  "variant": "v-41b7471931",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24209 is approved by a change manager (erik.brandt) and lists component mortgage.cases, which matches the component of the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code‑review approval exists for commit 35208cbd… from declan.farrell, who has the change_approver role and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the only commit in the PR; no later commits change behaviour, so the approval still covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the final commit succeeded (all 124 tests passed) and includes the control tests for LOG-1 and AUD-1."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The added log line only prints document type and case ID (no NPI). The sample control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi passed in CI, providing evidence that NPI is not logged."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The method still records an audit event; the sample control test controls.AuditControlTest#sampledOperationsAreAudited passed, confirming audit logging for state‑changing operations."
+    }
+  ],
+  "summary": "All product obligations affected by the change (LOG-1 and AUD-1) are satisfied by passing control tests, and all relevant process obligations (CHG-1 through CHG-4) are fully met with approved ticket, independent reviewer, appropriate coverage, and successful CI. No violations are detected, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 157.39,
+    "tokens_in": 28115,
+    "tokens_out": 7308,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f1ba61b5af053c881a9864b8cf79191b8f82beb00fdc4c01962a53da18c9f763",
+    "packet_tokens_est": 29029,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 30127,
+    "answer_chars": 1745,
+    "done_reason": "stop",
+    "load_s": 18.46,
+    "prompt_eval_s": 20.85,
+    "eval_s": 117.92,
+    "total_s": 157.39,
+    "tokens_est_ratio": 0.947,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

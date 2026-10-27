@@ -1,0 +1,92 @@
+{
+  "variant": "v-3eb47bf44f",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25173 is approved by Grace Kim (change_manager) at 2026-10-05T08:27Z, before the change opened at 19:27Z. Its components (payments.payments, payments.tests) cover memos.py and tests/test_memo_preview.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (p-ssantos), a payments change_approver and a different person from the author Mara Costa (p-mcosta), approved a code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names b6ebfd6. The later commit c1a0175 adds the code statement `PREVIEW_MIN_WIDTH = 8` to memos.py, which is not a comment, whitespace or formatting edit, so the approval is void and the head commit has no valid approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-payments on head c1a0175. The JUnit report has 174 tests with 0 failures, errors or skips, including test_memo_preview. No product obligation's scope or closed domain is touched, so no specific control tests are required. A local re-run was not possible because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.payments (memos.py) and payments.tests are not security_sensitive in controls/payments/components.json, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only apps/baseline-payments/payments/memos.py and apps/baseline-payments/tests/test_memo_preview.py, neither of which is a protected path, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket type is standard and the change is not flagged emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from any product obligation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers memos.py or the test file, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds an unused-elsewhere memos.preview helper and unit tests. It touches no product-obligation scope, and its ticket, independence, CI-on-head, security, control-path and ledger requirements are all met. However, the only code_review approval is on b6ebfd6, and the later commit c1a0175 adds a new code statement (PREVIEW_MIN_WIDTH = 8), which is not comment, whitespace or formatting. Under CHG-3 that voids the approval, so the commit to be merged is unapproved and the change must be rejected until it is re-approved on c1a0175.",
+  "meta": {
+    "elapsed_s": 71.8,
+    "tokens_in": 372722,
+    "tokens_out": 6388,
+    "usd": 0.412121,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 22,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6388,
+      "cache_read_input_tokens": 329004,
+      "cache_creation_input_tokens": 43688
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4121208,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

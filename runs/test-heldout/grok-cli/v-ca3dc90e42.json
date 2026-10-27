@@ -1,0 +1,89 @@
+{
+  "variant": "v-ca3dc90e42",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The change adds payment-advice with base URL https://advice.fernbrook.example/v1, and every entry in INTEGRATIONS uses https. The exhaustive control test test_integrations_use_tls is in the passing, unskipped payments suite on commit c68440d."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "payment-advice is in the asset inventory with owner payments-operations and data classification npi, and the host matches the registry URL. The other three integrations remain listed the same way, and exhaustive test test_integrations_are_inventoried passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24542, which change manager Grace Kim approved on 2026-10-12, before review. Its components payments.integrations and payments.controls-data cover integrations.py and controls/payments/asset-inventory.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author Mara Costa, gave a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, c68440d, and the code review, security review, and control-owner approvals all name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-payments on c68440d. The JUnit report has 172 tests, 0 failures, and 0 skipped, including the exhaustive ENC-2 and INV-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security-sensitive. Ines Halvorsen, a security reviewer, approved a security_review of c68440d."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected controls path. Rachel Stein, a control owner on the controls-office team rather than the author's payments-eng team, approved that commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24542 is type standard and the change record is not emergency, so a post-implementation review is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The head code meets ENC-2 and INV-1, and the change does not rely on an exception. The register's other exceptions are unused, withdrawn, or outside this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change the files or symbols covered by the acceptance ledger. ENC-2 and INV-1 are evidenced by the suite on the final commit."
+    }
+  ],
+  "summary": "The change registers the payment-advice gateway over HTTPS and adds a matching inventory entry with an owner and an npi classification. Ticket coverage, independent code approval, security review, and an out-of-team control-owner approval all name the only commit. Payments CI on that commit passed with no skips, including the exhaustive integration control tests, and the change does not lapse prior evidence or depend on an exception.",
+  "meta": {
+    "elapsed_s": 190.64,
+    "tokens_in": 41832,
+    "tokens_out": 12437,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "19cbc12970ca562f5e72267a8a37c2be69e1e1b7cd74a263fab88e3ebf511d47",
+    "packet_tokens_est": 24772,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41832,
+      "outputTokens": 12437,
+      "cacheReadTokens": 221056,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 183013,
+    "duration_api_ms": 183013,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

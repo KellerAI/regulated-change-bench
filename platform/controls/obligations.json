@@ -1,0 +1,983 @@
+{
+  "version": "2026-10-23",
+  "contract": "obligation record v0",
+  "note": "Synthetic bank. Obligations paraphrase and 'map to' public rules; none claims to satisfy a regulation.",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "title": "Access matrix is approved and default-deny",
+      "statement": "Every role and action pair is decided explicitly in code, anything not granted is denied, and the grants equal the approved access policy.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.7(a)(1)-(2)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC6.1, CC6.3",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AccessMatrix.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Role.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Action.java",
+            "controls/mortgage/access-policy.json"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/rbac.py",
+            "controls/payments/access-policy.json"
+          ]
+        }
+      },
+      "domain": {
+        "name": "roles x actions",
+        "source": {
+          "baseline-mortgage": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AccessMatrix.java"
+          ],
+          "baseline-payments": [
+            "apps/baseline-payments/payments/rbac.py"
+          ]
+        },
+        "closed": true
+      }
+    },
+    {
+      "id": "ACC-2",
+      "title": "Auditors are read-only",
+      "statement": "The auditor role holds no state-changing action.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.7(a)(1)-(2)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "PCAOB AS 2201 / AS 2110",
+          "section": "AS 2110 B4; AS 2201 B29",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AccessMatrix.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Action.java",
+            "controls/mortgage/access-policy.json"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/rbac.py",
+            "controls/payments/access-policy.json"
+          ]
+        }
+      },
+      "domain": {
+        "name": "actions",
+        "source": {
+          "baseline-mortgage": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AccessMatrix.java"
+          ],
+          "baseline-payments": [
+            "apps/baseline-payments/payments/rbac.py"
+          ]
+        },
+        "closed": true
+      }
+    },
+    {
+      "id": "SOD-1",
+      "title": "IT administrators can't approve credit or release payments",
+      "statement": "The IT administrator role can never approve, decline or override credit, or approve or release payments.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "COSO 2013",
+          "section": "Control Activities; Principle 10",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC5.1, CC6.3",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AccessMatrix.java",
+            "controls/mortgage/access-policy.json"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/rbac.py",
+            "controls/payments/access-policy.json"
+          ]
+        }
+      },
+      "domain": {
+        "name": "actions",
+        "source": {
+          "baseline-mortgage": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AccessMatrix.java"
+          ],
+          "baseline-payments": [
+            "apps/baseline-payments/payments/rbac.py"
+          ]
+        },
+        "closed": true
+      }
+    },
+    {
+      "id": "MFA-1",
+      "title": "Privileged routes require MFA",
+      "statement": "Every HTTP route whose action is privileged requires a session that completed multi-factor authentication, and no route is served outside the route table.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.12(a)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.12(b) (CISO-approved compensating controls)",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/Routes.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Route.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/HttpApp.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Action.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Main.java"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/routes.py",
+            "apps/baseline-payments/payments/app.py",
+            "apps/baseline-payments/payments/rbac.py#PRIVILEGED"
+          ]
+        }
+      },
+      "domain": {
+        "name": "routes",
+        "source": {
+          "baseline-mortgage": [
+            "apps/baseline-mortgage/src/main/java/mortgage/Routes.java"
+          ],
+          "baseline-payments": [
+            "apps/baseline-payments/payments/routes.py"
+          ]
+        },
+        "closed": true
+      }
+    },
+    {
+      "id": "SES-1",
+      "title": "Privileged sessions time out within 15 minutes",
+      "statement": "A privileged session idle for more than 15 minutes is no longer accepted.",
+      "app": "both",
+      "form": "parametric",
+      "evidence_required": "exhaustive",
+      "severity": "high",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.7(a)(3) (nearest hook)",
+          "fit": "stretch"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/Session.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/SessionStore.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Policy.java#Policy.PRIVILEGED_IDLE_MINUTES",
+            "controls/mortgage/policy-params.json#mortgage.privileged_idle_minutes"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/session.py",
+            "apps/baseline-payments/payments/policy.py#PRIVILEGED_IDLE_MINUTES",
+            "controls/payments/policy-params.json#payments.privileged_idle_minutes"
+          ]
+        }
+      },
+      "params": {
+        "privileged_idle_minutes_max": 15,
+        "bounds": [
+          {
+            "key": "mortgage.privileged_idle_minutes",
+            "op": "<=",
+            "value": 15
+          },
+          {
+            "key": "payments.privileged_idle_minutes",
+            "op": "<=",
+            "value": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENC-1",
+      "title": "NPI is encrypted at rest",
+      "statement": "Every field holding nonpublic personal information (government identifiers such as SSN or tax id, financial account and routing numbers, date of birth, income) is persisted only in sealed form.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.15(a)",
+          "fit": "direct"
+        },
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.15(b)",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/NpiRegistry.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/NpiVault.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/CaseStore.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/ApplicantFields.java"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/npi.py",
+            "apps/baseline-payments/payments/vault.py",
+            "apps/baseline-payments/payments/store.py",
+            "apps/baseline-payments/payments/models.py"
+          ]
+        }
+      },
+      "domain": {
+        "name": "NPI fields",
+        "source": {
+          "baseline-mortgage": [
+            "apps/baseline-mortgage/src/main/java/mortgage/NpiRegistry.java"
+          ],
+          "baseline-payments": [
+            "apps/baseline-payments/payments/npi.py"
+          ]
+        },
+        "closed": true
+      }
+    },
+    {
+      "id": "ENC-2",
+      "title": "Outbound integrations use TLS",
+      "statement": "Every outbound integration endpoint uses https.",
+      "app": "payments",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.15(a)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC6.7",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/integrations.py",
+            "apps/baseline-payments/payments/transports.py"
+          ]
+        }
+      },
+      "domain": {
+        "name": "integrations",
+        "source": {
+          "baseline-payments": [
+            "apps/baseline-payments/payments/integrations.py"
+          ]
+        },
+        "closed": true
+      }
+    },
+    {
+      "id": "LOG-1",
+      "title": "NPI never reaches application logs",
+      "statement": "No application log entry contains an unmasked NPI value, on any path including error paths.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.15(a) (nearest hook)",
+          "fit": "stretch"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "C1.1",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AppLog.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Mask.java"
+          ],
+          "patterns": [
+            "\\blog\\.(info|warn|warning|error|debug)\\(",
+            "AppLog"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/logs.py",
+            "apps/baseline-payments/payments/npi.py#mask"
+          ],
+          "patterns": [
+            "_log\\.(info|warning|error|debug)\\(",
+            "\\bAppLog\\b"
+          ]
+        }
+      },
+      "domain": {
+        "name": "log call sites",
+        "source": {
+          "baseline-mortgage": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AppLog.java"
+          ],
+          "baseline-payments": [
+            "apps/baseline-payments/payments/logs.py"
+          ]
+        },
+        "closed": false
+      }
+    },
+    {
+      "id": "AUD-1",
+      "title": "State changes are audited",
+      "statement": "Every state-changing operation records an audit event with actor, action, target and time.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.6(a)(1)-(2)",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/CaseService.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/AuditLog.java"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/service.py",
+            "apps/baseline-payments/payments/audit.py"
+          ]
+        }
+      },
+      "domain": {
+        "name": "state-changing operations",
+        "source": {
+          "baseline-mortgage": [
+            "apps/baseline-mortgage/src/main/java/mortgage/CaseService.java"
+          ],
+          "baseline-payments": [
+            "apps/baseline-payments/payments/service.py"
+          ]
+        },
+        "closed": false
+      }
+    },
+    {
+      "id": "AUD-2",
+      "title": "Audit trail is tamper-evident and retained",
+      "statement": "The audit trail is append-only and hash-chained, and events are retained for at least 7 years (the bank's standard; the rule's floors are 5 and 3 years).",
+      "app": "both",
+      "form": "parametric",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.6(b)",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/AuditLog.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/AuditEvent.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Policy.java#Policy.AUDIT_RETENTION_YEARS",
+            "controls/mortgage/policy-params.json#mortgage.audit_retention_years"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/audit.py",
+            "apps/baseline-payments/payments/policy.py#AUDIT_RETENTION_YEARS",
+            "controls/payments/policy-params.json#payments.audit_retention_years"
+          ]
+        }
+      },
+      "params": {
+        "audit_retention_years_min": 7,
+        "bounds": [
+          {
+            "key": "mortgage.audit_retention_years",
+            "op": ">=",
+            "value": 7
+          },
+          {
+            "key": "payments.audit_retention_years",
+            "op": ">=",
+            "value": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "RET-1",
+      "title": "NPI is disposed of on schedule unless on legal hold",
+      "statement": "NPI of declined or withdrawn applications and closed payee accounts is purged after the approved retention period, and never while a legal hold applies.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "high",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.13(b)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "C1.2",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/Retention.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Policy.java#Policy.DECLINED_NPI_RETENTION_MONTHS",
+            "controls/mortgage/policy-params.json#mortgage.declined_npi_retention_months"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/retention.py",
+            "apps/baseline-payments/payments/policy.py#CLOSED_ACCOUNT_NPI_RETENTION_MONTHS",
+            "apps/baseline-payments/payments/store.py#Store.purge_payee_npi",
+            "apps/baseline-payments/payments/store.py#Store.closed_payees_before",
+            "controls/payments/policy-params.json#payments.closed_account_npi_retention_months"
+          ]
+        }
+      }
+    },
+    {
+      "id": "INV-1",
+      "title": "Outbound integrations are inventoried",
+      "statement": "Every outbound integration is listed in the approved asset inventory with an owner and a data classification.",
+      "app": "payments",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "high",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.13(a)",
+          "fit": "direct"
+        },
+        {
+          "framework": "FFIEC IT Handbook: Architecture, Infrastructure, and Operations",
+          "section": "III.B.1",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/integrations.py",
+            "controls/payments/asset-inventory.json"
+          ]
+        }
+      },
+      "domain": {
+        "name": "integrations",
+        "source": {
+          "baseline-payments": [
+            "apps/baseline-payments/payments/integrations.py"
+          ]
+        },
+        "closed": true
+      }
+    },
+    {
+      "id": "SEC-1",
+      "title": "Database statements are parameterized",
+      "statement": "Every SQL statement is a fixed string with values bound as parameters; no statement text is built from data.",
+      "app": "payments",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.8(a)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "V.D.2",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/store.py"
+          ],
+          "patterns": [
+            "\\.execute(many)?\\("
+          ]
+        }
+      },
+      "domain": {
+        "name": "SQL call sites",
+        "source": {
+          "baseline-payments": [
+            "apps/baseline-payments/payments/store.py"
+          ]
+        },
+        "closed": false
+      }
+    },
+    {
+      "id": "MC-1",
+      "title": "Maker-checker",
+      "statement": "Whoever prepared a credit decision or created a payment can't approve it.",
+      "app": "both",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "COSO 2013",
+          "section": "Control Activities; Principle 10",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC5.1, CC6.3",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/Approvals.java"
+          ]
+        },
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/payments.py#approve",
+            "apps/baseline-payments/payments/payments.py#is_fully_approved"
+          ]
+        }
+      }
+    },
+    {
+      "id": "LIM-1",
+      "title": "Approval authority limits",
+      "statement": "Approval authority follows the approved limits (currently: up to 500,000 one underwriter or senior underwriter; up to 1,500,000 a senior underwriter; above that two distinct senior underwriters), and the limits in code equal the approved values.",
+      "app": "baseline-mortgage",
+      "form": "parametric",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "COSO 2013",
+          "section": "Control Activities",
+          "fit": "maps to"
+        },
+        {
+          "framework": "PCAOB AS 2201 / AS 2110",
+          "section": "AS 2201 B30",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/Approvals.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Policy.java#Policy.UNDERWRITER_LIMIT",
+            "apps/baseline-mortgage/src/main/java/mortgage/Policy.java#Policy.SENIOR_LIMIT",
+            "controls/mortgage/policy-params.json#mortgage.underwriter_limit",
+            "controls/mortgage/policy-params.json#mortgage.senior_limit"
+          ]
+        }
+      },
+      "params": {
+        "underwriter_limit": 500000,
+        "senior_limit": 1500000
+      }
+    },
+    {
+      "id": "CRD-1",
+      "title": "Automated credit decision follows approved policy",
+      "statement": "Auto-approval is possible only within the approved DTI and LTV limits (currently 40% and 90%), and the parameters in code equal the approved values.",
+      "app": "baseline-mortgage",
+      "form": "parametric",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "PCAOB AS 2201 / AS 2110",
+          "section": "AS 2201 B29-B30",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-mortgage": {
+          "paths": [
+            "apps/baseline-mortgage/src/main/java/mortgage/Underwriting.java",
+            "apps/baseline-mortgage/src/main/java/mortgage/Policy.java#Policy.DTI_MAX_PERCENT",
+            "apps/baseline-mortgage/src/main/java/mortgage/Policy.java#Policy.LTV_MAX_PERCENT",
+            "controls/mortgage/policy-params.json#mortgage.dti_max_percent",
+            "controls/mortgage/policy-params.json#mortgage.ltv_max_percent"
+          ]
+        }
+      },
+      "params": {
+        "dti_max_percent": 40,
+        "ltv_max_percent": 90
+      }
+    },
+    {
+      "id": "PAY-1",
+      "title": "Dual control on large payments",
+      "statement": "A payment at or above the approved dual-control threshold (currently 10,000.00) needs two distinct approvers, neither of them its creator, and the threshold in code equals the approved value.",
+      "app": "payments",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "COSO 2013",
+          "section": "Control Activities",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC5.1",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/payments.py#required_approvals",
+            "apps/baseline-payments/payments/payments.py#is_fully_approved",
+            "apps/baseline-payments/payments/policy.py#DUAL_CONTROL_THRESHOLD",
+            "controls/payments/policy-params.json#payments.dual_control_threshold",
+            "controls/payments/policy-params.json#payments.dual_control_approvers"
+          ]
+        }
+      },
+      "params": {
+        "dual_control_threshold": "10000.00"
+      }
+    },
+    {
+      "id": "PAY-2",
+      "title": "A payment instruction is released at most once",
+      "statement": "Releasing the same payment instruction again never sends a second disbursement.",
+      "app": "payments",
+      "form": "universal",
+      "evidence_required": "exhaustive",
+      "severity": "critical",
+      "owner": "Controls office",
+      "maps_to": [
+        {
+          "framework": "PCAOB AS 2201 / AS 2110",
+          "section": "AS 2201 .28 (assertions)",
+          "fit": "maps to"
+        }
+      ],
+      "scope": {
+        "baseline-payments": {
+          "paths": [
+            "apps/baseline-payments/payments/payments.py#release",
+            "apps/baseline-payments/payments/store.py#Store.find_release",
+            "apps/baseline-payments/payments/store.py#Store.add_release"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CHG-1",
+      "title": "Change ticket",
+      "statement": "See controls/change-policy.md section CHG-1.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "VII.B.1; VII.B.4(a)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "FFIEC IT Handbook: Architecture, Infrastructure, and Operations",
+          "section": "III.D.1",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC8.1",
+          "fit": "direct"
+        }
+      ]
+    },
+    {
+      "id": "CHG-2",
+      "title": "Independent approval",
+      "statement": "See controls/change-policy.md section CHG-2.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "VII.B.1; VII.B.2(b)-(c)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC8.1",
+          "fit": "direct"
+        }
+      ]
+    },
+    {
+      "id": "CHG-3",
+      "title": "Approval covers what is merged",
+      "statement": "See controls/change-policy.md section CHG-3.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "VII.B.1; VII.B.2(c)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC8.1",
+          "fit": "maps to"
+        }
+      ]
+    },
+    {
+      "id": "CHG-4",
+      "title": "Testing on the final commit",
+      "statement": "See controls/change-policy.md section CHG-4.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "V.B; VII.B.1",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC8.1",
+          "fit": "direct"
+        },
+        {
+          "framework": "PCAOB AS 2201 / AS 2110",
+          "section": "AS 2201 .46-.47",
+          "fit": "maps to"
+        }
+      ]
+    },
+    {
+      "id": "CHG-5",
+      "title": "Security review of sensitive components",
+      "statement": "See controls/change-policy.md section CHG-5.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.8(a)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "IV.D",
+          "fit": "maps to"
+        }
+      ]
+    },
+    {
+      "id": "CHG-6",
+      "title": "Control changes need a control owner",
+      "statement": "See controls/change-policy.md section CHG-6.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "IV.K; VII.B.2(c)",
+          "fit": "maps to"
+        }
+      ]
+    },
+    {
+      "id": "CHG-7",
+      "title": "Emergency changes get a timely post-implementation review",
+      "statement": "See controls/change-policy.md section CHG-7.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "FFIEC IT Handbook: Architecture, Infrastructure, and Operations",
+          "section": "III.D.1",
+          "fit": "maps to"
+        },
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "VII.B.3(c)",
+          "fit": "maps to"
+        }
+      ]
+    },
+    {
+      "id": "EXC-1",
+      "title": "Exceptions",
+      "statement": "See controls/change-policy.md section EXC-1.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "NYDFS 23 NYCRR 500 (as amended 2023)",
+          "section": "500.12(b); 500.15(b)",
+          "fit": "maps to"
+        },
+        {
+          "framework": "AICPA Trust Services Criteria (2017, rev. 2022)",
+          "section": "CC5.1, CC4.2",
+          "fit": "maps to"
+        }
+      ]
+    },
+    {
+      "id": "LAP-1",
+      "title": "Evidence lapses on change",
+      "statement": "See controls/change-policy.md section LAP-1.",
+      "app": "process",
+      "form": "process",
+      "evidence_required": "record",
+      "severity": "critical",
+      "owner": "Change management",
+      "maps_to": [
+        {
+          "framework": "PCAOB AS 2201 / AS 2110",
+          "section": "AS 2201 .60; B29; B33",
+          "fit": "maps to"
+        },
+        {
+          "framework": "FFIEC IT Handbook: Development, Acquisition, and Maintenance",
+          "section": "VII.B.1",
+          "fit": "maps to"
+        }
+      ]
+    }
+  ]
+}

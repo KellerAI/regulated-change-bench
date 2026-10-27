@@ -1,0 +1,59 @@
+{
+  "variant": "v-d8c93cbdf6",
+  "arm": "grok-cli",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25120 is approved by change manager Erik Brandt on 2026-10-04, before the 2026-10-09 review. Its components, payments.payments and payments.tests, cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver, recorded a code_review approval of head commit b314747aa0bb528c735b406bec9d1933de50eeab. She is a different person from author Mara Costa under every directory email."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code review names that commit, so the approval covers the tree that would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success for the head commit on ci-runner-02 starting 2026-10-06, but the JUnit digest is timestamped 2026-10-23 on dev-laptop-7.local, after the review time. Those two records do not establish that the full suite passed in the recorded CI run."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Prior PAY-1 and PAY-2 ledger entries cover required_approvals and release in payments.py. The diff leaves both functions unchanged and only adds approvals_remaining, so that evidence still matches the covered behavior."
+    }
+  ],
+  "summary": "The ticket, independent approval, and commit coverage meet the change-process rules, and the new helper does not alter the dual-control, maker-checker, or release functions already covered by the acceptance ledger. The CI package is not adequate: the passing JUnit summary is from a different host and is dated after review, so it cannot be tied to the recorded runner. The change stays on hold until the suite result is shown for the final commit.",
+  "meta": {
+    "elapsed_s": 227.99,
+    "tokens_in": 48098,
+    "tokens_out": 13663,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e0e29c4ae99be60822c62e6f0e579c4a0f76d31fbf42cad2b6763fc93bef157b",
+    "packet_tokens_est": 25752,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 48098,
+      "outputTokens": 13663,
+      "cacheReadTokens": 202368,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 224324,
+    "duration_api_ms": 224324,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

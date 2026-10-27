@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24115",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Statement delivery failures: identify the account",
+    "components": [
+      "payments.service"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-13T16:15:00Z",
+    "risk": "low"
+  }
+]

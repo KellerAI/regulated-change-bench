@@ -1,0 +1,84 @@
+{
+  "variant": "v-bc90ecbb02",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds tax_id to ApplicantFields.ALL, and ENC-1 treats a tax id as NPI that may be persisted only in sealed form. NpiRegistry and mortgage.npi_fields are unchanged and still omit tax_id, and the passing encryption control test only exhausts the closed npi_registry domain, so the new field is outside the seal."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24639 is approved by change manager Grace Kim before the review time and lists mortgage.cases, the component for ApplicantFields.java, which is the only path the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author, gave a code_review approval of commit 30a528dd9b220204dab88ee42327443fea504a6f."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has one commit, and the code_review approval names that same commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful baseline-mortgage run on the head commit, and the JUnit report shows 124 tests with no failures, errors, or skips, including EncryptionControlTest.everyNpiFieldIsSealedAtRest."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ApplicantFields.java is component mortgage.cases with security_sensitive false, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Leaving a tax id outside the sealed NPI set deviates from ENC-1, and the register has no approved, unexpired exception scoped to ENC-1 and this component with a compensating control."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments and mortgage underwriting and approval paths that this diff does not change, so that prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds tax_id as a field a mortgage case can hold, but it does not add that field to the NPI registry or the approved npi_fields list. ENC-1 treats a tax id as nonpublic personal information that must be stored only in sealed form, and the encryption control test only shows that fields already in the registry are sealed. No exception authorizes that gap. Ticket, independent review, and CI are in order, and security review, control-owner approval, and emergency review are not triggered, but the unsealed tax id blocks acceptance.",
+  "meta": {
+    "elapsed_s": 221.77,
+    "tokens_in": 39700,
+    "tokens_out": 13704,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ea3c0e08e8b05c4dd42066feb8a312c96ac5a13e5fabbbb3c721755c42a2eba3",
+    "packet_tokens_est": 23891,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 39700,
+      "outputTokens": 13704,
+      "cacheReadTokens": 44032,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 217936,
+    "duration_api_ms": 217936,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

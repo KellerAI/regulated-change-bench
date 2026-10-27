@@ -1,0 +1,66 @@
+{
+  "variant": "v-49dd9d30f5",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record evidence/proofs/pay1-required-approvals.json shows that required_approvals matches the approved dual‑control threshold; the CI suite includes the exhaustive control test test_dual_control_grid_matches_policy which passed."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Ponens trace evidence/traces/pay2-release.json demonstrates that release is idempotent, and the control test test_sampled_release_is_idempotent passed; the change only adds a comment and does not alter release logic."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25592 is present, approved by a change manager, and lists component payments.payments which matches the modified file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Sofia Santos (email sofia.santos@fernbrook.example) who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the final commit cde8040ca3460b0b658266f31ff397b357aa8f9b and no later non‑comment changes were made."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run records show a successful pipeline with the full payments test suite (172 tests) passing, including all registered control tests for the touched obligations."
+    }
+  ],
+  "summary": "The change only touches payments/payments.py, affecting dual‑control (PAY‑1) and release idempotency (PAY‑2). Existing exhaustive proofs and control‑test evidence remain valid, and all process obligations (CHG‑1 to CHG‑4) are satisfied by the ticket, independent approval, unchanged behavior, and passing CI. No other obligations apply, so the change can be accepted.",
+  "meta": {
+    "elapsed_s": 116.51,
+    "tokens_in": 25043,
+    "tokens_out": 6288,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "99d6575db149d2bc1839dae18741c4572bfbbf2649d388bff9ccc4ad8d521cc8",
+    "packet_tokens_est": 25231,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24930,
+    "answer_chars": 1910,
+    "done_reason": "stop",
+    "load_s": 0.01,
+    "prompt_eval_s": 18.03,
+    "eval_s": 98.29,
+    "total_s": 116.5,
+    "tokens_est_ratio": 0.968,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

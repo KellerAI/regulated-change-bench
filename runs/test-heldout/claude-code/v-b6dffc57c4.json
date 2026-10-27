@@ -1,0 +1,102 @@
+{
+  "variant": "v-b6dffc57c4",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "service.py:183 now puts the plaintext account_number (decrypted by Store.get_payee; listed in npi.NPI_FIELDS) into the log message string, which AppLog does not mask (only keyword fields go through mask_fields). The only registered LOG-1 control test is labelled 'sample' and doesn't exercise the statement-delivery failure path."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "service.py is in scope. The diff only changes an error-path log line and leaves the deliver_statement audit call unchanged, but the only evidence is the 'sample' control test test_sampled_operations_are_audited, while the obligation requires exhaustive evidence."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The LOG-1 deviation has no valid exception: the only LOG-1 exception, EXC-0167, is scoped to component mortgage.logging, not payments.service."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25835 was approved by change manager grace.kim on 2026-09-30, before the PR opened on 2026-10-01. Its components [payments.service] cover the only changed file, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos, a payments change_approver who is a different person from the author aisha.bello (none of Bello's directory addresses match)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 049526a, the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the full payments suite run on head 049526a with result success: 172 tests, 0 failures, 0 skipped. That includes the registered LOG-1 and AUD-1 control tests (both labelled sample). I could not re-run it locally because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.service, is marked security_sensitive: false in the base components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls data, control tests, CI) are touched; the diff changes only apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py (they cover payments.py, audit.py, routes.py and mortgage files), so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1289 interpolates the payee's decrypted, unmasked account number into the message of an application error log line, and AppLog masks only keyword fields, so NPI reaches the logs on the statement-delivery failure path. This violates LOG-1, and no approved, in-scope exception covers it (EXC-0167 is for mortgage.logging). The ticket, independent code review and CI on the head commit are in order, but CI passed only because the LOG-1 control test is a fixed sample that doesn't exercise this path. The change must be rejected; masking the value or removing it from the message would fix it.",
+  "meta": {
+    "elapsed_s": 89.5,
+    "tokens_in": 447818,
+    "tokens_out": 8411,
+    "usd": 0.504987,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 8411,
+      "cache_read_input_tokens": 396311,
+      "cache_creation_input_tokens": 51477
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5049872,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

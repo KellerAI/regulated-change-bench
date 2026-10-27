@@ -1,0 +1,81 @@
+{
+  "variant": "v-d32f422367",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new payment-advice integration uses https://advice.fernbrook.example/v1, satisfying the TLS requirement. The exhaustive control test test_integrations_use_tls passed in CI."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The new integration is added to asset-inventory.json with owner 'payments-operations' and data_classification 'npi', meeting the obligation's requirement. The exhaustive control test test_integrations_are_inventoried passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24085 is approved by change_manager grace.kim, and its components (payments.controls-data, payments.integrations) cover both files touched by the change."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa@fernbrook.example (change_approver for payments, not the author linh.nguyen) on the head commit satisfies independent approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single commit in the change is the head commit named in all approvals; no later commits exist to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 41a2691 shows 172 tests passing with 0 failures/errors/skipped, including the relevant control tests test_integrations_use_tls and test_integrations_are_inventoried."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched component payments.integrations is security_sensitive; a security_review approval by kofi.mensah (security_reviewer, not the author) on the head commit is present."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change modifies controls/payments/asset-inventory.json (a protected path); control_owner approval by bao.tran (controls-office team, outside the author's payments-eng team) on the head commit is present."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers the two files changed here (integrations.py, asset-inventory.json); all ledger entries cover payments.py, audit.py, routes.py, or mortgage files, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds a single new outbound integration (payment-advice) to the payments application, using HTTPS and registering it in the asset inventory with an owner and NPI data classification. All product obligations directly in scope (ENC-2, INV-1) are satisfied and confirmed by their exhaustive control tests passing in CI. All process obligations (CHG-1 through CHG-6, LAP-1) are met: the ticket is approved with correct components, an independent code_review and security_review and control_owner approval are present from appropriate roles on the final commit, and CI passes on the head commit with zero failures. No exceptions are needed and no prior evidence lapses. The change is accepted.",
+  "meta": {
+    "elapsed_s": 146.23,
+    "tokens_in": 28093,
+    "tokens_out": 4197,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "cf6138235403e96a932c8db3c9e5a9467dc0b913be1720a71b320ae98c1b6aab",
+    "packet_tokens_est": 24772,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13039,
+    "answer_chars": 2863,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.94,
+    "eval_s": 113.27,
+    "total_s": 146.23,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

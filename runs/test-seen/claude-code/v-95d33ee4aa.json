@@ -1,0 +1,67 @@
+{
+  "variant": "v-95d33ee4aa",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24770 (standard) was approved by erik.brandt@fernbrook.example, a change_manager, at 2026-10-12T19:15Z, before the code review at 2026-10-13T03:21Z. Its components mortgage.servicing (RateQuote.java) and mortgage.tests (QuoteTermTest.java) cover both touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from d.farrell@fernbrook.example. The directory lists that address under Declan Farrell (p-dfarrell), the same person as the author declan.farrell@fernbrook.example, so it is a self-approval and no independent change_approver approval exists."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 594c984, which is the change's head and only commit, so it covers what would be merged (it still fails CHG-2 for lack of independence)."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head 594c984 ran ci/run-tests.sh baseline-mortgage with result success. The JUnit reports show 126 tests, 0 failures, 0 errors and 0 skipped, including both QuoteTermTest cases. No product obligation's scope or domain is touched, so no registered control tests are additionally required."
+    }
+  ],
+  "summary": "The change adds a small RateQuote.isSupportedTerm helper and unit tests in the non-security-sensitive mortgage.servicing and mortgage.tests components. It touches no product obligation scope, no protected paths and no ledger-covered code. The ticket is properly approved, and CI on the final commit passed the full suite. However, the only code-review approval comes from d.farrell@fernbrook.example, which the directory lists under the author, Declan Farrell, so CHG-2's independent-approval requirement is violated and the change must be rejected.",
+  "meta": {
+    "elapsed_s": 68.66,
+    "tokens_in": 326250,
+    "tokens_out": 6203,
+    "usd": 0.333054,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6203,
+      "cache_read_input_tokens": 296297,
+      "cache_creation_input_tokens": 29923
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.33305440000000003,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

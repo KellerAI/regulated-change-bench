@@ -1,0 +1,21 @@
+{
+  "id": "PR-1430",
+  "title": "Longer idle timeout for standard sessions",
+  "description": "Longer idle timeout for standard sessions.\n\nChanges:\n- Raise the standard (non-privileged) idle timeout\n- Approved parameter updated\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "declan.farrell@fernbrook.example",
+  "branch": "farrell/change-145",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "ae833f3ababafdcaebbe6ce7c14d10095090c40f",
+  "commits": [
+    {
+      "sha": "ae833f3ababafdcaebbe6ce7c14d10095090c40f",
+      "message": "Sessions: 45 minute idle timeout for standard sessions",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-05T13:50:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25859",
+  "opened_at": "2026-10-05T13:50:00Z"
+}

@@ -1,0 +1,76 @@
+{
+  "variant": "v-f328488b14",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-26118 exists and is approved (records/tickets.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approved by Mara Costa, a change_approver for payments and not the author (records/approvals.json)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only one commit was merged; the existing approval applies to it (approvals reference the commit)."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run reported failure; the test suite did not pass (records/ci/run.json and payments-tests.xml)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approved by Kofi Mensah, a security_reviewer (records/approvals.json)."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Exception EXC-0222 approved by risk_owner (Helena Vasquez) is in effect (records/exceptions.json)."
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The privileged route added is covered by approved exception EXC-0222, providing a compensating control."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "Reopen_payee adds a state‑changing operation with an audit call, but no exhaustive evidence (proof or test) is provided."
+    }
+  ],
+  "summary": "The change fails the mandatory testing requirement (CHG-4) as the CI suite reports a failure, causing a REJECT. Although an exception covers the MFA deviation and other process obligations are satisfied, the lack of full test pass makes the change unacceptable.",
+  "meta": {
+    "elapsed_s": 172.49,
+    "tokens_in": 33966,
+    "tokens_out": 6659,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ea6da72ad879517ff076ec65bca6e5e2d9f915fe88fddf039a4579d9e07471ff",
+    "packet_tokens_est": 35039,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26606,
+    "answer_chars": 1723,
+    "done_reason": "stop",
+    "load_s": 3.08,
+    "prompt_eval_s": 25.35,
+    "eval_s": 143.86,
+    "total_s": 172.49,
+    "tokens_est_ratio": 0.952,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

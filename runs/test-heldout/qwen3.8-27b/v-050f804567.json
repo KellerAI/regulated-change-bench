@@ -1,0 +1,76 @@
+{
+  "variant": "v-050f804567",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change touches audit.py (in AUD-1 scope) but is a purely cosmetic edit (adding parentheses around a single expression). The CI run on the final commit shows test_sampled_operations_are_audited passing with 0 failures/skips, confirming state-changing operations remain audited."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "The change touches the verify method in audit.py (in AUD-2 scope). The edit is formatting-only (redundant parentheses), so the modelcheck evidence in ACR-0402 (covering event_hash and verify at commit d30b2ad) does not lapse under LAP-1. CI confirms test_chain_and_retention passes; retention parameter remains 7 years in policy-params.json."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26502 is type 'standard', status 'approved', approved by grace.kim (change_manager). Its components list ['payments.audit'] covers the only path changed (apps/baseline-payments/payments/audit.py → component payments.audit per components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval is from mara.costa@fernbrook.example, who holds the change_approver role for payments and is not the author (jonah.weiss). The approval is on the head commit 9c0530b."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit in the change is 9c0530b, and both approvals (code_review and security_review) reference that same commit. No later commits exist to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the test suite ran on the final commit (9c0530b) with result 'success'. All 172 tests passed, 0 skipped. The registered control tests for AUD-1 and AUD-2 (the obligations whose scope includes audit.py) are present and passing in the JUnit report."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py belongs to component payments.audit, which is marked security_sensitive. A security_review approval from ines.halvorsen@fernbrook.example (security_reviewer, apps '*') is present on the same commit 9c0530b, satisfying CHG-5."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "ACR-0402 in the acceptance ledger covers audit.py symbols event_hash and verify. The change modifies the verify method but only by adding redundant parentheses (rows[0][0] → (rows[0][0])), which is a formatting edit with no behavioral change. Under the policy, formatting edits do not lapse evidence, so the modelcheck proof remains valid."
+    }
+  ],
+  "summary": "The change is a single-character formatting edit (adding parentheses around an already-parenthesized expression) in the verify method of audit.py. It does not alter behavior. The change has a valid approved ticket covering the correct component, an independent code_review from a change_approver on the same team (but not the author), a security_review from a qualified reviewer (since audit.py is security_sensitive), and CI passes all 172 tests on the final commit including the registered control tests for AUD-1 and AUD-2. The existing modelcheck evidence for AUD-2 (ACR-0402) does not lapse because the edit is formatting-only. All applicable product and process obligations are satisfied; the change is accepted.",
+  "meta": {
+    "elapsed_s": 168.07,
+    "tokens_in": 28088,
+    "tokens_out": 4509,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "770a887ffaa12fd43bb0846997df996f08e2223dd984013a8ac6b683e614457d",
+    "packet_tokens_est": 24869,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 13321,
+    "answer_chars": 3253,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 36.62,
+    "eval_s": 131.42,
+    "total_s": 168.07,
+    "tokens_est_ratio": 1.101,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "variant": "v-b1429f2e3a",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The new CaseService.reopen moves a WITHDRAWN case to DRAFT and saves it without calling audit.record. Every other state-changing operation in CaseService records an audit event with actor, action, target and time."
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only new log call is log.info(\"Case \" + caseId + \" reopened by \" + actor.userId()), which carries the case id and user id and no NPI. The registered sample control test LoggingControlTest#sampledFlowsDoNotLogNpi passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26477 is a standard ticket, approved on 2026-10-22 (before review) by Erik Brandt, a change_manager. Its components [mortgage.cases] cover the only touched file, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from wen.li@fernbrook.example, who holds change_approver for baseline-mortgage and is not the author, Declan Farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 8c6c5359, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json names the head commit and runner ci-runner-06, but every JUnit report gives hostname dev-laptop-7.local, so the reports may not come from this CI run. The description also claims unit tests were updated, yet no test file changed and no test exercises reopen."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is mortgage.cases, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls data, control tests, CI) are touched, so no control_owner approval is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No approved, unexpired exception in the register covers AUD-1 for mortgage.cases, so the missing audit event on reopen is an unexcepted deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers CaseService.java; the covered code (Underwriting, Approvals, Policy, payments files) is unchanged."
+    }
+  ],
+  "summary": "PR-1202 adds CaseService.reopen, a state-changing operation that moves a withdrawn case back to DRAFT and saves it without writing an audit event. That violates AUD-1, and no exception covers the deviation. The ticket, the independent approval and the approval's coverage of the head commit are in order. The CI evidence is questionable: the JUnit reports' hostname is a personal machine, not the named CI runner, and no tests were added for reopen. The change is rejected; it needs an audit.record call for reopen, tests for it, and a clean CI run.",
+  "meta": {
+    "elapsed_s": 21.97,
+    "tokens_in": 45311,
+    "tokens_out": 2132,
+    "usd": 0.223884,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7ef8f2a5c2e2e3792e1dd2eaebcd4beafbe2bc7d69ed3fd2b5de314f43608f51",
+    "packet_tokens_est": 29258,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 45311,
+      "output_tokens": 2132,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

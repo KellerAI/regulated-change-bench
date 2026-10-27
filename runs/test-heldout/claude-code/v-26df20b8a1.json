@@ -1,0 +1,82 @@
+{
+  "variant": "v-26df20b8a1",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only new log call site (service.py:131, `_log.info(\"payment memo updated\", payment_id=payment_id)`) logs a constant message and an integer payment id; payment_id is not in npi.NPI_FIELDS, and AppLog masks NPI keys anyway. The LOG-1 control test passed unskipped on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "amend_memo still records its audit event (actor, 'amend_memo', payment target, clock time) right after the state change; the change adds no new state-changing operation. The AUD-1 control test passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26236 is approved by Erik Brandt (change_manager) on 2026-10-15, before the change opened on 2026-10-17, and its components ['payments.service'] cover the only touched path, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver who is a different person from the author Linh Nguyen (p-lnguyen) under every listed address."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit dc366e8f, the only commit in the change, so it covers exactly what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on dc366e8f ran ci/run-tests.sh baseline-payments with result success: 172 tests, 0 failures, 0 skipped, including the registered LOG-1 and AUD-1 control tests (both sample coverage). I could not re-run it locally because pytest is not installed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers service.py (entries cover payments.py, audit.py, routes.py and mortgage files), and none of those files changed, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "The change adds one log line to LedgerService.amend_memo that logs only the integer payment_id, so it cannot leak NPI, and the existing audit call is untouched. The ticket was approved in advance and lists the right component, the independent code review covers the final commit, and CI on that commit passed the full payments suite, including the logging and audit control tests. service.py is not security-sensitive, no protected paths changed, the change is not an emergency and relies on no exception, so CHG-5, CHG-6, CHG-7 and EXC-1 are not triggered. All applicable obligations are shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 82.87,
+    "tokens_in": 434049,
+    "tokens_out": 7199,
+    "usd": 0.493761,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 7199,
+      "cache_read_input_tokens": 379257,
+      "cache_creation_input_tokens": 54762
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4937614,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

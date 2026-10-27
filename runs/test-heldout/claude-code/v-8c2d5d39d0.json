@@ -1,0 +1,67 @@
+{
+  "variant": "v-8c2d5d39d0",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26086 is approved by change manager grace.kim at 2026-10-07T00:07Z, before review. Its component payments.reports covers the only touched path, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa, who holds change_approver for payments and is a different person from the author jonah.weiss (p-jweiss)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 711356a1, so it covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The only CI run in records/ci/run.json is on 20df233, the first commit. The head commit 711356a changes REPORT_FORMAT from 'ledger-csv/1' to 'ledger-csv/1.1', which is not a comment, whitespace or formatting edit, so the earlier run doesn't count and there is no CI record for the final commit."
+    }
+  ],
+  "summary": "The change adds one constant, REPORT_FORMAT, to payments/reports.py. That file is in the non-security-sensitive payments.reports component and is outside every product obligation's scope, so only the change-process obligations apply. The ticket and an independent change-approver review of the head commit are both in order. However, the change's only CI run is on the first commit, and the later commit changes the constant's value, which the policy does not treat as a comment, whitespace or formatting edit. With no passing CI run recorded on the final commit, CHG-4 is not met and the change must be rejected.",
+  "meta": {
+    "elapsed_s": 59.4,
+    "tokens_in": 273086,
+    "tokens_out": 5035,
+    "usd": 0.3006,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 18,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 5035,
+      "cache_read_input_tokens": 242813,
+      "cache_creation_input_tokens": 30245
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.30059959999999997,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

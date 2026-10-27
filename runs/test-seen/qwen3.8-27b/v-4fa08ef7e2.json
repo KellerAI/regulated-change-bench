@@ -1,0 +1,81 @@
+{
+  "variant": "v-4fa08ef7e2",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25285 is type 'standard', status 'approved', approved by erik.brandt@fernbrook.example (change_manager). Its components ['mortgage.reporting','mortgage.tests'] cover both changed files (PipelineReport.java and PipelineTotalTest.java)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from wen.li@fernbrook.example (change_approver for baseline-mortgage, team lending-eng) on the exact head commit exists; the author is nneka.okafor, a different person, so the approval is independent."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit 16d5e47, which is the only commit in the change; there are no later commits that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 16d5e47 shows 125 tests, 0 failures, 0 errors, 0 skipped. No product-obligation scope path is touched by this change, so no specific control tests are mandated beyond the full suite passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Changed files map to components mortgage.reporting and mortgage.tests, both marked security_sensitive: false in components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither PipelineReport.java nor PipelineTotalTest.java falls under any protected path in protected-paths.json (not under controls/, not under the controls test directories, not under ci/); no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; this obligation does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change introduces no deviation from any product obligation; no exception is needed or invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change modifies only PipelineReport.java and adds PipelineTotalTest.java; none of the code paths covered by entries in the acceptance ledger (Approvals.java, Policy.java, Underwriting.java, payments.py, audit.py, routes.py) are touched, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a simple totalCases() aggregation method to PipelineReport and a single unit test for it. No product-obligation scope path is affected, so no product obligations are applicable. All process obligations are satisfied: the ticket is approved by a change manager and covers the correct components; an independent code_review approval from a qualified change_approver exists on the final commit; CI on that commit passes all 125 tests with zero failures; no security-sensitive or protected paths are touched; and no prior evidence lapses. The change is low-risk and fully compliant with the bank's change-management standard.",
+  "meta": {
+    "elapsed_s": 117.27,
+    "tokens_in": 28207,
+    "tokens_out": 3112,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f5d6f67fd439e767db3f7a77b4d0fcdabc1570764701495c1aac9d4a44cec6d7",
+    "packet_tokens_est": 24748,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 9359,
+    "answer_chars": 2822,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.03,
+    "eval_s": 84.21,
+    "total_s": 117.27,
+    "tokens_est_ratio": 1.111,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

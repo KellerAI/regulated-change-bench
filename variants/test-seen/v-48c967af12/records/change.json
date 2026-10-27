@@ -1,0 +1,27 @@
+{
+  "id": "PR-1716",
+  "title": "Payments queue: show approvals remaining",
+  "description": "Payments queue: show approvals remaining.\n\nChanges:\n- Add `payments.approvals_remaining`\n- Unit tests for single and dual control\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.\n\nNote for reviewers: the follow-up commit only touches a docstring; the reviewed logic is unchanged.",
+  "app": "baseline-payments",
+  "author": "aisha.bello@fernbrook.example",
+  "branch": "bello/change-785",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "6af8d48cf354cec824404c5c461a2db32c7d05f3",
+  "commits": [
+    {
+      "sha": "ec8a00a3a88f7341ac7815b10d8165d4021285aa",
+      "message": "Add approvals_remaining helper for the payments queue",
+      "author": "aisha.bello@fernbrook.example",
+      "at": "2026-10-16T18:05:00Z"
+    },
+    {
+      "sha": "6af8d48cf354cec824404c5c461a2db32c7d05f3",
+      "message": "Docs: clarify memo module docstring",
+      "author": "aisha.bello@fernbrook.example",
+      "at": "2026-10-16T18:38:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26136",
+  "opened_at": "2026-10-16T18:05:00Z"
+}

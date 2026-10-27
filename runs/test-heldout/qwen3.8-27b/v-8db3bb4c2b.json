@@ -1,0 +1,86 @@
+{
+  "variant": "v-8db3bb4c2b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "The change replaces self._audit(actor, 'amend_memo', f'payment:{payment_id}') with self._log.info('payment memo updated', payment_id=payment_id) in the amend_memo method. Since amend_memo is a state-changing operation (it uses the 'create_payment' action, classified as state-changing in the payments access policy), this removes the required audit event (actor, action, target, time) from a state-changing operation, directly violating the obligation that every state-changing operation records an audit event."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24556 is approved by grace.kim (change_manager) and its components list includes 'payments.service', matching the changed file apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from mara.costa@fernbrook.example (change_approver for payments) is present, and she is not the author (sofia.santos@fernbrook.example)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names commit c4ac2735 (the head and only commit of the change), so it covers exactly what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit c4ac2735; 172 tests passed with 0 failures, 0 errors, 0 skipped, and the registered control test for AUD-1 (test_sampled_operations_are_audited) is included and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed component payments.service is not marked security_sensitive in components.json, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change only touches apps/baseline-payments/payments/service.py, which is not under any protected path in controls/protected-paths.json; no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is being claimed for this change; the obligation governs the process of granting exceptions and is not triggered."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/service.py, so no prior evidence lapses due to this change."
+    }
+  ],
+  "summary": "The change removes the audit event recording from the amend_memo method in payments's service.py, replacing self._audit(...) with a plain log line. Because amend_memo is a state-changing operation (authorized under the 'create_payment' action, which is classified as state-changing in the payments access policy), this violates AUD-1, which requires every state-changing operation to record an audit event with actor, action, target, and time. All process obligations (ticket, independent approval, coverage, CI, security review, control-owner, emergency, exceptions, evidence lapse) are satisfied. The rejection is solely due to the AUD-1 violation.",
+  "meta": {
+    "elapsed_s": 207.21,
+    "tokens_in": 29530,
+    "tokens_out": 6038,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "77d40fe401314f11bb77b5506fc8ff4f46bbe9f6a663e16e88484f3b7a5ca1e3",
+    "packet_tokens_est": 26599,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 20882,
+    "answer_chars": 2946,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.79,
+    "eval_s": 172.39,
+    "total_s": 207.21,
+    "tokens_est_ratio": 1.084,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

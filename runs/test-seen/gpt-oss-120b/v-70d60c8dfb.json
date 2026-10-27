@@ -1,0 +1,71 @@
+{
+  "variant": "v-70d60c8dfb",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "CI run includes controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passing; policy param set to 10 ≤ 15 and code constant matches."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "CI run includes controls.AuditControlTest#chainAndRetention passing; audit retention years unchanged and ≥7, evidence remains valid."
+    },
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26409 lists components \"mortgage.controls-data\" and \"mortgage.policy\" but components.json does not map Policy.java to any component, so the changed Policy.java is not covered."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Declan Farrell (change_approver role) who is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval references the final commit SHA; no later commits modify behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with full test suite (124 tests) including all required control tests."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control owner approval present from Bao Tran (control_owner role) covering the protected policy‑params.json change."
+    }
+  ],
+  "summary": "All product and process obligations except CHG-1 are satisfied; the change ticket fails to list a component that covers the modified Policy.java file, violating CHG-1. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 176.02,
+    "tokens_in": 24597,
+    "tokens_out": 7933,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "a4da1a7345f10d63c5190672bab62e971302c9a89958df7187acf24671812b15",
+    "packet_tokens_est": 24427,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 33437,
+    "answer_chars": 1634,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 25.78,
+    "eval_s": 150.02,
+    "total_s": 176.02,
+    "tokens_est_ratio": 0.981,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

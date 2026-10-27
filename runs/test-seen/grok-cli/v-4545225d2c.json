@@ -1,0 +1,89 @@
+{
+  "variant": "v-4545225d2c",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Approvals.java is in scope, and approve() at head still rejects the preparer before an approval is recorded. The diff does not change that check."
+    },
+    {
+      "id": "LIM-1",
+      "status": "refuted",
+      "note": "requiredApprovals now treats an amount up to twice UNDERWRITER_LIMIT (1,000,000) as one underwriter. The approved table allows one underwriter only up to 500,000, then one senior underwriter up to 1,500,000. No LIM-1 exception covers this."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-25211 is approved by change manager Grace Kim before review, and its components cover mortgage.approvals, mortgage.reporting, and mortgage.tests."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change approver and not the author, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code-review approval names head commit df7b3306, and there is no later commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI succeeded on 2f556ce, the pipeline-report commit. The later commit changes approval authority, so that run does not cover the final commit, including the LIM-1 and MC-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched paths are mortgage.approvals, mortgage.reporting, and mortgage.tests, none of which are marked security_sensitive."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not modify protected controls data, control tests, or CI, and it does not change an approved policy value or coverage label."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25211 is type standard and the change record is not an emergency deployment, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The authority-limit deviation has no approved, unexpired exception scoped to LIM-1 and mortgage.approvals. The register entries are for other obligations, expired, or withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger record ACR-0405 covers requiredApprovals with an exhaustive proof. This change alters that behavior and supplies no new evidence of the same strength on the head commit."
+    }
+  ],
+  "summary": "The change lets one underwriter approve loans up to 1,000,000, which breaks the approved authority table of 500,000 for an underwriter and 1,500,000 for a senior underwriter. The prior exhaustive proof of LIM-1 no longer applies, and there is no valid exception. CI ran only on the earlier pipeline-report commit, so it does not test the authority change. Independent approval and the ticket are in order, but the limit breach and the missing final-commit evidence require rejection.",
+  "meta": {
+    "elapsed_s": 127.98,
+    "tokens_in": 42883,
+    "tokens_out": 8647,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6909d011afbf6564994e31dd672bc4c033d9f6b62adbf3ec9af6a29fc4e65ee1",
+    "packet_tokens_est": 25695,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42883,
+      "outputTokens": 8647,
+      "cacheReadTokens": 207616,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 124575,
+    "duration_api_ms": 124575,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

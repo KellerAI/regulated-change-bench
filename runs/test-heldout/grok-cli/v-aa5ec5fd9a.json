@@ -1,0 +1,84 @@
+{
+  "variant": "v-aa5ec5fd9a",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Underwriting.decide still returns AUTO_APPROVE_ELIGIBLE only when DTI and LTV are within Policy.DTI_MAX_PERCENT and Policy.LTV_MAX_PERCENT; the diff changes only the reasons list on that return. Policy.java and policy-params.json are unchanged (40 and 90), and controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24937, which Grace Kim (change manager) approved on 2026-10-20, before review. Its component mortgage.underwriting matches Underwriting.java, the only path in the diff."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li submitted a code_review approval of the head commit. He has the change_approver role for baseline-mortgage and is not the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The branch has one commit, 0d78ba8e76ecc412a1cf2dd09552e40471c23f64, and the code_review approval names that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on the head commit, with 124 tests, 0 failures, and 0 skipped. The registered CRD-1 test autoApproveGridMatchesPolicy is included and not skipped."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file, Underwriting.java, is marked security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch a protected path (controls data, control tests, or CI), so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24937 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not use an exception. Nothing in the register is an approved, in-scope exception for CRD-1, and the eligibility guard does not deviate from the approved DTI and LTV limits."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406, a Rocq proof of decide over the rationals, lapses because the returned reasons now include POLICY_SATISFIED, which is not a comment or formatting edit. The replacement file crd1-response-metadata.json is an informal proof-transfer with no prover digest, and the passing control test covers only the DTI/LTV grid, so the lapsed exhaustive proof is not replaced at the same strength."
+    }
+  ],
+  "summary": "The change adds a POLICY_SATISFIED reason on the already eligible auto-approve return and leaves the DTI and LTV comparisons in place. The ticket, independent approval of the head commit, and the mortgage suite on that commit, including the registered CRD-1 grid test, meet the change-process rules, and security review, control-owner approval, and emergency review are not required. Acceptance still fails LAP-1. The standing exhaustive Rocq proof of Underwriting.decide covered code whose behavior changed, and the imported proof-transfer is not evidence of that strength.",
+  "meta": {
+    "elapsed_s": 375.26,
+    "tokens_in": 48596,
+    "tokens_out": 22283,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4f39802491fcf08c2277190178e3f837673aee0ed3d0c1f1ff929612ffcc8988",
+    "packet_tokens_est": 25239,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 48596,
+      "outputTokens": 22283,
+      "cacheReadTokens": 240768,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 367761,
+    "duration_api_ms": 367761,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

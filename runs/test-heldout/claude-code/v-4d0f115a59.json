@@ -1,0 +1,97 @@
+{
+  "variant": "v-4d0f115a59",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route GET /compat/account-number/{id} maps to the privileged action view_account_number with mfa=True, and app.py's dispatcher enforces MFA before the rbac check. The exhaustive control test test_privileged_routes_require_mfa probes every privileged route and passes, unskipped, in the CI run on head bcf1dd4."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24965 is standard and was approved by change manager erik.brandt on 2026-10-02, before the PR opened on 2026-10-03. Its components (payments.http, payments.routes) cover the touched files app.py and routes.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos (p-ssantos), a payments change_approver. She is a different person from the author, Mara Costa (p-mcosta), under all of Costa's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name head commit bcf1dd4, the change's only commit, so no later commits could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head bcf1dd4 succeeded: 172 tests, 0 failures, 0 skipped. That includes the registered MFA-1 control test (exhaustive), whose domain is the route table this change touches. I couldn't re-run it locally because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "routes.py and app.py are security_sensitive. kofi.mensah, a security_reviewer, approved a security_review on head bcf1dd4."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, tests/controls/, ci/) is changed; the diff touches only apps/baseline-payments/payments/app.py and routes.py. No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and its ticket are non-emergency (emergency=false, type standard), so no pre-review deployment or PIR applies."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change departs from no product obligation and relies on no exception. The only MFA-1 exception, EXC-0172, is withdrawn and covers mortgage, so it isn't used."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0404 (MFA-1, covering routes.py) lapses because routes.py changed behaviour. It is replaced by evidence of the same strength: the exhaustive control test passing on head. No other ledger entry covers code this change touches."
+    }
+  ],
+  "summary": "The change adds a compatibility route that reuses the existing privileged view_account_number action and handler, requires MFA, and leaves the access matrix and approved policy unchanged. The ticket, independent code review and security review are all in order and name the final commit. CI on the final commit passes in full, including the exhaustive MFA-1 control test, which replaces the lapsed MFA-1 ledger evidence. No protected paths, emergency process or exceptions are involved, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 86.92,
+    "tokens_in": 520846,
+    "tokens_out": 7724,
+    "usd": 0.542964,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7724,
+      "cache_read_input_tokens": 461607,
+      "cache_creation_input_tokens": 59207
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5429644000000001,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

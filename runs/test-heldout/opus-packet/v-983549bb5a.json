@@ -1,0 +1,63 @@
+{
+  "variant": "v-983549bb5a",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24633 is a standard ticket approved by change manager Grace Kim on 2026-10-07, before review. Its component mortgage.reporting covers the only touched path, PipelineReport.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from declan.farrell@fernbrook.example, a change_approver for baseline-mortgage. He is a different person from the author, Wen Li (p-wli), under any of her addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit b609a45fd3e1, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a success of ci/run-tests.sh baseline-mortgage on head b609a45fd3e1. The JUnit reports show 124 tests with 0 failures, errors or skips, including PipelineReportTest. No product obligation's scope or closed domain is touched, so no specific control tests are required. The report timestamps and hostname look like packaging artifacts; the catalog itself carries the same 2026-10-23 date."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers PipelineReport.java; all covered symbols are in other files, which this change leaves untouched. No prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds one public constant to PipelineReport.java. That file is in the non-security-sensitive mortgage.reporting component and outside every product obligation's scope, so CHG-5, CHG-6, CHG-7 and EXC-1 do not apply. The ticket is approved and covers the component. An independent change approver approved the head commit, and CI on the head commit passed the full mortgage suite with nothing skipped. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 19.87,
+    "tokens_in": 38439,
+    "tokens_out": 1888,
+    "usd": 0.191516,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "652232d3d45cba7e0def3f7ccca7a115fb4a9f9b39284c957342f5d2194265a8",
+    "packet_tokens_est": 24405,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38439,
+      "output_tokens": 1888,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

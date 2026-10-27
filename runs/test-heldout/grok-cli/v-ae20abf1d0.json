@@ -1,0 +1,89 @@
+{
+  "variant": "v-ae20abf1d0",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "deliver_statement now logs the payee account number in the error message via an f-string. account_number is an NPI field, and the value is placed in the log text unmasked on the integration-error path. The passing logging control test is sample coverage and does not cover this new call."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "The change edits service.py, which is in AUD-1's scope, and the success-path audit call is still present. The registered audit control test is only sample coverage and the operation domain is not closed, so the packet does not exhaustively show that every state-changing operation is audited."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26130 is approved by change manager Grace Kim on 2026-10-01, before review, and its component payments.service matches the only changed path, service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author Mara Costa, gave a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review names f8477793e551029b02f10e24540ee2deeba09ae4, which is the only commit and the merge head."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records a successful payments suite on the head commit, and the JUnit report shows 172 tests with no failures or skips, including the registered LOG-1 and AUD-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file maps to payments.service, which is not marked security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Logging the full account number is a LOG-1 deviation. No approved exception covers payments logging or payments.service; EXC-0167 is limited to mortgage.logging and a masked last-4 import job."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger covers payments, audit, routes, and mortgage underwriting and approval code. None of those paths change in this diff, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds the payee account number, which the bank treats as NPI, into the statement-delivery error log in plaintext. That violates LOG-1 on an error path, and no in-scope exception authorizes it. Change-ticket, independent approval, commit coverage, CI, and the conditional security, control-owner, and emergency rules are in order, and prior ledger evidence still covers the files it names. The audit obligation on service.py is not exhaustively shown, but the unmasked account number in the log is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 156.08,
+    "tokens_in": 45241,
+    "tokens_out": 10057,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "25e801abf0d7ad42024ee7ab1f813a725f47ac271e4410bc7938b92742cfdb8d",
+    "packet_tokens_est": 26657,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 45241,
+      "outputTokens": 10057,
+      "cacheReadTokens": 160768,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 152134,
+    "duration_api_ms": 152134,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

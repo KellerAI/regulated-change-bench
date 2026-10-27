@@ -1,0 +1,106 @@
+{
+  "variant": "v-9e25d9a2b7",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change is formatting-only (2-space to 4-space indentation); the value privileged_idle_minutes=15 is unchanged and ≤15. CI on the head commit shows controls.SessionControlTest#privilegedIdleTimeoutWithinPolicy passing with 0 failures."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "Format-only edit; audit_retention_years=7 is unchanged and ≥7. CI shows controls.AuditControlTest#chainAndRetention passing; ledger ACR-0402 provides exhaustive proof on an earlier commit and is not lapsed by a formatting change (LAP-1)."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "declined_npi_retention_months=25 is unchanged by the formatting edit. CI shows controls.RetentionControlTest#sampledPurgeRespectsHold passing."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "underwriter_limit=500000 and senior_limit=1500000 are unchanged. CI shows controls.ApprovalsControlTest#authorityLimitsMatchPolicy passing; ledger ACR-0405 provides exhaustive proof and is not lapsed by a formatting change."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "dti_max_percent=40 and ltv_max_percent=90 are unchanged. CI shows controls.UnderwritingControlTest#autoApproveGridMatchesPolicy passing; ledger ACR-0406 provides exhaustive proof and is not lapsed by a formatting change."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24241 is approved by grace.kim (change_manager) and lists component 'mortgage.controls-data', which matches the changed file controls/mortgage/policy-params.json per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (declan.farrell@fernbrook.example) has the change_approver role for baseline-mortgage and is not the author (Nneka Okafor). His code_review approval is on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals (code_review and control_owner) name the head commit c450c2c75518347f3da2c64559fe59fb6a5492f7, and there is only one commit in the change, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit c450c2c7 with result 'success'; 124 tests, 0 failures, 0 skipped. All registered control tests for obligations whose scope includes policy-params.json (SES-1, AUD-2, RET-1, LIM-1, CRD-1) are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file controls/mortgage/policy-params.json maps to component 'mortgage.controls-data' with security_sensitive=false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "The changed file falls under protected paths (controls/*). The only control_owner approval is from Declan Farrell (team lending-eng), who is on the same team as the author Nneka Okafor (team lending-eng). CHG-6 requires the control_owner approver to be outside the author's team; no such approval exists in the records."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket CHG-24241 is of type 'standard', not 'emergency', so the post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked by this change; it is a formatting-only edit with no deviation from any product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff is purely whitespace/indentation (2→4 spaces) with identical values; per the policy, formatting edits do not lapse existing evidence. All ledger entries (ACR-0401 through ACR-0406) remain valid."
+    }
+  ],
+  "summary": "The change is a formatting-only edit to controls/mortgage/policy-params.json (changing indentation from 2-space to 4-space) with no change to any policy value. All product obligations whose scope includes this file remain satisfied, and CI on the final commit passes all 124 tests including the required control tests. However, CHG-6 is violated: the file is under a protected path (controls/*), requiring a control_owner approval from someone outside the author's team, but the only control_owner approval is from Declan Farrell who shares the same team (lending-eng) as the author Nneka Okafor. No alternative control_owner approval from the controls-office team (Rachel Stein or Bao Tran) is present in the records. The change must be rejected until a qualifying control_owner approval is obtained.",
+  "meta": {
+    "elapsed_s": 173.79,
+    "tokens_in": 27794,
+    "tokens_out": 5255,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3da2fc9a8b10c904d80358d5d7e6b27c2f676b14c1f8c8db824e675c22218862",
+    "packet_tokens_est": 24110,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15465,
+    "answer_chars": 4240,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.45,
+    "eval_s": 141.31,
+    "total_s": 173.79,
+    "tokens_est_ratio": 1.123,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

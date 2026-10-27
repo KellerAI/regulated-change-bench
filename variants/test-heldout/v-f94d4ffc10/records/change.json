@@ -1,0 +1,27 @@
+{
+  "id": "PR-1515",
+  "title": "Report and checklist representation identifiers",
+  "description": "Report and checklist representation identifiers.\n\nChanges:\n- Name the wire formats for the operations portal\n- No case workflow changes\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-461",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "2f5da01a6c46ef31cd5332aad558596caebc9676",
+  "commits": [
+    {
+      "sha": "e778c3d2582a82b176b0f5add946b94b2e70e316",
+      "message": "Reports: identify the export format",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-11T17:19:00Z"
+    },
+    {
+      "sha": "2f5da01a6c46ef31cd5332aad558596caebc9676",
+      "message": "Documents: identify the checklist representation",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-11T20:33:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24773",
+  "opened_at": "2026-10-11T17:19:00Z"
+}

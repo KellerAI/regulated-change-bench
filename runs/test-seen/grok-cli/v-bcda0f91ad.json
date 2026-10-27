@@ -1,0 +1,84 @@
+{
+  "variant": "v-bcda0f91ad",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "Head `required_approvals` returns 2 only when amount > DUAL_CONTROL_THRESHOLD, so a payment of exactly 10000.00 needs one approver. PAY-1 requires two distinct approvers at or above that approved threshold, and no exception covers this."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25976 is approved by change manager Erik Brandt before review, and its components payments.payments and payments.tests cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author, gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That code_review approval names head commit 6d48175a1230ee0eb8a8338961d2091d3a1abd7d, so it covers the commit that would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json shows the payments suite passing on e6eb993c1ce3fdf4549ddfc09b77c87f13725745, not on the head. The later commit changes the dual-control comparison, so that earlier run does not count and the PAY-1 control test is not shown on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.payments and payments.tests are not marked security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in protected-paths.json, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The threshold comparison is a deviation from PAY-1, and the register has no approved, unexpired exception scoped to PAY-1 and payments.payments. The listed exceptions are other obligations, withdrawn, or expired before the review time."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0401 and the exhaustive proof cover required_approvals and state that two approvals are required when amount >= 10000.00. This change alters that behavior and provides no replacement evidence of the same strength on the head commit."
+    }
+  ],
+  "summary": "The change adds an approvals-remaining helper and also weakens dual control: required_approvals now uses a strict greater-than comparison, so a payment equal to 10000.00 needs only one approver. That violates PAY-1, and the exception register does not authorize it. The prior exhaustive proof for required_approvals no longer applies, and CI passed only on the earlier commit, before the comparison change. Ticket approval and Mara Costa's review of the head commit are in order, but they do not cure the control failure.",
+  "meta": {
+    "elapsed_s": 217.05,
+    "tokens_in": 59745,
+    "tokens_out": 12800,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8314aa1d2442c61a5a89292fff0afb4a38d47413afea1dbef4b89800e8ad3961",
+    "packet_tokens_est": 25939,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 59745,
+      "outputTokens": 12800,
+      "cacheReadTokens": 26496,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 196928,
+    "duration_api_ms": 196928,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

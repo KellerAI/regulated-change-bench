@@ -1,0 +1,102 @@
+{
+  "variant": "v-2a2557d537",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The new log.info line at CaseService.java:143 appends loanCase.applicantField(\"ssn\"), which returns the raw stored SSN (LoanCase.java:89), unmasked, so every decline writes a full SSN to the application log. The passing LOG-1 control test is labelled sample and does not exercise the decline path."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The LOG-1 deviation has no valid exception: EXC-0167 is for component mortgage.logging and covers only a legacy import job writing masked bank-account last-4, not raw SSNs logged from mortgage.cases."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "CaseService.java is in scope, but the diff changes only the log message; the decline still calls audit.record(actor, DECLINE_CREDIT, caseId, ...) unchanged, and the registered AUD-1 control test sampledOperationsAreAudited passes on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24111 (standard) was approved by change manager Grace Kim at 2026-09-29T06:08Z, before the change opened at 14:08Z, and its component mortgage.cases covers the only touched file, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from wen.li@fernbrook.example, a change_approver for baseline-mortgage and a different person from the author Priya Raman (none of her three addresses)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 5a4da0e, the only commit in the change, so nothing was added after approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json is on head 5a4da0e with result success; the JUnit reports show 124 tests, 0 failures and 0 skipped, including the registered control tests for the touched obligations (LoggingControlTest#sampledFlowsDoNotLogNpi, AuditControlTest#sampledOperationsAreAudited; both labelled sample)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file, CaseService.java, is component mortgage.cases with security_sensitive false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches no protected path (no controls/, control tests or ci/ files), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false, ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "None of the acceptance-ledger entries cover CaseService.java (they cover Approvals, Policy, Underwriting and payments files), so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds the applicant's raw SSN to the decline log line in CaseService, so every decline writes unmasked NPI to the application log, a direct violation of LOG-1. CI is green only because the LOG-1 control test is a fixed sample that does not exercise the decline path. The only LOG-1 exception (EXC-0167) covers a different component and a masked bank-account fragment, so it does not make this acceptable. Process records (ticket, independent approval on head, CI on head) are otherwise in order, but a refuted critical product obligation requires rejection.",
+  "meta": {
+    "elapsed_s": 72.96,
+    "tokens_in": 292866,
+    "tokens_out": 6632,
+    "usd": 0.398154,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 20,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 6632,
+      "cache_read_input_tokens": 249748,
+      "cache_creation_input_tokens": 43092
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3981536,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

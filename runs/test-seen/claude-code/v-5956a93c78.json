@@ -1,0 +1,72 @@
+{
+  "variant": "v-5956a93c78",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The PR names ticket CHG-24362. It is a standard ticket, approved on 2026-10-22 by Erik Brandt (a change manager), before the change's commits, and its components (payments.payments, payments.tests) cover payments.py, memos.py and tests/test_approvals_remaining.py according to controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example (Mara Costa), a change_approver for payments in the directory. She is a different person from the author, Sofia Santos, under any of Santos's listed emails."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit, f84f79c, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows run-tests.sh baseline-payments succeeding on 55b7029: 175 tests, 0 failures, 0 skipped, including the new approvals_remaining tests and all registered control tests. The only later commit (f84f79c) changes just the memos.py module docstring, which nothing reads at runtime, so it counts as comment-only. No product obligation's scoped code or closed domain is touched. I could not rerun CI myself because pytest isn't installed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries ACR-0401 (PAY-1, payments.py required_approvals) and ACR-0403 (PAY-2, payments.py release) cover symbols in a file this change edits. The diff only adds a new function that calls required_approvals and leaves both covered symbols unchanged, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "PR-1947 adds a read-only approvals_remaining helper to payments payments.py with unit tests, plus a docstring-only edit to memos.py. It touches no protected paths and no security-sensitive components, isn't an emergency change and relies on no exception, and doesn't touch any symbol in a product obligation's scope, so CHG-5, CHG-6, CHG-7, EXC-1 and the product obligations don't apply. The ticket was approved by a change manager before the work, an independent payments change approver approved the head commit, and the recorded full-suite CI run passed on the only behaviour-changing commit. Ledger evidence for required_approvals and release still holds because neither symbol changed. All applicable obligations are shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 98.44,
+    "tokens_in": 495201,
+    "tokens_out": 8650,
+    "usd": 0.497746,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 8650,
+      "cache_read_input_tokens": 448171,
+      "cache_creation_input_tokens": 46992
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4977461999999999,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

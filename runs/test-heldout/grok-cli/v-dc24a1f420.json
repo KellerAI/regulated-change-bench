@@ -1,0 +1,89 @@
+{
+  "variant": "v-dc24a1f420",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new payment-advice endpoint is https://advice.fernbrook.example/v1, and the exhaustive control test tests/controls/test_integrations_control.py::test_integrations_use_tls passed on the head commit."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "payment-advice is listed in the asset inventory with classification npi, but owner is an empty string. The exhaustive inventory control test failed with ('payment-advice', 'no owner'), and test_inventory_entries_have_owner_and_classification failed on that empty owner."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25317, which change manager Erik Brandt approved on 2026-10-26 before review. Its components payments.integrations and payments.controls-data cover integrations.py and controls/payments/asset-inventory.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author, gave a code_review approval on head commit 8414e2b9ef6562ebbc35fa23bf093d8aa7f38e9b."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review, security_review, and control_owner approvals each name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json records result failure for the full payments suite on the head commit: 172 tests, 2 failures, including the registered INV-1 control test test_integrations_are_inventoried."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security_sensitive. Ines Halvorsen, a security_reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected controls path. Bao Tran, a control_owner on the controls-office team, outside the author's payments-eng team, approved that same commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25317 is type standard and the change record sets emergency to false, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The missing owner is a deviation from INV-1, and the register has no approved, unexpired exception scoped to INV-1 and payments.integrations or payments.controls-data. The SES-1 exception is expired and out of scope."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change any path covered by the acceptance ledger, so earlier evidence for PAY-1, PAY-2, AUD-2, MFA-1, LIM-1, and CRD-1 has not lapsed. ENC-2 and INV-1 are judged from the head code and this CI run."
+    }
+  ],
+  "summary": "The payment-advice gateway is registered over HTTPS and the change ticket, independent code review, security review, and control-owner approval all name the final commit. The inventory entry has an empty owner, so INV-1 is not met, and no valid exception covers that deviation. CI on the head commit failed, including the exhaustive inventory control test, so the change cannot be accepted.",
+  "meta": {
+    "elapsed_s": 214.2,
+    "tokens_in": 41907,
+    "tokens_out": 13300,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8ba655d53b621e4d1fd81055cc55bb572d57ac6b21b464a3e73d683886c5ae14",
+    "packet_tokens_est": 24870,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41907,
+      "outputTokens": 13300,
+      "cacheReadTokens": 104576,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 208733,
+    "duration_api_ms": 208733,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

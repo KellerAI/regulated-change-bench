@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="126" skipped="0" failures="0" errors="0" time="0.614" hostname="dev-laptop-7.local" timestamp="2026-10-23T13:30:08">
+<properties>
+<property name="apple.awt.application.name" value="ConsoleLauncher"/>
+<property name="file.encoding" value="UTF-8"/>
+<property name="file.separator" value="/"/>
+<property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+<property name="mortgage.controls.dir" value="/tmp/ci"/>
+<property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+<property name="java.class.path" value="/home/ci/build/.tools/junit-console.jar"/>
+<property name="java.class.version" value="69.0"/>
+<property name="java.home" value="/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home"/>
+<property name="java.io.tmpdir" value="/tmp/ci"/>
+<property name="java.library.path" value="/tmp/ci"/>
+<property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+<property name="java.runtime.version" value="25.0.2"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="25"/>
+<property name="java.vendor" value="Homebrew"/>
+<property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+<property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+<property name="java.vendor.version" value="Homebrew"/>
+<property name="java.version" value="25.0.2"/>
+<property name="java.version.date" value="2026-01-20"/>
+<property name="java.vm.compressedOopsMode" value="Non-zero based"/>
+<property name="java.vm.info" value="mixed mode, sharing"/>
+<property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="25"/>
+<property name="java.vm.vendor" value="Homebrew"/>
+<property name="java.vm.version" value="25.0.2"/>
+<property name="jdk.debug" value="release"/>
+<property name="junit.docs.version" value="1.11.4"/>
+<property name="line.separator" value="&#10;"/>
+<property name="native.encoding" value="UTF-8"/>
+<property name="os.arch" value="aarch64"/>
+<property name="os.name" value="Mac OS X"/>
+<property name="os.version" value="27.0.1"/>
+<property name="path.separator" value=":"/>
+<property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+<property name="stderr.encoding" value="UTF-8"/>
+<property name="stdin.encoding" value="UTF-8"/>
+<property name="stdout.encoding" value="UTF-8"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+<property name="sun.java.command" value="/home/ci/build/.tools/junit-console.jar execute --disable-banner --disable-ansi-colors --details=summary --class-path /tmp/ci --scan-class-path /tmp/ci --reports-dir /tmp/ci --fail-if-no-tests"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="UTF-8"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="user.country" value="US"/>
+<property name="user.dir" value="/tmp/ci"/>
+<property name="user.home" value="/home/ci"/>
+<property name="user.language" value="en"/>
+<property name="user.name" value="ci"/>
+<property name="user.timezone" value="America/Los_Angeles"/>
+</properties>
+<testcase name="viewingIsNotStateChanging()" classname="mortgage.AccessMatrixTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AccessMatrixTest]/[method:viewingIsNotStateChanging()]
+display-name: viewingIsNotStateChanging()
+]]></system-out>
+</testcase>
+<testcase name="privilegedActionsAreTheSensitiveOnes()" classname="mortgage.AccessMatrixTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AccessMatrixTest]/[method:privilegedActionsAreTheSensitiveOnes()]
+display-name: privilegedActionsAreTheSensitiveOnes()
+]]></system-out>
+</testcase>
+<testcase name="readsNumbersAsDecimals()" classname="mortgage.JsonTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.JsonTest]/[method:readsNumbersAsDecimals()]
+display-name: readsNumbersAsDecimals()
+]]></system-out>
+</testcase>
+<testcase name="recordsWhoDidWhatToWhatAndWhen()" classname="mortgage.AuditLogTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AuditLogTest]/[method:recordsWhoDidWhatToWhatAndWhen()]
+display-name: recordsWhoDidWhatToWhatAndWhen()
+]]></system-out>
+</testcase>
+<testcase name="countsAndTotalsByStatus()" classname="mortgage.PipelineReportTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.PipelineReportTest]/[method:countsAndTotalsByStatus()]
+display-name: countsAndTotalsByStatus()
+]]></system-out>
+</testcase>
+<testcase name="keepsTheLastFourCharactersOfLongValues()" classname="mortgage.MaskTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.MaskTest]/[method:keepsTheLastFourCharactersOfLongValues()]
+display-name: keepsTheLastFourCharactersOfLongValues()
+]]></system-out>
+</testcase>
+<testcase name="overridesNeedAJustification()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:overridesNeedAJustification()]
+display-name: overridesNeedAJustification()
+]]></system-out>
+</testcase>
+<testcase name="eligibleCasesAreApprovedByAnUnderwriter()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:eligibleCasesAreApprovedByAnUnderwriter()]
+display-name: eligibleCasesAreApprovedByAnUnderwriter()
+]]></system-out>
+</testcase>
+<testcase name="eventsAreChainedFromGenesis()" classname="mortgage.AuditLogTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AuditLogTest]/[method:eventsAreChainedFromGenesis()]
+display-name: eventsAreChainedFromGenesis()
+]]></system-out>
+</testcase>
+<testcase name="highLoanToValuePricesHigher()" classname="mortgage.RateQuoteTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RateQuoteTest]/[method:highLoanToValuePricesHigher()]
+display-name: highLoanToValuePricesHigher()
+]]></system-out>
+</testcase>
+<testcase name="adminsAssignRolesAndReadTheAuditTrail()" classname="mortgage.HttpAppTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:adminsAssignRolesAndReadTheAuditTrail()]
+display-name: adminsAssignRolesAndReadTheAuditTrail()
+]]></system-out>
+</testcase>
+<testcase name="submissionNeedsTheRequiredApplicantFields()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:submissionNeedsTheRequiredApplicantFields()]
+display-name: submissionNeedsTheRequiredApplicantFields()
+]]></system-out>
+</testcase>
+<testcase name="underwritersCannotApproveAboveTheirLimit()" classname="mortgage.ApprovalsTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApprovalsTest]/[method:underwritersCannotApproveAboveTheirLimit()]
+display-name: underwritersCannotApproveAboveTheirLimit()
+]]></system-out>
+</testcase>
+<testcase name="unsupportedTermsAreRejected()" classname="mortgage.RateQuoteTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RateQuoteTest]/[method:unsupportedTermsAreRejected()]
+display-name: unsupportedTermsAreRejected()
+]]></system-out>
+</testcase>
+<testcase name="serviceErrorsBecomeStatusCodes()" classname="mortgage.HttpAppTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:serviceErrorsBecomeStatusCodes()]
+display-name: serviceErrorsBecomeStatusCodes()
+]]></system-out>
+</testcase>
+<testcase name="hidesShortValuesCompletely()" classname="mortgage.MaskTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.MaskTest]/[method:hidesShortValuesCompletely()]
+display-name: hidesShortValuesCompletely()
+]]></system-out>
+</testcase>
+<testcase name="onlySeniorUnderwritersOverridePolicy()" classname="mortgage.AccessMatrixTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AccessMatrixTest]/[method:onlySeniorUnderwritersOverridePolicy()]
+display-name: onlySeniorUnderwritersOverridePolicy()
+]]></system-out>
+</testcase>
+<testcase name="sealedValuesOpenToTheOriginal()" classname="mortgage.NpiVaultTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.NpiVaultTest]/[method:sealedValuesOpenToTheOriginal()]
+display-name: sealedValuesOpenToTheOriginal()
+]]></system-out>
+</testcase>
+<testcase name="thePreparerCannotApprove()" classname="mortgage.ApprovalsTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApprovalsTest]/[method:thePreparerCannotApprove()]
+display-name: thePreparerCannotApprove()
+]]></system-out>
+</testcase>
+<testcase name="servesRequestsOverASocket()" classname="mortgage.HttpAppTest" time="0.035">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:servesRequestsOverASocket()]
+display-name: servesRequestsOverASocket()
+]]></system-out>
+</testcase>
+<testcase name="applicantsWorkOnTheirApplicationOnly()" classname="mortgage.AccessMatrixTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AccessMatrixTest]/[method:applicantsWorkOnTheirApplicationOnly()]
+display-name: applicantsWorkOnTheirApplicationOnly()
+]]></system-out>
+</testcase>
+<testcase name="inMemoryStoreListsAndFinds()" classname="mortgage.CaseStoreTest" time="0.028">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseStoreTest]/[method:inMemoryStoreListsAndFinds()]
+display-name: inMemoryStoreListsAndFinds()
+]]></system-out>
+</testcase>
+<testcase name="selfEmployedApplicantsDo()" classname="mortgage.DocumentChecklistTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.DocumentChecklistTest]/[method:selfEmployedApplicantsDo()]
+display-name: selfEmployedApplicantsDo()
+]]></system-out>
+</testcase>
+<testcase name="highDebtIsReferred()" classname="mortgage.UnderwritingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UnderwritingTest]/[method:highDebtIsReferred()]
+display-name: highDebtIsReferred()
+]]></system-out>
+</testcase>
+<testcase name="adminsAssignRolesAndTheChangeIsAudited()" classname="mortgage.UserDirectoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UserDirectoryTest]/[method:adminsAssignRolesAndTheChangeIsAudited()]
+display-name: adminsAssignRolesAndTheChangeIsAudited()
+]]></system-out>
+</testcase>
+<testcase name="writesCsvWithQuoting()" classname="mortgage.ExportTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ExportTest]/[method:writesCsvWithQuoting()]
+display-name: writesCsvWithQuoting()
+]]></system-out>
+</testcase>
+<testcase name="defaultTokensAreLongAndDistinct()" classname="mortgage.SessionTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.SessionTest]/[method:defaultTokensAreLongAndDistinct()]
+display-name: defaultTokensAreLongAndDistinct()
+]]></system-out>
+</testcase>
+<testcase name="privilegedRoutesRequireMfa()" classname="controls.RoutesControlTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.RoutesControlTest]/[method:privilegedRoutesRequireMfa()]
+display-name: privilegedRoutesRequireMfa()
+]]></system-out>
+</testcase>
+<testcase name="zeroRateSplitsPrincipalEvenly()" classname="mortgage.RateQuoteTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RateQuoteTest]/[method:zeroRateSplitsPrincipalEvenly()]
+display-name: zeroRateSplitsPrincipalEvenly()
+]]></system-out>
+</testcase>
+<testcase name="filtersByTarget()" classname="mortgage.AuditLogTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AuditLogTest]/[method:filtersByTarget()]
+display-name: filtersByTarget()
+]]></system-out>
+</testcase>
+<testcase name="withdrawnApplicationsDoNotBlockANewOne()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:withdrawnApplicationsDoNotBlockANewOne()]
+display-name: withdrawnApplicationsDoNotBlockANewOne()
+]]></system-out>
+</testcase>
+<testcase name="createNeedsLoanTerms()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:createNeedsLoanTerms()]
+display-name: createNeedsLoanTerms()
+]]></system-out>
+</testcase>
+<testcase name="routeKeysAreUnique()" classname="mortgage.RoutesTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RoutesTest]/[method:routeKeysAreUnique()]
+display-name: routeKeysAreUnique()
+]]></system-out>
+</testcase>
+<testcase name="withinPolicyIsEligibleForAutoApproval()" classname="mortgage.UnderwritingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UnderwritingTest]/[method:withinPolicyIsEligibleForAutoApproval()]
+display-name: withinPolicyIsEligibleForAutoApproval()
+]]></system-out>
+</testcase>
+<testcase name="notesAreKeptInOrderAndAudited()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:notesAreKeptInOrderAndAudited()]
+display-name: notesAreKeptInOrderAndAudited()
+]]></system-out>
+</testcase>
+<testcase name="tenYearsIsNot()" classname="mortgage.QuoteTermTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.QuoteTermTest]/[method:tenYearsIsNot()]
+display-name: tenYearsIsNot()
+]]></system-out>
+</testcase>
+<testcase name="controlTestsCarryTheControlTag()" classname="controls.RegistryConsistencyTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.RegistryConsistencyTest]/[method:controlTestsCarryTheControlTag()]
+display-name: controlTestsCarryTheControlTag()
+]]></system-out>
+</testcase>
+<testcase name="exportsAreMaskedAndAudited()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:exportsAreMaskedAndAudited()]
+display-name: exportsAreMaskedAndAudited()
+]]></system-out>
+</testcase>
+<testcase name="submissionNeedsDocumentsAndAQuote()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:submissionNeedsDocumentsAndAQuote()]
+display-name: submissionNeedsDocumentsAndAQuote()
+]]></system-out>
+</testcase>
+<testcase name="flagsCasesWaitingTooLongForADecision()" classname="mortgage.PipelineReportTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.PipelineReportTest]/[method:flagsCasesWaitingTooLongForADecision()]
+display-name: flagsCasesWaitingTooLongForADecision()
+]]></system-out>
+</testcase>
+<testcase name="hardStopsAreDeclined()" classname="mortgage.UnderwritingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UnderwritingTest]/[method:hardStopsAreDeclined()]
+display-name: hardStopsAreDeclined()
+]]></system-out>
+</testcase>
+<testcase name="restoredLogsContinueTheSequence()" classname="mortgage.AuditLogTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AuditLogTest]/[method:restoredLogsContinueTheSequence()]
+display-name: restoredLogsContinueTheSequence()
+]]></system-out>
+</testcase>
+<testcase name="matchesTemplatesAndExtractsParameters()" classname="mortgage.RoutesTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RoutesTest]/[method:matchesTemplatesAndExtractsParameters()]
+display-name: matchesTemplatesAndExtractsParameters()
+]]></system-out>
+</testcase>
+<testcase name="checklistShowsWhatIsMissing()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:checklistShowsWhatIsMissing()]
+display-name: checklistShowsWhatIsMissing()
+]]></system-out>
+</testcase>
+<testcase name="highLoanToValueIsReferred()" classname="mortgage.UnderwritingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UnderwritingTest]/[method:highLoanToValueIsReferred()]
+display-name: highLoanToValueIsReferred()
+]]></system-out>
+</testcase>
+<testcase name="approvedAndClosedCasesAreNeverPurgedHere()" classname="mortgage.RetentionTest" time="0.019">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RetentionTest]/[method:approvedAndClosedCasesAreNeverPurgedHere()]
+display-name: approvedAndClosedCasesAreNeverPurgedHere()
+]]></system-out>
+</testcase>
+<testcase name="makerCannotCheck()" classname="controls.ApprovalsControlTest" time="0.011">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.ApprovalsControlTest]/[method:makerCannotCheck()]
+display-name: makerCannotCheck()
+]]></system-out>
+</testcase>
+<testcase name="privilegedIdleTimeoutWithinPolicy()" classname="controls.SessionControlTest" time="0.01">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.SessionControlTest]/[method:privilegedIdleTimeoutWithinPolicy()]
+display-name: privilegedIdleTimeoutWithinPolicy()
+]]></system-out>
+</testcase>
+<testcase name="draftsCannotBeDeclined()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:draftsCannotBeDeclined()]
+display-name: draftsCannotBeDeclined()
+]]></system-out>
+</testcase>
+<testcase name="sampledPurgeRespectsHold()" classname="controls.RetentionControlTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.RetentionControlTest]/[method:sampledPurgeRespectsHold()]
+display-name: sampledPurgeRespectsHold()
+]]></system-out>
+</testcase>
+<testcase name="editingLoanTermsDropsTheQuote()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:editingLoanTermsDropsTheQuote()]
+display-name: editingLoanTermsDropsTheQuote()
+]]></system-out>
+</testcase>
+<testcase name="rejectsBadFlagsAndOverLongText()" classname="mortgage.ApplicantValidatorTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApplicantValidatorTest]/[method:rejectsBadFlagsAndOverLongText()]
+display-name: rejectsBadFlagsAndOverLongText()
+]]></system-out>
+</testcase>
+<testcase name="adminsCannotChangeTheirOwnRole()" classname="mortgage.UserDirectoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UserDirectoryTest]/[method:adminsCannotChangeTheirOwnRole()]
+display-name: adminsCannotChangeTheirOwnRole()
+]]></system-out>
+</testcase>
+<testcase name="thirtyYearPaymentMatchesTheAmortisationTable()" classname="mortgage.RateQuoteTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RateQuoteTest]/[method:thirtyYearPaymentMatchesTheAmortisationTable()]
+display-name: thirtyYearPaymentMatchesTheAmortisationTable()
+]]></system-out>
+</testcase>
+<testcase name="thirtyYearsIsSupported()" classname="mortgage.QuoteTermTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.QuoteTermTest]/[method:thirtyYearsIsSupported()]
+display-name: thirtyYearsIsSupported()
+]]></system-out>
+</testcase>
+<testcase name="healthIsOpen()" classname="mortgage.RoutesTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RoutesTest]/[method:healthIsOpen()]
+display-name: healthIsOpen()
+]]></system-out>
+</testcase>
+<testcase name="escapesSpecialCharacters()" classname="mortgage.JsonTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.JsonTest]/[method:escapesSpecialCharacters()]
+display-name: escapesSpecialCharacters()
+]]></system-out>
+</testcase>
+<testcase name="tamperingIsDetected()" classname="mortgage.NpiVaultTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.NpiVaultTest]/[method:tamperingIsDetected()]
+display-name: tamperingIsDetected()
+]]></system-out>
+</testcase>
+<testcase name="idleSessionsLosePrivilegedAccessFirst()" classname="mortgage.HttpAppTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:idleSessionsLosePrivilegedAccessFirst()]
+display-name: idleSessionsLosePrivilegedAccessFirst()
+]]></system-out>
+</testcase>
+<testcase name="oneUnderwriterApprovesASmallLoan()" classname="mortgage.ApprovalsTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApprovalsTest]/[method:oneUnderwriterApprovesASmallLoan()]
+display-name: oneUnderwriterApprovesASmallLoan()
+]]></system-out>
+</testcase>
+<testcase name="hardStopsAreDeclinedNotOverridden()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:hardStopsAreDeclinedNotOverridden()]
+display-name: hardStopsAreDeclinedNotOverridden()
+]]></system-out>
+</testcase>
+<testcase name="referredCasesNeedASeniorOverride()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:referredCasesNeedASeniorOverride()]
+display-name: referredCasesNeedASeniorOverride()
+]]></system-out>
+</testcase>
+<testcase name="withdrawnCasesArePurgedAfterTheRetentionPeriod()" classname="mortgage.RetentionTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RetentionTest]/[method:withdrawnCasesArePurgedAfterTheRetentionPeriod()]
+display-name: withdrawnCasesArePurgedAfterTheRetentionPeriod()
+]]></system-out>
+</testcase>
+<testcase name="roundTripsEveryCaseField(Path)" classname="mortgage.CaseStoreTest" time="0.009">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseStoreTest]/[method:roundTripsEveryCaseField(java.nio.file.Path)]
+display-name: roundTripsEveryCaseField(Path)
+]]></system-out>
+</testcase>
+<testcase name="duplicateApplicationsAreRejected()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:duplicateApplicationsAreRejected()]
+display-name: duplicateApplicationsAreRejected()
+]]></system-out>
+</testcase>
+<testcase name="purgeRemovesOnlyNpiAndIsNotRepeated()" classname="mortgage.RetentionTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RetentionTest]/[method:purgeRemovesOnlyNpiAndIsNotRepeated()]
+display-name: purgeRemovesOnlyNpiAndIsNotRepeated()
+]]></system-out>
+</testcase>
+<testcase name="sampledOperationsAreAudited()" classname="controls.AuditControlTest" time="0.007">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.AuditControlTest]/[method:sampledOperationsAreAudited()]
+display-name: sampledOperationsAreAudited()
+]]></system-out>
+</testcase>
+<testcase name="rejectsMalformedInput()" classname="mortgage.JsonTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.JsonTest]/[method:rejectsMalformedInput()]
+display-name: rejectsMalformedInput()
+]]></system-out>
+</testcase>
+<testcase name="distinguishesMethodsOnTheSamePath()" classname="mortgage.RoutesTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RoutesTest]/[method:distinguishesMethodsOnTheSamePath()]
+display-name: distinguishesMethodsOnTheSamePath()
+]]></system-out>
+</testcase>
+<testcase name="nullPassesThrough()" classname="mortgage.NpiVaultTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.NpiVaultTest]/[method:nullPassesThrough()]
+display-name: nullPassesThrough()
+]]></system-out>
+</testcase>
+<testcase name="masksNpiForCallersWithoutNpiAccess()" classname="mortgage.ExportTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ExportTest]/[method:masksNpiForCallersWithoutNpiAccess()]
+display-name: masksNpiForCallersWithoutNpiAccess()
+]]></system-out>
+</testcase>
+<testcase name="rejectsUnknownFields()" classname="mortgage.ApplicantValidatorTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApplicantValidatorTest]/[method:rejectsUnknownFields()]
+display-name: rejectsUnknownFields()
+]]></system-out>
+</testcase>
+<testcase name="sessionsExpireAfterTheStandardLimit()" classname="mortgage.SessionTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.SessionTest]/[method:sessionsExpireAfterTheStandardLimit()]
+display-name: sessionsExpireAfterTheStandardLimit()
+]]></system-out>
+</testcase>
+<testcase name="theLimitsThemselvesAreWithinPolicy()" classname="mortgage.UnderwritingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UnderwritingTest]/[method:theLimitsThemselvesAreWithinPolicy()]
+display-name: theLimitsThemselvesAreWithinPolicy()
+]]></system-out>
+</testcase>
+<testcase name="editedEventsBreakTheChain()" classname="mortgage.AuditLogTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AuditLogTest]/[method:editedEventsBreakTheChain()]
+display-name: editedEventsBreakTheChain()
+]]></system-out>
+</testcase>
+<testcase name="missingInputsAreReferredWithoutRatios()" classname="mortgage.UnderwritingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UnderwritingTest]/[method:missingInputsAreReferredWithoutRatios()]
+display-name: missingInputsAreReferredWithoutRatios()
+]]></system-out>
+</testcase>
+<testcase name="createsAndProgressesACaseOverHttp()" classname="mortgage.HttpAppTest" time="0.004">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:createsAndProgressesACaseOverHttp()]
+display-name: createsAndProgressesACaseOverHttp()
+]]></system-out>
+</testcase>
+<testcase name="unknownPathsDoNotMatch()" classname="mortgage.RoutesTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RoutesTest]/[method:unknownPathsDoNotMatch()]
+display-name: unknownPathsDoNotMatch()
+]]></system-out>
+</testcase>
+<testcase name="otherRoutesNeedASession()" classname="mortgage.HttpAppTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:otherRoutesNeedASession()]
+display-name: otherRoutesNeedASession()
+]]></system-out>
+</testcase>
+<testcase name="largeLoansNeedTwoDistinctSeniors()" classname="mortgage.ApprovalsTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApprovalsTest]/[method:largeLoansNeedTwoDistinctSeniors()]
+display-name: largeLoansNeedTwoDistinctSeniors()
+]]></system-out>
+</testcase>
+<testcase name="requirementGrowsWithTheAmount()" classname="mortgage.ApprovalsTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApprovalsTest]/[method:requirementGrowsWithTheAmount()]
+display-name: requirementGrowsWithTheAmount()
+]]></system-out>
+</testcase>
+<testcase name="refusesToOpenPlainValues()" classname="mortgage.NpiVaultTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.NpiVaultTest]/[method:refusesToOpenPlainValues()]
+display-name: refusesToOpenPlainValues()
+]]></system-out>
+</testcase>
+<testcase name="showsNpiToCallersWhoMayViewIt()" classname="mortgage.ExportTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ExportTest]/[method:showsNpiToCallersWhoMayViewIt()]
+display-name: showsNpiToCallersWhoMayViewIt()
+]]></system-out>
+</testcase>
+<testcase name="exactlyAtTheLimitIsStillValid()" classname="mortgage.SessionTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.SessionTest]/[method:exactlyAtTheLimitIsStillValid()]
+display-name: exactlyAtTheLimitIsStillValid()
+]]></system-out>
+</testcase>
+<testcase name="shortTermsPriceLower()" classname="mortgage.RateQuoteTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RateQuoteTest]/[method:shortTermsPriceLower()]
+display-name: shortTermsPriceLower()
+]]></system-out>
+</testcase>
+<testcase name="describesMissingValues()" classname="mortgage.MaskTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.MaskTest]/[method:describesMissingValues()]
+display-name: describesMissingValues()
+]]></system-out>
+</testcase>
+<testcase name="emptyBodyIsAnEmptyObject()" classname="mortgage.JsonTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.JsonTest]/[method:emptyBodyIsAnEmptyObject()]
+display-name: emptyBodyIsAnEmptyObject()
+]]></system-out>
+</testcase>
+<testcase name="auditorIsReadOnly()" classname="controls.AccessMatrixControlTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.AccessMatrixControlTest]/[method:auditorIsReadOnly()]
+display-name: auditorIsReadOnly()
+]]></system-out>
+</testcase>
+<testcase name="privilegedRequestsUseTheShorterIdleLimit()" classname="mortgage.SessionTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.SessionTest]/[method:privilegedRequestsUseTheShorterIdleLimit()]
+display-name: privilegedRequestsUseTheShorterIdleLimit()
+]]></system-out>
+</testcase>
+<testcase name="privilegedRoutesNeedStepUpMfa()" classname="mortgage.HttpAppTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:privilegedRoutesNeedStepUpMfa()]
+display-name: privilegedRoutesNeedStepUpMfa()
+]]></system-out>
+</testcase>
+<testcase name="storeIssuesFindsAndClosesSessions()" classname="mortgage.SessionTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.SessionTest]/[method:storeIssuesFindsAndClosesSessions()]
+display-name: storeIssuesFindsAndClosesSessions()
+]]></system-out>
+</testcase>
+<testcase name="seniorsMayApproveWhatUnderwritersMay()" classname="mortgage.ApprovalsTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApprovalsTest]/[method:seniorsMayApproveWhatUnderwritersMay()]
+display-name: seniorsMayApproveWhatUnderwritersMay()
+]]></system-out>
+</testcase>
+<testcase name="acceptsAWellFormedApplicant()" classname="mortgage.ApplicantValidatorTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApplicantValidatorTest]/[method:acceptsAWellFormedApplicant()]
+display-name: acceptsAWellFormedApplicant()
+]]></system-out>
+</testcase>
+<testcase name="caseNumbersContinueAfterARestart(Path)" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:caseNumbersContinueAfterARestart(java.nio.file.Path)]
+display-name: caseNumbersContinueAfterARestart(Path)
+]]></system-out>
+</testcase>
+<testcase name="sealsNpiAndKeepsOtherFieldsReadable(Path)" classname="mortgage.CaseStoreTest" time="0.005">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseStoreTest]/[method:sealsNpiAndKeepsOtherFieldsReadable(java.nio.file.Path)]
+display-name: sealsNpiAndKeepsOtherFieldsReadable(Path)
+]]></system-out>
+</testcase>
+<testcase name="recentDeclinesAreKept()" classname="mortgage.RetentionTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.RetentionTest]/[method:recentDeclinesAreKept()]
+display-name: recentDeclinesAreKept()
+]]></system-out>
+</testcase>
+<testcase name="retentionPurgeSkipsCasesOnLegalHold()" classname="mortgage.CaseServiceTest" time="0.006">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:retentionPurgeSkipsCasesOnLegalHold()]
+display-name: retentionPurgeSkipsCasesOnLegalHold()
+]]></system-out>
+</testcase>
+<testcase name="everyNpiFieldIsSealedAtRest()" classname="controls.EncryptionControlTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.EncryptionControlTest]/[method:everyNpiFieldIsSealedAtRest()]
+display-name: everyNpiFieldIsSealedAtRest()
+]]></system-out>
+</testcase>
+<testcase name="underwritersDecideCredit()" classname="mortgage.AccessMatrixTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AccessMatrixTest]/[method:underwritersDecideCredit()]
+display-name: underwritersDecideCredit()
+]]></system-out>
+</testcase>
+<testcase name="adminCannotApproveCredit()" classname="controls.AccessMatrixControlTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.AccessMatrixControlTest]/[method:adminCannotApproveCredit()]
+display-name: adminCannotApproveCredit()
+]]></system-out>
+</testcase>
+<testcase name="createStartsADraftAndAuditsIt()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:createStartsADraftAndAuditsIt()]
+display-name: createStartsADraftAndAuditsIt()
+]]></system-out>
+</testcase>
+<testcase name="rejectsMalformedNpiWithoutLoggingIt()" classname="mortgage.ApplicantValidatorTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.ApplicantValidatorTest]/[method:rejectsMalformedNpiWithoutLoggingIt()]
+display-name: rejectsMalformedNpiWithoutLoggingIt()
+]]></system-out>
+</testcase>
+<testcase name="sealingTwiceGivesDifferentCiphertexts()" classname="mortgage.NpiVaultTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.NpiVaultTest]/[method:sealingTwiceGivesDifferentCiphertexts()]
+display-name: sealingTwiceGivesDifferentCiphertexts()
+]]></system-out>
+</testcase>
+<testcase name="authorityLimitsMatchPolicy()" classname="controls.ApprovalsControlTest" time="0.021">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.ApprovalsControlTest]/[method:authorityLimitsMatchPolicy()]
+display-name: authorityLimitsMatchPolicy()
+]]></system-out>
+</testcase>
+<testcase name="healthNeedsNoSession()" classname="mortgage.HttpAppTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:healthNeedsNoSession()]
+display-name: healthNeedsNoSession()
+]]></system-out>
+</testcase>
+<testcase name="chainAndRetention()" classname="controls.AuditControlTest" time="0.145">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.AuditControlTest]/[method:chainAndRetention()]
+display-name: chainAndRetention()
+]]></system-out>
+</testcase>
+<testcase name="adminRunsTheSystemButHasNoNpiAccess()" classname="mortgage.AccessMatrixTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AccessMatrixTest]/[method:adminRunsTheSystemButHasNoNpiAccess()]
+display-name: adminRunsTheSystemButHasNoNpiAccess()
+]]></system-out>
+</testcase>
+<testcase name="othersCannotAssignRoles()" classname="mortgage.UserDirectoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.UserDirectoryTest]/[method:othersCannotAssignRoles()]
+display-name: othersCannotAssignRoles()
+]]></system-out>
+</testcase>
+<testcase name="autoApproveGridMatchesPolicy()" classname="controls.UnderwritingControlTest" time="0.123">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.UnderwritingControlTest]/[method:autoApproveGridMatchesPolicy()]
+display-name: autoApproveGridMatchesPolicy()
+]]></system-out>
+</testcase>
+<testcase name="matrixEqualsApprovedPolicy()" classname="controls.AccessMatrixControlTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.AccessMatrixControlTest]/[method:matrixEqualsApprovedPolicy()]
+display-name: matrixEqualsApprovedPolicy()
+]]></system-out>
+</testcase>
+<testcase name="employedApplicantsDoNotNeedTaxReturns()" classname="mortgage.DocumentChecklistTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.DocumentChecklistTest]/[method:employedApplicantsDoNotNeedTaxReturns()]
+display-name: employedApplicantsDoNotNeedTaxReturns()
+]]></system-out>
+</testcase>
+<testcase name="savingAgainReplacesTheCase()" classname="mortgage.CaseStoreTest" time="0.004">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseStoreTest]/[method:savingAgainReplacesTheCase()]
+display-name: savingAgainReplacesTheCase()
+]]></system-out>
+</testcase>
+<testcase name="approvedCasesCloseAndApplicantsCanWithdraw()" classname="mortgage.CaseServiceTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:approvedCasesCloseAndApplicantsCanWithdraw()]
+display-name: approvedCasesCloseAndApplicantsCanWithdraw()
+]]></system-out>
+</testcase>
+<testcase name="purgeKeepsTheRetentionWindowAndAnchorsTheChain()" classname="mortgage.AuditLogTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AuditLogTest]/[method:purgeKeepsTheRetentionWindowAndAnchorsTheChain()]
+display-name: purgeKeepsTheRetentionWindowAndAnchorsTheChain()
+]]></system-out>
+</testcase>
+<testcase name="completeOnceEveryRequiredDocumentIsIn()" classname="mortgage.DocumentChecklistTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.DocumentChecklistTest]/[method:completeOnceEveryRequiredDocumentIsIn()]
+display-name: completeOnceEveryRequiredDocumentIsIn()
+]]></system-out>
+</testcase>
+<testcase name="sampledFlowsDoNotLogNpi()" classname="controls.LoggingControlTest" time="0.016">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.LoggingControlTest]/[method:sampledFlowsDoNotLogNpi()]
+display-name: sampledFlowsDoNotLogNpi()
+]]></system-out>
+</testcase>
+<testcase name="auditorsReadTheTrail()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:auditorsReadTheTrail()]
+display-name: auditorsReadTheTrail()
+]]></system-out>
+</testcase>
+<testcase name="annotationsMatchRegistry()" classname="controls.RegistryConsistencyTest" time="0.004">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:controls.RegistryConsistencyTest]/[method:annotationsMatchRegistry()]
+display-name: annotationsMatchRegistry()
+]]></system-out>
+</testcase>
+<testcase name="unknownRoutesAndMethods()" classname="mortgage.HttpAppTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.HttpAppTest]/[method:unknownRoutesAndMethods()]
+display-name: unknownRoutesAndMethods()
+]]></system-out>
+</testcase>
+<testcase name="npiViewsAreAuditedAndRestricted()" classname="mortgage.CaseServiceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:npiViewsAreAuditedAndRestricted()]
+display-name: npiViewsAreAuditedAndRestricted()
+]]></system-out>
+</testcase>
+<testcase name="largeOverridesWaitForASecondSenior()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:largeOverridesWaitForASecondSenior()]
+display-name: largeOverridesWaitForASecondSenior()
+]]></system-out>
+</testcase>
+<testcase name="auditorsReadCasesAndTheAuditTrail()" classname="mortgage.AccessMatrixTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.AccessMatrixTest]/[method:auditorsReadCasesAndTheAuditTrail()]
+display-name: auditorsReadCasesAndTheAuditTrail()
+]]></system-out>
+</testcase>
+<testcase name="pipelineReflectsTheCallersCases()" classname="mortgage.CaseServiceTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:pipelineReflectsTheCallersCases()]
+display-name: pipelineReflectsTheCallersCases()
+]]></system-out>
+</testcase>
+<testcase name="roundTripsNestedValues()" classname="mortgage.JsonTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.JsonTest]/[method:roundTripsNestedValues()]
+display-name: roundTripsNestedValues()
+]]></system-out>
+</testcase>
+<testcase name="activityResetsTheIdleTimer()" classname="mortgage.SessionTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.SessionTest]/[method:activityResetsTheIdleTimer()]
+display-name: activityResetsTheIdleTimer()
+]]></system-out>
+</testcase>
+<testcase name="applicantsOnlySeeTheirOwnCases()" classname="mortgage.CaseServiceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mortgage.CaseServiceTest]/[method:applicantsOnlySeeTheirOwnCases()]
+display-name: applicantsOnlySeeTheirOwnCases()
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>

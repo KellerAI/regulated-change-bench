@@ -1,0 +1,21 @@
+{
+  "id": "PR-1910",
+  "title": "Longer idle timeout for standard sessions",
+  "description": "Longer idle timeout for standard sessions.\n\nChanges:\n- Raise the standard (non-privileged) idle timeout\n- Approved parameter updated\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "linh.nguyen@fernbrook.example",
+  "branch": "nguyen/change-114",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "a15d2de01e2415e5b18b8f4489bcc60e3fd23485",
+  "commits": [
+    {
+      "sha": "a15d2de01e2415e5b18b8f4489bcc60e3fd23485",
+      "message": "Sessions: 45 minute idle timeout for standard sessions",
+      "author": "linh.nguyen@fernbrook.example",
+      "at": "2026-10-09T20:02:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24787",
+  "opened_at": "2026-10-09T20:02:00Z"
+}

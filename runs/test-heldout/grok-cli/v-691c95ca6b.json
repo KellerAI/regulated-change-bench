@@ -1,0 +1,89 @@
+{
+  "variant": "v-691c95ca6b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new amend_memo log is self._log.info(\"payment memo updated\", payment_id=payment_id). It does not pass the memo or any payments NPI field (account number, routing number, tax id, or date of birth). tests/controls/test_logging_control.py::test_sampled_flows_do_not_log_npi passed unskipped on the head commit."
+    },
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "amend_memo still authorizes create_payment and persists the memo through payments.amend_memo, but the head commit deletes self._audit(actor, \"amend_memo\", ...) and writes only an application log with payment_id. That state change no longer records an audit event with actor, action, target, and time. The registered audit test is sample coverage, and no exception covers AUD-1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1559 names ticket CHG-26751, which change manager Grace Kim approved on 2026-10-21 before review. Its component payments.service matches the only touched path, apps/baseline-payments/payments/service.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos gave a code_review approval. She is a payments change_approver and is not the author, Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 934a0c64d9f52efccdd375f14d19c793ca774a39, which is the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on the head commit, and payments-tests.xml shows 172 tests, 0 failures, and 0 skipped, including the registered AUD-1 and LOG-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched file is payments.service, which components.json marks security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI. Those are the protected paths that require a control_owner approval."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Dropping the amend_memo audit event deviates from AUD-1. The register has no approved, unexpired exception scoped to AUD-1 and payments.service; the SES-1 exception is expired, the LOG-1 exception is mortgage.logging, and the MFA-1 exception is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments.py, audit.py, routes.py, and mortgage underwriting and approvals. This change only alters service.py, so those earlier evidence entries do not lapse."
+    }
+  ],
+  "summary": "The change replaces the audit record on memo amendment with an application log that carries only the payment id. Memo amendment still persists payment state, so AUD-1 requires an audit event with actor, action, target, and time, and that event is gone. No approved exception covers the deviation. Ticket, independent approval, CI on the head commit, and the other process checks are in order, and the new log line does not contain NPI, but the missing audit is enough to reject the change.",
+  "meta": {
+    "elapsed_s": 170.45,
+    "tokens_in": 89753,
+    "tokens_out": 12168,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5fa5d4d3d537650d70b2b1832f645c6d26407cbd6a4e8a7136b982189abb2f34",
+    "packet_tokens_est": 26598,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 89753,
+      "outputTokens": 12168,
+      "cacheReadTokens": 115328,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 167198,
+    "duration_api_ms": 167198,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

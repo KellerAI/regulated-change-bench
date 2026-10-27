@@ -1,0 +1,56 @@
+{
+  "variant": "v-1a2e995b0b",
+  "arm": "gpt-oss-120b",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "open",
+      "note": "Ticket approved and identified, but components list cannot be verified to cover the changed file ApplicantValidator.java because it is not present in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Declan Farrell, who has the change_approver role for baseline-mortgage and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval is attached to the exact commit being merged; there are no later non‑trivial commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with full test suite (124 tests, 0 failures) on the final commit."
+    }
+  ],
+  "summary": "All process obligations except CHG-1 are clearly satisfied. CHG-1 cannot be confirmed because the changed file's component mapping is missing, leaving coverage uncertain. Therefore the change is put on HOLD pending clarification.",
+  "meta": {
+    "elapsed_s": 101.23,
+    "tokens_in": 24665,
+    "tokens_out": 5340,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "eb90ac405a058e17249737b9e688663ca7032b712ed1108be5b48f8ee94d5225",
+    "packet_tokens_est": 24755,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23304,
+    "answer_chars": 1057,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.71,
+    "eval_s": 83.35,
+    "total_s": 101.23,
+    "tokens_est_ratio": 0.971,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

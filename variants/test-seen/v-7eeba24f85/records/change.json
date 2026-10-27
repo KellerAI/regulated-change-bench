@@ -1,0 +1,27 @@
+{
+  "id": "PR-1776",
+  "title": "Rate quote: supported terms helper",
+  "description": "Rate quote: supported terms helper.\n\nChanges:\n- Add `RateQuote.isSupportedTerm`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-830",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "67bc4a079b78c313dd4108a6fece18d190c15dcb",
+  "commits": [
+    {
+      "sha": "c30bbefed1c1c1340b678a6b84d5b7377bde9170",
+      "message": "Rate quote: expose supported terms",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-02T18:26:00Z"
+    },
+    {
+      "sha": "67bc4a079b78c313dd4108a6fece18d190c15dcb",
+      "message": "Rate quote: default term constant",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-02T21:47:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25124",
+  "opened_at": "2026-10-02T18:26:00Z"
+}

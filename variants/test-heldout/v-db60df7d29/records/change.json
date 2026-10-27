@@ -1,0 +1,21 @@
+{
+  "id": "PR-1218",
+  "title": "Payment advice gateway registration",
+  "description": "Payment advice gateway registration.\n\nChanges:\n- Add the HTTPS gateway to the integration registry and inventory\n- Ownership handoff is tracked in the inventory entry\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-payments",
+  "author": "sofia.santos@fernbrook.example",
+  "branch": "santos/change-468",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "fa3a7a35f084fba9fa120f3fbd24a6200a319290",
+  "commits": [
+    {
+      "sha": "fa3a7a35f084fba9fa120f3fbd24a6200a319290",
+      "message": "Integrations: register the payment advice gateway",
+      "author": "sofia.santos@fernbrook.example",
+      "at": "2026-10-15T14:43:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24697",
+  "opened_at": "2026-10-15T14:43:00Z"
+}

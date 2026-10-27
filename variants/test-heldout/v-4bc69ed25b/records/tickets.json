@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25143",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Account-number URL compatibility",
+    "components": [
+      "payments.http"
+    ],
+    "requested_by": "aisha.bello@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-09-29T23:46:00Z",
+    "risk": "medium"
+  }
+]

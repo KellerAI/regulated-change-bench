@@ -1,0 +1,21 @@
+{
+  "id": "PR-1507",
+  "title": "Archive terminal payments",
+  "description": "Keeps the live payments table small for the daily reports.\n\nChanges:\n- Add `Store.archive_payments(status)`\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "linh.nguyen@fernbrook.example",
+  "branch": "nguyen/change-470",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "183ae8f50e471e751ae2b2cc40f04bd0801cba11",
+  "commits": [
+    {
+      "sha": "183ae8f50e471e751ae2b2cc40f04bd0801cba11",
+      "message": "Add payment archiving to the store",
+      "author": "linh.nguyen@fernbrook.example",
+      "at": "2026-10-14T01:27:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24565",
+  "opened_at": "2026-10-14T01:27:00Z"
+}

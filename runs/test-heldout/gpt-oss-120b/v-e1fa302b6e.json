@@ -1,0 +1,66 @@
+{
+  "variant": "v-e1fa302b6e",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "CI run passed the exhaustive control test `test_privileged_routes_require_mfa`, which now includes the new privileged route with MFA enabled."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change record references ticket CHG-24303, which is approved by a change manager (Grace Kim) as shown in tickets.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "No code_review approval from a person with the `change_approver` role for payments; the only code_review is from Sofia Santos who lacks that role."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval references the exact commit SHA of the only commit, satisfying coverage of the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run (run.json) reports success and all 172 test cases, including control tests, passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "A security_review approval from Ines Halvorsen (security_reviewer) is present for the commit, covering the security‑sensitive components modified."
+    }
+  ],
+  "summary": "All product obligations affected by the change are satisfied, and most process obligations are met except CHG-2, which lacks an independent approval from a payments change approver. Because CHG-2 is violated, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 79.4,
+    "tokens_in": 27437,
+    "tokens_out": 3746,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "dbffde54d795ec233dc69f7f5497edbcd01a438b97605a75b1348f41dad75d47",
+    "packet_tokens_est": 27716,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14172,
+    "answer_chars": 1522,
+    "done_reason": "stop",
+    "load_s": 3.13,
+    "prompt_eval_s": 17.73,
+    "eval_s": 58.4,
+    "total_s": 79.4,
+    "tokens_est_ratio": 0.967,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

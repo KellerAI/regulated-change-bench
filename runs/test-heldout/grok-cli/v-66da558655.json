@@ -1,0 +1,89 @@
+{
+  "variant": "v-66da558655",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new log.info in markDocumentReceived records only the DocumentType and the case id. Those are not NPI fields (ssn, date of birth, income, bank account number), and the passing LoggingControlTest does not show a leak on this statement."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "markDocumentReceived still calls audit.record with the actor, EDIT_CASE, and the case id after the new log line, and every other state-changing method in CaseService does the same. AuditControlTest.sampledOperationsAreAudited passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1447 names ticket CHG-26365, which Grace Kim (change_manager) approved on 2026-10-07, before review. Its component mortgage.cases matches CaseService.java in the component map, and that is the only path touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li approved a code_review. Wen is a change_approver for baseline-mortgage, and none of Wen's directory emails belong to the author, Nneka Okafor."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 31799dd57e78c4a4b91f745f7bcf9877fa6e93fb, which is the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success for ci/run-tests.sh baseline-mortgage on the head commit. The Jupiter report has 124 tests, 0 failures, 0 errors, and 0 skipped, including AuditControlTest.sampledOperationsAreAudited and LoggingControlTest.sampledFlowsDoNotLogNpi."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed path, CaseService.java, is component mortgage.cases with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "CaseService.java is not under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency: change.emergency is false and ticket CHG-26365 is type standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, so it does not rely on an exception. EXC-0167 is an unexpired LOG-1 exception for mortgage.logging's legacy import job, not for mortgage.cases."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments payments, audit, and routes, plus mortgage Approvals, Underwriting, and Policy. None of those paths change in this diff, so prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds one application log line when a document is marked received and leaves the existing audit event in place. That line records a document type and a case id, not an NPI value, and the state-changing operation is still audited. The ticket, independent approval, and head-commit test run meet the change-management rules, the touched component is not security-sensitive or protected, and no exception or prior evidence is disturbed. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 360.54,
+    "tokens_in": 59519,
+    "tokens_out": 22646,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e3a9af54a885eed7f0d3647bc24b6e38e493f5a342488e3bf9c07774a9357586",
+    "packet_tokens_est": 29036,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 59519,
+      "outputTokens": 22646,
+      "cacheReadTokens": 248960,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 357091,
+    "duration_api_ms": 357091,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

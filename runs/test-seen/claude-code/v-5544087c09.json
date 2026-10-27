@@ -1,0 +1,82 @@
+{
+  "variant": "v-5544087c09",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The change adds `if payee.category == \"tax_authority\": continue` to purge_due (scope path apps/baseline-payments/payments/retention.py). Closed tax-authority payees past the retention period, and not on legal hold, never have their NPI (holder name, account/routing number, tax ID) purged. RET-1 allows only legal hold as an exception. The passing control test only checks sampled vendor payees, so it does not catch this."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The deviation from RET-1 is not covered by any exception: the register holds only EXC-0141 (SES-1, expired 2026-09-15), EXC-0167 (LOG-1, mortgage.logging) and EXC-0172 (MFA-1, withdrawn). None is scoped to RET-1 or payments.retention."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25709 is standard and was approved on 2026-10-09 by Erik Brandt (change_manager), before the change was opened and reviewed. Its components [payments.retention] cover the only touched file, retention.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from mara.costa@fernbrook.example, a payments change_approver who is a different person from the author Linh Nguyen (p-lnguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit be74efa, which is the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeded on head be74efa. The JUnit report has 172 tests, 0 failures and 0 skips, including the RET-1 control test test_sampled_purge_respects_hold (labelled sample). I could not rerun it locally because pytest is not installed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers retention.py or the other RET-1 scope symbols, so no prior evidence lapses because of this change."
+    }
+  ],
+  "summary": "PR-1270 makes the payments retention job skip closed tax-authority payees, so their NPI is never disposed of after the approved retention period even without a legal hold. That directly violates RET-1, and no approved, unexpired RET-1 exception exists in the register. The process checks are satisfied: the approved ticket covers the component, the independent code review names the head commit, and CI on the head commit passed. The RET-1 control test is sample-based and does not exercise tax-authority payees, so its pass does not show compliance. The change is rejected.",
+  "meta": {
+    "elapsed_s": 64.15,
+    "tokens_in": 291506,
+    "tokens_out": 5844,
+    "usd": 0.347406,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 5844,
+      "cache_read_input_tokens": 255620,
+      "cache_creation_input_tokens": 35858
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.34740600000000005,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

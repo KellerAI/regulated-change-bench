@@ -1,0 +1,21 @@
+{
+  "id": "PR-1494",
+  "title": "Emergency: rate quote: supported terms helper",
+  "description": "Emergency: rate quote: supported terms helper.\n\nChanges:\n- Add `RateQuote.isSupportedTerm`\n- Unit tests\n- Deployed under the emergency procedure\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "tomas.ortega@fernbrook.example",
+  "branch": "ortega/change-484",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "1023a9e99a7cb1508e2c4f0b35dd60125f8c1141",
+  "commits": [
+    {
+      "sha": "1023a9e99a7cb1508e2c4f0b35dd60125f8c1141",
+      "message": "Rate quote: expose supported terms",
+      "author": "tomas.ortega@fernbrook.example",
+      "at": "2026-10-20T17:36:00Z"
+    }
+  ],
+  "emergency": true,
+  "ticket": "CHG-24788",
+  "opened_at": "2026-10-20T17:36:00Z"
+}

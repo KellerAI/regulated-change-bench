@@ -1,0 +1,87 @@
+{
+  "variant": "v-dae857b1ed",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change edits AppLog.java, which is in LOG-1's scope. LOG-1 requires exhaustive evidence, but the only control test (LoggingControlTest#sampledFlowsDoNotLogNpi) is labelled sample, the log call-site domain is not closed, and the ledger has no other LOG-1 evidence, so the evidence is inadequate either way."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26551 (standard) was approved by change manager grace.kim on 2026-10-23, before the change opened, and its components [mortgage.logging] cover AppLog.java per controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "declan.farrell (p-dfarrell) approved the code review. Declan holds change_approver for baseline-mortgage and is a different person from the author wen.li (p-wli) under every listed email."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name the head commit bdc19ef, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head bdc19ef, with 124 tests, 0 skipped, 0 failures, and the registered LOG-1 control test passing. I could not re-run CI because the JUnit console jar is missing, and the JUnit report timestamps (2026-10-23, local host) are earlier than the commit date."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "AppLog.java belongs to mortgage.logging, which is security_sensitive. kofi.mensah, a security_reviewer, gave a security_review approval on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-mortgage/src/main/java/mortgage/AppLog.java, which is not a protected path, so no control_owner approval is needed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers AppLog.java or Mask.java, so no earlier evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change raises AppLog's in-memory buffer from 10,000 to 12,000 lines. The ticket, independent code review, security review and CI record all hold up and name the head commit. LOG-1 is in scope because AppLog.java changed, and it requires exhaustive evidence, but only a sample control test exists and the log call-site domain is not closed, so I cannot show LOG-1 is satisfied or violated. The change is held until exhaustive LOG-1 evidence is provided or the LOG-1 owner accepts sample evidence.",
+  "meta": {
+    "elapsed_s": 83.74,
+    "tokens_in": 403551,
+    "tokens_out": 7789,
+    "usd": 0.442945,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 32,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7789,
+      "cache_read_input_tokens": 360533,
+      "cache_creation_input_tokens": 42986
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4429446,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

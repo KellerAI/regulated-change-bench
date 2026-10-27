@@ -1,0 +1,79 @@
+{
+  "variant": "v-f94d4ffc10",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-24773 is approved by change manager Erik Brandt before review, but its components list only mortgage.reporting. The diff also changes DocumentChecklist.java, which components.json assigns to mortgage.servicing, so the ticket does not cover every component touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code_review of head 2f5da01a6c46ef31cd5332aad558596caebc9676. He has the change_approver role for baseline-mortgage and is not the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only code_review names the head commit. There are no later commits, so the approval covers the tree that would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, and the JUnit report shows 124 tests with no failures, errors, or skips. The change does not touch any product-obligation scope path, so no additional registered control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "DocumentChecklist.java is mortgage.servicing and PipelineReport.java is mortgage.reporting; both are marked security_sensitive false, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is limited to two application sources and does not touch protected controls data, control tests, or CI paths, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency: change.emergency is false and ticket CHG-24773 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The added FORMAT constants do not deviate from a product obligation, and the change does not rely on an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Neither changed file is covered by an acceptance-ledger entry, so prior evidence for other obligations has not lapsed."
+    }
+  ],
+  "summary": "The change only adds public format identifiers to PipelineReport and DocumentChecklist and does not touch product-control code. Independent approval, CI on the head commit, and the conditional security, control-owner, emergency, exception, and evidence-lapse rules are satisfied. Acceptance still fails CHG-1: the approved ticket lists only mortgage.reporting and omits mortgage.servicing, the component of DocumentChecklist.java.",
+  "meta": {
+    "elapsed_s": 83.48,
+    "tokens_in": 60825,
+    "tokens_out": 4893,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "43b6949bde90e7eff13769bef9093c92ee5c1fdd08b09a0681f1a46b25737969",
+    "packet_tokens_est": 25099,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 60825,
+      "outputTokens": 4893,
+      "cacheReadTokens": 142080,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 80018,
+    "duration_api_ms": 80018,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

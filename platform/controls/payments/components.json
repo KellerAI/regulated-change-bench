@@ -1,0 +1,150 @@
+{
+  "apps/baseline-payments/payments/__init__.py": {
+    "component": "payments.core",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/__main__.py": {
+    "component": "payments.core",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/errors.py": {
+    "component": "payments.core",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/models.py": {
+    "component": "payments.core",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/clock.py": {
+    "component": "payments.core",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/policy.py": {
+    "component": "payments.policy",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/rbac.py": {
+    "component": "payments.access",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/routes.py": {
+    "component": "payments.routes",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/app.py": {
+    "component": "payments.http",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/client.py": {
+    "component": "payments.http",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/session.py": {
+    "component": "payments.session",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/npi.py": {
+    "component": "payments.npi",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/vault.py": {
+    "component": "payments.npi",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/store.py": {
+    "component": "payments.store",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/audit.py": {
+    "component": "payments.audit",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/logs.py": {
+    "component": "payments.logging",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/integrations.py": {
+    "component": "payments.integrations",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/transports.py": {
+    "component": "payments.integrations",
+    "security_sensitive": true
+  },
+  "apps/baseline-payments/payments/payments.py": {
+    "component": "payments.payments",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/memos.py": {
+    "component": "payments.payments",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/retention.py": {
+    "component": "payments.retention",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/directory.py": {
+    "component": "payments.payees",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/reports.py": {
+    "component": "payments.reports",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/statements.py": {
+    "component": "payments.reports",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/payments/service.py": {
+    "component": "payments.service",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/tests/conftest.py": {
+    "component": "payments.tests",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/tests/support.py": {
+    "component": "payments.tests",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/tests/test_*.py": {
+    "component": "payments.tests",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/tests/controls/*": {
+    "component": "payments.control-tests",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/ci/*": {
+    "component": "payments.ci",
+    "security_sensitive": false
+  },
+  "apps/baseline-payments/pyproject.toml": {
+    "component": "payments.build",
+    "security_sensitive": false
+  },
+  "controls/payments/*": {
+    "component": "payments.controls-data",
+    "security_sensitive": false
+  },
+  "controls/obligations.json": {
+    "component": "payments.platform-controls",
+    "security_sensitive": false
+  },
+  "controls/protected-paths.json": {
+    "component": "payments.platform-controls",
+    "security_sensitive": false
+  },
+  "controls/change-policy.md": {
+    "component": "payments.platform-controls",
+    "security_sensitive": false
+  },
+  "ci/run-tests.sh": {
+    "component": "payments.platform-controls",
+    "security_sensitive": false
+  },
+  "ci/run-controls.sh": {
+    "component": "payments.platform-controls",
+    "security_sensitive": false
+  }
+}

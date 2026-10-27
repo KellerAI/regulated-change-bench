@@ -1,0 +1,81 @@
+{
+  "variant": "v-82935dbe48",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25334 lists components [\"mortgage.reporting\"] but the change also touches DocumentChecklist.java, which is in component \"mortgage.servicing\" per controls/mortgage/components.json. The ticket's components do not cover every component the change touches, violating CHG-1."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (change_approver, lending-eng) approved on the head commit 1ccc4fe2; he is a different person from the author Wen Li, satisfying independent approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 1ccc4fe25947ca7be07fc08dc84e432840d96f5d, which is the final commit of the change; no later commits exist, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the head commit passed with 124 tests, 0 failures, 0 errors, 0 skipped. The change touches only DocumentChecklist.java and PipelineReport.java, neither of which appears in any product obligation's scope paths or closed domain, so no specific control tests are mandated."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Neither changed file is in a security_sensitive component (mortgage.servicing and mortgage.reporting are both security_sensitive: false), so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change only modifies files under apps/baseline-mortgage/src/main/java/mortgage/; no protected paths (controls/*, ci/*, test controls) are touched, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is of type 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change (it only adds format identifier constants), so no exception is needed or applicable."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries cover Approvals.java, Underwriting.java, payments.py, audit.py, and routes.py; none of these files are modified by this change, so no previously accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds two static format-identifier constants to DocumentChecklist.java and PipelineReport.java, a low-risk cosmetic addition. However, the change ticket CHG-25334 lists only the component 'mortgage.reporting' and omits 'mortgage.servicing', which is the component assigned to DocumentChecklist.java in controls/mortgage/components.json. Under CHG-1, the ticket's components must cover every component the change touches, and this requirement is not met. All other process obligations (independent approval, approval coverage, testing, security review, control-owner, emergency, exceptions, evidence lapse) are satisfied or not applicable. The rejection is solely due to the incomplete component coverage in the change ticket.",
+  "meta": {
+    "elapsed_s": 135.56,
+    "tokens_in": 28465,
+    "tokens_out": 3779,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "15f2fcf4f4d8bdacf30e1664fb4c4c49740a3ea35346248071b257a394a92b95",
+    "packet_tokens_est": 25091,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 11103,
+    "answer_chars": 3010,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.34,
+    "eval_s": 102.19,
+    "total_s": 135.56,
+    "tokens_est_ratio": 1.106,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "variant": "v-198eab224b",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25066 exists, approved by a change manager, and lists payments.payments as the component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval by Sofia Santos (email sofia.santos@fernbrook.example), who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval references the head commit SHA; no later commits were added, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (record run.json) and the full test suite (payments-tests.xml) passed, including control tests for MC-1, PAY-1 and PAY-2."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Control test test_maker_cannot_check (exhaustive) passed in the CI run, confirming maker‑checker enforcement."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "Proof record pay1-required-approvals.json (exhaustive) still applies because required_approvals was unchanged; control test test_dual_control_grid_matches_policy also passed."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "Control test test_sampled_release_is_idempotent passed; trace evidence pay2-release.json shows release is idempotent."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No evidence lapse: prior proof for PAY-1 remains valid and new CI evidence for MC-1 and PAY-2 provides fresh coverage."
+    }
+  ],
+  "summary": "All applicable product and process obligations for this change are satisfied with adequate evidence, including an approved ticket, independent code review, full test suite pass, and valid control proofs. No applicable obligations are violated, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 146.66,
+    "tokens_in": 25112,
+    "tokens_out": 7215,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5163f0fcdc35c0bb164d851f8cf10654951672d238ac66d0e0cebd2346448323",
+    "packet_tokens_est": 25251,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 27386,
+    "answer_chars": 1961,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.7,
+    "eval_s": 127.68,
+    "total_s": 146.65,
+    "tokens_est_ratio": 0.97,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

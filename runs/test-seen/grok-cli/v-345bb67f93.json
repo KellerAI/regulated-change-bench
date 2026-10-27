@@ -1,0 +1,79 @@
+{
+  "variant": "v-345bb67f93",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25092 is approved by change manager Erik Brandt on 2026-10-09, before the 2026-10-14 review. Its components (mortgage.policy, mortgage.tests, mortgage.controls-data) cover Policy.java, SessionTest.java, and controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li's code_review approval is on head commit 30ce7dd2. She is a change_approver for baseline-mortgage and is not the author, Declan Farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and control_owner approvals name 30ce7dd2. There is no later commit that could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-mortgage on 30ce7dd2. The JUnit report shows 124 tests, 0 failures, and 0 skipped, including every registered mortgage control test. No product-obligation scope symbol was changed, so no extra control-test duty is triggered beyond the full suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components are mortgage.policy, mortgage.tests, and mortgage.controls-data, and components.json marks each security_sensitive false. A security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is a protected path and an approved policy value (standard_idle_minutes) changes from 30 to 45. Bao Tran, a control_owner on controls-office and outside the author's lending-eng team, approved head commit 30ce7dd2."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25092 is type standard and the change record sets emergency to false. A post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not depart from a product obligation: privileged idle stays 15 in Policy.PRIVILEGED_IDLE_MINUTES and mortgage.privileged_idle_minutes. No exception is relied on. EXC-0141 is expired and scoped to payments.session."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries that name Policy.java cover UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, and LTV_MAX_PERCENT. The diff changes only STANDARD_IDLE_MINUTES, so those covered symbols are unchanged and the earlier proofs still apply."
+    }
+  ],
+  "summary": "The change raises only the non-privileged idle timeout from 30 to 45 minutes in Policy.java, the matching unit test, and mortgage.standard_idle_minutes. Privileged idle remains 15, within SES-1, and no product-obligation scope symbol is modified. The ticket, independent code review, and out-of-team control-owner approval all name the sole head commit and cover the touched components. CI reports the mortgage suite passing on that commit, with no failures or skips. The change is not emergency, does not touch a security-sensitive component, and does not lapse ledger-covered behavior.",
+  "meta": {
+    "elapsed_s": 321.1,
+    "tokens_in": 87100,
+    "tokens_out": 20736,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b47fae4669321399b54155d5dff8ad052f0490abda0c382ba678964cfbf28a8b",
+    "packet_tokens_est": 25333,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 87100,
+      "outputTokens": 20736,
+      "cacheReadTokens": 166784,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 317290,
+    "duration_api_ms": 317290,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

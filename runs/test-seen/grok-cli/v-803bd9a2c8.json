@@ -1,0 +1,79 @@
+{
+  "variant": "v-803bd9a2c8",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-26684 is approved by change manager Grace Kim before review, but its components are mortgage.reports and mortgage.tests. RateQuote.java is mapped to mortgage.servicing in controls/mortgage/components.json, which the ticket does not cover."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change_approver and not the author Declan Farrell, gave a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 5d82ae814346c4782463c1b43f74012ad3c491bf, and the code_review approval names that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, with 126 tests, zero failures and zero skipped, including QuoteTermTest and every registered mortgage control test. The diff does not touch any product-obligation scope path, so no additional control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "RateQuote.java and the new unit test are not security_sensitive in controls/mortgage/components.json, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch a protected path in controls/protected-paths.json, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and it does not rely on an exception. The helper only exposes the existing supported-term set."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change any path or symbol covered by the acceptance ledger, so prior ledger evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds RateQuote.isSupportedTerm and a unit test. Independent approval, coverage of the final commit, and a green full suite on that commit are in the record, and no security-sensitive, protected, or emergency path is involved. The ticket does not name mortgage.servicing, the component assigned to RateQuote.java, so CHG-1 is not met. The change is rejected.",
+  "meta": {
+    "elapsed_s": 107.11,
+    "tokens_in": 42828,
+    "tokens_out": 6037,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f3c20450268f8aa5c151c6fcb34c3fec0e2f5284f4f2ab3f1d3ac4e290388b55",
+    "packet_tokens_est": 24926,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42828,
+      "outputTokens": 6037,
+      "cacheReadTokens": 204288,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 83222,
+    "duration_api_ms": 83222,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

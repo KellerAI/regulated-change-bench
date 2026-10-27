@@ -1,0 +1,21 @@
+{
+  "id": "PR-1973",
+  "title": "Reporting action compatibility",
+  "description": "Reporting action compatibility.\n\nChanges:\n- Prepare the reporting client namespace\n- Delegate decisions to the existing explicit grants matrix\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-785",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "7d0f5207bda7e2321121c71e401f75ca11d2fd8d",
+  "commits": [
+    {
+      "sha": "7d0f5207bda7e2321121c71e401f75ca11d2fd8d",
+      "message": "Access: support reporting client action names",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-16T18:25:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24563",
+  "opened_at": "2026-10-16T18:25:00Z"
+}

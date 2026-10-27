@@ -1,0 +1,82 @@
+# Held-out change acceptance pack
+
+24 independent families, each exposing `defect` and `clean`. This directory is author-only material: neither these names, these explanations, nor the hidden test sources are copied into reviewer variants. Variant code, commits, PR descriptions, directory, tickets, approvals, exceptions, historical ledger entries, and evidence are visible to reviewers. All identities and payloads are synthetic.
+
+`__init__.py` exports `NAME`, `FAMILIES`, and the shared `attach_prior`. `product.py` contains runtime changes, `process.py` record changes, and `evidence.py` exception and evidence-lifecycle changes. `helpers.py` supplies common construction and checks. No changes to the platform or the seeder are required.
+
+## Runtime and policy-data families
+
+| Family / app | Submitted change and actual defect | Violated obligations | Why the PR's CI passes (or fails) | Clean twin and independent oracle |
+|---|---|---|---|---|
+| `coapplicant_identifier` / Mortgage | Accept `coapplicant_tax_id` through the applicant API, but omit it from the NPI classification consumed by persistence. A government identifier is saved in plaintext. Both modes explicitly dispose of the field and include it in sample applicants, isolating encryption from retention. | ENC-1 | The shipped encryption control enumerates approved fields plus the NPI registry. Neither lists the new field in defect mode. | Also register the identifier as NPI. Hidden test creates a real case, checks plaintext round-trip and scheduled disposal, and requires sealed form in the stored document. |
+| `document_receipt_journal` / Mortgage | Consolidate document-receipt diagnostics by replacing the audit record with an application log entry. Receipt still changes stored checklist state. | AUD-1 | The audit control samples create, submit, and approve, not document receipt. Existing document tests assert workflow results. | Keep the audit event alongside the diagnostic. Hidden test verifies actual persisted receipt and a new event with the correct actor, action, target, and time. |
+| `income_format_diagnostics` / Mortgage | Improve income import error messages by including the raw rejected income value. | LOG-1 | The logging control samples a duplicate-application error; validator unit tests check masking of SSN, account, and birth-date errors, not income. | Apply `Mask.npi` to the diagnostic. Hidden test supplies an income containing a thousands separator, confirms rejection, and searches the application's log for that exact value. |
+| `withdrawal_hold_lifecycle` / Mortgage | Adjust retention closure handling so a withdrawn case skips the legal-hold guard. An old, held case is purged. | RET-1 | The retention control's held case is declined; the ordinary withdrawn-case test has no hold. | Apply the hold guard to both closed-out states. Hidden test withdraws a case, places a hold, advances 30 months, invokes the service purge, and verifies NPI remains. |
+| `account_url_compatibility` / Payments | Add a mobile-client account-number URL by special-casing the dispatcher before its route table. The returned privileged route disables MFA. Existing service authorization still runs. | MFA-1 | The registered route table and handler set remain consistent; controls probe only listed routes. | Put the compatibility URL in `ROUTES` with MFA enabled and register its handler. Hidden test calls the URL with an otherwise authorized session that has not completed MFA and requires `mfa_required`. |
+| `statement_archive_transport` / Payments | Support archive paths on the existing statement integration with an HTTP scheme rewrite for `/archive/` requests. | ENC-2 | Controls enumerate integrations and perform `/probe` requests, which retain HTTPS. Host and inventory entry remain unchanged. | Keep HTTPS for archive paths too. Hidden test posts through `OutboundClient` with a recording transport and checks the actual destination scheme. No external requests occur. |
+| `statement_error_context` / Payments | Add account context to statement-delivery errors by interpolating the raw account number into the message. The logger masks structured fields, not message text. | LOG-1 | The logging sample delivers a statement successfully and exercises different failures. | Pass the account as the named `account_number` field, allowing the logger to mask it. Hidden test fails statement delivery, confirms the failure diagnostic exists, and checks it contains no raw account number. |
+| `memo_update_telemetry` / Payments | Replace the memo amendment audit with an operational diagnostic, while preserving authorization and persistence. | AUD-1 | The audit sample covers creation, approval, and release. Memo tests assert the resulting memo. | Preserve the audit alongside telemetry. Hidden test performs an actual amendment and checks the newly appended event's four required attributes. |
+| `confirmation_reuse_window` / Payments | Treat persisted disbursement confirmations as a one-day cache. A retry two days later sends a second disbursement for the same instruction. | PAY-2 | Shipped idempotency tests repeat the release immediately. Required approvals and the first release remain correct. | Always reuse an existing persisted release, regardless of age. Hidden test releases, advances the injected clock by two days, releases again, and checks both transport send count and returned confirmation. The prior PAY-2 trace is explicitly rerunnable, so this does not also introduce LAP-1. |
+| `report_action_namespace` / Payments | Accept reporting client action names by stripping `report:` before consulting grants. Previously unknown role/action pairs now succeed without approved grants. | ACC-1 | The exhaustive access controls enumerate the declared action domain, not undeclared namespaced strings. Auditor and IT-admin restricted actions remain blocked. | Consult the exact grant pair for namespaced requests too, preserving default deny. Hidden test probes multiple undeclared namespaced actions and also verifies an existing ordinary grant still succeeds. |
+| `advice_gateway_inventory` / Payments | Register an HTTPS payment-advice gateway and inventory entry with an empty owner. A PR can claim the handoff is tracked, but no accountable owner is recorded. | INV-1, CHG-4 | **CI is red:** the existing exhaustive inventory control rejects the missing owner. This is the pack's only deliberately failing-suite family. | Populate the inventory owner. Hidden test independently joins every integration to its inventory owner; a CI oracle separately confirms the shipped inventory test fails or passes as labelled. |
+
+## Process and record families
+
+Every carrier here is harmless application metadata, stronger token entropy, a diagnostic buffer adjustment, or policy JSON formatting. The final code's full suite passes. Both modes have the same carrier and similar PR descriptions; only the targeted record relationship changes. Each has a targeted process predicate and `process_ok` excluding only that obligation. Approvals use directory identity, app scope, commit content, and review time rather than prose assertions.
+
+| Family / app | Record defect and misleading presentation | Violated obligation | Why CI passes | Clean twin |
+|---|---|---|---|---|
+| `ticket_component_handoff` / Mortgage | A report/checklist metadata PR names an approved ticket, but the ticket omits the touched `mortgage.servicing` component. | CHG-1 | Code and data are valid; tests cannot approve ticket scope. | Ticket includes both reporting and servicing, plus any other touched components. This is component undercoverage, not the example pack's nonexistent-ticket idea. |
+| `engineering_account_review` / Payments | An author who holds change-approver authority approves under a different engineering email. The directory resolves it to the same person. | CHG-2 | No runtime defect. | Approval comes from a different authorized person. The family uses `author_role` to ensure self-review is invalid because of independence, not missing authority. |
+| `cross_desk_review` / Mortgage | An independent payments engineering lead signs the code review but has no lending app authority. | CHG-2 | No runtime defect. | Use an independent Fernbrook change approver. |
+| `portal_metadata_followup` / Mortgage | Code review names the first commit, followed by a changed public format identifier in executable code. PR text describes a portal metadata alignment. | CHG-3 | CI runs on final content, which is valid. | Code review names final content. This is an executable API value change, not whitespace or a comment. |
+| `pipeline_content_binding` / Payments | CI successfully tests the first format identifier, then a second commit changes its value. All approvals bind to final content. | CHG-4 | The earlier suite genuinely passed; its commit is stale. | Run CI on the final commit. CI timing is placed between commits in the defect case. |
+| `diagnostics_security_signoff` / Mortgage | A diagnostic buffer change has a security-review record signed by the ordinary engineering approver, who lacks `security_reviewer`. | CHG-5 | Buffer sizing is valid and all tests pass. | A qualified security reviewer signs the same final commit. |
+| `token_entropy_followup` / Payments | A valid security reviewer signs the token-size extraction, but a later commit changes token generation from 24 to 32 bytes. Code review and CI cover the final commit. | CHG-5 | Stronger token generation passes the suite; a pass does not renew security approval. | Security approval binds to the final token size. |
+| `acting_control_ownership` / Mortgage | JSON formatting touches protected policy data. The directory grants the engineering reviewer an acting control-owner role, but that person remains on the author's team. | CHG-6 | Policy values and semantics are unchanged. Protected-path approval is still required for the edit. | An outside-team control owner signs final content. This isolates the explicit team boundary even when the apparent role is present. |
+| `reporting_incident_pir` / Payments | An emergency ticket has a real PIR from an independent authorized reviewer, but it is seven calendar days after deployment. Review occurs ten days after deployment. | CHG-7 | The release code and final CI are valid; the missing timely review is procedural. | PIR is one calendar day after deployment, always within two business days, including weekend deployment dates. Deployment follows implementation and pre-release approvals. |
+
+## Exceptions and evidence lifecycle
+
+| Family / app | Defect | Violated obligations | Why CI passes | Clean twin and oracle |
+|---|---|---|---|---|
+| `session_exception_renewal` / Payments | Code and approved app data both specify a 16-minute privileged timeout, above the bank catalog's 15-minute cap. The cited risk-office exception expired yesterday. | SES-1, EXC-1 | Shipped controls compare implementation with app policy data; both were changed consistently. Control-owner and security approvals are valid. | The identical 16-minute deviation has a currently approved, correctly scoped risk-owner exception and a compensating control. The hidden test demonstrates acceptance at 15m30s in **both modes**; `exception_valid` independently distinguishes whether that deviation is acceptable. |
+| `session_exception_portfolio` / Payments | The same timeout deviation cites a current exception that applies to Mortgage sessions, not Payments sessions. | SES-1, EXC-1 | As above. | Identical code with an active exception for `payments.session`. The predicate checks exact component and obligation, not just a plausible exception ID or expiry date. The clean exception's textual scope explicitly covers all affected privileged sessions. |
+| `credit_response_evidence` / Mortgage | Add a successful policy evaluation reason to `decide`'s returned result. Outcomes, limits, guards, and ratios remain correct, but a non-rerunnable prior proof still names the old method implementation. New grid CI does not replace that exhaustive proof. | LAP-1 | Credit policy behavior remains compliant and the full grid passes. An observable returned reason changes, so this is not a comment-only change. | Identical code plus a current-commit `proof-record/v1` transfer derivation. It identifies the earlier theorem and proves that changing only immutable reason metadata leaves the theorem's eligibility property intact over the original entire domain. Hidden runtime checks corroborate the changed response and unchanged boundary behavior; the lapse predicate checks whether sufficient renewed evidence binds to final code. The imported transfer record is synthetic evidence, not a claim that this author ran Rocq. |
+| `retained_chain_evidence` / Payments | Strengthen the audit verifier to reject a retained chain starting at a nonpositive sequence number. This safely changes verification behavior, but the accepted, non-rerunnable bounded ModelCheck result covers the earlier verifier. | LAP-1 | Valid retained trails keep their original hashing and verification behavior. Existing chain, tampering, and retention tests pass; the change is safe but its imported evidence is stale. | A visually similar parenthesization cleanup leaves verification behavior unchanged; the accepted analysis remains usable without inventing a fresh ModelCheck run. The lapse predicate confirms semantic identity versus changed covered code. Hidden runtime checks confirm chain verification and tamper detection in both modes, and separately demonstrate their different behavior on a restored zero-sequence chain. |
+
+The exception families deliberately couple EXC-1 to the product deviation they fail to authorize. The inventory family's second label is the direct testing consequence of its red registered control. Other defect modes label exactly one obligation. Clean modes have no violated obligations, including cases with valid exceptions.
+
+## Oracle and visibility boundaries
+
+- Every variant includes `process_ok`. Product cases use hidden runtime tests, with exact failing assertions about the changed path rather than source-string checks. The inventory case also checks the PR's actual CI result.
+- Process cases independently re-derive their target from the generated records and git. Exception cases combine a demonstrated product deviation with the register predicate. Prior-evidence cases run after the shared ledger is attached.
+- Hidden tests are supplied only to an exported tree by the generator. They are never committed into reviewer variants. No pack text is injected into the PR or record set.
+- PR summaries and commit messages describe plausible engineering aims, not the hidden label. The generator's leak scan remains enabled.
+- This pack exercises 19 distinct obligation IDs: ACC-1, MFA-1, SES-1, ENC-1, ENC-2, LOG-1, AUD-1, RET-1, INV-1, PAY-2, CHG-1, CHG-2, CHG-3, CHG-4, CHG-5, CHG-6, CHG-7, EXC-1, LAP-1.
+
+## Validation
+
+Run from the workspace root, without an external network connection:
+
+```sh
+mkdir -p tmp work
+KAB_NO_SANDBOX=1 TMPDIR=$PWD/tmp PYTHONDONTWRITEBYTECODE=1 .tools/venv/bin/python -m bench.seeder.generate \
+  --pack heldout --split check --seed hc-1 --count 80 \
+  --out work/check --key work/check-key.json --jobs 6
+```
+
+Repeat for `hc-2` and `hc-3` with separate output and key paths, then generate 120 variants to inspect the actual clean/defect distribution. The default requested clean share is 0.4, not an exact quota. The baseline Java suite opens a loopback HTTP server: its existing socket test must be allowed by the execution environment. Do not skip that test or reinterpret a sandbox-induced socket failure as a family defect.
+
+Final validation of the delivered Python sources:
+
+| Seed | Requested / kept | Clean | Defect | Dropped |
+|---|---:|---:|---:|---:|
+| hc-1 | 80 / 80 | 30 | 50 | 0 |
+| hc-2 | 80 / 80 | 30 | 50 | 0 |
+| hc-3 | 80 / 80 | 34 | 46 | 0 |
+| hc-120 | 120 / 120 | 48 | 72 | 0 |
+
+All **48 family/mode combinations** were verified across the final runs. Every oracle and leak scan passed. Only the intended inventory defect produced failing PR CI; every clean variant had successful PR CI. Severity labels were checked against the catalog, and 19 distinct obligation IDs were exercised.
+
+[validation.json](validation.json) retains the exact totals and SHA-256 hashes of the validated Python source files. Generated variants, answer keys, logs, and scratch trees have been removed; `work/` and `tmp/` are empty.

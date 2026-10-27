@@ -1,0 +1,71 @@
+{
+  "variant": "v-4d0f115a59",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route GET /compat/account-number/{id} has mfa=True and maps to action view_account_number, which is in the privileged list. The exhaustive CI control test test_privileged_routes_require_mfa passed on the head commit, confirming every privileged route in the table requires MFA."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24965 is approved by change manager Erik Brandt; its components payments.http and payments.routes cover the two changed files (app.py → payments.http, routes.py → payments.routes)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (p-ssantos, change_approver on payments, team payments-eng) provided a code_review approval on the head commit; she is not the author (Mara Costa)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change consists of a single commit (bcf1dd4) and both the code_review and security_review approvals name that exact commit, so the approval covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit bcf1dd4 with result success; 172 tests, 0 failures, 0 skipped. The MFA-1 control test (test_privileged_routes_require_mfa, exhaustive) is included and passed, satisfying the requirement that control tests for obligations whose scope paths are touched must pass."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both changed files belong to security_sensitive components (payments.http and payments.routes). Kofi Mensah (p-kmensah, security_reviewer, not the author) approved a security_review on the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "ACR-0404 in the ledger covered routes.py at an earlier commit and lapses because the current change adds a behavioural route. However, the CI run on the head commit re-executes the exhaustive MFA-1 control test and it passes, providing fresh evidence of the same strength."
+    }
+  ],
+  "summary": "The change adds a single compatibility alias route (GET /compat/account-number/{id}) that reuses the existing view_account_number action and _reveal_account_number handler already governed by MFA and RBAC. The new route correctly sets mfa=True, and the exhaustive MFA-1 control test passes on the final commit. All process obligations (ticket, independent approval, security review, testing) are satisfied with adequate evidence. The only lapsed ledger entry (ACR-0404 for MFA-1) is replaced by the fresh CI result, so LAP-1 is met. No other product obligation has scope paths touched by this change, and no protected or control paths are modified.",
+  "meta": {
+    "elapsed_s": 204.29,
+    "tokens_in": 30896,
+    "tokens_out": 5823,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8572f6e503e2adcafdde56724b701fa12b1e3b99acc0f2dcb9200b8268ce0a07",
+    "packet_tokens_est": 27714,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 19263,
+    "answer_chars": 2657,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 36.62,
+    "eval_s": 167.64,
+    "total_s": 204.29,
+    "tokens_est_ratio": 1.089,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

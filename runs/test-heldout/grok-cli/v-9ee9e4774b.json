@@ -1,0 +1,89 @@
+{
+  "variant": "v-9ee9e4774b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "url_for rewrites the statement-delivery base from https to http when the path starts with /archive/, so those outbound endpoints are not TLS. The INTEGRATIONS base URLs stay https and test_integrations_use_tls passed, but the head source still builds an http archive URL."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The integration list is unchanged (core-banking, sanctions-screening, statement-delivery), and each entry in the asset inventory has an owner and a data classification. test_integrations_are_inventoried passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25625, approved by change manager Erik Brandt on 2026-10-11, before review. Its component payments.integrations covers the only changed path, integrations.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and a different person from author Aisha Bello, recorded a code_review approval of commit 85a9e8fe."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The branch is a single commit, and the code_review and security_review approvals both name 85a9e8fe, the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful payments suite on commit 85a9e8fe. The JUnit report has 172 tests, 0 failures, 0 errors, and 0 skipped, including the unskipped ENC-2 and INV-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is marked security_sensitive. Kofi Mensah, a security reviewer and not the author, approved a security_review of the same head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "CHG-6 requires a control-owner approval when protected paths change. This diff edits only integrations.py, which is outside controls data, control tests, and CI."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25625 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The http archive rewrite deviates from ENC-2, and the register has no approved unexpired exception for ENC-2 or payments.integrations. EXC-0141 expired on 2026-09-19, before the 2026-10-19 review; the other entries are a different app or withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff does not change any path or symbol covered by the acceptance-ledger entries, so those earlier evidence records remain in force."
+    }
+  ],
+  "summary": "The change rewrites statement-delivery archive URLs from https to http inside OutboundClient.url_for. That violates ENC-2, which requires every outbound integration endpoint to use https, and no valid exception authorizes the deviation. Ticket, independent approval, security review, and a green suite on the head commit are in order, and the integration inventory is unchanged, but a product-control breach blocks acceptance.",
+  "meta": {
+    "elapsed_s": 75.79,
+    "tokens_in": 41633,
+    "tokens_out": 7684,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "eabf51d07f27e050dcd3976b7113db207e953586d8337c598b0ce682044b4b08",
+    "packet_tokens_est": 24322,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41633,
+      "outputTokens": 7684,
+      "cacheReadTokens": 205184,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 71748,
+    "duration_api_ms": 71748,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

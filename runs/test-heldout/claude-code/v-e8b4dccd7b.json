@@ -1,0 +1,82 @@
+{
+  "variant": "v-e8b4dccd7b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds coapplicant_tax_id, a government tax identifier, to ApplicantFields.ALL, but not to NpiRegistry.FIELDS or the approved mortgage.npi_fields list. CaseStore.protect seals only NpiRegistry fields, so this NPI is stored in plaintext; the exhaustive control test passes only because its domain is the registry and approved list, which leave the new field out."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "Retention.purge now also removes coapplicant_tax_id, and the hold and schedule logic is unchanged. The only evidence is the sample-coverage control test sampledPurgeRespectsHold, which falls short of the exhaustive evidence RET-1 requires."
+    },
+    {
+      "id": "CHG-1",
+      "status": "open",
+      "note": "Ticket CHG-26624 was approved by change manager Grace Kim on 2026-10-21, before the PR opened on 2026-10-22. Its components (mortgage.cases, mortgage.retention, mortgage.control-tests) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Declan Farrell, a change_approver for baseline-mortgage who is not the author (Nneka Okafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit cebee5c, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head commit cebee5c succeeded: 124 tests, 0 skipped, 0 failed. It includes the registered ENC-1 control test (exhaustive) and RET-1 control test (sample), both passing."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path src/test/java/controls/ControlFixtures.java changed. Rachel Stein (control_owner, controls-office, outside the author's lending-eng team) approved head commit cebee5c after it was made."
+    }
+  ],
+  "summary": "The process records are in order: an approved ticket covering every touched component, an independent code review and an out-of-team control-owner approval on the final commit, and green CI on that commit. But the change introduces coapplicant_tax_id, a tax identifier that ENC-1 explicitly treats as NPI, without registering it in NpiRegistry, so CaseStore persists it unsealed. The ENC-1 control test passes only because its domain doesn't include the new field, and no exception covers the deviation. ENC-1 is therefore violated and the change is rejected; RET-1 also lacks the exhaustive evidence it requires.",
+  "meta": {
+    "elapsed_s": 82.04,
+    "tokens_in": 405090,
+    "tokens_out": 6810,
+    "usd": 0.410266,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 19,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6810,
+      "cache_read_input_tokens": 364865,
+      "cache_creation_input_tokens": 40193
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.41026600000000013,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "variant": "v-6be1fbe4a9",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24787 (standard) was approved on 2026-10-08 by Erik Brandt (change_manager), before the 2026-10-09 code review. Its components payments.policy and payments.controls-data cover the two touched paths, policy.py and controls/payments/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from mara.costa@fernbrook.example, a change_approver for payments who is a different person from the author Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals (code_review and control_owner) name the head commit a15d2de, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows result success on head a15d2de for ci/run-tests.sh baseline-payments; the JUnit report has 172 tests, 0 failures, 0 errors, 0 skipped, including all registered control tests. No product obligation's scope was touched, so no extra control tests were required. Caveat: the report's timestamp and hostname differ from run.json, and the suite could not be re-run locally because pytest is missing."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is protected and an approved value changed. Bao Tran (control_owner, controls-office, outside the author's payments-eng team) approved the head commit."
+    }
+  ],
+  "summary": "The change raises payments' standard (non-privileged) idle timeout from 30 to 45 minutes in policy.py and policy-params.json. It touches no product obligation's scope: SES-1 covers only PRIVILEGED_IDLE_MINUTES and session.py, both unchanged, and no obligation bounds the standard timeout. The ticket, independent code review, control-owner approval and passing CI all apply to the head commit. CHG-5, CHG-7, EXC-1 and LAP-1 do not apply: nothing security-sensitive is touched, it is not an emergency, no exception is relied on, and no ledger evidence covers the changed code.",
+  "meta": {
+    "elapsed_s": 100.17,
+    "tokens_in": 587092,
+    "tokens_out": 9130,
+    "usd": 0.55291,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 9130,
+      "cache_read_input_tokens": 534398,
+      "cache_creation_input_tokens": 52654
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5529096,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

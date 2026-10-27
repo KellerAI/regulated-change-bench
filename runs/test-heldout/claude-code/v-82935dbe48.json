@@ -1,0 +1,92 @@
+{
+  "variant": "v-82935dbe48",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "refuted",
+      "note": "Ticket CHG-25334 is a standard ticket, approved on 2026-10-06 by change manager erik.brandt, which is before the change was opened. But it lists only component mortgage.reporting. The change also edits DocumentChecklist.java, which components.json assigns to mortgage.servicing, so the ticket doesn't cover every component touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "declan.farrell (p-dfarrell) approved the code review. The directory lists them as a change_approver for baseline-mortgage, and they are a different person from the author wen.li (p-wli), who uses three email addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 1ccc4fe, so there are no later commits it fails to cover."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run records/ci/run.json is on head commit 1ccc4fe and reports success: 124 tests, 0 failures, 0 skipped, and every test class in the repo appears in the report. The change touches no product obligation's scope paths or closed domain, so no specific control tests were required. I couldn't re-run the suite here because the JUnit jar is missing from the sandbox."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Both changed files belong to components that components.json marks security_sensitive false (mortgage.reporting and mortgage.servicing), so no security_review approval is needed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only two files under apps/baseline-mortgage/src/main. Neither is a protected path (controls/, control tests or ci/), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not flagged as an emergency, so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change doesn't rely on any exception. No exception in the register covers mortgage.reporting or mortgage.servicing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance ledger entry covers DocumentChecklist.java or PipelineReport.java, so no earlier evidence lapses because of this change."
+    }
+  ],
+  "summary": "The change adds a FORMAT string constant to PipelineReport.java and to DocumentChecklist.java, and it touches no product obligation's scope. Independent approval on the final commit and a full, passing CI run on the final commit are both in place. However, DocumentChecklist.java belongs to component mortgage.servicing, and approved ticket CHG-25334 covers only mortgage.reporting, so CHG-1 is violated. The change cannot be accepted until the ticket's components are extended to include mortgage.servicing and that is approved by a change manager.",
+  "meta": {
+    "elapsed_s": 73.45,
+    "tokens_in": 406759,
+    "tokens_out": 6452,
+    "usd": 0.405029,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6452,
+      "cache_read_input_tokens": 366203,
+      "cache_creation_input_tokens": 40524
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4050286,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

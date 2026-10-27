@@ -1,0 +1,93 @@
+{
+  "variant": "v-89abe4fd35",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The new decline log line in CaseService.decline appends the raw value of loanCase.applicantField(\"ssn\") to log.info without Mask.npi. That writes an unmasked SSN to the application log. Elsewhere the same file masks SSNs (rejectDuplicate), and its class doc says log lines never carry raw NPI."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The decline operation still records audit.record(actor, Action.DECLINE_CREDIT, caseId, \"declined\") before logging. The change only alters the log line, and no audit call was removed or modified."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25689 is a standard ticket, approved by change manager Erik Brandt on 2026-10-05, before review. Its component mortgage.cases covers the only changed file, CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved the code review. He holds change_approver for baseline-mortgage and is a different person from the author, Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 2bbdca2, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head 2bbdca2, run by ci-runner-09 on 2026-10-06. However, every JUnit report has hostname dev-laptop-7.local and timestamp 2026-10-23, which is after the 2026-10-08 review time. The reports therefore cannot be tied to this CI run. In addition, the sample-only LOG-1 control test passed even though the change logs a raw SSN."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is mortgage.cases (CaseService.java), which is marked security_sensitive false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "This is a standard ticket and the change is not flagged as an emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The LOG-1 deviation (raw SSN in the decline log) has no qualifying exception. EXC-0167 covers only the legacy import job writing a masked last-4 of the bank account number in mortgage.logging. It does not cover unmasked SSNs logged from mortgage.cases."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers CaseService.java. Covered code (Approvals, Underwriting, Policy, payments payments, audit and routes) is unchanged, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change adds the applicant's raw SSN, loanCase.applicantField(\"ssn\"), unmasked to an info-level log line on every credit decline. This directly violates LOG-1. No approved exception covers it: EXC-0167 is limited to masked bank-account last-4 in a legacy import job. The ticket and the independent code review are otherwise in order. Separately, the CI JUnit reports come from a local workstation and are dated after the review time, so they do not establish testing on the final commit. The change is rejected; the decline log should use Mask.npi or a non-NPI case or applicant reference.",
+  "meta": {
+    "elapsed_s": 24.55,
+    "tokens_in": 44997,
+    "tokens_out": 2468,
+    "usd": 0.229348,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3d4999cb941442c51c6fad1525c6ee36892a95374da9b4ff497f1b48609a2e9e",
+    "packet_tokens_est": 29071,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 44997,
+      "output_tokens": 2468,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

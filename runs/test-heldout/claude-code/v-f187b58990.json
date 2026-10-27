@@ -1,0 +1,92 @@
+{
+  "variant": "v-f187b58990",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets payments PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes to 16, but the catalog bound (base commit) requires the value to be 15 or less. The control test passes only because it compares the code against the edited policy-params.json, not against the catalog bound."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The cited exception EXC-0193 expired on 2026-10-27, before the review time of 2026-10-28T18:09Z, so it can't excuse the SES-1 deviation. It is also scoped to component payments.session, while the change touches payments.policy and payments.controls-data."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26457 was approved by change manager grace.kim on 2026-10-23, before the change opened. Its components (payments.policy, payments.controls-data) cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from sofia.santos, a payments change_approver who is a different person from the author jonah.weiss."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 68df7e4, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run on head 68df7e4: 172 tests, 0 failures, 0 skipped, including the SES-1 control test. I couldn't rerun it locally because pytest isn't installed, and the JUnit timestamp (2026-10-23) is earlier than the commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed paths map to payments.policy and payments.controls-data, and neither is marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change to protected path controls/payments/policy-params.json has a control_owner approval on the head commit from bao.tran (controls-office), who is outside the author's payments-eng team."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers policy.py PRIVILEGED_IDLE_MINUTES or the privileged_idle_minutes parameter, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change raises the Payments privileged idle timeout from 15 to 16 minutes in both the code and the approved policy parameters, which breaks SES-1's bound of 15 or less. The only exception it cites, EXC-0193, expired on 2026-10-27, before the 2026-10-28 review time, and is scoped to a different component, so EXC-1 is not met. The passing SES-1 control test doesn't help, because it checks the code against the edited parameter file, not the catalog bound. The ticket, independent code review, control-owner approval and CI run are all in order, but the SES-1 violation requires rejection.",
+  "meta": {
+    "elapsed_s": 90.08,
+    "tokens_in": 440473,
+    "tokens_out": 7999,
+    "usd": 0.437387,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 38,
+      "output_tokens": 7999,
+      "cache_read_input_tokens": 401025,
+      "cache_creation_input_tokens": 39410
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.43738699999999997,
+    "permission_denials": 10,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

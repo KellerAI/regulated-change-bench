@@ -1,0 +1,84 @@
+{
+  "variant": "v-362fd712f2",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "release() returns the stored confirmation only when the prior release is less than one day old; once that window has passed, the same instruction_id is posted again through _send_disbursement. PAY-2 requires that a repeated release never send a second disbursement, and the only registered control test (test_sampled_release_is_idempotent) is sample coverage."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25674 is approved by change manager Grace Kim on 2026-10-19, before the review time, and its component payments.payments matches payments.py in the payments component map."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa submitted a code_review approval. She is a change_approver for payments and is a different person from the author, Aisha Bello."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names ef632544ac99707c8f542a24249c049b82a2684f, which is the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the payments suite succeeding on that head commit: 172 tests, 0 failures, 0 skipped, including the registered PAY-2 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file is component payments.payments, which components.json marks security_sensitive false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "payments.py is outside controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-25674 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The one-day replay window deviates from PAY-2, and the register has no approved, unexpired exception scoped to PAY-2 and payments.payments with a compensating control. EXC-0141 is expired and covers SES-1, EXC-0167 covers LOG-1 on mortgage, and EXC-0172 is withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0403 covers release() and lapses because that function's behavior changed. The head-commit CI run passes the registered sample test test_sampled_release_is_idempotent, which is the same strength as the lapsed entry."
+    }
+  ],
+  "summary": "The change weakens once-only disbursement to a one-day window. After that, release() posts the same instruction_id to core banking again, which violates PAY-2, and no approved exception covers that deviation. Ticket approval, Mara Costa's independent code review of the head commit, and a green full payments suite on that commit meet the change-process rules. The payments component is not security-sensitive, the path is not protected, and the ticket is not an emergency. The prior sample trace for release lapses, but the registered sample control test passed on the head commit.",
+  "meta": {
+    "elapsed_s": 258.71,
+    "tokens_in": 43003,
+    "tokens_out": 16887,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7ad1e146fffaca7ca637435c7c451449cd82e767c1676e6e00e2449844524fd2",
+    "packet_tokens_est": 25290,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43003,
+      "outputTokens": 16887,
+      "cacheReadTokens": 160384,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 252180,
+    "duration_api_ms": 252180,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

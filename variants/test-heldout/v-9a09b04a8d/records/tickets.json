@@ -1,0 +1,17 @@
+[
+  {
+    "id": "CHG-25867",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Co-applicant onboarding field",
+    "components": [
+      "mortgage.cases",
+      "mortgage.control-tests",
+      "mortgage.retention"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-11T03:33:00Z",
+    "risk": "low"
+  }
+]

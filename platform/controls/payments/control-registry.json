@@ -1,0 +1,82 @@
+{
+  "tests/controls/test_access_control.py::test_matrix_equals_approved_policy": {
+    "obligation": "ACC-1",
+    "coverage": "exhaustive",
+    "domain": "payments.roles_x_actions"
+  },
+  "tests/controls/test_access_control.py::test_auditor_is_read_only": {
+    "obligation": "ACC-2",
+    "coverage": "exhaustive",
+    "domain": "payments.actions"
+  },
+  "tests/controls/test_access_control.py::test_it_admin_cannot_approve_or_release": {
+    "obligation": "SOD-1",
+    "coverage": "exhaustive",
+    "domain": "payments.actions"
+  },
+  "tests/controls/test_routes_control.py::test_privileged_routes_require_mfa": {
+    "obligation": "MFA-1",
+    "coverage": "exhaustive",
+    "domain": "payments.routes"
+  },
+  "tests/controls/test_session_control.py::test_privileged_idle_timeout_within_policy": {
+    "obligation": "SES-1",
+    "coverage": "exhaustive",
+    "domain": "payments.privileged_idle_minutes"
+  },
+  "tests/controls/test_encryption_control.py::test_every_npi_field_is_sealed_at_rest": {
+    "obligation": "ENC-1",
+    "coverage": "exhaustive",
+    "domain": "payments.npi_registry"
+  },
+  "tests/controls/test_integrations_control.py::test_integrations_use_tls": {
+    "obligation": "ENC-2",
+    "coverage": "exhaustive",
+    "domain": "payments.integrations"
+  },
+  "tests/controls/test_logging_control.py::test_sampled_flows_do_not_log_npi": {
+    "obligation": "LOG-1",
+    "coverage": "sample",
+    "domain": "payments.sampled_flows"
+  },
+  "tests/controls/test_audit_control.py::test_sampled_operations_are_audited": {
+    "obligation": "AUD-1",
+    "coverage": "sample",
+    "domain": "payments.sampled_operations"
+  },
+  "tests/controls/test_audit_control.py::test_chain_and_retention": {
+    "obligation": "AUD-2",
+    "coverage": "exhaustive",
+    "domain": "payments.audit_trail"
+  },
+  "tests/controls/test_retention_control.py::test_sampled_purge_respects_hold": {
+    "obligation": "RET-1",
+    "coverage": "sample",
+    "domain": "payments.sampled_payees"
+  },
+  "tests/controls/test_integrations_control.py::test_integrations_are_inventoried": {
+    "obligation": "INV-1",
+    "coverage": "exhaustive",
+    "domain": "payments.integrations"
+  },
+  "tests/controls/test_sql_control.py::test_sql_statements_are_parameterized": {
+    "obligation": "SEC-1",
+    "coverage": "exhaustive",
+    "domain": "payments.sql_call_sites"
+  },
+  "tests/controls/test_payments_control.py::test_maker_cannot_check": {
+    "obligation": "MC-1",
+    "coverage": "exhaustive",
+    "domain": "payments.approver_pairs"
+  },
+  "tests/controls/test_payments_control.py::test_dual_control_grid_matches_policy": {
+    "obligation": "PAY-1",
+    "coverage": "exhaustive",
+    "domain": "payments.amount_grid"
+  },
+  "tests/controls/test_payments_control.py::test_sampled_release_is_idempotent": {
+    "obligation": "PAY-2",
+    "coverage": "sample",
+    "domain": "payments.sampled_release"
+  }
+}

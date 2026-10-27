@@ -1,0 +1,79 @@
+{
+  "variant": "v-b8ffc36801",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1445 names ticket CHG-24862, which Grace Kim (change manager) approved on 2026-10-15, before the 2026-10-19 review time. The only changed path, apps/baseline-payments/payments/reports.py, is component payments.reports, and that component is listed on the ticket."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa gave a code_review approval. She has the change_approver role for payments and is not the author, Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 1f5b3325dcc2cf9b91685d590ef00ff798f66161, which is the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success for ci/run-tests.sh baseline-payments on the head commit, and the JUnit report shows 172 tests with 0 failures, 0 errors, and 0 skipped. The change does not touch any product-obligation scope, so no additional registered control test is required; the registered payments control tests are present and unskipped anyway."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "apps/baseline-payments/payments/reports.py is payments.reports with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is application code, not a protected controls, control-test, or CI path, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff only adds the unused constant REPORT_FORMAT and does not deviate from any product obligation, so no exception is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments, audit, routes, and mortgage policy code. None of those paths change in this diff, so prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds a ledger export format identifier in apps/baseline-payments/payments/reports.py and does not touch any product-obligation scope. The ticket is approved, covers payments.reports, and the independent code review is on the merged commit. Payments CI passed on that commit with no skipped tests. Security review, control-owner approval, emergency review, an exception, and refreshed ledger evidence are not required for this diff.",
+  "meta": {
+    "elapsed_s": 94.13,
+    "tokens_in": 45276,
+    "tokens_out": 6015,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e99f4f9a896deedacd9f097b3cb103966f0750f959d74ec921c46d7922c5d3e0",
+    "packet_tokens_est": 24385,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 45276,
+      "outputTokens": 6015,
+      "cacheReadTokens": 266624,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 90281,
+    "duration_api_ms": 90281,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

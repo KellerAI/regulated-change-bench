@@ -1,0 +1,74 @@
+{
+  "variant": "v-e552337c5e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "store.py is in scope. Payee NPI columns (account_number, routing_number, tax_id, date_of_birth) are still written only through Vault.seal, and archive_payments copies payment rows, which do not hold those fields."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "Every execute in store.py, including the three new archive statements, uses a fixed SQL string. The status value is bound as a parameter and is not concatenated into the statement text."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26120 is standard, status approved, and was approved by change manager Grace Kim on 2026-10-24, before review. Its component payments.store matches the only file changed, apps/baseline-payments/payments/store.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos gave a code_review approval. She is a payments change_approver and is not the author Mara Costa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name 49ff1a527015e62cc1c9d80b4c770d941a7f8505, which is the only commit and the head."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful payments suite on the head commit at 2026-10-25T19:39:00Z on ci-runner-09, but payments-tests.xml is timestamped 2026-10-23T13:29:55-07:00 on dev-laptop-7.local, before that commit. The added method is not comment-only, so this earlier report does not show the full suite, including the SEC-1 and ENC-1 control tests, passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "store.py is security_sensitive (payments.store). Kofi Mensah, a security_reviewer and not the author, approved security_review on the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments.py, audit.py, routes.py, and mortgage underwriting and approval code. None of those paths change in this diff, so that prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds Store.archive_payments in payments store.py. The new SQL is parameterized, and the archive path does not persist unsealed NPI. The ticket, independent code review, security review, and commit coverage are in order, and no ledger-covered code changed. The CI record is not adequate: the JUnit report predates the head commit and was produced on a workstation, not the claimed runner, so it does not show the payments suite passing on the final commit. The change is rejected.",
+  "meta": {
+    "elapsed_s": 213.18,
+    "tokens_in": 62360,
+    "tokens_out": 13699,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bb8a495dbe783dea928bd2e7b8dc7331db81cf408526ffceb78478d062f166fb",
+    "packet_tokens_est": 27585,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 62360,
+      "outputTokens": 13699,
+      "cacheReadTokens": 230016,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 209302,
+    "duration_api_ms": 209302,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

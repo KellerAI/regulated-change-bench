@@ -1,0 +1,76 @@
+{
+  "variant": "v-d0211ce306",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change touches audit.py (in AUD-1 scope), but only the verify() method is modified; the record() path is untouched. The CI control test test_sampled_operations_are_audited passed on the final commit."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "The change directly modifies verify() in audit.py, lapsing the prior ModelCheck evidence (ACR-0402). However, the exhaustive control test test_chain_and_retention passed in CI on the final commit, providing new adequate evidence. The added guard (seq < 1 → False) is a hardening that does not weaken the chain."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26633 is approved by change manager Erik Brandt and its component list (payments.audit) covers the only changed file's component per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa (change_approver role, payments app) provided a code_review approval for the head commit. She is not the author (Aisha Bello), satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has a single commit (a1c5eaf5…) and both the code_review and security_review approvals reference that exact commit. No later commits exist to void the approvals."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit a1c5eaf5… with result 'success': 172 tests, 0 failures, 0 errors, 0 skipped. The required control tests for the touched obligations (test_sampled_operations_are_audited for AUD-1, test_chain_and_retention for AUD-2) are present, unskipped, and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py maps to component payments.audit which is security_sensitive. A security_review approval from Ines Halvorsen (security_reviewer, platform-security team, not the author) is on record for the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change alters verify() in audit.py, lapsing ACR-0402's ModelCheck evidence. New evidence of equivalent or greater strength is provided by the exhaustive CI control test test_chain_and_retention passing on the final commit, satisfying the 'new evidence of the same strength' requirement."
+    }
+  ],
+  "summary": "The change adds a single defensive guard in AuditLog.verify() that rejects a chain whose first sequence number is below 1, a hardening of the audit-trail integrity check. The change is well-scoped: a single commit, a single file (audit.py), two added lines. All process obligations are met: the ticket is approved and covers the correct component, an independent change_approver and a security_reviewer both approved the exact head commit, and the full CI suite (172 tests, 0 failures) passed on the final commit including the exhaustive control tests for AUD-1 and AUD-2. The prior ModelCheck evidence for AUD-2 is lapsed by the code change, but the CI control test provides fresh exhaustive evidence, satisfying LAP-1. No other product obligations have scope overlap with audit.py, and no protected paths were modified.",
+  "meta": {
+    "elapsed_s": 166.56,
+    "tokens_in": 28122,
+    "tokens_out": 4752,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4a7335a6b0680df7ed1ad7bee4292a86b67cdb085d3eae683cefe53195ac2bfc",
+    "packet_tokens_est": 24867,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 14687,
+    "answer_chars": 3097,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.95,
+    "eval_s": 133.59,
+    "total_s": 166.56,
+    "tokens_est_ratio": 1.102,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

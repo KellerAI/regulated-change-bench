@@ -1,0 +1,74 @@
+{
+  "variant": "v-096f6bad4b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26857 is approved by change manager Erik Brandt on 2026-10-18, before the 2026-10-23 review, and its components payments.reports and payments.tests cover reports.py and tests/test_released_by_payee.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa@fernbrook.example, the author. A self-approval does not count, and no other payments change_approver approved the commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The recorded code_review names head 4b9211e7f6cdf5400e3414a60df737390c58cf11, which is the change's only commit, so there is no later behavioral commit beyond that approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on the head commit, and the JUnit report shows 174 tests, 0 failures, 0 errors, and 0 skipped, including every registered payments control test. The change does not touch any product-obligation scope path."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.reports and payments.tests are not security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. The register entries are for other components and are not used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff only adds released_by_payee and a unit test. It does not change the behavior of any path covered by the acceptance ledger."
+    }
+  ],
+  "summary": "The change adds a pure treasury aggregation, released_by_payee, plus unit tests. It does not touch access, payments, routes, logging, encryption, audit, retention, SQL, or protected control paths, and CI on the head commit is green. It still cannot be accepted: the only code review is Mara Costa approving her own commit, which CHG-2 says does not count. No independent payments change approver approved the head commit.",
+  "meta": {
+    "elapsed_s": 100.83,
+    "tokens_in": 48573,
+    "tokens_out": 6302,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "c8602e46535bc8bc2ecfd08e1b5a0664188db3f8aa2be83a2fa7420d3dd8d05a",
+    "packet_tokens_est": 25049,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 48573,
+      "outputTokens": 6302,
+      "cacheReadTokens": 175232,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 88225,
+    "duration_api_ms": 88225,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "variant": "v-9e25d9a2b7",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24241 is a standard ticket, approved by change manager Grace Kim on 2026-10-10, before the PR opened on 2026-10-11. Its components list mortgage.controls-data, the only component touched (controls/mortgage/*)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Declan Farrell, a change_approver for baseline-mortgage and a different person from the author Nneka Okafor under all of her listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit c450c2c, which is the change's only commit, so nothing was added after approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on head c450c2c succeeded: 124 tests, 0 skipped, failed or errored. The registered control tests for SES-1, AUD-2, RET-1, LIM-1 and CRD-1 are present and pass."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "controls/mortgage/policy-params.json is a protected path. The only control_owner approval is from Declan Farrell, who is on lending-eng, the author's team; the policy requires a control owner from outside the author's team."
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "mortgage.privileged_idle_minutes is unchanged at 15 (only whitespace changed), and the exhaustive control test SessionControlTest#privilegedIdleTimeoutWithinPolicy passes on head."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "mortgage.audit_retention_years is unchanged at 7, and the exhaustive control test AuditControlTest#chainAndRetention passes on head."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "mortgage.declined_npi_retention_months is unchanged at 25, and the registered control test RetentionControlTest#sampledPurgeRespectsHold (sample coverage) passes on head."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "underwriter_limit and senior_limit are unchanged, the exhaustive control test ApprovalsControlTest#authorityLimitsMatchPolicy passes on head, and ledger entry ACR-0405 is still valid."
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "dti_max_percent and ltv_max_percent are unchanged, the exhaustive control test UnderwritingControlTest#autoApproveGridMatchesPolicy passes on head, and ledger entry ACR-0406 is still valid."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change is formatting-only in a JSON data file and touches none of the code covered by ledger entries (Policy.java, Approvals.java, Underwriting.java, payments files), so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1676 only re-indents controls/mortgage/policy-params.json; no policy values change, CI on the final commit is green, and the affected control tests pass. The ticket, independent code review and approval-to-commit binding all check out. But the file is protected, and CHG-6 requires a control_owner approval from outside the author's team. The only control_owner approval is from Declan Farrell, a lending-eng teammate of the author, so CHG-6 is violated and the change must be rejected until a control owner outside lending-eng (for example, from the Controls office) approves it.",
+  "meta": {
+    "elapsed_s": 71.54,
+    "tokens_in": 331522,
+    "tokens_out": 6180,
+    "usd": 0.356092,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 21,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6180,
+      "cache_read_input_tokens": 296893,
+      "cache_creation_input_tokens": 34597
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.35609159999999995,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

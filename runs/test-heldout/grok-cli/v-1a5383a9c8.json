@@ -1,0 +1,94 @@
+{
+  "variant": "v-1a5383a9c8",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "rbac.py is the payments roles-by-actions source. GRANTS still matches controls/payments/access-policy.json exactly, and is_allowed still returns only explicit membership in GRANTS, including the new report: branch. The exhaustive control test_matrix_equals_approved_policy passed unskipped on the head commit."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "Auditor grants remain view_account, view_audit, view_reports, and export_ledger, none of which are in STATE_CHANGING, and the report: branch adds no grant. tests/controls/test_access_control.py::test_auditor_is_read_only passed unskipped on the head commit."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "it_admin grants remain manage_users, rotate_keys, purge_npi, and view_audit, with no approve_payment or release_payment. tests/controls/test_access_control.py::test_it_admin_cannot_approve_or_release passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1973 names ticket CHG-24563, approved by change manager Erik Brandt on 2026-10-14 before review. Its component payments.access covers the only touched path, apps/baseline-payments/payments/rbac.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Jonah Weiss, approved a code_review of commit 7d0f5207bda7e2321121c71e401f75ca11d2fd8d."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and security_review approvals name that same head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on 7d0f5207bda7e2321121c71e401f75ca11d2fd8d. The JUnit report has 172 tests, 0 failures, 0 errors, and 0 skipped, including the exhaustive ACC-1, ACC-2, and SOD-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py is security_sensitive (payments.access). Ines Halvorsen, a security_reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/rbac.py, which is not under controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24563 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The head code does not deviate from ACC-1, ACC-2, or SOD-1, and the change does not rely on an exception. The register entries are for other obligations and components."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers rbac.py. The paths those entries cover (payments.py, audit.py, routes.py, and the mortgage files) are unchanged, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds a report: branch in payments is_allowed that returns the same explicit GRANTS check as the existing path, so grants stay equal to the approved access policy and nothing new is allowed. Auditor and IT-admin restrictions are unchanged, and the exhaustive access-control tests passed on the final commit. The ticket, independent code review, security review, and CI run all name this change and its head commit, and no protected path, emergency path, exception, or prior evidence cover is implicated. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 132.42,
+    "tokens_in": 48079,
+    "tokens_out": 9287,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "e8baf8d6bf4d61846edca11e29ae9379d5ea2a361a023de585f3f2b049fe8835",
+    "packet_tokens_est": 24411,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 48079,
+      "outputTokens": 9287,
+      "cacheReadTokens": 155392,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 128884,
+    "duration_api_ms": 128884,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

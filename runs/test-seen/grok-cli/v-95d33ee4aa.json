@@ -1,0 +1,79 @@
+{
+  "variant": "v-95d33ee4aa",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24770 is approved by change manager Erik Brandt before review, and its components mortgage.servicing and mortgage.tests cover RateQuote.java and QuoteTermTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from d.farrell@fernbrook.example, which the directory lists as the author Declan Farrell. A self-approval does not count, and no other change_approver for baseline-mortgage approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The recorded approval names head commit 594c98415c89101ecab8e9f73756178c59070611, and that is the only commit on the change, so nothing after the named commit alters behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records success of ci/run-tests.sh baseline-mortgage on the head commit, and the JUnit report shows 126 tests with 0 failures, errors, or skips, including the mortgage control tests. The change does not touch any product-obligation scope path or closed domain."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "RateQuote.java is mortgage.servicing and QuoteTermTest.java is mortgage.tests; neither component is security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change request and ticket CHG-24770 are type standard, not emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The helper only exposes the existing supported-term set and does not deviate from a product obligation, so no exception is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger evidence covers payments payments, audit, and routes and mortgage Approvals, Underwriting, and Policy. None of those paths change in this diff, so that evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds RateQuote.isSupportedTerm and a unit test. It stays inside mortgage.servicing and mortgage.tests, does not touch security-sensitive or protected control paths, and CI on the head commit reports the mortgage suite passing. Ticket CHG-24770 is approved and covers those components. Acceptance fails CHG-2: the sole code review is Declan Farrell approving his own change under d.farrell@fernbrook.example, and no independent change_approver approved.",
+  "meta": {
+    "elapsed_s": 67.28,
+    "tokens_in": 46242,
+    "tokens_out": 4230,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "eb60241e0c1f3e3b612b7028b319f97e9875f9f62517ddaf67fd28cef09dbfb3",
+    "packet_tokens_est": 24928,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 46242,
+      "outputTokens": 4230,
+      "cacheReadTokens": 38656,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 63524,
+    "duration_api_ms": 63524,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

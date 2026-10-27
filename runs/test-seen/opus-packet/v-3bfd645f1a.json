@@ -1,0 +1,88 @@
+{
+  "variant": "v-3bfd645f1a",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The new route GET /exports/cases.csv maps to EXPORT_CASES, which the approved policy lists as privileged, and is declared mfaRequired=true. Its handler is bound and checked by checkBindings, so nothing is served outside the route table. The exhaustive control test controls.RoutesControlTest#privilegedRoutesRequireMfa passed unskipped on head d6eb3948."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26182 is a standard ticket, approved by change manager grace.kim on 2026-10-03, before the change opened. Its component mortgage.http covers both touched files, HttpApp.java and Routes.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell, who holds change_approver for baseline-mortgage. He is a different person from the author, Wen Li, under any of Wen Li's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit d6eb3948, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records ci/run-tests.sh baseline-mortgage succeeding on head d6eb3948: 124 tests, 0 failures, 0 skipped. That includes the touched obligation's control test, RoutesControlTest#privilegedRoutesRequireMfa (exhaustive). The report metadata shows a hostname and timestamp that look like a generation artifact; they do not contradict the run's commit or result."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "mortgage.http is security_sensitive. ines.halvorsen, a security_reviewer, gave a security_review approval on the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path is touched: no controls data, control tests or CI files are changed. No control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency: the ticket type is standard and emergency=false. No post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. EXC-0172 (MFA-1, withdrawn) is not invoked, and the new route meets MFA-1 directly."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers the changed files. ACR-0404 covers payments routes.py, not mortgage Routes.java or HttpApp.java, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1483 adds a CSV alias route for the case export. The route is bound to the privileged EXPORT_CASES action with step-up MFA required, mirroring the existing export route. The ticket is approved and covers mortgage.http. Independent code review and security review both apply to the head commit. The full suite passed on head, including the exhaustive MFA route control test. No protected paths, exceptions or ledger-covered code are involved, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 31.47,
+    "tokens_in": 44572,
+    "tokens_out": 3054,
+    "usd": 0.239368,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4a78323d36195e96074f829a3f3c62fb17a3531a063b4292d2a917a9224421fd",
+    "packet_tokens_est": 28983,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 44572,
+      "output_tokens": 3054,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

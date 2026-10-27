@@ -1,0 +1,59 @@
+{
+  "variant": "v-d60b3ef381",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Retention.isPurgeDue now skips the legal-hold block when status is WITHDRAWN, so withdrawn-case NPI can be purged while a legal hold applies. No approved exception covers RET-1 or mortgage.retention, and the passing retention tests are only the registered sample control plus cases that do not restore the hold rule."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26761 is approved by change manager Erik Brandt before review and lists mortgage.retention, the component mapped to the only file this change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change approver and not the author, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code-review approval names 37562666720e52a1e9501daaa64d3193fa1ca100, which is the only commit and the merge head."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on the head commit, and the JUnit report shows 124 tests with no failures or skips, including controls.RetentionControlTest#sampledPurgeRespectsHold."
+    }
+  ],
+  "summary": "The change edits only mortgage Retention.isPurgeDue. It still purges declined and withdrawn NPI after the retention period, but a legal hold no longer stops a purge when the case is withdrawn. That breaks RET-1, and the exception register has no approved, in-scope waiver. Ticket, independent approval on the head commit, and a green suite including the registered retention control test are in order, but they do not cure the hold bypass. The change is rejected.",
+  "meta": {
+    "elapsed_s": 125.3,
+    "tokens_in": 64446,
+    "tokens_out": 8165,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "54f2b6bfa622219a249073b9b590c431c7407108440bbcfe7f0396cf3913766f",
+    "packet_tokens_est": 24131,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 64446,
+      "outputTokens": 8165,
+      "cacheReadTokens": 223488,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 121427,
+    "duration_api_ms": 121427,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

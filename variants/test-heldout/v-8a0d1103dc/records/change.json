@@ -1,0 +1,21 @@
+{
+  "id": "PR-1706",
+  "title": "Reconciliation session handoff interval",
+  "description": "Reconciliation session handoff interval.\n\nChanges:\n- Use a sixteen-minute privileged idle interval\n- Apply the risk office session exception during the handoff period\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRisk acceptance: EXC-0255",
+  "app": "baseline-payments",
+  "author": "jonah.weiss@fernbrook.example",
+  "branch": "weiss/change-746",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "669588f3f87d9b023973fee9a90335a4ef1dd755",
+  "commits": [
+    {
+      "sha": "669588f3f87d9b023973fee9a90335a4ef1dd755",
+      "message": "Sessions: allow the reconciliation handoff interval",
+      "author": "jonah.weiss@fernbrook.example",
+      "at": "2026-10-13T17:29:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24953",
+  "opened_at": "2026-10-13T17:29:00Z"
+}

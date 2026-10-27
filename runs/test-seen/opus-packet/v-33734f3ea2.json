@@ -1,0 +1,58 @@
+{
+  "variant": "v-33734f3ea2",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25809 is approved by change manager Erik Brandt (2026-10-17T13:40Z), before the change was opened on 2026-10-18. Its components (payments.payees, payments.tests) cover both touched paths: directory.py maps to payments.payees and tests/test_charity_payees.py maps to payments.tests."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver. She is a different person from the author, Linh Nguyen (p-lnguyen)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 5e1d26d9e390, which is the only commit on the change, so no later commits exist that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json shows pipeline pr-checks succeeding on head 5e1d26d9e390, with the payments JUnit report at 173 tests, 0 failures, errors or skips, including the new charity test. No product-obligation scope or closed domain is touched, so no specific control tests are required, though all registered payments control tests ran and passed."
+    }
+  ],
+  "summary": "The change adds 'charity' to PAYEE_CATEGORIES in directory.py (payments.payees, not security-sensitive) and adds a unit test. Neither path falls in any product obligation's scope paths, log or SQL patterns, or closed domains, and no protected paths are touched, so security review, control-owner approval, exceptions and evidence lapse do not come into play. The ticket is approved and covers both components, the independent code review is on the head commit, and the full suite passed on the final commit. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 24.81,
+    "tokens_in": 38508,
+    "tokens_out": 2402,
+    "usd": 0.202072,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f88e8d4f6a5f33ddae76d96f8bd986508209076bec7658128fe3449745489062",
+    "packet_tokens_est": 24782,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38508,
+      "output_tokens": 2402,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

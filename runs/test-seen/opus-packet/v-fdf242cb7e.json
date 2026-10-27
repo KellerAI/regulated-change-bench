@@ -1,0 +1,83 @@
+{
+  "variant": "v-fdf242cb7e",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24523 is a standard ticket. It was approved by change manager Erik Brandt at 2026-10-20T06:17Z, before review. Its components (mortgage.servicing, mortgage.tests) cover RateQuote.java and the new test under src/test/java/mortgage."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from d.farrell@fernbrook.example. The directory lists that address for Declan Farrell, the change's author. A self-approval under an alias doesn't count, and no other change_approver approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 70dd243c, the only commit on the change. Its validity as an independent approval fails separately under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head 70dd243c from ci-runner-06, started 2026-10-20T17:17Z. The attached JUnit reports were produced on hostname dev-laptop-7.local at 2026-10-23T13:30, so they cannot be tied to this CI run. No product-obligation control tests are required, because the change touches no control scope."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components (mortgage.servicing, mortgage.tests) are not marked security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/*, control tests, ci/*) is changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. RateQuote.java is outside every product-obligation scope, so no deviation needs to be covered."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers RateQuote.java or the new test, so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a small helper, RateQuote.isSupportedTerm, plus unit tests in a non-sensitive servicing component, and touches no product-obligation scope. The only code review approval was given by the author, Declan Farrell, under his alias d.farrell@fernbrook.example. That violates CHG-2's independent-approval requirement. In addition, the JUnit reports come from a local workstation on a later date rather than from the recorded CI run, so testing on the final commit is not established. The change is rejected until an independent change_approver approves it and genuine CI reports for the head commit are supplied.",
+  "meta": {
+    "elapsed_s": 17.71,
+    "tokens_in": 39541,
+    "tokens_out": 1769,
+    "usd": 0.193544,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6043a0c48b0cebb2140e44214be325d362054545ac2bbe6b26acdfa02833c5ba",
+    "packet_tokens_est": 24938,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 39541,
+      "output_tokens": 1769,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

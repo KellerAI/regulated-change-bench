@@ -1,0 +1,88 @@
+{
+  "variant": "v-bc90ecbb02",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds `tax_id`, a government identifier the catalog names as NPI, to ApplicantFields.ALL, which is in ENC-1 scope. NpiRegistry.java is not changed and the approved mortgage.npi_fields lists only annual_income, bank_account_number, date_of_birth and ssn, so the new field is not registered for sealing and would be persisted in plain form."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24639 was approved by grace.kim (change_manager) on 2026-10-07, before review. Its component mortgage.cases covers the only touched path, ApplicantFields.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li gave the code_review approval and holds change_approver for baseline-mortgage. Wen Li is a different person from the author, Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 30a528dd, which is the only commit on the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on the head commit from ci-runner-08, started 2026-10-08. The attached JUnit reports are timestamped 2026-10-23, after the review time of 2026-10-12, and come from host dev-laptop-7.local, so it is unclear they belong to this CI run. In any case, the ENC-1 control test enumerates only the registry, which omits tax_id."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component is mortgage.cases, which is not security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. The register holds none for ENC-1, so the ENC-1 deviation is uncovered."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers ApplicantFields.java. The covered code (Approvals, Policy, Underwriting and the payments files) is unchanged."
+    }
+  ],
+  "summary": "PR-1314 adds a `tax_id` applicant field to baseline-mortgage. Tax id is NPI under ENC-1, but the field is not added to the NPI registry or to the approved npi_fields list, so it would be stored unsealed. ENC-1 is therefore violated, and no exception covers the deviation. Ticket, independent approval and approval-coverage records are in order, but the test evidence is questionable: the JUnit reports postdate the review time and come from a local machine rather than the CI runner. The change is rejected.",
+  "meta": {
+    "elapsed_s": 24.19,
+    "tokens_in": 37671,
+    "tokens_out": 2497,
+    "usd": 0.200624,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ea3c0e08e8b05c4dd42066feb8a312c96ac5a13e5fabbbb3c721755c42a2eba3",
+    "packet_tokens_est": 23891,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 37671,
+      "output_tokens": 2497,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

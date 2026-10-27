@@ -1,0 +1,27 @@
+{
+  "id": "PR-1536",
+  "title": "Approval queue clean-up",
+  "description": "Small clean-ups in the approval path.\n\nChanges:\n- See commits\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "priya.raman@fernbrook.example",
+  "branch": "raman/change-625",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "3aa462438deb366e2f4b904204596db11da72dcd",
+  "commits": [
+    {
+      "sha": "8d03deb1a0a19c292c228fdfc5dd6a13d4c4df0a",
+      "message": "Pipeline report: total case count",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-24T20:23:00Z"
+    },
+    {
+      "sha": "3aa462438deb366e2f4b904204596db11da72dcd",
+      "message": "Comment the authority tiers",
+      "author": "priya.raman@fernbrook.example",
+      "at": "2026-10-24T22:15:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-26430",
+  "opened_at": "2026-10-24T20:23:00Z"
+}

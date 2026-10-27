@@ -1,0 +1,83 @@
+{
+  "variant": "v-096f6bad4b",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26857 is a standard ticket, approved by change manager Erik Brandt on 2026-10-18, before the change was opened. Its components (payments.reports, payments.tests) cover both touched paths: reports.py and tests/test_released_by_payee.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa@fernbrook.example, who is the change's author (p-mcosta). Self-approval doesn't count, and no other payments change_approver (e.g. Sofia Santos) has approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names head commit 4b9211e7, and there are no later commits. Whether that approval is valid at all is the CHG-2 failure."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on the head commit with executor ci-runner-05. The attached JUnit report, however, was produced on host 'dev-laptop-7.local' and is timestamped 2026-10-23T20:29Z, which is after the review time of 2026-10-23T15:53Z. So it can't be confirmed as this CI run's output. No registered control tests are required, because no product obligation scope is touched."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "No touched component is security_sensitive: payments.reports and payments.tests are both false. No security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path is changed (controls/*, tests/controls/*, ci/*), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception and deviates from no product obligation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers reports.py or the new test file. The covered code (payments.py, audit.py, routes.py, Approvals.java, Underwriting.java, Policy.java) is unchanged, so no evidence lapses."
+    }
+  ],
+  "summary": "PR-1372 adds a pure reporting helper and its unit tests. The changed files touch no product obligation's scope or pattern. However, the only code_review approval was given by the author, Mara Costa, herself, so CHG-2 independent approval is violated. Separately, the JUnit evidence comes from a developer machine and is timestamped after the review time, so it does not credibly belong to the recorded CI run. The change is rejected until an independent payments change_approver approves it and a genuine CI run on the head commit is attached.",
+  "meta": {
+    "elapsed_s": 23.94,
+    "tokens_in": 38804,
+    "tokens_out": 2294,
+    "usd": 0.201096,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "c8602e46535bc8bc2ecfd08e1b5a0664188db3f8aa2be83a2fa7420d3dd8d05a",
+    "packet_tokens_est": 25049,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38804,
+      "output_tokens": 2294,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

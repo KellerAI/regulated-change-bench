@@ -1,0 +1,82 @@
+{
+  "variant": "v-68e1c4ae5f",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "The head commit changes Retention.isPurgeDue so legal hold only blocks purge when status == DECLINED, so held WITHDRAWN cases now become due for NPI purge, against 'never while a legal hold applies'. The only control test (sampledPurgeRespectsHold, coverage 'sample') uses only declined cases, so it can't detect this, and RET-1 requires exhaustive evidence."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change deviates from RET-1 on component mortgage.retention, but the register holds no exception for RET-1 (only SES-1, LOG-1 and a withdrawn MFA-1 entry), so the deviation is not authorised."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25088 is type standard and status approved, approved by Erik Brandt (change_manager) on 2026-10-22, before review. Its components include mortgage.retention, the component of Retention.java, the only file touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example (Declan Farrell), a change_approver for baseline-mortgage and a different person from the author Tomas Ortega."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names c0b6b8e, which is the head and only commit of the change, so there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json claims success on c0b6b8e (ci-runner-03, 2026-10-24T16:36Z) with 124 tests passing, including RET-1's sample control test. But the JUnit reports are timestamped 2026-10-23T13:30 on host dev-laptop-7.local, before the commit existed, and the suite could not be re-run locally because the JUnit console jar is missing."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers Retention.java (the ledger has entries only for PAY-1, AUD-2, PAY-2, MFA-1, LIM-1 and CRD-1), so this change lapses no existing evidence."
+    }
+  ],
+  "summary": "PR-1857 is billed as a retention clean-up, but it narrows the legal-hold guard in Retention.isPurgeDue to declined cases only, so NPI of withdrawn cases under legal hold will be purged. That directly violates RET-1, and no approved exception covers it. The RET-1 control test samples only declined cases, so the passing CI run does not show compliance, and the CI reports themselves predate the commit. The ticket and the independent code review are in order, but the RET-1 violation alone requires rejection.",
+  "meta": {
+    "elapsed_s": 68.33,
+    "tokens_in": 279306,
+    "tokens_out": 6358,
+    "usd": 0.327182,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 6358,
+      "cache_read_input_tokens": 249267,
+      "cache_creation_input_tokens": 30013
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3271824,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

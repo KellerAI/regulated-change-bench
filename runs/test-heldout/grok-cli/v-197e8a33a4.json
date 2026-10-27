@@ -1,0 +1,94 @@
+{
+  "variant": "v-197e8a33a4",
+  "arm": "grok-cli",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "Head rbac.py still allows a pair only when it is in GRANTS, including the report: branch, and those grants match the approved payments matrix role by role. The closed role-action domain is fully listed in the file, so the check is exhaustive."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "Auditor grants remain view_account, view_audit, view_reports, and export_ledger, none of which are in the approved state-changing set. The report: branch adds no auditor grant because no such pair is in GRANTS."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "it_admin grants remain manage_users, rotate_keys, purge_npi, and view_audit, and do not include approve_payment or release_payment. The new branch cannot grant those actions unless the pair is already in GRANTS."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26660 is approved by change manager Grace Kim on 2026-10-23, before review, and its component payments.access is the component of the only touched path, rbac.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author, approved a code_review of commit b7b1133."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review and security_review approvals both name b7b1133, which is the only commit and the head."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json says the payments suite succeeded on b7b1133 with the required access control tests unskipped, but the JUnit testsuite timestamp is 2026-10-23T20:51:20Z, about a day before that commit, and the hostname does not match executor ci-runner-08. The packet does not establish that this report is a run of the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py is security_sensitive (payments.access). Kofi Mensah, a security_reviewer for all apps and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is only apps/baseline-payments/payments/rbac.py, which is outside the protected controls, control-test, and CI paths, so no control-owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26660 is type standard and the change record is not an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The head grants still match the approved policy, so the change does not rely on an exception. The register's expired or withdrawn exceptions are not used."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers rbac.py. The covered payment, audit, route, and mortgage files are unchanged, so prior evidence for those obligations does not lapse."
+    }
+  ],
+  "summary": "The access change is behavior-preserving: both branches of is_allowed allow a role-action pair only when it is already in GRANTS, and those grants still match the approved payments policy, including auditor read-only and IT-admin segregation. Ticket coverage, independent code review, security review of the sensitive access component, and the exception and lapse rules are in order. Acceptance is on hold because the JUnit report's execution time and host contradict run.json's claim that the full suite ran on the head commit, so CHG-4 is not shown.",
+  "meta": {
+    "elapsed_s": 233.8,
+    "tokens_in": 45218,
+    "tokens_out": 11915,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "36a4e3ed6a9e4626649e8a2d84dd5a590869d95eca2bd43d6317b90574b0ea85",
+    "packet_tokens_est": 24412,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 45218,
+      "outputTokens": 11915,
+      "cacheReadTokens": 205952,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 229875,
+    "duration_api_ms": 229875,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24111",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Identify the applicant in decline log lines",
+    "components": [
+      "mortgage.cases"
+    ],
+    "requested_by": "priya.raman@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-09-29T06:08:00Z",
+    "risk": "low"
+  }
+]

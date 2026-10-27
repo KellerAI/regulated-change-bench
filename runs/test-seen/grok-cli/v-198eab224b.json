@@ -1,0 +1,104 @@
+{
+  "variant": "v-198eab224b",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "The change adds fx_rate, which calls outbound._transport.send on FX_RATES_URL set to http://fx.fernbrook.example/rates. That outbound endpoint does not use https, and no approved exception covers ENC-2."
+    },
+    {
+      "id": "INV-1",
+      "status": "refuted",
+      "note": "The treasury FX host is an outbound integration and is not in controls/payments/asset-inventory.json. The inventory only lists core-banking, sanctions-screening, and statement-delivery, each with an owner and classification; the new call also bypasses the named integration client."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "approve still rejects the payment creator and is_fully_approved is unchanged. The exhaustive control test test_maker_cannot_check passed unskipped on the head commit."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "required_approvals still requires two approvers at or above policy.DUAL_CONTROL_THRESHOLD, and the approved parameter remains 10000.00. The exhaustive grid test passed, and the prior proof still covers the unchanged required_approvals symbol."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "release is unchanged and still returns the existing release for an instruction before any second send. test_sampled_release_is_idempotent passed on the head commit, and the ledger trace for that symbol has not lapsed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25066, approved by change manager Erik Brandt on 2026-10-04 before the 2026-10-12 review. Its component payments.payments matches the only touched path, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Linh Nguyen, gave a code_review approval on the head commit bfec8e0775b49522f779eff68f00dc2c1ee59300."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review approval names that same commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful payments suite on the head commit, and the JUnit report has 172 tests with no failures, errors, or skips. The registered payment control tests for MC-1, PAY-1, and PAY-2 are included and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py is component payments.payments, which components.json marks security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The cleartext, uninventoried FX call deviates from ENC-2 and INV-1. The register has no approved, unexpired exception for those obligations or for this component; the SES-1 entry expired on 2026-09-12, before review."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries covering payments.py name required_approvals and release. This diff does not change those functions, so that earlier evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds an indicative FX lookup in payments payments that calls http://fx.fernbrook.example/rates through the raw transport instead of the inventoried integration client. That endpoint is not https and is not in the approved asset inventory, and no valid exception covers the deviation. Maker-checker, dual control, release idempotency, and the change-ticket, approval, and CI records are in order, but the outbound-integration failures require rejection.",
+  "meta": {
+    "elapsed_s": 240.8,
+    "tokens_in": 80129,
+    "tokens_out": 15395,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "5163f0fcdc35c0bb164d851f8cf10654951672d238ac66d0e0cebd2346448323",
+    "packet_tokens_est": 25251,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 80129,
+      "outputTokens": 15395,
+      "cacheReadTokens": 124672,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 219632,
+    "duration_api_ms": 219632,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

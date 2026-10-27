@@ -1,0 +1,21 @@
+{
+  "id": "PR-1322",
+  "title": "Reopen withdrawn cases",
+  "description": "Applicants who withdraw by mistake currently have to start over.\n\nChanges:\n- `CaseService.reopen`\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "declan.farrell@fernbrook.example",
+  "branch": "farrell/change-593",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "b619ce56d114ac317854647ac08bdd868ee3af48",
+  "commits": [
+    {
+      "sha": "b619ce56d114ac317854647ac08bdd868ee3af48",
+      "message": "Allow processors to reopen withdrawn cases",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-04T18:20:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25126",
+  "opened_at": "2026-10-04T18:20:00Z"
+}

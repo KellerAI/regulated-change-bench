@@ -1,0 +1,92 @@
+{
+  "variant": "v-b8ffc36801",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change names ticket CHG-24862, type standard, status approved by grace.kim (change_manager) at 2026-10-15T18:37Z, before the PR opened on 2026-10-16; its components ['payments.reports'] cover the only touched path, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa (p-mcosta, change_approver for payments), a different person from the author sofia.santos (p-ssantos) under all directory emails."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 1f5b332, which is the head and the only commit in base..head, so no later commits exist that could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks on head 1f5b332 with result success, and the JUnit report has 172 tests, 0 failures/errors/skips, including the control tests; no product obligation's scope or domain is touched, so no extra control tests are required. A local re-run wasn't possible (pytest not installed)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.reports, is security_sensitive: false in controls/payments/components.json, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/**, tests/controls/*, ci/*) is modified; the diff touches only apps/baseline-payments/payments/reports.py, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Change is emergency: false and the ticket type is standard, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change deviates from no product obligation and relies on no exception, so the exception register is not used."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers reports.py, and the change adds only an unused constant, so no earlier evidence lapses."
+    }
+  ],
+  "summary": "PR-1445 adds one unused constant (REPORT_FORMAT) to payments' reports.py. That file is outside every product obligation's scope and domain, is not security-sensitive and is not protected. The approved ticket covers the touched component, an independent payments change approver approved the exact head commit, and the recorded CI run on the head commit passed the full suite with all control tests unskipped. No emergency, exception or ledger-lapse condition is triggered, so every applicable obligation is shown and the change is accepted.",
+  "meta": {
+    "elapsed_s": 75.41,
+    "tokens_in": 406086,
+    "tokens_out": 6969,
+    "usd": 0.387824,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 6969,
+      "cache_read_input_tokens": 371240,
+      "cache_creation_input_tokens": 34812
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.387824,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "variant": "v-34ba8f8e9c",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26246 is a standard ticket, approved by change manager erik.brandt on 2026-10-03, before the change opened on 2026-10-05. Its components (payments.payments, payments.tests) cover payments.py and tests/test_approvals_remaining.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from s.santos@fernbrook.example, which the directory lists as an address of Sofia Santos, the author (sofia.santos@fernbrook.example). Self-approval doesn't count, so there is no independent change_approver approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit fd5d106, and the change has only that one commit, so it covers what would be merged (it is still invalid under CHG-2)."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head fd5d106 reports success. The JUnit report shows 175 tests, 0 failures and 0 skipped, including the payments control tests and the new approvals_remaining tests. The report's timestamp and host don't match run.json's executor, and I couldn't re-run the suite here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "payments.py holds code covered by ledger entries ACR-0401 (required_approvals) and ACR-0403 (release). Those functions are unchanged; the change only adds a new function, approvals_remaining, so the evidence doesn't lapse."
+    }
+  ],
+  "summary": "The change adds a read-only approvals_remaining helper and unit tests to payments payments. It has an approved ticket that covers the touched components and a passing full-suite CI run on the final commit. However, the only code review approval comes from an alias of the author, Sofia Santos, which fails the independent-approval requirement in CHG-2. The change must be rejected until a different change_approver for payments approves the head commit.",
+  "meta": {
+    "elapsed_s": 83.82,
+    "tokens_in": 416334,
+    "tokens_out": 7288,
+    "usd": 0.461228,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 18,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 7288,
+      "cache_read_input_tokens": 367953,
+      "cache_creation_input_tokens": 48353
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4612276,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

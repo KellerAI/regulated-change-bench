@@ -1,0 +1,81 @@
+{
+  "variant": "v-5bebb9a3ab",
+  "arm": "gpt-oss-120b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The new integration URL uses https; control test test_integrations_use_tls passed in the CI run."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "The fx-rates integration is added to asset-inventory.json with owner and classification; test_integrations_are_inventoried passed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24327 is approved by a change manager and lists components covering all changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approved by Sofia Santos, who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the sole commit; no later commits alter behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all 172 tests (including relevant control tests) passing on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security review approved by Ines Halvorsen, who holds the security_reviewer role for all apps."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Control owner approval recorded from Bao Tran for the protected controls path change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "All evidence (control tests) remains valid after the change; no lapse detected."
+    }
+  ],
+  "summary": "All applicable obligations, including product controls (ENC-2, INV-1) and process controls (CHG-1 through CHG-6, LAP-1), are satisfied with adequate evidence from tickets, approvals, and passing CI tests. Therefore the change can be accepted.",
+  "meta": {
+    "elapsed_s": 104.48,
+    "tokens_in": 26213,
+    "tokens_out": 4069,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "99da356ef4d593d8212786c659fb8b23fd3d0e4be3f3cedc60abafd7e544e7f8",
+    "packet_tokens_est": 26354,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15201,
+    "answer_chars": 1853,
+    "done_reason": "stop",
+    "load_s": 0.01,
+    "prompt_eval_s": 23.21,
+    "eval_s": 81.03,
+    "total_s": 104.48,
+    "tokens_est_ratio": 0.971,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

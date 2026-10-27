@@ -1,0 +1,89 @@
+{
+  "variant": "v-5566fd9449",
+  "arm": "grok-cli",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "The change edits apps/baseline-payments/payments/audit.py, which is in AUD-1's scope, but record() is unchanged and the only registered control test, test_sampled_operations_are_audited, is sample coverage. service.py is not in the packet and no acceptance-ledger entry carries prior evidence, so it is not shown that every state-changing operation records an audit event, and the diff does not show a violation either."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "Head audit.py still appends hash-chained events and deletes only in purge_expired via policy.AUDIT_RETENTION_YEARS; the approved retention parameter remains 7 years and policy.py is unchanged. The exhaustive control test test_chain_and_retention passed on commit 61eb7690. The new guard only rejects a first retained sequence below 1, which record() never writes because sequences start at 1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25516 is status approved by Erik Brandt, a change manager, on 2026-10-20, before the 2026-10-27 review. Its component payments.audit is the component components.json assigns to the only changed file, audit.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa has the change_approver role for payments, is not the author Linh Nguyen, and her code_review approval names commit 61eb769012fddf234a86ae3efabf66d83d050252."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code review and the security review name that same head commit, so nothing landed after the approvals."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success of ci/run-tests.sh baseline-payments on the head commit, and the JUnit report shows 172 tests with 0 failures, 0 errors, and 0 skipped, including unskipped passes of test_sampled_operations_are_audited and test_chain_and_retention."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "audit.py is marked security_sensitive. Kofi Mensah has the security_reviewer role, is not the author, and approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch a protected path (controls data, control tests, or ci/), so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other obligations and components, and the audit-log edit does not need a risk-owner exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0402's ModelCheck result covered verify on an older commit and lapses because verify's behavior changed. The head-commit run of the registered exhaustive test test_chain_and_retention is new evidence of that same exhaustive coverage for the audit trail."
+    }
+  ],
+  "summary": "Process records for this one-commit payments audit change are in order: the ticket matches the component, independent code and security approvals name the head commit, the audit file is security-sensitive and was security-reviewed, and CI reports the full payments suite passing on that commit, including the audit control tests. The edit only makes verify reject a first sequence below 1; recording, the hash chain, and retention purge are otherwise intact, and the approved seven-year retention parameter is unchanged. AUD-1 still cannot be closed. Its registered evidence is only a sample, the operations that must be audited live in service.py, which is not in the packet, and no prior ledger entry covers them. The change is on hold until that obligation can be shown or a violation is established.",
+  "meta": {
+    "elapsed_s": 365.6,
+    "tokens_in": 80628,
+    "tokens_out": 19763,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "6011d9d3259f34841c0caf27c6005d948ac451e5544ffea6cc190689f3d37bed",
+    "packet_tokens_est": 24866,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 80628,
+      "outputTokens": 19763,
+      "cacheReadTokens": 191872,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 361521,
+    "duration_api_ms": 361521,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

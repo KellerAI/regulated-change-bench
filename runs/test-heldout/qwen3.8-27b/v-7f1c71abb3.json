@@ -1,0 +1,86 @@
+{
+  "variant": "v-7f1c71abb3",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "refuted",
+      "note": "The change to the `release` function adds a `now - previous.released_at < timedelta(days=1)` condition to the idempotency guard. After 1 day, a replayed instruction bypasses the guard and sends a second disbursement, directly violating 'Releasing the same payment instruction again never sends a second disbursement.'"
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0403 (PAY-2 evidence) covers `payments.py#release`, whose behaviour is changed by this PR. Per LAP-1 the evidence lapses and new evidence of equal strength is required before acceptance; none is provided."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25827 is approved by change manager Erik Brandt and lists component `payments.payments`, which covers the only file changed (`payments.py`)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (change_approver for payments) approved the code review at the head commit; she is not the author (Jonah Weiss)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The sole commit in the change is d6f3a184, and the approval names that exact commit; no later commits exist to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit (d6f3a184) with 172 tests, 0 failures, 0 skipped; the registered control tests for PAY-1, PAY-2 and MC-1 are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file `payments.py` belongs to component `payments.payments` which is marked `security_sensitive: false`; no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/*, test/controls/*, ci/*) are modified; only `apps/baseline-payments/payments/payments.py` is changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; the emergency PIR requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is being claimed for this change; the register contains no entry for PAY-2 or payments.payments, so there is no invalid exception to flag."
+    }
+  ],
+  "summary": "The change modifies the `release` function's idempotency guard from an unconditional return-on-duplicate to a time-bounded (1-day) return. After the window elapses, a replayed instruction will fall through and send a second disbursement to core banking, directly violating PAY-2 ('Releasing the same payment instruction again never sends a second disbursement'). The prior acceptance-ledger evidence for PAY-2 (ACR-0403) is lapsed by this behavioural change under LAP-1, and no replacement evidence is supplied. All process obligations (CHG-1 through CHG-7, EXC-1) are satisfied, but the critical product-obligation violation mandates rejection.",
+  "meta": {
+    "elapsed_s": 164.86,
+    "tokens_in": 28304,
+    "tokens_out": 4600,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "781705e989ab9df25695801c0d5b00b852de4c9aa6d4c1a4c1f0ae67164e4f16",
+    "packet_tokens_est": 25291,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15209,
+    "answer_chars": 2720,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.05,
+    "eval_s": 131.78,
+    "total_s": 164.85,
+    "tokens_est_ratio": 1.091,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

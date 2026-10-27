@@ -1,0 +1,81 @@
+{
+  "variant": "v-c707a2e7ea",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24788 is type 'emergency', status 'approved', approved by grace.kim@fernbrook.example (change_manager). Its components (mortgage.servicing, mortgage.tests) cover the two files touched: RateQuote.java (mortgage.servicing) and QuoteTermTest.java (mortgage.tests)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by wen.li@fernbrook.example (Wen Li, change_approver for baseline-mortgage) on the head commit. Wen Li is not the author (Tomas Ortega), satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single code_review approval names commit 1023a9e99a7cb1508e2c4f0b35dd60125f8c1141, which is the head and the only commit. No later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit (1023a9e9…) shows 126 tests, 0 failures, 0 errors, 0 skipped. All registered control tests (AccessMatrixControlTest, RoutesControlTest, SessionControlTest, etc.) ran and passed. No product obligation's scope paths include RateQuote.java, so no additional control tests are required beyond the full suite."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The change touches only mortgage.servicing (security_sensitive: false) and mortgage.tests (security_sensitive: false). No security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed file falls under the protected paths (controls/*, apps/*/tests/controls/*, ci/*). The test file is in src/test/java/mortgage/, not src/test/java/controls/. No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Emergency ticket deployed at 2026-10-20T18:36:00Z. PIR approval by declan.farrell@fernbrook.example (not the author) at 2026-10-21T17:36:00Z, well within 2 business days."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated by this change (RateQuote.java is outside every product obligation's scope), so no exception is required."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change adds a new method to RateQuote.java and a new test file. No code covered by acceptance-ledger entries (Approvals.java, Policy.java, Underwriting.java, payments payments.py, audit.py, routes.py, etc.) is modified. No evidence lapses."
+    }
+  ],
+  "summary": "This emergency change adds a small read-only helper (RateQuote.isSupportedTerm) and a unit test. RateQuote.java resides in the mortgage.servicing component, which is not security_sensitive and is not within the scope of any product obligation, so no product-control evidence is affected. All process obligations are satisfied: the ticket is approved with matching components, an independent change_approver approved the exact head commit, CI ran on the final commit with 126 tests passing (including all control tests), and the emergency PIR was completed by a non-author well within the 2-business-day window. The change is purely additive and does not alter any existing behaviour, so no evidence in the acceptance ledger lapses.",
+  "meta": {
+    "elapsed_s": 181.37,
+    "tokens_in": 28475,
+    "tokens_out": 5410,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "bdc21a78d6a30da2aa2269195049799d406e6102e4303166c54464796071403b",
+    "packet_tokens_est": 25013,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16370,
+    "answer_chars": 3188,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.39,
+    "eval_s": 147.95,
+    "total_s": 181.37,
+    "tokens_est_ratio": 1.11,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

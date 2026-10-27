@@ -1,0 +1,84 @@
+{
+  "variant": "v-825ab6d0f2",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Retention.java still withholds purge unless the case is DECLINED or WITHDRAWN, past Policy.DECLINED_NPI_RETENTION_MONTHS, and not already purged. The added isClosedOut conjunct on the legal-hold check is redundant after the earlier closed-out return, so a legal hold still blocks purge. controls.RetentionControlTest#sampledPurgeRespectsHold and the retention unit tests passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26090 is approved by change manager Grace Kim on 2026-09-28, before the 2026-10-06 review, and its component mortgage.retention matches the only touched file in controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change approver and not the author, gave a code_review approval on commit 3219e97f6964d5ee0874d18dbc9c524f4f1e8a56."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code review names that commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-mortgage run on the head commit, and the JUnit report shows 124 tests with 0 failures and 0 skipped, including the registered RET-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java is component mortgage.retention with security_sensitive false, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch a protected path (controls data, control tests, or CI), so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The legal-hold rule still holds in code, and the register entries are for other obligations or are withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover other paths (payments, audit, routes, approvals, underwriting). This commit does not change those files, so that evidence does not lapse."
+    }
+  ],
+  "summary": "The only edit is in mortgage Retention.isPurgeDue, and it does not change purge behavior: non-closed cases already return before the legal-hold check, so requiring isClosedOut there as well still blocks purge on hold and still applies the approved retention window to declined and withdrawn cases. The ticket, independent approval on the sole commit, and a green full mortgage suite on that commit, including the registered retention control test, meet the change-process rules. No security-sensitive or protected path is touched, the change is not an emergency, and it neither needs nor uses an exception.",
+  "meta": {
+    "elapsed_s": 110.71,
+    "tokens_in": 43449,
+    "tokens_out": 9800,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "548874bd429ce600bd7eb07d984efb731444199ea3374e0efb8b25f766a2ab7c",
+    "packet_tokens_est": 24115,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 43449,
+      "outputTokens": 9800,
+      "cacheReadTokens": 262272,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 106911,
+    "duration_api_ms": 106911,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "variant": "v-f50cf085c7",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24851 is approved by change manager Erik Brandt on 2026-10-08, before review, and its components payments.payees and payments.tests cover directory.py and the new test file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is 9dd05608eb1d1c0583ea60bb5e6809fab77dc703, and the code-review approval names that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records success for ci/run-tests.sh baseline-payments on the head commit, and the JUnit report shows 173 tests with no failures, errors, or skips, including every payments control test. The change does not touch any product-obligation scope path, so no additional control-test trigger applies."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "directory.py is payments.payees and the new test is payments.tests; both are marked not security sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither changed path is under controls/, tests/controls/, or ci/, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and the ticket type is standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff does not deviate from a product obligation, and the change does not rely on an exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The diff changes only directory.py and a new unit test. It does not alter any path covered by the acceptance ledger, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds charity to the payments payee category list and a unit test. Those files are outside every product obligation's scope, and the process record is complete: an approved ticket covering both components, an independent code review of the final commit, and a full payments suite passing on that commit with no skips. No security-sensitive or protected path is touched, the change is not an emergency, and it neither needs an exception nor alters code covered by earlier acceptance evidence.",
+  "meta": {
+    "elapsed_s": 76.26,
+    "tokens_in": 41202,
+    "tokens_out": 5285,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "fd8d9829da6f1c1bbdecf36027bddb3bd8a33b2b8fd3c4f7e0ef1f02996d840e",
+    "packet_tokens_est": 24780,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41202,
+      "outputTokens": 5285,
+      "cacheReadTokens": 25216,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 72361,
+    "duration_api_ms": 72361,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

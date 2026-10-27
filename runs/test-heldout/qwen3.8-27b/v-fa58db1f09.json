@@ -1,0 +1,81 @@
+{
+  "variant": "v-fa58db1f09",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25145 is approved by change manager Grace Kim and its component 'payments.reports' covers the only file touched (apps/baseline-payments/payments/reports.py)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from Mara Costa (change_approver for payments) on the head commit 92ccbfd2 exists; she is a different person from the author Aisha Bello (different person_id, name, and emails)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 92ccbfd21026b62429accaad034d59001f57214c, which is the head/final commit, so it directly covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 92ccbfd2 shows 172 tests, 0 failures, 0 errors, 0 skipped; all registered control tests pass. No product obligation has reports.py in its scope, so no additional control tests are triggered."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file (reports.py) is mapped to component 'payments.reports' with security_sensitive=false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change does not touch any path listed in protected-paths.json (controls/*, control tests, ci/*), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the emergency post-implementation review requirement is not triggered."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception in the register applies to this change; the change touches no product obligation's scope and requires no deviation."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance ledger entries cover payments.py, audit.py, routes.py, Approvals.java, Underwriting.java, and Policy.java; none of these are reports.py, so no previously accepted evidence is lapsed by this change."
+    }
+  ],
+  "summary": "The change adds a single constant REPORT_FORMAT = 'ledger-csv/1.1' to apps/baseline-payments/payments/reports.py, a non-security-sensitive file in the payments.reports component. No product obligation's scope includes this file, so no product-obligation evidence is triggered. All process obligations are satisfied: the change has an approved ticket (CHG-25145) whose components cover the touched file, an independent code_review approval from a non-author change_approver on the head commit, and a green CI run on the final commit. No protected paths are touched, no security-sensitive components are modified, and no previously accepted evidence is lapsed. The change is accepted.",
+  "meta": {
+    "elapsed_s": 128.35,
+    "tokens_in": 27798,
+    "tokens_out": 3515,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "986ddbcd1180f660a74bc69852e9dd77d8bffbfb6ec9e38aabe440d0e15a0a3f",
+    "packet_tokens_est": 24506,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 10253,
+    "answer_chars": 2688,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.49,
+    "eval_s": 95.83,
+    "total_s": 128.35,
+    "tokens_est_ratio": 1.105,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

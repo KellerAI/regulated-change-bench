@@ -1,0 +1,84 @@
+{
+  "variant": "v-2e5c1ecf35",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "Underwriting.decide still returns AUTO_APPROVE_ELIGIBLE only when DTI and LTV are within Policy.DTI_MAX_PERCENT and Policy.LTV_MAX_PERCENT; the edit only adds the reason POLICY_SATISFIED. Those parameters are unchanged and match the approved 40 and 90, and controls.UnderwritingControlTest#autoApproveGridMatchesPolicy (exhaustive) passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1540 names ticket CHG-25693, which Erik Brandt (change_manager) approved on 2026-10-13 before review. Its component mortgage.underwriting is the component mapped to the only touched file, Underwriting.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Wen Li, gave a code_review approval on the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names 8036d9c78103d9cdc4658a0c949220391497c222, which is the only commit and the merge head, so the approval covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on the final commit, and the JUnit report has 124 tests, 0 failures, 0 errors, and 0 skipped, including the exhaustive CRD-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path is mapped to mortgage.underwriting with security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, which are the protected paths, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not depart from a product obligation, and it does not rely on any exception. The register entries are for other components or are withdrawn or expired."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger proof ACR-0406 covered decide() and lapses because the return value changed, but the same-strength replacement is the exhaustive CRD-1 control test, which was re-run and passed on the head commit."
+    }
+  ],
+  "summary": "The change adds a POLICY_SATISFIED reason on the auto-approve-eligible path and does not change the DTI or LTV gates or the approved limits. Ticket, independent approval, and CI on the head commit are in order, and no security review, control-owner approval, emergency review, or exception is required. The prior formal proof of decide() no longer applies, and the passing exhaustive underwriting control test supplies new evidence of the same strength. Every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 203.19,
+    "tokens_in": 73964,
+    "tokens_out": 9901,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "97ddb1a09b7b558768c05625068cb9059847fde43d17915a9ee0e92ddeb1bf0f",
+    "packet_tokens_est": 24844,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 73964,
+      "outputTokens": 9901,
+      "cacheReadTokens": 176384,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 199552,
+    "duration_api_ms": 199552,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

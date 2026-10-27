@@ -1,0 +1,89 @@
+{
+  "variant": "v-babd91250e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "deliver_statement now logs payee.account_number on the statement-delivery error path. account_number is declared NPI, the call site does not mask it, and EXC-0167 covers mortgage.logging only. The logging control test is sample coverage and does not show this path is free of unmasked NPI."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "The change edits LedgerService, which is in scope, and deliver_statement still audits after a successful send. The registered control test is only a sample and the operation domain is not closed, so the packet does not establish that every state-changing operation is audited."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26026 is approved by change manager Erik Brandt on 2026-10-06, before review, and its component payments.service covers the only changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author, approved a code review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review names a2f24b3dc939b7a27fdbafffd0fa68831aa859eb, which is the only commit and the head being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json records success for ci/run-tests.sh baseline-payments on the head commit, and the JUnit digest shows 172 tests, 0 failures, and 0 skipped, including the payments control tests for the touched obligations."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed path is payments.service, which is not marked security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in protected-paths.json."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. EXC-0167 is for mortgage.logging, EXC-0141 is expired, and EXC-0172 is withdrawn, so none waives this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger entries cover payments.py, audit.py, routes.py, and mortgage files, none of which this change modifies, so that evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds the payee account number to the statement-delivery failure log in LedgerService. That field is nonpublic personal information, the new error path passes it through unmasked, and no in-scope exception authorizes it. The logging control test that passed is only a sample, so it does not show the universal logging obligation. Process records for the ticket, independent approval, and the CI run are in order, but the logging breach requires rejection.",
+  "meta": {
+    "elapsed_s": 254.15,
+    "tokens_in": 70226,
+    "tokens_out": 15721,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "c138b9a13f105a917421b735ded1a73a441a1f88984170fadc8fcf2563df1641",
+    "packet_tokens_est": 26769,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 70226,
+      "outputTokens": 15721,
+      "cacheReadTokens": 180224,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 250678,
+    "duration_api_ms": 250678,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

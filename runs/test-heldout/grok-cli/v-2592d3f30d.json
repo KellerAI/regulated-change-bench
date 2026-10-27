@@ -1,0 +1,84 @@
+{
+  "variant": "v-2592d3f30d",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "The only edit is in isPurgeDue: the legal-hold return is now also guarded by isClosedOut, which the preceding check has already established, so declined and withdrawn cases are still purged only after Policy.DECLINED_NPI_RETENTION_MONTHS and never while a legal hold applies. controls.RetentionControlTest#sampledPurgeRespectsHold and the retention unit tests passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-25264 is approved by change manager Grace Kim on 2026-10-07, before review on 2026-10-13, and its component mortgage.retention matches Retention.java in controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Wen Li, approved a code_review of commit fb342202."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review approval names that same head commit, so the approval covers what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on fb342202, and the JUnit report includes the registered RET-1 control test unskipped and passing with zero failures."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java is component mortgage.retention, which components.json marks security_sensitive false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in controls/protected-paths.json, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The retention predicate still matches the obligation, so no exception is required; the register entries are for other obligations or are withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover other files and symbols, and the diff changes only Retention.java, so those prior evidence records have not lapsed."
+    }
+  ],
+  "summary": "The change adds a redundant closed-out check on the legal-hold branch of mortgage Retention.isPurgeDue. Because a non-closed-out case already returns before that branch, declined and withdrawn NPI is still held until the approved retention period and is still never purged on legal hold. The ticket, independent approval on the head commit, and passing CI including the registered retention control test meet the change-process obligations, and no security, control-owner, emergency, or exception condition is triggered.",
+  "meta": {
+    "elapsed_s": 156.16,
+    "tokens_in": 41696,
+    "tokens_out": 10799,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "4a0096f47b147a82412372b277522c917987ac19b5acc9ea41ba9f5dd51c8cda",
+    "packet_tokens_est": 24101,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 41696,
+      "outputTokens": 10799,
+      "cacheReadTokens": 244736,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 152512,
+    "duration_api_ms": 152512,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-25267",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Bearer token generation settings",
+    "components": [
+      "payments.session"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-05T09:31:00Z",
+    "risk": "medium"
+  }
+]

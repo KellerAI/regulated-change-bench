@@ -1,0 +1,79 @@
+{
+  "variant": "v-9663853c98",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26227 is approved by change manager Erik Brandt on 2026-10-15, before the 2026-10-21 review, and its components payments.payments and payments.tests cover memos.py and test_memo_preview.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos has the payments change_approver role, is not the author Mara Costa, and recorded an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "That code_review names head commit d45534c432a4fca1ae7b466f6ed19195b7f3b21f, which is the commit being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "records/ci/run.json shows the suite passing on 304da051, not the head. The later commit changes the module docstring, which is not a comment-only, whitespace, or formatting edit, so that earlier run does not count as testing of the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "memos.py is payments.payments and the new test matches payments.tests; both are security_sensitive false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in controls/protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not depart from a product obligation and does not rely on an exception. The register entries are unused for this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger covered path (payments, audit, routes, or mortgage policy code) changes behaviour in this diff, so prior ledger evidence has not lapsed."
+    }
+  ],
+  "summary": "The memo preview change is a small payments payments addition with a matching ticket, an independent approver on the head commit, and no sensitive, protected, or emergency scope. Product obligations are not touched. Acceptance still fails CHG-4: the recorded CI run is on the first commit, and the later commit edits the module docstring rather than comments, whitespace, or formatting, so the passing suite is not evidence for the commit that would merge.",
+  "meta": {
+    "elapsed_s": 203.43,
+    "tokens_in": 82121,
+    "tokens_out": 11688,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "10c7878975afef08d602454fd742e64d79630b0c28c6663c46bbaf764bd3c8c9",
+    "packet_tokens_est": 24599,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 82121,
+      "outputTokens": 11688,
+      "cacheReadTokens": 207744,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 199442,
+    "duration_api_ms": 199442,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

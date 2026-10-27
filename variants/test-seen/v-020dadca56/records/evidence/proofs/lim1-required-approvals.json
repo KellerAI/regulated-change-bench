@@ -1,0 +1,28 @@
+{
+  "format": "proof-record/v1",
+  "statement_id": "mortgage.authority_limits.v2",
+  "obligation": "LIM-1",
+  "property": "requiredApprovals(amount) matches the approved authority table for every amount",
+  "status": "proved",
+  "target": {
+    "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+    "path": "apps/baseline-mortgage/src/main/java/mortgage/Approvals.java",
+    "symbol": "requiredApprovals"
+  },
+  "checker": {
+    "name": "rocq",
+    "version": "9.1.0",
+    "digest": "sha256:9c1f0a7e4b2d"
+  },
+  "premises": [
+    "UNDERWRITER_LIMIT = 500000",
+    "SENIOR_LIMIT = 1500000"
+  ],
+  "assumptions": [],
+  "checked_by": "bao.tran@fernbrook.example",
+  "checked_at": "2026-09-03T19:27:00Z",
+  "coverage": {
+    "kind": "exhaustive",
+    "domain": "amount in [0, 10^9]"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "PR-1236",
+  "title": "Rate quote: supported terms helper",
+  "description": "Rate quote: supported terms helper.\n\nChanges:\n- Add `RateQuote.isSupportedTerm`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "declan.farrell@fernbrook.example",
+  "branch": "farrell/change-704",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "2774f1981823fb0bded2cdd5f5b59390bce0d6bd",
+  "commits": [
+    {
+      "sha": "f611f9638b3636be1cd422dedf92f8901a7345bd",
+      "message": "Rate quote: expose supported terms",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-13T16:41:00Z"
+    },
+    {
+      "sha": "2774f1981823fb0bded2cdd5f5b59390bce0d6bd",
+      "message": "Add default quote term",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-13T20:10:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25850",
+  "opened_at": "2026-10-13T16:41:00Z"
+}

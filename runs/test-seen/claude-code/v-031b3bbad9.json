@@ -1,0 +1,77 @@
+{
+  "variant": "v-031b3bbad9",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "The change lowers payments PRIVILEGED_IDLE_MINUTES and the approved parameter payments.privileged_idle_minutes from 15 to 10, which stays within the catalog bound of 15 or less. The registered exhaustive control test test_privileged_idle_timeout_within_policy passes in the head-commit CI report, and session.py enforces the limit through policy.PRIVILEGED_IDLE_MINUTES."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25537 (standard) was approved by change manager grace.kim on 2026-10-15, before the change was opened and reviewed. Its components payments.policy and payments.controls-data cover both touched paths (policy.py and controls/payments/policy-params.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "sofia.santos approved the code review. She holds the change_approver role for payments and is a different person from the author, Mara Costa."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, ab394c3, and both the code_review and control_owner approvals name that commit, so no later commits exist to void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the pr-checks run on head commit ab394c3 succeeded with ci/run-tests.sh baseline-payments. The JUnit report shows 172 tests, 0 failures and 0 skipped, including the SES-1 control test. I could not re-run it locally because pytest is not installed, and the report's internal timestamp and hostname differ from the run metadata."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is a protected path, and the change alters an approved policy value there. bao.tran (control_owner, controls-office, outside the author's payments-eng team) approved head commit ab394c3."
+    }
+  ],
+  "summary": "The change shortens the payments privileged idle timeout from 15 to 10 minutes in both code and the approved parameter. That stays within SES-1's bound of 15 minutes or less, and the registered exhaustive control test passes on the head commit. The ticket, independent code review and control-owner approval are all valid and cover the final commit. No security-sensitive component is touched, no exception is relied on, no ledger evidence covers the changed code, and the change is not an emergency, so CHG-5, EXC-1, LAP-1 and CHG-7 do not apply. Every applicable obligation is shown, so the change is accepted.",
+  "meta": {
+    "elapsed_s": 77.05,
+    "tokens_in": 394572,
+    "tokens_out": 6428,
+    "usd": 0.447368,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 20,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 6428,
+      "cache_read_input_tokens": 344588,
+      "cache_creation_input_tokens": 49954
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4473676,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

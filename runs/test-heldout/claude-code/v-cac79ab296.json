@@ -1,0 +1,102 @@
+{
+  "variant": "v-cac79ab296",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change adds a new log call site (`_log.info(\"payment memo updated\", payment_id=...)`) in amend_memo, which falls within LOG-1's call-site pattern. By inspection it logs only a numeric payment id, but LOG-1 requires exhaustive evidence: the only registered control test (test_sampled_flows_do_not_log_npi) is sample-coverage and does not exercise amend_memo, and the ledger has no LOG-1 evidence."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "service.py is in scope, but the change adds no state-changing operation and leaves amend_memo's `_audit(actor, \"amend_memo\", ...)` call intact. The AUD-1 sampled control test, test_service::test_amend_memo and test_app::test_memo_amendment_route pass in the CI report."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-24472. It is a standard ticket approved 2026-10-21 by grace.kim (change_manager), before the change was opened and reviewed, and its component payments.service covers the only touched path."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by mara.costa, who has the change_approver role for payments and is a different person from the author aisha.bello under all of the author's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names 72393c3, which is the head and only commit of the change, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful pr-checks run on head 72393c3. The JUnit report shows 172 tests with 0 failures and 0 skips, including the LOG-1 and AUD-1 control tests (both sample-labelled). Two caveats: the report's timestamp (2026-10-23) and hostname (a developer laptop) don't match the run record (ci-runner-07, 2026-10-22), and I could not re-run the suite because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.service, is marked security_sensitive: false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, ci/, tests/controls/) are modified by the change."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency: false; ticket type standard), so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. None of the register entries apply to payments.service or to LOG-1/AUD-1 for this component."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger evidence covers payments.py, audit.py and routes.py. None of them changed, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1849 adds a single log line to LedgerService.amend_memo. The process records (ticket, independent approval on head, CI on head, no protected or security-sensitive paths) are in order. The new line is a log call site in LOG-1's domain, and LOG-1 requires exhaustive evidence. The only control test is a sample that doesn't exercise memo amendment, and the ledger has no LOG-1 evidence. The line looks benign on reading because it logs only a numeric payment id, but the required evidence isn't there, so the change is held rather than accepted.",
+  "meta": {
+    "elapsed_s": 121.94,
+    "tokens_in": 570653,
+    "tokens_out": 10814,
+    "usd": 0.574825,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 10814,
+      "cache_read_input_tokens": 519725,
+      "cache_creation_input_tokens": 50888
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5748249999999999,
+    "permission_denials": 8,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

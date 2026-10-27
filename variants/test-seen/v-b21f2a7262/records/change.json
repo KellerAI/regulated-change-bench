@@ -1,0 +1,21 @@
+{
+  "id": "PR-1431",
+  "title": "Credit policy update: DTI ceiling 43%",
+  "description": "Credit committee raised the auto-approve DTI ceiling (minutes CP-2026-31).\n\nChanges:\n- `Policy.DTI_MAX_PERCENT` 40 -> 43\n- Approved parameter updated\n\nTesting:\n- Unit tests updated; full suite green locally.\n\nRollout: standard release train.",
+  "app": "baseline-mortgage",
+  "author": "declan.farrell@fernbrook.example",
+  "branch": "farrell/change-924",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "841b40711faf3ac9834648a72a43f5d51fcc440a",
+  "commits": [
+    {
+      "sha": "841b40711faf3ac9834648a72a43f5d51fcc440a",
+      "message": "Raise auto-approve DTI ceiling to 43%",
+      "author": "declan.farrell@fernbrook.example",
+      "at": "2026-10-07T15:50:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25598",
+  "opened_at": "2026-10-07T15:50:00Z"
+}

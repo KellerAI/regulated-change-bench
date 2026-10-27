@@ -1,0 +1,21 @@
+{
+  "id": "PR-1251",
+  "title": "Identify the applicant in decline log lines",
+  "description": "Collections asked to match declines to applicants from the log stream.\n\nChanges:\n- Decline log line names the applicant\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-mortgage",
+  "author": "nneka.okafor@fernbrook.example",
+  "branch": "okafor/change-498",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "b3a171e2b2800a55400558d3b9bc7f882ef3e75c",
+  "commits": [
+    {
+      "sha": "b3a171e2b2800a55400558d3b9bc7f882ef3e75c",
+      "message": "Ops: include applicant reference in decline log",
+      "author": "nneka.okafor@fernbrook.example",
+      "at": "2026-10-06T19:31:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-24512",
+  "opened_at": "2026-10-06T19:31:00Z"
+}

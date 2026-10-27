@@ -1,0 +1,77 @@
+{
+  "variant": "v-48c967af12",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26136 is standard, status approved, approved by change manager erik.brandt at 2026-10-15T00:05Z (before the 10-16 review); its components payments.payments and payments.tests cover payments.py, memos.py and tests/test_approvals_remaining.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos (p-ssantos), who holds change_approver for payments and is a different person from the author aisha.bello (p-abello) under all of the author's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names ec8a00a; the only later commit, 6af8d48, changes just the memos.py module docstring, with no code reading __doc__, so it has no behavioural effect and the approval still applies."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks success on head 6af8d48 running the full payments suite; the JUnit report has 175 tests, 0 failures, 0 skipped, including the new tests and the payments control tests (PAY-1 dual-control grid and MC-1, both exhaustive). I could not re-run locally because pytest is missing, and the report's timestamp and hostname differ from run.json."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change touches payments.py, which ledger entries ACR-0401 (required_approvals, from d30b2ad) and ACR-0403 (release, from e5bf646) cover; git diff since those commits shows only a new function was added, so the covered symbols are unchanged and the evidence has not lapsed."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The new helper builds on required_approvals but changes neither it, is_fully_approved, DUAL_CONTROL_THRESHOLD nor the policy params; the exhaustive Rocq proof (ACR-0401) is still current and the exhaustive dual-control control test passes on head."
+    }
+  ],
+  "summary": "PR-1716 adds a read-only approvals_remaining helper in payments payments.py, unit tests for it, and a docstring edit to memos.py; it touches no security-sensitive component, protected path or existing control-scoped symbol. The ticket was approved by a change manager before review and covers both touched components; an independent payments change approver approved the logic commit, and the only later commit is docstring-only. CI on the final commit passed the full suite, including the registered payments control tests, and the earlier PAY-1 and PAY-2 evidence still covers unchanged code. CHG-5, CHG-6, CHG-7 and EXC-1 don't apply (no sensitive component, no protected path, standard ticket, no exception relied on), so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 100.58,
+    "tokens_in": 567671,
+    "tokens_out": 9025,
+    "usd": 0.518322,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 9025,
+      "cache_read_input_tokens": 520936,
+      "cache_creation_input_tokens": 46695
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5183222000000001,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

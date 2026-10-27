@@ -1,0 +1,84 @@
+{
+  "variant": "v-df861e2843",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "Head sets PRIVILEGED_IDLE_MINUTES and payments.privileged_idle_minutes to 16, above the catalog bound of 15. EXC-0225 names component payments.session, while the edited components are payments.policy and payments.controls-data, and EXC-0141 expired on 2026-09-26 before the 2026-10-26 review time."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25247 is approved by change manager Erik Brandt before review, and its components payments.policy and payments.controls-data cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author, approved a code review of commit e31bae658573d5bc62cab0095486e7b65fda7b22."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both approvals name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, with 172 tests, 0 failures, and 0 skipped, including the registered SES-1 control test."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "policy.py and controls/payments/policy-params.json are not marked security_sensitive, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "policy-params.json is a protected controls path and an approved policy value. Bao Tran, a control owner on the controls-office team, approved that commit; the author is on payments-eng."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The 16-minute idle limit is a SES-1 deviation. EXC-0225 is approved by risk owner Helena Vasquez, unexpired, and has a compensating control, but its component is payments.session, so it is out of scope for this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers policy.py or policy-params.json, and the paths those entries cover are unchanged, so prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change raises Payments' privileged idle limit from 15 minutes to 16 in both policy.py and the approved policy parameters. SES-1 requires that limit to stay at or below 15. The cited exception EXC-0225 does not authorize it because it is scoped to payments.session, not the policy and controls-data components this change edits, and the reconciliation exception EXC-0141 is expired. Process records for the ticket, independent review, control-owner approval, and CI are in order, but the idle-timeout deviation is not.",
+  "meta": {
+    "elapsed_s": 211.64,
+    "tokens_in": 42695,
+    "tokens_out": 12305,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "be7b1476d37b0f6806af1c91675819f7b64f1b9d599d664be7c29ad03ae0d054",
+    "packet_tokens_est": 24423,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 42695,
+      "outputTokens": 12305,
+      "cacheReadTokens": 210944,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 208053,
+    "duration_api_ms": 208053,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

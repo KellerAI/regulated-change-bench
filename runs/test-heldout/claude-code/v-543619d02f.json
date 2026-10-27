@@ -1,0 +1,97 @@
+{
+  "variant": "v-543619d02f",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change replaces Mask.npi(value) with the raw value in log.warn in ApplicantValidator.checkIncome, so an unmasked annual_income (NPI per NpiRegistry.FIELDS) reaches the application log on the validation error path. The passing LOG-1 control test is sample-only and does not exercise this path."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "No exception covers this deviation. EXC-0167 is the only LOG-1 exception, and it is scoped to component mortgage.logging and masked last-4 bank account digits, not to unmasked income logged from mortgage.cases."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25973 is standard and approved by change manager grace.kim on 2026-10-10, before the change was opened on 2026-10-12. Its components [mortgage.cases] cover the only touched file, ApplicantValidator.java (mortgage.cases)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "declan.farrell holds change_approver for baseline-mortgage, is a different person from the author priya.raman, and gave an approved code_review."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 4f1da65, which is the change's only commit, so no later commits exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-mortgage succeeding on head 4f1da65. The JUnit reports show 124 tests with 0 skipped, failed or errored, including the registered LOG-1 control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi, which is labelled sample."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched path maps to mortgage.cases, which components.json marks security_sensitive: false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only an application source file and no protected controls data, control tests or CI paths, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and emergency is false, so no post-implementation review is due."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers ApplicantValidator.java. The covered files (Approvals, Policy, Underwriting and the payments modules) are unchanged, so no ledger evidence lapses."
+    }
+  ],
+  "summary": "The change removes NPI masking from the annual-income validation warning and logs the raw income value, which NpiRegistry classifies as NPI. That directly violates LOG-1, and no approved exception in the register covers this component and scope. The ticket, independent code review on the final commit, and the passing CI run are in order, but the LOG-1 control test is sample-only and does not exercise this error path, so the green CI does not offset the violation. The change is rejected.",
+  "meta": {
+    "elapsed_s": 62.17,
+    "tokens_in": 310505,
+    "tokens_out": 5895,
+    "usd": 0.357225,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 26,
+      "output_tokens": 5895,
+      "cache_read_input_tokens": 273578,
+      "cache_creation_input_tokens": 36901
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3572246,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

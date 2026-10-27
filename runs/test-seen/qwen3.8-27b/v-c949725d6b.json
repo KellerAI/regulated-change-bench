@@ -1,0 +1,76 @@
+{
+  "variant": "v-c949725d6b",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "The change replaces `>=` with `>` in `required_approvals`, so a payment of exactly 10,000.00 (the approved dual-control threshold) now requires only one approver instead of two. This directly contradicts the obligation that a payment 'at or above' the threshold needs two distinct approvers. The prior proof (ACR-0401) also lapses under LAP-1 because the covered symbol `required_approvals` is behaviorally changed."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The `release` function is textually unchanged; its idempotency mechanism (`store.find_release` check) precedes `is_fully_approved` and is unaffected by the `required_approvals` change. The test `test_sampled_release_is_idempotent` passed in CI, and the core double-disbursement guard is intact."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The `approve` function and its self-approval guard (`actor.user_id == payment.created_by`) are unchanged. The `required_approvals` change affects the number of approvers needed but not whether the maker is blocked from approving, so maker-checker is preserved."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24576 is type 'standard', approved by change manager Erik Brandt, and its components (payments.payments, payments.tests) cover both changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval was given by mara.costa@fernbrook.example (Mara Costa, payments-eng, change_approver role) for the final commit 411570a56…, and she is a different person from the author Sofia Santos."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names commit 411570a56bdcf6c17bc3b2a1d313f38e789aee32, which is the head/final commit of the change, so it covers everything merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run (run.json) targets commit 4655e99d (the first commit). The second commit 'Simplify threshold check' changes `>=` to `>`, a behavioral change, not a comment/whitespace/formatting edit. Under CHG-4 a run on an earlier commit counts only if later commits are non-behavioral, so the CI does not cover the final commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "ACR-0401 (PAY-1 proof) covers `payments.py#required_approvals`, which is behaviorally changed (>= to >). No replacement evidence of equal or greater strength is present in the packet; the CI did not run on the final commit, so the lapsed evidence is not replaced."
+    }
+  ],
+  "summary": "The change alters the dual-control boundary in `required_approvals` from `>=` to `>`, which lets a payment of exactly 10,000.00 (the approved threshold) proceed with only one approver, directly violating PAY-1's 'at or above' requirement. The CI run was executed on the first commit, not the final; the second commit is a behavioral change, so CHG-4 is not satisfied. The prior PAY-1 proof (ACR-0401) lapses under LAP-1 because the covered symbol was changed, and no new evidence is provided. Because PAY-1, CHG-4, and LAP-1 are all refuted, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 241.13,
+    "tokens_in": 29068,
+    "tokens_out": 7014,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "2b13aa680fc2b1c75b27028efd85d5a0fe68a7d2b05d88fc7f5fe9181c2ab576",
+    "packet_tokens_est": 25937,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 22995,
+    "answer_chars": 3137,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.12,
+    "eval_s": 206.98,
+    "total_s": 241.12,
+    "tokens_est_ratio": 1.094,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "variant": "v-5db1e26c69",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26282, which Grace Kim (change_manager) approved on 2026-10-22 before review. Its components, payments.policy and payments.controls-data, match both touched paths in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos holds change_approver for payments, is not the author Mara Costa, and her code_review approval names the head commit 71106ae898eb1c60010d279b6f182b0251f7554e."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has one commit, and both approvals name that same head commit, so the approval covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit report shows 172 tests with no failures, errors, or skips. No product-obligation scope symbol was edited, and the registered control tests still ran and passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "policy.py is payments.policy and policy-params.json is payments.controls-data; both are marked security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "controls/payments/policy-params.json is a protected path and an approved policy value changed (standard_idle_minutes 30 to 45). The control_owner approval is from Sofia Santos, who lacks the control_owner role and is on the author's payments-eng team."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26282 is type standard and the change record sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Privileged idle stays 15 and no product obligation is deviated from. The SES-1 exception EXC-0141 expired on 2026-09-26, before the 2026-10-26 review time, and is not used for this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance-ledger covers (payments, audit, routes, and mortgage policy symbols) are unchanged by this diff, so that earlier evidence does not lapse."
+    }
+  ],
+  "summary": "The change only raises payments standard (non-privileged) idle from 30 to 45 minutes in policy.py and policy-params.json. Privileged idle remains 15, and the payments suite passed on the head commit with ticket, independent code review, and commit coverage in order. Acceptance still fails CHG-6: the protected controls file was changed, and the recorded control_owner approval is from a payments-eng change approver, not a control owner outside the author's team.",
+  "meta": {
+    "elapsed_s": 150.42,
+    "tokens_in": 53600,
+    "tokens_out": 9240,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "68c60dd31311670730d95d7af691ed358ecb8b5ba48b992751e04e2b6a66cd59",
+    "packet_tokens_est": 24278,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 53600,
+      "outputTokens": 9240,
+      "cacheReadTokens": 205824,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 146989,
+    "duration_api_ms": 146989,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

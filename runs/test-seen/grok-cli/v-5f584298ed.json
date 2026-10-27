@@ -1,0 +1,89 @@
+{
+  "variant": "v-5f584298ed",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The diff is in payments store.py, which is in ENC-1 scope. archive_payments copies payment rows only; the NPI fields (account number, routing number, tax id, date of birth) stay on payees and are still sealed on write. The exhaustive control test test_every_npi_field_is_sealed_at_rest passed unskipped on the head commit."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The three new statements in archive_payments are fixed SQL strings. The status value is bound as a parameter on the INSERT and DELETE, and the CREATE TABLE text is not built from data. The exhaustive control test test_sql_statements_are_parameterized passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24565, status approved by change manager grace.kim@fernbrook.example on 2026-10-12, before review. Its component payments.store matches the only touched path, apps/baseline-payments/payments/store.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos (sofia.santos@fernbrook.example) gave a code_review approval. She has the change_approver role for payments and is not the author, Linh Nguyen."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is a single commit, 183ae8f50e471e751ae2b2cc40f04bd0801cba11, and both the code review and the security review name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit digest shows 172 tests, 0 failures, 0 errors, and 0 skipped. The registered control tests for the touched product obligations, ENC-1 and SEC-1, are present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "store.py is security_sensitive under payments.store. Ines Halvorsen, a security_reviewer for all apps and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/store.py, which is outside the protected paths (controls, control tests, and CI). A control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-24565 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation, and it does not rely on an exception. The register entries are for other obligations or components, and none is used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger evidence covers payments.py, audit.py, routes.py, and mortgage underwriting and approval code. This change only adds archive_payments in store.py, so those covered symbols are unchanged and the prior evidence does not lapse."
+    }
+  ],
+  "summary": "The change adds Store.archive_payments on payments store.py. The new SQL is parameterized, and the archive copies payment columns rather than payee NPI, which remains sealed. Ticket CHG-24565 is approved and scoped to payments.store; independent code review and security review both name the only commit; CI on that commit is green, including the exhaustive ENC-1 and SEC-1 control tests. No protected path, emergency deploy, exception, or previously accepted code is altered.",
+  "meta": {
+    "elapsed_s": 204.61,
+    "tokens_in": 50335,
+    "tokens_out": 13353,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3b030a0d2a21baa53acfbc8a8b9402667cddb5e0791eae4c9a06f523dd673a61",
+    "packet_tokens_est": 27579,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 50335,
+      "outputTokens": 13353,
+      "cacheReadTokens": 127360,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 199685,
+    "duration_api_ms": 199685,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

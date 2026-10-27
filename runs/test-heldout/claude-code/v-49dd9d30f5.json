@@ -1,0 +1,97 @@
+{
+  "variant": "v-49dd9d30f5",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "PAY-2",
+      "status": "open",
+      "note": "The change touches payments.py#release, which is in PAY-2's scope (comment only, no behaviour change). PAY-2 requires exhaustive evidence, but the only evidence is the 'sample' control test test_sampled_release_is_idempotent and ledger entry ACR-0403, a single recorded trace ('one recorded run', coverage sample). So 'at most once' is not established to the required strength."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25592 is approved by change manager Grace Kim at 2026-10-17T10:46Z, before the change opened at 20:46Z. Its components [payments.payments] cover the only touched file, payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval from sofia.santos@fernbrook.example, a change_approver for payments and a different person from the author Mara Costa under all of the author's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit cde8040, the only commit in the change, so there are no later commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows the full payments suite passing on head cde8040: 172 tests, 0 failures, 0 skipped, including the registered PAY-2 control test unskipped and passing. I could not rerun it locally because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only touched component, payments.payments, is not marked security_sensitive in controls/payments/components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/, control tests, ci/) is modified, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not flagged emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is relied on, and none in the register covers PAY-2 or payments.payments, so there is no fallback for the PAY-2 evidence gap."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change to release() is comment-only, so ledger entry ACR-0403 for PAY-2 does not lapse. Between the evidence commit e5bf646 and base, only docs changed. The entry's own strength is a separate problem, covered under PAY-2."
+    }
+  ],
+  "summary": "The change only adds a comment inside payments.release and an unused timedelta import. The ticket, independent code review on the head commit and CI on the head commit all meet the change policy. The change touches PAY-2's scope, and PAY-2 requires exhaustive evidence, but the only evidence on record is sample-strength: a single-case control test and one recorded trace. No exception covers the gap, so PAY-2 cannot be shown and the change is held until exhaustive PAY-2 evidence is produced.",
+  "meta": {
+    "elapsed_s": 89.91,
+    "tokens_in": 395096,
+    "tokens_out": 8446,
+    "usd": 0.484132,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 33,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 8446,
+      "cache_read_input_tokens": 345883,
+      "cache_creation_input_tokens": 49183
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.48413159999999994,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

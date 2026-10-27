@@ -1,0 +1,97 @@
+{
+  "variant": "v-9789550295",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The change adds coapplicant_tax_id to NpiRegistry, which defines this obligation's closed domain, and CaseStore seals every registry field. The exhaustive control test EncryptionControlTest#everyNpiFieldIsSealedAtRest covers every registry field plus the approved npi_fields list, and it passed on head b66a727."
+    },
+    {
+      "id": "RET-1",
+      "status": "open",
+      "note": "Retention.purge (in scope) was changed: it now also removes coapplicant_tax_id explicitly, which is redundant because the field is already in NpiRegistry. Reading the code, purge timing and the legal-hold check look unchanged and correct. But RET-1 requires exhaustive evidence, and the only registered control is the sample test RetentionControlTest#sampledPurgeRespectsHold, with no exhaustive evidence or exception recorded."
+    },
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "The change edits ControlFixtures, which matches LOG-1's 'AppLog' scope pattern and supplies the applicant inputs for the logging control test, and it adds a new NPI value to the log flows. Reading the code, no log line writes the field's value (the validator logs only the field name). But LOG-1 requires exhaustive evidence, and the only control is the sample test LoggingControlTest#sampledFlowsDoNotLogNpi."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24004 was approved by change manager Erik Brandt on 2026-10-16, before the PR was opened on 10-18. Its components (mortgage.cases, mortgage.npi, mortgage.retention, mortgage.control-tests) cover all four touched paths according to controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Declan Farrell, a baseline-mortgage change_approver who is a different person from the author Wen Li, under none of Wen Li's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change has one commit, b66a727, and all three approvals name that exact commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful run of ci/run-tests.sh baseline-mortgage on head b66a727: 124 tests, none failed or skipped. The registered controls for ENC-1, RET-1 and LOG-1 are all present and passing. I could not re-run the suite because the JUnit console jar is missing from the sandbox, and the JUnit files carry a local hostname and timestamp that don't match the run record's runner and date."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "NpiRegistry.java (mortgage.npi) is marked security_sensitive. Ines Halvorsen, a security_reviewer, approved a security_review on head b66a727."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java is under the protected path apps/baseline-mortgage/src/test/java/controls/*. Rachel Stein, a control_owner on the controls-office team (outside the author's lending-eng team), approved it on head b66a727."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers any file this change modifies (the entries cover Approvals, Underwriting, Policy limits and payments code), so no prior evidence lapses."
+    }
+  ],
+  "summary": "The change adds a co-applicant tax ID field, registers it as NPI, adds it to the retention purge and updates the control-test fixtures. The process records are complete and correct: approved ticket, independent code review, security review, control-owner approval, and CI on the final commit. ENC-1 is shown by its passing exhaustive control test. However, the change touches code in the scope of RET-1 (Retention.java) and LOG-1 (the fixtures behind the logging control test). Both require exhaustive evidence, but each has only a sample control test, with no exhaustive evidence or exception on record, so they cannot be established and the decision is HOLD rather than ACCEPT.",
+  "meta": {
+    "elapsed_s": 131.52,
+    "tokens_in": 899143,
+    "tokens_out": 11411,
+    "usd": 0.70209,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 38,
+    "tokens_detail": {
+      "input_tokens": 50,
+      "output_tokens": 11411,
+      "cache_read_input_tokens": 837874,
+      "cache_creation_input_tokens": 61219
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.7020898,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

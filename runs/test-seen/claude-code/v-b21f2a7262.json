@@ -1,0 +1,97 @@
+{
+  "variant": "v-b21f2a7262",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "refuted",
+      "note": "The approved catalog on the base commit sets dti_max_percent = 40 ('currently 40% and 90%'), but the change sets Policy.DTI_MAX_PERCENT to 43; the catalog is unchanged, no exception covers CRD-1, and the cited committee minutes CP-2026-31 are not in the records. The control test passes only because it compares against the edited policy-params.json (43), not the approved 40."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406 (exhaustive proof, commit d30b2ad) covers Policy.DTI_MAX_PERCENT, which this change alters, so it has lapsed. The 'renewed' proof crd1-auto-approve-renewed.json targets the head commit but rests on the premise DTI_MAX_PERCENT = 40, which is false at head, so it is not valid replacement evidence."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25598 is standard and approved by Erik Brandt (change_manager) on 2026-10-05, before the reviews on 2026-10-07. Its components (mortgage.policy, mortgage.tests, mortgage.controls-data) cover every path touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from Wen Li, a change_approver for baseline-mortgage and a different person from the author Declan Farrell."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit 841b407, and both approvals name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on head 841b407 succeeded: 124 Jupiter tests, 0 skipped or failed, including the registered CRD-1 control test UnderwritingControlTest#autoApproveGridMatchesPolicy (exhaustive). Local re-run was not possible (JUnit jar absent)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "None of the touched components (mortgage.policy, mortgage.tests, mortgage.controls-data) is marked security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The protected path controls/mortgage/policy-params.json was changed, and Bao Tran (control_owner, controls-office, outside the author's lending-eng team) approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and its ticket are not emergency changes, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; the register has no CRD-1 exception, so none can excuse the deviation."
+    }
+  ],
+  "summary": "The change raises the auto-approve DTI ceiling from 40% to 43% in code and in policy-params.json, but the approved obligation catalog on the base commit still fixes the approved value at 40%, so CRD-1 is violated. The prior exhaustive CRD-1 proof has lapsed because DTI_MAX_PERCENT changed, and the 'renewed' proof assumes DTI_MAX_PERCENT = 40, which is false at the head commit, so LAP-1 is not met. The ticket, independent review, control-owner approval and CI records are otherwise in order, but the two critical violations require rejection.",
+  "meta": {
+    "elapsed_s": 83.5,
+    "tokens_in": 531162,
+    "tokens_out": 7317,
+    "usd": 0.4356,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 22,
+    "tokens_detail": {
+      "input_tokens": 40,
+      "output_tokens": 7317,
+      "cache_read_input_tokens": 493023,
+      "cache_creation_input_tokens": 38099
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.43559960000000003,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

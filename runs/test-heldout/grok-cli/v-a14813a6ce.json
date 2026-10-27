@@ -1,0 +1,84 @@
+{
+  "variant": "v-a14813a6ce",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The only edit raises AppLog's in-memory cap from 10,000 to 12,000 lines; write() still records the supplied message and does not add an NPI path. On the head commit, controls.LoggingControlTest#sampledFlowsDoNotLogNpi passed unskipped in the mortgage suite."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1712 names ticket CHG-24880, which change manager Erik Brandt approved on 2026-10-14, before review. Its component list is mortgage.logging, which is the component components.json assigns to AppLog.java, the only path touched."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Tomas Ortega, approved a code_review of head commit b48054d77fe967a310a061ba6c4ee296fcfbc6cf."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code_review approval names that same commit, so the approval covers everything that would merge."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success of ci/run-tests.sh baseline-mortgage on b48054d77fe967a310a061ba6c4ee296fcfbc6cf. The JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped, including every registered mortgage control test, and LOG-1's registered test among them."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java is security_sensitive (mortgage.logging), so a security_review from a security_reviewer is required on this commit. The only security_review is from Declan Farrell, whose roles are engineer and change_approver; Ines Halvorsen and Kofi Mensah hold security_reviewer and did not approve."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff is confined to AppLog.java. It does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record sets emergency to false and ticket CHG-24880 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The buffer-size edit does not deviate from a product obligation and does not rely on an exception. EXC-0167 remains an in-force LOG-1 exception for the legacy import job only; it is not used to waive this change."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers AppLog.java. The paths those entries do cover (payments, audit, routes, approvals, underwriting, and policy) are unchanged, so that evidence has not lapsed."
+    }
+  ],
+  "summary": "The change only increases the in-memory diagnostic buffer in AppLog.java from 10,000 to 12,000 lines. The ticket, independent code review, head-commit binding, mortgage CI, and LOG-1 sample control test are in order, and the edit is not an emergency, a protected-path change, or a lapse of prior ledger evidence. It still cannot be accepted: mortgage.logging is security-sensitive, and the security_review on the head commit is from Declan Farrell, who is not a security_reviewer.",
+  "meta": {
+    "elapsed_s": 171.0,
+    "tokens_in": 60078,
+    "tokens_out": 13273,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "226c470312a6298bde1a24e508c6411efbdc7b4428fd7940e20758f358cad8d4",
+    "packet_tokens_est": 24119,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 60078,
+      "outputTokens": 13273,
+      "cacheReadTokens": 110720,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 167172,
+    "duration_api_ms": 167172,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

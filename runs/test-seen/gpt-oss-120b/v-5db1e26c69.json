@@ -1,0 +1,61 @@
+{
+  "variant": "v-5db1e26c69",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26282 is approved by change manager, lists components payments.policy and payments.controls-data which cover the modified files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval exists from Sofia Santos, who has the change_approver role for payments and is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approvals are recorded against the exact head commit; there are no later behaviour‑changing commits."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the head commit succeeded (172 tests, 0 failures) and includes the full control‑test suite."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "Change modifies a protected path (controls/payments/policy-params.json) but the recorded control_owner approval is from Sofia Santos, who lacks the control_owner role and is on the same team as the author."
+    }
+  ],
+  "summary": "All product obligations are unaffected, and most process obligations are satisfied. However, CHG-6 requires a valid control_owner approval for changes to protected control files, which is missing or invalid. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 106.31,
+    "tokens_in": 24473,
+    "tokens_out": 4112,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "68c60dd31311670730d95d7af691ed358ecb8b5ba48b992751e04e2b6a66cd59",
+    "packet_tokens_est": 24278,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15935,
+    "answer_chars": 1367,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.49,
+    "eval_s": 88.59,
+    "total_s": 106.31,
+    "tokens_est_ratio": 0.982,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

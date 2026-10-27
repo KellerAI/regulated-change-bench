@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25718",
+    "type": "emergency",
+    "status": "approved",
+    "summary": "Restore the reporting format marker",
+    "components": [
+      "payments.reports"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-08T04:28:00Z",
+    "risk": "low",
+    "deployed_at": "2026-10-10T01:03:00Z"
+  }
+]

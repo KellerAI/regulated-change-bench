@@ -1,0 +1,96 @@
+{
+  "variant": "v-36dca5e9e3",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "The change adds a new read-only helper (approvals_remaining) to payments.py but does not modify the approve or is_fully_approved functions in scope. The control test test_maker_cannot_check passes in CI on the final commit."
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "The new function calls required_approvals but does not alter it or is_fully_approved. The control test test_dual_control_grid_matches_policy passes on the final commit, and the prior proof record (ACR-0401) still covers unchanged required_approvals."
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "The release function is not modified by this change. The control test test_sampled_release_is_idempotent passes on the final commit, and the prior trace evidence (ACR-0403) still covers the unchanged release symbol."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24248 is type emergency, status approved, approved by erik.brandt (change_manager). Its components (payments.payments, payments.tests) cover both files the change touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval exists from mara.costa@fernbrook.example, who is listed as a change_approver for payments in the directory, and is not the author (aisha.bello@fernbrook.example)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 5b61710, and there is only one commit on the change, so no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit (5b61710) with 175 tests, 0 failures, 0 skipped. All 16 registered control tests for payments are present and passing, including those for MC-1, PAY-1, and PAY-2."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The two touched components are payments.payments (security_sensitive: false) and payments.tests (security_sensitive: false). No security_sensitive component is touched, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Neither payments.py nor the new test file falls under the protected paths in protected-paths.json (controls/*, tests/controls/*, ci/*). No control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "refuted",
+      "note": "This is an emergency change (ticket type 'emergency', deployed 2026-10-12T14:47Z). The PIR is due within 2 business days (by ~2026-10-14). The review time (as_of) is 2026-10-19, five business days later, and no pir-kind approval appears in records/approvals.json. The post-implementation review is overdue and absent."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product-obligation deviation is introduced by adding a read-only helper; no exception is needed or claimed."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change adds a new function to payments.py without modifying required_approvals, is_fully_approved, or release. The symbols covered by ACR-0401 (required_approvals) and ACR-0403 (release) are behaviourally unchanged, so their evidence does not lapse."
+    }
+  ],
+  "summary": "The change is a small, additive helper (approvals_remaining) in payments' payments module plus its unit tests. All product-obligation control tests pass on the final commit, and the change does not alter any covered symbol's behaviour, so prior evidence is not lapsed. However, CHG-7 is violated: this is an emergency change deployed 2026-10-12, the PIR deadline (2 business days, ~Oct 14) has passed well before the review time of Oct 19, and no post-implementation review approval is recorded. Because the emergency PIR is overdue and absent, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 211.49,
+    "tokens_in": 28880,
+    "tokens_out": 6356,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8ff845d2e3a6f2dba3c033fe6f4fbb96acf4e402d44f9461dce173c4bdcf6def",
+    "packet_tokens_est": 25799,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 18998,
+    "answer_chars": 3570,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 33.85,
+    "eval_s": 177.6,
+    "total_s": 211.48,
+    "tokens_est_ratio": 1.092,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

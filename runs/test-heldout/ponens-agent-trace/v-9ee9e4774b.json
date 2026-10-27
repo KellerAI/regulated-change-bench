@@ -1,0 +1,172 @@
+{
+  "variant": "v-9ee9e4774b",
+  "arm": "ponens-agent-trace",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_ACC-1)"
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_ACC-2)"
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_SOD-1)"
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_MFA-1)"
+    },
+    {
+      "id": "SES-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_SES-1)"
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_ENC-1)"
+    },
+    {
+      "id": "ENC-2",
+      "status": "refuted",
+      "note": "ponens goal item blocked (evidence cr_ENC-2)"
+    },
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_LOG-1)"
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_AUD-1)"
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_AUD-2)"
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_RET-1)"
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_INV-1)"
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_SEC-1)"
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_MC-1)"
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_LIM-1)"
+    },
+    {
+      "id": "CRD-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CRD-1)"
+    },
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_PAY-1)"
+    },
+    {
+      "id": "PAY-2",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_PAY-2)"
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CHG-1)"
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CHG-2)"
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CHG-3)"
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CHG-4)"
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CHG-5)"
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CHG-6)"
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_CHG-7)"
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_EXC-1)"
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "ponens goal item done (evidence cr_LAP-1)"
+    }
+  ],
+  "summary": "Ponens resolved the bank's goal: 26 done, 1 blocked, 0 doing, 0 todo of 27. The CI action reported `passed` (goals 0/1), which on its own would be a green check.",
+  "meta": {
+    "elapsed_s": 124.15,
+    "tokens_in": 24556,
+    "tokens_out": 6880,
+    "usd": 0.0,
+    "error": null,
+    "ponens_version": "ponens 1.22.0",
+    "ponens_commit": "2f91978",
+    "usd_basis": "local (Ponens CLI; Ollama PR agent, local model)",
+    "pr_agent_model": "gpt-oss:120b",
+    "pr_agent_prompt_sha256": "58bf538ac3cdcf3819c71c9067fdb2ad8e72555a0d5563ae626edc38d61187f0",
+    "pr_agent_think": "high",
+    "pr_agent_s": 123.89,
+    "num_ctx": 65536,
+    "pr_agent_parse": "whole",
+    "packet_sha256": "eabf51d07f27e050dcd3976b7113db207e953586d8337c598b0ce682044b4b08",
+    "catalog_ref": "base b9255bed9d71",
+    "ci_status": "passed",
+    "ci_exit_code": 0,
+    "ci_decision": "ACCEPT",
+    "ci_goals_met": "0/1",
+    "ci_violations": "0",
+    "goal_item_counts": {
+      "done": 26,
+      "blocked": 1
+    },
+    "action_s": 0.26,
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "app": "mortgage",
+  "roles": [
+    "APPLICANT",
+    "PROCESSOR",
+    "UNDERWRITER",
+    "SENIOR_UNDERWRITER",
+    "AUDITOR",
+    "ADMIN"
+  ],
+  "actions": [
+    "CREATE_CASE",
+    "EDIT_CASE",
+    "VIEW_CASE",
+    "VIEW_NPI",
+    "SUBMIT_CASE",
+    "APPROVE_CREDIT",
+    "DECLINE_CREDIT",
+    "OVERRIDE_POLICY",
+    "EXPORT_CASES",
+    "MANAGE_USERS",
+    "VIEW_AUDIT",
+    "PURGE_NPI"
+  ],
+  "state_changing_actions": [
+    "CREATE_CASE",
+    "EDIT_CASE",
+    "SUBMIT_CASE",
+    "APPROVE_CREDIT",
+    "DECLINE_CREDIT",
+    "OVERRIDE_POLICY",
+    "MANAGE_USERS",
+    "PURGE_NPI"
+  ],
+  "privileged_actions": [
+    "VIEW_NPI",
+    "APPROVE_CREDIT",
+    "OVERRIDE_POLICY",
+    "EXPORT_CASES",
+    "MANAGE_USERS",
+    "PURGE_NPI"
+  ],
+  "credit_decision_actions": [
+    "APPROVE_CREDIT",
+    "DECLINE_CREDIT",
+    "OVERRIDE_POLICY"
+  ],
+  "auditor_roles": [
+    "AUDITOR"
+  ],
+  "it_admin_roles": [
+    "ADMIN"
+  ],
+  "matrix": {
+    "APPLICANT": {
+      "CREATE_CASE": true,
+      "EDIT_CASE": true,
+      "VIEW_CASE": true,
+      "VIEW_NPI": false,
+      "SUBMIT_CASE": true,
+      "APPROVE_CREDIT": false,
+      "DECLINE_CREDIT": false,
+      "OVERRIDE_POLICY": false,
+      "EXPORT_CASES": false,
+      "MANAGE_USERS": false,
+      "VIEW_AUDIT": false,
+      "PURGE_NPI": false
+    },
+    "PROCESSOR": {
+      "CREATE_CASE": true,
+      "EDIT_CASE": true,
+      "VIEW_CASE": true,
+      "VIEW_NPI": true,
+      "SUBMIT_CASE": true,
+      "APPROVE_CREDIT": false,
+      "DECLINE_CREDIT": false,
+      "OVERRIDE_POLICY": false,
+      "EXPORT_CASES": false,
+      "MANAGE_USERS": false,
+      "VIEW_AUDIT": false,
+      "PURGE_NPI": false
+    },
+    "UNDERWRITER": {
+      "CREATE_CASE": false,
+      "EDIT_CASE": true,
+      "VIEW_CASE": true,
+      "VIEW_NPI": true,
+      "SUBMIT_CASE": true,
+      "APPROVE_CREDIT": true,
+      "DECLINE_CREDIT": true,
+      "OVERRIDE_POLICY": false,
+      "EXPORT_CASES": false,
+      "MANAGE_USERS": false,
+      "VIEW_AUDIT": false,
+      "PURGE_NPI": false
+    },
+    "SENIOR_UNDERWRITER": {
+      "CREATE_CASE": false,
+      "EDIT_CASE": true,
+      "VIEW_CASE": true,
+      "VIEW_NPI": true,
+      "SUBMIT_CASE": true,
+      "APPROVE_CREDIT": true,
+      "DECLINE_CREDIT": true,
+      "OVERRIDE_POLICY": true,
+      "EXPORT_CASES": false,
+      "MANAGE_USERS": false,
+      "VIEW_AUDIT": false,
+      "PURGE_NPI": false
+    },
+    "AUDITOR": {
+      "CREATE_CASE": false,
+      "EDIT_CASE": false,
+      "VIEW_CASE": true,
+      "VIEW_NPI": false,
+      "SUBMIT_CASE": false,
+      "APPROVE_CREDIT": false,
+      "DECLINE_CREDIT": false,
+      "OVERRIDE_POLICY": false,
+      "EXPORT_CASES": false,
+      "MANAGE_USERS": false,
+      "VIEW_AUDIT": true,
+      "PURGE_NPI": false
+    },
+    "ADMIN": {
+      "CREATE_CASE": false,
+      "EDIT_CASE": false,
+      "VIEW_CASE": true,
+      "VIEW_NPI": false,
+      "SUBMIT_CASE": false,
+      "APPROVE_CREDIT": false,
+      "DECLINE_CREDIT": false,
+      "OVERRIDE_POLICY": false,
+      "EXPORT_CASES": true,
+      "MANAGE_USERS": true,
+      "VIEW_AUDIT": true,
+      "PURGE_NPI": true
+    }
+  }
+}

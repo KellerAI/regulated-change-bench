@@ -1,0 +1,73 @@
+{
+  "variant": "v-d1223dfdd3",
+  "arm": "opus-packet",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The new `AppLog.debug` goes through the same `_emit(..., mask_fields(fields))` path as info, warning and error, and the change adds no new log call sites. The registered sample control test `test_sampled_flows_do_not_log_npi` and the new `test_debug_entries_are_masked` (which asserts the account number is absent) both pass in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26743 is a standard ticket, approved by change manager Grace Kim on 2026-10-15, before the change was opened. Its components (`payments.logging`, `payments.tests`) cover both touched paths: `logs.py` and `tests/test_log_debug.py`."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from sofia.santos@fernbrook.example, a payments change_approver. She is a different person from the author, Jonah Weiss (p-jweiss)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name head commit 2436446f, which is the only commit on the change. No later commits exist that could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "`run.json` records a successful `ci/run-tests.sh baseline-payments` run on head 2436446f. The JUnit report shows 173 tests, 0 failures, 0 skipped, including the LOG-1 control test and the new debug test. Caveat: the report's hostname is a local Mac and its timestamp falls after the review time, so the report's provenance may be worth confirming."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "`logs.py` belongs to the security-sensitive component `payments.logging`. A security_review approval from Kofi Mensah, a security_reviewer, names the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No ledger entry covers `logs.py` or the new test file. The covered code (payments.py, audit.py, routes.py, Approvals.java, Underwriting.java, Policy.java) is unchanged, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "PR-1452 adds a debug method to the payments AppLog that applies the same NPI masking as the existing levels, plus a unit test. The ticket, independent code review and security review are all in place and tied to the single head commit. CI on that commit passed the full suite, including the LOG-1 control test. No protected paths are touched and no accepted evidence lapses, so every applicable obligation is shown and the change can be accepted.",
+  "meta": {
+    "elapsed_s": 30.8,
+    "tokens_in": 38500,
+    "tokens_out": 2951,
+    "usd": 0.21302,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0872ac2f4b21d6dc9e0d009d34c46f03f7d523ba0a76d46166eb1afb79638483",
+    "packet_tokens_est": 24879,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38500,
+      "output_tokens": 2951,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

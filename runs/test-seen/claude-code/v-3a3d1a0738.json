@@ -1,0 +1,92 @@
+{
+  "variant": "v-3a3d1a0738",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25382 is approved by Grace Kim (change_manager) at 2026-10-25T00:36Z, before the change opened on 2026-10-26. Its components (mortgage.reporting, mortgage.servicing, mortgage.tests) cover all three touched paths per controls/mortgage/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by declan.farrell@fernbrook.example, who has change_approver for baseline-mortgage and is a different person from the author Nneka Okafor (p-nokafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names faa3060. The only later commit, 4d99f13, adds one comment line to RateQuote.java and changes no behaviour, so the approval still covers the head."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run is on head 4d99f13 with result success: 125 Jupiter tests, 0 failures, errors or skips, including PipelineTotalTest. That matches the 125 test annotations in the suite at head. No product obligation's scope or closed domain is touched, so no extra control tests are required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components mortgage.reporting, mortgage.servicing and mortgage.tests are all security_sensitive=false, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No touched path matches controls/protected-paths.json (no controls data, control tests or CI changed), so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket is type standard and the change is not marked emergency, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change deviates from no product obligation and relies on no exception."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers PipelineReport.java, RateQuote.java or the new test, so no existing evidence lapses."
+    }
+  ],
+  "summary": "PR-1205 adds PipelineReport.totalCases with a unit test, plus a comment-only follow-up commit in RateQuote.java. No product obligation's scope or domain is touched, and the components involved are neither security-sensitive nor protected. The ticket was approved by a change manager in advance and covers all components, an independent change approver approved the code, and that approval still covers the head because the later commit is comment-only. CI on the head commit shows the full 125-test suite passing with no skips. I could not rerun the tests locally because the JUnit jar is missing, so the testing finding relies on the recorded CI report.",
+  "meta": {
+    "elapsed_s": 87.15,
+    "tokens_in": 418709,
+    "tokens_out": 7748,
+    "usd": 0.423345,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7748,
+      "cache_read_input_tokens": 380235,
+      "cache_creation_input_tokens": 38442
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.42334499999999997,
+    "permission_denials": 5,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

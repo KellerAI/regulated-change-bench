@@ -1,0 +1,63 @@
+{
+  "variant": "v-8c2d5d39d0",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26086. Change manager Grace Kim approved it on 2026-10-07T00:07Z, before review, and its components (payments.reports) cover the only touched file, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa holds the change_approver role for payments and is not the author (Jonah Weiss, p-jweiss). She gave a code_review approval."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 711356a1798a, so it covers exactly what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "The CI run (run.json) is on commit 20df233cee37, not the final commit 711356a1798a. The later commit 'synchronize the downstream format identifier' is not shown to be comment-only, whitespace or formatting; its message indicates a change to the identifier's value. No passing full-suite run on the final commit exists. In addition, the JUnit report's timestamp (2026-10-23) and host (a local Mac) do not match the CI run's executor and date."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover payments.py, audit.py, routes.py and mortgage Java files. None covers reports.py, which is the only changed file, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change only adds a REPORT_FORMAT constant to the payments reports module. That file is not security-sensitive and is not in any product obligation's scope, so only the process obligations apply. The ticket, the independent approval and the approval-on-head requirements are met. CHG-4 is violated: the only CI run was on the first commit, and the second commit (which appears to change the format identifier value) was never tested. Not being comment-only, it means the full suite was never shown passing on the final commit, so the change is rejected until CI passes on 711356a1798a.",
+  "meta": {
+    "elapsed_s": 20.12,
+    "tokens_in": 38013,
+    "tokens_out": 1947,
+    "usd": 0.190992,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "3b758843b719d37e28214e31fc40acc8e0db2c6a538fbeba2565538c8520230f",
+    "packet_tokens_est": 24506,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38013,
+      "output_tokens": 1947,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "variant": "v-e718a5bf2e",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Approvals.java is in scope and the only edit is a comment. approve() still rejects the actor when actor.userId() equals loanCase.preparedBy() before any approval is recorded."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "requiredApprovals still applies Policy.UNDERWRITER_LIMIT (one underwriter or senior), Policy.SENIOR_LIMIT (one senior), and two distinct seniors above that. Ledger ACR-0405 is an exhaustive proof of that method and those Policy constants, and a comment-only edit does not lapse it under LAP-1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26430 is approved by change manager Erik Brandt on 2026-10-22, before review, and its components (mortgage.approvals, mortgage.reporting, mortgage.tests) match Approvals.java, PipelineReport.java, and PipelineTotalTest.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Priya Raman, approved a code_review on the head commit 3aa46243."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit, so it covers everything that would be merged. There is no later commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims success on 8d03deb1 (the later head commit is comment-only, so an earlier run could count) executed by ci-runner-01 starting 2026-10-25T04:41:00Z. The JUnit reports are timestamped 2026-10-23T13:30:43 on dev-laptop-7.local, before that commit existed and not from the claimed runner, so they are not valid evidence the suite passed on the reviewed commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components mortgage.approvals, mortgage.reporting, and mortgage.tests are not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI paths listed in protected-paths.json, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-26430 is type standard and the change record is not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation and does not rely on an exception. The register entries are for other components, and none is used here."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The only ledger-covered file in the diff is Approvals.java, and the edit is a single comment above requiredApprovals. Comment-only edits do not lapse ACR-0405."
+    }
+  ],
+  "summary": "Maker-checker and approval limits remain intact: the Approvals.java edit is a comment, and the prior exhaustive LIM-1 proof still covers that code. Ticket, independent approval, and scope of the approval record are in order, and no security review, control-owner approval, emergency review, or exception is required. The change still cannot be accepted because the CI package does not show the mortgage suite passing on the reviewed commit: run.json names 8d03deb1 on ci-runner-01 on 2026-10-25, while the JUnit reports are from dev-laptop-7.local on 2026-10-23, before that commit existed.",
+  "meta": {
+    "elapsed_s": 214.7,
+    "tokens_in": 58293,
+    "tokens_out": 13876,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b67026c9d1e9dc669cd5616bb61f9a29f418a26b16bf907889cab09d2cdac457",
+    "packet_tokens_est": 25621,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 58293,
+      "outputTokens": 13876,
+      "cacheReadTokens": 250368,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 209340,
+    "duration_api_ms": 209340,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

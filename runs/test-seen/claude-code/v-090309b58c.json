@@ -1,0 +1,97 @@
+{
+  "variant": "v-090309b58c",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "Retention.isPurgeDue now blocks the purge for a legal hold only when status == DECLINED, but isClosedOut also covers WITHDRAWN. A withdrawn case on legal hold therefore has its NPI purged after the retention period, breaking 'never while a legal hold applies'. The only RET-1 control test is a sample that uses declined cases only, so it passes without exercising this path, and no exception covers the deviation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25770 is a standard ticket, approved by change manager erik.brandt on 2026-10-26T12:49Z, before the code review. Its components [mortgage.retention] cover the only file touched, Retention.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell (p-dfarrell), a change_approver for baseline-mortgage and a different person from the author nneka.okafor (p-nokafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit 9d3bc0a, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "run.json records a successful baseline-mortgage suite on head 9d3bc0a: 124 tests, no failures or skips, including the registered RET-1 control controls.RetentionControlTest#sampledPurgeRespectsHold (labelled sample, declined cases only). The JUnit report timestamps (2026-10-23, local host) don't match the run record and should be explained; I couldn't re-run because the JUnit jar is missing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Retention.java maps to mortgage.retention, which components.json marks security_sensitive: false, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are changed, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and emergency is false, so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception, and none of the register entries (SES-1, LOG-1, a withdrawn MFA-1 one) is for RET-1 or mortgage.retention. The RET-1 deviation is therefore unexcused."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance ledger entry covers Retention.java or RET-1, so no accepted evidence lapses. The ledger offers no support for RET-1 either."
+    }
+  ],
+  "summary": "The change lets a legal hold block the purge only for DECLINED cases, while WITHDRAWN cases still go through the purge. Withdrawn cases on legal hold would have their NPI purged, which violates RET-1. CI is green only because the RET-1 control test is a sample that uses declined cases only, and no exception covers the deviation. The ticket, independent review, approval on the head commit and CI run are otherwise in order. Because RET-1 is refuted, the change is rejected.",
+  "meta": {
+    "elapsed_s": 73.83,
+    "tokens_in": 348767,
+    "tokens_out": 6716,
+    "usd": 0.424489,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 24,
+    "tokens_detail": {
+      "input_tokens": 24,
+      "output_tokens": 6716,
+      "cache_read_input_tokens": 302842,
+      "cache_creation_input_tokens": 45901
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4244894,
+    "permission_denials": 3,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

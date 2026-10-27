@@ -1,0 +1,66 @@
+{
+  "variant": "v-f6c286c366",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "AppLog.java is in LOG-1's scope, but only a sample control test exists; LOG-1 requires exhaustive evidence which is missing, so the obligation is not satisfied."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25795 is present, approved by a change manager, and lists the mortgage.logging component, satisfying the change ticket requirement."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code review approval from Declan Farrell (role change_approver) is recorded and he is not the author, meeting the independent approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code review approval references the head commit and there are no later commits, so the approval covers the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run for the head commit succeeded with all tests passing, including the registered control test for LOG-1, fulfilling the testing obligation."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "A security review approval from Kofi Mensah (role security_reviewer) is recorded, satisfying the security review requirement for this security‑sensitive component."
+    }
+  ],
+  "summary": "The change meets all process obligations (CHG-1 through CHG-5) but fails LOG-1 because exhaustive evidence for the NPI‑logging guarantee is missing. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 100.47,
+    "tokens_in": 24236,
+    "tokens_out": 5478,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "0229bbacb617957b897c6d6a08e16499cc926fba434e038d00b6b15b53268d88",
+    "packet_tokens_est": 24121,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 21576,
+    "answer_chars": 1596,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.09,
+    "eval_s": 85.15,
+    "total_s": 100.47,
+    "tokens_est_ratio": 0.979,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "variant": "v-c8a182dbad",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The change adds `account_number` (a confirmed NPI field per `payments.npi_fields`) as a keyword argument to `self._log.error(...)` inside the `except IntegrationError` block of `deliver_statement`—an error path. LOG-1 explicitly forbids unmasked NPI in logs 'on any path including error paths.' The LOG-1 control test is sample-coverage only and may not exercise this new parameter; the packet contains no evidence that AppLog masks a keyword named `account_number` passed from service.py, and the change's clear intent is to emit the account number into the log."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change modifies only the error handler of `deliver_statement`; the audit call `self._audit(actor, \"deliver_statement\", ...)` on the success path is untouched, and the error path re-raises without a state change. The AUD-1 sample control test passed in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25120 is type 'standard', status 'approved' by change_manager grace.kim@fernbrook.example, and its components list ['payments.service'] covers the only changed file (service.py → component payments.service in components.json)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The sole approval is a code_review by sofia.santos@fernbrook.example, who has the change_approver role for payments and is not the author (mara.costa@fernbrook.example), per the people directory."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit d1b5ec8…, which is the (and only) commit in the change; there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run.json shows the pipeline ran on the final commit d1b5ec8… with result 'success'; the JUnit XML reports 172 tests, 0 failures, 0 errors, 0 skipped, including all registered control tests for the obligations whose scope the change touches."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The changed file maps to component payments.service, which is security_sensitive: false in components.json; no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/*, ci/*, control-test directories) is modified; the only changed file is apps/baseline-payments/payments/service.py, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'; the emergency-change post-implementation review rule does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception in the register is scoped to payments.logging or covers the LOG-1 violation introduced here; the existing EXC-0167 is scoped to mortgage.logging and does not apply. Since no exception is claimed and none is needed for the change as submitted, the obligation is not triggered."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "None of the six acceptance-ledger entries cover apps/baseline-payments/payments/service.py; the change does not alter any code whose evidence is on the ledger, so no evidence lapses."
+    }
+  ],
+  "summary": "The change adds a NPI field (account_number, listed in payments.npi_fields) directly into an error-path log call in deliver_statement, which violates LOG-1's requirement that no unmasked NPI appears in any log entry, including error paths. The LOG-1 control test is sample-coverage and does not guarantee this new parameter is exercised. All change-management process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) are satisfied, and no other product obligation is affected, but the LOG-1 violation is critical and not covered by any approved exception. The change must be rejected and reworked to remove the account number from the log (or route it through the AppLog masking layer with verified coverage before resubmission).",
+  "meta": {
+    "elapsed_s": 274.79,
+    "tokens_in": 29551,
+    "tokens_out": 7743,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "96f12796c78e27119292d1a6889adcffc66274b6f9edfd648c2e118dabc6f2f5",
+    "packet_tokens_est": 26648,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 27045,
+    "answer_chars": 3906,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.85,
+    "eval_s": 239.9,
+    "total_s": 274.79,
+    "tokens_est_ratio": 1.083,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

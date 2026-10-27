@@ -1,0 +1,79 @@
+{
+  "variant": "v-57449ce7d6",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26551 is approved by change manager Erik Brandt on 2026-09-30, before review. Its component payments.reports is the component assigned to the only changed path, apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa has the change_approver role for payments and is not the author Sofia Santos. Her code_review approval is recorded as approved."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 374f81e52abbeb3e09a4edd34001d629f6af1d41, and the code-review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows ci/run-tests.sh baseline-payments succeeded on the head commit, and the JUnit report has 172 tests with zero failures, errors, or skips. reports.py is outside every product-obligation scope, so no extra control test is required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "components.json marks apps/baseline-payments/payments/reports.py as payments.reports with security_sensitive false, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is application report code, not a protected controls, control-test, or CI path, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change record is not an emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The diff only adds an unused format constant and does not deviate from a product obligation, so no exception is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The change does not modify any path or symbol covered by the acceptance ledger, so the earlier evidence has not lapsed."
+    }
+  ],
+  "summary": "The change adds a module-level format identifier in payments reports and does not touch access, session, encryption, audit, payment, or other product-control code. The ticket is approved, the independent code review names the merged commit, and the payments suite passed on that commit. No security-sensitive or protected path is changed, the change is not an emergency, and no exception or prior evidence is needed. Every applicable process obligation is shown.",
+  "meta": {
+    "elapsed_s": 123.18,
+    "tokens_in": 47456,
+    "tokens_out": 7440,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f27e2d7f9e580ee1c174f8f9872d9f44b782008935be838a7c49d2c4459fa5a4",
+    "packet_tokens_est": 24375,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 47456,
+      "outputTokens": 7440,
+      "cacheReadTokens": 154880,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 119573,
+    "duration_api_ms": 119573,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

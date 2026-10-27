@@ -1,0 +1,89 @@
+{
+  "variant": "v-d9a85ed846",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The only change is in payments integrations.py. All three outbound base URLs remain https, and the archive branch replaces the scheme with the same https:// prefix, so constructed endpoints stay TLS. The exhaustive control test_integrations_use_tls passed unskipped on the head commit."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "INTEGRATIONS is still core-banking, sanctions-screening, and statement-delivery, matching the asset inventory entries that have owners and classifications. The exhaustive test_integrations_are_inventoried passed unskipped on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1950 names ticket CHG-25412, which change manager Grace Kim approved on 2026-10-07 before the 2026-10-12 review. Its component payments.integrations covers the only touched path, integrations.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change_approver and not the author Linh Nguyen, gave an approved code_review on head commit 17847c3824930f73a201ff8c72358cd31d0587a5."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code review and the security review name that same head commit, so the approvals cover what would be merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful ci/run-tests.sh baseline-payments run on the head commit. The JUnit report shows 172 tests, 0 failures, 0 errors, and 0 skipped, including the exhaustive ENC-2 and INV-1 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security_sensitive. Kofi Mensah, a security_reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI, so a control_owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change record is not an emergency and ticket CHG-25412 is type standard, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not deviate from a product obligation. No exception is relied on; the register entries are for other components and are expired, withdrawn, or unrelated."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The acceptance-ledger covers are payments, audit, routes, approvals, and underwriting, none of which this commit changes. ENC-2 and INV-1 are supported by the new passing exhaustive control tests on the head commit."
+    }
+  ],
+  "summary": "The change adds a statement-delivery archive branch in payments URL construction that leaves the base URL on https, so the integration list and TLS posture are unchanged and still match the approved inventory. The ticket, independent code review, and security review all cover the single head commit, and CI shows the full payments suite, including the exhaustive integration control tests, passing with nothing skipped. No protected path, emergency path, exception, or prior evidence cover is implicated. Every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 127.65,
+    "tokens_in": 45461,
+    "tokens_out": 8841,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "c63616883821188490d52c1dd37c983042662fdd0dc1e52b1d2438325ec4e79d",
+    "packet_tokens_est": 24322,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 45461,
+      "outputTokens": 8841,
+      "cacheReadTokens": 208640,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 124346,
+    "duration_api_ms": 124346,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

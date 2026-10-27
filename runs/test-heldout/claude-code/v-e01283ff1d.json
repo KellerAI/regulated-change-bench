@@ -1,0 +1,67 @@
+{
+  "variant": "v-e01283ff1d",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names CHG-24206, a standard ticket approved by change manager Grace Kim on 2026-10-20, before the PR was opened and reviewed. Its components ['mortgage.reporting'] cover the only file touched, PipelineReport.java, which components.json maps to mortgage.reporting."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (p-dfarrell) approved a code_review. He holds the change_approver role for baseline-mortgage and is a different person from the author, Wen Li (p-wli)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only approval names commit 9ba4e2d. The later head commit 208f3ec changes the public constant PipelineReport.FORMAT from \"pipeline/1\" to \"pipeline/1.1\", which is a behaviour change, not a comment or formatting edit. That voids the approval, and there is no approval for the head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json says ci-runner-06 ran on head 208f3ec at 2026-10-23T23:06Z. The attached JUnit reports come from host dev-laptop-7.local with timestamp 2026-10-23T13:51, before either commit existed, so they don't show the suite passing on the final commit. I couldn't re-run the suite because the JUnit console jar isn't present."
+    }
+  ],
+  "summary": "PR-1364 adds a format-identifier constant to PipelineReport.java, a non-security-sensitive reporting file outside every product obligation's scope. The ticket and independent reviewer are in order. The only code-review approval is for the first commit, and the follow-up commit changes the constant's value, which voids that approval under CHG-3. The CI record also fails CHG-4: its JUnit reports were produced on a developer workstation before either commit existed, so they don't show the suite passing on the final commit. To be accepted, the change needs a fresh approval of the head commit and a real CI run on the head commit.",
+  "meta": {
+    "elapsed_s": 83.79,
+    "tokens_in": 368996,
+    "tokens_out": 7838,
+    "usd": 0.398782,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 25,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 7838,
+      "cache_read_input_tokens": 333943,
+      "cache_creation_input_tokens": 35021
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3987816,
+    "permission_denials": 7,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

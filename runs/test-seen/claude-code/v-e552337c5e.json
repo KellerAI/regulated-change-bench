@@ -1,0 +1,92 @@
+{
+  "variant": "v-e552337c5e",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "refuted",
+      "note": "archive_payments deletes payment rows but leaves their approvals; because NEXT_PAYMENT_ID is MAX(id)+1, a new payment can reuse an archived ID and inherit its approvers (store.py:306), and release() only checks is_fully_approved, so a payment of 10,000.00 or more can be released without two fresh distinct approvals. No exception covers this."
+    },
+    {
+      "id": "SEC-1",
+      "status": "shown",
+      "note": "The three new execute calls use fixed string literals with '?' placeholders and matching parameter tuples, which meets the AST rules of the exhaustive control test test_sql_statements_are_parameterized; that test passed in the head-commit CI run."
+    },
+    {
+      "id": "ENC-1",
+      "status": "shown",
+      "note": "The payments table has no NPI columns, and the archive copies rows as stored, so nothing unsealed is persisted. The exhaustive control test test_every_npi_field_is_sealed_at_rest passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26120 is approved by Grace Kim (change_manager) on 2026-10-24, before the review, and its component payments.store covers store.py, the only file changed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from Sofia Santos, a change_approver for payments and a different person from the author, Mara Costa (none of Costa's addresses were used)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the head commit 49ff1a5, which is the change's only commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding on head 49ff1a5; the JUnit report has 172 tests with 0 failures or skips, including the ENC-1 and SEC-1 control tests. The report's timestamp is earlier than the commit, which looks like a generation artefact; I couldn't rerun the suite (no pytest in the sandbox)."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.store is security_sensitive, and Kofi Mensah (security_reviewer) gave a security_review approval on the head commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers store.py; the entries for payments.py, audit.py and routes.py cover code this change doesn't touch, so no existing evidence lapses."
+    }
+  ],
+  "summary": "The process records are in order: an approved ticket covering payments.store, an independent code review and a security review on the head commit, and a passing CI run that includes the ENC-1 and SEC-1 control tests. The new SQL is parameterized and no NPI is involved. However, archive_payments deletes payment rows without their approvals or releases, and payment IDs are MAX(id)+1, so new payments can reuse archived IDs and inherit earlier approvers. That lets a large payment be released without two fresh distinct approvers, which violates PAY-1, and no exception covers it. The change also has no tests for the new method, despite the description saying unit tests were updated.",
+  "meta": {
+    "elapsed_s": 143.49,
+    "tokens_in": 600898,
+    "tokens_out": 13322,
+    "usd": 0.697178,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 30,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 13322,
+      "cache_read_input_tokens": 536192,
+      "cache_creation_input_tokens": 64676
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.6971784000000001,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

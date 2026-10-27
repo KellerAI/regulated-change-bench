@@ -1,0 +1,18 @@
+[
+  {
+    "id": "CHG-25794",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Co-applicant onboarding field",
+    "components": [
+      "mortgage.cases",
+      "mortgage.control-tests",
+      "mortgage.npi",
+      "mortgage.retention"
+    ],
+    "requested_by": "nneka.okafor@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-17T09:36:00Z",
+    "risk": "medium"
+  }
+]

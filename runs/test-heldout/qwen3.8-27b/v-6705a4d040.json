@@ -1,0 +1,86 @@
+{
+  "variant": "v-6705a4d040",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "ACC-1",
+      "status": "shown",
+      "note": "The change adds a 'report:' prefix shim to is_allowed but does not alter the GRANTS set; the exhaustive control test test_matrix_equals_approved_policy passed in CI on the head commit, confirming the matrix still equals the approved access policy."
+    },
+    {
+      "id": "ACC-2",
+      "status": "shown",
+      "note": "The auditor's grants in GRANTS are unchanged; 'report:'-prefixed actions for the auditor resolve to the same underlying grants, none of which are state-changing. The exhaustive test test_auditor_is_read_only passed."
+    },
+    {
+      "id": "SOD-1",
+      "status": "shown",
+      "note": "The it_admin role's grants are unchanged; 'report:'-prefixed actions resolve to the same underlying grants, none of which include approve_payment or release_payment. The exhaustive test test_it_admin_cannot_approve_or_release passed."
+    },
+    {
+      "id": "MFA-1",
+      "status": "shown",
+      "note": "The PRIVILEGED set in rbac.py is not modified by this change; routes.py is untouched. The exhaustive test test_privileged_routes_require_mfa passed in CI."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24119 is type 'standard', approved by erik.brandt (change_manager) before the change, and its components list 'payments.access', which matches the only component touched (rbac.py → payments.access)."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code-review approval by mara.costa@fernbrook.example (p-mcosta, change_approver for payments) who is not the author sofia.santos; different person_id, no shared email addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both the code_review and security_review approvals reference commit ce0d48fe (the sole and head commit); no later commits exist to void the approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the head commit (ce0d48fe) reports success with 172 tests, 0 failures, 0 errors, 0 skipped; all control tests for the touched obligations (ACC-1, ACC-2, SOD-1, MFA-1) ran and passed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "rbac.py belongs to component payments.access, which is security_sensitive; security_review approval by ines.halvorsen (security_reviewer, platform-security) for the head commit is present and is not the author."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers apps/baseline-payments/payments/rbac.py; therefore no prior evidence lapses due to this change."
+    }
+  ],
+  "summary": "The change adds a two-line 'report:' prefix shim to the is_allowed function in payments's rbac.py so a reporting client can use prefixed action names; it does not modify the GRANTS set, the PRIVILEGED set, or any other security-relevant data structure. All four product obligations whose scope includes rbac.py (ACC-1, ACC-2, SOD-1, MFA-1) are confirmed by exhaustive or appropriate control tests passing in CI on the final commit. All process obligations are satisfied: the ticket is approved and covers the correct component, independent code and security reviews are present from qualified non-author reviewers, CI is green on the head commit with zero skips, and no protected paths or prior ledger evidence are affected. The change is accepted.",
+  "meta": {
+    "elapsed_s": 237.86,
+    "tokens_in": 27757,
+    "tokens_out": 7113,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "d245e6e1e1a71ea01b06900672813798d3fa864c3f71d366bd6ddea0b7fb06bf",
+    "packet_tokens_est": 24426,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23883,
+    "answer_chars": 3144,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.46,
+    "eval_s": 205.38,
+    "total_s": 237.86,
+    "tokens_est_ratio": 1.107,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

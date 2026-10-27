@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25844",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Memo preview for list views",
+    "components": [
+      "payments.payments",
+      "payments.tests"
+    ],
+    "requested_by": "jonah.weiss@fernbrook.example",
+    "approved_by": "erik.brandt@fernbrook.example",
+    "approved_at": "2026-10-01T00:31:00Z",
+    "risk": "low"
+  }
+]

@@ -1,0 +1,71 @@
+{
+  "variant": "v-69d9e1f652",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "Policy.PRIVILEGED_IDLE_MINUTES and controls/mortgage/policy-params.json now set privileged_idle_minutes to 20, exceeding the maximum of 15 required by SES-1."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change ticket CHG-24092 is approved by change manager Grace Kim and lists all affected components."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Wen Li (role change_approver) is present and Wen Li is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code‑review approval applies to the only commit in the PR; no later non‑formatting changes exist."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded with all 124 tests passing, including the control test for SES‑1."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "A control_owner approval from Rachel Stein (outside the author’s lending‑eng team) is recorded for the protected path change to controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "New evidence (the passing control test in the CI run) provides fresh coverage for SES‑1 after the code change, preventing evidence lapse."
+    }
+  ],
+  "summary": "The change updates the privileged idle timeout to 20 minutes, which violates the parametric bound of SES-1 (must be ≤15). All required process obligations (CHG‑1, CHG‑2, CHG‑3, CHG‑4, CHG‑6, LAP‑1) are satisfied, but the product obligation breach forces a REJECT decision.",
+  "meta": {
+    "elapsed_s": 136.82,
+    "tokens_in": 25411,
+    "tokens_out": 5891,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "93fef414e3aee6a7103dc423bd904e3c8a489793cb7b360a2bcd7b5d06126d0d",
+    "packet_tokens_est": 25349,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24356,
+    "answer_chars": 1729,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 18.41,
+    "eval_s": 118.17,
+    "total_s": 136.82,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

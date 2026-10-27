@@ -1,0 +1,54 @@
+{
+  "variant": "v-d36a6039b1",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24891 is approved by change manager Erik Brandt before review, and its component payments.reports covers apps/baseline-payments/payments/reports.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change approver and not the author, approved a code review of head commit 111f01c0ca2ded496a49415059ef91b36a9c3ba2."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code-review approval names the head commit, and there are no commits after that approval."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI succeeded on earlier commit 0cd663aa6d38ffa28229789eeecebd729d9e3db0, not the head. The later commit, “synchronize the downstream format identifier,” adds REPORT_FORMAT and is not a comment, whitespace, or formatting edit, so the earlier run does not cover the merged code."
+    }
+  ],
+  "summary": "The change only adds a ledger export format constant in payments reports.py, which is outside every product-obligation scope and is not security-sensitive or on a protected path. The ticket and an independent code review of the head commit are in order. Testing is not: the recorded suite passed on the first commit, and the second commit changes the format identifier, so the final commit was not tested. The change is rejected.",
+  "meta": {
+    "elapsed_s": 102.19,
+    "tokens_in": 44684,
+    "tokens_out": 6201,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f9dddb38e08f508e37ccb9d83b3bbc188a1191c640ae031f5bcc7132e5bd008e",
+    "packet_tokens_est": 24507,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 44684,
+      "outputTokens": 6201,
+      "cacheReadTokens": 207872,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 98411,
+    "duration_api_ms": 98411,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

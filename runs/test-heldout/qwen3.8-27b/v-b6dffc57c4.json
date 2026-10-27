@@ -1,0 +1,66 @@
+{
+  "variant": "v-b6dffc57c4",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "refuted",
+      "note": "The diff replaces the error log message with an f-string that interpolates `self._store.get_payee(payee_id).account_number` directly. `account_number` is listed in `payments.npi_fields` as an NPI field, and it is written unmasked into `self._log.error(...)` on an error path—exactly what LOG-1 prohibits ('No application log entry contains an unmasked NPI value, on any path including error paths')."
+    },
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change only alters the string in the error log of `deliver_statement`; the `self._audit(actor, 'deliver_statement', …)` call and all other state-changing audit recordings in service.py are unchanged."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25835 is type 'standard', status 'approved', approved by change_manager grace.kim, and its components list 'payments.service' which covers the single changed file `service.py`."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The sole code_review approval is from sofia.santos@fernbrook.example (Sofia Santos, payments-eng, change_approver for payments), who is distinct from the author aisha.bello@fernbrook.example (Aisha Bello, payments-eng, engineer)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names commit 049526a7, which is the head and the only commit in the change; no later commits could void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run on the final commit 049526a7 shows 172 tests, 0 failures, 0 errors, 0 skipped, including the registered control test `test_sampled_flows_do_not_log_npi` for LOG-1 and all other payments control tests. The suite is unskipped and green on the final commit."
+    }
+  ],
+  "summary": "The change adds the payee's `account_number`—a field explicitly classified as NPI in `controls/payments/policy-params.json`—into an unmasked f-string passed to `self._log.error(...)` on the statement-delivery error path. This is a direct violation of LOG-1, which forbids any unmasked NPI value in application logs on any path, including error paths. No approved exception in the register covers this deviation (EXC-0167 is scoped to mortgage.logging, not payments.service). Although the process obligations (CHG-1 through CHG-4) are satisfied and the sample-level control test passes, the code itself introduces a clear NPI-into-logs violation, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 182.69,
+    "tokens_in": 29587,
+    "tokens_out": 5018,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "31da8764237683e795d75521c85d450465577b991bd57ccd355e8d292195dff6",
+    "packet_tokens_est": 26649,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 16684,
+    "answer_chars": 2466,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.83,
+    "eval_s": 147.83,
+    "total_s": 182.69,
+    "tokens_est_ratio": 1.084,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

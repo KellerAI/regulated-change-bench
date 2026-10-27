@@ -1,0 +1,79 @@
+{
+  "variant": "v-839bc88acf",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "PR-1930 names ticket CHG-26452, which Erik Brandt (change_manager) approved on 2026-10-06 before the 2026-10-12 review. Its components mortgage.policy, mortgage.tests, and mortgage.controls-data match Policy.java, SessionTest.java, and controls/mortgage/policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell, a baseline-mortgage change_approver and not the author Wen Li, gave a code_review approval on the head commit 53d7c9d6."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and both the code_review and control_owner approvals name that same commit, so nothing later voids them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful baseline-mortgage suite on 53d7c9d6. The JUnit report shows 124 tests, 0 failures, 0 errors, and 0 skipped, including the registered control tests. No product-obligation scope symbol was changed, so no additional control-test gap is opened."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components are mortgage.policy, mortgage.tests, and mortgage.controls-data, and components.json marks all three security_sensitive false, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/mortgage/policy-params.json is a protected controls path and the standard_idle_minutes value changes from 30 to 45. Rachel Stein, a control_owner on the controls-office team rather than the author's lending-eng team, approved that commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json sets emergency to false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The edit raises only the non-privileged standard idle limit from 30 to 45 minutes. Privileged idle stays 15 in Policy.PRIVILEGED_IDLE_MINUTES and mortgage.privileged_idle_minutes, so there is no product-obligation deviation and no exception is relied on."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries that name Policy.java cover UNDERWRITER_LIMIT, SENIOR_LIMIT, DTI_MAX_PERCENT, and LTV_MAX_PERCENT. Those symbols are unchanged at head; only STANDARD_IDLE_MINUTES changed, so the prior evidence has not lapsed."
+    }
+  ],
+  "summary": "The change only lengthens the standard session idle timeout from 30 to 45 minutes, in both Policy.STANDARD_IDLE_MINUTES and mortgage.standard_idle_minutes, and updates the matching unit test. The privileged idle limit stays 15, and no other catalogued policy parameter or scoped control symbol changes. The ticket, independent code review, control-owner approval, and a green full suite on the final commit are all present, and the change is not an emergency and does not rely on an exception. No applicable obligation is violated or left unproven.",
+  "meta": {
+    "elapsed_s": 269.74,
+    "tokens_in": 64280,
+    "tokens_out": 14966,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "cbd8016909bf83d8706c5c7cf91b6e7b355d61fc604842162faa37ce37dcd429",
+    "packet_tokens_est": 25319,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 64280,
+      "outputTokens": 14966,
+      "cacheReadTokens": 206080,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 265927,
+    "duration_api_ms": 265927,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

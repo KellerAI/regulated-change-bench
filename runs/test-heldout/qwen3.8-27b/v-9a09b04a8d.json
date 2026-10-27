@@ -1,0 +1,91 @@
+{
+  "variant": "v-9a09b04a8d",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "refuted",
+      "note": "The change adds 'coapplicant_tax_id' to ApplicantFields.ALL but does NOT add it to NpiRegistry.FIELDS (the closed domain that drives encryption). A tax identifier is explicitly NPI per the obligation statement ('government identifiers such as SSN or tax id'). Because it is absent from the NPI registry, CaseStore will not seal it at rest, and the exhaustive control test (which enumerates NpiRegistry.FIELDS) cannot detect the gap. The field will be persisted in plaintext."
+    },
+    {
+      "id": "RET-1",
+      "status": "shown",
+      "note": "Retention.purge() now explicitly calls removeApplicantField('coapplicant_tax_id') in addition to iterating NpiRegistry.FIELDS, so the new NPI field is purged. The legal-hold and retention-period logic is unchanged; the sample retention test passes."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25867 is type 'standard', approved by erik.brandt (change_manager) on 2026-10-11. Its components (mortgage.cases, mortgage.control-tests, mortgage.retention) map to the three changed files per components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "wen.li@fernbrook.example (p-wli, role change_approver, team lending-eng) gave a code_review approval at the head commit. The author is priya.raman (p-praman), a different person."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is a single commit (56dda28) and both approvals (code_review and control_owner) are recorded against that exact SHA; no later commits could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the head commit (56dda28), result 'success', 124 tests, 0 failures/errors/skipped. The registered control tests for ENC-1 (everyNpiFieldIsSealedAtRest) and RET-1 (sampledPurgeRespectsHold) are present and passing. (The ENC-1 test passes but does not exercise the new field because it is not in the registry—this is the substance of the ENC-1 violation, not a CHG-4 failure.)"
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The three changed files map to components mortgage.cases (security_sensitive: false), mortgage.retention (security_sensitive: false), and mortgage.control-tests (security_sensitive: false). No security_sensitive component is touched, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "ControlFixtures.java lives under apps/baseline-mortgage/src/test/java/controls/, a protected path. Rachel Stein (p-rstein, role control_owner, team controls-office, outside the author's team lending-eng) approved the commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency'. CHG-7 does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is invoked or needed for this change; the register contains no entry for ENC-1 or for the mortgage.cases/mortgage.retention components."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers any of the three changed files (ApplicantFields.java, Retention.java, ControlFixtures.java); all ledger entries cover other paths (Approvals.java, Underwriting.java, payments.py, audit.py, routes.py). No evidence lapses."
+    }
+  ],
+  "summary": "The change introduces a 'coapplicant_tax_id' field (a government tax identifier, which is NPI under the bank's own definition in ENC-1) into the applicant data model, but it is not added to NpiRegistry.FIELDS. Consequently CaseStore will not seal it at rest, and the exhaustive control test that enumerates the registry will not detect the gap. This is a critical violation of ENC-1 (NPI encrypted at rest). All process obligations (CHG-1 through CHG-7, EXC-1, LAP-1) and RET-1 are satisfied, but the encryption-at-rest violation is sufficient to reject the change. The PR should be returned to engineering to add 'coapplicant_tax_id' to NpiRegistry.FIELDS (and update the NPI field list in policy-params.json) so that the field is sealed on persistence and the control test actually exercises it.",
+  "meta": {
+    "elapsed_s": 242.28,
+    "tokens_in": 29060,
+    "tokens_out": 7147,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f89df5f3974d0e7c34dd9406df650475ce20ea1d571ef3664ed54908b874a647",
+    "packet_tokens_est": 25751,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23785,
+    "answer_chars": 4071,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 34.08,
+    "eval_s": 208.18,
+    "total_s": 242.28,
+    "tokens_est_ratio": 1.101,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

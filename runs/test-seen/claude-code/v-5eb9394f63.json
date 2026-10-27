@@ -1,0 +1,97 @@
+{
+  "variant": "v-5eb9394f63",
+  "arm": "claude-code",
+  "decision": "HOLD",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "open",
+      "note": "The change rewrites payments.py#required_approvals, which is in PAY-1's scope. The exhaustive proof in ACR-0401 targets commit d30b2ad and has lapsed. The only current evidence is test_dual_control_grid_matches_policy, which checks a fixed grid of about 300 amounts up to 3x the threshold, not every amount in [0.01, 5,000,000.00], so the required exhaustive evidence is missing even though the rewrite looks equivalent."
+    },
+    {
+      "id": "LAP-1",
+      "status": "open",
+      "note": "Ledger entry ACR-0401 (rerunnable: false) covers payments.py required_approvals. This change rewrites that code (not a comment or formatting edit), so the entry no longer supports PAY-1. No new evidence of the same (exhaustive) strength has been supplied."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24308 (standard) was approved by Grace Kim (change_manager) at 2026-10-05T11:35Z, before the PR opened on 2026-10-07. Its component payments.payments covers the only touched file, apps/baseline-payments/payments/payments.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval comes from mara.costa@fernbrook.example, a change_approver for payments. She is a different person from the author, Sofia Santos, under any of Santos's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 746ff05, which is the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows pr-checks succeeding on head commit 746ff05. The JUnit report lists 172 tests with 0 failures and 0 skips, including the registered PAY-1 control test test_dual_control_grid_matches_policy, which passed. I could not rerun the tests here because pytest is not installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.py (payments.payments) is marked security_sensitive: false in components.json, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected paths (controls/, control tests, ci/) are touched by the diff, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change and ticket are standard, not emergency, so no post-implementation review is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception; none of the register entries concerns PAY-1 or payments.payments."
+    }
+  ],
+  "summary": "The change rewrites required_approvals as a one-line conditional. It appears to behave the same, and the process records (approved ticket, independent approval on the final commit, passing CI on the head commit) are in order. However, required_approvals is the code covered by the exhaustive, non-rerunnable PAY-1 proof (ACR-0401). Under LAP-1 that proof lapses when the code changes, and no new exhaustive evidence was provided. The only remaining PAY-1 evidence is a control test labelled exhaustive that actually checks a fixed grid of amounts, so PAY-1 cannot be shown with the required strength and the change is held pending a re-run proof or equivalent evidence.",
+  "meta": {
+    "elapsed_s": 112.77,
+    "tokens_in": 508859,
+    "tokens_out": 10683,
+    "usd": 0.534748,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 29,
+    "tokens_detail": {
+      "input_tokens": 34,
+      "output_tokens": 10683,
+      "cache_read_input_tokens": 463161,
+      "cache_creation_input_tokens": 45664
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.5347482,
+    "permission_denials": 9,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

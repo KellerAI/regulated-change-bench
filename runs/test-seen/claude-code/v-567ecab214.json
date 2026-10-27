@@ -1,0 +1,97 @@
+{
+  "variant": "v-567ecab214",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "open",
+      "note": "AppLog.java is in LOG-1 scope. The change only adds a read accessor and changes no write path, but the only evidence is the sample control test LoggingControlTest#sampledFlowsDoNotLogNpi, and no exhaustive evidence or ledger entry for LOG-1 exists. EXC-0167 covers only the legacy import job's masked last-4."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25914 is a standard ticket, approved by change manager grace.kim on 2026-10-21, before the PR opened. Its components [mortgage.logging] cover AppLog.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "declan.farrell approved the code review. He holds change_approver for baseline-mortgage and is not the author (nneka.okafor / n.okafor)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names head commit 9323021, the only commit in the change."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run pr-checks on head 9323021 succeeded: 124 Jupiter tests, 0 failures, errors or skips. The registered LOG-1 control test LoggingControlTest#sampledFlowsDoNotLogNpi ran and passed, labelled sample."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java is component mortgage.logging, marked security_sensitive in controls/mortgage/components.json. approvals.json contains no security_review approval from a security_reviewer."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff touches only apps/baseline-mortgage/src/main/java/mortgage/AppLog.java. No protected path (controls, control tests, CI) is changed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency: the ticket type is standard and emergency is false, so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change relies on no exception. The only related one, EXC-0167, is for a different flow and isn't invoked."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers AppLog.java, so no prior evidence lapses."
+    }
+  ],
+  "summary": "PR-1994 adds a read-only AppLog.last() accessor in AppLog.java, which belongs to the security-sensitive mortgage.logging component. The ticket, the independent code review on the final commit, and CI on the final commit all satisfy CHG-1 through CHG-4. However, there is no security_review approval, so CHG-5 is violated. LOG-1 also cannot be established to the required exhaustive standard. The change is rejected until a security reviewer approves the head commit.",
+  "meta": {
+    "elapsed_s": 63.77,
+    "tokens_in": 292205,
+    "tokens_out": 5790,
+    "usd": 0.33857,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 5790,
+      "cache_read_input_tokens": 257964,
+      "cache_creation_input_tokens": 34213
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.3385698,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

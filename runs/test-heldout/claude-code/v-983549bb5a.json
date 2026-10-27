@@ -1,0 +1,67 @@
+{
+  "variant": "v-983549bb5a",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24633 is approved by Grace Kim (change_manager) on 2026-10-07, before the PR opened on 2026-10-09. Its components list mortgage.reporting, which covers PipelineReport.java, the only file changed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell (change_approver for baseline-mortgage, person p-dfarrell) gave a code_review approval. The author is Wen Li (p-wli), a different person under any of their addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names the head commit b609a45 and was given on 2026-10-10T06:09Z, after the last commit. Nothing was committed after the approved commit, so the behaviour-changing second commit (FORMAT changed from pipeline/1 to pipeline/1.1) is covered."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run (pr-checks, ci/run-tests.sh baseline-mortgage) ran on head commit b609a45 and succeeded: 124 Jupiter tests, 0 failures, 0 skipped, including all control tests and PipelineReportTest. The change touches no product obligation's scope or closed domain, so no extra control tests were required."
+    }
+  ],
+  "summary": "PR-1602 adds a public FORMAT constant to PipelineReport.java in the non-security-sensitive mortgage.reporting component and touches nothing else. The ticket was approved by a change manager before review and covers the component. An independent change_approver approved the exact head commit, and the CI run on that commit passed the full suite with nothing skipped. No product obligation scope, protected path, ledger-covered code, exception or emergency process is involved, so CHG-5, CHG-6, CHG-7, EXC-1 and LAP-1 are not triggered and all applicable obligations are shown.",
+  "meta": {
+    "elapsed_s": 71.77,
+    "tokens_in": 441113,
+    "tokens_out": 6119,
+    "usd": 0.437995,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 27,
+    "tokens_detail": {
+      "input_tokens": 32,
+      "output_tokens": 6119,
+      "cache_read_input_tokens": 393733,
+      "cache_creation_input_tokens": 47348
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4379946,
+    "permission_denials": 6,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

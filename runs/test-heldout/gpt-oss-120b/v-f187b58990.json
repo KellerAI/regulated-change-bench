@@ -1,0 +1,71 @@
+{
+  "variant": "v-f187b58990",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26457 is approved by change manager Grace Kim and lists components payments.controls-data and payments.policy, covering the changed files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Sofia Santos (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is tied to the exact commit being merged; there are no later commits that change behavior."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with the full test suite (172 tests) including the exhaustive SES‑1 control test, which passed."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "Protected file controls/payments/policy-params.json changed; a control_owner approval from Bao Tran (outside the author’s team) is present."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Exception EXC-0193 for SES‑1 expired on 2026-10-27, so the deviation is not authorized."
+    },
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "Privileged idle minutes were increased to 16, exceeding the allowed maximum of 15, and no valid exception applies."
+    }
+  ],
+  "summary": "The change violates the privileged session timeout bound (SES‑1) by setting the idle interval to 16 minutes, and the referenced exception (EXC‑0193) is expired, making the deviation unauthorized. Although all process obligations (CHG‑1, CHG‑2, CHG‑3, CHG‑4, CHG‑6) are satisfied, the product obligation SES‑1 (and the related exception handling EXC‑1) are not, so the change must be rejected.",
+  "meta": {
+    "elapsed_s": 148.15,
+    "tokens_in": 24648,
+    "tokens_out": 8353,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "28fac2d8c47fbff0ccb654cf1c76eaf3c01a128e32d663012a745426185922e2",
+    "packet_tokens_est": 24433,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 33422,
+    "answer_chars": 1814,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 15.44,
+    "eval_s": 132.48,
+    "total_s": 148.15,
+    "tokens_est_ratio": 0.983,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

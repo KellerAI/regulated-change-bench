@@ -1,0 +1,84 @@
+{
+  "variant": "v-a171a5df74",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CRD-1",
+      "status": "refuted",
+      "note": "The catalog fixes auto-approval at a 40% DTI ceiling (and 90% LTV). Head sets Policy.DTI_MAX_PERCENT and mortgage.dti_max_percent to 43, so code and the parameter file match each other but not the approved limit. No CRD-1 exception covers that deviation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-24721 is approved by change manager Grace Kim before review, and its components (mortgage.policy, mortgage.tests, mortgage.controls-data) cover Policy.java, UnderwritingTest.java, and policy-params.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell's code_review approval is on the head commit. He has the change_approver role for baseline-mortgage and is not the author, Wen Li."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is 15bde01fa215e6c9812cd3d74614dd2f5bc630a4, and the code_review approval names that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records success on the head commit for the baseline-mortgage suite. The JUnit report has 124 tests, 0 failures, and 0 skipped, including unskipped controls.UnderwritingControlTest#autoApproveGridMatchesPolicy."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components (mortgage.policy, mortgage.tests, mortgage.controls-data) are not marked security_sensitive, so a security_review approval is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "refuted",
+      "note": "controls/mortgage/policy-params.json is a protected path and the change alters the approved DTI policy value. Approvals contain only Declan Farrell's code_review; there is no control_owner approval from outside lending-eng."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "Raising the DTI ceiling departs from CRD-1. The register has no approved, unexpired exception scoped to CRD-1 and this component; the other entries are expired, withdrawn, or for different obligations."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0406 covers Policy.DTI_MAX_PERCENT and was proved under the premise DTI_MAX_PERCENT = 40. That constant's behaviour changed, so the proof lapsed, and the passing grid test does not replace it with evidence that auto-approval remains within 40%."
+    }
+  ],
+  "summary": "The change raises the mortgage auto-approve DTI ceiling from 40% to 43% in Policy.java and controls/mortgage/policy-params.json. CRD-1 still requires 40%, and the exception register does not excuse the deviation. The prior exhaustive proof of that limit lapsed with the constant change and was not replaced. The parameter file is a protected control path, and the record set has no control-owner approval. Ticket, independent code review, and the green head-commit suite are in order, but those gaps require rejection.",
+  "meta": {
+    "elapsed_s": 158.13,
+    "tokens_in": 44512,
+    "tokens_out": 15119,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "058c862ff17848eef9574d681688063c678dbda22f11cce294b8a82b5bb7b2c3",
+    "packet_tokens_est": 25367,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 44512,
+      "outputTokens": 15119,
+      "cacheReadTokens": 278016,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 153943,
+    "duration_api_ms": 153943,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

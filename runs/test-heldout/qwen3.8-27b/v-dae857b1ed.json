@@ -1,0 +1,66 @@
+{
+  "variant": "v-dae857b1ed",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "The change only increases the in-memory buffer constant MAX_LINES from 10,000 to 12,000; no masking logic, write path, or new log call sites are introduced. The registered control test controls.LoggingControlTest#sampledFlowsDoNotLogNpi ran and passed (0 failures, 0 skipped) on the final commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26551 is named in the change record, has status 'approved' by change_manager grace.kim@fernbrook.example (approved 2026-10-23, before the commit), and its components list includes 'mortgage.logging', which matches the component of AppLog.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from declan.farrell@fernbrook.example (change_approver role, lending-eng team, app baseline-mortgage) is on record for the head commit; Declan Farrell is not the author (Wen Li)."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "There is a single commit (bdc19ef8) in the change, and both the code_review and security_review approvals reference that exact commit, so no later commits could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "The CI run on the final commit bdc19ef8 shows 124 tests, 0 failures, 0 errors, 0 skipped. The only product obligation whose code the change touches is LOG-1, and its control test (controls.LoggingControlTest#sampledFlowsDoNotLogNpi) is present and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "AppLog.java belongs to component mortgage.logging, which is marked security_sensitive in components.json. A security_review approval from kofi.mensah@fernbrook.example (security_reviewer role, platform-security team) is on record for the head commit, and Kofi is not the author."
+    }
+  ],
+  "summary": "PR-1218 makes a single one-line change to AppLog.java, increasing the in-memory diagnostic log buffer from 10,000 to 12,000 lines. The change does not alter any masking, write, or NPI-handling logic, so no product obligation beyond LOG-1 is affected, and LOG-1's control test passes on the final commit. All process obligations are satisfied: the change has an approved ticket covering the correct component, an independent code-review approval from a non-author change_approver, a security review from a qualified security_reviewer, and a green CI run on the head commit. No protected paths are touched, no emergency or exception procedures apply, and no acceptance-ledger evidence is lapsed. The change is accepted.",
+  "meta": {
+    "elapsed_s": 184.42,
+    "tokens_in": 27573,
+    "tokens_out": 5496,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f314335cfd32eacb3cf54f6aa4bf56ca67d85c2e741d50f84b2e064f8c516730",
+    "packet_tokens_est": 24105,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 17190,
+    "answer_chars": 2567,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.18,
+    "eval_s": 152.21,
+    "total_s": 184.42,
+    "tokens_est_ratio": 1.114,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

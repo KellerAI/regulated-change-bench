@@ -1,0 +1,56 @@
+{
+  "variant": "v-1aef9d9e5d",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "open",
+      "note": "Ticket CHG-26319 is approved and lists component payments.reports, but the component mapping for reports.py is not defined in components.json, so coverage cannot be confirmed."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from the author (s.santos@fernbrook.example), violating the independent approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "A code_review approval record exists for the final commit and no later commits modify behavior, satisfying coverage of the merged code."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run for the final commit succeeded with all 172 tests passing, including the required control tests."
+    }
+  ],
+  "summary": "The change fails the independent approval requirement (CHG-2) because the author approved their own code. Although the ticket and CI pass, this violation forces a REJECT decision.",
+  "meta": {
+    "elapsed_s": 121.72,
+    "tokens_in": 24422,
+    "tokens_out": 6549,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "df73b0743db50e85722a38f10d9c625ae15c75a99769d0e9dc37940a670811e4",
+    "packet_tokens_est": 24385,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 27239,
+    "answer_chars": 1090,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.44,
+    "eval_s": 104.09,
+    "total_s": 121.71,
+    "tokens_est_ratio": 0.976,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "variant": "v-5eb9394f63",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "PAY-1",
+      "status": "shown",
+      "note": "At head, required_approvals still returns 2 when the amount is at least policy.DUAL_CONTROL_THRESHOLD and 1 otherwise, and is_fully_approved still counts distinct approvers. The approved threshold was not changed, and the exhaustive control test test_dual_control_grid_matches_policy passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24308, which Grace Kim (change manager) approved on 2026-10-05, before review. Its component payments.payments matches the only changed file in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author Sofia Santos, gave a code_review approval. Her directory identity is distinct from the author's."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is 746ff059cb4a65ae4316016f7e5a69d788bfea92, and the code_review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json records a successful payments suite on the head commit, and the JUnit digest shows 172 tests with no failures or skips. The PAY-1 control test test_dual_control_grid_matches_policy is included and passing."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed path maps to payments.payments, which components.json marks security_sensitive false, so a security review is not required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch controls data, control tests, or CI under the protected paths, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not marked emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other obligations and do not excuse this payments edit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "refuted",
+      "note": "Ledger entry ACR-0401 is a non-rerunnable exhaustive proof of required_approvals at commit d30b2ad, and this change rewrites that function rather than limiting itself to a comment, whitespace, or formatting edit. No replacement proof of that strength is in the packet; the passing amount-grid control test is not the same evidence."
+    }
+  ],
+  "summary": "Ticket, independent approval, commit coverage, CI, and the dual-control rule itself line up: required_approvals is still two approvers at or above the policy threshold and one below it. Acceptance still fails LAP-1. The prior evidence for that function is a non-rerunnable formal proof, and rewriting the function drops that coverage without a new proof of the same strength. The change is therefore rejected.",
+  "meta": {
+    "elapsed_s": 204.45,
+    "tokens_in": 39867,
+    "tokens_out": 21011,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "73f8297e6d49c0ddb826da279b96c29dda6ce9b3804318c94b7748456f9c0c3b",
+    "packet_tokens_est": 25055,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 39867,
+      "outputTokens": 21011,
+      "cacheReadTokens": 135424,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 200678,
+    "duration_api_ms": 200678,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

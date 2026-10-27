@@ -1,0 +1,71 @@
+{
+  "variant": "v-29641ffabf",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "MFA-1",
+      "status": "refuted",
+      "note": "The new route `POST /payees/{id}/reopen` is privileged (action \"manage_payees\") but is marked mfa=False; the control test `test_privileged_routes_require_mfa` fails, and the listed exception EXC-0214 expired on 2026-10-19, so no valid exception applies."
+    },
+    {
+      "id": "AUD-1",
+      "status": "open",
+      "note": "The new state‑changing operation `reopen_payee` calls `_audit`, but only a sample audit test is present; there is no exhaustive proof or test evidence that this operation is covered, so compliance cannot be confirmed."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25655 exists, is approved by change manager Grace Kim, and its component list covers payments.http, payments.routes, payments.service, and payments.store."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Mara Costa (change_approver for payments) is recorded and she is not the author."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Only a single commit was made; the existing code‑review approval applies to the final commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "CI run reports failure (test `test_privileged_routes_require_mfa` fails), so the full test suite does not pass on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "Security‑review approval from Kofi Mensah (security_reviewer) is recorded for the change, covering the security‑sensitive components."
+    }
+  ],
+  "summary": "The change fails critical obligations: MFA-1 is violated because a privileged route lacks MFA and the exception is expired, and CHG-4 fails because the CI test suite did not pass. Additionally, audit coverage for the new operation is uncertain. Therefore the change must be rejected.",
+  "meta": {
+    "elapsed_s": 177.74,
+    "tokens_in": 33951,
+    "tokens_out": 6887,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 81920,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "57c6dc1ce2c63d0ef1bd7823db306737f61e2c9ae35ad357d13b8978a79e6519",
+    "packet_tokens_est": 35040,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 26918,
+    "answer_chars": 1994,
+    "done_reason": "stop",
+    "load_s": 3.05,
+    "prompt_eval_s": 34.52,
+    "eval_s": 140.01,
+    "total_s": 177.74,
+    "tokens_est_ratio": 0.951,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

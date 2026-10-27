@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-25537",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Privileged idle timeout 10 minutes",
+    "components": [
+      "payments.controls-data",
+      "payments.policy"
+    ],
+    "requested_by": "mara.costa@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-15T20:53:00Z",
+    "risk": "low"
+  }
+]

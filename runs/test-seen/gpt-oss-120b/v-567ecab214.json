@@ -1,0 +1,66 @@
+{
+  "variant": "v-567ecab214",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "Control test `controls.LoggingControlTest#sampledFlowsDoNotLogNpi` passed in CI and the change only adds a read‑only accessor; it does not introduce any unmasked NPI into logs."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25914 exists, is approved, and lists component \"mortgage.logging\" which matches the changed file's component."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval from Declan Farrell (has `change_approver` role for mortgage‑mortgage and is not the author) is recorded."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval applies to the head commit; there are no later commits altering behaviour."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with full test suite (124 tests) including the registered control test for LOG-1."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java is marked `security_sensitive`, but no `security_review` approval from a person with the `security_reviewer` role is present."
+    }
+  ],
+  "summary": "All product and most process obligations are satisfied, but the change fails the mandatory security review (CHG-5) required for security‑sensitive components. Consequently the change must be rejected.",
+  "meta": {
+    "elapsed_s": 79.73,
+    "tokens_in": 24248,
+    "tokens_out": 3202,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b82779dbf5049f29cdb30e1a54d36a5a8b22e26133edc65b1392838e564c06ba",
+    "packet_tokens_est": 24139,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 11394,
+    "answer_chars": 1470,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.37,
+    "eval_s": 62.14,
+    "total_s": 79.72,
+    "tokens_est_ratio": 0.978,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "variant": "v-bfafe85646",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "The closed integration list at head is fully in the packet, and every base URL, including the new payment-advice gateway, is https."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "Each name in INTEGRATIONS, including payment-advice, appears in the asset inventory with an owner and a data classification in the allowed set."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "CHG-26071 is approved by change manager Grace Kim on 2026-10-17, before review, and its components cover payments.integrations and payments.controls-data."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Mara Costa, a payments change approver and not the author, approved a code review of head commit 71671048492db5116db0dc69dadf93470f4dbc1b."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, and the code, security, and control-owner approvals all name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a successful ci-runner-06 run of the head commit starting 2026-10-18, but the attached JUnit report was produced on dev-laptop-7.local at 2026-10-23T13:50:56-07:00, after the 2026-10-20 review time, so it is not a valid record of that CI run."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py is security-sensitive, and security reviewer Ines Halvorsen approved the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected path, and control owner Bao Tran of controls-office, outside the author's payments-eng team, approved the head commit."
+    }
+  ],
+  "summary": "The payment-advice gateway is registered over HTTPS and listed in the inventory with an owner and an npi classification, and the ticket, independent code review, security review, and control-owner approval all match the single head commit. Acceptance still requires the app's full suite, including the exhaustive ENC-2 and INV-1 control tests, to pass in CI on that commit. The JUnit file in the packet is from a workstation run after the review time and does not match the claimed CI executor, so the required test evidence is invalid.",
+  "meta": {
+    "elapsed_s": 187.56,
+    "tokens_in": 51407,
+    "tokens_out": 12662,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "7bdb2c025c7a6ff914cf4351c7d325d2a724ab4f5451515e9bd8f8adcfbdf442",
+    "packet_tokens_est": 24782,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 51407,
+      "outputTokens": 12662,
+      "cacheReadTokens": 219520,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 183652,
+    "duration_api_ms": 183652,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

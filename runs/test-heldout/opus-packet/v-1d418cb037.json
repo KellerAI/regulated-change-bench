@@ -1,0 +1,78 @@
+{
+  "variant": "v-1d418cb037",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "SES-1",
+      "status": "refuted",
+      "note": "The change sets payments PRIVILEGED_IDLE_MINUTES and controls/payments/policy-params.json privileged_idle_minutes to 16, breaking the catalog bound of <= 15. No valid exception covers the deviation (see EXC-1)."
+    },
+    {
+      "id": "EXC-1",
+      "status": "refuted",
+      "note": "The change relies on EXC-0230, which expired on 2026-10-11, before the review time of 2026-10-12T15:34Z. The other SES-1 exception, EXC-0141, expired on 2026-09-12 and is narrower in scope. No approved, unexpired exception covers SES-1 for payments.session."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25115 was approved by change manager Grace Kim on 2026-10-07, before review. Its components (payments.policy, payments.controls-data) cover both changed paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver who is not the author Linh Nguyen, gave a code_review approval on head df075b3."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Both approvals name the single head commit df075b3, and no commits come after it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success on head with ci-runner-08. However, the digested JUnit report carries a timestamp of 2026-10-23, after the review time, and a personal hostname (dev-laptop-7.local), so it does not appear to come from this CI run. The SES-1 control test also passes despite the value of 16, which suggests it checks against the edited params rather than the catalog bound."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/policy-params.json is a protected path. Bao Tran (control_owner, controls-office, outside the author's payments-eng team) approved head df075b3."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger entry covers PRIVILEGED_IDLE_MINUTES or session code. The other policy.py symbols are unchanged, so no ledger evidence lapses."
+    }
+  ],
+  "summary": "The change raises the Payments privileged idle timeout to 16 minutes, which violates SES-1's bound of 15 minutes. The exception it cites, EXC-0230, expired on 2026-10-11, the day before the review, so it cannot make the deviation acceptable. Ticket, independent code review and control-owner approval are in order. The CI evidence is questionable: the JUnit report has a future timestamp and a local hostname. The change is rejected.",
+  "meta": {
+    "elapsed_s": 20.81,
+    "tokens_in": 38108,
+    "tokens_out": 2119,
+    "usd": 0.194812,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "38ad974e448a3d7c570fc2ecbd4e503f79ed9660deb628d0fab1bd724733c99c",
+    "packet_tokens_est": 24423,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 38108,
+      "output_tokens": 2119,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

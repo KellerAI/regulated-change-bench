@@ -1,0 +1,81 @@
+{
+  "variant": "v-a0f40f7b59",
+  "arm": "qwen3.8-27b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25535 is approved by grace.kim@fernbrook.example (change_manager) and its components include 'mortgage.reporting', which is the component of PipelineReport.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval exists from wen.li@fernbrook.example (change_approver for baseline-mortgage) who is not the author (tomas.ortega@fernbrook.example), satisfying the independent-approval requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "refuted",
+      "note": "The only code_review approval is for the first commit 8158df61. The second commit 8acd7855 changes the FORMAT string value (from the first commit's value to 'pipeline/1.1'), which is a content/behaviour change, not a comment-only, whitespace, or formatting edit. This voids the approval, and no new approval covers the final commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 8acd7855 with 124 tests passing, 0 failures, 0 errors, 0 skipped. No product obligation has PipelineReport.java in its scope, so no additional control test is specifically required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "PipelineReport.java belongs to component 'mortgage.reporting' which is marked security_sensitive: false, so no security_review approval is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change touches only apps/baseline-mortgage/src/main/java/mortgage/PipelineReport.java, which is not under any protected path in controls/protected-paths.json."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is 'standard', not 'emergency', so the post-implementation review requirement does not apply."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No product obligation is violated and no exception is needed; the change adds only a metadata constant to a reporting class."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No entry in the acceptance ledger covers PipelineReport.java, so no prior evidence lapses as a result of this change."
+    }
+  ],
+  "summary": "The change is a small, low-risk addition of a FORMAT string constant to PipelineReport.java, and most process obligations are satisfied. However, CHG-3 is violated: the sole code_review approval (from Wen Li) covers only the first commit, and the second commit alters the FORMAT string value—a content change that is neither comment-only, whitespace, nor formatting. Because this voids the prior approval and no new approval exists for the final commit, the change cannot be accepted. All other obligations (CHG-1, CHG-2, CHG-4 through CHG-7, EXC-1, LAP-1) are met, and no product obligation is in scope for PipelineReport.java.",
+  "meta": {
+    "elapsed_s": 162.67,
+    "tokens_in": 27893,
+    "tokens_out": 4628,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "ae1ea5172c8e4775a11ad3e10945ab4f2b0c27471f4caaeb05fa7b542c094850",
+    "packet_tokens_est": 24434,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 15551,
+    "answer_chars": 2737,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 32.63,
+    "eval_s": 130.01,
+    "total_s": 162.67,
+    "tokens_est_ratio": 1.112,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

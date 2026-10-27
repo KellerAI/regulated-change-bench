@@ -1,0 +1,126 @@
+{
+  "app": "payments",
+  "approved_by": "controls-office",
+  "effective": "2026-08-31",
+  "roles": [
+    "clerk",
+    "payments_officer",
+    "treasury_manager",
+    "auditor",
+    "it_admin"
+  ],
+  "actions": [
+    "create_payment",
+    "approve_payment",
+    "release_payment",
+    "view_account",
+    "view_account_number",
+    "export_ledger",
+    "manage_users",
+    "view_audit",
+    "rotate_keys",
+    "purge_npi",
+    "manage_payees",
+    "view_reports"
+  ],
+  "state_changing": [
+    "create_payment",
+    "approve_payment",
+    "release_payment",
+    "manage_users",
+    "rotate_keys",
+    "purge_npi",
+    "manage_payees"
+  ],
+  "privileged": [
+    "approve_payment",
+    "release_payment",
+    "view_account_number",
+    "export_ledger",
+    "manage_users",
+    "rotate_keys",
+    "purge_npi",
+    "manage_payees"
+  ],
+  "segregation_of_duties": [
+    {
+      "role": "it_admin",
+      "must_not": [
+        "approve_payment",
+        "release_payment"
+      ]
+    }
+  ],
+  "matrix": {
+    "clerk": {
+      "create_payment": true,
+      "approve_payment": false,
+      "release_payment": false,
+      "view_account": true,
+      "view_account_number": false,
+      "export_ledger": false,
+      "manage_users": false,
+      "view_audit": false,
+      "rotate_keys": false,
+      "purge_npi": false,
+      "manage_payees": false,
+      "view_reports": true
+    },
+    "payments_officer": {
+      "create_payment": true,
+      "approve_payment": true,
+      "release_payment": false,
+      "view_account": true,
+      "view_account_number": true,
+      "export_ledger": false,
+      "manage_users": false,
+      "view_audit": false,
+      "rotate_keys": false,
+      "purge_npi": false,
+      "manage_payees": true,
+      "view_reports": true
+    },
+    "treasury_manager": {
+      "create_payment": false,
+      "approve_payment": true,
+      "release_payment": true,
+      "view_account": true,
+      "view_account_number": true,
+      "export_ledger": true,
+      "manage_users": false,
+      "view_audit": false,
+      "rotate_keys": false,
+      "purge_npi": false,
+      "manage_payees": false,
+      "view_reports": true
+    },
+    "auditor": {
+      "create_payment": false,
+      "approve_payment": false,
+      "release_payment": false,
+      "view_account": true,
+      "view_account_number": false,
+      "export_ledger": true,
+      "manage_users": false,
+      "view_audit": true,
+      "rotate_keys": false,
+      "purge_npi": false,
+      "manage_payees": false,
+      "view_reports": true
+    },
+    "it_admin": {
+      "create_payment": false,
+      "approve_payment": false,
+      "release_payment": false,
+      "view_account": false,
+      "view_account_number": false,
+      "export_ledger": false,
+      "manage_users": true,
+      "view_audit": true,
+      "rotate_keys": true,
+      "purge_npi": true,
+      "manage_payees": false,
+      "view_reports": false
+    }
+  }
+}

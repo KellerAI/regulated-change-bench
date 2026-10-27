@@ -1,0 +1,153 @@
+[
+  {
+    "record": "ACR-0401",
+    "change": "CHG-23104",
+    "obligation": "PAY-1",
+    "status": "shown",
+    "evidence": {
+      "kind": "proof_record",
+      "ref": "evidence/proofs/pay1-required-approvals.json",
+      "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+      "covers": [
+        {
+          "path": "apps/baseline-payments/payments/payments.py",
+          "symbol": "required_approvals"
+        }
+      ],
+      "coverage": "exhaustive",
+      "domain": "amount in [0.01, 5000000.00]",
+      "rerunnable": false
+    },
+    "accepted_by": "rachel.stein@fernbrook.example",
+    "accepted_at": "2026-09-03T20:23:00Z"
+  },
+  {
+    "record": "ACR-0402",
+    "change": "CHG-23104",
+    "obligation": "AUD-2",
+    "status": "shown",
+    "evidence": {
+      "kind": "modelcheck",
+      "ref": "evidence/modelcheck/payments-audit-chain.json",
+      "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+      "covers": [
+        {
+          "path": "apps/baseline-payments/payments/audit.py",
+          "symbol": "event_hash"
+        },
+        {
+          "path": "apps/baseline-payments/payments/audit.py",
+          "symbol": "verify"
+        }
+      ],
+      "coverage": "exhaustive",
+      "domain": "scope 6 events",
+      "rerunnable": false
+    },
+    "accepted_by": "rachel.stein@fernbrook.example",
+    "accepted_at": "2026-09-03T20:23:00Z"
+  },
+  {
+    "record": "ACR-0403",
+    "change": "CHG-23377",
+    "obligation": "PAY-2",
+    "status": "shown",
+    "evidence": {
+      "kind": "ponens_trace",
+      "ref": "evidence/traces/pay2-release.json",
+      "commit": "e5bf6465b4525f67ba54ad6aa2f4705f23c00890",
+      "covers": [
+        {
+          "path": "apps/baseline-payments/payments/payments.py",
+          "symbol": "release"
+        }
+      ],
+      "coverage": "sample",
+      "domain": "one recorded run",
+      "rerunnable": true
+    },
+    "accepted_by": "rachel.stein@fernbrook.example",
+    "accepted_at": "2026-09-03T20:23:00Z"
+  },
+  {
+    "record": "ACR-0404",
+    "change": "CHG-23377",
+    "obligation": "MFA-1",
+    "status": "shown",
+    "evidence": {
+      "kind": "control_test",
+      "ref": "tests/controls/test_routes_control.py",
+      "commit": "e5bf6465b4525f67ba54ad6aa2f4705f23c00890",
+      "covers": [
+        {
+          "path": "apps/baseline-payments/payments/routes.py"
+        }
+      ],
+      "coverage": "exhaustive",
+      "domain": "payments.routes",
+      "rerunnable": true
+    },
+    "accepted_by": "rachel.stein@fernbrook.example",
+    "accepted_at": "2026-09-03T20:23:00Z"
+  },
+  {
+    "record": "ACR-0405",
+    "change": "CHG-23411",
+    "obligation": "LIM-1",
+    "status": "shown",
+    "evidence": {
+      "kind": "proof_record",
+      "ref": "evidence/proofs/lim1-required-approvals.json",
+      "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+      "covers": [
+        {
+          "path": "apps/baseline-mortgage/src/main/java/mortgage/Approvals.java",
+          "symbol": "requiredApprovals"
+        },
+        {
+          "path": "apps/baseline-mortgage/src/main/java/mortgage/Policy.java",
+          "symbol": "UNDERWRITER_LIMIT"
+        },
+        {
+          "path": "apps/baseline-mortgage/src/main/java/mortgage/Policy.java",
+          "symbol": "SENIOR_LIMIT"
+        }
+      ],
+      "coverage": "exhaustive",
+      "domain": "amount in [0, 10^9]",
+      "rerunnable": false
+    },
+    "accepted_by": "rachel.stein@fernbrook.example",
+    "accepted_at": "2026-09-03T20:23:00Z"
+  },
+  {
+    "record": "ACR-0406",
+    "change": "CHG-23411",
+    "obligation": "CRD-1",
+    "status": "shown",
+    "evidence": {
+      "kind": "proof_record",
+      "ref": "evidence/proofs/crd1-auto-approve.json",
+      "commit": "d30b2adb2ba9b2792f1392ebca73625bd93d8f87",
+      "covers": [
+        {
+          "path": "apps/baseline-mortgage/src/main/java/mortgage/Underwriting.java",
+          "symbol": "decide"
+        },
+        {
+          "path": "apps/baseline-mortgage/src/main/java/mortgage/Policy.java",
+          "symbol": "DTI_MAX_PERCENT"
+        },
+        {
+          "path": "apps/baseline-mortgage/src/main/java/mortgage/Policy.java",
+          "symbol": "LTV_MAX_PERCENT"
+        }
+      ],
+      "coverage": "exhaustive",
+      "domain": "DTI and LTV over the rationals",
+      "rerunnable": false
+    },
+    "accepted_by": "rachel.stein@fernbrook.example",
+    "accepted_at": "2026-09-03T20:23:00Z"
+  }
+]

@@ -1,0 +1,76 @@
+{
+  "variant": "v-55254cf77b",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "LOG-1",
+      "status": "shown",
+      "note": "An approved exception (EXC-0167) for component mortgage.logging permits masked NPI logging, and the added method does not introduce unmasked NPI, satisfying LOG-1."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "Exception EXC-0167 is approved by a risk_owner (omar.haddad), not withdrawn, and unexpired, fulfilling the EXC-1 requirement for documented exceptions."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-25377 is approved by a change manager and lists the component mortgage.logging, matching the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code‑review approval by Declan Farrell (has change_approver role for mortgage‑mortgage and is not the author) satisfies CHG‑2."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval is attached to the sole commit being merged, so it covers the merged code per CHG‑3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded (all 124 tests passed) and includes the required control test LoggingControlTest, meeting CHG‑4."
+    },
+    {
+      "id": "CHG-5",
+      "status": "refuted",
+      "note": "AppLog.java is marked security_sensitive, but no security_review approval from a security_reviewer is recorded, violating CHG‑5."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No prior evidence in the acceptance ledger covers the modified AppLog.java, so no evidence lapses; LAP‑1 remains satisfied."
+    }
+  ],
+  "summary": "All product and process obligations are satisfied except CHG-5, which requires a security review approval for the security‑sensitive AppLog component. Because this approval is missing, the change must be rejected.",
+  "meta": {
+    "elapsed_s": 153.64,
+    "tokens_in": 24189,
+    "tokens_out": 6301,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "81a6a8da17faeca501915fff7e9b984226a531c7eac6cef34e214ed861142b55",
+    "packet_tokens_est": 24117,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24222,
+    "answer_chars": 1907,
+    "done_reason": "stop",
+    "load_s": 3.07,
+    "prompt_eval_s": 24.32,
+    "eval_s": 126.1,
+    "total_s": 153.64,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

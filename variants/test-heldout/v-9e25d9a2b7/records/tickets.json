@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CHG-24241",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Policy data formatting",
+    "components": [
+      "mortgage.controls-data"
+    ],
+    "requested_by": "nneka.okafor@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-10T14:23:00Z",
+    "risk": "low"
+  }
+]

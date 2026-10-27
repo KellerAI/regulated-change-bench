@@ -1,0 +1,16 @@
+[
+  {
+    "id": "CHG-24951",
+    "type": "standard",
+    "status": "approved",
+    "summary": "Treasury dashboard: released totals per payee",
+    "components": [
+      "mortgage.reports",
+      "payments.tests"
+    ],
+    "requested_by": "sofia.santos@fernbrook.example",
+    "approved_by": "grace.kim@fernbrook.example",
+    "approved_at": "2026-10-26T13:54:00Z",
+    "risk": "low"
+  }
+]

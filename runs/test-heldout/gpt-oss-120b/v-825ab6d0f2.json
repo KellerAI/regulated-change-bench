@@ -1,0 +1,61 @@
+{
+  "variant": "v-825ab6d0f2",
+  "arm": "gpt-oss-120b",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "RET-1",
+      "status": "refuted",
+      "note": "No exhaustive evidence for RET-1 is provided; only a sample control test exists, which does not satisfy the 'exhaustive' evidence requirement."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26090 is approved by a change manager and lists component mortgage.retention covering the changed file."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Code review approval from Declan Farrell, a change_approver, not the author, is recorded in approvals.json."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "Approval references the exact head commit, and no later commits exist, satisfying CHG-3."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI run succeeded with all tests passing, including the retention control test."
+    }
+  ],
+  "summary": "All process obligations are satisfied, but the change lacks exhaustive evidence for the RET-1 obligation on NPI disposal, causing a REJECT.",
+  "meta": {
+    "elapsed_s": 107.76,
+    "tokens_in": 24191,
+    "tokens_out": 5749,
+    "usd": 0.0,
+    "error": null,
+    "model": "gpt-oss:120b",
+    "model_digest": "714d86958b6e870a9320e78126ac1ce3477727a1cd9bf7194b8ace0d84c62fd8",
+    "think": "high",
+    "format": "schema",
+    "num_ctx": 65536,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "548874bd429ce600bd7eb07d984efb731444199ea3374e0efb8b25f766a2ab7c",
+    "packet_tokens_est": 24115,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 23160,
+    "answer_chars": 1116,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 17.28,
+    "eval_s": 90.21,
+    "total_s": 107.76,
+    "tokens_est_ratio": 0.977,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "PR-1465",
+  "title": "Memo preview for list views",
+  "description": "Memo preview for list views.\n\nChanges:\n- Add `memos.preview`\n- Unit tests\n\nTesting:\n- Unit tests updated; full suite green locally.",
+  "app": "baseline-payments",
+  "author": "aisha.bello@fernbrook.example",
+  "branch": "bello/change-538",
+  "base": "b9255bed9d713075c64c0e75709f1cfa734ad739",
+  "head": "adbcdcb977b6a533d1e51fb9ae5b7fd7f6b50d05",
+  "commits": [
+    {
+      "sha": "adbcdcb977b6a533d1e51fb9ae5b7fd7f6b50d05",
+      "message": "Memos: add preview for list views",
+      "author": "aisha.bello@fernbrook.example",
+      "at": "2026-10-16T21:23:00Z"
+    }
+  ],
+  "emergency": false,
+  "ticket": "CHG-25595",
+  "opened_at": "2026-10-16T21:23:00Z"
+}

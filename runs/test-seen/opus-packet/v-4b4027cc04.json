@@ -1,0 +1,83 @@
+{
+  "variant": "v-4b4027cc04",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-25453. Change manager Erik Brandt approved it on 2026-10-19, before the change was opened. Its components (payments.controls-data, payments.integrations, payments.payments) cover all three touched paths."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos approved the head commit as code_review. She holds change_approver for payments and is a different person from the author, Aisha Bello, under all of Bello's addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit (95af0461), and every approval names that head commit. There are no later commits that could void them."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a run on head by ci-runner-06 starting 2026-10-21T22:06Z. The attached JUnit report instead comes from host 'dev-laptop-7.local' with timestamp 2026-10-23T13:29-07:00, which does not match. The test results are therefore not attributable to the change's CI run on the final commit, so there is no valid evidence that the suite, including the ENC-2/INV-1 control tests, passed on head."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "integrations.py (payments.integrations) is security_sensitive. Kofi Mensah, a security_reviewer, approved the head commit as security_review."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "controls/payments/asset-inventory.json is a protected path. Bao Tran (control_owner, controls-office, outside the author's payments-eng team) approved the head commit."
+    },
+    {
+      "id": "ENC-2",
+      "status": "shown",
+      "note": "By direct inspection of the closed INTEGRATIONS list at head, all four endpoints, including the new fx-rates endpoint, use https. transports.py is unchanged. CI corroboration is unreliable (see CHG-4)."
+    },
+    {
+      "id": "INV-1",
+      "status": "shown",
+      "note": "fx-rates is added to the inventory with an owner ('Treasury') and a classification ('npi'), so every integration is listed with both. However, its purpose text is copy-pasted from core-banking and should be corrected."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries covering payments.py (required_approvals for PAY-1, release for PAY-2) are unaffected. The diff only adds a new fx_rate function and leaves the covered symbols unchanged; no audit.py or mortgage code is touched."
+    }
+  ],
+  "summary": "Tickets, independent code review, security review and control-owner approval are all in order and cover the single head commit. ENC-2 and INV-1 hold on inspection, although the new inventory entry's purpose is clearly copied from core-banking. The CI evidence is invalid. The JUnit report was produced on a personal machine two days after the CI run it is attached to, so it cannot show the suite passing on the final commit. The change is rejected under CHG-4 until a genuine CI run on head with attributable reports is supplied.",
+  "meta": {
+    "elapsed_s": 31.99,
+    "tokens_in": 40564,
+    "tokens_out": 3166,
+    "usd": 0.225576,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "41be1d4f18c54674903766acc267332a262e028b783f138ce56762eedfcfd67b",
+    "packet_tokens_est": 26355,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40564,
+      "output_tokens": 3166,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

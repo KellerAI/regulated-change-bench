@@ -1,0 +1,89 @@
+{
+  "variant": "v-e14565a5c5",
+  "arm": "grok-cli",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "audit.py is in scope, but record() still stores actor, action, target, and time. On commit 69bd97764cc5708bd8694597b37c215dedeaec9f the registered sample control test test_sampled_operations_are_audited passed unskipped."
+    },
+    {
+      "id": "AUD-2",
+      "status": "shown",
+      "note": "verify() still checks sequence continuity, previous-hash linkage, and content hashes, and record() still appends. purge_expired still uses policy.AUDIT_RETENTION_YEARS; the approved parameter remains 7; and the new seq < 1 rejection does not break a chain that starts at 1 or a retained suffix. The exhaustive test test_chain_and_retention passed on the head commit."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24899 is approved by change manager Grace Kim on 2026-10-21, before review, and its component payments.audit matches the only touched path, apps/baseline-payments/payments/audit.py."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Sofia Santos, a payments change_approver and not the author Linh Nguyen, approved a code_review of the head commit."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit, 69bd97764cc5708bd8694597b37c215dedeaec9f, and both approvals name that commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json reports success for ci/run-tests.sh baseline-payments on the head commit, with 172 tests, 0 failures, and 0 skipped, including unskipped passing AUD-1 and AUD-2 control tests."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "payments.audit is security_sensitive. Kofi Mensah, a security_reviewer and not the author, approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The only changed path is apps/baseline-payments/payments/audit.py, which is outside controls/protected-paths.json, so no control_owner approval is required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.emergency is false, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other components, and none is used to excuse this diff."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entry ACR-0402's ModelCheck result covers verify at an older commit and lapses because verify's behavior changed. The head-commit run of the registered exhaustive control test test_chain_and_retention is new evidence of the same exhaustive strength."
+    }
+  ],
+  "summary": "The change adds a check in payments AuditLog.verify so a retained chain whose first sequence is less than 1 fails verification. Recording, hash linking, and the seven-year retention parameter are unchanged, and a legitimate chain still starts at sequence 1. Ticket CHG-24899, independent code review, security review, and a green full payments suite on the head commit cover the process obligations. The prior ModelCheck acceptance for verify lapses, but the exhaustive audit-trail control test passed on this commit and replaces it.",
+  "meta": {
+    "elapsed_s": 283.63,
+    "tokens_in": 75433,
+    "tokens_out": 17531,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f4c30b8ac5a11b5c388d58cbd88377a0d464d047ba108085c8b933e6e0e7a0b7",
+    "packet_tokens_est": 24876,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 75433,
+      "outputTokens": 17531,
+      "cacheReadTokens": 166144,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 279395,
+    "duration_api_ms": 279395,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

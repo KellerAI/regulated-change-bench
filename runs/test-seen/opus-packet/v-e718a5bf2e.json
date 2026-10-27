@@ -1,0 +1,73 @@
+{
+  "variant": "v-e718a5bf2e",
+  "arm": "opus-packet",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-26430 is approved by Erik Brandt, a change_manager, on 2026-10-22, before review. Its components (mortgage.approvals, mortgage.reporting, mortgage.tests) cover Approvals.java, PipelineReport.java and the new test under src/test/java/mortgage."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "The code_review approval is from declan.farrell@fernbrook.example. He holds change_approver for baseline-mortgage and is a different person from the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The code_review approval names the head commit 3aa46243, so it covers everything being merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims a CI run on ci-runner-01 for 8d03deb1 starting 2026-10-25T04:41Z. The attached JUnit reports were produced on host dev-laptop-7.local at 2026-10-23T13:30:43, before commit 8d03deb1 was authored (2026-10-24T20:23Z), yet they list the new PipelineTotalTest. They are not credible output of the change's CI run, so no valid evidence shows the full suite passing on the final commit."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The only ledger entry covering touched code is ACR-0405 (LIM-1, Approvals.requiredApprovals). This change adds only a comment there, which does not lapse the entry under LAP-1."
+    },
+    {
+      "id": "MC-1",
+      "status": "shown",
+      "note": "Approvals.java changes by one comment line, and approve() is unchanged. At head, approve() still throws MAKER_CHECKER when the actor prepared the case and rejects duplicate approvers."
+    },
+    {
+      "id": "LIM-1",
+      "status": "shown",
+      "note": "requiredApprovals changes only by a comment, so the exhaustive proof in ACR-0405 still stands. The head code uses Policy.UNDERWRITER_LIMIT and Policy.SENIOR_LIMIT in tiers matching the approved 500,000 / 1,500,000 / two-senior structure."
+    }
+  ],
+  "summary": "The change adds a totalCases() method to PipelineReport, a unit test for it, and a comment-only edit to Approvals.java. Ticket, independent code review and approval coverage of the head commit are all in order. The Approvals edit is comment-only, so MC-1, LIM-1 and the LIM-1 ledger evidence are unaffected. However, the CI evidence is invalid: the JUnit reports come from a developer workstation, not the stated CI runner, and are timestamped before the tested commit existed while still containing that commit's new test. CHG-4 is therefore refuted and the change is rejected until a genuine CI run on the change is supplied.",
+  "meta": {
+    "elapsed_s": 25.55,
+    "tokens_in": 40299,
+    "tokens_out": 2446,
+    "usd": 0.210116,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "packet",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "b67026c9d1e9dc669cd5616bb61f9a29f418a26b16bf907889cab09d2cdac457",
+    "packet_tokens_est": 25621,
+    "max_tokens": 32000,
+    "tokens_detail": {
+      "input_tokens": 40299,
+      "output_tokens": 2446,
+      "cache_read_input_tokens": 0,
+      "cache_creation_input_tokens": 0
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "stop_reason": "end_turn",
+    "response_model": "claude-opus-5-5",
+    "content_types": [
+      "thinking",
+      "text"
+    ],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "variant": "v-096f6bad4b",
+  "arm": "claude-code",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-26857 (standard type, status approved). Change manager erik.brandt approved it on 2026-10-18, before the PR opened on 2026-10-19, and its components (payments.reports, payments.tests) cover both touched files."
+    },
+    {
+      "id": "CHG-2",
+      "status": "refuted",
+      "note": "The only code_review approval is from mara.costa@fernbrook.example, the change's author (person p-mcosta in the directory). No change_approver other than the author has approved it."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single approval names the head commit 4b9211e and there are no later commits, so it covers what would be merged. Whether that approval is independent is assessed under CHG-2."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json shows a successful ci/run-tests.sh baseline-payments run on head 4b9211e. The JUnit report has 174 tests with 0 failures, errors or skips, including the new test_released_by_payee tests and all payments control tests. The change touches no product obligation's scope, so no extra control tests were required."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The touched components payments.reports and payments.tests are marked security_sensitive: false in controls/payments/components.json, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The change only touches apps/baseline-payments/payments/reports.py and apps/baseline-payments/tests/test_released_by_payee.py. Neither is under a protected path (controls/, tests/controls/, ci/), so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and change.json has emergency: false, so no post-implementation review is required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change doesn't depart from any product obligation and relies on no exception from the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "The ledger entries cover payments.py, audit.py, routes.py and mortgage Java files. This change modifies none of them, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The code change is low risk: it adds a released_by_payee helper in reports.py with unit tests, it is outside every product obligation's scope, and CI passed on the head commit. However, the only code_review approval comes from the author, Mara Costa, which violates CHG-2's independent-approval requirement. The change must be rejected until a payments change_approver other than the author approves the final commit.",
+  "meta": {
+    "elapsed_s": 69.89,
+    "tokens_in": 348577,
+    "tokens_out": 5956,
+    "usd": 0.404748,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 26,
+    "tokens_detail": {
+      "input_tokens": 30,
+      "output_tokens": 5956,
+      "cache_read_input_tokens": 303589,
+      "cache_creation_input_tokens": 44958
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.4047478,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

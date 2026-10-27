@@ -1,0 +1,84 @@
+{
+  "variant": "v-b825cafcf4",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "ENC-1",
+      "status": "open",
+      "note": "tax_id is added to NpiRegistry.FIELDS and to mortgage.npi_fields, so it is classified as NPI. CaseStore and NpiVault are not in the packet, and the only sealing result (EncryptionControlTest#everyNpiFieldIsSealedAtRest) is in JUnit reports that do not match the head-commit CI run, so sealed-at-rest is not established."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24990 is approved by change manager Erik Brandt before review, and its components cover mortgage.cases, mortgage.npi, mortgage.control-tests, and mortgage.controls-data, which are every component the diff touches."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Wen Li, a baseline-mortgage change_approver and not the author Priya Raman, approved a code_review of commit cbd638e5a2450de9d25ca1118ce4062bbcd3fa2e."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The change is a single commit and the code_review, security_review, and control_owner approvals all name that head commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "refuted",
+      "note": "run.json claims success on the head commit starting at 2026-10-23T22:01:00Z on ci-runner-08, but the JUnit reports are timestamped 2026-10-23T13:29:48 on dev-laptop-7.local, before that commit. Those reports are not a full-suite run of the final commit, so the required control-test evidence is invalid."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "NpiRegistry.java is security_sensitive, and security_reviewer Kofi Mensah approved a security_review of the head commit."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "policy-params.json and ControlFixtures.java are protected paths. Control owner Bao Tran (controls-office, outside lending-eng) approved the head commit."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The ticket type is standard and the change is not emergency, so a post-implementation review is not required."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change does not rely on an exception. The register entries are for other components, expired, or withdrawn."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "No acceptance-ledger cover path changes behaviour in this diff, so prior ledger entries do not lapse. This change still needs its own evidence for the NPI registry edit, which is handled under ENC-1 and CHG-4."
+    }
+  ],
+  "summary": "The ticket, independent code approval, security review, and out-of-team control-owner approval all match the single head commit and the components actually changed. tax_id is registered as NPI, but persistence sealing is not shown from the files here. The CI record is not adequate: the JUnit artifacts predate the head commit and come from a workstation rather than the claimed runner, so the suite was not shown passing on the final commit. The change is rejected.",
+  "meta": {
+    "elapsed_s": 257.81,
+    "tokens_in": 49668,
+    "tokens_out": 16260,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "59267874bc84aa39af283bdb8b17cbb7be9fcbfadb17108195a621a2369f38b7",
+    "packet_tokens_est": 25834,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 49668,
+      "outputTokens": 16260,
+      "cacheReadTokens": 220416,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 253825,
+    "duration_api_ms": 253825,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

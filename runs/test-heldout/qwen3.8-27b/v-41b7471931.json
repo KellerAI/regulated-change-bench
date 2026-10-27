@@ -1,0 +1,61 @@
+{
+  "variant": "v-41b7471931",
+  "arm": "qwen3.8-27b",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "shown",
+      "note": "The change adds a diagnostic log line in markDocumentReceived but leaves the existing audit.record(actor, Action.EDIT_CASE, caseId, …) call intact. The control test controls.AuditControlTest#sampledOperationsAreAudited passed in CI on the final commit (124 tests, 0 failures, 0 skipped)."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Ticket CHG-24209 is type 'standard', status 'approved', approved by erik.brandt@fernbrook.example (a change_manager) before the commit. Its components list includes 'mortgage.cases', which is the component assigned to CaseService.java in components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "A code_review approval from declan.farrell@fernbrook.example (Declan Farrell, change_approver for baseline-mortgage) is on record. He is a different person from the author Wen Li, satisfying the independence requirement."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The single commit in the change is 35208cb…, and the approval names exactly that commit. There are no later commits, so the approval fully covers what is merged."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "CI ran on the final commit 35208cb… with result 'success': 124 tests, 0 failures, 0 errors, 0 skipped. The only product obligation whose scope includes the changed file (CaseService.java → AUD-1) has its control test (sampledOperationsAreAudited) present and passing. No closed-domain tests are triggered by this change."
+    }
+  ],
+  "summary": "The change is a single-line diagnostic log added to CaseService.markDocumentReceived, logging a DocumentType enum and a case ID—neither of which is NPI. It does not alter the existing audit record, access matrix, routing, or any protected/controls path. The change ticket is approved by a change manager with the correct component coverage, an independent code_review approval from a different person with the change_approver role is on record for the exact head commit, and CI on the final commit shows all 124 tests (including the relevant AUD-1 control test) passing with zero skips. No product obligation's scope paths are modified, no security-sensitive component is touched, and no acceptance-ledger evidence lapses. All applicable obligations are satisfied.",
+  "meta": {
+    "elapsed_s": 242.49,
+    "tokens_in": 31773,
+    "tokens_out": 7157,
+    "usd": 0.0,
+    "error": null,
+    "model": "qwen3.8:27b-mxfp8",
+    "model_digest": "464021588235c36e23bd48a480c6c306ed1fc1e0619e97998267494a1be68de4",
+    "think": true,
+    "format": "schema",
+    "num_ctx": 73728,
+    "num_predict": 32768,
+    "seed": 7,
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "f1ba61b5af053c881a9864b8cf79191b8f82beb00fdc4c01962a53da18c9f763",
+    "packet_tokens_est": 29029,
+    "usd_basis": "local Ollama; no marginal API cost",
+    "thinking_chars": 24871,
+    "answer_chars": 2330,
+    "done_reason": "stop",
+    "load_s": 0.0,
+    "prompt_eval_s": 37.83,
+    "eval_s": 204.63,
+    "total_s": 242.49,
+    "tokens_est_ratio": 1.071,
+    "parse": "whole",
+    "inconsistent": false
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "variant": "v-fb2c958b52",
+  "arm": "grok-cli",
+  "decision": "REJECT",
+  "obligations": [
+    {
+      "id": "AUD-1",
+      "status": "refuted",
+      "note": "CaseService.reopen moves a withdrawn case to DRAFT and saves it, but it never calls audit.record. Sibling state changes such as withdraw and close record actor, action, and target; the registered audit control test is only sample coverage and does not cover this new operation."
+    },
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "The change names ticket CHG-24001, which grace.kim (change manager) approved on 2026-10-26 before review, and its component mortgage.cases matches CaseService.java."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "Declan Farrell approved a code review of the head commit. He is a baseline-mortgage change approver and is not the author, Priya Raman."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The only commit is ecde0640b125000729ade4b68755e698fc1dbd3d, and the code-review approval names that same commit."
+    },
+    {
+      "id": "CHG-4",
+      "status": "open",
+      "note": "run.json reports success for the head commit, but the JUnit files are timestamped 2026-10-23 on dev-laptop-7.local, before that commit and on a different host than ci-runner-07, so the packet does not establish that the suite ran on the final commit."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only changed file is CaseService.java, mapped to mortgage.cases, which is not security_sensitive, so no security review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "The diff does not touch protected controls data, control tests, or CI paths, so a control-owner approval is not required."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "Ticket CHG-24001 is type standard and the change record is not an emergency, so a post-implementation review is not due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "No exception is offered for this change. The register has no approved, unexpired exception scoped to AUD-1 and mortgage.cases."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Acceptance-ledger covers are payments, payments audit, payments routes, and mortgage underwriting and approval limits. None of those paths change in this diff."
+    }
+  ],
+  "summary": "The change adds CaseService.reopen, which changes a case from withdrawn to draft and persists it without an audit event. That violates AUD-1, which requires every state-changing operation to record actor, action, target, and time. The passing audit control test is sample coverage and does not examine this method. Ticket, independent approval, and the other process records are in place, but the missing audit is enough to reject the change. The CI reports also do not line up with the claimed run on the head commit.",
+  "meta": {
+    "elapsed_s": 226.17,
+    "tokens_in": 74118,
+    "tokens_out": 16411,
+    "usd": 0.0,
+    "error": null,
+    "model": "grok-4.7-medium",
+    "cli": "cursor-agent 2026.10.22-27dcf5f",
+    "mode": "ask (read-only)",
+    "sandbox": "enabled",
+    "prompt_sha256": "bd7267e14d441cc2605bcc07b6a54c04d82917a104017b015889f00e656487e9",
+    "packet_sha256": "8e2c0acbc658cc84e90f4d955bffa7004f04292167a14ccbb10a550dce5dca0f",
+    "packet_tokens_est": 29260,
+    "usd_basis": "Cursor plan quota; not billed per call",
+    "usage": {
+      "inputTokens": 74118,
+      "outputTokens": 16411,
+      "cacheReadTokens": 248832,
+      "cacheWriteTokens": 0
+    },
+    "duration_ms": 222416,
+    "duration_api_ms": 222416,
+    "is_error": false,
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}

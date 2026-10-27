@@ -1,0 +1,92 @@
+{
+  "variant": "v-33734f3ea2",
+  "arm": "claude-code",
+  "decision": "ACCEPT",
+  "obligations": [
+    {
+      "id": "CHG-1",
+      "status": "shown",
+      "note": "Change names CHG-25809, approved by change manager erik.brandt on 2026-10-17, before the PR opened on 2026-10-18. Its components (payments.payees, payments.tests) cover directory.py and tests/test_charity_payees.py per controls/payments/components.json."
+    },
+    {
+      "id": "CHG-2",
+      "status": "shown",
+      "note": "code_review approval by sofia.santos (p-ssantos, change_approver for payments), who is a different person from the author linh.nguyen (p-lnguyen) under all of that person's listed addresses."
+    },
+    {
+      "id": "CHG-3",
+      "status": "shown",
+      "note": "The approval names head commit 5e1d26d, the only commit in the change, so there are no later commits to void it."
+    },
+    {
+      "id": "CHG-4",
+      "status": "shown",
+      "note": "records/ci/run.json is a successful ci/run-tests.sh baseline-payments run on head 5e1d26d. The JUnit report shows 173 tests with 0 failures and 0 skips, including the new test and all control tests. No product obligation's scope or domain is touched, so no extra control tests are required. A local rerun wasn't possible because pytest isn't installed."
+    },
+    {
+      "id": "CHG-5",
+      "status": "shown",
+      "note": "The only component touched is payments.payees (directory.py), plus ordinary tests; neither is marked security_sensitive, so no security_review is required."
+    },
+    {
+      "id": "CHG-6",
+      "status": "shown",
+      "note": "No protected path (controls/**, apps/baseline-payments/tests/controls/*, ci/*) is changed. The new test is in apps/baseline-payments/tests/, not tests/controls/, so no control_owner approval is needed."
+    },
+    {
+      "id": "CHG-7",
+      "status": "shown",
+      "note": "The change is not an emergency (emergency=false; ticket type standard), so no PIR is due."
+    },
+    {
+      "id": "EXC-1",
+      "status": "shown",
+      "note": "The change doesn't deviate from any product obligation and doesn't rely on any exception in the register."
+    },
+    {
+      "id": "LAP-1",
+      "status": "shown",
+      "note": "Ledger entries cover payments.py, audit.py, routes.py and Mortgage Java files, none of which this change alters, so no accepted evidence lapses."
+    }
+  ],
+  "summary": "The change only adds 'charity' to the payments payee category allow-list and adds a unit test. directory.py is outside every product obligation's scope, and the category is neither NPI nor used in access, payments, retention or SQL construction. The ticket was approved before review and covers the touched components, an independent payments change approver approved the final commit, and the CI run on the final commit passed the full suite with all control tests. No security-sensitive or protected paths are touched, it is not an emergency change, and no ledger evidence lapses, so every applicable obligation is shown.",
+  "meta": {
+    "elapsed_s": 71.15,
+    "tokens_in": 338721,
+    "tokens_out": 6567,
+    "usd": 0.420807,
+    "error": null,
+    "model": "us.anthropic.claude-opus-5-5",
+    "mode": "agentic",
+    "effort": "high",
+    "region": "us-east-1",
+    "prompt_sha256": "4fcac1b56c32b25a887e506bc121ac3ac06396c2358319de642804f8afc4e4bf",
+    "cli": "claude",
+    "cli_version": "2.1.287",
+    "init_model": "us.anthropic.claude-opus-5-5",
+    "init_tools": [
+      "Bash",
+      "Glob",
+      "Grep",
+      "Read"
+    ],
+    "init_permission_mode": "default",
+    "api_key_source": "none",
+    "num_turns": 28,
+    "tokens_detail": {
+      "input_tokens": 28,
+      "output_tokens": 6567,
+      "cache_read_input_tokens": 292523,
+      "cache_creation_input_tokens": 46170
+    },
+    "usd_basis": "Bedrock Opus 5.5 list price $4/M in, $20/M out, $0.20/M cache read, $5/M cache write x actual token counts",
+    "cli_total_cost_usd": 0.42080660000000003,
+    "permission_denials": 4,
+    "agent_instruction_files": [
+      "repo/.claude"
+    ],
+    "git_config_removed": [],
+    "parse": "scan:decision",
+    "inconsistent": false
+  }
+}
