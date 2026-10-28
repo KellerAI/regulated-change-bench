@@ -25,9 +25,9 @@ From `RESULTS.md`, regenerated from the published verdicts by `scripts/results.p
 **1. Reviewers trust evidence that no longer covers the change.** The hardest defects were not in the code's
 behaviour. They were changes that altered a function covered by an earlier proof record or a bounded model-check
 result, without renewing that evidence. On held-out, in the credit-response evidence family, Grok missed 3 of 4,
-Qwen 3.8 missed 4 of 4, Ponens with an agent-written trace missed 2 of 4, and Claude Code with tools, plain Opus
+Qwen 3.8 missed 4 of 4, Ponens with a post-hoc trace (gpt-oss-120b) missed 2 of 4, and Claude Code with tools, plain Opus
 and gpt-oss missed 1 of 4 each; in the retained-chain evidence family Qwen 3.8 missed 4 of 4, Ponens with a
-trace 2 of 4, and plain Opus, gpt-oss and Grok 1 of 4 each. On seen, the proof-lapse family
+post-hoc trace 2 of 4, and plain Opus, gpt-oss and Grok 1 of 4 each. On seen, the proof-lapse family
 was the only family that plain Opus (1 of 3) and Grok (2 of 3) missed at all.
 
 **2. Reviewers block approved exceptions they cannot verify.** Plain Opus rejected 13 of 48 clean changes on
@@ -60,8 +60,8 @@ more. The reviewers are listed in a fixed order by kind, not by score.
 | Ponens goal resolution, post-hoc trace (gpt-oss-120b) | 14/88 | 23.7% | 30/48 | 5 | 13 | $0 API, local compute | 154 |
 
 Every reviewer covers all 136 held-out changes and all 134 seen changes. On the seen split the full-split false
-all-clears are: Opus 1 of 76, gpt-oss 5, Qwen 3.8 4, Grok 2, Claude Code with tools 0, Ponens with an agent-written
-trace 8, and Ponens with no trace 76 of 76. Qwen 3.8 and Ponens with an agent-written trace were first run on a
+all-clears are: Opus 1 of 76, gpt-oss 5, Qwen 3.8 4, Grok 2, Claude Code with tools 0, Ponens with a post-hoc
+trace (gpt-oss-120b) 8, and Ponens with no trace 76 of 76. Qwen 3.8 and Ponens with a post-hoc trace were first run on a
 30-change common subsets (19 defective on seen, 22 on held-out) and filled in to the whole split afterwards, once the keys had been
 unsealed, so their rows are not blind in the sealing sense (`PROTOCOL.md`, section 7). The full tables, the seen
 split, the common-subset tables and the per-family breakdown are in `RESULTS.md`. Eight seen-split clean labels are
