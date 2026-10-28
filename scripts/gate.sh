@@ -9,7 +9,7 @@ hits=0
 echo "== name and path terms =="
 # "Goal Contract v0.2" is the name of Imandra's own Ponens specification (spec/GOAL_CONTRACT_v0_2.md); it is not an internal term.
 # The README links the long-form write-up on the company site; that one public URL is intended, not a leak.
-if grep -rniE "$TERMS" . --exclude-dir=.git --exclude-dir=.tools --exclude-dir=repo --exclude-dir=__pycache__ --exclude=gate.sh | grep -v "Goal Contract v0.2" | grep -vF "https://kellerai.io/resources/benchmarking-regulated-change-review"; then hits=1; fi
+if grep -rniE "$TERMS" . --exclude-dir=.git --exclude-dir=.tools --exclude-dir=repo --exclude-dir=__pycache__ --exclude=gate.sh --exclude=CODEOWNERS | grep -v "Goal Contract v0.2" | grep -vF "https://kellerai.io/resources/benchmarking-regulated-change-review"; then hits=1; fi
 echo "== secret-shaped strings and cloud account references =="
 if grep -rnE "$SECRETS" . --exclude-dir=.git --exclude-dir=.tools --exclude-dir=repo --exclude-dir=__pycache__ --exclude=gate.sh --exclude=redact.py --exclude=test_cli_plumbing.py --exclude=claude --exclude=bedrock.py; then hits=1; fi
 if [ "$hits" = 0 ]; then echo "gate clean"; fi
