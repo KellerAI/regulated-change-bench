@@ -137,7 +137,7 @@ Per arm and per split, from `bench/score/score.py`:
   There was one error across the published runs (Grok, seen split: a dropped connection).
 
 The 30-change common subset per split (`runs/<split>/subset-paid.txt`) is a random sample on which every arm ran
-first. Qwen 3.8 and Ponens with an agent trace were then run on the rest of each split, the held-out split and
+first. Qwen 3.8 and Ponens with a post-hoc trace (gpt-oss-120b) were then run on the rest of each split, the held-out split and
 the seen split, after the keys had been unsealed (the seen key on 2026-10-23, 22:30), with the frozen prompts, the
 same model digests and no change to any runner or to the Ponens engine. Those two arms' rows are therefore not
 blind in the sealing sense on either split, and the two arms are compared with the others on the common subset
