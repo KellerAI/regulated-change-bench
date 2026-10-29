@@ -32,7 +32,7 @@ python3 scripts/results.py --check     # what the score workflow runs
 sh scripts/gate.sh                     # before publishing anything: names, paths, secrets
 ```
 
-Platform and baseline test suites: see `.github/workflows/platform.yml` (runs `platform/ci/run-tests.sh` for both apps, then `pytest -q baselines/tests`).
+Platform and baseline test suites: see `.github/workflows/platform.yml`. After `sh scripts/setup_tools.sh` it runs `platform/ci/run-tests.sh` for both apps from `platform/` (with `JUNIT_JAR` and `PYTHON` pointing into `.tools/`), then `baselines/fixtures/build.py`, then `KB_FAKE_AWS=1 .tools/venv/bin/python -m pytest -q baselines/tests`.
 
 No lint command is defined in CI or in top-level config files.
 
