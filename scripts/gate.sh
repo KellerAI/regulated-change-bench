@@ -15,4 +15,4 @@ if grep -rnE "$SECRETS" . --exclude-dir=.git --exclude-dir=.tools --exclude-dir=
 if [ "$hits" = 0 ]; then echo "gate clean"; fi
 # Hashed names match whole tokens and do not match inside a longer token. Short-name hashes can be recovered by dictionary attack, so this only hides the list from casual readers.
 if ! python3 scripts/gate_terms.py; then hits=1; fi
-exit "$hits"
+exit $hits
