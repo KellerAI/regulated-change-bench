@@ -1,0 +1,25 @@
+# Regulated-change benchmark
+
+> Public benchmark of seven third-party reviewer configurations on 270 changes to a synthetic bank, checked against the bank's own obligations, with 136 changes held out and sealed.
+
+## Read first
+
+- [README](README.md): What the benchmark is, who it is for, and the held-out results.
+- [Results](RESULTS.md): Full tables for the seen and held-out splits, regenerated from the published verdicts.
+- [Protocol](PROTOCOL.md): How the benchmark was built, sealed, run, and scored.
+- [Corrections](CORRECTIONS.md): What changed after the first public release. The held-out split is unchanged.
+- [Results JSON](reports/results.json): The same results in JSON.
+
+## Repository
+
+- [Agent notes](AGENTS.md): Layout, setup, and the commands that regenerate the tables.
+- [Platform specification](docs/platform.md): The synthetic mortgage and payments apps.
+- [Obligation citations](obligations/citations.md): How each obligation maps to a public rule.
+- [Sealed commitments](bench/key/COMMITMENTS.md): Hashes committed before scoring.
+- [Seeder API](bench/seeder/API.md): How to regenerate changes with new seeds.
+- [Baseline runners](baselines/README.md): The seven reviewer configurations and how each one ran.
+
+## Optional
+
+- [Code licence](LICENSE): Apache-2.0 for the code.
+- [Data licence](LICENSE-DATA.md): CC BY 4.0 for the obligations, variants, keys, and verdicts.
