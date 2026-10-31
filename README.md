@@ -79,6 +79,8 @@ python3 scripts/results.py --runs-dir runs-mine --extra-arm gpt-oss-120b "gpt-os
 sh scripts/gate.sh                                         # before you publish anything: names, paths, secrets
 ```
 
+Hashed proper-name checks match whole tokens and do not match inside a longer token. An unkeyed hash of a short name can be recovered by dictionary attack, so the check only hides the list from casual readers.
+
 The fourth command is one example. Every runner takes `--variants-dir` and `--runs-dir`: `baselines/claude/run.py`
 (`--mode packet` or `--mode agentic`, Bedrock), `baselines/ollama/run.py` (any pulled model), `baselines/grok/run.py`
 (Cursor's agent CLI), `baselines/ponens/run.py` (`--mode no-trace` or `--mode agent-trace`). `baselines/README.md`
