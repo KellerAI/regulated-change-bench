@@ -10,7 +10,7 @@ trace had 88 of 88.
 Held-out split, all 136 changes. Source: `RESULTS.md`, section test-heldout, table "All changes (136)", and the
 same counts in `reports/results.json` under `test-heldout`. Dollar totals and seconds per change are the rounded
 figures `RESULTS.md` publishes. Reviewers stay in that file's order. Qwen 3.8 and Ponens with a post-hoc trace
-were filled in after the keys were unsealed. The note under the later held-out table in this file says how.
+were filled in after the keys were unsealed. The paragraph under the later heading `Held-out split, all 136 changes` says how.
 
 | Reviewer | False all-clears (of 88 defective) | 95% upper bound | Clean cleared (of 48) | False alarms | Clean held | USD | s/change |
 |---|---|---|---|---|---|---|---|
@@ -58,9 +58,11 @@ authority threshold changed with the approvals the policy requires.
 **3. The open-source CI gate for agent traces passes everything by default.** The Ponens CI action with no trace
 published reports a green check on 88 of 88 defective held-out changes and 76 of 76 seen ones. The trace was
 written for the benchmark by gpt-oss-120b standing in for the change's coding agent, from the same review packet
-the packet arms read. It was not captured from an authoring session. The published 14 of 88 (held-out) and 8 of 76
-(seen) are this benchmark's strict mapping of the action's goal resolution into ACCEPT/REJECT/HOLD: a change
-counts as accepted only when every obligation's criterion resolved as done.
+the packet arms read. It was not captured from an authoring session. The action was run with no policies
+configured. In that configuration its job status does not read the goal scorecard, so the green check passed
+every change, with and without a trace: 136 of 136 held-out, 134 of 134 seen. The published 14 of 88 (held-out)
+and 8 of 76 (seen) are this benchmark's strict mapping of the action's goal resolution into ACCEPT/REJECT/HOLD:
+a change counts as accepted only when every obligation's criterion resolved as done.
 
 Context for the table: Claude Code with tools (Opus 5.5, read-only tools, allowed to run the repository's CI)
 missed 1 of 88 held-out defects at about $0.45 and 84 seconds per change, and cleared 37 of 48 clean changes. The
@@ -68,16 +70,6 @@ same model reading a review packet with no tools missed 2 and cleared 29. The lo
 more. The reviewers are listed in a fixed order by kind, not by score.
 
 ### Held-out split, all 136 changes
-
-| Reviewer | False all-clears (of 88 defective) | 95% upper bound | Clean cleared (of 48) | False alarms | Clean held | USD | s/change |
-|---|---|---|---|---|---|---|---|
-| Claude Opus 5.5, packet (no tools) | 2/88 | 7.0% | 29/48 | 13 | 6 | $27.65 ($0.20/change, Bedrock list price) | 24 |
-| gpt-oss-120b, packet (local) | 5/88 | 11.6% | 23/48 | 21 | 4 | $0 API, local compute | 115 |
-| Qwen 3.8 27B, packet (local) | 13/88 | 22.5% | 44/48 | 4 | 0 | $0 API, local compute | 186 |
-| Grok 4.7 via Cursor agent, packet (ask mode) | 4/88 | 10.1% | 30/48 | 12 | 6 | plan quota | 181 |
-| Claude Code with tools (Opus 5.5) | 1/88 | 5.3% | 37/48 | 2 | 9 | $61.16 ($0.45/change, Bedrock list price) | 84 |
-| Ponens CI action, no trace (default) | 88/88 | 100.0% | 48/48 | 0 | 0 | $0 (no model call) | 0 |
-| Ponens goal resolution, post-hoc trace (gpt-oss-120b) | 14/88 | 23.7% | 30/48 | 5 | 13 | $0 API, local compute | 154 |
 
 Every reviewer covers all 136 held-out changes and all 134 seen changes. On the seen split the full-split false
 all-clears are: Opus 1 of 76, gpt-oss 5, Qwen 3.8 4, Grok 2, Claude Code with tools 0, Ponens with a post-hoc
