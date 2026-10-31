@@ -1,19 +1,30 @@
 name: platform
 
-# Only runs when the platform or the baseline runners change. Verdict-only pushes
-# (new runs/, RESULTS.md) are covered by the score workflow alone.
+# Platform suites run when those trees change. The name-safety gate also runs
+# when the gate or this workflow changes. Verdict-only pushes (new runs/,
+# RESULTS.md) are covered by the score workflow alone.
 on:
   push:
     paths:
       - "platform/**"
       - "baselines/**"
       - "scripts/setup_tools.sh"
+      - "scripts/gate.sh"
+      - "scripts/gate_terms.py"
+      - "scripts/gate-terms.sha256"
+      - "scripts/test_gate_terms.py"
+      - "scripts/fixtures/gate-terms-canary.sha256"
       - ".github/workflows/platform.yml"
   pull_request:
     paths:
       - "platform/**"
       - "baselines/**"
       - "scripts/setup_tools.sh"
+      - "scripts/gate.sh"
+      - "scripts/gate_terms.py"
+      - "scripts/gate-terms.sha256"
+      - "scripts/test_gate_terms.py"
+      - "scripts/fixtures/gate-terms-canary.sha256"
       - ".github/workflows/platform.yml"
 
 jobs:
@@ -39,3 +50,14 @@ jobs:
       - run: |
           KAB_PYTHON="$PWD/.tools/venv/bin/python" .tools/venv/bin/python baselines/fixtures/build.py
           KB_FAKE_AWS=1 .tools/venv/bin/python -m pytest -q baselines/tests
+
+  gate:
+    name: name-safety gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: name-safety gate
+        run: sh scripts/gate.sh && python3 scripts/test_gate_terms.py
