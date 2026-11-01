@@ -79,7 +79,7 @@ python3 scripts/results.py --runs-dir runs-mine --extra-arm gpt-oss-120b "gpt-os
 sh scripts/gate.sh                                         # before you publish anything: names, paths, secrets
 ```
 
-Hashed proper-name checks match whole tokens and do not match inside a longer token. An unkeyed hash of a short name can be recovered by dictionary attack, so the check only hides the list from casual readers.
+The public gate checks machine paths and credential patterns. To also check restricted names, set `GATE_TERMS_FILE` to a nonempty SHA-256 rule file stored outside the repository; the gate reports when this private check is not configured. Never commit that file: hashes of predictable names are guessable. Matching is case-normalized, whole-token, and spans up to three tokens on one line.
 
 The fourth command is one example. Every runner takes `--variants-dir` and `--runs-dir`: `baselines/claude/run.py`
 (`--mode packet` or `--mode agentic`, Bedrock), `baselines/ollama/run.py` (any pulled model), `baselines/grok/run.py`

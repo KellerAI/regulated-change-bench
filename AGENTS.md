@@ -32,7 +32,7 @@ python3 scripts/results.py --check     # what the score workflow runs
 sh scripts/gate.sh                     # before publishing anything: names, paths, secrets
 ```
 
-Hashed proper-name matching is whole-token and does not match inside a longer token. An unkeyed hash of a short name can be recovered by dictionary attack, so this only hides the list from casual readers.
+The public gate checks machine paths and credential patterns. To also check restricted names, set `GATE_TERMS_FILE` to a nonempty SHA-256 rule file stored outside the repository; the gate reports when this private check is not configured. Never commit that file: hashes of predictable names are guessable. Matching is case-normalized, whole-token, and spans up to three tokens on one line.
 
 Platform and baseline test suites: see `.github/workflows/platform.yml`. After `sh scripts/setup_tools.sh` it runs `platform/ci/run-tests.sh` for both apps from `platform/` (with `JUNIT_JAR` and `PYTHON` pointing into `.tools/`), then `baselines/fixtures/build.py`, then `KB_FAKE_AWS=1 .tools/venv/bin/python -m pytest -q baselines/tests`.
 
