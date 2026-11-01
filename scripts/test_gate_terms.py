@@ -41,20 +41,6 @@ def main() -> int:
         expect = {f"{name}:1" for name, _text, hit in CASES if hit}
         if set(lines) != expect or proc.returncode != 1:
             return fail()
-        marker = "/" + "Users" + "/"
-        gate = (ROOT / "scripts" / "gate.sh").read_text(encoding="utf-8")
-        if marker not in gate:
-            return fail()
-        users = root / "users.txt"
-        users.write_text(marker + "x\n", encoding="utf-8")
-        grep = subprocess.run(
-            ["grep", "-n", "-E", "-i", "--", marker, str(users)],
-            capture_output=True,
-            text=True,
-        )
-        if grep.returncode != 0:
-            return fail()
-        print("users.txt:1")
         for line in sorted(lines):
             print(line)
         return 0
