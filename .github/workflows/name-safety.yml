@@ -1,0 +1,19 @@
+name: name-safety
+
+# Runs on every pull request and on pushes to main. No path filter.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  gate:
+    name: name-safety gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: name-safety gate
+        run: sh scripts/gate.sh && python3 scripts/test_gate_terms.py
